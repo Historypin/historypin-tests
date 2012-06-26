@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.historypin.com/" />
+<title>Map</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Map</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/photos</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForCondition</td>
+	<td>true</td>
+	<td>3000</td>
+</tr>
+<tr>
+	<td>verifyTitle</td>
+	<td>Historypin |</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#filter-bar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.hp-marker.hp-marker-cluster</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div.hp-marker.hp-marker-cluster</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=img.hp-marker-img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=div.hp-marker.hp-marker-cluster</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=ul.gallery_photos&gt;li&gt;a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div#infoWindow_contents</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#infoWindow_contents&gt;a#infoWindow_close</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#infoWindow_contents&gt;a.back_to_cluster</td>
+	<td>List</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#infoWindow_contents&gt;p.cluster_nav</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#infoWindow_contents&gt;div.photo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#infoWindow_contents&gt;div.photo&gt;div.image_wrapper</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#infoWindow_contents&gt;div.photo&gt;div.photo-caption</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Zoom and see more</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div.ui-dialog</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>Nearby</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Add your voice</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Fave</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Report</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Dispute</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#info-dialog</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#info-dialog&gt;div.tab_nav</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#info-dialog&gt;div.image</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#info-dialog&gt;div.bottom_bar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#info-dialog&gt;div.social-bar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a.ui-dialog-titlebar-close</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

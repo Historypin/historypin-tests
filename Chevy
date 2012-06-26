@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.historypin.com/" />
+<title>Chevy</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Chevy</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/chevy/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTitle</td>
+	<td>Historypin</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>The Chevy Centennial Collection</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Explore The Chevrolet channel</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Pin your Chevy Content</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>100 Years of Chevy Icons</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>More on Chevy's History...</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=List View</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Map View</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Slideshow</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=ul.list&gt;li&gt;div.image-holder&gt;a.image&gt;img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=ul.list&gt;li&gt;div.info</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=ul.list&gt;li&gt;div.info-actions</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a.channel-button.slideshow</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#tab-slideshow</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#supersized.quality</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#controls-wrapper&gt;div#controls</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#controls-wrapper&gt;div#controls&gt;div#slidecounter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Map View</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=List View</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.hp-marker.hp-marker-cluster</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div.hp-marker.hp-marker-cluster&gt;div.hp-marker-img-wrapper</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#search-filters&gt;label</td>
+	<td>Location</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#search-filters&gt;a#photo_search_submit&gt;span</td>
+	<td>GO</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div.search-bar.by_date</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#date-selector</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
