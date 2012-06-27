@@ -17,13 +17,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForText</td>
-	<td>css=a.foot-logo</td>
-	<td>We Are What We Do</td>
-</tr>
-<tr>
-	<td>waitForTextPresent</td>
-	<td>Historypin by We Are What We Do</td>
+	<td>waitForPageToLoad</td>
+	<td></td>
 	<td></td>
 </tr>
 <tr>
@@ -32,13 +27,13 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyElementPresent</td>
-	<td>//ul[@id='site']/li[6]/a/span</td>
-	<td></td>
+	<td>waitForText</td>
+	<td>css=a.foot-logo</td>
+	<td>We Are What We Do</td>
 </tr>
 <tr>
-	<td>verifyElementPresent</td>
-	<td>css=a.next-button.left &gt; span</td>
+	<td>waitForTextPresent</td>
+	<td>Historypin by We Are What We Do</td>
 	<td></td>
 </tr>
 <tr>
@@ -67,11 +62,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForTextPresent</td>
-	<td>Pin your history <br /> to the world</td>
-	<td></td>
-</tr>
-<tr>
 	<td>verifyTextPresent</td>
 	<td>Explore the Map</td>
 	<td></td>
@@ -79,11 +69,6 @@
 <tr>
 	<td>verifyTextPresent</td>
 	<td>Local Projects</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForTextPresent</td>
-	<td>Libraries Museums and Archives</td>
 	<td></td>
 </tr>
 <tr>
@@ -113,17 +98,37 @@
 </tr>
 <tr>
 	<td>verifyTextPresent</td>
+	<td>Twitter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
 	<td>Hear more</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>css=a.img-wrap&gt;img</td>
+	<td>css=div.inner.comm_info &gt; a &gt; img</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>//script[@type=&quot;text/javascript&quot;][contains(text(), '12369735-1')]</td>
+	<td>css=a.link</td>
+	<td>Find out more</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Follow us on Twitter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=a.next-button.left &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=a.img-wrap&gt;img</td>
 	<td></td>
 </tr>
 <tr>
@@ -154,6 +159,11 @@
 <tr>
 	<td>verifyElementPresent</td>
 	<td>css=div.home-content</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//script[@type=&quot;text/javascript&quot;][contains(text(), '12369735-1')]</td>
 	<td></td>
 </tr>
 </tbody></table>

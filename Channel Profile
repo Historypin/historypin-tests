@@ -72,11 +72,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyText</td>
-	<td>css=label</td>
-	<td>Most Recent</td>
-</tr>
-<tr>
 	<td>verifyTextPresent</td>
 	<td>Channel views</td>
 	<td></td>

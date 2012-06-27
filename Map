@@ -17,9 +17,9 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForCondition</td>
-	<td>true</td>
-	<td>3000</td>
+	<td>waitForElementPresent</td>
+	<td>css=div.hp-marker.hp-marker-cluster</td>
+	<td></td>
 </tr>
 <tr>
 	<td>verifyTitle</td>
@@ -32,23 +32,33 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>css=div.hp-marker.hp-marker-cluster</td>
-	<td></td>
-</tr>
-<tr>
 	<td>verifyElementPresent</td>
 	<td>css=div.hp-marker.hp-marker-cluster</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>css=img.hp-marker-img</td>
+	<td>css=div.hp-marker.hp-marker-cluster</td>
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>css=div.hp-marker.hp-marker-cluster</td>
+	<td>waitForElementPresent</td>
+	<td>css=ul.gallery_photos&gt;li&gt;a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=#infoWindow_close</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=ul.gallery_photos&gt;li.thumb&gt;a.hp-info-gallery-pin</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=ul.gallery_photos&gt;li.thumb&gt;div.info</td>
 	<td></td>
 </tr>
 <tr>
@@ -73,12 +83,22 @@
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>css=div#infoWindow_contents&gt;p.cluster_nav</td>
+	<td>css=div#infoWindow_contents&gt;p.cluster_nav&gt;a.next</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#infoWindow_contents&gt;p.cluster_nav&gt;a.prev</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
 	<td>css=div#infoWindow_contents&gt;div.photo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#infoWindow_contents&gt;div.photo img</td>
 	<td></td>
 </tr>
 <tr>
@@ -97,12 +117,12 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyElementPresent</td>
+	<td>waitForElementPresent</td>
 	<td>css=div.ui-dialog</td>
 	<td></td>
 </tr>
 <tr>
-	<td>waitForTextPresent</td>
+	<td>verifyTextPresent</td>
 	<td>Nearby</td>
 	<td></td>
 </tr>
@@ -128,6 +148,11 @@
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
+	<td>css=div.ui-dialog</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
 	<td>css=div#info-dialog</td>
 	<td></td>
 </tr>
@@ -139,6 +164,11 @@
 <tr>
 	<td>verifyElementPresent</td>
 	<td>css=div#info-dialog&gt;div.image</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#info-dialog&gt;div.image .photo-caption h2.photo-title</td>
 	<td></td>
 </tr>
 <tr>
