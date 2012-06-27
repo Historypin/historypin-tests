@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.historypin.com/" />
+<title>PTQH</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">PTQH</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/DiamondJubilee/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTitle</td>
+	<td>Historypin</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=h1.heading</td>
+	<td>Pinning The Queen's History</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>A global interactive archive of The Queen’s visits and her Jubilee celebrations to mark the Diamond Jubilee</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=a.explore</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=a.pin_memories</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div.big_pin</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Home</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Visits</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Map</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Pin</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=About</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>See our new animation featuring your photos of The Queen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>HRH Prince William has added a photo and story!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>See all 261 of the Queen’s State and Commonwealth visits</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Pin your own</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div.section.features h5</td>
+	<td>Tours</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div.section.features h5</td>
+	<td>Collections</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div.section.features img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div.footer ul.nav li a</td>
+	<td>About</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div.footer ul.nav li a</td>
+	<td>FAQs</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div.footer ul.nav li a</td>
+	<td>Terms &amp; Conditions</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div.footer ul.nav li a</td>
+	<td>Contact</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

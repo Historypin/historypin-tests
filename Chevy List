@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.historypin.com/" />
+<title>Chevy List</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Chevy List</td></tr>
+</thead><tbody>
+<tr>
+	<td>click</td>
+	<td>link=List View</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#tab-photos</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div.list-filter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#photo-list</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=input#date_upload</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=input#view_count</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=input#all[type=radio]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=input#pinned[type=radio]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=input#unpinned[type=radio]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#photo_list_content div#list ul.list li div.image-holder</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#photo_list_content div#list ul.list li div.image-holder a.image img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#photo_list_content div#list ul.list li div.info</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#photo_list_content div#list ul.list li div.info-actions</td>
+	<td></td>
+</tr>
+<tr>
+	<td>check</td>
+	<td>id=view_count</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#photo_list_content div#list ul.list li div.image-holder</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#photo_list_content div#list ul.list li div.image-holder a.image img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#photo_list_content div#list ul.list li div.info</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#photo_list_content div#list ul.list li div.info-actions</td>
+	<td></td>
+</tr>
+<tr>
+	<td>check</td>
+	<td>id=all</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#photo_list_content div#list ul.list li div.image-holder</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#photo_list_content div#list ul.list li div.image-holder a.image img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#photo_list_content div#list ul.list li div.info</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#photo_list_content div#list ul.list li div.info-actions</td>
+	<td></td>
+</tr>
+<tr>
+	<td>check</td>
+	<td>id=unpinned</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#photo_list_content div#list ul.list li div.image-holder</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#photo_list_content div#list ul.list li div.image-holder a.image img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#photo_list_content div#list ul.list li div.info</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#photo_list_content div#list ul.list li div.info-actions</td>
+	<td></td>
+</tr>
+<tr>
+	<td>check</td>
+	<td>id=date_upload</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#photo_list_content div#list ul.list li div.image-holder</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#photo_list_content div#list ul.list li div.image-holder a.image img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#photo_list_content div#list ul.list li div.info</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#photo_list_content div#list ul.list li div.info-actions</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

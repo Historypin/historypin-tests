@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.historypin.com/" />
+<title>PTQH Map</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">PTQH Map</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/diamondjubilee/map/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.hp-marker</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div.hp-marker</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForPageToLoad</td>
+	<td></td>
+	<td>3000</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=div.hp-marker</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=ul.gallery_photos&gt;li&gt;a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=#infoWindow_close</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=ul.gallery_photos&gt;li.thumb&gt;a.hp-info-gallery-pin</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=ul.gallery_photos&gt;li.thumb&gt;div.info</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=ul.gallery_photos&gt;li&gt;a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div#infoWindow_contents</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#infoWindow_contents&gt;a#infoWindow_close</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#infoWindow_contents&gt;a.back_to_cluster</td>
+	<td>List</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#infoWindow_contents&gt;p.cluster_nav&gt;a.next</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#infoWindow_contents&gt;p.cluster_nav&gt;a.prev</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#infoWindow_contents&gt;div.photo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#infoWindow_contents&gt;div.photo img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#infoWindow_contents&gt;div.photo&gt;div.image_wrapper</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#infoWindow_contents&gt;div.photo&gt;div.photo-caption</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Zoom and see more</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=div.ui-dialog</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div.ui-dialog</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#info-dialog</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#info-dialog&gt;div.tab_nav</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#info-dialog&gt;div.image</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#info-dialog&gt;div.image .photo-caption h2.photo-title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#info-dialog&gt;div.bottom_bar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div#info-dialog&gt;div.social-bar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a.ui-dialog-titlebar-close</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a#infoWindow_close</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
