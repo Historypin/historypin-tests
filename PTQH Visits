@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.historypin.com/" />
+<title>PTQH Visits</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">PTQH Visits</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/diamondjubilee/visits/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>The Queen’s&nbsp;&nbsp;&nbsp;State and Commonwealth visits <br />1952 – 2012</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Click on a visit to see what’s been pinned in each country...</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=object#jubilee</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=ul.list li a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div.footer ul.nav li a</td>
+	<td>About</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div.footer ul.nav li a</td>
+	<td>FAQs</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div.footer ul.nav li a</td>
+	<td>Terms &amp; Conditions</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div.footer ul.nav li a</td>
+	<td>Contact</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Home</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Visits</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Map</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Pin</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=About</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
