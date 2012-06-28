@@ -12,13 +12,13 @@
 <tr><td rowspan="1" colspan="3">Chevy Slideshow</td></tr>
 </thead><tbody>
 <tr>
-	<td>click</td>
-	<td>link=Slideshow</td>
+	<td>open</td>
+	<td>${url}</td>
 	<td></td>
 </tr>
 <tr>
-	<td>verifyElementPresent</td>
-	<td>css=#supersized.quality</td>
+	<td>clickAndWait</td>
+	<td>css=ul.list_tabs li a[href=&quot;/slideshow/&quot;]</td>
 	<td></td>
 </tr>
 <tr>
@@ -51,7 +51,6 @@
 	<td>css=div#slidecaption</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>
