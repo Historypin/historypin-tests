@@ -12,6 +12,11 @@
 <tr><td rowspan="1" colspan="3">Community - Schools - Billericay</td></tr>
 </thead><tbody>
 <tr>
+	<td>open</td>
+	<td>/community/schools-billericay</td>
+	<td></td>
+</tr>
+<tr>
 	<td>verifyTitle</td>
 	<td>Historypin | Community | Schools | Billericay School, Essex, UK</td>
 	<td></td>
@@ -19,11 +24,6 @@
 <tr>
 	<td>verifyTextPresent</td>
 	<td>Billericay School, Essex, UK</td>
-	<td></td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>schools-billericay</td>
 	<td></td>
 </tr>
 <tr>

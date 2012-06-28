@@ -12,6 +12,11 @@
 <tr><td rowspan="1" colspan="3">Community - Schools - Newport Primary School</td></tr>
 </thead><tbody>
 <tr>
+	<td>open</td>
+	<td>/community/schools-newport</td>
+	<td></td>
+</tr>
+<tr>
 	<td>verifyTitle</td>
 	<td>Historypin | Community | Schools | Newport Primary School, Essex, UK</td>
 	<td></td>
@@ -19,11 +24,6 @@
 <tr>
 	<td>verifyTextPresent</td>
 	<td>Newport Primary School, Essex, UK</td>
-	<td></td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>schools-newport</td>
 	<td></td>
 </tr>
 </tbody></table>

@@ -12,6 +12,11 @@
 <tr><td rowspan="1" colspan="3">Community - Local Projects - Case Studies - Magic Me</td></tr>
 </thead><tbody>
 <tr>
+	<td>open</td>
+	<td>/community/localprojects-case-study-magicme</td>
+	<td></td>
+</tr>
+<tr>
 	<td>verifyTitle</td>
 	<td>Historypin | Community | Local Projects | Magic Me, Tower Hamlets, London, UK</td>
 	<td></td>
@@ -19,11 +24,6 @@
 <tr>
 	<td>verifyTextPresent</td>
 	<td>Magic Me, Tower Hamlets, London, UK</td>
-	<td></td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>localprojects-case-study-magicme</td>
 	<td></td>
 </tr>
 </tbody></table>

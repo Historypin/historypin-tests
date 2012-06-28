@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>lams</td>
+	<td>/community/lams</td>
 	<td></td>
 </tr>
 <tr>
@@ -59,11 +59,6 @@
 <tr>
 	<td>verifyTextPresent</td>
 	<td>exact:How are my images credited?</td>
-	<td></td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>/community/lams</td>
 	<td></td>
 </tr>
 <tr>
