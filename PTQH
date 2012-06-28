@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="selenium.base" href="http://www.historypin.com/" />
+<link rel="selenium.base" href="" />
 <title>PTQH</title>
 </head>
 <body>
@@ -11,11 +11,6 @@
 <thead>
 <tr><td rowspan="1" colspan="3">PTQH</td></tr>
 </thead><tbody>
-<tr>
-	<td>open</td>
-	<td>/DiamondJubilee/</td>
-	<td></td>
-</tr>
 <tr>
 	<td>verifyTitle</td>
 	<td>Historypin</td>
@@ -126,7 +121,6 @@
 	<td>css=div.footer ul.nav li a</td>
 	<td>Contact</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

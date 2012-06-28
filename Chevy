@@ -12,11 +12,6 @@
 <tr><td rowspan="1" colspan="3">Chevy</td></tr>
 </thead><tbody>
 <tr>
-	<td>open</td>
-	<td>/chevy/</td>
-	<td></td>
-</tr>
-<tr>
 	<td>verifyTitle</td>
 	<td>Historypin</td>
 	<td></td>
@@ -48,32 +43,17 @@
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>link=List View</td>
+	<td>css=ul.list_tabs li a[href=&quot;/photos/list/&quot;]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>link=Map View</td>
+	<td>css=ul.list_tabs li a[href=&quot;/map/&quot;]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>link=Slideshow</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=ul.list&gt;li&gt;div.image-holder&gt;a.image&gt;img</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=ul.list&gt;li&gt;div.info</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=ul.list&gt;li&gt;div.info-actions</td>
+	<td>css=ul.list_tabs li a[href=&quot;/slideshow/&quot;]</td>
 	<td></td>
 </tr>
 </tbody></table>
