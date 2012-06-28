@@ -13,8 +13,13 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>http://www.11483012.vs3-12-project-maker.historypin.appspot.com/</td>
+	<td>/</td>
 	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=html body.mini div#container_wrap div#global div#site-content div.tabs_wrap div.tabs_wrap ul.list_tabs li a[href=&quot;/map/&quot;]</td>
+	<td>Map</td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
@@ -22,8 +27,43 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyTextPresent</td>
-	<td> Search tags GO </td>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div.map-filter</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>id=tags</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>id=tags_search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=html body.mini div#container_wrap div#global div#site-content div.section div#map div.map-filter div#date-slider-wrapper.date-slider div#date-slider.canvas a.ui-slider-handle</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=html body.mini div#container_wrap div#global div#site-content div.section div#map div.map-filter div#date-slider-wrapper.date-slider div#date-slider.canvas a.ui-slider-handle</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=html body.mini div#container_wrap div#global div#site-content div.section div#map div.map-filter div#date-slider-wrapper.date-slider ol#date-slider-labels</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=html body.mini div#container_wrap div#global div#site-content div.section div#map div#map-canvas div div.gmnoprint</td>
 	<td></td>
 </tr>
 </tbody></table>

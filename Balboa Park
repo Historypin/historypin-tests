@@ -13,108 +13,198 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>http://www.11483012.vs3-12-project-maker.historypin.appspot.com/</td>
+	<td>/</td>
 	<td></td>
 </tr>
 <tr>
-	<td>verifyTextPresent</td>
-	<td>Explore</td>
+	<td>verifyElementPresent</td>
+	<td>css=html body.balboa div#global.container</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=html body.balboa div#header.container</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=html body.balboa div#global.container iframe</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=html body.balboa div#header.container div.top_header</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Stay In Touch</td>
+	<td>Stay In Touch</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Connect</td>
+	<td>Connect</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Q &amp; A</td>
+	<td>Q &amp; A</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Directions</td>
+	<td>Directions</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Español</td>
+	<td>Español</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Home</td>
+	<td>Home</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=a.donate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Mobile apps</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Blogs</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Shop</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Maps</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>id=edit-search-theme-form-1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>id=edit-submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Hot Deals</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Inside The Park</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Calendar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Plan Your Visit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Park Information</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Travel</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Conservancy</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
 	<td>css=.tab-explore a[href=&quot;http://www.balboapark.org/info/history&quot;]</td>
-	<td></td>
+	<td>Explore</td>
 </tr>
 <tr>
-	<td>verifyTextPresent</td>
-	<td>Map</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
+	<td>verifyElementPresent</td>
 	<td>css=.tabs_wrap a[href=&quot;/map/&quot;]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
-	<td>List</td>
-	<td></td>
+	<td>Map</td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
 	<td>css=.tabs_wrap a[href=&quot;/photos/list/&quot;]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
-	<td>Collections</td>
-	<td></td>
+	<td>List</td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
 	<td>css=.tabs_wrap a[href=&quot;/collections/all/&quot;]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
-	<td>Tours</td>
-	<td></td>
+	<td>Collections</td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
 	<td>css=.tabs_wrap a[href=&quot;/tours/all/&quot;]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
-	<td>Contribute</td>
-	<td></td>
+	<td>Tours</td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
 	<td>css=.tab-contribute a[href=&quot;/contribute/&quot;]</td>
+	<td>Contribute</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>id=tags</td>
 	<td></td>
 </tr>
 <tr>
-	<td>verifyTextPresent</td>
+	<td>verifyElementPresent</td>
+	<td>id=tags_search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='date-slider']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=html body.mini div#container_wrap div#global div#site-content div.section div#map div#map-canvas</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=div.footer ul.nav li a[href]</td>
 	<td>About</td>
-	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=About</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
+	<td>verifyElementPresent</td>
+	<td>css=div.footer ul.nav li a[href]</td>
 	<td>FAQs</td>
-	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=FAQs</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
+	<td>verifyElementPresent</td>
+	<td>css=div.footer ul.nav li a[href]</td>
 	<td>Terms &amp; Conditions</td>
-	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=Terms &amp; Conditions</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
+	<td>verifyElementPresent</td>
+	<td>css=div.footer ul.nav li a[href]</td>
 	<td>Contact</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Contact</td>
-	<td></td>
 </tr>
 </tbody></table>
 </body>

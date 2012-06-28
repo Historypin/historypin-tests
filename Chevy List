@@ -12,6 +12,11 @@
 <tr><td rowspan="1" colspan="3">Chevy List</td></tr>
 </thead><tbody>
 <tr>
+	<td>open</td>
+	<td>/chevy/</td>
+	<td></td>
+</tr>
+<tr>
 	<td>click</td>
 	<td>link=List View</td>
 	<td></td>
@@ -176,7 +181,6 @@
 	<td>css=div#photo_list_content div#list ul.list li div.info-actions</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

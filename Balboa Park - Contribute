@@ -13,52 +13,37 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>http://www.11483012.vs3-12-project-maker.historypin.appspot.com/</td>
-	<td></td>
-</tr>
-<tr>
-	<td>selectWindow</td>
-	<td>null</td>
+	<td>/</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Contribute</td>
+	<td>css=ul.list_tabs li a[href='/contribute/']</td>
+	<td>Contribute</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=html body.balboa div#global.container iframe</td>
 	<td></td>
 </tr>
 <tr>
-	<td>verifyTextPresent</td>
+	<td>selectFrame</td>
+	<td>css=html body.balboa div#global.container iframe[height=&quot;800&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=html body.mini</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=html body.mini div#container_wrap div#global div#site-content div#tab-contribute div.inn h1.hp_logo</td>
 	<td>Pin your photos using</td>
-	<td></td>
 </tr>
 <tr>
-	<td>verifyTextPresent</td>
-	<td>If you would like to submit your pictures, videos or audio recordings of Balboa Park, click below and follow Historypin's simple steps.<br /><br />Once you have pinned your content, it will be reviewed and, if approved for the the site, will be visible on the Balboa Park Map. Your content will immediately go live on the main Historypin map and can be viewed on your profile.</td>
-	<td></td>
-</tr>
-<tr>
-	<td>selectWindow</td>
-	<td>null</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
-	<td>Pin your photos to Balboa Park using Historypin</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Pin your photos to Balboa Park using Historypin</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
-	<td>Find out more about the not-for-profit project Historypin</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>link=Find out more about the not-for-profit project Historypin</td>
+	<td>verifyElementPresent</td>
+	<td>css=html body.mini div#container_wrap div#global div#site-content div#tab-contribute div.inn a.pin_bridge</td>
 	<td></td>
 </tr>
 </tbody></table>

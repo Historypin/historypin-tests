@@ -12,7 +12,12 @@
 <tr><td rowspan="1" colspan="3">Chevy Map</td></tr>
 </thead><tbody>
 <tr>
-	<td>clickAndWait</td>
+	<td>open</td>
+	<td>/chevy/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
 	<td>link=Map View</td>
 	<td></td>
 </tr>
@@ -146,17 +151,6 @@
 	<td>css=div#info-dialog&gt;div.social-bar</td>
 	<td></td>
 </tr>
-<tr>
-	<td>click</td>
-	<td>css=a.ui-dialog-titlebar-close</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=a#infoWindow_close</td>
-	<td></td>
-</tr>
-
 </tbody></table>
 </body>
 </html>
