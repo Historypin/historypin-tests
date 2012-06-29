@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/community/schools-billericay</td>
+	<td>${url}community/schools-billericay</td>
 	<td></td>
 </tr>
 <tr>

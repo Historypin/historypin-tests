@@ -17,11 +17,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>css=div#tab-photos</td>
-	<td></td>
-</tr>
-<tr>
 	<td>verifyElementPresent</td>
 	<td>css=div.list-filter</td>
 	<td></td>

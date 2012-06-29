@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/community/schools-eic</td>
+	<td>${url}community/schools-eic</td>
 	<td></td>
 </tr>
 <tr>

@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/community/</td>
+	<td>${url}community/</td>
 	<td></td>
 </tr>
 <tr>
