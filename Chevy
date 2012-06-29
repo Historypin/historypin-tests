@@ -41,21 +41,6 @@
 	<td>More on Chevy's History...</td>
 	<td></td>
 </tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=ul.list_tabs li a[href=&quot;/photos/list/&quot;]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=ul.list_tabs li a[href=&quot;/map/&quot;]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=ul.list_tabs li a[href=&quot;/slideshow/&quot;]</td>
-	<td></td>
-</tr>
 </tbody></table>
 </body>
 </html>
