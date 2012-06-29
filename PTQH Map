@@ -22,23 +22,13 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyElementPresent</td>
-	<td>css=div.hp-marker</td>
-	<td></td>
-</tr>
-<tr>
 	<td>waitForVisible</td>
-	<td>css=div.hp-marker</td>
+	<td>css=div.hp-marker:not(.hp-marker-cluster)</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>css=div.hp-marker</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=div.hp-marker</td>
+	<td>css=div.hp-marker:not(.hp-marker-cluster)</td>
 	<td></td>
 </tr>
 <tr>
