@@ -33,11 +33,6 @@
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>css=div.tabs_wrap</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
 	<td>css=div.step-list</td>
 	<td></td>
 </tr>
