@@ -8,6 +8,7 @@
 <body>
 <table id="suiteTable" cellpadding="1" cellspacing="1" border="1" class="selenium"><tbody>
 <tr><td><b>Test Suite</b></td></tr>
+<tr><td><a href="seturlstest/Main Set URL - vs3-12 PMkr">Set URL - vs3-12.projectmaker</a></td></tr>
 <tr><td><a href="Homepage">Homepage</a></td></tr>
 <tr><td><a href="Map">Map</a></td></tr>
 <tr><td><a href="Tours & Collections">Tours & Collections</a></td></tr>
