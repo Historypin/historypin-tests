@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.historypin.com/" />
+<title>The Team</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">The Team</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/team/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTitle</td>
+	<td>Historypin | Team</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=ul#team li a span.name</td>
+	<td>Nick Stanhope</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=ul#team li a span.name</td>
+	<td>Michael Daley</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=ul#team li a span.name</td>
+	<td>Jon Voss</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=ul#team li a span.name</td>
+	<td>Tony Morris</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=ul#team li a span.name</td>
+	<td>Natasha Armstrong</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=ul#team li a span.name</td>
+	<td>Rebekkah Abraham</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

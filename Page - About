@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.historypin.com/" />
+<title>About</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">About</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/about-us/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTitle</td>
+	<td>Historypin | About</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>About</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Historypin is a way for millions of people to come together, from across different generations, cultures and places, to share small glimpses of the past and to build up the huge story of human history.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Everyone has history to share: whether its sitting in yellowed albums in the attic, collected in piles of crackly tapes, conserved in the 1000s of archives all over the world or passed down in memories and old stories.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Each of these pieces of history finds a home on Historypin, where everyone has the chance to see it, add to it, learn from it, debate it and use it to build up a more complete understanding of the world.</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
