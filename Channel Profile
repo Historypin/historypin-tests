@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/channels/view/id/7591437/</td>
+	<td>${url}channels/view/id/7591437/</td>
 	<td></td>
 </tr>
 <tr>

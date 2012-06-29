@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/presscentre/</td>
+	<td>${url}presscentre/</td>
 	<td></td>
 </tr>
 <tr>
@@ -61,7 +61,6 @@
 	<td>Contact Details</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

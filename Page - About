@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/about-us/</td>
+	<td>${url}about-us/</td>
 	<td></td>
 </tr>
 <tr>
@@ -41,7 +41,6 @@
 	<td>Each of these pieces of history finds a home on Historypin, where everyone has the chance to see it, add to it, learn from it, debate it and use it to build up a more complete understanding of the world.</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

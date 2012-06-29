@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/app/</td>
+	<td>${url}app/</td>
 	<td></td>
 </tr>
 <tr>
@@ -66,7 +66,6 @@
 	<td>css=div.share_container &gt; h2</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

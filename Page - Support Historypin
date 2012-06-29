@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/donate/</td>
+	<td>${url}donate/</td>
 	<td></td>
 </tr>
 <tr>
@@ -51,7 +51,6 @@
 	<td>link=We Are What We Do</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

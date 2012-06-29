@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/photos</td>
+	<td>${url}photos</td>
 	<td></td>
 </tr>
 <tr>
@@ -38,32 +38,7 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>css=div.hp-marker.hp-marker-cluster</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>css=ul.gallery_photos&gt;li&gt;a</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=#infoWindow_close</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=ul.gallery_photos&gt;li.thumb&gt;a.hp-info-gallery-pin</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=ul.gallery_photos&gt;li.thumb&gt;div.info</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=ul.gallery_photos&gt;li&gt;a</td>
+	<td>css=div.hp-marker:not(.hp-marker-cluster)</td>
 	<td></td>
 </tr>
 <tr>
@@ -74,21 +49,6 @@
 <tr>
 	<td>verifyElementPresent</td>
 	<td>css=div#infoWindow_contents&gt;a#infoWindow_close</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=div#infoWindow_contents&gt;a.back_to_cluster</td>
-	<td>List</td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=div#infoWindow_contents&gt;p.cluster_nav&gt;a.next</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=div#infoWindow_contents&gt;p.cluster_nav&gt;a.prev</td>
 	<td></td>
 </tr>
 <tr>

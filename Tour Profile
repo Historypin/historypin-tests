@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/tours/view/id/6633101/title/Some%20of%20the%20Best%20Bits%20of%20Historypin</td>
+	<td>${url}tours/view/id/6633101/title/Some%20of%20the%20Best%20Bits%20of%20Historypin</td>
 	<td></td>
 </tr>
 <tr>

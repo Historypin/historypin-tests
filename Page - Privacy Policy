@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/privacy-policy/</td>
+	<td>${url}privacy-policy/</td>
 	<td></td>
 </tr>
 <tr>
@@ -71,7 +71,6 @@
 	<td>10. Contact Us</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

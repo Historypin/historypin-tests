@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/user/</td>
+	<td>${url}user/</td>
 	<td></td>
 </tr>
 <tr>
@@ -51,7 +51,6 @@
 	<td>Historypin uses Google Accounts to keep your login details safe and secure. If you already have a Google Account you can login straight away; if you don't then just follow these simple instructions.</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

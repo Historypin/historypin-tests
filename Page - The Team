@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/team/</td>
+	<td>${url}team/</td>
 	<td></td>
 </tr>
 <tr>
@@ -51,7 +51,6 @@
 	<td>css=ul#team li a span.name</td>
 	<td>Rebekkah Abraham</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>
