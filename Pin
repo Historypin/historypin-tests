@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.historypin.com/" />
+<title>Pin Photo - Exact date</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Pin Photo - Exact date</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/upload/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>focus</td>
+	<td>//html/body/div[2]/div/div/div/div[2]/div/div[2]/form/div/label/input</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>//html/body/div[2]/div/div/div/div[2]/div/div[2]/form/div/label/input</td>
+	<td>~/tester.jpg</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>css=div.success</td>
+	<td>Success</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[@id='file-upload-form']/div/div/a[2]/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>javascript{Math.floor(Math.random()*65535)}</td>
+	<td>new_thread_myrand</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=caption</td>
+	<td>Automatic Test ${new_thread_myrand}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=story</td>
+	<td>Automatic Test Description ${new_thread_myrand}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=tags</td>
+	<td>Automatic, Test, Tags ${new_thread_myrand}</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=date_known</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=day</td>
+	<td>label=01</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=month</td>
+	<td>label=January</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=year</td>
+	<td>label=2000</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=location_known</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=location</td>
+	<td>Sofia</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#location_search &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=div[title=&quot;Zoom in&quot;] &gt; img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=div[title=&quot;Zoom in&quot;] &gt; img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#photo_pin &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=h3</td>
+	<td>All done</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[@id='site-content']/div/div[2]/a[2]/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=ul.list div.info h5</td>
+	<td>Automatic Test ${new_thread_myrand}</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=img[alt=&quot;tester.jpg&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a.icon.explore</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>relative=up</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=List</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=img.main-img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=ul.list div.info h5</td>
+	<td>Automatic Test ${new_thread_myrand}</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=div.image-holder[title='tester.jpg'] a.icon.delete</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
