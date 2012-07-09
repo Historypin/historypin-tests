@@ -4,53 +4,54 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://www.historypin.com/" />
-<title>Collection Profile</title>
+<title>Tours list</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">Collection Profile</td></tr>
+<tr><td rowspan="1" colspan="3">Tours list</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>${url}curated</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=div#list ul.list li a img</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>css=div#list ul.list li a img</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTitle</td>
-	<td>Historypin | Collection - 1906 Earthquake and Fire</td>
+	<td>${url}tours</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyTextPresent</td>
-	<td>Slide Show</td>
+	<td>exact:What are Tours?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Tours lead you step-by-step through a series of pieces of content, telling a story, exploring a place or walking through time. Take one of the Tours below or put your own together, using any content on Historypin.</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>css=div.step-list</td>
+	<td>css=img.index</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>All Tours</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>css=ul.list&gt;li&gt;a.link-image</td>
+	<td>link=Return to Tours &amp; Collections</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>css=a.main-image&gt;img</td>
+	<td>css=div#list ul.list li a img</td>
 	<td></td>
 </tr>
+<tr>
+	<td>verifyNotEval</td>
+	<td>window.document.getElementById('list').getElementsByTagName('a')[0].href.indexOf('/tours');</td>
+	<td>-1</td>
+</tr>
+
 </tbody></table>
 </body>
 </html>

@@ -4,53 +4,64 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://www.historypin.com/" />
-<title>Collection Profile</title>
+<title>Collections list</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">Collection Profile</td></tr>
+<tr><td rowspan="1" colspan="3">Collections list</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>${url}curated</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=div#list ul.list li a img</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>css=div#list ul.list li a img</td>
+	<td>${url}collections</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyTitle</td>
-	<td>Historypin | Collection - 1906 Earthquake and Fire</td>
+	<td>Historypin | Collections</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=img.index</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyTextPresent</td>
-	<td>Slide Show</td>
+	<td>exact:What are Collections?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Collections bring together content around a particular topic or theme. You can explore the Collections or create a Collection of your own.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>All Collections</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>css=div.step-list</td>
+	<td>link=Return to Tours &amp; Collections</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>css=ul.list&gt;li&gt;a.link-image</td>
+	<td>css=a.next-button.right &gt; span</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>css=a.main-image&gt;img</td>
+	<td>css=div#list ul.list li a img</td>
 	<td></td>
 </tr>
+<tr>
+	<td>verifyNotEval</td>
+	<td>window.document.getElementById('list').getElementsByTagName('a')[0].href.indexOf('/collections');</td>
+	<td>-1</td>
+</tr>
+
 </tbody></table>
 </body>
 </html>
