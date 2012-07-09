@@ -12,13 +12,23 @@
 <tr><td rowspan="1" colspan="3">Balboa Park - Contribute - Pin Yours</td></tr>
 </thead><tbody>
 <tr>
-	<td>open</td>
-	<td>/</td>
+	<td>clickAndWait</td>
+	<td>link=Pin your photos to Balboa Park using Historypin</td>
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=Contribute</td>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Join Historypin</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>I already have a Google Account</td>
 	<td></td>
 </tr>
 </tbody></table>

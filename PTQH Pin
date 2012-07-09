@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>${url}pin/</td>
+	<td>${projecturl}pin/</td>
 	<td></td>
 </tr>
 <tr>

@@ -12,6 +12,16 @@
 <tr><td rowspan="1" colspan="3">PTQH</td></tr>
 </thead><tbody>
 <tr>
+	<td>open</td>
+	<td>${url}diamondJubilee</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>window.location.href</td>
+	<td>projecturl</td>
+</tr>
+<tr>
 	<td>verifyTitle</td>
 	<td>Historypin</td>
 	<td></td>

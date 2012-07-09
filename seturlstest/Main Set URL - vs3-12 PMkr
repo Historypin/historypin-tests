@@ -11,16 +11,6 @@
 <thead>
 <tr><td rowspan="1" colspan="3">Set URL - vs3-12.projectmaker</td></tr>
 </thead><tbody>
-<tr>
-	<td>open</td>
-	<td>http://historypin.com/</td>
-	<td></td>
-</tr>
-<tr>
-	<td>storeEval</td>
-	<td>window.location.href</td>
-	<td>url</td>
-</tr>
 </tbody></table>
 </body>
 </html>

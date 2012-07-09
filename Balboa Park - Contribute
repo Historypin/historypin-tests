@@ -13,13 +13,13 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/</td>
+	<td>${projecturl}</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>css=ul.list_tabs li a[href='/contribute/']</td>
-	<td>Contribute</td>
+	<td>link=Contribute</td>
+	<td></td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>

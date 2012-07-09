@@ -13,17 +13,12 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/</td>
+	<td>${projecturl}</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>css=html body.mini div#container_wrap div#global div#site-content div.tabs_wrap div.tabs_wrap ul.list_tabs li.first a[href=&quot;/photos/list/&quot;]&quot;</td>
-	<td>List</td>
-</tr>
-<tr>
-	<td>selectFrame</td>
-	<td>css=html body.balboa div#global.container iframe[height=&quot;800&quot;]</td>
+	<td>link=List</td>
 	<td></td>
 </tr>
 <tr>
@@ -50,21 +45,6 @@
 	<td>verifyElementPresent</td>
 	<td>css=html body.mini div#container_wrap div#global div#site-content div#photo-list.wrapper div.bottom a.show-next</td>
 	<td>Next Page</td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>css=html body.mini div#container_wrap div#global div#site-content div#photo-list.wrapper div#photo_list_content div#list ul.list li.incomplete div.image-holder a.image</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>css=html body.mini div#container_wrap div#global div#site-content div#photo-list.wrapper div#photo_list_content div#list ul.list li.incomplete div.image-holder a.image</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertElementNotPresent</td>
-	<td>css=html body h1</td>
-	<td>Error: Server Error</td>
 </tr>
 </tbody></table>
 </body>

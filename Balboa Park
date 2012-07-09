@@ -13,8 +13,13 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/</td>
+	<td>${url}balboapark</td>
 	<td></td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>window.location.href</td>
+	<td>projecturl</td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
@@ -138,32 +143,32 @@
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>css=.tab-explore a[href=&quot;http://www.balboapark.org/info/history&quot;]</td>
+	<td>css=.list_tabs a</td>
 	<td>Explore</td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>css=.tabs_wrap a[href=&quot;/map/&quot;]</td>
+	<td>css=.list_tabs a</td>
 	<td>Map</td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>css=.tabs_wrap a[href=&quot;/photos/list/&quot;]</td>
+	<td>css=.list_tabs a</td>
 	<td>List</td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>css=.tabs_wrap a[href=&quot;/collections/all/&quot;]</td>
+	<td>css=.list_tabs a</td>
 	<td>Collections</td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>css=.tabs_wrap a[href=&quot;/tours/all/&quot;]</td>
+	<td>css=.list_tabs a</td>
 	<td>Tours</td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>css=.tab-contribute a[href=&quot;/contribute/&quot;]</td>
+	<td>css=.list_tabs a</td>
 	<td>Contribute</td>
 </tr>
 <tr>

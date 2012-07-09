@@ -13,22 +13,17 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/</td>
+	<td>${projecturl}</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>css=html body.mini div#container_wrap div#global div#site-content div.tabs_wrap div.tabs_wrap ul.list_tabs li a[href=&quot;/map/&quot;]</td>
-	<td>Map</td>
+	<td>link=Map</td>
+	<td></td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
 	<td>css=#map-canvas </td>
-	<td></td>
-</tr>
-<tr>
-	<td>selectWindow</td>
-	<td>null</td>
 	<td></td>
 </tr>
 <tr>
