@@ -22,6 +22,11 @@
 	<td>projecturl</td>
 </tr>
 <tr>
+	<td>verifyNotEval</td>
+	<td>window.document.getElementsByTagName('iframe')[0].src.indexOf('/attach');</td>
+	<td>-1</td>
+</tr>
+<tr>
 	<td>verifyElementPresent</td>
 	<td>css=html body.balboa div#global.container</td>
 	<td></td>

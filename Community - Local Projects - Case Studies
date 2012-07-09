@@ -13,6 +13,41 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
+	<td>${url}community/localprojects-resources</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTitle</td>
+	<td>Historypin | Community | Local Projects | Resources</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Activities &amp; Downloads for Local Projects</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Downloadable Resources</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Activity Sheets</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Tip Sheets</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Posters, flyers and certificates</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
 	<td>${url}community/localprojects-case-studies</td>
 	<td></td>
 </tr>
@@ -54,6 +89,61 @@
 <tr>
 	<td>verifyTextPresent</td>
 	<td>Lighthouse, Brighton, UK</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${url}community/localprojects-case-study-magicme</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTitle</td>
+	<td>Historypin | Community | Local Projects | Magic Me, Tower Hamlets, London, UK</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Magic Me, Tower Hamlets, London, UK</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${url}community/localprojects-case-study-reading</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTitle</td>
+	<td>Historypin | Community | Local Projects | Reading, Berkshire, UK</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Reading, Berkshire, UK</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>What people had to say about it</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>exact:What was the impact?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${url}community/localprojects-case-study-sanfrancisco</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTitle</td>
+	<td>Historypin | Community | Local Projects | San Francisco, USA</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>San Francisco, USA</td>
 	<td></td>
 </tr>
 </tbody></table>

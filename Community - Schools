@@ -141,6 +141,121 @@
 	<td>link=natasha.armstrong@wearewhatwedo.org</td>
 	<td></td>
 </tr>
+<tr>
+	<td>open</td>
+	<td>${url}community/schools-billericay</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTitle</td>
+	<td>Historypin | Community | Schools | Billericay School, Essex, UK</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Billericay School, Essex, UK</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=img[src$=&quot;casestudies/6d_main.jpg&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Video made by Billericay School for the day</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Feature on Radio Essex about the Billericay Historypin project</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Video made by Billericay School for the day</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=img[src$=&quot;casestudies/6d_sec.jpg&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${url}community/schools-eic</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTitle</td>
+	<td>Historypin | Community | Schools | English International College, Marbella, Spain</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>English International College, Marbella, Spain</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=img[src$=&quot;casestudies/6b_main.jpg&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Amy, Year 9</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=img[src$=&quot;casestudies/6b_fav1.jpg&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Cavan, Year 9</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=img[src$=&quot;casestudies/6b_fav2.jpg&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${url}community/schools-newport</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTitle</td>
+	<td>Historypin | Community | Schools | Newport Primary School, Essex, UK</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Newport Primary School, Essex, UK</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${url}community/schools-nelson</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTitle</td>
+	<td>Historypin | Community | Schools | Nelson Rural School, New Brunswick, Canada</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Nelson Rural School, New Brunswick, Canada</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=img[src$=&quot;casestudies/6c_main.jpg&quot;]</td>
+	<td></td>
+</tr>
 </tbody></table>
 </body>
 </html>

@@ -8,11 +8,12 @@
 <body>
 <table id="suiteTable" cellpadding="1" cellspacing="1" border="1" class="selenium"><tbody>
 <tr><td><b>Test Suite</b></td></tr>
-<tr><td><a href="seturlstest/Main Set URL - vs3-12 PMkr">Set URL - vs3-12.projectmaker</a></td></tr>
 <tr><td><a href="Homepage">Homepage</a></td></tr>
 <tr><td><a href="Map">Map</a></td></tr>
 <tr><td><a href="Tours & Collections">Tours & Collections</a></td></tr>
+<tr><td><a href="Collections list">Collections list</a></td></tr>
 <tr><td><a href="Collection Profile">Collection Profile</a></td></tr>
+<tr><td><a href="Tours list">Tours list</a></td></tr>
 <tr><td><a href="Tour Profile">Tour Profile</a></td></tr>
 <tr><td><a href="Channels list">Channels list</a></td></tr>
 <tr><td><a href="Channel Profile">Channel Profile</a></td></tr>
@@ -27,12 +28,21 @@
 <tr><td><a href="Page - Support Historypin">Support Historypin</a></td></tr>
 <tr><td><a href="Page - Press Center">Press Center</a></td></tr>
 <tr><td><a href="Page - We Are What We Do">Historypin - We Are What We Do</a></td></tr>
-<tr><td><a href="seturlstest/Main Set URL PTQH">Set URL Main PTQH</a></td></tr>
 <tr><td><a href="PTQH">PTQH</a></td></tr>
 <tr><td><a href="PTQH Map">PTQH Map</a></td></tr>
 <tr><td><a href="PTQH Pin">PTQH Pin</a></td></tr>
 <tr><td><a href="PTQH Visits">PTQH Visits</a></td></tr>
-<tr><td><a href="Pin">Pin</a></td></tr>
+<tr><td><a href="Chevy">Chevy</a></td></tr>
+<tr><td><a href="Chevy List">Chevy List</a></td></tr>
+<tr><td><a href="Chevy Map">Chevy Map</a></td></tr>
+<tr><td><a href="Chevy Slideshow">Chevy Slideshow</a></td></tr>
+<tr><td><a href="Balboa Park">Balboa Park</a></td></tr>
+<tr><td><a href="Balboa Park - Collections">Balboa Park - Collections</a></td></tr>
+<tr><td><a href="Balboa Park - Contribute">Balboa Park - Contribute</a></td></tr>
+<tr><td><a href="Balboa Park - Contribute - Pin yours">Balboa Park - Contribute - Pin yours</a></td></tr>
+<tr><td><a href="Balboa Park - List">Balboa Park - List</a></td></tr>
+<tr><td><a href="Balboa Park - Map">Balboa Park - Map</a></td></tr>
+<tr><td><a href="Balboa Park - Tours">Balboa Park - Tours</a></td></tr>
 </tbody></table>
 </body>
 </html>

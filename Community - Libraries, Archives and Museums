@@ -66,6 +66,26 @@
 	<td>exact:How can I do a bulk upload?</td>
 	<td></td>
 </tr>
+<tr>
+	<td>open</td>
+	<td>${url}community/lams-involved</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTitle</td>
+	<td>Historypin | Community | Schools | Historypin in the Classroom</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Institutions involved</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>What Institutions are saying about Historypin</td>
+	<td></td>
+</tr>
 </tbody></table>
 </body>
 </html>
