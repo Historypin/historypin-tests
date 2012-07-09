@@ -8,24 +8,13 @@
 <body>
 <table id="suiteTable" cellpadding="1" cellspacing="1" border="1" class="selenium"><tbody>
 <tr><td><b>Test Suite</b></td></tr>
-<tr><td><a href="seturlstest/Main Set URL - vs3-12 PMkr">Main Set URL - vs3-12 PMkr</a></td></tr>
 <tr><td><a href="Community">Community</a></td></tr>
 <tr><td><a href="Community - Libraries, Archives and Museums">Community - Libraries, Archives and Museums</a></td></tr>
-<tr><td><a href="Community - Libraries, Archives and Museums - Institution Involved">Community - Libraries, Archives and Museums - Institution Involved</a></td></tr>
 <tr><td><a href="Community - Local Projects">Community - Local Projects</a></td></tr>
-<tr><td><a href="Community - Local Projects - Activities & Downloads">Community - Local Projects - Activities & Downloads</a></td></tr>
 <tr><td><a href="Community - Local Projects - Case Studies">Community - Local Projects - Case Studies</a></td></tr>
-<tr><td><a href="Community - Local Projects - Case Studies - Lighthouse">Community - Local Projects - Case Studies - Lighthouse</a></td></tr>
-<tr><td><a href="Community - Local Projects - Case Studies - Magic Me">Community - Local Projects - Case Studies - Magic Me</a></td></tr>
-<tr><td><a href="Community - Local Projects - Case Studies - Reading">Community - Local Projects - Case Studies - Reading</a></td></tr>
-<tr><td><a href="Community - Local Projects - Case Studies - San Francisco">Community - Local Projects - Case Studies - San Francisco</a></td></tr>
 <tr><td><a href="Community - Schools">Community - Schools</a></td></tr>
-<tr><td><a href="Community - Schools - Billericay">Community - Schools - Billericay</a></td></tr>
 <tr><td><a href="Community - Schools - Case Studies">Community - Schools - Case Studies</a></td></tr>
-<tr><td><a href="Community - Schools - English International College">Community - Schools - English International College</a></td></tr>
 <tr><td><a href="Community - Schools - How To Guides">Community - Schools - How To Guides</a></td></tr>
-<tr><td><a href="Community - Schools - Nelson Rural Schools">Community - Schools - Nelson Rural Schools</a></td></tr>
-<tr><td><a href="Community - Schools - Newport Primary School">Community - Schools - Newport Primary School</a></td></tr>
 <tr><td><a href="Community - Topics to explore">Community - Topics to explore</a></td></tr>
 </tbody></table>
 </body>

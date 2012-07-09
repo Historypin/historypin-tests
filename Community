@@ -12,11 +12,6 @@
 <tr><td rowspan="1" colspan="3">Community</td></tr>
 </thead><tbody>
 <tr>
-	<td>storeEval</td>
-	<td>window.location.href</td>
-	<td>url</td>
-</tr>
-<tr>
 	<td>open</td>
 	<td>${url}community/</td>
 	<td></td>
