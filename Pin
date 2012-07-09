@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/upload/</td>
+	<td>${url}upload/</td>
 	<td></td>
 </tr>
 <tr>
@@ -117,7 +117,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyText</td>
+	<td>waitForText</td>
 	<td>css=ul.list div.info h5</td>
 	<td>Automatic Test ${new_thread_myrand}</td>
 </tr>
@@ -127,23 +127,18 @@
 	<td></td>
 </tr>
 <tr>
+	<td>verifyElementPresent</td>
+	<td>css=img.main-img</td>
+	<td></td>
+</tr>
+<tr>
 	<td>click</td>
 	<td>css=a.icon.explore</td>
 	<td></td>
 </tr>
 <tr>
-	<td>selectFrame</td>
-	<td>relative=up</td>
-	<td></td>
-</tr>
-<tr>
 	<td>click</td>
 	<td>link=List</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=img.main-img</td>
 	<td></td>
 </tr>
 <tr>
@@ -156,7 +151,6 @@
 	<td>css=div.image-holder[title='tester.jpg'] a.icon.delete</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

@@ -17,11 +17,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>open</td>
-	<td>http://vs3-12-project-maker.historypin.appspot.com/</td>
-	<td></td>
-</tr>
-<tr>
 	<td>storeEval</td>
 	<td>window.location.href</td>
 	<td>url</td>
