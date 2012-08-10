@@ -83,7 +83,7 @@
 </tr>
 <tr>
 	<td>pause</td>
-	<td>1000</td>
+	<td>5000</td>
 	<td></td>
 </tr>
 <tr>
@@ -93,7 +93,7 @@
 </tr>
 <tr>
 	<td>pause</td>
-	<td>500</td>
+	<td>5000</td>
 	<td></td>
 </tr>
 <tr>
@@ -103,7 +103,7 @@
 </tr>
 <tr>
 	<td>pause</td>
-	<td>500</td>
+	<td>5000</td>
 	<td></td>
 </tr>
 <tr>
@@ -236,7 +236,6 @@
 	<td>css=a.next-button.right &gt; span</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>
