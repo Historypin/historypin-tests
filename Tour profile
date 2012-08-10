@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.historypin.com" />
+<title>Tour profile</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Tour profile</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/tours/view/id/12083135/title/Testing Tour</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Historypin | Tours - Testing Tour</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTitle</td>
+	<td>Historypin | Tours - Testing Tour</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Testing Tour</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/tours/view/id/12083135/title/Testing%20Tour</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Created by Gabss</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=.index</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Sets the value of an input field</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=img[src$=&quot;/services/thumb/phid/11852057/dim/195x150/crop/1/&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=img[src$=&quot;/services/thumb/phid/11780093/dim/195x150/crop/1/&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Clicks on a link, button, checkbox or radio button.</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

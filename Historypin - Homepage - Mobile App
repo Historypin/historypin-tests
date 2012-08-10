@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.historypin.com/" />
+<title>Historypin - Homepage - Mobile App</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Historypin - Homepage - Mobile App</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/app/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Historypin | App</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTitle</td>
+	<td>Historypin | App</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Android</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Discover windows into the past by seeing and interacting with the history all around you. </td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=a[href=&quot;https://market.android.com/details?id=com.historypin.Historypin&amp;feature=search_result&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>iOS</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Windows Phone 7</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>What can you do on the Historypin app?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Explore the Historypin map - the Historypin map has 1000s of images and stories pinned to it and the app allows you to browse this by date and location, using your location to find the nearest content, or exploring remotely.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Digitise an old photo - take photos of old pictures as an easy alternative to scanning them, then add photo details and pin them directly to the Historypin map.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Share</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=.share_container</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

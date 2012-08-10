@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://v4-03.historypin.appspot.com" />
+<title>Channel - Detailed Instructions</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Channel - Detailed Instructions</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>http://v4-03.historypin.appspot.com</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#my-stuff &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=a.open-tab[href=#tab-embed] &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='tab-home']/div/ul[2]/li[3]/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#get_code &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=a#get_code.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#get_code &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#get_code &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=show_map</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=show_list</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#get_code &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(@href, '#')])[76]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#get_code &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>find more detailed instructions and tips on custom parameters here</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=find more detailed instructions and tips on custom parameters here</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Tips for using the embed</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Width and height of your containing page:<br /><br />To embed your Historypin Channel on your site, your site will need to be at least 950px wide. The embed will function at lower screen widths, but some elements and functionality will be chopped off. You can choose any height from 510px tall and above, however you may see scrollbars in lists where a taller height would allow most scrollbars to disappear.<br /><br />Recommended dimensions: 950px wide and 700px high. You can set this in the code by modifying the &lt;iframe&gt; tag. For example:<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;iframe src=&quot;http://www.historypin.com/embed/23/c/4/u/1042029/geo/52.079805,-0.261087/zoom/13/&quot; width=&quot;100%&quot; height=&quot;700px&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;<br /><br />Limitations with Wordpress<br /><br />Please note that the embed uses an iframe, so will not work in Wordpress blogs unless these are hosted on our own site. This is due to Wordpress not allowing iframes.<br />A useful tip: Generate multiple embeds with different map views, tabs or colours<br /><br />You can embed multiple embeds with different map views, different tabs, and different colours. For example, by generating the code only for the map, you can embed only a map on your site. You could then generate a collection list only and pick and choose. By changing the default map view on your channel and then generating a new embed code, you can show a different map. By temporarily changing the colour scheme of your channel and generating a new embed code, you can have different coloured embeds around your site.<br />Get Help<br /><br />If you need help or have any questions, please email historypin@wearewhatwedo.org</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

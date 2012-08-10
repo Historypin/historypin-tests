@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.historypin.com/" />
+<title>Historypin - Contact us</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Historypin - Contact us</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/contact-us/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Historypin | Contact Us</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTitle</td>
+	<td>Historypin | Contact Us</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Contact us</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Your name*:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=#name</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>Gabi</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=button[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=name</td>
+	<td>Gabss</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>g.ananieva@avalith.bg</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=subject</td>
+	<td>Testing</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=message</td>
+	<td>Testing</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=button[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Your message has been sent.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>FAQs</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>How do a turn a physical photo into an image on my computer?</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

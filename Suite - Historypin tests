@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+  <title>Test Suite</title>
+</head>
+<body>
+<table id="suiteTable" cellpadding="1" cellspacing="1" border="1" class="selenium"><tbody>
+<tr><td><b>Test Suite</b></td></tr>
+<tr><td><a href="Historypin - homepage">Historypin - Homepage</a></td></tr>
+<tr><td><a href="Historypin - Homepage - Mobile App">Historypin - Homepage - Mobile App</a></td></tr>
+<tr><td><a href="Historypin - Info - About">Historypin - Info - About</a></td></tr>
+<tr><td><a href="Historypin - Info - FAQs">Historypin - Info - FAQs</a></td></tr>
+<tr><td><a href="Historypin - Contact us">Historypin - Contact us</a></td></tr>
+<tr><td><a href="Historypin - Map">Historypin - Map</a></td></tr>
+<tr><td><a href="Tours & Collections page">Tours & Collections page</a></td></tr>
+<tr><td><a href="Collections page">Collections All</a></td></tr>
+<tr><td><a href="Collections - collection profile">Collections - collection profile</a></td></tr>
+<tr><td><a href="Tours page">Tours - All</a></td></tr>
+<tr><td><a href="Tours - tour profile">Tours - Tour Profile</a></td></tr>
+<tr><td><a href="Historypin - Channels">Historypin - Channels page</a></td></tr>
+<tr><td><a href="Searching Channel">Searching Channel</a></td></tr>
+<tr><td><a href="Historypin - Channel Profile">Historypin - Channel Profile</a></td></tr>
+<tr><td><a href="Community page">Community Homepage</a></td></tr>
+<tr><td><a href="Community - Homepage - Schools">Community - Schools</a></td></tr>
+<tr><td><a href="Community - Schools - Case Studies">Community - Schools - Case Studies</a></td></tr>
+<tr><td><a href="Community - Schools - Resources">Community - Schools - Resources</a></td></tr>
+<tr><td><a href="Community - Homepage - Local Projects">Community - Local Projects</a></td></tr>
+<tr><td><a href="Community - Local Projects - Case Studies">Community - Local Projects - Case Studies</a></td></tr>
+<tr><td><a href="Community - Homepage - LAMs">Community - LAMs</a></td></tr>
+<tr><td><a href="Community - LAMs - Institutions Involved">Community - LAMs - Institutions Involved</a></td></tr>
+<tr><td><a href="Community - How To Guides">Community - How To Guides</a></td></tr>
+<tr><td><a href="Community - Topics to Explore">Community - Topics to Explore</a></td></tr>
+<tr><td><a href="../../../../../test1">Pinning Photo</a></td></tr>
+<tr><td><a href="Pinning Video">Pinning Video</a></td></tr>
+<tr><td><a href="My channel - Save this view as a default map view">My channel - Save this view as a default map view</a></td></tr>
+<tr><td><a href="Suite">My channel - Location search and years slider</a></td></tr>
+<tr><td><a href="My channel - Channel Info">My channel - Channel Info</a></td></tr>
+<tr><td><a href="My channel - Changing Colour Themes ">My channel - Changing Colour Themes </a></td></tr>
+<tr><td><a href="../european year tests/My channel - Content">My channel - Content</a></td></tr>
+<tr><td><a href="My Channel - Link with my site">My Channel - Get badge Code</a></td></tr>
+<tr><td><a href="My channel - Get badge code">My channel - Get icon code</a></td></tr>
+<tr><td><a href="My channel - Get Badge Code">My channel - Embed my content</a></td></tr>
+<tr><td><a href="My channel - Channels I am fan of">My channel - Channels I am fan of</a></td></tr>
+<tr><td><a href="My channel - My Fans">My channel - My Fans</a></td></tr>
+<tr><td><a href="My channel - Photo upload profile">My channel - Photo upload profile</a></td></tr>
+<tr><td><a href="Subscribing a channel">Subscribing a channel</a></td></tr>
+<tr><td><a href="My channel - Make a tour">My channel - Make a tour</a></td></tr>
+<tr><td><a href="Tour profile">Tour profile</a></td></tr>
+<tr><td><a href="Take Tour">Take Tour</a></td></tr>
+<tr><td><a href="My channel - Make a collection">My channel - Make a collection</a></td></tr>
+<tr><td><a href="Collection profile">Collection profile</a></td></tr>
+<tr><td><a href="Collection Slideshow">Collection Slideshow</a></td></tr>
+</tbody></table>
+</body>
+</html>

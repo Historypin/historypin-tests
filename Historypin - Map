@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.historypin.com/" />
+<title>Historypin - Map</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Historypin - Map</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>http://historypin.com</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=map_link</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>12000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Historypin |</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTitle</td>
+	<td>Historypin |</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=#search-filters</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=.filter-nav</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='map-canvas']/div/div/div/div[4]/div[41]/div[2]/img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=img.main-img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Copyright and photo info</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Add your voice</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>12000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=post-story</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='info-dialog']/div/div[5]/div/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=post-story</td>
+	<td>test1</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='info-dialog']/div/div[5]/div/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>link=Report</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>link=Dispute</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>link=Fave</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=.bottom_bar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Nearby</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=close</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=div.gallery-collapsed &gt; h4</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Have you seen some of our favourite...</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Highlights</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Tours (see all)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Collections</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=div.service.collections &gt; h3.long-title &gt; a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Close panel</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

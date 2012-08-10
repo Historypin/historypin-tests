@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.historypin.com/" />
+<title>Community - How To Guides</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Community - How To Guides</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/community/howtos</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Historypin | Community | Schools | Historypin in the Classroom</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTitle</td>
+	<td>Historypin | Community | Schools | Historypin in the Classroom</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>How To Guides</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/community/howtos</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Note: These videos have audio commentaries</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Exploring</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=a[href=&quot;http://www.google.com/url?q=http%3A%2F%2Fwawwd-resources.s3.amazonaws.com%2Fhistorypin%2FHow_to_Create_an_Acccount_and_Username.pdf&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNGZxlSjYMUx_vQk1WX5o9H9ESrgtw&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Adding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=a[href=&quot;http://www.google.com/url?q=http%3A%2F%2Fwawwd-resources.s3.amazonaws.com%2Fhistorypin%2FHow_to_Pin_a_Photo.pdf&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNGGW3QKpLww46CEbkcfZQy73OYO9Q&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Curating</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=.sidebar</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

@@ -3,24 +3,35 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="selenium.base" href="http://www.historypin.com/" />
-<title>Set URL PMkr Chevy</title>
+<link rel="selenium.base" href="http://v4-03.historypin.appspot.com" />
+<title>PTQH - Number of photos & videos</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">Set URL PMkr Chevy</td></tr>
+<tr><td rowspan="1" colspan="3">PTQH - Number of photos & videos</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/chevy</td>
+	<td>/project/11462012-DiamondJubilee/</td>
 	<td></td>
 </tr>
 <tr>
-	<td>storeEval</td>
-	<td>window.location.href</td>
-	<td>url</td>
+	<td>verifyTextPresent</td>
+	<td>photos, videos, audio clips and stories pinned so far... </td>
+	<td></td>
 </tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>The most recent pins</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=.recent</td>
+	<td></td>
+</tr>
+
 </tbody></table>
 </body>
 </html>

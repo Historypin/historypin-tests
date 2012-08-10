@@ -3,42 +3,52 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="selenium.base" href="http://www.historypin.com/" />
-<title>Community - Schools - Case Studies</title>
+<link rel="selenium.base" href="http://www.historypin.com" />
+<title>Subscribing a channel</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">Community - Schools - Case Studies</td></tr>
+<tr><td rowspan="1" colspan="3">Subscribing a channel</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/community/schools-case-studies</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//ul[@id='site']/li[3]/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Biggleswade History Society</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertTitle</td>
-	<td>Historypin | Community | Schools</td>
+	<td>Biggleswade History Society | Historypin</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyTitle</td>
-	<td>Historypin | Community | Schools</td>
+	<td>Biggleswade History Society | Historypin</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyTextPresent</td>
-	<td>Schools Case Studies</td>
+	<td>Biggleswade History Society</td>
 	<td></td>
 </tr>
 <tr>
-	<td>verifyTextPresent</td>
-	<td>Historypin is used as the theme for Humanities Day and students create an exhibition after parents and locals invited in for Historypin coffee morning.</td>
+	<td>selectWindow</td>
+	<td>null</td>
 	<td></td>
 </tr>
 <tr>
-	<td>verifyElementPresent</td>
-	<td>css=img[src$=&quot;/community/casestudies/6b_thumb.jpg&quot;]</td>
+	<td>click</td>
+	<td>css=#subscribe &gt; span</td>
 	<td></td>
 </tr>
 

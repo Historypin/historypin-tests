@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://v4-03.historypin.appspot.com" />
+<title>HP - Reading Project Page</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">HP - Reading Project Page</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>http://www.historypin.com/community-localprojects-reading/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Reading, UK</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td><br />Reading, UK<br />Pinning Reading’s History<br />Do you have any old photos, videos or audio of Reading?<br />Or memories of of what it used to be like?<br />Do you know someone who does?<br /><br />Historypin, is running a special local project in Reading, the first of its kind in the world, where the entire community is being asked to get involved and gather together the history of the local area.<br /><br />If you have any photos, videos, audio, stories or memories do pin them to the map. They could be of your family, street, school, local business, Reading landmarks or any other interesting local or family history you have to share.<br /><br />An exhibition entitled ‘Pinning Reading’s History’ will be held at Reading Musuem, from September 2011 to January 2012, where the best content and stories uploaded onto the Historypin site will be featured. The inter-active exhibition will be updated as new memories are added throughout the autumn and winter.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Brilliant Pinners in Reading</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Take a Tour round Reading</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Take a Tour round Reading</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=a.button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Great stories and pics pinned in Reading</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Floods in Gosbrook Road, Caversham - April 1947</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Traffic on Oxford Road, 1893</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Silver Jubilee Street Party Vine Crescent Reading, 1977</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Town Hall, Reading,1900</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Town Hall, Reading,1900</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Cast of Play in Garden of St. Michael's Rectory, 1951 - 1953</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Bernard Tripp at Bugs Bottom, 1943</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>See what’s been pinned in Reading</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>View the live map to see all content and stories pinned</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=img[src$=&quot;/resources/images/hlf_web.jpg&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=img[src$=&quot;/resources/images/gul_web.jpg&quot;]</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

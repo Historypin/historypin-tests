@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.historypin.com" />
+<title>Pinning Video</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Pinning Video</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=a.pin-a-photo &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Historypin | My Content | Add</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTitle</td>
+	<td>Historypin | My Content | Add</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Make sure you have permission before you upload anything. By clicking upload you are agreeing to our Terms and Conditions.Please note that if you want your stuff to appear on the map, you need to &quot;Pin it to the map&quot; with a title, location and approximate date. You can do this at a later time, but until then only you will be able to see your stuff on your Historypin channel.<br />Want to upload large amounts of content? Read about our Bulk Uploader</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=a[href=&quot;/terms-and-conditions/&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=a[href=&quot;/bulkbridge/&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=.inner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Video</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Add a video clip from YouTube</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td><br />Note: You must set the privacy setting of your YouTube video to Public for it to appear on Historypin. To get the correct YouTube link, click the &quot;share&quot; button under the video. Check the &quot;long link&quot; box and copy the link.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=youtube_url</td>
+	<td>http://www.youtube.com/watch?v=G3CqZQwxXVM&amp;list=UUfLFTP1uTuIizynWsZq2nkQ&amp;index=3&amp;feature=plcp</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[@id='container']/div[2]/div/form/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Pin your content</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>exact:Details:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=caption</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=story</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=tags</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=date_known</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=day</td>
+	<td>label=03</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=month</td>
+	<td>label=March</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=year</td>
+	<td>label=2005</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Start by searching for a location</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=#location</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#location_search &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=location</td>
+	<td>London</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=location</td>
+	<td>London</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#location_search &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=#location_suggestions</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=London, UK</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=#photo_pin &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=.all_done</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[@id='site-content']/div/div[2]/a[2]/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Gabs</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css= ul.list &gt; li</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

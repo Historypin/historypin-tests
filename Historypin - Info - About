@@ -4,41 +4,41 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://www.historypin.com/" />
-<title>Community - Schools - Case Studies</title>
+<title>Historypin - Info - About</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">Community - Schools - Case Studies</td></tr>
+<tr><td rowspan="1" colspan="3">Historypin - Info - About</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/community/schools-case-studies</td>
+	<td>/about-us/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertTitle</td>
-	<td>Historypin | Community | Schools</td>
+	<td>Historypin | About</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyTitle</td>
-	<td>Historypin | Community | Schools</td>
+	<td>Historypin | About</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyTextPresent</td>
-	<td>Schools Case Studies</td>
+	<td>About</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyTextPresent</td>
-	<td>Historypin is used as the theme for Humanities Day and students create an exhibition after parents and locals invited in for Historypin coffee morning.</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=img[src$=&quot;/community/casestudies/6b_thumb.jpg&quot;]</td>
+	<td>Historypin is a way </td>
 	<td></td>
 </tr>
 

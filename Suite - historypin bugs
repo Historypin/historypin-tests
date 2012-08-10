@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+  <title>Test Suite</title>
+</head>
+<body>
+<table id="suiteTable" cellpadding="1" cellspacing="1" border="1" class="selenium"><tbody>
+<tr><td><b>Test Suite</b></td></tr>
+<tr><td><a href="Channel Tours and Collections">Channel - Tours and Collections</a></td></tr>
+<tr><td><a href="Channel - Manage Collections and Tours">Channel - Manage Collections and Tours</a></td></tr>
+<tr><td><a href="Channel - Save location button">Channel - Save location button</a></td></tr>
+<tr><td><a href="Channel - Detailed Instructions">Channel - Detailed Instructions</a></td></tr>
+<tr><td><a href="Suite - historypin bugs">Channel - Show/hide button</a></td></tr>
+<tr><td><a href="Channel - Next Page">Channel - Next Page</a></td></tr>
+<tr><td><a href="Channel - Streetview">Channel - Streetview</a></td></tr>
+<tr><td><a href="Channel - Map ">Channel - Map </a></td></tr>
+<tr><td><a href="Channel - Story Feed">Channel - Story Feed</a></td></tr>
+<tr><td><a href="Channel - Repeats">Channel - Repeats</a></td></tr>
+<tr><td><a href="Channel - Favourites">Channel - Favourites</a></td></tr>
+<tr><td><a href="HP - Reading Project Page">HP - Reading Project Page</a></td></tr>
+<tr><td><a href="HP - Fave">HP - Fave</a></td></tr>
+<tr><td><a href="HP - Photo Owner">HP - Photo Owner</a></td></tr>
+<tr><td><a href="PTQH - Prince William">PTQH - Prince William's Story</a></td></tr>
+<tr><td><a href="PTQH - Prince William's Story">PTQH - Prince William's Story</a></td></tr>
+<tr><td><a href="PTQH - Number of photos & videos">PTQH - Number of photos & videos</a></td></tr>
+<tr><td><a href="Chevy - Search box and timeline">Chevy - Search box and timeline</a></td></tr>
+</tbody></table>
+</body>
+</html>

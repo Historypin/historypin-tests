@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.11492009-gats.v4-06.historypin.appspot.com/en/" />
+<title>Languages</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Languages</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=#select_lang</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=bg - български</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Проект generations@school</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Ангажиране на ученици и възрастни хора в диалог между поколенията</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Няколко причини да се включите:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Източници:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=es - español</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Proyecto generations@school</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Para establecer un diálogo intergeneracional entre alumnos y personas mayores</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Algunas razones para participar:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>¡No olvides la fecha del 29 de abril de 2012!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>exact:Recursos:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=cs - čeština</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Projekt generations@school</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Zapojení žáků a seniorů do mezigeneračního dialogu</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Několik důvodů k vaší účasti:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>exact:Zdroje:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=da - dansk</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>generations@school-projektet</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Inddragelse af elever og seniorer i dialog på tværs af generationerne</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Nogle af grundene til at deltage:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>exact:Ressourcer:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=de - Deutsch</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>generations@school Projekt</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>generationenübergreifender Dialog zwischen Schülern und Senioren</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Einige Gründe teilzunehmen:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>exact:Ressourcen:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=et - eesti keel</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Õpilaste ja eakate kaasamine põlvkondadevahelisse dialoogi</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Mõned põhjused osalemiseks:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>exact:Abivahendid:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=el - ελληνικά</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Σχέδιο generations@school</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Διαγενεακός διάλογος μεταξύ μαθητών και ηλικιωμένων</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Από το 2009, γιορτάζεται στις 29 Απριλίου στην Ευρώπη η Ευρωπαϊκή Ημέρα Αλληλεγγύης μεταξύ των Γενεών. Το 2012, το επίκεντρο του ενδιαφέροντος την ημέρα αυτή θα στραφεί στο να έρθουν κοντά μαθητές και ηλικιωμένοι και να συζητήσουν για το τι σημαίνει γερνάω και για το πώς μπορούν νέοι και ηλικιωμένοι να συνεργαστούν μεταξύ τους για μια καλύτερη ζωή. Μερικές εβδομάδες πριν και μετά τις 29 Απριλίου, όλα τα σχολεία της Ευρώπης καλούνται να ανοίξουν τις πόρτες των τάξεών τους στις γενιές των ατόμων τρίτης ηλικίας και να διερευνήσουν με ποιο τρόπο ο διαγενεακός διάλογος μπορεί να συμβάλει στη βελτίωση της εκπαίδευσης και του βαθμού κατανόησης μεταξύ ηλικιωμένων και νέων.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Διαθέσιμα Βοηθητικά Μέσα:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=fr - français</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Pour engager un dialogue intergénérationnel entre les élèves et les personnes âgées</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>En vous joignant à cette initiative,</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>exact:Ressources:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=it - italiano</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Instaurare un dialogo intergenerazionale tra studenti e persone anziane</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Qualche motivo per partecipare:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>exact:Risorse:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=lv - latviešu valoda</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Skolēnu un vecāka gadagājuma cilvēku iesaistīšana starppaaudžu dialogā</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Daži iemesli, kāpēc jāpiedalās:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>exact:Resursi:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=lt - lietuvių kalba</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Moksleivių ir vyresnio amžiaus žmonių įtraukimas į kartų dialogą</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>exact:Kuo toks dialogas bus naudingas? Tuo, kad padės:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Informacinės medžiagos paketai:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=hu - magyar</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>A generációk közötti párbeszéd megkezdése a tanulók és az idősebbek között</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>A részvétel mellett szóló néhány érv:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Források:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=mt - Malti</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Ninvolvu lill-istudenti u lill-kbar fi djalogu interġenerazzjonali</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Meta nipparteċipaw f’din l-inizjattiva nkunu qed</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Riżorsi:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=nl - Nederlands</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Leerlingen en ouderen betrekken in een dialoog tussen de generaties</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Redenen om hieraan deel te nemen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>exact:Hulpmiddelen:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=pl - polski</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Uczniowie i seniorzy nawiązują dialog międzypokoleniowy</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Kilka powodów, aby wziąć udział:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Materiały:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=pt - português</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Unir alunos e idosos através do diálogo entre gerações</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Algumas razões para participar:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>exact:Recursos:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=ro - română</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Elevii şi vârstnicii se întâlnesc pentru un dialog între generaţii</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Iată câteva motive pentru a participa:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Biblioteca de resurse:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=sl - slovenščina</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>bo pritegnil učence in starejše ljudi v dialog med generacijami</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Nekaj razlogov za udeležbo:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>exact:Viri:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=sk - slovenčina</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Zapojiť žiakov a seniorov do medzigeneračného dialógu</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Niekoľko dôvodov zúčastniť sa</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>exact:Zdroje:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=fi - suomi</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Koululaisten ja seniorien vuoropuhelun herättäminen</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Muutamia syitä osallistumiseen:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>exact:Resurssit:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=sv - svenska</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Att få elever och äldre att föra en dialog mellan generationerna</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Några skäl att delta:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>exact:Resurser:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=en - English</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>generations@school Project</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Engaging students and older people in intergenerational dialogue</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>A few reasons to participate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Resources</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

@@ -3,24 +3,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="selenium.base" href="http://www.historypin.com/" />
-<title>Set URL PMkr Chevy</title>
+<link rel="selenium.base" href="http://www.historypin.com" />
+<title>A collection streetview</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">Set URL PMkr Chevy</td></tr>
+<tr><td rowspan="1" colspan="3">A collection streetview</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/chevy</td>
+	<td></td>
 	<td></td>
 </tr>
-<tr>
-	<td>storeEval</td>
-	<td>window.location.href</td>
-	<td>url</td>
-</tr>
+
 </tbody></table>
 </body>
 </html>

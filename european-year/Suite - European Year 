@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+  <title>Test Suite</title>
+</head>
+<body>
+<table id="suiteTable" cellpadding="1" cellspacing="1" border="1" class="selenium"><tbody>
+<tr><td><b>Test Suite</b></td></tr>
+<tr><td><a href="EY Homepage">EY Homepage</a></td></tr>
+<tr><td><a href="Languages">Languages Homepage</a></td></tr>
+<tr><td><a href="Life Story Challenge ">Life Story Challenge </a></td></tr>
+<tr><td><a href="Languages Life Story Challenge">Languages Life Story Challenge</a></td></tr>
+<tr><td><a href="Creating Life Story">Creating Life Story</a></td></tr>
+<tr><td><a href="Story Profile">Story Profile</a></td></tr>
+<tr><td><a href="Take the journey">Take the journey</a></td></tr>
+<tr><td><a href="Creating Live Story 2">Creating Live Story 2</a></td></tr>
+<tr><td><a href="My stuff Page">My stuff Page</a></td></tr>
+<tr><td><a href="Register for Competition Page">Register for Competition Page</a></td></tr>
+<tr><td><a href="Panoramio Link">Panoramio Link</a></td></tr>
+<tr><td><a href="Upload Page">Upload Page</a></td></tr>
+</tbody></table>
+</body>
+</html>

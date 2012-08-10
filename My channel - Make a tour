@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.historypin.com" />
+<title>My channel - Make a tour</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">My channel - Make a tour</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/tours/add/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTitle</td>
+	<td>Historypin | Tour</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Tour Manager</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Title:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=tour-title</td>
+	<td>Testing Tour</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=tour-description</td>
+	<td>testing tour</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a.next-button &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>3000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=.add-photo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//a[contains(text(),'Add')])[10]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#tour-step2 &gt; div.step-content &gt; a.next-button &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='tour-step3']/div[2]/a[2]/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>You must enter a title.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=step-title</td>
+	<td>Sets the value of an input field</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=step-description</td>
+	<td>Clicks on a link, button, checkbox or radio button. If the click action causes a new page to load (like a link usually does), call waitForPageToLoad.</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#tour-step2 &gt; div.step-content &gt; a.next-button &gt; span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=step-title</td>
+	<td>Clicks on a link, button, checkbox or radio button.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=step-description</td>
+	<td>If the click action causes a new page to load</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[@id='tour-step3']/div[2]/a[2]/span</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

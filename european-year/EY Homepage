@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.11492009-gats.v4-06.historypin.appspot.com/en/" />
+<title>EY Homepage</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">EY Homepage</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>generations@school Project</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Engaging students and older people in intergenerational dialogue</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>A few reasons to participate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>29th of April 2012 - Save the date!</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=.inner_nav</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=img[alt=&quot;Panoramio&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=.inner</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/ey/Resource_1%20EN.pdf']</td>
+	<td>Resource 1. The value of working with different generations in the classroom</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/ey/Resource_2%20EN.pdf']</td>
+	<td>Resource 2. How to set-up your inter-generational project</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/ey/Resource_3%20EN.pdf']</td>
+	<td>Resource 3. How to run your classroom session</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/ey/Resource_4%20EN.pdf']</td>
+	<td>Resource 4. A follow-up activity</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/ey/Resource_5%20EN.pdf']</td>
+	<td>Resource 5. Further resources for schools</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/ey/Panoramio%20resource_final_EN_maq.pdf']</td>
+	<td>Joining the generations@school Panoramio group</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/ey/Rules%20generations%40schoolcompetition_EN_maq.pdf']</td>
+	<td>Rules of the generations@school competition</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=#site a[href=&quot;http://www.v4-06.historypin.appspot.com&quot;]</td>
+	<td>Historypin Home</td>
+</tr>
+</tbody></table>
+</body>
+</html>

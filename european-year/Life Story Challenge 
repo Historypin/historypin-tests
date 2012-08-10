@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.11492009-gats.v4-06.historypin.appspot.com/en/" />
+<title>Life Story Challenge Page</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Life Story Challenge Page</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>page/life-stories/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=img[src$=&quot;/resources/images/webapps/european-year/lifestories_challenge.jpg&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/en/page/life-stories/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Who do you know who is amazing? Who do you know who has done something interesting, kind, worthwhile, brave, crazy, amazing, selfless, dangerous or generous and is perhaps still engaging in such deeds? </td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/ey/holding/4%20LSC%20Challenge%20rules_cut_paragraph.pdf']</td>
+	<td>LSC Challenge rules</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/ey/holding/1%20What%20is%20a%20Life%20Story%20(Holding).pdf']</td>
+	<td>What is a Life Story</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/ey/holding/3%20Tips%20on%20interviewing%20someone%20(Holding).pdf']</td>
+	<td>Tips on interviewing someone</td>
+</tr>
+</tbody></table>
+</body>
+</html>

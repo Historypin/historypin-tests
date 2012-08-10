@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.11492009-gats.v4-06.historypin.appspot.com/en/" />
+<title>Panoramio Link</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Panoramio Link</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/en/page/view/generations-school-project-contribute-content</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=a[target=_blank][href=http://www.panoramio.com/map/?group=60978#lt=47.457809&amp;ln=5.976563&amp;z=13&amp;k=1&amp;a=1&amp;tab=6&amp;pl=all] img[alt=&quot;Panoramio&quot;][src=/resources/images/webapps/european-year/panoramio.jpg]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=.main a[href='/en/page/life-stories/']</td>
+	<td>Click here to find out more.</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=.main a[href='/en/page/life-stories/']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Life Story Challenge</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>We're also running an exciting Life Story Challenge across the whole of the European Union which gets young people to tell the story of an older person's life through stories and photos.</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

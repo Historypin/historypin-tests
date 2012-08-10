@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.historypin.com" />
+<title>My channel - Changing Colour Themes </title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">My channel - Changing Colour Themes </td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/channels/view/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#tab-home [href=&quot;#tab-design&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=.theme-select .blue</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#tab-design .submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=#container_wrap.blue</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>embed-frame</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=body.blue</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>relative=up</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#tab-home [href=&quot;#tab-design&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=.theme-select .charcoal</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#tab-design .submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=#container_wrap.charcoal</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>embed-frame</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=body.charcoal</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>relative=up</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#tab-home [href=&quot;#tab-design&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=.theme-select .gray</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#tab-design .submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=#container_wrap.gray</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>embed-frame</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=body.gray</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>relative=up</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#tab-home [href=&quot;#tab-design&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=.theme-select .green</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#tab-design .submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=#container_wrap.green</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>embed-frame</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=body.green</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>relative=up</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#tab-home [href=&quot;#tab-design&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=.theme-select .navy</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#tab-design .submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=#container_wrap.navy</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>embed-frame</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=body.navy</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>relative=up</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#tab-home [href=&quot;#tab-design&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=.theme-select .orange</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#tab-design .submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=#container_wrap.orange</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>embed-frame</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=body.orange</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>relative=up</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#tab-home [href=&quot;#tab-design&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=.theme-select .pink</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#tab-design .submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=#container_wrap.pink</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>embed-frame</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=body.pink</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>relative=up</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#tab-home [href=&quot;#tab-design&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=.theme-select .purple</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#tab-design .submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=#container_wrap.purple</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>embed-frame</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=body.purple</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>relative=up</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#tab-home [href=&quot;#tab-design&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=.theme-select .red</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#tab-design .submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=#container_wrap.red</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>embed-frame</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=body.red</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>relative=up</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

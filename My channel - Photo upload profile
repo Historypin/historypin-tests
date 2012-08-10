@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.historypin.com/" />
+<title>My channel - Photo upload profile</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">My channel - Photo upload profile</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/channels/view</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=logo</td>
+	<td>/home/gabs/Desktop/1.jpg</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[@id='tab-design']/form/div/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=img[src$=&quot;/channels/img/10649049/logo/1/dim/200x200/crop/1/&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Channel &amp; Account Settings</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Channel Design</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Upload your photo or logo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=logo</td>
+	<td>/home/gabs/Desktop/Wendy.jpg</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='tab-design']/form/div/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=img[src$=&quot;/channels/img/10649049/logo/1/dim/200x200/crop/1/&quot;]</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
