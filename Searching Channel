@@ -38,7 +38,7 @@
 </tr>
 <tr>
 	<td>assertElementPresent</td>
-	<td>link=Gabss</td>
+	<td>css=a[href=&quot;/channels/view/id/10649049/&quot;]</td>
 	<td></td>
 </tr>
 <tr>

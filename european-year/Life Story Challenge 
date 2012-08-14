@@ -31,31 +31,6 @@
 	<td>Who do you know who is amazing? Who do you know who has done something interesting, kind, worthwhile, brave, crazy, amazing, selfless, dangerous or generous and is perhaps still engaging in such deeds? </td>
 	<td></td>
 </tr>
-<tr>
-	<td>verifyText</td>
-	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/BG/BG_4-LSC-Challenge-rules_CL.pdf']</td>
-	<td>LSC Challenge rules</td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/BG/BG_1-What-is-a-Life-Story_CL.pdf']</td>
-	<td>What is a Life Story</td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/BG/BG_3-Tips-on-interviewing-someone_CL.pdf']</td>
-	<td>Tips on interviewing someone</td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/BG/BG_2-Creating-a-Life-Story_CL.pdf']</td>
-	<td>Creating a Life Story</td>
-</tr>
-<tr>
-	<td>selectAndWait</td>
-	<td>id=select_lang</td>
-	<td>label=bg - български</td>
-</tr>
 </tbody></table>
 </body>
 </html>

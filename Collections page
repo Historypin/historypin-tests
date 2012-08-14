@@ -13,12 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/curated</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>css= a.main-image img.index</td>
+	<td>/collections/all</td>
 	<td></td>
 </tr>
 <tr>

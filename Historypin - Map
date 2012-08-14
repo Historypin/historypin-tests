@@ -13,12 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>http://historypin.com</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>id=map_link</td>
+	<td>/map/</td>
 	<td></td>
 </tr>
 <tr>

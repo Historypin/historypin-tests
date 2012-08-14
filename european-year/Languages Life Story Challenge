@@ -39,7 +39,7 @@
 <tr>
 	<td>verifyText</td>
 	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/BG/BG_1-What-is-a-Life-Story_CL.pdf']</td>
-	<td>Какво&nbsp;&nbsp;означава &quot;житейска история&quot;?</td>
+	<td>Какво означава &quot;житейска история&quot;?</td>
 </tr>
 <tr>
 	<td>verifyText</td>
@@ -184,7 +184,7 @@
 <tr>
 	<td>verifyText</td>
 	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/DE/DE_3-Tips-on-interviewing-someone_CL.pdf']</td>
-	<td>Interview-Tipps </td>
+	<td>Interview-Tipps</td>
 </tr>
 <tr>
 	<td>verifyText</td>
@@ -289,7 +289,7 @@
 <tr>
 	<td>verifyText</td>
 	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/FR/FR_3-Tips-on-interviewing-someone_CL.pdf']</td>
-	<td>Astuces pour interviewer quelqu'un </td>
+	<td>Astuces pour interviewer quelqu'un</td>
 </tr>
 <tr>
 	<td>verifyText</td>
@@ -384,7 +384,7 @@
 <tr>
 	<td>verifyText</td>
 	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/LT/LT_4-LSC-Challenge-rules_CL.pdf']</td>
-	<td>Konkurso „Mano gyvenimo istorija“ taisyklės </td>
+	<td>Konkurso „Mano gyvenimo istorija“ taisyklės</td>
 </tr>
 <tr>
 	<td>verifyText</td>
@@ -534,7 +534,7 @@
 <tr>
 	<td>verifyText</td>
 	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/PL/PL_3-Tips-on-interviewing-someone_CL.pdf']</td>
-	<td>Wskazówki dotyczące przeprowadzenia wywiadu </td>
+	<td>Wskazówki dotyczące przeprowadzenia wywiadu</td>
 </tr>
 <tr>
 	<td>verifyText</td>
@@ -554,11 +554,6 @@
 <tr>
 	<td>verifyTextPresent</td>
 	<td>exact:Quem é a pessoa que mais admiras? Alguém que, na tua opinião, tenha feito algo interessante, simpático, meritório, corajoso, ousado, impressionante, altruísta, perigoso ou generoso e que, quem sabe, ainda continua a fazê-lo?</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>id=select_lang</td>
 	<td></td>
 </tr>
 <tr>
@@ -685,6 +680,11 @@
 	<td>verifyText</td>
 	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/SL/SL_2-Creating-a-Life-Story_CL.pdf']</td>
 	<td>Ustvarjanje življenjske zgodbe: praktični koraki</td>
+</tr>
+<tr>
+	<td>waitForPageToLoad</td>
+	<td></td>
+	<td></td>
 </tr>
 <tr>
 	<td>selectAndWait</td>
