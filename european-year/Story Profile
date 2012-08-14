@@ -28,7 +28,7 @@
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>css=a[href=&quot;http://www.v4-06.historypin.appspot.com/channels/view/10649049&quot;]</td>
+	<td>css=a[href$=&quot;.historypin.appspot.com/channels/view/10649049&quot;]</td>
 	<td></td>
 </tr>
 <tr>

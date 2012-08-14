@@ -28,7 +28,7 @@
 </tr>
 <tr>
 	<td>verifyTextPresent</td>
-	<td>My Life Stories</td>
+	<td>My Life Story</td>
 	<td></td>
 </tr>
 <tr>
@@ -49,11 +49,6 @@
 <tr>
 	<td>verifyElementPresent</td>
 	<td>css=.wrapper #list &gt; ul.list &gt; li</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=.logo a[href=&quot;/&quot;]</td>
 	<td></td>
 </tr>
 </tbody></table>
