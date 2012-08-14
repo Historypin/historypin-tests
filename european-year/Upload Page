@@ -31,7 +31,11 @@
 	<td>css=a[href=&quot;/audio-video&quot;]</td>
 	<td>Find out how here</td>
 </tr>
-
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=ul.progress-bar</td>
+	<td></td>
+</tr>
 </tbody></table>
 </body>
 </html>

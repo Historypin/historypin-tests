@@ -43,7 +43,7 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>xpath=(//a[contains(@href, '#')])[80]</td>
+	<td>xpath=(//a[contains(@href, '#')])[72]</td>
 	<td></td>
 </tr>
 </tbody></table>

@@ -73,7 +73,7 @@
 </tr>
 <tr>
 	<td>verifyTextPresent</td>
-	<td>The Grandparents Collection</td>
+	<td>Amazing Grandparents</td>
 	<td></td>
 </tr>
 <tr>
@@ -139,6 +139,16 @@
 <tr>
 	<td>verifyElementPresent</td>
 	<td>css=a.foot-logo</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=.social_networks</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=a[href=&quot;/contact-us/&quot;]</td>
 	<td></td>
 </tr>
 </tbody></table>

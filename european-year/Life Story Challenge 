@@ -33,18 +33,28 @@
 </tr>
 <tr>
 	<td>verifyText</td>
-	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/ey/holding/4%20LSC%20Challenge%20rules_cut_paragraph.pdf']</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/BG/BG_4-LSC-Challenge-rules_CL.pdf']</td>
 	<td>LSC Challenge rules</td>
 </tr>
 <tr>
 	<td>verifyText</td>
-	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/ey/holding/1%20What%20is%20a%20Life%20Story%20(Holding).pdf']</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/BG/BG_1-What-is-a-Life-Story_CL.pdf']</td>
 	<td>What is a Life Story</td>
 </tr>
 <tr>
 	<td>verifyText</td>
-	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/ey/holding/3%20Tips%20on%20interviewing%20someone%20(Holding).pdf']</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/BG/BG_3-Tips-on-interviewing-someone_CL.pdf']</td>
 	<td>Tips on interviewing someone</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/BG/BG_2-Creating-a-Life-Story_CL.pdf']</td>
+	<td>Creating a Life Story</td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=bg - български</td>
 </tr>
 </tbody></table>
 </body>

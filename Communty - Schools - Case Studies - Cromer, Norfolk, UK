@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.historypin.com/" />
+<title>Communty - Schools - Case Studies - Cromer, Norfolk, UK</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Communty - Schools - Case Studies - Cromer, Norfolk, UK</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/community/schools-case-studies</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a[href=&quot;/community/schools-cromer&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>3000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTitle</td>
+	<td>Historypin | Community | Schools | Cromer, Norfolk, UK</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Cromer, Norfolk, UK</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=img[src$=&quot;/casestudies/6e_main.jpg&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Cromer High School students hosted a community day at Merchants Place, Cromer in association with Historypin. Local residents were invited to dig out their old photos of Cromer, Norfolk and the world and bring them along to the day where History students from Cromer High School assisted visitors in uploading and pinning their old photos onto Historypin.com, and capturing the stories behind the photos.</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

@@ -23,7 +23,7 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Mirrorpix Archives</td>
+	<td>css=a[href=&quot;/channels/view/id/571038/&quot;]</td>
 	<td></td>
 </tr>
 <tr>
@@ -52,13 +52,13 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=List</td>
+	<td>selectFrame</td>
+	<td>relative=up</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>css=#list &gt; ul.list &gt;li</td>
+	<td>css=ul.list &gt; li &gt; .image-holder</td>
 	<td></td>
 </tr>
 <tr>
@@ -73,27 +73,22 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=List</td>
+	<td>css=ul.list_tabs &gt; li:nth-child(2)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>6000</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Map</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=#map-canvas</td>
+	<td>css=ul.list_tabs &gt; li:nth-child(3)</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Collections</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Tours</td>
+	<td>css=ul.list_tabs &gt; li:nth-child(4)</td>
 	<td></td>
 </tr>
 <tr>

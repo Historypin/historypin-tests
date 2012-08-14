@@ -4,58 +4,49 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://www.historypin.com/" />
-<title>Tours page</title>
+<title>Communty - Schools - Case Studies - Newport Primary School, Essex, UK</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">Tours page</td></tr>
+<tr><td rowspan="1" colspan="3">Communty - Schools - Case Studies - Newport Primary School, Essex, UK</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/curated</td>
+	<td>/community/schools-case-studies</td>
 	<td></td>
 </tr>
 <tr>
-	<td>waitForPageToLoad</td>
-	<td></td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>css=.left a.main-image</td>
+	<td>click</td>
+	<td>css=a[href=&quot;/community/schools-newport&quot;]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>pause</td>
-	<td>12000</td>
+	<td>3000</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyTitle</td>
-	<td>Historypin | Tours</td>
+	<td>Historypin | Community | Schools | Newport Primary School, Essex, UK</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyTextPresent</td>
-	<td>What are Tours?</td>
+	<td>Newport Primary School, Essex, UK</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=img[src$=&quot;/casestudies/6f_main.jpg&quot;]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyTextPresent</td>
-	<td>All Tours</td>
+	<td>Historypin ran a series of sessions at Newport Primary School to break down inter-generational stereotypes and encourage people to spend more time with someone from a different generation in their neighbourhood.</td>
 	<td></td>
 </tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=.tour-home-list .list &gt;li</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=a.tour-button</td>
-	<td></td>
-</tr>
+
 </tbody></table>
 </body>
 </html>

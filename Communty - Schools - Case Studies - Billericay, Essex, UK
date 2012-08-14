@@ -4,16 +4,21 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://www.historypin.com/" />
-<title>Tours page</title>
+<title>Communty - Schools - Case Studies - Billericay, Essex, UK</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">Tours page</td></tr>
+<tr><td rowspan="1" colspan="3">Communty - Schools - Case Studies - Billericay, Essex, UK</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/curated</td>
+	<td>/community/schools-case-studies</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a[href=&quot;/community/schools-billericay&quot;]</td>
 	<td></td>
 </tr>
 <tr>
@@ -22,38 +27,28 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>css=.left a.main-image</td>
-	<td></td>
-</tr>
-<tr>
-	<td>pause</td>
-	<td>12000</td>
+	<td>assertTitle</td>
+	<td>Historypin | Community | Schools | Billericay School, Essex, UK</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyTitle</td>
-	<td>Historypin | Tours</td>
+	<td>Historypin | Community | Schools | Billericay School, Essex, UK</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyTextPresent</td>
-	<td>What are Tours?</td>
+	<td>Billericay School, Essex, UK</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyTextPresent</td>
-	<td>All Tours</td>
+	<td>12-13 year old boys plan their own workshop where they meet with 12 senior citizens from the local area.</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>css=.tour-home-list .list &gt;li</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=a.tour-button</td>
+	<td>css=img[src=&quot;http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6d_main.jpg&quot;]</td>
 	<td></td>
 </tr>
 </tbody></table>

@@ -18,27 +18,22 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>css=a.main-image.shadow &gt; img</td>
-	<td>200000</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>css=img[alt=&quot;The 1968 Democratic National Convention&quot;]</td>
+	<td>css=img[alt=&quot;Some of the Best Bits of Historypin&quot;]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertTitle</td>
-	<td>Historypin | Tours - The 1968 Democratic National Convention</td>
+	<td>Historypin | Tours - Some of the Best Bits of Historypin</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyTitle</td>
-	<td>Historypin | Tours - The 1968 Democratic National Convention</td>
+	<td>Historypin | Tours - Some of the Best Bits of Historypin</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyTextPresent</td>
-	<td>The 1968 Democratic National Convention The contentious, political, and cultural conflict of the sixties marked by the Vietnam War, the counterculture movement, and struggles for civil rights was exemplified in the events of the 1968 Democratic National Convention, the civil disturbances and the subsequent Chicago 8 Trial. Even before the convention arrived in Chicago, the American people felt the turbulence of 1968. <br /> <br /> Explore the events leading up to and including the 1968 Democratic National Convention through documents of the United States National Archives.<br /> Created by USNatArchives<br /> <br /> Take the Tour&nbsp;&nbsp;<br /> Map View List View Tour View <br /> 1 March against the Vietnam War<br /> Start from here<br /> 2 President Johnson Will Not Seek Re-Election<br /> Start from here<br /> 3 President Johnson's Daily Diary Entry, April 6, 1968<br /> Start from here<br /> 4 President Johnson on the Telephone<br /> Start from here<br /> 5 Permit to Assemble<br /> Start from here<br /> 6 Memo Requesting Use of City Parks<br /> Start from here<br /> 7 Police and Protestors in the Park<br /> Start from here<br /> 8 Inside the Convention Hall<br /> Start from here<br /> 9 Protestors Gather <br /> Start from here<br /> 10 Protestors and Chicago Police Officers<br /> Start from here<br /> 11 March on Michigan Avenue<br /> Start from here<br /> 12 National Guard<br /> Start from here<br /> 13 Protestors in the Street<br /> Start from here<br /> 14 Chicago Police Officers<br /> Start from here<br /> 15 Humphrey Delegates<br /> Start from here<br /> 16 Telephone Conversation Between President Johnson and Mayor Daley<br /> Start from here<br /> <br /> <br /> <br /> <br /> Javascript is disabled We have noticed that javascript either isn't supported or is disabled in your browser. This website requires javascript.</td>
+	<td>Some of the Best Bits of Historypin</td>
 	<td></td>
 </tr>
 <tr>
@@ -87,18 +82,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>css=a.next-button.right &gt; span</td>
-	<td></td>
-</tr>
-<tr>
 	<td>verifyTextPresent</td>
-	<td>The 1968 Democratic National Convention</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
-	<td>President Johnson on the Telephone</td>
+	<td>Some of the Best Bits of Historypin</td>
 	<td></td>
 </tr>
 <tr>

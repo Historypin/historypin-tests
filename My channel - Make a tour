@@ -53,12 +53,12 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>css=.add-photo</td>
+	<td>css=.choose-photos &gt; li:nth-child(6) .add-photo</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>xpath=(//a[contains(text(),'Add')])[10]</td>
+	<td>css=.choose-photos &gt; li:nth-child(10) .add-photo</td>
 	<td></td>
 </tr>
 <tr>

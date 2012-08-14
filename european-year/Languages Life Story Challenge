@@ -32,6 +32,26 @@
 	<td></td>
 </tr>
 <tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/BG/BG_4-LSC-Challenge-rules_CL.pdf']</td>
+	<td>Правила за участие в Конкурса за най-интересна житейска история</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/BG/BG_1-What-is-a-Life-Story_CL.pdf']</td>
+	<td>Какво&nbsp;&nbsp;означава &quot;житейска история&quot;?</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/BG/BG_3-Tips-on-interviewing-someone_CL.pdf']</td>
+	<td>Полезни съвети при интервюиране</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/BG/BG_2-Creating-a-Life-Story_CL.pdf']</td>
+	<td>Как да създадем житейска история: Практически стъпки</td>
+</tr>
+<tr>
 	<td>selectAndWait</td>
 	<td>id=select_lang</td>
 	<td>label=es - español</td>
@@ -45,6 +65,26 @@
 	<td>verifyTextPresent</td>
 	<td>exact:¿Conoces a una persona asombrosa? ¿A alguien que pienses que ha hecho algo interesante, bueno, valioso, valiente, loco, asombroso, desinteresado, peligroso o generoso y que tal vez lo sigue haciendo?</td>
 	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/ES/ES_4-LSC-Challenge-rules_CL.pdf']</td>
+	<td>Bases del concurso de relatos de vida</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/ES/ES_1-What-is-a-Life-Story_CL.pdf']</td>
+	<td>¿Qué es un relato de vida?</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/ES/ES_3-Tips-on-interviewing-someone_CL.pdf']</td>
+	<td>Consejos sobre cómo hacer una entrevista</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/ES/ES_2-Creating-a-Life-Story_CL.pdf']</td>
+	<td>Instrucciones prácticas para crear un relato de vida</td>
 </tr>
 <tr>
 	<td>selectAndWait</td>
@@ -62,14 +102,29 @@
 	<td></td>
 </tr>
 <tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/CS/CS_4-LSC-Challenge-rules_CL.pdf']</td>
+	<td>Pravidla soutěže Životní příběh</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/CS/CS_1-What-is-a-Life-Story_CL.pdf']</td>
+	<td>Co je Životní příběh?</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/CS/CS_3-Tips-on-interviewing-someone_CL.pdf']</td>
+	<td>Tipy pro vedení rozhovoru</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/CS/CS_2-Creating-a-Life-Story_CL.pdf']</td>
+	<td>Jak vytvořit Životní příběh: praktický postup</td>
+</tr>
+<tr>
 	<td>selectAndWait</td>
 	<td>id=select_lang</td>
 	<td>label=da - dansk</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=option[value=&quot;da&quot;]</td>
-	<td></td>
 </tr>
 <tr>
 	<td>verifyTextPresent</td>
@@ -80,6 +135,26 @@
 	<td>verifyTextPresent</td>
 	<td>exact:Hvem kender du, som du synes er fantastisk? En person, du synes har gjort noget interessant, venligt, givende, modigt, vanvittigt, fantastisk, uselvisk, farligt eller generøst, og som måske stadig er engageret i sådanne bedrifter?</td>
 	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/DA/DA_4-LSC-Challenge-rules_CL.pdf']</td>
+	<td>Regler for livshistorieudfordringen</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/DA/DA_1-What-is-a-Life-Story_CL.pdf']</td>
+	<td>Hvad er en livshistorie?</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/DA/DA_3-Tips-on-interviewing-someone_CL.pdf']</td>
+	<td>Tip om at interviewe en person</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/DA/DA_2-Creating-a-Life-Story_CL.pdf']</td>
+	<td>Skabe en livshistorie: praktiske trin</td>
 </tr>
 <tr>
 	<td>selectAndWait</td>
@@ -97,6 +172,26 @@
 	<td></td>
 </tr>
 <tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/DE/DE_4-LSC-Challenge-rules_CL.pdf']</td>
+	<td>Regeln des Lebensgeschichten-Wettbewerbs</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/DE/DE_1-What-is-a-Life-Story_CL.pdf']</td>
+	<td>Was ist eine Lebensgeschichte?</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/DE/DE_3-Tips-on-interviewing-someone_CL.pdf']</td>
+	<td>Interview-Tipps </td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/DE/DE_2-Creating-a-Life-Story_CL.pdf']</td>
+	<td>Einreichen einer Lebensgeschichte: Praktische Schritte</td>
+</tr>
+<tr>
 	<td>selectAndWait</td>
 	<td>id=select_lang</td>
 	<td>label=et - eesti keel</td>
@@ -110,6 +205,26 @@
 	<td>verifyTextPresent</td>
 	<td>exact:Kas tunnete mõnd erakordset inimest? Kes on teie arvates teinud midagi huvitavat, toredat, fantastilist, julget, pöörast, uskumatut, omakasupüüdmatut, ohtlikku või altruistlikku ja võib-olla teeb midagi niisugust ka praegu?</td>
 	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/ET/ET_4-LSC-Challenge-rules_CL.pdf']</td>
+	<td>Elulugude võistluse reeglid</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/ET/ET_1-What-is-a-Life-Story_CL.pdf']</td>
+	<td>Mis on elulugu?</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/ET/ET_3-Tips-on-interviewing-someone_CL.pdf']</td>
+	<td>Näpunäited küsitluseks</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/ET/ET_2-Creating-a-Life-Story_CL.pdf']</td>
+	<td>Eluloo koostamine: praktilised sammud</td>
 </tr>
 <tr>
 	<td>selectAndWait</td>
@@ -127,6 +242,26 @@
 	<td></td>
 </tr>
 <tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/EL/EL_4-LSC-Challenge-rules_CL.pdf']</td>
+	<td>Κανόνες του Διαγωνισμού &quot;Ιστορίες Ζωής&quot;</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/EL/EL_1-What-is-a-Life-Story_CL.pdf']</td>
+	<td>Τι είναι μια Ιστορία Ζωής;</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/EL/EL_3-Tips-on-interviewing-someone_CL.pdf']</td>
+	<td>Συμβουλές για τη διαδικασία της συνέντευξης</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/EL/EL_2-Creating-a-Life-Story_CL.pdf']</td>
+	<td>Δημιουργία μιας Ιστορίας Ζωής: Πρακτικά Βήματα</td>
+</tr>
+<tr>
 	<td>selectAndWait</td>
 	<td>id=select_lang</td>
 	<td>label=fr - français</td>
@@ -140,6 +275,26 @@
 	<td>verifyTextPresent</td>
 	<td>exact:Connaissez-vous quelqu’un d’extraordinaire ? Quelqu’un de désintéressé qui a fait des choses passionnantes, des choses biens, courageuses, généreuses, voire un peu folles ou même dangereuses, et qui continue à les faire...</td>
 	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/FR/FR_4-LSC-Challenge-rules_CL.pdf']</td>
+	<td>Règlement du Concours Récits de vie</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/FR/FR_1-What-is-a-Life-Story_CL.pdf']</td>
+	<td>Qu'est-ce qu'un récit de vie ?</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/FR/FR_3-Tips-on-interviewing-someone_CL.pdf']</td>
+	<td>Astuces pour interviewer quelqu'un </td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/FR/FR_2-Creating-a-Life-Story_CL.pdf']</td>
+	<td>Créer un récit de vie : les étapes en pratique</td>
 </tr>
 <tr>
 	<td>selectAndWait</td>
@@ -157,6 +312,26 @@
 	<td></td>
 </tr>
 <tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/IT/IT_4-LSC-Challenge-rules_CL.pdf']</td>
+	<td>Regolamento del concorso Life Story Challenge</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/IT/IT_1-What-is-a-Life-Story_CL.pdf']</td>
+	<td>Cos'è un Racconto di vita?</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/IT/IT_3-Tips-on-interviewing-someone_CL.pdf']</td>
+	<td>Suggerimenti su come condurre un'intervista</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/IT/IT_2-Creating-a-Life-Story_CL.pdf']</td>
+	<td>Come creare un Racconto di vita: passaggi pratici</td>
+</tr>
+<tr>
 	<td>selectAndWait</td>
 	<td>id=select_lang</td>
 	<td>label=lv - latviešu valoda</td>
@@ -170,6 +345,26 @@
 	<td>verifyTextPresent</td>
 	<td>exact:Vai pazīstat kādu apbrīnojamu personu? Kādu, kas jūsuprāt izdarījis kaut ko interesantu, labu, noderīgu, drosmīgu, traku, apbrīnojamu, pašaizliedzīgu, bīstamu vai cēlsirdīgu un, iespējams, joprojām turpina ar to nodarboties?</td>
 	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/LV/LV_4-LSC-Challenge-rules_CL.pdf']</td>
+	<td>Konkursa “Dzīvesstāstu izaicinājums” nolikums</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/LV/LV_1-What-is-a-Life-Story_CL.pdf']</td>
+	<td>Kas ir dzīvesstāsts?</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/LV/LV_3-Tips-on-interviewing-someone_CL.pdf']</td>
+	<td>Padomi intervēšanai</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/LV/LV_2-Creating-a-Life-Story_CL.pdf']</td>
+	<td>Dzīvesstāsta veidošana: praktiskas norādes</td>
 </tr>
 <tr>
 	<td>selectAndWait</td>
@@ -187,6 +382,26 @@
 	<td></td>
 </tr>
 <tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/LT/LT_4-LSC-Challenge-rules_CL.pdf']</td>
+	<td>Konkurso „Mano gyvenimo istorija“ taisyklės </td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/LT/LT_1-What-is-a-Life-Story_CL.pdf']</td>
+	<td>Kas yra gyvenimo istorija?</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/LT/LT_3-Tips-on-interviewing-someone_CL.pdf']</td>
+	<td>Pokalbio patarimai</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/LT/LT_2-Creating-a-Life-Story_CL.pdf']</td>
+	<td>Gyvenimo istorijos kūrimas: praktiniai patarimai</td>
+</tr>
+<tr>
 	<td>selectAndWait</td>
 	<td>id=select_lang</td>
 	<td>label=hu - magyar</td>
@@ -200,6 +415,26 @@
 	<td>verifyTextPresent</td>
 	<td>exact:Ismer valakit, akit csodálatos embernek tart? Akiről azt gondolja, hogy tett valami érdekeset, szépet, elismerést érdemlőt, merészet, hajmeresztőt, csodálatosat, önzetlen vagy veszélyes dolgot, nagylelkű cselekedetet hajtott végre, és esetleg most is hasonlókba kezd?</td>
 	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/HU/HU_4-LSC-Challenge-rules_CL.pdf']</td>
+	<td>Élettörténet kihívások szabályai</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/HU/HU_1-What-is-a-Life-Story_CL.pdf']</td>
+	<td>Mit jelent az Élettörténet?</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/HU/HU_3-Tips-on-interviewing-someone_CL.pdf']</td>
+	<td>Tippek interjúkészítéshez</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/HU/HU_2-Creating-a-Life-Story_CL.pdf']</td>
+	<td>Élettörténet megírása: gyakorlati lépések</td>
 </tr>
 <tr>
 	<td>selectAndWait</td>
@@ -217,6 +452,26 @@
 	<td></td>
 </tr>
 <tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/MT/MT_4-LSC-Challenge-rules_CL.pdf']</td>
+	<td>Regoli dwar l-Isfidi għall-Istorja Dwar Ħajja</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/MT/MT_1-What-is-a-Life-Story_CL.pdf']</td>
+	<td>X'inhija Storja dwar Ħajja?</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/MT/MT_3-Tips-on-interviewing-someone_CL.pdf']</td>
+	<td>Għajnuniet dwar kif tintervista lil xi ħadd</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/MT/MT_2-Creating-a-Life-Story_CL.pdf']</td>
+	<td>Il-Ħolqien ta' Storja mill-Ħajja: Għajnuniet Prattiċi</td>
+</tr>
+<tr>
 	<td>selectAndWait</td>
 	<td>id=select_lang</td>
 	<td>label=nl - Nederlands</td>
@@ -232,6 +487,26 @@
 	<td></td>
 </tr>
 <tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/NL/NL_4-LSC-Challenge-rules_CL.pdf']</td>
+	<td>Spelregels Levensverhalenwedstrijd</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/NL/NL_1-What-is-a-Life-Story_CL.pdf']</td>
+	<td>Wat is een Levensverhaal?</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/NL/NL_3-Tips-on-interviewing-someone_CL.pdf']</td>
+	<td>Tips bij het interviewen van iemand</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/NL/NL_2-Creating-a-Life-Story_CL.pdf']</td>
+	<td>Een Levensverhaal schrijven: praktische stappen</td>
+</tr>
+<tr>
 	<td>selectAndWait</td>
 	<td>id=select_lang</td>
 	<td>label=pl - polski</td>
@@ -245,6 +520,26 @@
 	<td>verifyTextPresent</td>
 	<td>exact:Kogo znasz, kto według Ciebie jest zadziwiający? Ktoś, kto według Ciebie zrobił coś interesującego, miłego, wartościowego, odważnego, szalonego, zadziwiającego, bezinteresownego, niebezpiecznego lub szlachetnego i może nadal bierze udział w takich działaniach.</td>
 	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/PL/PL_4-LSC-Challenge-rules_CL.pdf']</td>
+	<td>Regulamin konkursu Historie Życia</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/PL/PL_1-What-is-a-Life-Story_CL.pdf']</td>
+	<td>Historia Życia – co to jest?</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/PL/PL_3-Tips-on-interviewing-someone_CL.pdf']</td>
+	<td>Wskazówki dotyczące przeprowadzenia wywiadu </td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/PL/PL_2-Creating-a-Life-Story_CL.pdf']</td>
+	<td>Tworzenie Historii Życia krok po kroku</td>
 </tr>
 <tr>
 	<td>selectAndWait</td>
@@ -267,6 +562,26 @@
 	<td></td>
 </tr>
 <tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/PT/PT_4-LSC-Challenge-rules_CL.pdf']</td>
+	<td>Regulamento do Concurso «Histórias de Vida»</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/PT/PT_1-What-is-a-Life-Story_CL.pdf']</td>
+	<td>O que é uma História de Vida?</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/PT/PT_3-Tips-on-interviewing-someone_CL.pdf']</td>
+	<td>Dicas para entrevistar alguém</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/PT/PT_2-Creating-a-Life-Story_CL.pdf']</td>
+	<td>Criar uma História de Vida: Passos Práticos</td>
+</tr>
+<tr>
 	<td>selectAndWait</td>
 	<td>id=select_lang</td>
 	<td>label=ro - română</td>
@@ -280,6 +595,26 @@
 	<td>verifyTextPresent</td>
 	<td>exact:Cunoşti pe cineva care crezi că este extraordinar? Pe cineva care crezi că a făcut ceva interesant, bun, valoros, curajos, nemaipomenit, dezinteresat, periculos sau generos şi poate este încă implicat în astfel de fapte?</td>
 	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/RO/RO_4-LSC-Challenge-rules_CL.pdf']</td>
+	<td>Regulile concursului Life Story Challenge</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/RO/RO_1-What-is-a-Life-Story_CL.pdf']</td>
+	<td>Ce este o poveste de viaţă?</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/RO/RO_3-Tips-on-interviewing-someone_CL.pdf']</td>
+	<td>Sfaturi privind interviul</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/RO/RO_2-Creating-a-Life-Story_CL.pdf']</td>
+	<td>Crearea unei poveşti de viaţă de viaţă: paşi practici</td>
 </tr>
 <tr>
 	<td>selectAndWait</td>
@@ -297,6 +632,26 @@
 	<td></td>
 </tr>
 <tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/SK/SK_4-LSC-Challenge-rules_CL.pdf']</td>
+	<td>Pravidlá súťaže Príbehy zo života</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/SK/SK_1-What-is-a-Life-Story_CL.pdf']</td>
+	<td>Čo je to životný príbeh?</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/SK/SK_3-Tips-on-interviewing-someone_CL.pdf']</td>
+	<td>Tipy pri vedení rozhovorov</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/SK/SK_2-Creating-a-Life-Story_CL.pdf']</td>
+	<td>Vytvorenie životného príbehu – praktické kroky</td>
+</tr>
+<tr>
 	<td>selectAndWait</td>
 	<td>id=select_lang</td>
 	<td>label=sl - slovenščina</td>
@@ -310,6 +665,26 @@
 	<td>verifyTextPresent</td>
 	<td>exact:Kdo od ljudi, ki jih poznate, se vam zdi neverjetna oseba? Je to oseba, za katero mislite, da je storila nekaj zanimivega, prijaznega, koristnega, pogumnega, norega, neverjetnega, nesebičnega, nevarnega ali velikodušnega in se morda še udejstvuje v takšnih dejanjih?</td>
 	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/SL/SL_4-LSC-Challenge-rules_CL.pdf']</td>
+	<td>Pravila tekmovanja v življenjskih zgodbah (Life Story Challenge)</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/SL/SL_1-What-is-a-Life-Story_CL.pdf']</td>
+	<td>Kaj je življenjska zgodba?</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/SL/SL_3-Tips-on-interviewing-someone_CL.pdf']</td>
+	<td>Napotki za intervjuvanje oseb</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/SL/SL_2-Creating-a-Life-Story_CL.pdf']</td>
+	<td>Ustvarjanje življenjske zgodbe: praktični koraki</td>
 </tr>
 <tr>
 	<td>selectAndWait</td>
@@ -327,6 +702,26 @@
 	<td></td>
 </tr>
 <tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/FI/FI_4-LSC-Challenge-rules_CL.pdf']</td>
+	<td>Elämäntarinakisan säännöt</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/FI/FI_1-What-is-a-Life-Story_CL.pdf']</td>
+	<td>Mikä elämäntarina on?</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/FI/FI_3-Tips-on-interviewing-someone_CL.pdf']</td>
+	<td>Vinkkejä haastatteluun</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/FI/FI_2-Creating-a-Life-Story_CL.pdf']</td>
+	<td>Elämäntarinan luominen: käytännön ohjeita</td>
+</tr>
+<tr>
 	<td>selectAndWait</td>
 	<td>id=select_lang</td>
 	<td>label=sv - svenska</td>
@@ -342,6 +737,26 @@
 	<td></td>
 </tr>
 <tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/SV/SV_4-LSC-Challenge-rules_CL.pdf']</td>
+	<td>Tävlingsregler för Skriv din livshistoria</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/SV/SV_1-What-is-a-Life-Story_CL.pdf']</td>
+	<td>Vad är en livshistoria?</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/SV/SV_3-Tips-on-interviewing-someone_CL.pdf']</td>
+	<td>Tips om att intervjua någon</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/SV/SV_2-Creating-a-Life-Story_CL.pdf']</td>
+	<td>Att skapa en livshistoria: praktiska steg</td>
+</tr>
+<tr>
 	<td>selectAndWait</td>
 	<td>id=select_lang</td>
 	<td>label=en - English</td>
@@ -355,6 +770,26 @@
 	<td>verifyTextPresent</td>
 	<td>exact:Who do you know who is amazing? Who do you know who has done something interesting, kind, worthwhile, brave, crazy, amazing, selfless, dangerous or generous and is perhaps still engaging in such deeds?</td>
 	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/EN/EN_4-LSC-Challenge-rules_CL.pdf']</td>
+	<td>Life Story Challenge Rules</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/EN/EN_1-What-is-a-Life-Story_CL.pdf']</td>
+	<td>What is a Life Story?</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/EN/EN_3-Tips-on-interviewing-someone_CL.pdf']</td>
+	<td>Tips on interviewing someone</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href='http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/EN/EN_2-Creating-a-Life-Story_CL.pdf']</td>
+	<td>Creating a Life Story: Practical Steps</td>
 </tr>
 </tbody></table>
 </body>
