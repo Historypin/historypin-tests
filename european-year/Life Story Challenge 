@@ -22,13 +22,23 @@
 	<td></td>
 </tr>
 <tr>
-	<td>open</td>
-	<td>/en/page/life-stories/</td>
+	<td>verifyTextPresent</td>
+	<td>exact:Who do you know who is amazing? Someone interesting, kind, worthwhile, brave, crazy, amazing, selfless, or generous and who is continuing living life to the full - an &quot;Active Ager&quot;?<br /> <br /> The Life Story Challenge is now open for your entries. <br /> Simply create a Life Story about someone you know using photos and stories you’ve collected and tell the story of their life and what they are doing now.<br /> <br /> It’s a brilliant way to tell the world how great they are.<br /> <br /> What’s more, you can also enter a competition if you get your story done by September 16, 2012.The best entries from each country will win a prize and the overall winner will get a trip to Brussels to receive their prize at the European Awards Ceremony.<br /> <br /> But we'd love to hear your stories anytime!</td>
 	<td></td>
 </tr>
 <tr>
-	<td>verifyTextPresent</td>
-	<td>Who do you know who is amazing? Who do you know who has done something interesting, kind, worthwhile, brave, crazy, amazing, selfless, dangerous or generous and is perhaps still engaging in such deeds? </td>
+	<td>verifyElementPresent</td>
+	<td>css=.active</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=ul.list &gt; li</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=#list &gt; ul.list &gt; li &gt; a[href=&quot;/en/builder/intro&quot;]</td>
 	<td></td>
 </tr>
 </tbody></table>
