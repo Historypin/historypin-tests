@@ -32,6 +32,16 @@
 	<td></td>
 </tr>
 <tr>
+	<td>verifyText</td>
+	<td>css=li.first &gt; a[href=&quot;#&quot;]</td>
+	<td>Gallery</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=li.last &gt; a.tour-take</td>
+	<td>Life Story</td>
+</tr>
+<tr>
 	<td>verifyElementPresent</td>
 	<td>css=.main-image</td>
 	<td></td>
@@ -54,6 +64,16 @@
 <tr>
 	<td>verifyTextPresent</td>
 	<td>Testing photo title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=a[href=&quot;/en/tours/take/id/12159084/title/Testing%20%20Life%20Story/lang/en/#1&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=a[href=&quot;/en/builder/register//&quot;]</td>
 	<td></td>
 </tr>
 </tbody></table>

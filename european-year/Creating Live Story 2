@@ -43,7 +43,12 @@
 </tr>
 <tr>
 	<td>verifyTextPresent</td>
-	<td>Ready? First give your Life Story a Title</td>
+	<td>Ready? First give your Life Story a title</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=.sidebar .inner &gt; ul</td>
 	<td></td>
 </tr>
 <tr>
@@ -73,7 +78,7 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>//div[@id='site-content']/div/form/a/span</td>
+	<td>css= a.next-button</td>
 	<td></td>
 </tr>
 <tr>
