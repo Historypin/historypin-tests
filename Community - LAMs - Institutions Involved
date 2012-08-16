@@ -17,13 +17,13 @@
 	<td></td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>6000</td>
+	<td>waitForPageToLoad</td>
+	<td></td>
 	<td></td>
 </tr>
 <tr>
-	<td>verifyElementPresent</td>
-	<td>css=img[src=&quot;http://wawwd-resources.s3.amazonaws.com/historypin/images/community/lamsinvolved/06_chinese_historical_society.jpg&quot;]</td>
+	<td>pause</td>
+	<td>6000</td>
 	<td></td>
 </tr>
 <tr>
@@ -38,7 +38,12 @@
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>css=img[alt=&quot;7thPresident&quot;]</td>
+	<td>css=img[src$=&quot;/channels/img/12050045/logo/1/dim/64x64/crop/1/&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=img[src=&quot;http://wawwd-resources.s3.amazonaws.com/historypin/images/community/lamsinvolved/06_chinese_historical_society.jpg&quot;]</td>
 	<td></td>
 </tr>
 <tr>

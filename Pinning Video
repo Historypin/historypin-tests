@@ -32,8 +32,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyTextPresent</td>
-	<td>Make sure you have permission before you upload anything. By clicking upload you are agreeing to our Terms and Conditions.Please note that if you want your stuff to appear on the map, you need to &quot;Pin it to the map&quot; with a title, location and approximate date. You can do this at a later time, but until then only you will be able to see your stuff on your Historypin channel.<br />Want to upload large amounts of content? Read about our Bulk Uploader</td>
+	<td>verifyElementPresent</td>
+	<td>css=ol.form-help &gt; li</td>
 	<td></td>
 </tr>
 <tr>
@@ -64,11 +64,6 @@
 <tr>
 	<td>verifyTextPresent</td>
 	<td>Add a video clip from YouTube</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
-	<td><br />Note: You must set the privacy setting of your YouTube video to Public for it to appear on Historypin. To get the correct YouTube link, click the &quot;share&quot; button under the video. Check the &quot;long link&quot; box and copy the link.</td>
 	<td></td>
 </tr>
 <tr>
@@ -125,11 +120,6 @@
 	<td>select</td>
 	<td>id=year</td>
 	<td>label=2005</td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
-	<td>Start by searching for a location</td>
-	<td></td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
@@ -198,7 +188,7 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>//div[@id='site-content']/div/div[2]/a[2]/span</td>
+	<td>css=a[href=&quot;/channels/view/10649049/&quot;]</td>
 	<td></td>
 </tr>
 <tr>
@@ -211,7 +201,6 @@
 	<td>css= ul.list &gt; li</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

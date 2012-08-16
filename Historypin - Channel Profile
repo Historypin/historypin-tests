@@ -52,13 +52,13 @@
 	<td></td>
 </tr>
 <tr>
-	<td>selectFrame</td>
-	<td>relative=up</td>
+	<td>pause</td>
+	<td>6000</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>css=ul.list &gt; li &gt; .image-holder</td>
+	<td>css=.image-holder &gt; a.image &gt; img</td>
 	<td></td>
 </tr>
 <tr>
@@ -72,7 +72,17 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
+	<td>verifyElementPresent</td>
+	<td>css=ul.list_tabs &gt; li:nth-child(1)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click </td>
+	<td>css=.bottom &gt; a.show-next</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
 	<td>css=ul.list_tabs &gt; li:nth-child(2)</td>
 	<td></td>
 </tr>
@@ -82,12 +92,12 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
+	<td>verifyElementPresent</td>
 	<td>css=ul.list_tabs &gt; li:nth-child(3)</td>
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
+	<td>verifyElementPresent</td>
 	<td>css=ul.list_tabs &gt; li:nth-child(4)</td>
 	<td></td>
 </tr>

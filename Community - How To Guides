@@ -17,6 +17,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>waitForPageToLoad</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
 	<td>assertTitle</td>
 	<td>Historypin | Community | Schools | Historypin in the Classroom</td>
 	<td></td>
@@ -29,11 +34,6 @@
 <tr>
 	<td>verifyTextPresent</td>
 	<td>How To Guides</td>
-	<td></td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>/community/howtos</td>
 	<td></td>
 </tr>
 <tr>

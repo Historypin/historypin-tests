@@ -48,22 +48,12 @@
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>css=img[alt=&quot;testup&quot;]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
-	<td>1 January 2012, from Gabss</td>
+	<td>css=img[src$=&quot;/services/thumb/phid/11852057/dim/195x150/crop/1/&quot;]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>css=img[alt=&quot;Test&quot;]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
-	<td>2012, from ditka.banditka</td>
+	<td>css=img[src$=&quot;/services/thumb/phid/10673004/dim/195x150/crop/1/&quot;]</td>
 	<td></td>
 </tr>
 </tbody></table>

@@ -23,7 +23,7 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>//div[@id='tab-design']/form/div/a/span</td>
+	<td>css=a.submit</td>
 	<td></td>
 </tr>
 <tr>
@@ -33,12 +33,12 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>link=Channel &amp; Account Settings</td>
+	<td>css=a[href=&quot;&quot;]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>link=Channel Design</td>
+	<td>css=a[href=&quot;#tab-design&quot;]</td>
 	<td></td>
 </tr>
 <tr>
@@ -52,8 +52,8 @@
 	<td>/home/gabs/Desktop/Wendy.jpg</td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>//div[@id='tab-design']/form/div/a/span</td>
+	<td>clickAndWait</td>
+	<td>css=a.submit</td>
 	<td></td>
 </tr>
 <tr>

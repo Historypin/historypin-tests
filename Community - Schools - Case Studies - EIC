@@ -22,8 +22,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForPageToLoad</td>
-	<td></td>
+	<td>pause</td>
+	<td>4000</td>
 	<td></td>
 </tr>
 <tr>

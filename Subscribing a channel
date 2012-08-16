@@ -18,12 +18,12 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>//ul[@id='site']/li[3]/a/span</td>
+	<td>css=a[href=&quot;/channels/&quot;]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Biggleswade History Society</td>
+	<td>css=a[href=&quot;/channels/view/id/1042029/&quot;]</td>
 	<td></td>
 </tr>
 <tr>
@@ -39,11 +39,6 @@
 <tr>
 	<td>verifyTextPresent</td>
 	<td>Biggleswade History Society</td>
-	<td></td>
-</tr>
-<tr>
-	<td>selectWindow</td>
-	<td>null</td>
 	<td></td>
 </tr>
 <tr>

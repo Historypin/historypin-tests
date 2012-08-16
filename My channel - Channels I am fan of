@@ -18,12 +18,12 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>link=Channel &amp; Account Settings</td>
+	<td>css=a[href=&quot;&quot;]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>link=Channels I'm a fan of</td>
+	<td>css=a[href=&quot;#tab-subscriptions&quot;]</td>
 	<td></td>
 </tr>
 <tr>

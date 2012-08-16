@@ -18,12 +18,12 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>link=Channel &amp; Account Settings</td>
+	<td>css=a[href=&quot;&quot;]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>link=My Fans</td>
+	<td>css=a[href=&quot;#tab-subscriptions&quot;]</td>
 	<td></td>
 </tr>
 <tr>
@@ -32,13 +32,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>selectWindow</td>
-	<td>null</td>
-	<td></td>
-</tr>
-<tr>
 	<td>verifyElementPresent</td>
-	<td>css=img[alt=&quot;Karamfil&quot;]</td>
+	<td>css=a[href=&quot;/channels/view/1758080/&quot;]</td>
 	<td></td>
 </tr>
 </tbody></table>
