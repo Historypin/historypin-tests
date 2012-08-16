@@ -17,23 +17,28 @@
 	<td></td>
 </tr>
 <tr>
+	<td>verifyElementPresent</td>
+	<td>css=ul.inner_nav</td>
+	<td></td>
+</tr>
+<tr>
 	<td>verifyTextPresent</td>
 	<td>Content to upload:</td>
 	<td></td>
 </tr>
 <tr>
-	<td>verifyText</td>
-	<td>css=a[href='/terms-and-conditions/']</td>
-	<td>Terms and Conditions.</td>
+	<td>verifyElementPresent</td>
+	<td>css=ul.progress-bar</td>
+	<td></td>
 </tr>
 <tr>
-	<td>verifyText</td>
-	<td>css=a[href=&quot;/audio-video&quot;]</td>
-	<td>Find out how here</td>
+	<td>verifyTextPresent</td>
+	<td>Make sure you have permission to upload this content. By clicking upload you are agreeing to our Terms and Conditions.</td>
+	<td></td>
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
-	<td>css=ul.progress-bar</td>
+	<td>css=.dropzone-container</td>
 	<td></td>
 </tr>
 </tbody></table>

@@ -32,6 +32,16 @@
 	<td></td>
 </tr>
 <tr>
+	<td>verifyTextPresent</td>
+	<td>Resources</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=a.next-button</td>
+	<td></td>
+</tr>
+<tr>
 	<td>verifyElementPresent</td>
 	<td>css=.active</td>
 	<td></td>
