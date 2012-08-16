@@ -23,12 +23,12 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>css=a[href='/en/builder/register/']</td>
+	<td>css=a[href='/en/builder/register/12061533/']</td>
 	<td></td>
 </tr>
 <tr>
 	<td>pause</td>
-	<td>3000</td>
+	<td>6000</td>
 	<td></td>
 </tr>
 <tr>
@@ -55,11 +55,6 @@
 	<td>verifyTextPresent</td>
 	<td>I agree to the terms and conditions</td>
 	<td></td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>css=a[href=TBD]</td>
-	<td>terms and conditions</td>
 </tr>
 <tr>
 	<td>click</td>

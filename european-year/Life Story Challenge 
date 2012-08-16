@@ -28,6 +28,11 @@
 </tr>
 <tr>
 	<td>verifyElementPresent</td>
+	<td>css=.sidebar </td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
 	<td>css=.active</td>
 	<td></td>
 </tr>
