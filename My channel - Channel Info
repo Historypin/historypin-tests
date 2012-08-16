@@ -18,7 +18,7 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>link=Channel &amp; Account Settings</td>
+	<td>css=a[href=&quot;&quot;]</td>
 	<td></td>
 </tr>
 <tr>
@@ -33,7 +33,7 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>link=Channel Info</td>
+	<td>css=a[href=&quot;#tab-settings&quot;]</td>
 	<td></td>
 </tr>
 <tr>
@@ -103,7 +103,7 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>//div[@id='tab-settings']/div/a/span</td>
+	<td>css=a.submit</td>
 	<td></td>
 </tr>
 <tr>
@@ -130,21 +130,6 @@
 	<td>verifyElementPresent</td>
 	<td>id=twitter_link</td>
 	<td>@test</td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>id=facebook_link</td>
-	<td>test</td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>id=google_plus_link</td>
-	<td>test</td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>id=blog_link</td>
-	<td>test</td>
 </tr>
 </tbody></table>
 </body>

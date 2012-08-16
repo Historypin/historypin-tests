@@ -57,11 +57,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>verifyTextPresent</td>
-	<td>Choose which content you would like in your Collection. You can only add content if you pinned it yourself or if you have favourited them on the map.</td>
-	<td></td>
-</tr>
-<tr>
 	<td>verifyElementPresent</td>
 	<td>css=ul.tabs-nav</td>
 	<td></td>
