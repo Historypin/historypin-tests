@@ -52,6 +52,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>verifyElementPresent</td>
+	<td>css=.sidebar .inner &gt; ul.tick_list </td>
+	<td></td>
+</tr>
+<tr>
 	<td>type</td>
 	<td>id=story_title</td>
 	<td>Testing&nbsp;&nbsp;Life Story Second Test</td>
