@@ -81,16 +81,6 @@
 	<td>css=img[src$=&quot;/services/thumb/phid/11852057/dim/195x150/crop/1/&quot;]</td>
 	<td></td>
 </tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=img[src$=&quot;/services/thumb/phid/11780093/dim/195x150/crop/1/&quot;]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
-	<td>Clicks on a link, button, checkbox or radio button.</td>
-	<td></td>
-</tr>
 </tbody></table>
 </body>
 </html>
