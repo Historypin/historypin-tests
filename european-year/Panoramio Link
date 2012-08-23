@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/en/page/view/generations-school-project-contribute-content</td>
+	<td>${url}/en/page/view/generations-school-project-contribute-content</td>
 	<td></td>
 </tr>
 <tr>

@@ -3,43 +3,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="selenium.base" href="http://www.historypin.com/" />
-<title>Historypin - Info - About</title>
+<link rel="selenium.base" href="http://v4-07-00.historypin.appspot.com" />
+<title>Set Url</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">Historypin - Info - About</td></tr>
+<tr><td rowspan="1" colspan="3">Set Url</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>${url}/about-us/</td>
+	<td></td>
 	<td></td>
 </tr>
 <tr>
-	<td>selectWindow</td>
-	<td>null</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertTitle</td>
-	<td>Historypin | About</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTitle</td>
-	<td>Historypin | About</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
-	<td>About</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
-	<td>Historypin is a way </td>
-	<td></td>
+	<td>storeEval</td>
+	<td>window.location.href</td>
+	<td>url</td>
 </tr>
 </tbody></table>
 </body>

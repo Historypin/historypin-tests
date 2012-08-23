@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/curated</td>
+	<td>${url}/curated</td>
 	<td></td>
 </tr>
 <tr>

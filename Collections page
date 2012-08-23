@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/collections/all</td>
+	<td>${url}/collections/all</td>
 	<td></td>
 </tr>
 <tr>

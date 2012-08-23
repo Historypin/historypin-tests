@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/app/</td>
+	<td>${url}/app/</td>
 	<td></td>
 </tr>
 <tr>

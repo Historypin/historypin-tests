@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/community/schools-case-studies</td>
+	<td>${url}/community/schools-case-studies</td>
 	<td></td>
 </tr>
 <tr>
@@ -46,7 +46,6 @@
 	<td>Historypin ran a series of sessions at Newport Primary School to break down inter-generational stereotypes and encourage people to spend more time with someone from a different generation in their neighbourhood.</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

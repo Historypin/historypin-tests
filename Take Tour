@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/tours/view/id/12083135/title/Testing Tour</td>
+	<td>${url}/tours/view/id/12083135/title/Testing Tour</td>
 	<td></td>
 </tr>
 <tr>
@@ -62,33 +62,13 @@
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>css=a.next-button.right &gt; span</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
-	<td>Testing Tour</td>
-	<td></td>
-</tr>
-<tr>
 	<td>verifyTextPresent</td>
 	<td>by Gabss</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyTextPresent</td>
-	<td>Clicks on a link, button, checkbox or radio button.</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
-	<td>If the click action causes a new page to load</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=img[src$=&quot;/services/thumb/phid/11780093/dim/52x39/crop/1/&quot;]</td>
+	<td>Sets the value of an input field</td>
 	<td></td>
 </tr>
 <tr>

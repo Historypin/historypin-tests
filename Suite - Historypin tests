@@ -8,6 +8,7 @@
 <body>
 <table id="suiteTable" cellpadding="1" cellspacing="1" border="1" class="selenium"><tbody>
 <tr><td><b>Test Suite</b></td></tr>
+<tr><td><a href="Set URL">Set URL</a></td></tr>
 <tr><td><a href="Historypin - homepage">Historypin - Homepage</a></td></tr>
 <tr><td><a href="Historypin - Homepage - Mobile App">Historypin - Homepage - Mobile App</a></td></tr>
 <tr><td><a href="Historypin - Info - About">Historypin - Info - About</a></td></tr>

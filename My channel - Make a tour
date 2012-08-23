@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/tours/add/</td>
+	<td>${url}/tours/add/</td>
 	<td></td>
 </tr>
 <tr>

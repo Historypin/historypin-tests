@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/contact-us/</td>
+	<td>${url}/contact-us/</td>
 	<td></td>
 </tr>
 <tr>

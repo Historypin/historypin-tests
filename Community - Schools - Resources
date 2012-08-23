@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/community/schools-resources</td>
+	<td>${url}/community/schools-resources</td>
 	<td></td>
 </tr>
 <tr>

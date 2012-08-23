@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/tours/view/id/12083135/title/Testing Tour</td>
+	<td>${url}/tours/view/id/12083135/title/Testing Tour</td>
 	<td></td>
 </tr>
 <tr>

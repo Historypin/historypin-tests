@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/collections/view/id/12129116/title/Testing Collection</td>
+	<td>${url}/collections/view/id/12129116/title/Testing Collection</td>
 	<td></td>
 </tr>
 <tr>

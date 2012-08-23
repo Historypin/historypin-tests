@@ -8,6 +8,7 @@
 <body>
 <table id="suiteTable" cellpadding="1" cellspacing="1" border="1" class="selenium"><tbody>
 <tr><td><b>Test Suite</b></td></tr>
+<tr><td><a href="Set URL EY">Set URL EY</a></td></tr>
 <tr><td><a href="EY Homepage">EY Homepage</a></td></tr>
 <tr><td><a href="Languages">Languages Homepage</a></td></tr>
 <tr><td><a href="Life Story Challenge ">Life Story Challenge </a></td></tr>
