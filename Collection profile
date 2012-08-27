@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>${url}/collections/view/id/12129116/title/Testing Collection</td>
+	<td>${url}/collections/view/id/12407108/title/Testing%20Collection</td>
 	<td></td>
 </tr>
 <tr>
@@ -49,11 +49,6 @@
 <tr>
 	<td>verifyElementPresent</td>
 	<td>css=img[src$=&quot;/services/thumb/phid/11852057/dim/195x150/crop/1/&quot;]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=img[src$=&quot;/services/thumb/phid/10673004/dim/195x150/crop/1/&quot;]</td>
 	<td></td>
 </tr>
 </tbody></table>

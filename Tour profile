@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>${url}/tours/view/id/12083135/title/Testing Tour</td>
+	<td>${url}/tours/view/id/12401074/title/Testing%20Tour</td>
 	<td></td>
 </tr>
 <tr>
@@ -29,11 +29,6 @@
 <tr>
 	<td>verifyTextPresent</td>
 	<td>Testing Tour</td>
-	<td></td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>/tours/view/id/12083135/title/Testing%20Tour</td>
 	<td></td>
 </tr>
 <tr>
@@ -74,11 +69,6 @@
 <tr>
 	<td>verifyTextPresent</td>
 	<td>Sets the value of an input field</td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyElementPresent</td>
-	<td>css=img[src$=&quot;/services/thumb/phid/11852057/dim/195x150/crop/1/&quot;]</td>
 	<td></td>
 </tr>
 </tbody></table>
