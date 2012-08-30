@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>${url}/en/page/view/generations-school-project-contribute-content</td>
+	<td>${url}page/view/generations-school-project-contribute-content</td>
 	<td></td>
 </tr>
 <tr>
@@ -34,11 +34,6 @@
 <tr>
 	<td>waitForPageToLoad</td>
 	<td></td>
-	<td></td>
-</tr>
-<tr>
-	<td>verifyTextPresent</td>
-	<td>Life Story Challenge</td>
 	<td></td>
 </tr>
 </tbody></table>

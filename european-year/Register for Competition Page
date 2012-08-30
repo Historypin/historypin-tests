@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>${url}tours/view/id/12254146/title/Testing&nbsp;&nbsp;Life Story Second Test</td>
+	<td>${url}tours/view/id/12405113/title/Testing&nbsp;&nbsp;Life Story Second Test</td>
 	<td></td>
 </tr>
 <tr>
@@ -23,7 +23,7 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>css=a[href='/en/builder/register/12300093/']</td>
+	<td>css=a[href='/en/builder/register/12407247/']</td>
 	<td></td>
 </tr>
 <tr>
@@ -60,6 +60,11 @@
 	<td>type</td>
 	<td>name=school</td>
 	<td>Some Name</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=a[href=&quot;http://wawwd-resources.s3.amazonaws.com/historypin/lsc/PDFS/EN/EN_4-LSC-Challenge-rules_CL.pdf&quot;]</td>
+	<td>I agree to the terms and conditions</td>
 </tr>
 <tr>
 	<td>click</td>

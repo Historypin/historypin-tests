@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.11492009-gats.v4-06-ey.historypin.appspot.com/en/" />
+<title>Languages My Stuff Page</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Languages My Stuff Page</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>${url}page/my-stuff</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=bg - български</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Моята житейска история</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Моите индивидуални снимки</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=es - español</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Mi relato de vida</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Mis fotos individuales</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=cs - čeština</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Můj Životní příběh</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Jednotlivé fotografie</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=da - dansk</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Min livshistorie</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Mine egne billeder</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=de - Deutsch</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Meine Lebensgeschichte</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Meine einzelnen Fotos</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=et - eesti keel</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Minu elulugu</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Minu fotod</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=el - ελληνικά</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/el/page/my-stuff</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Οι φωτογραφίες μου μία προς μία</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=fr - français</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Mon récit de vie</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Mes photos individuelles</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=it - italiano</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Il mio Racconto di vita</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Le mie foto personali</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=lv - latviešu valoda</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/lv/page/my-stuff</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Manas atsevišķās fotogrāfijas</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=lt - lietuvių kalba</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Mano gyvenimo istorija</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Mano asmeninės nuotraukos</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=hu - magyar</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Saját Élettörténetem</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Saját fotóim</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=mt - Malti</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>L-Istorja dwar Ħajja tiegħi</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Ir-Ritratti Individwali tiegħi</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=nl - Nederlands</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Mijn Levensverhaal</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Mijn individuele foto´s</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=pl - polski</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Moja Historia Życia</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Moje zdjęcia</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=pt - português</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>A minha História de Vida</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>As minhas fotos individuais</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=ro - română</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Povestea mea de viaţă</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Fotografiile mele</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=sk - slovenčina</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Môj životný príbeh</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Moje fotografie</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=sl - slovenščina</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=option[value=&quot;sl&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Moja življenjska zgodba</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Moje posamezne slike</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=fi - suomi</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Oma elämäntarinani</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Yksilölliset kuvani</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=sv - svenska</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Min livshistoria</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Mina egna bilder</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>id=select_lang</td>
+	<td>label=en - English</td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>My Life Story</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>My Individual Photos</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>${url}/community/schools-case-studies</td>
+	<td>${url}community/schools-case-studies</td>
 	<td></td>
 </tr>
 <tr>
