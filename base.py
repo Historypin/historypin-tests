@@ -1,4 +1,4 @@
-import unittest
+import unittest, functools
 
 from time import sleep
 
@@ -9,9 +9,33 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from conf import *
 
+# class url():
+# 	def __init__(self, url):
+# 		self.url = url
+	
+# 	def __call__(self, fn):
+		
+# 		def wrapper(*args, **kwargs):
+# 			print args
+# 			print kwargs
+# 			fn(*args, **kwargs)
+		
+# 		return wrapper
+
+def url(url):
+# 	@functools.wraps(f)
+	def wrapper(fn):
+		def wrapped(*args, **kwargs):
+			args[0].go(url)
+			fn(*args, **kwargs)
+		
+		return wrapped
+	
+	return wrapper
+
 class Browser(webdriver.Chrome):
 	def go(self, url):
-		self.get(url)
+		self.get(URL_BASE + url)
 	
 	def es(self, selector):
 		return self.find_elements_by_css_selector(selector)
@@ -38,6 +62,7 @@ class TestCase(unittest.TestCase):
 	# 	cls.browser.maximize_window()
 	
 	go		= browser.go
+	refresh	= browser.refresh
 	es		= browser.es
 	e		= browser.e
 	e_wait	= browser.e_wait
@@ -47,7 +72,7 @@ class TestCase(unittest.TestCase):
 	def browser_close(cls):
 		cls.browser.close()
 	
-	def assert_title(self, title):
+	def assertTitle(self, title):
 		self.assertIn(title, self.browser.title)
 
 
