@@ -1,28 +1,46 @@
-from conf import *
-
 import unittest
 
+from time import sleep
+
 from selenium import webdriver
-
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.wait import WebDriverWait
 
-# from selenium.webdriver.common.keys import Keys
-
+from conf import *
 
 class Browser(webdriver.Chrome):
-	def _e(self, selector):
+	def go(self, url):
+		self.get(url)
+	
+	def es(self, selector):
 		return self.find_elements_by_css_selector(selector)
+		
+	def e(self, selector):
+		return self.find_element_by_css_selector(selector)
 	
-	def _t(self, selector):
-		return self._e(selector)[0].text
+	def e_wait(self, selector, timeout = 30):
+		try:
+			w = WebDriverWait(self, timeout)
+			return w.until(lambda driver: driver.e(selector))
+		except:
+			raise NoSuchElementException('The element could not be found')
 	
-	def _a(self, selector, attr):
-		return self._e(selector)[0].get_attribute(attr)
+
 
 class TestCase(unittest.TestCase):
 	browser = Browser(PATH_CRHOME_DRIVER)
 	browser.maximize_window()
-	_e, _t, _a = [getattr(browser, '_' + i) for i in ['e', 't', 'a']]
+	
+	# @classmethod
+	# def setUpClass(cls, browser):
+	# 	cls.browser = Browser(PATH_CRHOME_DRIVER)
+	# 	cls.browser.maximize_window()
+	
+	go		= browser.go
+	es		= browser.es
+	e		= browser.e
+	e_wait	= browser.e_wait
 	
 	
 	@classmethod
