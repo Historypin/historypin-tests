@@ -1,7 +1,7 @@
 from base import *
 
 class Homepage(HPTestCase):
-	@unittest.expectedFailure
+	@unittest.skip("TODO")
 	@url('/')
 	def test_icon_touts(self):
 		# TODO
@@ -9,7 +9,7 @@ class Homepage(HPTestCase):
 		# - webby class test and link
 		# - hiring class test and link
 		
-		self.fail()
+		pass
 		
 	
 	@url('/')
@@ -26,7 +26,7 @@ class Homepage(HPTestCase):
 		sleep(.3)
 		self.assertEqual(self.browser.current_url.split('#')[0], URL_BASE + '/map/')
 	
-	@unittest.expectedFailure
+	@unittest.skip("TODO")
 	@url('/')
 	def test_featured(self):
 		# TODO 
@@ -35,9 +35,9 @@ class Homepage(HPTestCase):
 		# - fullscreen
 		# - exit fullscreen
 		
-		self.fail()
+		pass
 	
-	@unittest.expectedFailure
+	@unittest.skip("TODO")
 	@url('/')
 	def test_activity(self):
 		# TODO 
@@ -45,16 +45,16 @@ class Homepage(HPTestCase):
 		# - expand button
 		# - collapse button
 		
-		self.fail()
+		pass
 	
-	@unittest.expectedFailure
+	@unittest.skip("TODO")
 	@url('/')
 	def test_projects(self):
 		# TODO 
 		# - pages
 		# - browse all link
 		
-		self.fail()
+		pass
 	
 	@url('/')
 	def test_navigation(self):
@@ -77,7 +77,7 @@ class Homepage(HPTestCase):
 			self.assertEqual(elements[i].text, links[i][0])
 			self.assertEqual(elements[i].get_attribute('href'), links[i][1], 'Wrong link - %s' % (links[i][0]))
 	
-	@unittest.expectedFailure
+	@unittest.skip("TODO")
 	@url('/')
 	def test_cookie_message(self):
 		# TODO
@@ -86,7 +86,7 @@ class Homepage(HPTestCase):
 		# - close
 		# - refresh and the message should not be here anymore
 		
-		self.fail()
+		pass
 	
 	@url('/')
 	def test_header(self):
@@ -100,7 +100,7 @@ class Homepage(HPTestCase):
 		
 		self.assertEqual(self.e('#branding .home-top p').text, 'A global community collaborating around history')
 	
-	@unittest.expectedFailure
+	@unittest.skip("TODO")
 	@url('/')
 	def test_sponsors(self):
 		# TODO
@@ -110,8 +110,6 @@ class Homepage(HPTestCase):
 		
 		self.assertEqual(self.e('.support .donate').text, 'users\nDonate to support Historypin')
 		self.assertEqual(self.e('.support .donate').get_attribute('href'), URL_BASE + 'friends-of-Historypin')
-		
-		self.fail()
 	
 	@url('/')
 	def test_footer(self):
