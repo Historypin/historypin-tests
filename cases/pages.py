@@ -129,14 +129,13 @@ class Pages(HPTestCase):
 		self.assertEqual(self.e(sel + 'p').text, u'Download press releases, pictures and all the info you\u2019ll need to write a fabulously complimentary article about us.')
 		
 	
-	@unittest.skip("TODO")
+	
 	@url('/privacy-policy/')
 	def test_privacy_policy(self):
-		# TODO
-		# - Title - Privacy Policy
-		# - heading
+		self.assertTitle('Historypin | Privacy Policy')
+		self.assertEqual(self.e('#site-content h1').text, 'Privacy Policy')
 
-		pass
+		# TODO Test all headings
 	
 	@unittest.skip("TODO")
 	@url('/Friends-of-Historypin/')
