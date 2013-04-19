@@ -36,18 +36,36 @@ class Pages(HPTestCase):
 		self.assertEqual(self.e(sel = 'a').text, 'Windows Phone Marketplace')
 
 	
-	@unittest.skip("TODO")
 	@url('/contact/')
 	def test_contact(self):
-		# TODO
-		# - Title - Contact
-		# - heading
-		# - all h2
-		# - all p texts
-		# - all a [href]
-		
-		pass
+		self.assertTitle('Historypin | Contact')
+		self.assertEqual(self.e('.section h1.title').text, 'Contact')
+
+		self.assertEqual(self.e('.section h2:nth-child(2)').text, 'General enquiries, technical enquiries, content enquiries')
+		self.assertEqual(self.e('.section p:nth-child(3) a').get_attribute('href'), 'mailto:historypin@wearewhatwedo.org')
+		self.assertEqual(self.e('.section p:nth-child(3)').text, 'historypin@wearewhatwedo.org\n+44 (0)20 7148 7666\n71 St John Street\nLondon\nEC1M 4NJ\nUnited Kingdom')
+
+		self.assertEqual(self.e('.section h2:nth-child(4)').text, 'Media')
+		self.assertEqual(self.e('.section p:nth-child(5) a').get_attribute('href'), 'mailto:rebekkah.abraham@wearewhatwedo.org')
+		self.assertEqual(self.e('.section p:nth-child(5)').text, 'Rebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7670')
+
+		self.assertEqual(self.e('.section h2:nth-child(6)').text, 'Schools, local projects and volunteers')
+		self.assertEqual(self.e('.section p:nth-child(7) a').get_attribute('href'), 'mailto:rebekkah.abraham@wearewhatwedo.org')
+		self.assertEqual(self.e('.section p:nth-child(7)').text, 'Rebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7670')
+
+		self.assertEqual(self.e('.section h2:nth-child(8)').text, 'Library, archive and museum partnerships')
+		self.assertEqual(self.e('.section p:nth-child(9) a').get_attribute('href'), 'mailto:rebekkah.abraham@wearewhatwedo.org')
+		self.assertEqual(self.e('.section p:nth-child(9)').text, 'Rebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7670')
+
+		self.assertEqual(self.e('.section h2:nth-child(10)').text, 'Web')
+		self.assertEqual(self.e('.section p:nth-child(11) a').get_attribute('href'), 'mailto:mark.frost@wearewhatwedo.org')
+		self.assertEqual(self.e('.section p:nth-child(11)').text, 'Mark Frost\nmark.frost@wearewhatwedo.org\n+44 (0)20 7148 7675')
+
+		self.assertEqual(self.e('.section h2:nth-child(12)').text, 'Corporate Partnerships')
+		self.assertEqual(self.e('.section p:nth-child(13) a').get_attribute('href'), 'mailto:nick.stanhope@wearewhatwedo.org')
+		self.assertEqual(self.e('.section p:nth-child(13)').text, 'Nick Stanhope\nnick.stanhope@wearewhatwedo.org\n+44 (0)20 7148 7667')
 	
+
 	@unittest.skip("TODO")
 	@url('/faq/')
 	def test_faq(self):
