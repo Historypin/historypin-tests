@@ -16,24 +16,24 @@ class Pages(HPTestCase):
 		
 		# Android
 		sel = '.appstores .col:nth-child(1) '
-		self.assertEqual(self.e(sel = 'img').get_attribute('src'), URL_BASE + '/resources/images/content/app/app_android.png')
-		self.assertEqual(self.e(sel = 'h1').text, 'Android')
-		self.assertEqual(self.e(sel = 'a').get_attribute('href'), 'https://market.android.com/details?id=com.historypin.Historypin&feature=search_result')
-		self.assertEqual(self.e(sel = 'a').text, 'Google Play Store')
+		self.assertEqual(self.e(sel + 'img').get_attribute('src'), URL_BASE + '/resources/images/content/app/app_android.png')
+		self.assertEqual(self.e(sel + 'h1').text, 'Android')
+		self.assertEqual(self.e(sel + 'a').get_attribute('href'), 'https://market.android.com/details?id=com.historypin.Historypin&feature=search_result')
+		self.assertEqual(self.e(sel + 'a').text, 'Google Play Store')
 
 		# iPhone
 		sel = '.appstores .col:nth-child(2) '
-		self.assertEqual(self.e(sel = 'img').get_attribute('src'), URL_BASE + '/resources/images/content/app/app_iphone.png')
-		self.assertEqual(self.e(sel = 'h1').text, 'iOS')
-		self.assertEqual(self.e(sel = 'a').text, 'iOS App Store')
-		self.assertEqual(self.e(sel = 'a').get_attribute('href'), 'http://itunes.apple.com/app/historypin/id455228207?mt=8')
+		self.assertEqual(self.e(sel + 'img').get_attribute('src'), URL_BASE + '/resources/images/content/app/app_iphone.png')
+		self.assertEqual(self.e(sel + 'h1').text, 'iOS')
+		self.assertEqual(self.e(sel + 'a').text, 'iOS App Store')
+		self.assertEqual(self.e(sel + 'a').get_attribute('href'), 'http://itunes.apple.com/app/historypin/id455228207?mt=8')
 		
 		# Windows Phone 7
 		sel = '.appstores .col:nth-child(3) '
-		self.assertEqual(self.e(sel = 'img').get_attribute('src'), URL_BASE + '/resources/images/content/app/app_wp7.png')
-		self.assertEqual(self.e(sel = 'h1').text, 'Windows Phone 7')
-		self.assertEqual(self.e(sel = 'a').get_attribute('href'), 'http://www.windowsphone.com/en-US/apps/05638072-742e-460c-ab97-18d2b47ef06b')
-		self.assertEqual(self.e(sel = 'a').text, 'Windows Phone Marketplace')
+		self.assertEqual(self.e(sel + 'img').get_attribute('src'), URL_BASE + '/resources/images/content/app/app_wp7.png')
+		self.assertEqual(self.e(sel + 'h1').text, 'Windows Phone 7')
+		self.assertEqual(self.e(sel + 'a').get_attribute('href'), 'http://www.windowsphone.com/en-US/apps/05638072-742e-460c-ab97-18d2b47ef06b')
+		self.assertEqual(self.e(sel + 'a').text, 'Windows Phone Marketplace')
 
 	
 	@url('/contact/')
