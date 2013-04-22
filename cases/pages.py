@@ -167,14 +167,11 @@ class Pages(HPTestCase):
 		self.assertEqual(self.e(sel + 'p a').get_attribute('href'), 'mailto:ella.wiggans@wearewhatwedo.org')
 
 	
-	@unittest.skip("TODO")
 	@url('/terms-and-conditions/')
 	def test_toc(self):
-		# TODO
-		# - Title - HP Terms and Conditions
-		# - heading
-
-		pass
+		self.assertTitle('Historypin | Terms and Conditions')
+		self.assertEqual(self.e('.rte h1').text, 'Historypin Terms and Conditions')
+	
 	
 	@unittest.skip("TODO")
 	@url('/team/')
