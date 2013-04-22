@@ -137,26 +137,35 @@ class Pages(HPTestCase):
 
 		# TODO Test all headings
 	
-	@unittest.skip("TODO")
 	@url('/Friends-of-Historypin/')
 	def test_support(self):
-		# TODO
-		# - Title - Privacy Policy
-		# - heading
-		# - images present
+		# TODO fix this is the code and change the testcase
+		# self.assertTitle('Historypin | Friends of Historypin')
+		self.assertTitle('Historypin | Community | Partners')
+		self.assertEqual(self.e('h2').text, 'What does the Foundation do?')
+		
+		sel = '.section '
+		self.assertEqual(self.e(sel + 'img').get_attribute('src'), URL_BASE + '/resources/images/home/friends_of_Historypin.png')
+		self.assertEqual(self.e(sel + 'p:nth-child(8) img').get_attribute('src'), URL_BASE + '/resources/images/home/friendsOfPhoto01.jpg')
+		self.assertEqual(self.e(sel + 'p:nth-child(9) img').get_attribute('src'), URL_BASE + '/resources/images/home/friendsOfPhoto02.jpg')
+		
+		sel = '.sidebar .inner:nth-child(1) '
+		self.assertEqual(self.e(sel + 'h3').text, 'Support Us')
+		self.assertEqual(self.e(sel + 'p:nth-child(2)').text, 'Your donation to the We Are What We Do Charitable Foundation will go a long way in helping support Historypin Community and Education Programmes.')
+		self.assertEqual(self.e(sel + 'p:nth-child(3)').text, 'Registered Charity Number\n1134546')
+		self.assertEqual(self.e(sel + 'a').get_attribute('href'), 'http://www.charitygiving.co.uk/donate/donate_b.asp?charityid=5366')
+		self.assertEqual(self.e(sel + 'a span').text, 'Donate')
 
-		# sidebar
-		# - support heading
-		# - support text
-		# - support button text
-		# - support button link
-		# - find out heading
-		# - find out text
-		# - contacts heading
-		# - contacts text
-		# - contacts link
+		sel = '.sidebar .inner:nth-child(2) '
+		self.assertEqual(self.e(sel + 'h3').text, 'Find out more')
+		self.assertEqual(self.e(sel + 'h3 a').get_attribute('href'), URL_BASE + '/HistorypinCommunityandEducationProgrammes')
+		self.assertEqual(self.e(sel + 'p').text, 'Read more about the aims of the Historypin Community and Education Programmes.')
 
-		pass
+		sel = '.sidebar .inner:nth-child(3) '
+		self.assertEqual(self.e(sel + 'h3').text, 'Contact us')
+		self.assertEqual(self.e(sel + 'p').text, 'To find out more, please contact ella.wiggans@wearewhatwedo.org')
+		self.assertEqual(self.e(sel + 'p a').get_attribute('href'), 'mailto:ella.wiggans@wearewhatwedo.org')
+
 	
 	@unittest.skip("TODO")
 	@url('/terms-and-conditions/')
