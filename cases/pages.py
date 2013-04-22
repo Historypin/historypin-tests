@@ -171,33 +171,29 @@ class Pages(HPTestCase):
 	def test_toc(self):
 		self.assertTitle('Historypin | Terms and Conditions')
 		self.assertEqual(self.e('.rte h1').text, 'Historypin Terms and Conditions')
+		# TODO
+		# Terms and Conditions links need to be tested	
 	
-	
-	@unittest.skip("TODO")
 	@url('/team/')
 	def test_team(self):
-		# TODO
-		# - Title - The team
-		# - heading
-
+		self.assertTitle('Historypin | Team')
+		self.assertEqual(self.e('#site-content h1').text, 'The Team')
 
 		# LATER
-		# - all list itmes
+		# - all list items
 		# - 2 images
 		# - name
 		# - title
 		# - email text and url
 
-		pass
 	
-	@unittest.skip("TODO")
-	@url('/')
+	@url('/wearewhatwedo/')
 	def test_wawwd(self):
-		# TODO
-		# - Title - The team
-		# - heading
-		# - link text and url
-		pass
+		self.assertTitle('Historypin | We Are What We Do')
+		self.assertEqual(self.e('.title').text, 'We Are What We Do')
+		self.assertEqual(self.e('.rte p:nth-child(5) a').get_attribute('href'), 'http://wearewhatwedo.org/')
+		self.assertEqual(self.e('.rte p:nth-child(5) a').text, 'wearewhatwedo.org')
+
 
 class Community(HPTestCase):
 	@unittest.skip("TODO")
