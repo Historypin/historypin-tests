@@ -191,8 +191,9 @@ class Pages(HPTestCase):
 	def test_wawwd(self):
 		self.assertTitle('Historypin | We Are What We Do')
 		self.assertEqual(self.e('.title').text, 'We Are What We Do')
-		self.assertEqual(self.e('.rte p:nth-child(5) a').get_attribute('href'), 'http://wearewhatwedo.org/')
-		self.assertEqual(self.e('.rte p:nth-child(5) a').text, 'wearewhatwedo.org')
+		sel = '.rte p:nth-child(5) a'
+		self.assertEqual(self.e(sel).get_attribute('href'), 'http://wearewhatwedo.org/')
+		self.assertEqual(self.e(sel).text, 'wearewhatwedo.org')
 
 
 class Community(HPTestCase):
