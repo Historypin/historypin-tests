@@ -6,21 +6,13 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.remote.webelement import WebElement
+
 
 from conf import *
 
-# class url():
-# 	def __init__(self, url):
-# 		self.url = url
-	
-# 	def __call__(self, fn):
-		
-# 		def wrapper(*args, **kwargs):
-# 			print args
-# 			print kwargs
-# 			fn(*args, **kwargs)
-		
-# 		return wrapper
+WebElement.e = WebElement.find_element_by_css_selector
+WebElement.es = WebElement.find_elements_by_css_selector
 
 def url(url):
 	def wrapper(fn):
@@ -48,7 +40,8 @@ class Browser(webdriver.Chrome):
 			return w.until(lambda driver: driver.e(selector))
 		except:
 			raise NoSuchElementException('The element could not be found')
-	
+
+
 
 
 class TestCase(unittest.TestCase):
