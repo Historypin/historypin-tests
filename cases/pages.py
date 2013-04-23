@@ -69,8 +69,126 @@ class Pages(HPTestCase):
 	@url('/faq/')
 	def test_faq(self):
 		# TODO LATER
-		
-
+		toc = {
+			'heading': 'General',
+			'items': [
+				['#title1', 'What is Historypin?'],
+				['#title2', 'Why was Historypin created?'],
+				['#title3', 'What are Historypin\'s long-term aims?'],
+				['#title4', 'Who is behind Historypin?'],
+				['#title5', 'What has happened during the beta phase of Historypin?'],
+			],
+			'heading': 'Using the site',
+			'items': [
+				['#title6', 'What kind of content can I add to Historypin?'],
+				['#title7', 'How do I pin photographic images?'],
+				['#title8', 'How do I pin video content?'],
+				['#title9', 'How do I pin audio content?'],
+				['#title10', 'How do I add stories and recollections?'],
+				['#title116', 'How do I edit a piece of content that I have pinned?'],
+				['#title117', 'How do I delete a piece of content that I have pinned?'],
+				['#title11', 'Why can\'t I "pin" stories to the map on their own?'],
+				['#title12', 'What about other types of materials, like letters, diaries or records?'],
+				['#title13', 'How can I pin very large amounts of content?'],
+				['#title14', 'If there is content already there, can I pin more on that spot?'],
+				['#title15', 'Can content still be pinned if I don\'t know the date?'],
+				['#title16', 'Can I link content I\'ve pinned to more info on my website or blog?'],
+				['#title17', 'How do I find the content I\'ve uploaded when I come back to the site?'],
+				['#title18', 'Why does your time filter only go back to 1840?'],
+				['#title19', 'What is Street View and why doesn\'t it exist all over the world?'],
+				['#title20', 'What are Tours?'],
+				['#title21', 'What are Collections?'],
+				['#title22', 'I\'ve found content that is inaccurately pinned, what should I do?'],
+				['#title23', 'I\'ve found inappropriate content, what should I do?'],
+				['#title24', 'I\'ve found content that infringes my copyright, what should I do?'],
+				['#title25', 'How are you moderating what goes on the site?'],
+				['#title112', 'Historypin is not functioning or displaying as I would expect, what should I do?'],
+				['#title113', 'I am having trouble uploading photos, what should I do?'],
+				['#title114', 'How do I change my Username?'],
+			],
+			'heading': 'Bulk Uploader',
+			'items': [
+				['#title99', 'How can I find out more about doing a bulk upload?'],
+				['#title100', 'Do I have to pay to use the bulk uploader?'],
+				['#title101', 'Is there a limited number of bulk uploads that I can do?'],
+				['#title102', 'Is there a limit to how many images I can upload in a single bulk upload?'],
+				['#title103', 'Can I edit my data once I have completed a bulk upload?'],
+				['#title104', 'Can I make multiple edits to my content?'],
+				['#title105', 'Can I make global changes to the data attached to my photos?'],
+				['#title106', 'Can I delete a bulk upload?'],
+				['#title107', 'Do I need to complete all the fields for my bulk upload to work?'],
+				['#title108', 'Why haven\'t the fields on my bulk upload populated with meta-data?'],
+				['#title109', 'Why am I getting \'Bad Request\'?'],
+				['#title110', 'Why am I getting \'Internal server error\'?'],
+				['#title111', 'I used the Bulk Uploader, but the content on my Channel is \'unpinned\''],
+			],
+			'heading': 'Getting involved',
+			'items': [
+				['#title27', 'How can I get more involved personally?'],
+				['#title28', 'Can I volunteer with Historypin?'],
+				['#title29', 'How can I get my local school more involved?'],
+				['#title31', 'How can I use Historypin in my local area?'],
+				['#title32', 'Do you give talks or run events?'],
+				['#title33', 'Do you offer any training?'],
+			],
+			'heading': 'Partners',
+			'items': [
+				['#title34', 'Who are Historypin\'s existing partners?'],
+				['#title35', 'What does your partnership with Google involve?'],
+				['#title36', 'How can library, archive or museums get involved?'],
+				['#title37', 'How can schools get involved?'],
+				['#title38', 'How can universities and academic institutions get involved?'],
+				['#title39', 'How can community organisations, historical associations or photography societies get more involved?'],
+				['#title40', 'I\'d like to talk about partnering with Historypin, who can I contact?'],
+			],
+			'heading': 'Data',
+			'items': [
+				['#title41', 'Where is the content stored?'],
+				['#title42', 'Is there any limit to the amount of content that can go on the site?'],
+				['#title43', 'How can I help improve data on Historypin?'],
+				['#title44', 'Is data shared with other parties?'],
+			],
+			'heading': 'Integration with other platforms',
+			'items': [
+				['#title45', 'Can I embed Historypin tools on my site?'],
+				['#title46', 'Does Historypin have an API?'],
+				['#title47', 'Can I get statistics on my content?,'],
+			],
+			'heading': 'Copyright and use of content',
+			'items': [
+				['#title49', 'How will the content be protected?'],
+				['#title50', 'How will my content be credited on the site?'],
+				['#title51', 'What can other users do with my content?'],
+				['#title52', 'What can Historypin do with my content?'],
+			],
+			'heading': 'Privacy',
+			'items': [
+				['#title53', 'Do you share my user information with anyone?'],
+			],
+			'heading': 'App',
+			'items': [
+				['#title54', 'What can the Historypin app do?'],
+				['#title55', 'How do I get the Historypin app?'],
+				['#title115', 'Why does the Historypin app require my Google Account details?'],
+			],
+			'heading': 'Funding',
+			'items': [
+				['#title56', 'How is Historypin funded?'],
+				['#title57', 'What happens to the profits from Historypin?'],
+				['#title58', 'How can I donate to Historypin?'],
+			],
+			'heading': 'Future Plans',
+			'items': [
+				['#title59', 'What\'s next for Historypin?'],
+				['#title60', 'What\'s next for We Are What We Do?'],
+			],
+			'heading': 'Contact',
+			'items': [
+				['#title61','I\'m a journalist and want to write a fabulously complimentary article about you. What do I do?'],
+				['#title62','I\'ve got another question, what should I do?'],
+			],
+		}
+ 
 		pass
 	
 
@@ -191,6 +309,7 @@ class Pages(HPTestCase):
 	def test_wawwd(self):
 		self.assertTitle('Historypin | We Are What We Do')
 		self.assertEqual(self.e('.title').text, 'We Are What We Do')
+		
 		sel = '.rte p:nth-child(5) a'
 		self.assertEqual(self.e(sel).get_attribute('href'), 'http://wearewhatwedo.org/')
 		self.assertEqual(self.e(sel).text, 'wearewhatwedo.org')
