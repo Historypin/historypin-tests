@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from base import *
 
 class Pages(HPTestCase):
@@ -254,14 +256,90 @@ class Pages(HPTestCase):
 	
 	@url('/presscentre/')
 	def test_press_center(self):
-		
 		self.assertTitle('Historypin | Press Centre')
 		self.assertEqual(self.e('h1.title').text, 'Press Centre')
+		self.assertEqual(self.e('.section h2:nth-of-type(1)').text, 'Some of our favourite coverage')
+		self.assertEqual(self.e('.section h2:nth-of-type(2)').text, 'Coverage to date')
 		
-		#TODO
-		# LATER asert all p
-		# - texts
-		# - a [href]
+		links = [
+			# link, link text, additional text
+			['http://wearewhatwedo.org/press-cuttings/bringing-social-capital-back-to-life/', 'Bringing social capital back to life', 'The Times, 31st March 2012'],
+			['http://googleblog.blogspot.com/2012/03/google-and-historypin-launch-online.html', u'Google and Historypin launch online gallery to celebrate The Queen\u2019s Diamond Jubilee', 'Google Blog, 12th March 2012'],
+			['http://www.getreading.co.uk/community/s/2100048_mapping_readings_past_with_historypin', 'Mapping Reading\'s past with Historypin', 'Get Reading, 21st September 2012'],
+			['http://lens.blogs.nytimes.com/2011/07/22/using-new-tools-mapping-old-brooklyn/', '"Using New Tools, Mapping Old Brooklyn"', 'New York Times Lens, 22nd July 2011'],
+			['http://www.good.is/post/historypin-app-uses-augmented-reality-to-visualize-the-past/', '"Picture the Past: Historypin Mashes Up Archived Photos with the Present"', 'Good, 15th July 2011'],
+			['http://www.ny1.com/content/ny1_living/technology/142855/new-android-app-brings-history-to-city-streets', '"New Android App Brings History To City Streets"', 'NY1, 14th July 2011'],
+			['http://mashable.com/2011/07/12/historypin-collective-memory/', 'Historypin Launches, Shows Your World As It Was"', 'Mashable, 13th July 2011'],
+			['http://techland.time.com/2011/07/11/old-meets-new-historypin-is-a-time-capsule-for-vintage-photos/', '"Old Meets New: \'Historypin\' Is a Map-Based Time Capsule for Vintage Photos"', 'Time Techland, 11th July 2011'],
+			['http://www.guardian.co.uk/artanddesign/2010/jul/04/historypin-photography-sam-leith', '"With Historypin, photography has entered the fourth dimension, and I\'m going with it"', 'The Guardian, 4th July 2010'],
+			['http://wearewhatwedo.org/press-cuttings/national-portrait-gallery-share-pics-of-queen/', 'National Portrait Gallery share pics of Queen', 'The Sun, 11th March 2012'],
+			['http://www.northumberlandtoday.com/ArticleDisplay.aspx?e=3464879', u'Archives ‘pinning\u2019 local history', 'Northumberland Today, March 2012'],
+			['http://www.huffingtonpost.com/2012/02/22/muni-celebrates-its-past-while-service-cuts-loom_n_1294386.html', 'Muni Celebrates Its Past, But Sees Service Cuts In Its Future', 'Huffington Post, 22nd February 2012'],
+			['http://www.guardian.co.uk/theobserver/2012/feb/18/50-new-radicals-schemes-thinkers?newsfeed=true', 'Britain\'s 50 New Radicals', 'The Guardian, 18th February 2012'],
+			[URL_BASE + '/presscentre/The%20Guardian,%2018th%20February%202012', 'The Sunday Times App List', 'The Sunday Times, 22nd January 2012'],
+			['http://www.theglobeandmail.com/news/technology/digital-culture/social-networking/app-connects-historic-photos-to-modern-points-on-the-map/article2291181/', 'App connects historic photos to modern points on the map', 'The Globe and Mail, 4th January 2012'],
+			['http://www.getreading.co.uk/sport/football/readingfc/s/2105567_1966_and_the_reading_fc_kit_that_took_the_biscuit', '1966 and the Reading FC kit that took the biscuit', 'Get Reading, 23rd December 2012'],
+			['http://blogs.archives.gov/online-public-access/?p=6768', 'Put a Pin in It! National Archives Joins Historypin', 'NARAtions: The Blog of the US National Archives, November 30th 2011'],
+			['http://www.birminghammail.net/news/top-stories/2011/11/08/historypin-site-unlocks-the-secrets-of-birmingham-s-past-97319-29736748/?utm_source=dlvr.it&utm_medium=twitter', 'Historypin site unlocks the secrets of Birmingham\'s past', 'Birmingham Mail, 8th November 2011'],
+			['http://www.dailymail.co.uk/news/article-2058223/Website-Historypin-shows-streets-looked-170-years-ago.html', u'It\u2019s a Google Streetmap of history: How our famous landmarks looked up to 170 years ago', 'Daily Mail, 7th November 2011'],
+			['http://wearewhatwedo.org/press-cuttings/a-history-in-pin-ups-3/', 'A history in pin-ups', u'Reader\u2019s Digest, Asia, November 2011'],
+			[URL_BASE + '/presscentre/Reader%E2%80%99s%20Digest,%20Asia,%20November%202011', 'Post Your Pictures, Then Take A Walk Through History', 'NPR, 23rd October 2011'],
+			['http://blogs.abc.net.au/victoria/2011/10/sunday-16-october-.html?site=melbourne&program=melbourne_sundays', 'Interview with Nick Stanhope by Alan Brough', '774 ABC Melbourne (Radio), 16th October 2011'],
+			['http://wearewhatwedo.org/press-cuttings/app-of-the-week-historypin/', 'App of the Week', 'Sunday Times, 2nd October 2011'],
+			['http://www.reuters.com/article/2011/09/12/us-app-historypin-idUSTRE78B1MW20110912?feedType=RSS&feedName=internetNews', 'Historypin app lets people create a "time machine"', 'Reuters, 12th September 2011'],
+			['http://www.getreading.co.uk/community/s/2098887_reading_pins_down_new_online_history', 'Reading pins down new online history', 'Get Reading, 31st August 2011'],
+			['http://journalstar.com/mobile/article_b8444738-528a-5a1f-9528-4cec8e780ca7.html', 'Time travelers: Websites of vintage photos capture moments in moments', 'Washington Post, 19th August 2011'],
+			['http://articles.boston.com/2011-08-11/yourtown/29877326_1_google-maps-photos-google-street-view', '"Historic New England puts period photos on the map"', 'Boston Globe Downtown, 11th August 2011'],
+			['http://www.ssireview.org/opinion/entry/a_new_tool_for_digital_storytelling/', '"A New Tool for Digital Storytelling"', 'Stanford Social Innovation Review, 11th August 2011'],
+			['http://www.ilfattoquotidiano.it/2011/08/06/historypin-scopri-la-macchina-del-tempo-digitale/150236/?utm_source=twitterfeed&utm_medium=twitter', '"Historypin, la macchina del tempo digitale"', 'Il Fatto Quotidiano, 8th August 2011'],
+			['http://www.dailybrink.com/?p=1932', 'Interview with Nick Stanhope, Historypin, CEO', 'Daily Brink, 26th July 2011'],
+			['http://www.tcdailyplanet.net/blog/jeff-skrenes/historypin-puts-neighborhood-history-palm-your-hand', '"Historypin puts neighborhood history in the palm of your hand"', 'Twin Cities Daily Planet, 24th July 2011'],
+			['http://www.vector1media.com/spatialsustain/historypin-puts-historical-photos-on-the-map.html', '"Historypin puts historical photos on the map"', 'Spatial Sustain, 24th July 2011'],
+			['http://www.beenaproject.com/?p=1579', '"Historypin, A Project Mapping the Past and Future"', 'Beena Project, 17th July 2011'],
+			['http://www.komando.com/coolsites/index.aspx?id=11071', '"Map your History"', 'The Kim Komando Show, 17th July 2011'],
+			['http://www.washingtonpost.com/blogs/the-buzz/post/local-history-buffs-have-a-new-toy/2011/07/13/gIQAbSUnCI_blog.htm', '"Local history buffs have a new toy"', 'Washington Post, 13th July 2011'],
+			['http://www.youtube.com/watch?v=RuxZp22kDu4', '"C5N - Tecnologia - History, pin viaje al pasad"', 'Canal 5 Noticias (C5N), 13th July 2011'],
+			
+			# TODO fix this and remove the skip in the cycle
+			['http://habrahabr.ru/blogs/services/124038/', u'"Сервис Historypin откроет окно в прошлое"'.encode('utf-8'), 'Хабрахабр, 13th July 2011'],
+			['http://ht.ly/5Fsov', '"Blending Old and New Tech to Make History Come to Life"', 'The Chronicle of Philanthopy, 12th July 2011'],
+			['http://www.slate.com/blogs/browbeat/2011/07/12/historypin_a_hot_web_time_machine.html', '"Historypin: A Hot Web Time Machine"', 'Slate, 12th July 2011'],
+			['http://news.yahoo.com/historypin-launches-shows-world-163201183.html', '"Historypin Launches, Shows Your World As It Was"', 'Yahoo! News, 12th July 2011'],
+			['http://dodgeburn.blogspot.com/2011/07/global-launch-of-historypin-powered-by.html', '"Global Launch of Historypin, Powered by Google"', 'Dodge and Burn, 11th July 2011'],
+			['http://digitallife.today.com/_news/2011/07/11/7059904-oh-snap-old-photos-hit-google-mapsl', '"Oh snap: Old photos hit Google Maps"', 'MSNBC, 11th July 2011'],
+			['http://thenextweb.com/apps/2011/07/11/history-in-your-pocket-with-historypins-new-android-app/', u'"History in your pocket with Historypin\u2019s new Android app"', 'The Next Web, 11th July 2011'],
+			['http://googlemapsmania.blogspot.com/2011/07/historypin-goes-global.html', '"Historypin Goes Global"', 'Google Maps Mania, 11th July 2011'],
+			['http://www.nytimes.com/2011/07/08/arts/design/2-continents-1-work-and-31-hand-positions.html?_r=3', '"Somewhere in Brooklyn"', 'The New York Times, 7th July 2011'],
+			['http://www.billericayessex.co.uk/news/72-billericay-school-pupils-help-to-pin-down-history', 'Billericay School Pupils Help to Pin Down History"', 'Billericay Essex, June 2011'],
+			['http://peterpappas.blogs.com/copy_paste/2011/01/historypin-make-dbqs-digital-time-machine-layers-image-story-location.html', '"Make Document Based Questions with a Digital Time machine"', 'Copy/Paste, 2nd January 2011'],
+			['http://brockleycentral.blogspot.com/2010/11/yesterday-is-history-tomorrow-is.html', '"Yesterday is history, tomorrow is a mystery"', 'Brockley Central, 29th November 2010'],
+			['http://www.thesun.co.uk/sol/homepage/features/3221643/War-Collections-photographs-show-glimpse-into-Britains-war-past.html', '"We will remember then"', 'The Sun, 11th November 2010'],
+			['http://www.expatica.com/nl/leisure/arts_culture/A-photographic-stroll-through-history_16531.html', '"A photographic stroll through history"', 'Radio Netherlands, 17th October 2010'],
+			['http://www.thesun.co.uk/sol/homepage/news/3134341/New-York-rises-in-new-911-pics.html', '"New York Rises in New Pics"', 'The Sun, 11th September 2010'],
+			['http://www.npr.org/blogs/pictureshow/2010/08/05/129007283/historypin?ft=1&f=1047', '"A Worldwide Photo Project Needs You (And Your Grandparents)"', 'The Picture Show Blog, NPR, August 5th 2010'],
+			['http://www.iol.co.za/scitech/news/net-album-sorts-old-photos-1.911557', '"Net album sorts old photos"', 'IOL Scitech, 23rd July 2010'],
+			['http://www.thesun.co.uk/sol/homepage/features/3063808/Photos-show-sporting-triumph-pics-pinned-on-recent-snaps.html', '"If you\'re looking for double ... you came to the right place"', 'The Sun, 22nd July 2010'],
+			['http://wawwd-resources.s3.amazonaws.com/southwalesecho.png', '"History Bridges generation gap"', 'South Wales Echo, 20th July 2010'],
+			['http://wawwd-resources.s3.amazonaws.com/sundaytimes180710.jpg', '"Our Ghosts in the Machine"', 'Sunday Times, 18th July 2010'],
+			['http://www.telegraph.co.uk/technology/google/7854922/Historypin-turns-Google-Street-View-into-a-window-on-the-past.html', '"Historypin turns Google Street View into a window on the past"', 'The Telegraph, 26th June 2010'],
+			['http://www.geenstijl.nl/mt/archieven/2010/06/nostalgie_fotos_van_vroeger_in.html', '"Nostalgie! Foto\'s van vroeger in Streetview"', 'Geenstijl, 9th June 2010'],
+			['http://www.historytoday.com/blog/news-blog/charlotte-crow/historypin-patchwork-history', '"Historypin: Patchwork History"', 'History Today, 7th June 2010'],
+			['http://crave.cnet.co.uk/software/historypin-puts-the-past-on-the-map-with-google-street-view-49305845/', '"Historypin puts the past on the map with Google Street View"', 'Cnet, 4th June 2010'],
+			['http://googlemapsmania.blogspot.com/2010/06/largest-archive-of-photos-on-google.html#links', '"Largest Archive of Photos on Google Maps"', 'Google Maps Mania, 3rd June 2010'],
+			['http://www.dailymail.co.uk/sciencetech/article-1283635/HistoryPin-website-lets-pin-historic-photos-Google-Streetview.html', '"A snapshot through time: The website that lets you \'pin\' historic photos onto Street View"', 'The Daily Mail, 3rd June 2010'],
+			['http://rivertonhistory.com/2011/01/whoa-this-is-heavy-2/', '"Whoa, this is heavy!"', 'Historical Society of Riverton, 30th January 2010'],
+			['http://wearewhatwedo.org/press-cuttings/give-us-your-jubilee-memories-says-google/', 'Give us your jubilee memories, says Google', 'The Telegraph, 12th March 2012'],
+		]
+		
+		paragraphs = self.es('#site-content .right p')
+		for n in range(len(links)):
+			if n == 36: continue
+			
+			i = links[n]
+			# print n, i[0]
+			self.assertEqual(paragraphs[n].text, i[1] + '\n' + i[2])
+			self.assertEqual(paragraphs[n].e('a').get_attribute('href'), i[0])
+		
 		
 		sel = '.sidebar .inner:nth-child(1) '
 		self.assertEqual(self.e(sel + 'h3').text, 'Contact Details')
