@@ -72,148 +72,150 @@ class Pages(HPTestCase):
 			{
 				'heading': 'General',
 				'items': [
-					['#title1', 'What is Historypin?'],
-					['#title2', 'Why was Historypin created?'],
-					['#title3', 'What are Historypin\'s long-term aims?'],
-					['#title4', 'Who is behind Historypin?'],
-					['#title5', 'What has happened during the beta-phase of Historypin?'],
+					['title1', 'What is Historypin?'],
+					['title2', 'Why was Historypin created?'],
+					['title3', 'What are Historypin\'s long-term aims?'],
+					['title4', 'Who is behind Historypin?'],
+					['title5', 'What has happened during the beta-phase of Historypin?'],
 				],
 			},
 			{
 				'heading': 'Using the site',
 				'items': [
-					['#title6', 'What kind of content can I add to Historypin?'],
-					['#title7', 'How do I pin photographic images?'],
-					['#title8', 'How do I pin video content?'],
-					['#title9', 'How do I pin audio content?'],
-					['#title10', 'How do I add stories and recollections?'],
-					['#title116', 'How do I edit a piece of content that I have pinned?'],
-					['#title117', 'How do I delete a piece of content that I have pinned?'],
-					['#title11', 'Why can\'t I pin stories to the map on their own?'],
-					['#title12', 'What about other types of materials, like letters, diaries or records?'],
-					['#title13', 'How can I pin very large amounts of content?'],
-					['#title14', 'If there is content already there, can I pin more on that spot?'],
-					['#title15', 'Can content still be pinned if I don\'t know the date?'],
-					['#title16', 'Can I link content I\'ve pinned to more info on my website or blog?'],
-					['#title17', 'How do I find the content I\'ve uploaded when I come back to the site?'],
-					['#title18', 'Why does your time filter only go back to 1840?'],
-					['#title19', 'What is Street View and why doesn\'t it exist all over the world?'],
-					['#title20', 'What are Tours?'],
-					['#title21', 'What are Collections?'],
-					['#title22', 'I\'ve found content that is inaccurately pinned, what should I do?'],
-					['#title23', 'I\'ve found inappropriate content, what should I do?'],
-					['#title24', 'I\'ve found content that infringes my copyright, what should I do?'],
-					['#title25', 'How are you moderating what goes on the site?'],
-					['#title112', 'Historypin is not functioning or displaying as I would expect, what should I do?'],
-					['#title113', 'I am having trouble uploading photos, what should I do?'],
-					['#title114', 'How do I change my Username?'],
+					['title6', 'What kind of content can I add to Historypin?'],
+					['title7', 'How do I pin photographic images?'],
+					['title8', 'How do I pin video content?'],
+					['title9', 'How do I pin audio content?'],
+					['title10', 'How do I add stories and recollections?'],
+					['title116', 'How do I edit a piece of content that I have pinned?'],
+					['title117', 'How do I delete a piece of content that I have pinned?'],
+					['title11', 'Why can\'t I pin stories to the map on their own?'],
+					['title12', 'What about other types of materials, like letters, diaries or records?'],
+					['title13', 'How can I pin very large amounts of content?'],
+					['title14', 'If there is content already there, can I pin more on that spot?'],
+					['title15', 'Can content still be pinned if I don\'t know the date?'],
+					['title16', 'Can I link content I\'ve pinned to more info on my website or blog?'],
+					['title17', 'How do I find the content I\'ve uploaded when I come back to the site?'],
+					['title18', 'Why does your time filter only go back to 1840?'],
+					['title19', 'What is Street View and why doesn\'t it exist all over the world?'],
+					['title20', 'What are Tours?'],
+					['title21', 'What are Collections?'],
+					['title22', 'I\'ve found content that is inaccurately pinned, what should I do?'],
+					['title23', 'I\'ve found inappropriate content, what should I do?'],
+					['title24', 'I\'ve found content that infringes my copyright, what should I do?'],
+					['title25', 'How are you moderating what goes on the site?'],
+					['title112', 'Historypin is not functioning or displaying as I would expect, what should I do?'],
+					['title113', 'I am having trouble uploading photos, what should I do?'],
+					['title114', 'How do I change my Username?'],
 				],
 			},
 			{
 				'heading': 'Bulk Uploader',
 				'items': [
-					['#title99', 'How can I find out more about doing a bulk upload?'],
-					['#title100', 'Do I have to pay to use the bulk uploader?'],
-					['#title101', 'Is there a limited number of bulk uploads that I can do?'],
-					['#title102', 'Is there a limit to how many images I can upload in a single bulk upload?'],
-					['#title103', 'Can I edit my data once I have completed a bulk upload?'],
-					['#title104', 'Can I make multiple edits to my content?'],
-					['#title105', 'Can I make global changes to the data attached to my photos?'],
-					['#title106', 'Can I delete a bulk upload?'],
-					['#title107', 'Do I need to complete all the fields for my bulk upload to work?'],
-					['#title108', 'Why haven\'t the fields on my bulk upload populated with meta-data?'],
-					['#title109', 'Why am I getting \'Bad Request\'?'],
-					['#title110', 'Why am I getting \'Internal server error\'?'],
-					['#title111', 'I used the Bulk Uploader, but the content on my Channel is \'unpinned\''],
+					['title99', 'How can I find out more about doing a bulk upload?'],
+					['title100', 'Do I have to pay to use the bulk uploader?'],
+					['title101', 'Is there a limited number of bulk uploads that I can do?'],
+					['title102', 'Is there a limit to how many images I can upload in a single bulk upload?'],
+					['title103', 'Can I edit my data once I have completed a bulk upload?'],
+					['title104', 'Can I make multiple edits to my content?'],
+					['title105', 'Can I make global changes to the data attached to my photos?'],
+					['title106', 'Can I delete a bulk upload?'],
+					['title107', 'Do I need to complete all the fields for my bulk upload to work?'],
+					['title108', 'Why haven\'t the fields on my bulk upload populated with meta-data?'],
+					['title109', 'Why am I getting \'Bad Request\'?'],
+					['title110', 'Why am I getting \'Internal server error\'?'],
+					['title111', 'I used the Bulk Uploader, but the content on my Channel is \'unpinned\''],
 				],
 			},
 			{
 				'heading': 'Getting involved',
 				'items': [
-					['#title27', 'How can I get more involved personally?'],
-					['#title28', 'Can I volunteer with Historypin?'],
-					['#title29', 'How can I get my local school more involved?'],
-					['#title31', 'How can I use Historypin in my local area?'],
-					['#title32', 'Do you give talks or run events?'],
-					['#title33', 'Do you offer any training?'],
+					['title27', 'How can I get more involved personally?'],
+					['title28', 'Can I volunteer with Historypin?'],
+					['title29', 'How can I get my local school more involved?'],
+					['title31', 'How can I use Historypin in my local area?'],
+					['title32', 'Do you give talks or run events?'],
+					['title33', 'Do you offer any training?'],
 				],
 			},
 			{
 				'heading': 'Partners',
 				'items': [
-					['#title34', 'Who are Historypin\'s existing partners?'],
-					['#title35', 'What does your partnership with Google involve?'],
-					['#title36', 'How can library, archive or museums get involved?'],
-					['#title37', 'How can schools get involved?'],
-					['#title38', 'How can universities and academic institutions get involved?'],
-					['#title39', 'How can community organisations, historical associations or photography societies get more involved?'],
-					['#title40', 'I\'d like to talk about partnering with Historypin, who can I contact?'],
+					['title34', 'Who are Historypin\'s existing partners?'],
+					['title35', 'What does your partnership with Google involve?'],
+					['title36', 'How can library, archive or museums get involved?'],
+					['title37', 'How can schools get involved?'],
+					['title38', 'How can universities and academic institutions get involved?'],
+					['title39', 'How can community organisations, historical associations or photography societies get more involved?'],
+					['title40', 'I\'d like to talk about partnering with Historypin, who can I contact?'],
 				],
 			},
 			{
 				'heading': 'Data',
 				'items': [
-					['#title41', 'Where is the content stored?'],
-					['#title42', 'Is there any limit to the amount of content that can go on the site?'],
-					['#title43', 'How can I help improve data on Historypin?'],
-					['#title44', 'Is data shared with other parties?'],
+					['title41', 'Where is the content stored?'],
+					['title42', 'Is there any limit to the amount of content that can go on the site?'],
+					['title43', 'How can I help improve data on Historypin?'],
+					['title44', 'Is data shared with other parties?'],
 				],
 			},
 			{
 				'heading': 'Integration with other platforms',
 				'items': [
-					['#title45', 'Can I embed Historypin tools on my site?'],
-					['#title46', 'Does Historypin have an API?'],
-					['#title47', 'Can I get statistics on my content?'],
+					['title45', 'Can I embed Historypin tools on my site?'],
+					['title46', 'Does Historypin have an API?'],
+					['title47', 'Can I get statistics on my content?'],
 				],
 			},
 			{
 				'heading': 'Copyright and use of content',
 				'items': [
-					['#title49', 'How will the content be protected?'],
-					['#title50', 'How will my content be credited on the site?'],
-					['#title51', 'What can other users do with my content?'],
-					['#title52', 'What can Historypin do with my content?'],
+					['title49', 'How will the content be protected?'],
+					['title50', 'How will my content be credited on the site?'],
+					['title51', 'What can other users do with my content?'],
+					['title52', 'What can Historypin do with my content?'],
 				],
 			},
 			{
 				'heading': 'Privacy',
 				'items': [
-					['#title53', 'Do you share my user information with anyone?'],
+					['title53', 'Do you share my user information with anyone?'],
 				],
 			},
 			{
 				'heading': 'App',
 				'items': [
-					['#title54', 'What can the Historypin app do?'],
-					['#title55', 'How do I get the Historypin app?'],
-					['#title115', 'Why does the Historypin app require my Google Account details?'],
+					['title54', 'What can the Historypin app do?'],
+					['title55', 'How do I get the Historypin app?'],
+					['title115', 'Why does the Historypin app require my Google Account details?'],
 				],
 			},
 			{
 				'heading': 'Funding',
 				'items': [
-					['#title56', 'How is Historypin funded?'],
-					['#title57', 'What happens to the profits from Historypin?'],
-					['#title58', 'How can I donate to Historypin?'],
+					['title56', 'How is Historypin funded?'],
+					['title57', 'What happens to the profits from Historypin?'],
+					['title58', 'How can I donate to Historypin?'],
 				],
 			},
 			{
 				'heading': 'Future Plans',
 				'items': [
-					['#title59', 'What\'s next for Historypin?'],
-					['#title60', 'What\'s next for We Are What We Do?'],
+					['title59', 'What\'s next for Historypin?'],
+					['title60', 'What\'s next for We Are What We Do?'],
 				],
 			},
 			{
 				'heading': 'Contact',
 				'items': [
-					['#title61','I\'m a journalist and want to write a fabulously complimentary article about you. What do I do?'],
-					['#title62','I\'ve got another question, what should I do?'],
+					['title61','I\'m a journalist and want to write a fabulously complimentary article about you. What do I do?'],
+					['title62','I\'ve got another question, what should I do?'],
 				],
 			},
 		]
 		
+		toc				= self.es('.toc > li')
+		cnt				= self.es('.faq-group')
 		questions		= self.es('.toc li strong')
 		questions_h		= self.es('.faq-group h2')
 		
@@ -223,23 +225,39 @@ class Pages(HPTestCase):
 			self.assertEqual(questions[n].text, i['heading'])
 			self.assertEqual(questions_h[n].text, i['heading'])
 			
-			answers		= self.es('.toc li:nth-of-type(%d) ul li a' % (n+1))
-			answers_h	= self.es('.faq-group:nth-of-type(%d) h3' % (n+1))
+			answers		= toc[n].es('li a')
+			answers_h	= cnt[n].es('h3')
 			
 			for k in range(len(i['items'])):
 				j = i['items'][k]
 				
-				self.assertEqual(answers[k].get_attribute('href'), URL_BASE + '/faq/' + j[0])
+				self.assertEqual(answers[k].get_attribute('href'), URL_BASE + '/faq/#' + j[0])
 				self.assertEqual(answers[k].text, j[1])
 				
+				self.assertEqual(answers_h[k].get_attribute('id'), j[0])
 				self.assertEqual(answers_h[k].text, j[1])
+		
+	# 	for n in range(len(faq)):
+	# 		i = faq[n]
+			
+	# 		self.assertEqual(self.e('.toc li:nth-of-type(%d) strong' % (n+1)).text, i['heading'])
+	# 		self.assertEqual(self.e('.faq-group:nth-of-type(%d) h2' % (n+1)).text, i['heading'])
+			
+	# 		for k in range(len(i['items'])):
+	# 			j = i['items'][k]
+				
+	# 			anchor = self.e('.toc li:nth-of-type(%d) ul li:nth-of-type(%d) a' % (n+1, k+1))
+	# 			self.assertEqual(anchor.get_attribute('href'), URL_BASE + '/faq/' + j[0])
+	# 			self.assertEqual(anchor.text, j[1])
+				
+	# 			self.assertEqual(self.e('.faq-group:nth-of-type(%d) h3:nth-of-type(%d)' % (n+1, k+1)).text, j[1])
 	
 	@url('/presscentre/')
 	def test_press_center(self):
 		
 		self.assertTitle('Historypin | Press Centre')
 		self.assertEqual(self.e('h1.title').text, 'Press Centre')
-
+		
 		#TODO
 		# LATER asert all p
 		# - texts
@@ -251,38 +269,38 @@ class Pages(HPTestCase):
 		self.assertEqual(self.e(sel + 'p:nth-child(2) a').get_attribute('href'), 'mailto:rebekkah.abraham@wearewhatwedo.org')
 		self.assertEqual(self.e(sel + 'p:nth-child(3)').text, 'US\nJon Voss\njon.voss@wearewhatwedo.org\n+1 415 935 4701')
 		self.assertEqual(self.e(sel + 'p:nth-child(3) a').get_attribute('href'), 'mailto:jon.voss@wearewhatwedo.org')
-
+		
 		sel = '.sidebar .inner:nth-child(2) '
 		self.assertEqual(self.e(sel + 'h3').text, 'Awards')
 		self.assertEqual(self.e(sel + 'a:nth-child(1)').get_attribute('href'), 'http://www.webbyawards.com/webbys/current.php?season=15#webby_entry_charitable_organizations_non-profit')
 		self.assertEqual(self.e(sel + 'img:nth-child(1)').get_attribute('src'), URL_BASE + '/resources/images/presscenter/webby_pink.png')
 		self.assertEqual(self.e(sel + 'p:nth-child(3) a').get_attribute('href'), 'http://www.webbyawards.com/webbys/current.php?season=15#webby_entry_charitable_organizations_non-profit')
 		self.assertEqual(self.e(sel + 'p:nth-child(3)').text, 'Webby for Best Charitable Organisation/Not-for-Profit Website')
-
+		
 		sel = '.sidebar .inner:nth-child(3) '	
 		self.assertEqual(self.e(sel + 'a:nth-child(1)').get_attribute('href'), 'http://thetim.es/y1vL3P')
 		self.assertEqual(self.e(sel + 'img:nth-child(1)').get_attribute('src'), URL_BASE + '/resources/images/presscenter/sundaytimes500.png')
 		self.assertEqual(self.e(sel + 'p:nth-child(2) a').get_attribute('href'), 'http://thetim.es/y1vL3P')
 		self.assertEqual(self.e(sel + 'p:nth-child(2)').text, 'Sunday Times The App List 2012.')	
-
+		
 		sel = '.sidebar .inner:nth-child(4) '	
 		self.assertEqual(self.e(sel + 'a:nth-child(1)').get_attribute('href'), 'http://lovieawards.eu/winners/')
 		self.assertEqual(self.e(sel + 'img:nth-child(1)').get_attribute('src'), URL_BASE + '/resources/images/presscenter/lovie_pink.png')
 		self.assertEqual(self.e(sel + 'p:nth-child(2) a').get_attribute('href'), 'http://lovieawards.eu/winners/')
 		self.assertEqual(self.e(sel + 'p:nth-child(2)').text, 'Lovie Award for Best Education & Reference Website')
-
+		
 		sel = '.sidebar .inner:nth-child(5) '	
 		self.assertEqual(self.e(sel + 'a:nth-child(1)').get_attribute('href'), 'http://www.ala.org/aasl/guidelinesandstandards/bestlist/bestwebsitestop25')
 		self.assertEqual(self.e(sel + 'img:nth-child(1)').get_attribute('src'), URL_BASE + '/resources/images/presscenter/aasl.jpg')
 		self.assertEqual(self.e(sel + 'p:nth-child(2) a').get_attribute('href'), 'http://www.ala.org/aasl/guidelinesandstandards/bestlist/bestwebsitestop25')
 		self.assertEqual(self.e(sel + 'p:nth-child(2)').text, 'American Association of School Librarians 2012 Best Website for Teaching and Learning')
-
+		
 		sel = '.sidebar .inner:nth-child(6) '	
 		self.assertEqual(self.e(sel + 'a:nth-child(1)').get_attribute('href'), 'http://www.familytreemagazine.com/article/best-old-map-and-photo-websites-for-genealogy-2012')
 		self.assertEqual(self.e(sel + 'img:nth-child(1)').get_attribute('src'), URL_BASE + '/resources/images/presscenter/101-best-genealogy-websites-2012.jpg')
 		self.assertEqual(self.e(sel + 'p:nth-child(2) a').get_attribute('href'), 'http://www.familytreemagazine.com/article/best-old-map-and-photo-websites-for-genealogy-2012')
 		self.assertEqual(self.e(sel + 'p:nth-child(2)').text, 'Family Tree Magazine: 101 best family history websites')	
-	
+		
 		sel = '.sidebar .inner:nth-child(7) '
 		self.assertEqual(self.e(sel + 'h3').text, 'Press Pack')
 		self.assertEqual(self.e(sel + 'a').get_attribute('href'), 'http://wawwd-resources.s3.amazonaws.com/presspacks/Historypin.zip')
@@ -295,7 +313,7 @@ class Pages(HPTestCase):
 		self.assertTitle('Historypin | Privacy Policy')
 		self.assertEqual(self.e('#site-content h1').text, 'Privacy Policy')
 
-		headings = [
+		items = [
 			'1. What do we mean by "Your Data"?',
 			'2. When do We collect Your data?',
 			'3. How does We Are What We Do use Your Data?',
@@ -308,8 +326,9 @@ class Pages(HPTestCase):
 			'10. Contact Us',
 		]
 		
-		for n in range(len(headings)):
-			self.assertEqual(self.e('#site-content .inner h2:nth-of-type(%d)' % (n+1)).text, headings[n])
+		headings = self.es('#site-content .inner h2')
+		for n in range(len(items)):
+			self.assertEqual(headings[n].text, items[n])
 	
 	@url('/Friends-of-Historypin/')
 	def test_support(self):
@@ -345,14 +364,48 @@ class Pages(HPTestCase):
 	def test_toc(self):
 		self.assertTitle('Historypin | Terms and Conditions')
 		self.assertEqual(self.e('.rte h1').text, 'Historypin Terms and Conditions')
-		# TODO
-		# Terms and Conditions links need to be tested	
+		
+		links = [
+			['000', 'Intro'],
+			['010', '1. Accessing our Services'],
+			['020', '2. Reliance on Information'],
+			['030', '3. Acceptable Use'],
+			['040', '4. Linking to Our Website'],
+			['050', '5. Links from Our Website'],
+			['060', '6. Charges'],
+			['070', '7. Registered Users use of Historypin Services'],
+			['080', '8. Age restrictions, parental consent and use by schools'],
+			['090', '9. Password, Profile and Security'],
+			['100', '10. Your promises to us'],
+			['110', '11. Termination and Cancellation'],
+			['120', '12. Use of Content'],
+			['130', '13. Limitation on our Liability'],
+			['140', '14. Complaints and Feedback'],
+			['150', '15. Security and Privacy'],
+			['160', '16. Changes to these Terms and Conditions'],
+			['170', '17. Severance'],
+			['180', '18. Exclusion of Third Party Rights'],
+			['190', '19. Entire Agreement'],
+			['200', '20. Law'],
+			['210', '21. Contact Us'],
+		]
+		
+		anchors		= self.es('.page li a')
+		headings	= self.es('.page h2')
+		for n in range(len(links)):
+			i = links[n]
+			
+			self.assertEqual(anchors[n].text, i[1])
+			self.assertEqual(anchors[n].get_attribute('href'), URL_BASE + '/terms-and-conditions/#' + i[0])
+			
+			self.assertEqual(headings[n].get_attribute('id'), i[0])
+			self.assertEqual(headings[n].text, i[1])
 	
 	@url('/team/')
 	def test_team(self):
 		self.assertTitle('Historypin | Team')
 		self.assertEqual(self.e('#site-content h1').text, 'The Team')
-
+		
 		# LATER
 		# - all list items
 		# - 2 images
