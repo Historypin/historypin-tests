@@ -216,15 +216,11 @@ class Community(HPTestCase):
 		self.assertEqual(self.e('.section p:nth-of-type(6) a').get_attribute('href'),'http://historypin.com/sfmta') #check this link
 		self.assertEqual(self.e('.section p:nth-of-type(6) a').text, 'SFMTA collection on Historypin')
 		
-	@unittest.skip("TODO")
 	@url('/community/localprojects-case-study-lighthouse')
 	def test_projects_studies_lighthouse(self):
-		# TODO
-		# assert title
-		# assert heading
-		# assert image
-		# assert channel link
-		pass
+		self.assertTitle('Historypin | Community | Local Projects | Lighthouse, Brighton, UK')
+		self.assertEqual(self.e('h1.title').text, 'Lighthouse, Brighton, UK')
+		self.assertEqual(self.e('.section p img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4b_main.jpg')
 
 	@unittest.skip("TODO")
 	@url('/community/topics-to-explore')
