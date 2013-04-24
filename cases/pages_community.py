@@ -132,30 +132,27 @@ class Community(HPTestCase):
 				
 				k += 1
 
-	@unittest.skip("TODO")
 	@url('/community/lams')
 	def test_home_lams(self):
+		self.assertTitle('Historypin | Community | Libraries, Archives & Museums')
+		self.assertEqual(self.e('.right h1').text, 'Libraries, Archives and Museums homepage')
+		self.assertEqual(self.e('.right img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/lams_main.jpg')
+		
 		# TODO
-		# assert title
-		# assert heading
-		# assert image
 		# get started heading
 		# link and text(Getting started guide)
 		# institutions involved heading
 		# - link and text
 		# bulk upload link and text
-		pass
 
-	@unittest.skip("TODO")
-	@url('/')
+	@url('/community/lams-involved')
 	def test_lams_involved(self):
+		self.assertTitle('Historypin | Community | Schools | Historypin in the Classroom')
+		self.assertEqual(self.e('.right h1').text, 'Institutions involved')
+		self.assertEqual(self.e('.right h2').text, 'What Institutions are saying about Historypin')
+		
 		# TODO
-		# assert title
-		# assert heading
-		# assert one image
-		# assert one link
-		# What institutions say about HP heading 
-		pass
+		# assert all images under the comments
 
 	@unittest.skip("TODO")
 	@url('/community/howtos')
@@ -191,15 +188,13 @@ class Community(HPTestCase):
 		# - assert images
 		pass
 
-	@unittest.skip("TODO")
 	@url('/community/localprojects-case-study-magicme')
 	def test_projects_studies_magicme(self):
-		# TODO
-		# assert title
-		# assert heading
-		# assert images
-		# assert channel link
-		pass
+		self.assertTitle('Historypin | Community | Local Projects | Magic Me, Tower Hamlets, London, UK')
+		self.assertEqual(self.e('h1.title').text, 'Magic Me, Tower Hamlets, London, UK')
+		self.assertEqual(self.e('.section p:nth-of-type(1) img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4c_main.jpg')
+		self.assertEqual(self.e('.section p:nth-of-type(9) img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4c_sec.jpg')
+		self.assertEqual(self.e('.section p:nth-of-type(4) a').get_attribute('href'), URL_BASE + '/channels/view/6932562/name/magicme/')
 
 	@unittest.skip("TODO")
 	@url('/community/localprojects-case-study-reading')
