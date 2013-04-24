@@ -94,26 +94,43 @@ class Community(HPTestCase):
 		
 		headings = self.es('.section h3')
 		paragraphs = self.es('.section p a')
+		k = 0
 		for n in (range(len(questions))):
 			i = questions[n]
 			self.assertEqual(headings[n].text, i[0])
 			
 			if i[1] and i[2]:
-				self.assertEqual(paragraphs[n].get_attribute('href'), i[1])
-				self.assertEqual(paragraphs[n].text, i[2])
+				self.assertEqual(paragraphs[k].get_attribute('href'), i[1])
+				self.assertEqual(paragraphs[k].text, i[2])
+				
+				k += 1
 		
 	@url('/community/localprojects')
 	def test_home_projects(self):
 		self.assertTitle('Historypin | Community | Local Projects')
-		self.assertEqual(self.e('h1.title').text, 'Schools')
+		self.assertEqual(self.e('h1.title').text, 'Local Projects')
+		self.assertEqual(self.e('.section img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/localprojects_main.jpg')
 		
-		# TODO
-		# assert title
-		# assert heading
-		# assert image
-		# headings
-		# links and text
-		pass
+		questions = [
+			['Why use Historypin in local projects?', '', ''],
+			['How can I use it?', URL_BASE + '/community/howtos', 'Have a look at our How to Guides for more help'],
+			['How are other local projects using it?', URL_BASE + '/community/localprojects-case-studies', 'Have a look at our Local Projects Case Studies for some ideas'],
+			['What are the best things to look at?', URL_BASE + '/community/topics-to-explore', 'Have a look at our Topics to Explore for some ideas'],
+			['What activity ideas and resources do you have?', URL_BASE + '/community/localprojects-resources', 'See our Activites and Downloadables for Local Projects'],
+		]
+		
+		headings = self.es('.section h2')
+		paragraphs = self.es('.section p a')
+		k = 0
+		for n in (range(len(questions))):
+			i = questions[n]
+			self.assertEqual(headings[n].text, i[0])
+			
+			if i[1] and i[2]:
+				self.assertEqual(paragraphs[k].get_attribute('href'), i[1])
+				self.assertEqual(paragraphs[k].text, i[2])
+				
+				k += 1
 
 	@unittest.skip("TODO")
 	@url('/community/lams')
