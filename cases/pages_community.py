@@ -196,7 +196,6 @@ class Community(HPTestCase):
 		self.assertEqual(self.e('.section p:nth-of-type(9) img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4c_sec.jpg')
 		self.assertEqual(self.e('.section p:nth-of-type(4) a').get_attribute('href'), URL_BASE + '/channels/view/6932562/name/magicme/')
 
-	@unittest.skip("TODO")
 	@url('/community/localprojects-case-study-reading')
 	def test_projects_studies_reading(self):
 		self.assertTitle('Historypin | Community | Local Projects | Reading, Berkshire, UK')
