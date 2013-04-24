@@ -299,9 +299,7 @@ class Pages(HPTestCase):
 			['http://www.komando.com/coolsites/index.aspx?id=11071', '"Map your History"', 'The Kim Komando Show, 17th July 2011'],
 			['http://www.washingtonpost.com/blogs/the-buzz/post/local-history-buffs-have-a-new-toy/2011/07/13/gIQAbSUnCI_blog.htm', '"Local history buffs have a new toy"', 'Washington Post, 13th July 2011'],
 			['http://www.youtube.com/watch?v=RuxZp22kDu4', '"C5N - Tecnologia - History, pin viaje al pasad"', 'Canal 5 Noticias (C5N), 13th July 2011'],
-			
-			# TODO fix this and remove the skip in the cycle
-			['http://habrahabr.ru/blogs/services/124038/', u'"Сервис Historypin откроет окно в прошлое"'.encode('utf-8'), 'Хабрахабр, 13th July 2011'],
+			['http://habrahabr.ru/blogs/services/124038/', u'"Сервис Historypin откроет окно в прошлое"', u'Хабрахабр, 13th July 2011'],
 			['http://ht.ly/5Fsov', '"Blending Old and New Tech to Make History Come to Life"', 'The Chronicle of Philanthopy, 12th July 2011'],
 			['http://www.slate.com/blogs/browbeat/2011/07/12/historypin_a_hot_web_time_machine.html', '"Historypin: A Hot Web Time Machine"', 'Slate, 12th July 2011'],
 			['http://news.yahoo.com/historypin-launches-shows-world-163201183.html', '"Historypin Launches, Shows Your World As It Was"', 'Yahoo! News, 12th July 2011'],
@@ -333,10 +331,7 @@ class Pages(HPTestCase):
 		
 		paragraphs = self.es('#site-content .right p')
 		for n in range(len(links)):
-			if n == 36: continue
-			
 			i = links[n]
-			# print n, i[0]
 			self.assertEqual(paragraphs[n].text, i[1] + '\n' + i[2])
 			self.assertEqual(paragraphs[n].e('a').get_attribute('href'), i[0])
 		
