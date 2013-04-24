@@ -238,21 +238,6 @@ class Pages(HPTestCase):
 				
 				self.assertEqual(answers_h[k].get_attribute('id'), j[0])
 				self.assertEqual(answers_h[k].text, j[1])
-		
-	# 	for n in range(len(faq)):
-	# 		i = faq[n]
-			
-	# 		self.assertEqual(self.e('.toc li:nth-of-type(%d) strong' % (n+1)).text, i['heading'])
-	# 		self.assertEqual(self.e('.faq-group:nth-of-type(%d) h2' % (n+1)).text, i['heading'])
-			
-	# 		for k in range(len(i['items'])):
-	# 			j = i['items'][k]
-				
-	# 			anchor = self.e('.toc li:nth-of-type(%d) ul li:nth-of-type(%d) a' % (n+1, k+1))
-	# 			self.assertEqual(anchor.get_attribute('href'), URL_BASE + '/faq/' + j[0])
-	# 			self.assertEqual(anchor.text, j[1])
-				
-	# 			self.assertEqual(self.e('.faq-group:nth-of-type(%d) h3:nth-of-type(%d)' % (n+1, k+1)).text, j[1])
 	
 	@url('/presscentre/')
 	def test_press_center(self):
