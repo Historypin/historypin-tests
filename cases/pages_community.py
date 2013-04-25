@@ -280,17 +280,14 @@ class Community(HPTestCase):
 		self.assertTitle('Historypin | Community | Schools | Cromer, Norfolk, UK')
 		self.assertEqual(self.e('h1.title').text, 'Cromer, Norfolk, UK')
 		self.assertEqual(self.e('.section p:nth-of-type(1) img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6e_main.jpg')
-		
-	@unittest.skip("TODO")
+
 	@url('/community/schools-nelson/')
 	def test_schools_studies_nelson(self):
-		# TODO
-		# assert title
-		# assert heading
-		# assert images
-		# assert photo link and text
-		# assert channel link and text
-		pass
+		self.assertTitle('Historypin | Community | Schools | Nelson Rural School, New Brunswick, Canada')
+		self.assertEqual(self.e('h1.title').text, 'Nelson Rural School, New Brunswick, Canada')
+		self.assertEqual(self.e('.section img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6c_main.jpg')
+		self.assertEqual(self.e('.section p:nth-of-type(8) a').get_attribute('href'), URL_BASE + '/channels/view/8817007/name/nelsonrural7k/')
+		self.assertEqual(self.e('.section p:nth-of-type(8) a').text, u'Nelson School’s Historypin Channel')
 		
 	@unittest.skip("TODO")
 	@url('/community/schools-newport/')
