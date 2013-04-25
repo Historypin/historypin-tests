@@ -264,19 +264,17 @@ class Community(HPTestCase):
 		self.assertEqual(self.e('h2:nth-of-type(1)').text, 'Amy, Year 9')
 		self.assertEqual(self.e('.section p:nth-of-type(10) img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6b_fav1.jpg')
 		
-	@unittest.skip("TODO")
 	@url('/community/schools-billericay/')
 	def test_schools_studies_bill(self):
-		# TODO
-		# assert title
-		# assert heading
-		# assert images
-		# assert blog link
-		# assert video made by..heading
-		# assert feature on radio essex heading
-		# assert image
-		pass
-		
+		self.assertTitle('Historypin | Community | Schools | Billericay School, Essex, UK')
+		self.assertEqual(self.e('h1.title').text, 'Billericay School, Essex, UK')
+		self.assertEqual(self.e('.section p:nth-of-type(1) img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6d_main.jpg')
+		self.assertEqual(self.e('.section p:nth-of-type(12) a').get_attribute('href'),'http://billericayschool.net/speakup/2011/06/pinning-down-history/')
+		self.assertEqual(self.e('.section p:nth-of-type(12) a').text,'Read more about the project on their blog.')
+		self.assertEqual(self.e('h3:nth-of-type(1)').text, 'Video made by Billericay School for the day')
+		self.assertEqual(self.e('h3:nth-of-type(2)').text, 'Feature on Radio Essex about the Billericay Historypin project')
+		self.assertEqual(self.e('.section p:nth-of-type(14) img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6d_sec.jpg')
+	
 	@unittest.skip("TODO")
 	@url('/community/schools-cromer/')
 	def test_schools_studies_cromer(self):
