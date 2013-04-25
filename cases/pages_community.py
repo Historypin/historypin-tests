@@ -274,7 +274,7 @@ class Community(HPTestCase):
 		self.assertEqual(self.e('h3:nth-of-type(1)').text, 'Video made by Billericay School for the day')
 		self.assertEqual(self.e('h3:nth-of-type(2)').text, 'Feature on Radio Essex about the Billericay Historypin project')
 		self.assertEqual(self.e('.section p:nth-of-type(14) img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6d_sec.jpg')
-	
+	 
 	@unittest.skip("TODO")
 	@url('/community/schools-cromer/')
 	def test_schools_studies_cromer(self):
