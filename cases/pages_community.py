@@ -256,16 +256,13 @@ class Community(HPTestCase):
 		#check sidebar
 		pass
 		
-	@unittest.skip("TODO")
 	@url('/community/schools-eic/')
 	def test_schools_studies_eic(self):
-		# TODO
-		# assert title
-		# assert heading
-		# assert images
-		# assert channel link
-		# assert images
-		pass
+		self.assertTitle('Historypin | Community | Schools | English International College, Marbella, Spain')
+		self.assertEqual(self.e('h1.title').text, 'English International College, Marbella, Spain')
+		self.assertEqual(self.e('.section p img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6b_main.jpg')
+		self.assertEqual(self.e('h2:nth-of-type(1)').text, 'Amy, Year 9')
+		self.assertEqual(self.e('.section p:nth-of-type(10) img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6b_fav1.jpg')
 		
 	@unittest.skip("TODO")
 	@url('/community/schools-billericay/')
