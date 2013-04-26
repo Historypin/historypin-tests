@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from base import *
-
+import logging
 class Community(HPTestCase):
 	@unittest.skip("TODO")
 	@url('/community/')
@@ -212,7 +212,6 @@ class Community(HPTestCase):
 				self.assertEqual(links[k].get_attribute('href'), link[0])
 				self.assertEqual(links[k].text, link[1])
 	
-	@unittest.skip("TODO")
 	@url('/community/localprojects-resources')
 	def test_projects_resources(self):
 		self.assertTitle('Historypin | Community | Local Projects | Resources')
@@ -224,60 +223,48 @@ class Community(HPTestCase):
 					'heading': 'Activity Sheets',
 					'items': [
 						['Activity Sheet 1: Recording the story behind a photo', 'http://wawwd-resources.s3.amazonaws.com/Worksheet_story%20collections.pdf', 'Blank template for recording info gathered in a interview or session'],
-						['Activity Sheet 2: Recording the story behind a photo', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Activity_Sheet_2_Recording_the_story_behind_a_photo.pdf', 'Worksheet with a series of questions guiding you through interview or sessio'],
+						['Activity Sheet 2: Recording the story behind a photo', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Activity_Sheet_2_Recording_the_story_behind_a_photo.pdf', 'Worksheet with a series of questions guiding you through interview or session'],
 						['Activity Sheet 3: Exploring Historypin', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Activity_Sheet_3_Exploring_Historypin.pdf', 'Worksheet with series of activities of things to find and do on Historypin'],
 					],
 				},
 				{
 					'heading': 'Tip Sheets',
 					'items': [
-						['Tip Sheet 1: Taking a Photo of a Photo​', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_1_Taking_a_Photo_of_a_Photo.pdf', 'All you need to know about taking the perfect photo of a photo - the easy way to digitise old photographs'],
-						['Tip Sheet 2: Ideas for local projects​', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_2_Ideas_for_local_projects.pdf', 'Ideas and examples of the types of local projects you can run (both online and offline events)'],
-						['Tip Sheet 3: Tips on Planning your Historypin Local Project​', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_3_Tips_on_Planning_your_Historypin_Local_Project.pdf', 'Tips on how to set up and plan your local project (both online and offline events)'],
-						['Tip Sheet 4: Tips on the techie parts of running a session or event​', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_4_Tips_on_the_techie_parts_of_running_a_session_or_event.pdf', 'Practical advice if you are running online sessions'],
-						['Tip Sheet 5: Tip on Interviewing someone​', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_5_Tip_on_Interviewing_someone.pdf', 'Things to think about before and during your conversation, plus ideas for questions'],
-						['Historypin Presentation template​', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Historypin_Presentation.ppt', 'Powerpoint presentation to introduce Historypin to your school, group or organisation (includes spare slides for adding info about your session or event)'],
+						['Tip Sheet 1: Taking a Photo of a Photo', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_1_Taking_a_Photo_of_a_Photo.pdf', 'All you need to know about taking the perfect photo of a photo - the easy way to digitise old photographs'],
+						['Tip Sheet 2: Ideas for local projects', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_2_Ideas_for_local_projects.pdf', 'Ideas and examples of the types of local projects you can run (both online and offline events)'],
+						['Tip Sheet 3: Tips on Planning your Historypin Local Project', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_3_Tips_on_Planning_your_Historypin_Local_Project.pdf', 'Tips on how to set up and plan your local project (both online and offline events)'],
+						['Tip Sheet 4: Tips on the techie parts of running a session or event', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_4_Tips_on_the_techie_parts_of_running_a_session_or_event.pdf', 'Practical advice if you are running online sessions'],
+						['Tip Sheet 5: Tip on Interviewing someone', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_5_Tip_on_Interviewing_someone.pdf', 'Things to think about before and during your conversation, plus ideas for questions'],
+						['Historypin Presentation template', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Historypin_Presentation.ppt', 'Powerpoint presentation to introduce Historypin to your school, group or organisation (includes spare slides for adding info about your session or event)'],
 					],
 				},
 				{
 					'heading': 'Posters, flyers and certificates',
 					'items': [
-						['Poster advertising your event or session​', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Poster_advertising_your_event_or_session.pdf', 'With fillable inable gaps for your details'],
-						['Flyer advertising your event or session​', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Flyer_advertising_your_event_or_session.pdf', 'With fillable inable gaps for your details'],
-						['Invite announcing your event​', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Invite_announcing_your_event.pdf', 'With fillable inable gaps for your details'],
-						['Certificate for participants​', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Certificate_for_participants.pdf', 'For awarding to people for their work discovering and sharing history with fillable inable gaps for your details'],
+						['Poster advertising your event or session', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Poster_advertising_your_event_or_session.pdf', 'With fillable inable gaps for your details'],
+						['Flyer advertising your event or session', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Flyer_advertising_your_event_or_session.pdf', 'With fillable inable gaps for your details'],
+						['Invite announcing your event', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Invite_announcing_your_event.pdf', 'With fillable inable gaps for your details'],
+						['Certificate for participants', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Certificate_for_participants.pdf', 'For awarding to people for their work discovering and sharing history with fillable inable gaps for your details'],
 					],
 				},
 			]
 			
-		headings 		= self.es('.inner.right h3')
-		links 			= self.es('ul li a')
-		links_text		= self.es('ul li a strong')
-		paragraphs		= self.es('ul li a')
+		headings		= self.es('.inner.right h3')
+		list_items		= self.es('.inner.right ul li')
+		links			= self.es('.inner.right ul li a')
 		
+		k = 0
 		for n in range(len(resources)):
 			i = resources[n]
 			
 			self.assertEqual(headings[n].text, i['heading'])
 			
-			
-		#	for n in range(len(topics)):
-		#	i = topics[n]
-		#	
-		#	self.assertEqual(headings[n].text, i['heading'])
-		#	
-		#	for k in range(len(i['items'])):
-		#		self.assertEqual(subheadings[k].text, i['items'][0])
-		#		self.assertEqual(links[k].get_attribute('href'), i['items'][1])
-		#		self.assertEqual(subheadings_links[k].get_attribute('href'), i['items'][1])
-		#		self.assertEqual(images[k].get_attribute('src'), i['items'][2])
-		#		self.assertEqual(paragraphs[k].text, i['items'][3])
-		# TODO
-		# Activity Sheets/Tip Sheets/Posters, flyers and certificates headings
-		# - assert all links 
-		# - assert all texts
-		# - assert all texts under the link
-		pass
+			for item in i['items']:
+				self.assertEqual(list_items[k].text, item[0] + '\n' + item[2])
+				self.assertEqual(links[k].get_attribute('href'), item[1])
+				
+				k += 1
+	
 	@unittest.skip("TODO")
 	@url('/community/localprojects-case-studies')
 	def test_projects_studies(self):
@@ -416,7 +403,7 @@ class Community(HPTestCase):
 				self.assertEqual(images[k].get_attribute('src'), URL_BASE + item[2])
 				self.assertEqual(paragraphs[k].text, item[3])
 				
-				k += 1;
+				k += 1
 	
 	@unittest.skip("TODO")
 	@url('/community/schools-case-studies/')
