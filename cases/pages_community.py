@@ -198,10 +198,12 @@ class Community(HPTestCase):
 	@unittest.skip("TODO")
 	@url('/community/localprojects-resources')
 	def test_projects_resources(self):
+		self.assertTitle('Historypin | Community | Local Projects | Resources')
+		self.assertEqual(self.e('.right h1').text, 'Activities & Downloads for Local Projects')
+		self.assertEqual(self.e('.right h2').text, 'Downloadable Resources')
+		
+		
 		# TODO
-		# assert title
-		# assert heading
-		# Downloadable Resources heading 
 		# Activity Sheets/Tip Sheets/Posters, flyers and certificates headings
 		# - assert all links 
 		# - assert all texts
@@ -281,9 +283,49 @@ class Community(HPTestCase):
 	@unittest.skip("TODO")
 	@url('/community/topics-to-explore')
 	def test_topics_to_explore(self):
+		self.assertTitle('Historypin | Community | Topics to Explore')
+		self.assertEqual(self.e('.right h1').text, 'Topics to Explore')
+		
+		topics = [
+				{
+					'heading': 'Collection',
+					'items': [
+						['', '', ''],
+						['', '', ''],
+						['', '', ''],
+						['', '', ''],
+						['', '', ''],
+						['', '', ''],
+						['', '', ''],
+					],
+				},
+				{
+					'heading': 'Tours',
+					'items': [
+						['', '', ''],
+						['', '', ''],
+						['', '', ''],
+						['', '', ''],
+						['', '', ''],
+						['', '', ''],
+					],
+				},
+				{
+					'heading': 'Photos, Videos and Audio clips',
+					'items': [
+						['', '', ''],
+						['', '', ''],
+						['', '', ''],
+						['', '', ''],
+						['', '', ''],
+						['', '', ''],
+					],
+				
+				}
+			]
+		#title text, title link, img src, p
+		
 		# TODO
-		# assert title
-		# assert heading
 		# assert Collection subheading ('s' should be added)
 		# - all links
 		# - all texts
@@ -301,10 +343,9 @@ class Community(HPTestCase):
 	@unittest.skip("TODO")
 	@url('/community/schools-case-studies/')
 	def test_schools_studies(self):
+		self.assertTitle('Historypin | Community | Schools')
+		self.assertEqual(self.e('.right h1').text, 'Schools Case Studies')
 		# TODO
-		# assert title
-		# assert heading
-		# assert text
 		# assert all subheadings
 		# assert all text
 		# assert all hrefs
