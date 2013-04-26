@@ -226,7 +226,7 @@ class Community(HPTestCase):
 		# - assert all texts
 		# - assert all texts under the link
 		pass
-	
+	@unittest.skip("TODO")
 	@url('/community/localprojects-case-studies')
 	def test_projects_studies(self):
 		self.assertTitle('Historypin | Community | Local Projects Case Studies')
@@ -240,7 +240,7 @@ class Community(HPTestCase):
 		]
 		
 		
-		cols = self.es('.grid .col'))
+		#cols = self.es('.grid .col'))
 		
 		# %d, (n+1) ?
 		#for n in (range(len(studies))):
@@ -301,7 +301,6 @@ class Community(HPTestCase):
 		self.assertEqual(self.e('h1.title').text, 'Lighthouse, Brighton, UK')
 		self.assertEqual(self.e('.section p img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4b_main.jpg')
 	
-	@unittest.skip("TODO")
 	@url('/community/topics-to-explore')
 	def test_topics_to_explore(self):
 		self.assertTitle('Historypin | Community | Topics to Explore')
@@ -309,57 +308,58 @@ class Community(HPTestCase):
 		
 		topics = [
 				{
-					'heading': 'Collection',
+					'heading': 'Collections',
 					'items': [
-						['', '', ''],
-						['', '', ''],
-						['', '', ''],
-						['', '', ''],
-						['', '', ''],
-						['', '', ''],
-						['', '', ''],
+						['The 1906 San Francisco Earthquake', URL_BASE + '/collections/view/id/6621364/title/The%201906%20San%20Francisco%20Earthqauke', '/services/thumb/phid/5947051/dim/142x100/crop/1/quality/90', 'This Collection of photos of San Francisco after the 1906 earthquake and fire gathers photos around a historical event.'],
+						['The Facial Hair Through Time Collection', URL_BASE + '/collections/view/id/3762008/title/The%20Facial%20Hair%20Through%20Time%20Collection', URL_BASE + '/services/thumb/phid/2438073/dim/142x100/crop/1/quality/90', 'This Collection of facial hair from different times and places around the world gathers photos around a particular theme.'],
+						['Fabulous Fashion', URL_BASE + '/collections/view/id/6593909/title/Fabulous%20Fashion', URL_BASE + '/services/thumb/phid/6160458/dim/142x100/crop/1/quality/90', 'This Collection illustrates change over time through photos of fashionable outfits arranged in chronological order.'],
+						['Codford Army Camps, Wiltshire, May-June 1919', URL_BASE + '/collections/view/id/8237152/title/Codford%20Army%20Camps,%20Wiltshire,%20May-June%201919', URL_BASE + '/services/thumb/phid/8230049/dim/142x100/crop/1/quality/90', 'This Collection is of family photos taken by the user’s relative who was in the army and took photos during his postings in the 1919.'],
+						['University of Florida Homecoming', URL_BASE + 'm/collections/view/id/7604020/title/University%20of%20Florida%20Homecoming', URL_BASE + '/services/thumb/phid/7447179/dim/142x100/crop/1/quality/90', 'This Collection of Homecoming celebrations at the University of Florida gathers photos of an annual event through the years.'],
+						['Sport in Reading', URL_BASE + '/collections/view/id/7763032/title/Sport', URL_BASE + '/services/thumb/phid/6926137/dim/142x100/crop/1/quality/90', 'This Collection was created by a class of 13 year old students who collected photos around the theme of sporting events in their local area.'],
 					],
 				},
 				{
 					'heading': 'Tours',
 					'items': [
-						['', '', ''],
-						['', '', ''],
-						['', '', ''],
-						['', '', ''],
-						['', '', ''],
-						['', '', ''],
+						['New York Immigration', URL_BASE + '/tours/view/id/7188013/title/New%20York%20Immigration', URL_BASE + '/services/thumb/phid/3226006/dim/142x100/crop/1/quality/90', 'This Tour explores a historical theme and illustrates 19th century immigration to the US with a snapshot of immigrant life in 19th century NYC.'],
+						['World War Two', URL_BASE + '/tours/view/id/6618250/title/World%20War%20Two', URL_BASE + '/services/thumb/phid/1019016/dim/142x100/crop/1/quality/90', 'This Tour narrates a historical event and uses photos and audio clips to highlight key events during WWII from 1939-1945.'],
+						['Tour of Hackney’s Past and Present', URL_BASE + '/tours/view/id/9353267/title/Key%20Stage%20One%20Tour%20of%20Hackney%27s%20Past%20and%20Present', URL_BASE + '/services/thumb/phid/8344085/dim/142x100/crop/1/quality/90', 'This Tour was created by a teacher and asks questions about historical photos of Hackney, London.'],
+						['Queen Elizabeth II', URL_BASE + '/tours/view/id/6605903/title/Queen%20Elizabeth%20II', URL_BASE + '/services/thumb/phid/1046016/dim/142x100/crop/1/quality/90', 'This Tour narrates the biography or a person by highlighting key events of Queen Elizabeth II’s life.'],
+						['A historical guided tour of Kew Gardens', URL_BASE + '/tours/view/id/6631649/title/A%20historical%20guided%20tour%20of%20Kew%20Gardens', URL_BASE + '/services/thumb/phid/2238024/dim/142x100/crop/1/quality/90', 'This Tour takes you on a historical walking Tour around Royal Botanical Gardens at Kew, UK.'],
+						['The Grand Tour', URL_BASE + '/tours/view/id/6921045/title/The%20Grand%20Tour', URL_BASE + '/services/thumb/phid/4873006/dim/142x100/crop/1/quality/90', 'This Tour illustrates a famous route using historical photos.'],
 					],
 				},
 				{
 					'heading': 'Photos, Videos and Audio clips',
 					'items': [
-						['', '', ''],
-						['', '', ''],
-						['', '', ''],
-						['', '', ''],
-						['', '', ''],
-						['', '', ''],
+						['Occupy London camp in front of St Paul’s Cathedral, 16 October 2011', URL_BASE + '/photos/#/geo:51.513745,-0.100594/zoom:15/date_from:1840-01-01/date_to:2011-11-11/dialog:7903122/tab:stories_tab_content/', URL_BASE + '/services/thumb/phid/7903122/dim/142x100/crop/1/quality/90', 'This photo captures a modern moment of history, showing the protest occupying St Paul’s Church Yard, London in October 2011.'],
+						['Earthquake damage, 25 February 2011', URL_BASE + '/photos/#/geo:-43.507721,172.729543/zoom:10/sv:6657335/heading:-171.09375/pitch:-0.75000/sv_zoom:1.00000/', URL_BASE + '/services/thumb/phid/6657335/dim/142x100/crop/1/quality/90', 'This photo, overlaid on Street View, shows buildings damaged by the earthquake in Christchurch, New Zealand in February 2011, illustrating the damage done by natural disasters.'],
+						['Damage on Piccadilly, 1940 - 1942', URL_BASE + '/map/#!/geo:51.509108,-0.136672/zoom:20/dialog:9547184/tab:stories_tab_content/', URL_BASE + '/services/thumb/phid/9547184/dim/142x100/quality/90', 'his video clip illustrates bomb damage to Picadilly, London in the early 1940s.'],
+						['JFK’s Inaugural Speech, 20th January 1961', URL_BASE + '/map/#!/geo:38.891454,-77.01214/zoom:15/dialog:6607380/tab:stories_tab_content/', URL_BASE + '/services/thumb/phid/6607380/dim/142x100/quality/90', 'This audio clip plays an extract from John F Kennedy’s inaugural speech in 1961.'],
+						['Historypin Repeats', URL_BASE + '/channels/view/id/571038/', URL_BASE + '/channels/img/571038/logo/1/dim/142x100/crop/1/', 'This Channel has got some great Historypin Repeats - modern replicas of historical photos on Historypin, taken by people using the smartphone app.'],
+						['Joe Voss, Jefferson Memorial, 1948 - 1952', URL_BASE + '/photos/#/geo:38.889263,-77.05008/zoom:15/date_from:1840-01-01/date_to:2011-11-11/dialog:7205444/tab:more_tab_content/', URL_BASE + '/services/thumb/phid/7205444/dim/142x100/crop/1/quality/90', 'This photo shows a Historypin Repeat. This Historypinner has pinned a photo of his Dad at Jefferson Memorial, Washington DC in the 1950s and used the Historypin app to take a photo of himself in the same spot in 2011.'],
 					],
 				
 				}
 			]
-		#title text, title link, img src, p
+		headings 		= self.es('.inner.right h2')
+		subheadings 	= self.es('.inner.right h3')
+		links 			= self.es('.inner>a')
+		subheadings_links  = self.es('.inner.right h3 a')
+		images 			= self.es('.inner.right a img')
+		paragraphs 		= self.es('.grid p')
 		
-		# TODO
-		# assert Collection subheading ('s' should be added)
-		# - all links
-		# - all texts
-		# - all all images
-		# assert Tours subheading
-		# - all links
-		# - all texts
-		# - all all images
-		# assert Photos, Videos and Audio clips subheading
-		# - all links
-		# - all texts
-		# - all all images
-		pass
+		for n in range(len(topics)):
+			i = topics[n]
+			
+			self.assertEqual(headings[n].text, i['heading'])
+			
+			for k in range(len(i['items'])):
+				self.assertEqual(subheadings[k].text, i['items'][0])
+				self.assertEqual(links[k].get_attribute('href'), i['items'][1])
+				self.assertEqual(subheadings_links[k].get_attribute('href'), i['items'][1])
+				self.assertEqual(images[k].get_attribute('src'), i['items'][2])
+				self.assertEqual(paragraphs[k].text, i['items'][3])
 
 	@unittest.skip("TODO")
 	@url('/community/schools-case-studies/')
