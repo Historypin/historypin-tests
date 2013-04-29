@@ -279,6 +279,7 @@ class Community(HPTestCase):
 		]
 		
 		headings = self.es('#site-content .right p')
+		
 		#	cols = self.es('.grid .col')) 
 		#	for n in range(len(studies)):
 		#		i = studies[n]
@@ -471,13 +472,12 @@ class Community(HPTestCase):
 		self.assertEqual(self.e('.section p:nth-of-type(1) img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6f_main.jpg')
 		self.assertEqual(self.e('.section p:nth-of-type(7) img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4f_sec.jpg')
 		
-	@unittest.skip("TODO")
 	@url('/community/schools-resources/')
 	def test_schools_resources(self):
 		self.assertTitle('Historypin | Community | Schools | Activities and Downloadable Resources')
 		self.assertEqual(self.e('h1.title').text, 'Activities & Downloads for Schools')
 		self.assertEqual(self.e('h2:nth-of-type(1)').text, 'Downloadable Resources')
-		self.assertEqual(self.e('.right > p').text, 'Downloadable Resources')
+		
 		resources = [
 				{
 					'heading': 'Activity Sheets',
@@ -508,18 +508,36 @@ class Community(HPTestCase):
 					],
 				},
 			]
+		headings 	= self.es('.inner.right h3')
+		list_items	= self.es('.inner.right ul li')
+		links		= self.es('.inner.right ul li a')
+		
+		k = 0
+		for n in range(len(resources)):
+			i = resources[n]
 			
+			self.assertEqual(headings[n].text, i['heading'])
+			
+			for item in i['items']:
+				self.assertEqual(list_items[k].text, item[0] + '\n' + item[2])
+				self.assertEqual(links[k].get_attribute('href'), item[1])
+				
+				k += 1
+
 		self.assertEqual(self.e('h2:nth-of-type(2)').text, 'Activities by subject')
+		
 		activities = [
-			['History', 'Students explore the map between particular dates as an introduction to that period of history to see what photos, videos or audio they can find.']
-			['ICT', 'Students search Historypin by location, by key word and by date to find information about particular locations at particular times in order to answer questions. They compare the information from different\nphotos, videos and stories and decide which are most useful and reliable.']
-			['Geography', 'Students pin photos onto the Historypin map using an address and then pin them to Street View using recognisable features to determine the angle at which a photo was taken.']
-			['English', 'Students use photos, video or audio content from the site as an inspiration to write a short story, play or poem.']
-			['Citizenship', 'Historypin can be used to develop an understanding of community cohesion.']
-			['Further educational links', 'Students explore how areas and communities have changed as a result of migration by focusing on religious buildings, markets and shops. They explore the stories behind photos, videos and audio to\ninvestigate experiences of living in the UK for people from different areas and of different religions and ethnicities.']
+			['History', 'Students explore the map between particular dates as an introduction to that period of history to see what photos, videos or audio they can find.'],
+			['ICT', 'Students search Historypin by location, by key word and by date to find information about particular locations at particular times in order to answer questions. They compare the information from different photos, videos and stories and decide which are most useful and reliable.'],
+			['Geography', 'Students pin photos onto the Historypin map using an address and then pin them to Street View using recognisable features to determine the angle at which a photo was taken.'],
+			['English', 'Students use photos, video or audio content from the site as an inspiration to write a short story, play or poem.'],
+			['Citizenship', 'Historypin can be used to develop an understanding of community cohesion.'],
+			['Further educational links', 'Historypin supports a wide range of educational agendas and can be used to support activities around community cohesion, cultural diversity, embedding IT in the curriculum, cross-curricular activities, identity and cultural diversity, and wider participation.'],
 		]
-		#headings = self.es('.inner.right h3')
-		# headings text
-		# assert Activities by subject
-		# assert all h3s
-		pass
+		
+		headings = self.es('h2:nth-of-type(2)~h3')
+		paragraphs = self.es('.inner.right h3 + p')
+		for n in range(len(activities)):
+			i = activities[n]
+			self.assertEqual(headings[n].text, i[0])
+			self.assertEqual(paragraphs[n].text, i[1])
