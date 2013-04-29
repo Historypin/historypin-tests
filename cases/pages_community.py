@@ -345,14 +345,14 @@ class Community(HPTestCase):
 		self.assertEqual(self.e('h3:nth-of-type(1)').text, 'What people had to say about it')
 		self.assertEqual(self.e('h3:nth-of-type(2)').text, 'What was the impact?')
 		
-		# TODO
-		# - image
-		# - image link
-		# - link
+		self.assertEqual(self.e('.section h3~a').get_attribute('href'), URL_BASE + '/resources/images/reading_evaluation_infographic.jpg')
+		self.assertEqual(self.e('.section a img').get_attribute('src'), URL_BASE + '/resources/images/reading_evaluation_infographic_thumb.jpg')
+		self.assertEqual(self.e('.section h3~p a:nth-of-type(1)').get_attribute('href'), 'http://wawwd-resources.s3.amazonaws.com/Reading_Evaluation%20Report_Small.pdf')
 	
 	@unittest.skip('TODO')
 	@url('/community/localprojects-reading/')
 	def test_community_localprojects_reading(self):
+		
 		pass
 	
 	@url('/community/localprojects-case-study-sanfrancisco')
