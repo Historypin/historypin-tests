@@ -327,29 +327,40 @@ class Community(HPTestCase):
 	def test_projects_studies_magicme(self):
 		self.assertTitle('Historypin | Community | Local Projects | Magic Me, Tower Hamlets, London, UK')
 		self.assertEqual(self.e('h1.title').text, 'Magic Me, Tower Hamlets, London, UK')
-		self.assertEqual(self.e('.section p:nth-of-type(1) img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4c_main.jpg')
-		self.assertEqual(self.e('.section p:nth-of-type(9) img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4c_sec.jpg')
-		self.assertEqual(self.e('.section p:nth-of-type(4) a').get_attribute('href'), URL_BASE + '/channels/view/6932562/name/magicme/')
+		
+		imgs = self.es('.section img')
+		self.assertEqual(imgs[0].get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4c_main.jpg')
+		self.assertEqual(imgs[1].get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4c_sec.jpg')
+		self.assertEqual(self.e('.section a').get_attribute('href'), URL_BASE + '/channels/view/6932562/name/magicme/')
 	
 	@url('/community/localprojects-case-study-reading')
 	def test_projects_studies_reading(self):
 		self.assertTitle('Historypin | Community | Local Projects | Reading, Berkshire, UK')
 		self.assertEqual(self.e('h1.title').text, 'Reading, Berkshire, UK')
-		self.assertEqual(self.e('.section p:nth-of-type(1) img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4a_main.jpg')
-		self.assertEqual(self.e('.section p:nth-of-type(5) img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4a_sec.jpg')
-		self.assertEqual(self.e('.section p:nth-of-type(8) a').get_attribute('href'), URL_BASE + '/community-localprojects-reading/')
+		
+		imgs = self.es('.section img')
+		self.assertEqual(imgs[0].get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4a_main.jpg')
+		self.assertEqual(imgs[1].get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4a_sec.jpg')
+		self.assertEqual(self.e('.section p:nth-of-type(8) a').get_attribute('href'), URL_BASE + '/community/localprojects-reading/')
 		self.assertEqual(self.e('h3:nth-of-type(1)').text, 'What people had to say about it')
 		self.assertEqual(self.e('h3:nth-of-type(2)').text, 'What was the impact?')
 		
 		# TODO
-		# another test case with this page/community-localprojects-reading/
+		# - image
+		# - image link
+		# - link
+	
+	@unittest.skip('TODO')
+	@url('/community/localprojects-reading/')
+	def test_community_localprojects_reading(self):
+		pass
 	
 	@url('/community/localprojects-case-study-sanfrancisco')
 	def test_projects_studies_sanfrancisco(self):
 		self.assertTitle('Historypin | Community | Local Projects | San Francisco, USA')
 		self.assertEqual(self.e('h1.title').text, 'San Francisco, USA')
-		self.assertEqual(self.e('.section p img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4d_main.jpg')
-		self.assertEqual(self.e('.section p:nth-of-type(6) a').get_attribute('href'),'http://historypin.com/sfmta') #check this link
+		self.assertEqual(self.e('.section img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4d_main.jpg')
+		self.assertEqual(self.e('.section p:nth-of-type(6) a').get_attribute('href'),'/sfmta')
 		self.assertEqual(self.e('.section p:nth-of-type(6) a').text, 'SFMTA collection on Historypin')
 	
 	@url('/community/localprojects-case-study-lighthouse')

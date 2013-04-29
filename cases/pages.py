@@ -14,7 +14,7 @@ class Pages(HPTestCase):
 	def test_app(self):
 		self.assertTitle('Historypin | App')
 		self.assertEqual(self.e('h2').text, 'What can you do on the Historypin app?')
-		# LATER text after the title 
+		
 		
 		# Android
 		sel = '.appstores .col:nth-child(1) '
@@ -22,7 +22,7 @@ class Pages(HPTestCase):
 		self.assertEqual(self.e(sel + 'h1').text, 'Android')
 		self.assertEqual(self.e(sel + 'a').get_attribute('href'), 'https://market.android.com/details?id=com.historypin.Historypin&feature=search_result')
 		self.assertEqual(self.e(sel + 'a').text, 'Google Play Store')
-
+		
 		# iPhone
 		sel = '.appstores .col:nth-child(2) '
 		self.assertEqual(self.e(sel + 'img').get_attribute('src'), URL_BASE + '/resources/images/content/app/app_iphone.png')
@@ -42,30 +42,25 @@ class Pages(HPTestCase):
 	def test_contact(self):
 		self.assertTitle('Historypin | Contact')
 		self.assertEqual(self.e('.section h1.title').text, 'Contact')
-
-		self.assertEqual(self.e('.section h2:nth-child(2)').text, 'General enquiries, technical enquiries, content enquiries')
-		self.assertEqual(self.e('.section p:nth-child(3) a').get_attribute('href'), 'mailto:historypin@wearewhatwedo.org')
-		self.assertEqual(self.e('.section p:nth-child(3)').text, 'historypin@wearewhatwedo.org\n+44 (0)20 7148 7666\n71 St John Street\nLondon\nEC1M 4NJ\nUnited Kingdom')
-
-		self.assertEqual(self.e('.section h2:nth-child(4)').text, 'Media')
-		self.assertEqual(self.e('.section p:nth-child(5) a').get_attribute('href'), 'mailto:rebekkah.abraham@wearewhatwedo.org')
-		self.assertEqual(self.e('.section p:nth-child(5)').text, 'Rebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7670')
-
-		self.assertEqual(self.e('.section h2:nth-child(6)').text, 'Schools, local projects and volunteers')
-		self.assertEqual(self.e('.section p:nth-child(7) a').get_attribute('href'), 'mailto:rebekkah.abraham@wearewhatwedo.org')
-		self.assertEqual(self.e('.section p:nth-child(7)').text, 'Rebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7670')
-
-		self.assertEqual(self.e('.section h2:nth-child(8)').text, 'Library, archive and museum partnerships')
-		self.assertEqual(self.e('.section p:nth-child(9) a').get_attribute('href'), 'mailto:rebekkah.abraham@wearewhatwedo.org')
-		self.assertEqual(self.e('.section p:nth-child(9)').text, 'Rebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7670')
-
-		self.assertEqual(self.e('.section h2:nth-child(10)').text, 'Web')
-		self.assertEqual(self.e('.section p:nth-child(11) a').get_attribute('href'), 'mailto:mark.frost@wearewhatwedo.org')
-		self.assertEqual(self.e('.section p:nth-child(11)').text, 'Mark Frost\nmark.frost@wearewhatwedo.org\n+44 (0)20 7148 7675')
-
-		self.assertEqual(self.e('.section h2:nth-child(12)').text, 'Corporate Partnerships')
-		self.assertEqual(self.e('.section p:nth-child(13) a').get_attribute('href'), 'mailto:nick.stanhope@wearewhatwedo.org')
-		self.assertEqual(self.e('.section p:nth-child(13)').text, 'Nick Stanhope\nnick.stanhope@wearewhatwedo.org\n+44 (0)20 7148 7667')
+		
+		content = [
+			['General enquiries, technical enquiries, content enquiries', 'historypin@wearewhatwedo.org\n+44 (0)20 7148 7666\n71 St John Street\nLondon\nEC1M 4NJ\nUnited Kingdom', 'mailto:historypin@wearewhatwedo.org'],
+			['Media', 'Rebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@wearewhatwedo.org'],
+			['Schools, local projects and volunteers', 'Rebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@wearewhatwedo.org'],
+			['Library, archive and museum partnerships', 'Rebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@wearewhatwedo.org'],
+			['Web', 'Mark Frost\nmark.frost@wearewhatwedo.org\n+44 (0)20 7148 7675', 'mailto:mark.frost@wearewhatwedo.org'],
+			['Corporate Partnerships', 'Nick Stanhope\nnick.stanhope@wearewhatwedo.org\n+44 (0)20 7148 7667', 'mailto:nick.stanhope@wearewhatwedo.org'],
+		]
+		
+		headings	= self.es('.section h2')
+		paragraphs	= self.es('.section p')
+		links		= self.es('.section p a')
+		
+		for n in range(len(content)):
+			i = content[n]
+			self.assertEqual(headings[n].text, i[0])
+			self.assertEqual(paragraphs[n].text, i[1])
+			self.assertEqual(links[n].get_attribute('href'), i[2])
 	
 	@url('/faq/')
 	def test_faq(self):
