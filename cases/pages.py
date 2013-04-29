@@ -15,28 +15,21 @@ class Pages(HPTestCase):
 		self.assertTitle('Historypin | App')
 		self.assertEqual(self.e('h2').text, 'What can you do on the Historypin app?')
 		
+		items = [
+			['Android', '/resources/images/content/app/app_android.png', 'Google Play Store', 'https://market.android.com/details?id=com.historypin.Historypin&feature=search_result'],
+			['iOS', '/resources/images/content/app/app_iphone.png', 'iOS App Store', 'http://itunes.apple.com/app/historypin/id455228207?mt=8'],
+			['Windows Phone 7', '/resources/images/content/app/app_wp7.png', 'Windows Phone Marketplace', 'http://www.windowsphone.com/en-US/apps/05638072-742e-460c-ab97-18d2b47ef06b'],
+		]
 		
-		# Android
-		sel = '.appstores .col:nth-child(1) '
-		self.assertEqual(self.e(sel + 'img').get_attribute('src'), URL_BASE + '/resources/images/content/app/app_android.png')
-		self.assertEqual(self.e(sel + 'h1').text, 'Android')
-		self.assertEqual(self.e(sel + 'a').get_attribute('href'), 'https://market.android.com/details?id=com.historypin.Historypin&feature=search_result')
-		self.assertEqual(self.e(sel + 'a').text, 'Google Play Store')
-		
-		# iPhone
-		sel = '.appstores .col:nth-child(2) '
-		self.assertEqual(self.e(sel + 'img').get_attribute('src'), URL_BASE + '/resources/images/content/app/app_iphone.png')
-		self.assertEqual(self.e(sel + 'h1').text, 'iOS')
-		self.assertEqual(self.e(sel + 'a').text, 'iOS App Store')
-		self.assertEqual(self.e(sel + 'a').get_attribute('href'), 'http://itunes.apple.com/app/historypin/id455228207?mt=8')
-		
-		# Windows Phone 7
-		sel = '.appstores .col:nth-child(3) '
-		self.assertEqual(self.e(sel + 'img').get_attribute('src'), URL_BASE + '/resources/images/content/app/app_wp7.png')
-		self.assertEqual(self.e(sel + 'h1').text, 'Windows Phone 7')
-		self.assertEqual(self.e(sel + 'a').get_attribute('href'), 'http://www.windowsphone.com/en-US/apps/05638072-742e-460c-ab97-18d2b47ef06b')
-		self.assertEqual(self.e(sel + 'a').text, 'Windows Phone Marketplace')
-
+		headings	= self.es('.appstores .col h1')
+		images		= self.es('.appstores .col img')
+		links		= self.es('.appstores .col a')
+		for n in range(len(items)):
+			i = items[n]
+			self.assertEqual(headings[n].text, i[0])
+			self.assertEqual(images[n].get_attribute('src'), URL_BASE + i[1])
+			self.assertEqual(links[n].text, i[2])
+			self.assertEqual(links[n].get_attribute('href'), i[3])
 	
 	@url('/contact/')
 	def test_contact(self):
@@ -64,7 +57,6 @@ class Pages(HPTestCase):
 	
 	@url('/faq/')
 	def test_faq(self):
-		# TODO LATER
 		faq = [
 			{
 				'heading': 'General',
@@ -213,33 +205,37 @@ class Pages(HPTestCase):
 		
 		toc				= self.es('.toc > li')
 		cnt				= self.es('.faq-group')
-		questions		= self.es('.toc li strong')
+		questions		= self.es('.toc > li strong')
 		questions_h		= self.es('.faq-group h2')
+		answers			= self.es('.toc > li li a')
+		answers_h		= self.es('.faq-group h3')
 		
+		k = 0
 		for n in range(len(faq)):
 			i = faq[n]
 			
 			self.assertEqual(questions[n].text, i['heading'])
 			self.assertEqual(questions_h[n].text, i['heading'])
 			
-			answers		= toc[n].es('li a')
-			answers_h	= cnt[n].es('h3')
-			
-			for k in range(len(i['items'])):
-				j = i['items'][k]
+			for x in range(len(i['items'])):
+				j = i['items'][x]
 				
 				self.assertEqual(answers[k].get_attribute('href'), URL_BASE + '/faq/#' + j[0])
 				self.assertEqual(answers[k].text, j[1])
 				
 				self.assertEqual(answers_h[k].get_attribute('id'), j[0])
 				self.assertEqual(answers_h[k].text, j[1])
+				
+				k += 1
 	
 	@url('/presscentre/')
 	def test_press_center(self):
 		self.assertTitle('Historypin | Press Centre')
 		self.assertEqual(self.e('h1.title').text, 'Press Centre')
-		self.assertEqual(self.e('.section h2:nth-of-type(1)').text, 'Some of our favourite coverage')
-		self.assertEqual(self.e('.section h2:nth-of-type(2)').text, 'Coverage to date')
+		
+		headings = self.es('.section h2')
+		self.assertEqual(headings[0].text, 'Some of our favourite coverage')
+		self.assertEqual(headings[1].text, 'Coverage to date')
 		
 		links = [
 			# link, link text, additional text
@@ -309,63 +305,54 @@ class Pages(HPTestCase):
 			['http://wearewhatwedo.org/press-cuttings/give-us-your-jubilee-memories-says-google/', 'Give us your jubilee memories, says Google', 'The Telegraph, 12th March 2012'],
 		]
 		
-		paragraphs = self.es('#site-content .right p')
+		paragraphs	= self.es('#site-content .right p')
+		p_links		= self.es('#site-content .right a')
 		for n in range(len(links)):
 			i = links[n]
+			self.assertEqual(p_links[n].get_attribute('href'), i[0])
 			self.assertEqual(paragraphs[n].text, i[1] + '\n' + i[2])
-			self.assertEqual(paragraphs[n].e('a').get_attribute('href'), i[0])
+		
+		cnt = self.e('.sidebar .inner:nth-of-type(1)')
+		self.assertEqual(cnt.e('h3').text, 'Contact Details')
+		
+		p, a = cnt.es('p'), cnt.es('p a')
+		self.assertEqual(p[0].text, 'UK & Global\nRebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7666')
+		self.assertEqual(a[0].get_attribute('href'), 'mailto:rebekkah.abraham@wearewhatwedo.org')
+		self.assertEqual(p[1].text, 'US\nJon Voss\njon.voss@wearewhatwedo.org\n+1 415 935 4701')
+		self.assertEqual(a[1].get_attribute('href'), 'mailto:jon.voss@wearewhatwedo.org')
+		
+		self.assertEqual(self.e('.sidebar .inner:nth-of-type(2) h3').text, 'Awards')
+		sidebar = [
+			['Webby for Best Charitable Organisation/Not-for-Profit Website', 'http://www.webbyawards.com/webbys/current.php?season=15#webby_entry_charitable_organizations_non-profit', '/resources/images/presscenter/webby_pink.png'],
+			['Sunday Times The App List 2012.', 'http://thetim.es/y1vL3P', '/resources/images/presscenter/sundaytimes500.png'],
+			['Lovie Award for Best Education & Reference Website', 'http://lovieawards.eu/winners/', '/resources/images/presscenter/lovie_pink.png'],
+			['American Association of School Librarians 2012 Best Website for Teaching and Learning', 'http://www.ala.org/aasl/guidelinesandstandards/bestlist/bestwebsitestop25', '/resources/images/presscenter/aasl.jpg'],
+			['Family Tree Magazine: 101 best family history websites', 'http://www.familytreemagazine.com/article/best-old-map-and-photo-websites-for-genealogy-2012', '/resources/images/presscenter/101-best-genealogy-websites-2012.jpg'],
+		]
 		
 		
-		sel = '.sidebar .inner:nth-child(1) '
-		self.assertEqual(self.e(sel + 'h3').text, 'Contact Details')
-		self.assertEqual(self.e(sel + 'p:nth-child(2)').text, 'UK & Global\nRebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7666')
-		self.assertEqual(self.e(sel + 'p:nth-child(2) a').get_attribute('href'), 'mailto:rebekkah.abraham@wearewhatwedo.org')
-		self.assertEqual(self.e(sel + 'p:nth-child(3)').text, 'US\nJon Voss\njon.voss@wearewhatwedo.org\n+1 415 935 4701')
-		self.assertEqual(self.e(sel + 'p:nth-child(3) a').get_attribute('href'), 'mailto:jon.voss@wearewhatwedo.org')
+		paragraphs	= self.es('.sidebar .inner p:nth-of-type(2)')[1:]
+		images		= self.es('.sidebar .inner img')
+		links		= self.es('.sidebar .inner a')[2:]
 		
-		sel = '.sidebar .inner:nth-child(2) '
-		self.assertEqual(self.e(sel + 'h3').text, 'Awards')
-		self.assertEqual(self.e(sel + 'a:nth-child(1)').get_attribute('href'), 'http://www.webbyawards.com/webbys/current.php?season=15#webby_entry_charitable_organizations_non-profit')
-		self.assertEqual(self.e(sel + 'img:nth-child(1)').get_attribute('src'), URL_BASE + '/resources/images/presscenter/webby_pink.png')
-		self.assertEqual(self.e(sel + 'p:nth-child(3) a').get_attribute('href'), 'http://www.webbyawards.com/webbys/current.php?season=15#webby_entry_charitable_organizations_non-profit')
-		self.assertEqual(self.e(sel + 'p:nth-child(3)').text, 'Webby for Best Charitable Organisation/Not-for-Profit Website')
+		for n in range(len(sidebar)):
+			i = sidebar[n]
+			
+			self.assertEqual(paragraphs[n].text, i[0])
+			self.assertEqual(images[n].get_attribute('src'), URL_BASE + i[2])
+			self.assertEqual(links[2 * n].get_attribute('href'), i[1])
+			self.assertEqual(links[2 * n + 1].get_attribute('href'), i[1])
 		
-		sel = '.sidebar .inner:nth-child(3) '
-		self.assertEqual(self.e(sel + 'a:nth-child(1)').get_attribute('href'), 'http://thetim.es/y1vL3P')
-		self.assertEqual(self.e(sel + 'img:nth-child(1)').get_attribute('src'), URL_BASE + '/resources/images/presscenter/sundaytimes500.png')
-		self.assertEqual(self.e(sel + 'p:nth-child(2) a').get_attribute('href'), 'http://thetim.es/y1vL3P')
-		self.assertEqual(self.e(sel + 'p:nth-child(2)').text, 'Sunday Times The App List 2012.')
-		
-		sel = '.sidebar .inner:nth-child(4) '
-		self.assertEqual(self.e(sel + 'a:nth-child(1)').get_attribute('href'), 'http://lovieawards.eu/winners/')
-		self.assertEqual(self.e(sel + 'img:nth-child(1)').get_attribute('src'), URL_BASE + '/resources/images/presscenter/lovie_pink.png')
-		self.assertEqual(self.e(sel + 'p:nth-child(2) a').get_attribute('href'), 'http://lovieawards.eu/winners/')
-		self.assertEqual(self.e(sel + 'p:nth-child(2)').text, 'Lovie Award for Best Education & Reference Website')
-		
-		sel = '.sidebar .inner:nth-child(5) '
-		self.assertEqual(self.e(sel + 'a:nth-child(1)').get_attribute('href'), 'http://www.ala.org/aasl/guidelinesandstandards/bestlist/bestwebsitestop25')
-		self.assertEqual(self.e(sel + 'img:nth-child(1)').get_attribute('src'), URL_BASE + '/resources/images/presscenter/aasl.jpg')
-		self.assertEqual(self.e(sel + 'p:nth-child(2) a').get_attribute('href'), 'http://www.ala.org/aasl/guidelinesandstandards/bestlist/bestwebsitestop25')
-		self.assertEqual(self.e(sel + 'p:nth-child(2)').text, 'American Association of School Librarians 2012 Best Website for Teaching and Learning')
-		
-		sel = '.sidebar .inner:nth-child(6) '
-		self.assertEqual(self.e(sel + 'a:nth-child(1)').get_attribute('href'), 'http://www.familytreemagazine.com/article/best-old-map-and-photo-websites-for-genealogy-2012')
-		self.assertEqual(self.e(sel + 'img:nth-child(1)').get_attribute('src'), URL_BASE + '/resources/images/presscenter/101-best-genealogy-websites-2012.jpg')
-		self.assertEqual(self.e(sel + 'p:nth-child(2) a').get_attribute('href'), 'http://www.familytreemagazine.com/article/best-old-map-and-photo-websites-for-genealogy-2012')
-		self.assertEqual(self.e(sel + 'p:nth-child(2)').text, 'Family Tree Magazine: 101 best family history websites')	
-		
-		sel = '.sidebar .inner:nth-child(7) '
-		self.assertEqual(self.e(sel + 'h3').text, 'Press Pack')
-		self.assertEqual(self.e(sel + 'a').get_attribute('href'), 'http://wawwd-resources.s3.amazonaws.com/presspacks/Historypin.zip')
-		self.assertEqual(self.e(sel + 'p').text, u'Download press releases, pictures and all the info you\u2019ll need to write a fabulously complimentary article about us.')
-		
-	
+		cnt = self.e('.sidebar .inner:nth-of-type(7)')
+		self.assertEqual(cnt.e('h3').text, 'Press Pack')
+		self.assertEqual(cnt.e('a').get_attribute('href'), 'http://wawwd-resources.s3.amazonaws.com/presspacks/Historypin.zip')
+		self.assertEqual(cnt.e('p').text, u'Download press releases, pictures and all the info you\u2019ll need to write a fabulously complimentary article about us.')
 	
 	@url('/privacy-policy/') 
 	def test_privacy_policy(self):
 		self.assertTitle('Historypin | Privacy Policy')
 		self.assertEqual(self.e('#site-content h1').text, 'Privacy Policy')
-
+		
 		items = [
 			'1. What do we mean by "Your Data"?',
 			'2. When do We collect Your data?',
@@ -379,39 +366,67 @@ class Pages(HPTestCase):
 			'10. Contact Us',
 		]
 		
-		headings = self.es('#site-content .inner h2')
+		headings = self.es('#site-content h2')
 		for n in range(len(items)):
 			self.assertEqual(headings[n].text, items[n])
 	
 	@url('/Friends-of-Historypin/')
 	def test_support(self):
-		# TODO fix this is the code and change the testcase
-		# self.assertTitle('Historypin | Friends of Historypin')
-		self.assertTitle('Historypin | Community | Partners')
+		self.assertTitle('Historypin | Friends of Historypin')
 		self.assertEqual(self.e('h2').text, 'What does the Foundation do?')
 		
-		sel = '.section '
-		self.assertEqual(self.e(sel + 'img').get_attribute('src'), URL_BASE + '/resources/images/home/friends_of_Historypin.png')
-		self.assertEqual(self.e(sel + 'p:nth-child(8) img').get_attribute('src'), URL_BASE + '/resources/images/home/friendsOfPhoto01.jpg')
-		self.assertEqual(self.e(sel + 'p:nth-child(9) img').get_attribute('src'), URL_BASE + '/resources/images/home/friendsOfPhoto02.jpg')
+		images = [
+			'/resources/images/home/friends_of_Historypin.png',
+			'/resources/images/home/friendsOfPhoto01.jpg',
+			'/resources/images/home/friendsOfPhoto02.jpg',
+		]
 		
-		sel = '.sidebar .inner:nth-child(1) '
-		self.assertEqual(self.e(sel + 'h3').text, 'Support Us')
-		self.assertEqual(self.e(sel + 'p:nth-child(2)').text, 'Your donation to the We Are What We Do Charitable Foundation will go a long way in helping support Historypin Community and Education Programmes.')
-		self.assertEqual(self.e(sel + 'p:nth-child(3)').text, 'Registered Charity Number\n1134546')
-		self.assertEqual(self.e(sel + 'a').get_attribute('href'), 'http://www.charitygiving.co.uk/donate/donate_b.asp?charityid=5366')
-		self.assertEqual(self.e(sel + 'a span').text, 'Donate')
-
-		sel = '.sidebar .inner:nth-child(2) '
-		self.assertEqual(self.e(sel + 'h3').text, 'Find out more')
-		self.assertEqual(self.e(sel + 'h3 a').get_attribute('href'), URL_BASE + '/HistorypinCommunityandEducationProgrammes')
-		self.assertEqual(self.e(sel + 'p').text, 'Read more about the aims of the Historypin Community and Education Programmes.')
-
-		sel = '.sidebar .inner:nth-child(3) '
-		self.assertEqual(self.e(sel + 'h3').text, 'Contact us')
-		self.assertEqual(self.e(sel + 'p').text, 'To find out more, please contact ella.wiggans@wearewhatwedo.org')
-		self.assertEqual(self.e(sel + 'p a').get_attribute('href'), 'mailto:ella.wiggans@wearewhatwedo.org')
-
+		imgs = self.es('.section img')
+		for n in range(len(images)):
+			self.assertEqual(imgs[n].get_attribute('src'), URL_BASE + images[n])
+		
+		sidebar = [
+			{
+				'heading': 'Support Us',
+				'paragraphs': ['Your donation to the We Are What We Do Charitable Foundation will go a long way in helping support Historypin Community and Education Programmes.', 'Registered Charity Number\n1134546'],
+				'link': ['Donate', 'http://www.charitygiving.co.uk/donate/donate_b.asp?charityid=5366'],
+			},
+			{
+				'heading': 'Find out more',
+				'link_h': '/HistorypinCommunityandEducationProgrammes',
+				'paragraphs': ['Read more about the aims of the Historypin Community and Education Programmes.'],
+			},
+			{
+				'heading': 'Contact us',
+				'paragraphs': ['To find out more, please contact ella.wiggans@wearewhatwedo.org'],
+				'link': ['ella.wiggans@wearewhatwedo.org', 'mailto:ella.wiggans@wearewhatwedo.org'],
+			},
+		]
+		
+		sb			= self.e('.sidebar')
+		headings	= sb.es('h3')
+		paragraphs	= sb.es('p')
+		links		= sb.es('a')
+		
+		p, l = 0, 0
+		for n in range(len(sidebar)):
+			i = sidebar[n]
+			
+			self.assertEqual(headings[n].text, i['heading'])
+			
+			if 'link_h' in i: self.assertEqual(headings[n].e('a').get_attribute('href'), URL_BASE + i['link_h'])
+			
+			for k in range(len(i['paragraphs'])):
+				self.assertEqual(paragraphs[p].text, i['paragraphs'][k])
+				
+				p += 1
+			
+			if 'links' in i:
+				link = i['link']
+				self.assertEqual(links[l].get_attribute('href'), link[0])
+				self.assertEqual(links[l].text, link[1])
+				
+				l += 1
 	
 	@url('/terms-and-conditions/')
 	def test_toc(self):
@@ -459,7 +474,7 @@ class Pages(HPTestCase):
 		self.assertTitle('Historypin | We Are What We Do')
 		self.assertEqual(self.e('.title').text, 'We Are What We Do')
 		
-		sel = '.rte p:nth-child(5) a'
-		self.assertEqual(self.e(sel).get_attribute('href'), 'http://wearewhatwedo.org/')
-		self.assertEqual(self.e(sel).text, 'wearewhatwedo.org')
+		a = self.e('.rte p:nth-child(5) a')
+		self.assertEqual(a.get_attribute('href'), 'http://wearewhatwedo.org/')
+		self.assertEqual(a.text, 'wearewhatwedo.org')
 

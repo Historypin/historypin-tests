@@ -11,23 +11,27 @@ class Community(HPTestCase):
 		self.assertEqual(self.e('.main-image img').get_attribute('src'), URL_BASE + '/resources/images/channels/channels_home_promo_image.jpg')
 		self.assertEqual(self.e('.info p').text, 'Welcome to the Historypin community, made up of people, groups and organisations working together to unearth and pin as much history as possible from all over the world - from within archives, in attics, and saved up in wise old heads.')
 		
+		# TODO refac this
 		sel = '#schools_section a'
 		self.assertEqual(self.e(sel).get_attribute('href'), URL_BASE + '/community/schools')
 		self.assertEqual(self.e(sel).text, 'Schools')
-
+		
+		# TODO refac this
 		sel = '#localprojects_section a'
 		self.assertEqual(self.e(sel).get_attribute('href'), URL_BASE + '/community/localprojects')
 		self.assertEqual(self.e(sel).text, 'Local projects')
-
+		
+		# TODO refac this
 		sel = '#lams_section a'
 		self.assertEqual(self.e(sel).get_attribute('href'), URL_BASE + '/community/lams')
 		self.assertEqual(self.e(sel).text, 'Libraries, Archives\n and Museums')
-
+		
+		# TODO refac this nth-
 		self.assertEqual(self.e('.grid h2:nth-child(1)').text, 'Latest News')
-
+		
 		self.assertEqual(self.e('h2:nth-of-type(2)').text, 'Challenges')
 		# TODO fix HTML first
-
+		
 		# TODO
 		# assert title done 
 		# assert heading done
@@ -48,7 +52,7 @@ class Community(HPTestCase):
 		# images
 		# link
 		# text
-
+	
 	@url('/community/schools')
 	def test_sidebar(self):
 		sidebar = [
@@ -157,9 +161,6 @@ class Community(HPTestCase):
 				self.assertEqual(links[k].get_attribute('href'), i[1])
 				self.assertEqual(links[k].text, i[2])
 				k += 1
-				
-		links_faq 	= self.es('.inner.right ul li a')
-		h4s			= self.es('.inner.right h4')
 		
 		faq_section = [
 			['q1', u'What does Historypin’s partnership with Google consist of?'],
@@ -170,6 +171,9 @@ class Community(HPTestCase):
 			['q6', 'How is Historypin moderated?'],
 			['q7', 'How can I do a bulk upload?'],
 		]
+		
+		links_faq 	= self.es('.inner.right ul li a')
+		h4s			= self.es('.inner.right h4')
 		
 		for n in range(len(faq_section)):
 			i = faq_section[n]
@@ -184,6 +188,10 @@ class Community(HPTestCase):
 		self.assertEqual(self.e('.right h1').text, 'Institutions involved')
 		self.assertEqual(self.e('.right h2').text, 'What Institutions are saying about Historypin')
 		
+		# TODO check for the firs list item
+		# - ancor exists ancor
+		# - image
+	
 	@url('/community/howtos')
 	def test_how_tos(self):
 		self.assertTitle('Historypin | Community | Schools | Historypin in the Classroom')
@@ -234,6 +242,8 @@ class Community(HPTestCase):
 		
 		headings = self.es('.inner.right h2')
 		uls = self.es('.inner.right ul')
+		# TODO move links outside of the for
+		
 		for n in range(len(how_tos)):
 			i = how_tos[n]
 			
@@ -297,7 +307,7 @@ class Community(HPTestCase):
 				self.assertEqual(links[k].get_attribute('href'), item[1])
 				
 				k += 1
-
+	
 	@url('/community/localprojects-case-studies')
 	def test_projects_studies(self):
 		self.assertTitle('Historypin | Community | Local Projects Case Studies')
@@ -314,6 +324,7 @@ class Community(HPTestCase):
 		headings		= grid.es('h3')
 		headings_links	= grid.es('h3 a')
 		images			= grid.es('a img')
+		# TODO image_links		= grid.es('a img')
 		paragraphs		= grid.es('p')
 		
 		for n in range(len(studies)):
@@ -449,6 +460,7 @@ class Community(HPTestCase):
 		headings		= grid.es('h3')
 		headings_links	= grid.es('h3 a')
 		images			= grid.es('a img')
+		# TODO image_links		= grid.es('a img')
 		paragraphs		= grid.es('p')
 		
 		for n in range(len(studies)):
@@ -482,7 +494,7 @@ class Community(HPTestCase):
 		self.assertTitle('Historypin | Community | Schools | Cromer, Norfolk, UK')
 		self.assertEqual(self.e('h1.title').text, 'Cromer, Norfolk, UK')
 		self.assertEqual(self.e('.section p:nth-of-type(1) img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6e_main.jpg')
-
+	
 	@url('/community/schools-nelson/')
 	def test_schools_studies_nelson(self):
 		self.assertTitle('Historypin | Community | Schools | Nelson Rural School, New Brunswick, Canada')
@@ -505,38 +517,39 @@ class Community(HPTestCase):
 		self.assertEqual(self.e('h2:nth-of-type(1)').text, 'Downloadable Resources')
 		
 		resources = [
-				{
-					'heading': 'Activity Sheets',
-					'items': [
-						['Activity Sheet 1: Recording the story behind a photo', 'http://wawwd-resources.s3.amazonaws.com/Worksheet_story%20collections.pdf', 'Blank template for recording info gathered in a interview or session'],
-						['Activity Sheet 2: Recording the story behind a photo', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Activity_Sheet_2_Recording_the_story_behind_a_photo.pdf', 'Worksheet with a series of questions guiding you through interview or session'],
-						['Activity Sheet 3: Exploring Historypin', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Activity_Sheet_3_Exploring_Historypin.pdf', 'Worksheet with series of activities of things to find and do on Historypin'],
-					],
-				},
-				{
-					'heading': 'Tip Sheets',
-					'items': [
-						['Tip Sheet 1: Taking a Photo of a Photo', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_1_Taking_a_Photo_of_a_Photo.pdf', 'All you need to know about taking the perfect photo of a photo - the easy way to digitise old photographs'],
-						['Tip Sheet 2: Ideas for local projects', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_2_Ideas_for_local_projects.pdf', 'Ideas and examples of the types of local projects you can run (both online and offline events)'],
-						['Tip Sheet 3: Tips on Planning your Historypin Local Project', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_3_Tips_on_Planning_your_Historypin_Local_Project.pdf', 'Tips on how to set up and plan your local project (both online and offline events)'],
-						['Tip Sheet 4: Tips on the techie parts of running a session or event', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_4_Tips_on_the_techie_parts_of_running_a_session_or_event.pdf', 'Practical advice if you are running online sessions'],
-						['Tip Sheet 5: Tip on Interviewing someone', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_5_Tip_on_Interviewing_someone.pdf', 'Things to think about before and during your conversation, plus ideas for questions'],
-						['Historypin Presentation template', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Historypin_Presentation.ppt', 'Powerpoint presentation to introduce Historypin to your school, group or organisation (includes spare slides for adding info about your session or event)'],
-					],
-				},
-				{
-					'heading': 'Posters, flyers and certificates',
-					'items': [
-						['Poster advertising your event or session', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Poster_advertising_your_event_or_session.pdf', 'With fillable inable gaps for your details'],
-						['Flyer advertising your event or session', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Flyer_advertising_your_event_or_session.pdf', 'With fillable inable gaps for your details'],
-						['Invite announcing your event', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Invite_announcing_your_event.pdf', 'With fillable inable gaps for your details'],
-						['Certificate for participants', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Certificate_for_participants.pdf', 'For awarding to people for their work discovering and sharing history with fillable inable gaps for your details'],
-					],
-				},
-			]
+			{
+				'heading': 'Activity Sheets',
+				'items': [
+					['Activity Sheet 1: Recording the story behind a photo', 'http://wawwd-resources.s3.amazonaws.com/Worksheet_story%20collections.pdf', 'Blank template for recording info gathered in a interview or session'],
+					['Activity Sheet 2: Recording the story behind a photo', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Activity_Sheet_2_Recording_the_story_behind_a_photo.pdf', 'Worksheet with a series of questions guiding you through interview or session'],
+					['Activity Sheet 3: Exploring Historypin', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Activity_Sheet_3_Exploring_Historypin.pdf', 'Worksheet with series of activities of things to find and do on Historypin'],
+				],
+			},
+			{
+				'heading': 'Tip Sheets',
+				'items': [
+					['Tip Sheet 1: Taking a Photo of a Photo', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_1_Taking_a_Photo_of_a_Photo.pdf', 'All you need to know about taking the perfect photo of a photo - the easy way to digitise old photographs'],
+					['Tip Sheet 2: Ideas for local projects', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_2_Ideas_for_local_projects.pdf', 'Ideas and examples of the types of local projects you can run (both online and offline events)'],
+					['Tip Sheet 3: Tips on Planning your Historypin Local Project', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_3_Tips_on_Planning_your_Historypin_Local_Project.pdf', 'Tips on how to set up and plan your local project (both online and offline events)'],
+					['Tip Sheet 4: Tips on the techie parts of running a session or event', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_4_Tips_on_the_techie_parts_of_running_a_session_or_event.pdf', 'Practical advice if you are running online sessions'],
+					['Tip Sheet 5: Tip on Interviewing someone', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_5_Tip_on_Interviewing_someone.pdf', 'Things to think about before and during your conversation, plus ideas for questions'],
+					['Historypin Presentation template', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Historypin_Presentation.ppt', 'Powerpoint presentation to introduce Historypin to your school, group or organisation (includes spare slides for adding info about your session or event)'],
+				],
+			},
+			{
+				'heading': 'Posters, flyers and certificates',
+				'items': [
+					['Poster advertising your event or session', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Poster_advertising_your_event_or_session.pdf', 'With fillable inable gaps for your details'],
+					['Flyer advertising your event or session', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Flyer_advertising_your_event_or_session.pdf', 'With fillable inable gaps for your details'],
+					['Invite announcing your event', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Invite_announcing_your_event.pdf', 'With fillable inable gaps for your details'],
+					['Certificate for participants', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Certificate_for_participants.pdf', 'For awarding to people for their work discovering and sharing history with fillable inable gaps for your details'],
+				],
+			},
+		]
+		
 		headings 	= self.es('.inner.right h3')
 		list_items	= self.es('.inner.right ul li')
-		links		= self.es('.inner.right ul li a')
+		links		= self.es('.inner.right ul a')
 		
 		k = 0
 		for n in range(len(resources)):
@@ -549,7 +562,7 @@ class Community(HPTestCase):
 				self.assertEqual(links[k].get_attribute('href'), item[1])
 				
 				k += 1
-
+		
 		self.assertEqual(self.e('h2:nth-of-type(2)').text, 'Activities by subject')
 		
 		activities = [
@@ -561,7 +574,7 @@ class Community(HPTestCase):
 			['Further educational links', 'Historypin supports a wide range of educational agendas and can be used to support activities around community cohesion, cultural diversity, embedding IT in the curriculum, cross-curricular activities, identity and cultural diversity, and wider participation.'],
 		]
 		
-		headings = self.es('h2:nth-of-type(2)~h3')
+		headings = self.es('h2:nth-of-type(2) ~ h3')
 		paragraphs = self.es('.inner.right h3 + p')
 		for n in range(len(activities)):
 			i = activities[n]
