@@ -278,7 +278,7 @@ class Community(HPTestCase):
 			['Lighthouse, Brighton, UK', URL_BASE + '/community/localprojects-case-study-lighthouse', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4b_thumb.jpg', 'An inter-generational project bringing together school students and older residents of Brighton alive during World War 2. Films, an exhibition and Collections on Historypin were created.'],
 		]
 		
-		
+		headings = self.es('#site-content .right p')
 		#	cols = self.es('.grid .col')) 
 		#	for n in range(len(studies)):
 		#		i = studies[n]
@@ -405,17 +405,31 @@ class Community(HPTestCase):
 				
 				k += 1
 	
-	@unittest.skip("TODO")
 	@url('/community/schools-case-studies/')
 	def test_schools_studies(self):
 		self.assertTitle('Historypin | Community | Schools')
 		self.assertEqual(self.e('.right h1').text, 'Schools Case Studies')
-		# TODO
-		# assert all subheadings
-		# assert all text
-		# assert all hrefs
-		# assert all images
-		pass
+		
+		studies = [
+			['English International College, Marbella, Spain', '/community/schools-eic', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6b_thumb.jpg', 'Historypin is used as the theme for Humanities Day and students create an exhibition after parents and locals invited in for Historypin coffee morning.'],
+			['Nelson Rural School, New Brunswick, Canada', '/community/schools-nelson', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6c_thumb.jpg', 'Students become local historians and archivists, going out into the community to find owners of old photographs and conduct interviews, recording it all on Historypin.'],
+			['Billericay, Essex, UK', '/community/schools-billericay', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6d_thumb.jpg', '12-13 year old boys plan their own workshop where they meet with 12 senior citizens from the local area.'],
+			['Cromer, Norfolk, UK', '/community/schools-cromer', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6e_thumb.jpg', 'History students assist at event in community centre where local residents are invited to bring along and upload their old photos and memories of Cromer.'],
+			['Newport Primary School, Essex, UK', '/community/schools-newport', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6f_thumb.jpg', '9-11 years olds take part in offline activities around photographs and stories, then hold event where older people from local care homes and neighbourhoods share their histories.'],
+		]
+		
+		grid			= self.e('.grid')
+		headings		= grid.es('h3')
+		headings_links	= grid.es('h3 a')
+		images			= grid.es('a img')
+		paragraphs		= grid.es('p')
+		
+		for n in range(len(studies)):
+			i = studies[n]
+			self.assertEqual(headings[n].text, i[0])
+			self.assertEqual(headings_links[n].get_attribute('href'), URL_BASE + i[1])
+			self.assertEqual(images[n].get_attribute('src'), i[2])
+			self.assertEqual(paragraphs[n].text, i[3])
 		
 	@url('/community/schools-eic/')
 	def test_schools_studies_eic(self):
@@ -460,14 +474,52 @@ class Community(HPTestCase):
 	@unittest.skip("TODO")
 	@url('/community/schools-resources/')
 	def test_schools_resources(self):
-		# TODO
-		# assert title
-		# assert heading
-		# assert "Downloadable Resources" text
-		# assert Activity Sheets/Tip Sheets/Posters, flyers and certificates
-		# - assert all bullets links and text
-		# - assert all texts under the bullets
+		self.assertTitle('Historypin | Community | Schools | Activities and Downloadable Resources')
+		self.assertEqual(self.e('h1.title').text, 'Activities & Downloads for Schools')
+		self.assertEqual(self.e('h2:nth-of-type(1)').text, 'Downloadable Resources')
+		self.assertEqual(self.e('.right > p').text, 'Downloadable Resources')
+		resources = [
+				{
+					'heading': 'Activity Sheets',
+					'items': [
+						['Activity Sheet 1: Recording the story behind a photo', 'http://wawwd-resources.s3.amazonaws.com/Worksheet_story%20collections.pdf', 'Blank template for recording info gathered in a interview or session'],
+						['Activity Sheet 2: Recording the story behind a photo', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Activity_Sheet_2_Recording_the_story_behind_a_photo.pdf', 'Worksheet with a series of questions guiding you through interview or session'],
+						['Activity Sheet 3: Exploring Historypin', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Activity_Sheet_3_Exploring_Historypin.pdf', 'Worksheet with series of activities of things to find and do on Historypin'],
+					],
+				},
+				{
+					'heading': 'Tip Sheets',
+					'items': [
+						['Tip Sheet 1: Taking a Photo of a Photo', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_1_Taking_a_Photo_of_a_Photo.pdf', 'All you need to know about taking the perfect photo of a photo - the easy way to digitise old photographs'],
+						['Tip Sheet 2: Ideas for local projects', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_2_Ideas_for_local_projects.pdf', 'Ideas and examples of the types of local projects you can run (both online and offline events)'],
+						['Tip Sheet 3: Tips on Planning your Historypin Local Project', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_3_Tips_on_Planning_your_Historypin_Local_Project.pdf', 'Tips on how to set up and plan your local project (both online and offline events)'],
+						['Tip Sheet 4: Tips on the techie parts of running a session or event', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_4_Tips_on_the_techie_parts_of_running_a_session_or_event.pdf', 'Practical advice if you are running online sessions'],
+						['Tip Sheet 5: Tip on Interviewing someone', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_5_Tip_on_Interviewing_someone.pdf', 'Things to think about before and during your conversation, plus ideas for questions'],
+						['Historypin Presentation template', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Historypin_Presentation.ppt', 'Powerpoint presentation to introduce Historypin to your school, group or organisation (includes spare slides for adding info about your session or event)'],
+					],
+				},
+				{
+					'heading': 'Posters, flyers and certificates',
+					'items': [
+						['Poster advertising your event or session', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Poster_advertising_your_event_or_session.pdf', 'With fillable inable gaps for your details'],
+						['Flyer advertising your event or session', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Flyer_advertising_your_event_or_session.pdf', 'With fillable inable gaps for your details'],
+						['Invite announcing your event', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Invite_announcing_your_event.pdf', 'With fillable inable gaps for your details'],
+						['Certificate for participants', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Certificate_for_participants.pdf', 'For awarding to people for their work discovering and sharing history with fillable inable gaps for your details'],
+					],
+				},
+			]
+			
+		self.assertEqual(self.e('h2:nth-of-type(2)').text, 'Activities by subject')
+		activities = [
+			['History', 'Students explore the map between particular dates as an introduction to that period of history to see what photos, videos or audio they can find.']
+			['ICT', 'Students search Historypin by location, by key word and by date to find information about particular locations at particular times in order to answer questions. They compare the information from different\nphotos, videos and stories and decide which are most useful and reliable.']
+			['Geography', 'Students pin photos onto the Historypin map using an address and then pin them to Street View using recognisable features to determine the angle at which a photo was taken.']
+			['English', 'Students use photos, video or audio content from the site as an inspiration to write a short story, play or poem.']
+			['Citizenship', 'Historypin can be used to develop an understanding of community cohesion.']
+			['Further educational links', 'Students explore how areas and communities have changed as a result of migration by focusing on religious buildings, markets and shops. They explore the stories behind photos, videos and audio to\ninvestigate experiences of living in the UK for people from different areas and of different religions and ethnicities.']
+		]
+		#headings = self.es('.inner.right h3')
+		# headings text
 		# assert Activities by subject
 		# assert all h3s
 		pass
-
