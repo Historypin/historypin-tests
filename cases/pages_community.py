@@ -86,10 +86,10 @@ class Community(HPTestCase):
 		
 		questions = [
 			['Why use Historypin in schools?', '', ''],
-			['How can I use it?', URL_BASE + '/community/howtos', 'Have a look at our How to Guides for more help'],
-			['How are other schools using it?', URL_BASE + '/community/schools-case-studies', 'Have a look at our Case Studies for some ideas'],
-			['What are the best things to look at in the classroom?', URL_BASE + '/community/topics-to-explore', 'Have a look at our Topics to Explore for some ideas'],
-			['What activity ideas and resources do you have?', URL_BASE + '/community/schools-resources', 'See our Activities and Downloadables'],
+			['How can I use it?', '/community/howtos', 'Have a look at our How to Guides for more help'],
+			['How are other schools using it?', '/community/schools-case-studies', 'Have a look at our Case Studies for some ideas'],
+			['What are the best things to look at in the classroom?', '/community/topics-to-explore', 'Have a look at our Topics to Explore for some ideas'],
+			['What activity ideas and resources do you have?', '/community/schools-resources', 'See our Activities and Downloadables'],
 		]
 		
 		headings = self.es('.section h3')
@@ -100,7 +100,7 @@ class Community(HPTestCase):
 			self.assertEqual(headings[n].text, i[0])
 			
 			if i[1] and i[2]:
-				self.assertEqual(paragraphs[k].get_attribute('href'), i[1])
+				self.assertEqual(paragraphs[k].get_attribute('href'), URL_BASE + i[1])
 				self.assertEqual(paragraphs[k].text, i[2])
 				
 				k += 1
