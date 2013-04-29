@@ -264,50 +264,32 @@ class Community(HPTestCase):
 				self.assertEqual(links[k].get_attribute('href'), item[1])
 				
 				k += 1
-	
-	@unittest.skip("TODO")
+
 	@url('/community/localprojects-case-studies')
 	def test_projects_studies(self):
 		self.assertTitle('Historypin | Community | Local Projects Case Studies')
 		self.assertEqual(self.e('.right h1').text, 'Local Projects Case Studies')
 		
 		studies = [
-			['Magic Me, Tower Hamlets, London, UK', URL_BASE + '/community/localprojects-case-study-magicme', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4c_thumb.jpg', 'A set of inter-generational workshop sessions held at the Sundial Community Centre and in the streets around the area,  run in partnership with the UK’s leading provider of intergenerational arts\nactivities.'],
-			['Reading, Berkshire, UK', URL_BASE + '/community/localprojects-case-study-reading', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4a_thumb.jpg', 'A huge community project involving Reading Museum, local schools, care homes, community groups and societies, mapping the history of an entire town.'],
-			['San Francisco, USA', URL_BASE + '/community/localprojects-case-study-sanfrancisco', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4e_thumb.jpg', 'A special exhibition of photos from the San Francisco Transit Authority Archive at the Market Street Railway Museum and bus shelters around the city, allowing for amazing real-life then-and-now\ncomparisons.'],
-			['Lighthouse, Brighton, UK', URL_BASE + '/community/localprojects-case-study-lighthouse', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4b_thumb.jpg', 'An inter-generational project bringing together school students and older residents of Brighton alive during World War 2. Films, an exhibition and Collections on Historypin were created.'],
+			['Magic Me, Tower Hamlets, London, UK', '/community/localprojects-case-study-magicme', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4c_thumb.jpg', u'A set of inter-generational workshop sessions held at the Sundial Community Centre and in the streets around the area, run in partnership with the UK’s leading provider of intergenerational arts activities.'],
+			['Reading, Berkshire, UK', '/community/localprojects-case-study-reading', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4a_thumb.jpg', 'A huge community project involving Reading Museum, local schools, care homes, community groups and societies, mapping the history of an entire town.'],
+			['San Francisco, USA', '/community/localprojects-case-study-sanfrancisco', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4e_thumb.jpg', 'A special exhibition of photos from the San Francisco Transit Authority Archive at the Market Street Railway Museum and bus shelters around the city, allowing for amazing real-life then-and-now comparisons.'],
+			['Lighthouse, Brighton, UK', '/community/localprojects-case-study-lighthouse', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4b_thumb.jpg', 'An inter-generational project bringing together school students and older residents of Brighton alive during World War 2. Films, an exhibition and Collections on Historypin were created.'],
 		]
 		
-		headings = self.es('#site-content .right p')
+		grid			= self.e('.grid')
+		headings		= grid.es('h3')
+		headings_links	= grid.es('h3 a')
+		images			= grid.es('a img')
+		paragraphs		= grid.es('p')
 		
-		#	cols = self.es('.grid .col')) 
-		#	for n in range(len(studies)):
-		#		i = studies[n]
-		#		sel
-		#	 %d, (n+1) ?
-		#	for n in (range(len(studies))):
-		#	i = studies[n]
-		#	self.assertEqual(self.e('.col .w2:nth-child(1) h3').text, i[0])
-		#	self.assertEqual(self.e('.col .w2:nth-child(2) h3').text, i[0])
-		#	self.assertEqual(self.e('.col .w2:nth-child(4) h3').text, i[0])
-		#	self.assertEqual(self.e('.col .w2:nth-child(5) h3').text, i[0])
-		#	
-		#	self.assertEqual(self.e('.col .w2:nth-child(1) h3 a').get_attribute('href'), i[1])
-		#	self.assertEqual(self.e('.col .w2:nth-child(2) h3 a').get_attribute('href'), i[1])
-		#	self.assertEqual(self.e('.col .w2:nth-child(4) h3 a').get_attribute('href'), i[1])
-		#	self.assertEqual(self.e('.col .w2:nth-child(5) h3 a').get_attribute('href'), i[1])
-		#	
-		#	self.assertEqual(self.e('.col .w2:nth-child(1) img').get_attribute('src'), i[2])
-		#	self.assertEqual(self.e('.col .w2:nth-child(2) img').get_attribute('src'), i[2])
-		#	self.assertEqual(self.e('.col .w2:nth-child(4) img').get_attribute('src'), i[2])
-		#	self.assertEqual(self.e('.col .w2:nth-child(5) img').get_attribute('src'), i[2])
-		#	
-		#	self.assertEqual(self.e('.col .w2:nth-child(1) p').text, i[3])
-		#	self.assertEqual(self.e('.col .w2:nth-child(2) p').text, i[3])
-		#	self.assertEqual(self.e('.col .w2:nth-child(4) p').text, i[3])
-		#	self.assertEqual(self.e('.col .w2:nth-child(5) p').text, i[3])
+		for n in range(len(studies)):
+			i = studies[n]
+			self.assertEqual(headings[n].text, i[0])
+			self.assertEqual(headings_links[n].get_attribute('href'), URL_BASE + i[1])
+			self.assertEqual(images[n].get_attribute('src'), i[2])
+			self.assertEqual(paragraphs[n].text, i[3])
 		
-		pass
 	@url('/community/localprojects-case-study-magicme')
 	def test_projects_studies_magicme(self):
 		self.assertTitle('Historypin | Community | Local Projects | Magic Me, Tower Hamlets, London, UK')
