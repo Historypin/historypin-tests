@@ -339,22 +339,80 @@ class Community(HPTestCase):
 		self.assertEqual(self.e('h1.title').text, 'Reading, Berkshire, UK')
 		
 		imgs = self.es('.section img')
+		headings = self.es('.section h3')
 		self.assertEqual(imgs[0].get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4a_main.jpg')
 		self.assertEqual(imgs[1].get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4a_sec.jpg')
 		self.assertEqual(self.e('.section p:nth-of-type(8) a').get_attribute('href'), URL_BASE + '/community/localprojects-reading/')
-		self.assertEqual(self.e('h3:nth-of-type(1)').text, 'What people had to say about it')
-		self.assertEqual(self.e('h3:nth-of-type(2)').text, 'What was the impact?')
-		
+		self.assertEqual(headings[0].text, 'What people had to say about it')
+		self.assertEqual(headings[1].text, 'What was the impact?')
 		self.assertEqual(self.e('.section h3~a').get_attribute('href'), URL_BASE + '/resources/images/reading_evaluation_infographic.jpg')
 		self.assertEqual(self.e('.section a img').get_attribute('src'), URL_BASE + '/resources/images/reading_evaluation_infographic_thumb.jpg')
 		self.assertEqual(self.e('.section h3~p a:nth-of-type(1)').get_attribute('href'), 'http://wawwd-resources.s3.amazonaws.com/Reading_Evaluation%20Report_Small.pdf')
-	
-	@unittest.skip('TODO')
+
 	@url('/community/localprojects-reading/')
 	def test_community_localprojects_reading(self):
+		self.assertTitle('Historypin | Community | Local Projects | Reading')
+		self.assertEqual(self.e('h1.title').text, 'Reading, UK')
 		
-		pass
-	
+		headings = self.es('.section h2')
+		h2s = [
+			u'Pinning Reading’s History',
+			'Brilliant Pinners in Reading',
+			'Take a Tour round Reading',
+			'Great stories and pics pinned in Reading',
+			u'See what’s been pinned in Reading',
+		]
+		
+		for n in range(len(h2s)):
+			i = h2s[n]
+			self.assertEqual(headings[n].text, i)
+			
+		list_images = [
+			['/resources/images/content/community/reading/small_1.jpg', '/channels/view/id/6604879/', 'RG Community'],
+			['/resources/images/content/community/reading/small_2.jpg', '/channels/view/id/7012010/', 'Museum of English Rural Life'],
+			['/resources/images/content/community/reading/small_3.jpg', '/channels/view/id/6160003/', 'Giles Knapp'],
+			['/resources/images/content/community/reading/small_4.jpg', '/channels/view/id/1892068/', 'Reading Museum'],
+			['/resources/images/content/community/reading/small_5.jpg', '/channels/view/id/1968007/', 'Malcolm'],
+			['/resources/images/content/community/reading/small_8.jpg', '/channels/view/id/5787040/', 'Sitevolunteer'],
+		]
+		
+		# TODO Refac selector
+		images			= self.es('.col.w2:nth-of-type(1) ul li img')
+		pinners_links	= self.es('.col.w2:nth-of-type(1) ul li a')
+		
+		for n in range(len(list_images)):
+			i = list_images[n]
+			self.assertEqual(images[n].get_attribute('src'), URL_BASE + i[0])
+			self.assertEqual(pinners_links[n].get_attribute('href'), URL_BASE + i[1])
+			self.assertEqual(pinners_links[n].text, i[2])
+		
+		self.assertEqual(self.e('.col.w2:nth-of-type(2) img').get_attribute('src'), URL_BASE + '/resources/images/content/community/reading/take_a_tour.jpg')
+		self.assertEqual(self.e('a.button').get_attribute('href'), URL_BASE + '/tours/view/id/6917547/title/Snapshots%20of%20Reading')
+		self.assertEqual(self.e('a.button span').text, 'Take the Tour')
+		
+		pinners = [
+			['/resources/images/content/community/reading/medium_1.jpg', '/map/#/geo:51.465794,-0.966198/zoom:15/dialog:1834055/tab:details/', 'Floods in Gosbrook Road, Caversham - April 1947'],
+			['/resources/images/content/community/reading/medium_2.jpg', '/map/#/geo:51.455863,-0.990668/zoom:15/dialog:1228008/tab:streetview/', 'Traffic on Oxford Road, 1893'],
+			['/resources/images/content/community/reading/medium_3.jpg', '/map/#/geo:51.445213,-1.000692/zoom:15/dialog:5845061/tab:details/', 'Silver Jubilee Street Party Vine Crescent Reading, 1977'],
+			['/resources/images/content/community/reading/medium_4.jpg', '/map/#/geo:51.456665,-0.970927/zoom:16/dialog:6610677/tab:streetview/', 'Town Hall, Reading,1900'],
+			['/resources/images/content/community/reading/medium_5.jpg', '/map/#/geo:51.44799,-1.023132/zoom:16/dialog:5841163/tab:details/', 'Cast of Play in Garden of St. Michael\'s Rectory, 1951 - 1953'],
+			['/resources/images/content/community/reading/medium_6.jpg', '/map/#/geo:51.472803,-0.96989/zoom:14/dialog:6931485/tab:details/', 'Bernard Tripp at Bugs Bottom, 1943'],
+		]
+		
+		images	= self.es('.cf img')
+		links	= self.es('.cf a')
+		for n in range(len(pinners)):
+			i = pinners[n]
+			self.assertEqual(images[n].get_attribute('src'), URL_BASE + i[0])
+			self.assertEqual(links[n].get_attribute('href'), URL_BASE + i[1])
+			self.assertEqual(links[n].text, i[2])
+			
+		
+		images = self.es('h2 ~ img')
+		self.assertEqual(images[0].get_attribute('src'), URL_BASE + '/resources/images/content/community/reading/pined_on_a_map.jpg')
+		self.assertEqual(images[1].get_attribute('src'), URL_BASE + '/resources/images/hlf_web.jpg')
+		self.assertEqual(images[2].get_attribute('src'), URL_BASE + '/resources/images/gul_web.jpg')
+		
 	@url('/community/localprojects-case-study-sanfrancisco')
 	def test_projects_studies_sanfrancisco(self):
 		self.assertTitle('Historypin | Community | Local Projects | San Francisco, USA')
