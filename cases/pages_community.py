@@ -131,20 +131,53 @@ class Community(HPTestCase):
 				self.assertEqual(paragraphs[k].text, i[2])
 				
 				k += 1
-
+	
 	@url('/community/lams')
 	def test_home_lams(self):
 		self.assertTitle('Historypin | Community | Libraries, Archives & Museums')
 		self.assertEqual(self.e('.right h1').text, 'Libraries, Archives and Museums homepage')
 		self.assertEqual(self.e('.right img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/lams_main.jpg')
 		
-		# TODO
-		# get started heading
-		# link and text(Getting started guide)
-		# institutions involved heading
-		# - link and text
-		# bulk upload link and text
-
+		headings = self.es('.inner.right h3')
+		links	 = self.es('.inner.right h3+p a')
+		
+		h3s = [
+			['Get Started', 'http://wawwd-resources.s3.amazonaws.com/Getting%20Started%20on%20Historypin.pdf', 'Getting Started Guide'],
+			['Institutions Involved', URL_BASE +'/community/lams-involved', u'See what other institutions are already involved and what they’re saying about Historypin.'],
+			['10 reasons to get Involved', '', ''],
+			['Frequently Asked Questions', 'http://www.historypin.com/faq/', 'FAQ section'], #fix link to be with the current version
+		]
+		
+		k = 0
+		for n in range(len(h3s)):
+			i = h3s[n]
+			self.assertEqual(headings[n].text, i[0])
+			
+			if i[1] and i[2]:
+				self.assertEqual(links[k].get_attribute('href'), i[1])
+				self.assertEqual(links[k].text, i[2])
+				k += 1
+				
+		links_faq 	= self.es('.inner.right ul li a')
+		h4s			= self.es('.inner.right h4')
+		
+		faq_section = [
+			['q1', u'What does Historypin’s partnership with Google consist of?'],
+			['q2', 'Does Historypin take ownership of copyright?'],
+			['q3', 'How are my images protected?'],
+			['q4', 'How are my images credited?'],
+			['q5', 'How can users use my content?'],
+			['q6', 'How is Historypin moderated?'],
+			['q7', 'How can I do a bulk upload?'],
+		]
+		
+		for n in range(len(faq_section)):
+			i = faq_section[n]
+			self.assertEqual(links_faq[n].get_attribute('href'), URL_BASE + '/community/lams#' + i[0])
+			self.assertEqual(links_faq[n].text, i[1])
+			self.assertEqual(h4s[n].get_attribute('id'), i[0])
+			self.assertEqual(h4s[n].text, i[1])
+	
 	@url('/community/lams-involved')
 	def test_lams_involved(self):
 		self.assertTitle('Historypin | Community | Schools | Historypin in the Classroom')
