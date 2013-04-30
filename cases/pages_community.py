@@ -3,12 +3,11 @@
 from base import *
 import logging
 class Community(HPTestCase):
-	@unittest.skip("TODO")
 	@url('/community/')
 	def test_home(self):
 		self.assertTitle('Historypin | Community Homepage')
 		self.assertEqual(self.e('.info h1').text, 'Get Involved')
-		self.assertEqual(self.e('.main-image img').get_attribute('src'), URL_BASE + '/resources/images/channels/channels_home_promo_image.jpg')
+		self.assertEqual(self.e('.main-image').get_attribute('src'), URL_BASE + '/resources/images/channels/channels_home_promo_image.jpg')
 		self.assertEqual(self.e('.info p').text, 'Welcome to the Historypin community, made up of people, groups and organisations working together to unearth and pin as much history as possible from all over the world - from within archives, in attics, and saved up in wise old heads.')
 		
 		# TODO refac this
@@ -24,35 +23,38 @@ class Community(HPTestCase):
 		# TODO refac this
 		sel = '#lams_section a'
 		self.assertEqual(self.e(sel).get_attribute('href'), URL_BASE + '/community/lams')
-		self.assertEqual(self.e(sel).text, 'Libraries, Archives\n and Museums')
+		self.assertEqual(self.e(sel).text, 'Libraries, Archives and Museums')
 		
-		# TODO refac this nth-
-		self.assertEqual(self.e('.grid h2:nth-child(1)').text, 'Latest News')
+		headings = self.es('.grid h2')
+		self.assertEqual(self.e(headings[0]).text, 'Latest News')
+		self.assertEqual(self.e(headings[1]).text, 'Challenges')
+		self.assertEqual(self.e(headings[2]).text, 'Get Involved')
 		
-		self.assertEqual(self.e('h2:nth-of-type(2)').text, 'Challenges')
-		# TODO fix HTML first
+		groups = [
+			['Pinning The Queen\'s History', 'What pics and stories do you have of the Queen\'s visits and Jubilee celebrations?', 'http://wearewhatwedo.org/queen.jpg', u'View The Queen’s Collection', 'http://www.v4-22-00.historypin-hrd.appspot.com/DiamondJubilee/'],
+			['The Chevy Centenary', 'We’re looking for pics and stories of each of the Chevy models created over the last 100 years.', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/chevy_img.png', 'View Chevy Collection', 'http://www.v4-22-00.historypin-hrd.appspot.com/chevy/'],
+			['Life Story Challenge', 'Create a Life Story about someone you know with photos and memories telling the story of their life.', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/icon_life_stories.png', 'View Life Stories Challenge', 'http://www.11492009-gats.historypin.com/en/page/life-stories/'],
+			['Google Groups', 'Talk to other users, learn from each other’s experience, plus give us feedback as we experiment with new features.', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/icon_google_groups.png', 'Visit the Group', 'https://groups.google.com/forum/?fromgroups#!forum/historypin'],
+			['Meet the team', 'Check out the people working away to bring you Historypin.', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/theteam.jpg', 'Meet the team', 'http://www.v4-22-00.historypin-hrd.appspot.com/team'],
+			['The Foundation', 'Find out about our Charitable Foundation which works on the ground in local communities and education.', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/friends_of_historypin.jpg', 'Read more', 'http://www.v4-22-00.historypin-hrd.appspot.com/Friends-Of-Historypin/'],
+		]
 		
+		headings	= self.es('.group ~ .group .col.w3 h3')
+		paragraphs	= self.es('.group ~ .group .col.w3 p')
+		images		= self.es('.group ~ .group .col.w3 img')
+		links		= self.es('.group ~ .group .col.w3 a')
+		
+		for n in range(len(groups)):
+			i = groups[n]
+			self.assertEqual(headings[n].text, i[0])
+			self.assertEqual(paragraphs[n].text, i[1])
+			self.assertEqual(images[n].get_attribute('href'), i[2])
+			self.assertEqual(links[2 * n].get_attribute('href'), i[4])
+			self.assertEqual(links[2 * n + 1].get_attribute('href'), i[4])
+			self.assertEqual(links[2 * n + 1].text, i[3])
+			
 		# TODO
-		# assert title done 
-		# assert heading done
-		# assert text done
-		# assert image done
-		# assert schools linka and text done
-		# assert local projects link and text done
-		# LAMs link and text done
-		# latest news heading done
 		# verify elements present LATER
-		# challenges title done
-		# sub-titles 
-		# links
-		# text
-		# images
-		# get involved title
-		# sub-headings
-		# images
-		# link
-		# text
-	
 	@url('/community/schools')
 	def test_sidebar(self):
 		sidebar = [

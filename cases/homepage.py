@@ -1,17 +1,27 @@
 from base import *
 
 class Homepage(HPTestCase):
-	@unittest.skip("TODO")
 	@url('/')
 	def test_icon_touts(self):
-		# TODO
-		# - download class test and link
-		# - webby class test and link
-		# - hiring class test and link
 		
-		pass
+		features = [
+			['ss-cell', '/app/','Download the latest Historypin\nsmartphone app'],
+			['ss-trophy', '/presscentre/','We\'ve won a webby award for best charity non-profit website'],
+			['ss-user', '/team/','Meet the team working on Historypin around the world'],
 		
-	
+		]
+		
+		links 	= self.es('.features a')
+		classes = self.es('.features a span')
+		
+		for n in range(len(features)):
+			i = features[n]
+			
+			self.assertIn('ss-icon', classes[n].get_attribute('class'))
+			self.assertIn(i[0], classes[n].get_attribute('class'))
+			self.assertEqual(links[n].get_attribute('href'), URL_BASE + i[1])
+			self.assertEqual(links[n].text, i[2])
+		
 	@url('/')
 	def test_explore(self):
 		
@@ -52,9 +62,9 @@ class Homepage(HPTestCase):
 	def test_projects(self):
 		# TODO 
 		# - pages
-		# - browse all link
+		self.assertEqual(self.e('#featured-projects .bar a.right').get_attribute('href'), URL_BASE + '/projects/')
+		self.assertEqual(self.e('#featured-projects .bar a.right').text, 'Browse all projects')
 		
-		pass
 	
 	@url('/')
 	def test_navigation(self):
@@ -81,10 +91,11 @@ class Homepage(HPTestCase):
 	@url('/')
 	def test_cookie_message(self):
 		# TODO
-		# - text
-		# - link
-		# - close
-		# - refresh and the message should not be here anymore
+		# - text-
+		# - link-
+		# - close-
+		# - refresh 
+		#   - the message should not be here anymore
 		
 		pass
 	
