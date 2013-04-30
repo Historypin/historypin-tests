@@ -3,6 +3,7 @@
 from base import *
 import logging
 class Community(HPTestCase):
+	
 	@unittest.skip("TODO")
 	@url('/community/')
 	def test_home(self):
@@ -11,25 +12,23 @@ class Community(HPTestCase):
 		self.assertEqual(self.e('.main-image img').get_attribute('src'), URL_BASE + '/resources/images/channels/channels_home_promo_image.jpg')
 		self.assertEqual(self.e('.info p').text, 'Welcome to the Historypin community, made up of people, groups and organisations working together to unearth and pin as much history as possible from all over the world - from within archives, in attics, and saved up in wise old heads.')
 		
-		# TODO refac this
-		sel = '#schools_section a'
-		self.assertEqual(self.e(sel).get_attribute('href'), URL_BASE + '/community/schools')
-		self.assertEqual(self.e(sel).text, 'Schools')
+		a = self.e('#schools_section a')
+		self.assertEqual(a.get_attribute('href'), URL_BASE + '/community/schools')
+		self.assertEqual(a.text, 'Schools')
 		
-		# TODO refac this
-		sel = '#localprojects_section a'
-		self.assertEqual(self.e(sel).get_attribute('href'), URL_BASE + '/community/localprojects')
-		self.assertEqual(self.e(sel).text, 'Local projects')
+		a = self.e('#localprojects_section a')
+		self.assertEqual(a.get_attribute('href'), URL_BASE + '/community/localprojects')
+		self.assertEqual(a.text, 'Local projects')
 		
-		# TODO refac this
-		sel = '#lams_section a'
-		self.assertEqual(self.e(sel).get_attribute('href'), URL_BASE + '/community/lams')
-		self.assertEqual(self.e(sel).text, 'Libraries, Archives\n and Museums')
+		a = self.e('#lams_section a')
+		self.assertEqual(a.get_attribute('href'), URL_BASE + '/community/lams')
+		self.assertEqual(a.text, 'Libraries, Archives\n and Museums')
 		
 		# TODO refac this nth-
 		self.assertEqual(self.e('.grid h2:nth-child(1)').text, 'Latest News')
 		
 		self.assertEqual(self.e('h2:nth-of-type(2)').text, 'Challenges')
+		
 		# TODO fix HTML first
 		
 		# TODO
@@ -67,7 +66,7 @@ class Community(HPTestCase):
 			['Topics to Explore', URL_BASE + '/community/topics-to-explore', 'Some of the most interesting photos, Tours and Collections to explore in sessions.'],
 			['School Case Studies', URL_BASE + '/community/schools-case-studies', 'Some examples of schools around the word using Historypin'],
 			['Local Project Case Studies', URL_BASE + '/community/localprojects-case-studies', 'Some examples of local projects around the world using Historypin'],
-			['Support Us', 'http://www.historypin.com/donate/', u'Donate to Friends of Historypin and you’ll be helping support Historypin Community and Education Programmes.\n\nRegistered Charity Number 1134546'],
+			['Support Us', URL_BASE + '/donate/', u'Donate to Friends of Historypin and you’ll be helping support Historypin Community and Education Programmes.\n\nRegistered Charity Number 1134546'],
 			['Blog', 'http://blog.historypin.com/', 'Find out the latest community, site development, partnership and Challenges news'],
 			['Contact', URL_BASE + '/contact-us', 'For more information contact Rebekkah Abraham, Historypin Content Manager on rebekkah.abraham@wearewhatwedo.org.'],
 		]
@@ -429,7 +428,7 @@ class Community(HPTestCase):
 		self.assertTitle('Historypin | Community | Local Projects | San Francisco, USA')
 		self.assertEqual(self.e('h1.title').text, 'San Francisco, USA')
 		self.assertEqual(self.e('.section img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4d_main.jpg')
-		self.assertEqual(self.e('.section p:nth-of-type(6) a').get_attribute('href'),'/sfmta')
+		self.assertEqual(self.e('.section p:nth-of-type(6) a').get_attribute('href'), URL_BASE + '/sfmta')
 		self.assertEqual(self.e('.section p:nth-of-type(6) a').text, 'SFMTA collection on Historypin')
 	
 	@url('/community/localprojects-case-study-lighthouse')
