@@ -22,14 +22,14 @@ class Community(HPTestCase):
 			i = mods[n]
 			self.assertEqual(links[n].text, i[0])
 			self.assertEqual(links[n].get_attribute('href'), URL_BASE + i[1])
-			
+		
 		headings = ['Latest News', 'Challenges', 'Get Involved']
 		
 		h2s = self.es('.grid h2')
 		for n in range(len(headings)):
 			i = headings[n]
 			self.assertEqual(h2s[n].text, i)
-
+		
 		groups = [
 			['Pinning The Queen\'s History', 'What pics and stories do you have of the Queen\'s visits and Jubilee celebrations?', 'http://wearewhatwedo.org/queen.jpg', u'View The Queen’s Collection', URL_BASE + '/DiamondJubilee/'],
 			['The Chevy Centenary', u'We’re looking for pics and stories of each of the Chevy models created over the last 100 years.', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/chevy_img.png', 'View Chevy Collection', URL_BASE + '/chevy/'],
