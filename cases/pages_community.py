@@ -3,6 +3,7 @@
 from base import *
 import logging
 class Community(HPTestCase):
+	
 	@url('/community/')
 	def test_home(self):
 		self.assertTitle('Historypin | Community Homepage')
@@ -10,51 +11,50 @@ class Community(HPTestCase):
 		self.assertEqual(self.e('.main-image').get_attribute('src'), URL_BASE + '/resources/images/channels/channels_home_promo_image.jpg')
 		self.assertEqual(self.e('.info p').text, 'Welcome to the Historypin community, made up of people, groups and organisations working together to unearth and pin as much history as possible from all over the world - from within archives, in attics, and saved up in wise old heads.')
 		
-		# TODO refac this
-		sel = '#schools_section a'
-		self.assertEqual(self.e(sel).get_attribute('href'), URL_BASE + '/community/schools')
-		self.assertEqual(self.e(sel).text, 'Schools')
-		
-		# TODO refac this
-		sel = '#localprojects_section a'
-		self.assertEqual(self.e(sel).get_attribute('href'), URL_BASE + '/community/localprojects')
-		self.assertEqual(self.e(sel).text, 'Local projects')
-		
-		# TODO refac this
-		sel = '#lams_section a'
-		self.assertEqual(self.e(sel).get_attribute('href'), URL_BASE + '/community/lams')
-		self.assertEqual(self.e(sel).text, 'Libraries, Archives and Museums')
-		
-		headings = self.es('.grid h2')
-		self.assertEqual(self.e(headings[0]).text, 'Latest News')
-		self.assertEqual(self.e(headings[1]).text, 'Challenges')
-		self.assertEqual(self.e(headings[2]).text, 'Get Involved')
-		
-		groups = [
-			['Pinning The Queen\'s History', 'What pics and stories do you have of the Queen\'s visits and Jubilee celebrations?', 'http://wearewhatwedo.org/queen.jpg', u'View The Queen’s Collection', 'http://www.v4-22-00.historypin-hrd.appspot.com/DiamondJubilee/'],
-			['The Chevy Centenary', 'We’re looking for pics and stories of each of the Chevy models created over the last 100 years.', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/chevy_img.png', 'View Chevy Collection', 'http://www.v4-22-00.historypin-hrd.appspot.com/chevy/'],
-			['Life Story Challenge', 'Create a Life Story about someone you know with photos and memories telling the story of their life.', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/icon_life_stories.png', 'View Life Stories Challenge', 'http://www.11492009-gats.historypin.com/en/page/life-stories/'],
-			['Google Groups', 'Talk to other users, learn from each other’s experience, plus give us feedback as we experiment with new features.', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/icon_google_groups.png', 'Visit the Group', 'https://groups.google.com/forum/?fromgroups#!forum/historypin'],
-			['Meet the team', 'Check out the people working away to bring you Historypin.', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/theteam.jpg', 'Meet the team', 'http://www.v4-22-00.historypin-hrd.appspot.com/team'],
-			['The Foundation', 'Find out about our Charitable Foundation which works on the ground in local communities and education.', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/friends_of_historypin.jpg', 'Read more', 'http://www.v4-22-00.historypin-hrd.appspot.com/Friends-Of-Historypin/'],
+		mods = [
+			['Schools', '/community/schools'],
+			['Local projects', '/community/localprojects'],
+			['Libraries, Archives and Museums', '/community/lams'],
 		]
 		
-		headings	= self.es('.group ~ .group .col.w3 h3')
-		paragraphs	= self.es('.group ~ .group .col.w3 p')
-		images		= self.es('.group ~ .group .col.w3 img')
-		links		= self.es('.group ~ .group .col.w3 a')
+		links = self.es('.inner.mod a')
+		for n in range(len(mods)):
+			i = mods[n]
+			self.assertEqual(links[n].text, i[0])
+			self.assertEqual(links[n].get_attribute('href'), URL_BASE + i[1])
+			
+		headings = ['Latest News', 'Challenges', 'Get Involved']
+		
+		h2s = self.es('.grid h2')
+		for n in range(len(headings)):
+			i = headings[n]
+			self.assertEqual(h2s[n].text, i)
+
+		groups = [
+			['Pinning The Queen\'s History', 'What pics and stories do you have of the Queen\'s visits and Jubilee celebrations?', 'http://wearewhatwedo.org/queen.jpg', u'View The Queen’s Collection', URL_BASE + '/DiamondJubilee/'],
+			['The Chevy Centenary', u'We’re looking for pics and stories of each of the Chevy models created over the last 100 years.', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/chevy_img.png', 'View Chevy Collection', URL_BASE + '/chevy/'],
+			['Life Story Challenge', 'Create a Life Story about someone you know with photos and memories telling the story of their life.', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/icon_life_stories.png', 'View Life Stories Challenge', 'http://www.11492009-gats.historypin.com/en/page/life-stories/'],
+			['Google Groups', u'Talk to other users, learn from each other’s experience, plus give us feedback as we experiment with new features.', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/icon_google_groups.png', 'Visit the Group', 'https://groups.google.com/forum/?fromgroups#!forum/historypin'],
+			['Meet the team', 'Check out the people working away to bring you Historypin.', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/theteam.jpg', 'Meet the team', URL_BASE + '/team'],
+			['The Foundation', 'Find out about our Charitable Foundation which works on the ground in local communities and education.', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/friends_of_historypin.jpg', 'Read more', URL_BASE + '/Friends-Of-Historypin/'],
+		]
+		
+		headings	= self.es('.group ~ .group .col h3')
+		paragraphs	= self.es('.group ~ .group .col p')
+		images		= self.es('.group ~ .group .col img')
+		links		= self.es('.group ~ .group .col a')
 		
 		for n in range(len(groups)):
 			i = groups[n]
 			self.assertEqual(headings[n].text, i[0])
 			self.assertEqual(paragraphs[n].text, i[1])
-			self.assertEqual(images[n].get_attribute('href'), i[2])
+			self.assertEqual(images[n].get_attribute('src'), i[2])
 			self.assertEqual(links[2 * n].get_attribute('href'), i[4])
 			self.assertEqual(links[2 * n + 1].get_attribute('href'), i[4])
 			self.assertEqual(links[2 * n + 1].text, i[3])
-			
-		# TODO
-		# verify elements present LATER
+		
+		self.assertEqual(len(self.es('.group:nth-of-type(1) .col')), 3)
+	
 	@url('/community/schools')
 	def test_sidebar(self):
 		sidebar = [
@@ -69,7 +69,7 @@ class Community(HPTestCase):
 			['Topics to Explore', URL_BASE + '/community/topics-to-explore', 'Some of the most interesting photos, Tours and Collections to explore in sessions.'],
 			['School Case Studies', URL_BASE + '/community/schools-case-studies', 'Some examples of schools around the word using Historypin'],
 			['Local Project Case Studies', URL_BASE + '/community/localprojects-case-studies', 'Some examples of local projects around the world using Historypin'],
-			['Support Us', 'http://www.historypin.com/donate/', u'Donate to Friends of Historypin and you’ll be helping support Historypin Community and Education Programmes.\n\nRegistered Charity Number 1134546'],
+			['Support Us', URL_BASE + '/donate/', u'Donate to Friends of Historypin and you’ll be helping support Historypin Community and Education Programmes.\n\nRegistered Charity Number 1134546'],
 			['Blog', 'http://blog.historypin.com/', 'Find out the latest community, site development, partnership and Challenges news'],
 			['Contact', URL_BASE + '/contact-us', 'For more information contact Rebekkah Abraham, Historypin Content Manager on rebekkah.abraham@wearewhatwedo.org.'],
 		]
@@ -431,7 +431,7 @@ class Community(HPTestCase):
 		self.assertTitle('Historypin | Community | Local Projects | San Francisco, USA')
 		self.assertEqual(self.e('h1.title').text, 'San Francisco, USA')
 		self.assertEqual(self.e('.section img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4d_main.jpg')
-		self.assertEqual(self.e('.section p:nth-of-type(6) a').get_attribute('href'),'/sfmta')
+		self.assertEqual(self.e('.section p:nth-of-type(6) a').get_attribute('href'), URL_BASE + '/sfmta')
 		self.assertEqual(self.e('.section p:nth-of-type(6) a').text, 'SFMTA collection on Historypin')
 	
 	@url('/community/localprojects-case-study-lighthouse')

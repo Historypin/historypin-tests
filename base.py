@@ -86,7 +86,7 @@ def run(*tests):
 	else:
 		suite.addTests(unittest.TestLoader().loadTestsFromModule(cases))
 	
-	unittest.TextTestRunner().run(suite)
+	unittest.TextTestRunner(verbosity = 1).run(suite)
 	
 	
 	TestCase.browser_close()
