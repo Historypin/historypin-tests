@@ -111,17 +111,29 @@ class Homepage(HPTestCase):
 		
 		self.assertEqual(self.e('#branding .home-top p').text, 'A global community collaborating around history')
 	
-	@unittest.skip("TODO")
 	@url('/')
 	def test_sponsors(self):
-		# TODO
-		# - supported text
-		# - nominet image and link
-		# - google image and link
 		
-		self.assertEqual(self.e('.support .donate').text, 'users\nDonate to support Historypin')
-		self.assertEqual(self.e('.support .donate').get_attribute('href'), URL_BASE + 'friends-of-Historypin')
-	
+		self.assertEqual(self.e('.support h5').text, 'Supported by:')
+		
+		partners = [
+			['http://www.nominettrust.org.uk/', '/resources/images/partners/nominet_colored.png'],
+			['http://www.google.co.uk/intl/en/about/', '/resources/images/partners/google_logo.jpg'],
+		]
+		
+		links	= self.es('.partners li a')
+		images	= self.es('.partners li img')
+		
+		for n in range(len(partners)):
+			i = partners[n]
+			self.assertEqual(links[n].get_attribute('href'), i[0])
+			self.assertEqual(images[n].get_attribute('src'), URL_BASE + i[1])
+		
+		support = self.es('.support .donate')
+		self.assertEqual(support[0].text, 'users\nDonate to support Historypin')
+		self.assertEqual(support[0].get_attribute('href'), URL_BASE + '/friends-of-Historypin')
+		self.assertIn('ss-icon', self.e('.support .donate .ss-icon').get_attribute('class'))
+		
 	@url('/')
 	def test_footer(self):
 		links = [
