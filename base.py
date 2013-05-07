@@ -13,6 +13,7 @@ from conf import *
 
 WebElement.e = WebElement.find_element_by_css_selector
 WebElement.es = WebElement.find_elements_by_css_selector
+WebElement.css = WebElement.value_of_css_property
 
 def url(url):
 	def wrapper(fn):
