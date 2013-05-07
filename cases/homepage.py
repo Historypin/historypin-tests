@@ -1,17 +1,20 @@
 from base import *
 
 class Homepage(HPTestCase):
-	@unittest.skip("TODO")
 	@url('/')
 	def test_cookie_message(self):
-		# TODO
-		# - text-
-		# - link-
-		# - close-
-		# - refresh 
-		#   - the message should not be here anymore
-		l
-		pass
+		self.assertEqual(
+			'We want you to enjoy your visit to our website. That\'s why we use cookies to enhance your experience.\nBy staying on our website you agree to our use of cookies. Find out more about the cookies we use.', 
+			self.e('.cookies-popup p').text,
+		)
+		
+		self.assertEqual(URL_BASE + '/pages/cookies/',				self.e('.cookies-popup p a').get_attribute('href'))
+		a = self.e('.cookies-popup a.right')
+		self.assertEqual('Close this message  close', a.text)
+		a.click()
+		
+		self.browser.refresh()
+		self.assertRaises(NoSuchElementException, self.e, '.cookies-popup')
 	
 	@url('/')
 	def test_navigation(self):
@@ -66,19 +69,20 @@ class Homepage(HPTestCase):
 		# - prev button
 		# - fullscreen
 		# - exit fullscreen
-		previous	= self.e('#featured a.prev')
-		next		= self.e('#featured a.next')
+		previous	= self.e('#featured .prev')
+		next		= self.e('#featured .next')
 		next.click()
-		
-	@unittest.skip("TODO")
+	
 	@url('/')
 	def test_activity(self):
+		self.assertGreater(int(self.e('.counter').text.replace(',', '')), 0)
+		more = self.e('#activity .more')
+		less = self.e('#activity .less')
+		more.click()
+		less.click()
 		# TODO 
-		# - counter
-		# - expand button
-		# - collapse button
-		
-		pass
+		# expand button
+		# to verify if the activity is expaned
 	
 	@url('/')
 	def test_explore(self):
