@@ -7,9 +7,9 @@ class Community(HPTestCase):
 	@url('/community/')
 	def test_home(self):
 		self.assertTitle('Historypin | Community Homepage')
-		self.assertEqual(self.e('.info h1').text, 'Get Involved')
-		self.assertEqual(self.e('.main-image').get_attribute('src'), URL_BASE + '/resources/images/channels/channels_home_promo_image.jpg')
-		self.assertEqual(self.e('.info p').text, 'Welcome to the Historypin community, made up of people, groups and organisations working together to unearth and pin as much history as possible from all over the world - from within archives, in attics, and saved up in wise old heads.')
+		self.assertEqual('Get Involved', self.e('.info h1').text)
+		self.assertEqual(URL_BASE + '/resources/images/channels/channels_home_promo_image.jpg', self.e('.main-image').get_attribute('src'))
+		self.assertEqual('Welcome to the Historypin community, made up of people, groups and organisations working together to unearth and pin as much history as possible from all over the world - from within archives, in attics, and saved up in wise old heads.', self.e('.info p').text)
 		
 		mods = [
 			['Schools', '/community/schools'],
@@ -20,13 +20,13 @@ class Community(HPTestCase):
 		links = self.es('.inner.mod a')
 		for n in range(len(mods)):
 			i = mods[n]
-			self.assertEqual(links[n].text, i[0])
-			self.assertEqual(links[n].get_attribute('href'), URL_BASE + i[1])
+			self.assertEqual(i[0], links[n].text)
+			self.assertEqual(URL_BASE + i[1], links[n].get_attribute('href'))
 		
 		headings = ['Latest News', 'Challenges', 'Get Involved']
 		h2s = self.es('.grid h2')
 		for n in range(len(headings)):
-			self.assertEqual(h2s[n].text, headings[n])
+			self.assertEqual(headings[n], h2s[n].text)
 		
 		groups = [
 			['Pinning The Queen\'s History', 'What pics and stories do you have of the Queen\'s visits and Jubilee celebrations?', 'http://wearewhatwedo.org/queen.jpg', u'View The Queen’s Collection', URL_BASE + '/DiamondJubilee/'],
@@ -44,14 +44,14 @@ class Community(HPTestCase):
 		
 		for n in range(len(groups)):
 			i = groups[n]
-			self.assertEqual(headings[n].text, i[0])
-			self.assertEqual(paragraphs[n].text, i[1])
-			self.assertEqual(images[n].get_attribute('src'), i[2])
-			self.assertEqual(links[2 * n].get_attribute('href'), i[4])
-			self.assertEqual(links[2 * n + 1].get_attribute('href'), i[4])
-			self.assertEqual(links[2 * n + 1].text, i[3])
+			self.assertEqual(i[0], headings[n].text)
+			self.assertEqual(i[1], paragraphs[n].text)
+			self.assertEqual(i[2], images[n].get_attribute('src'))
+			self.assertEqual(i[4], links[2 * n].get_attribute('href'))
+			self.assertEqual(i[4], links[2 * n + 1].get_attribute('href'))
+			self.assertEqual(i[3], links[2 * n + 1].text)
 		
-		self.assertEqual(len(self.es('.group:nth-of-type(1) .col')), 3)
+		self.assertEqual(3, len(self.es('.group:nth-of-type(1) .col')))
 	
 	@url('/community/schools')
 	def test_sidebar(self):
@@ -78,17 +78,17 @@ class Community(HPTestCase):
 		
 		for n in (range(len(sidebar))):
 			i = sidebar[n]
-			self.assertEqual(headings[n].text, i[0])
-			self.assertEqual(links[n].get_attribute('href'), i[1])
-			self.assertEqual(paragraphs[n].text, i[2])
+			self.assertEqual(i[0], headings[n].text)
+			self.assertEqual(i[1], links[n].get_attribute('href'))
+			self.assertEqual(i[2], paragraphs[n].text)
 			
-		self.assertEqual(self.e('.sidebar .inner p:last-of-type a').get_attribute('href'), 'mailto:rebekkah.abraham@wearewhatwedo.org')
+		self.assertEqual('mailto:rebekkah.abraham@wearewhatwedo.org', self.e('.sidebar .inner p:last-of-type a').get_attribute('href'))
 	
 	@url('/community/schools')
 	def test_home_schools(self):
 		self.assertTitle('Historypin | Community | Schools')
-		self.assertEqual(self.e('h1.title').text, 'Schools')
-		self.assertEqual(self.e('.section img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/schools_main.jpg')
+		self.assertEqual('Schools', self.e('h1.title').text)
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/schools_main.jpg', self.e('.section img').get_attribute('src'))
 		
 		questions = [
 			['Why use Historypin in schools?', '', ''],
@@ -103,19 +103,19 @@ class Community(HPTestCase):
 		k = 0
 		for n in (range(len(questions))):
 			i = questions[n]
-			self.assertEqual(headings[n].text, i[0])
+			self.assertEqual(i[0], headings[n].text)
 			
 			if i[1] and i[2]:
-				self.assertEqual(paragraphs[k].get_attribute('href'), URL_BASE + i[1])
-				self.assertEqual(paragraphs[k].text, i[2])
+				self.assertEqual(URL_BASE + i[1], paragraphs[k].get_attribute('href'))
+				self.assertEqual(i[2], paragraphs[k].text)
 				
 				k += 1
 	
 	@url('/community/localprojects')
 	def test_home_projects(self):
 		self.assertTitle('Historypin | Community | Local Projects')
-		self.assertEqual(self.e('h1.title').text, 'Local Projects')
-		self.assertEqual(self.e('.section img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/localprojects_main.jpg')
+		self.assertEqual('Local Projects', self.e('h1.title').text)
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/localprojects_main.jpg', self.e('.section img').get_attribute('src'))
 		
 		questions = [
 			['Why use Historypin in local projects?', '', ''],
@@ -130,19 +130,19 @@ class Community(HPTestCase):
 		k = 0
 		for n in (range(len(questions))):
 			i = questions[n]
-			self.assertEqual(headings[n].text, i[0])
+			self.assertEqual(i[0], headings[n].text)
 			
 			if i[1] and i[2]:
-				self.assertEqual(paragraphs[k].get_attribute('href'), URL_BASE + i[1])
-				self.assertEqual(paragraphs[k].text, i[2])
+				self.assertEqual(URL_BASE + i[1], paragraphs[k].get_attribute('href'))
+				self.assertEqual(i[2], paragraphs[k].text)
 				
 				k += 1
 	
 	@url('/community/lams')
 	def test_home_lams(self):
 		self.assertTitle('Historypin | Community | Libraries, Archives & Museums')
-		self.assertEqual(self.e('.right h1').text, 'Libraries, Archives and Museums homepage')
-		self.assertEqual(self.e('.right img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/lams_main.jpg')
+		self.assertEqual('Libraries, Archives and Museums homepage', self.e('.right h1').text)
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/lams_main.jpg', self.e('.right img').get_attribute('src'))
 		
 		headings = self.es('.inner.right h3')
 		links	 = self.es('.inner.right h3+p a')
@@ -157,11 +157,11 @@ class Community(HPTestCase):
 		k = 0
 		for n in range(len(h3s)):
 			i = h3s[n]
-			self.assertEqual(headings[n].text, i[0])
+			self.assertEqual(i[0], headings[n].text)
 			
 			if i[1] and i[2]:
-				self.assertEqual(links[k].get_attribute('href'), i[1])
-				self.assertEqual(links[k].text, i[2])
+				self.assertEqual(i[1], links[k].get_attribute('href'))
+				self.assertEqual(i[2], links[k].text)
 				k += 1
 		
 		faq_section = [
@@ -179,16 +179,16 @@ class Community(HPTestCase):
 		
 		for n in range(len(faq_section)):
 			i = faq_section[n]
-			self.assertEqual(links_faq[n].get_attribute('href'), URL_BASE + '/community/lams#' + i[0])
-			self.assertEqual(links_faq[n].text, i[1])
-			self.assertEqual(h4s[n].get_attribute('id'), i[0])
-			self.assertEqual(h4s[n].text, i[1])
+			self.assertEqual(URL_BASE + '/community/lams#' + i[0], links_faq[n].get_attribute('href'))
+			self.assertEqual(i[1], links_faq[n].text)
+			self.assertEqual(i[0], h4s[n].get_attribute('id'))
+			self.assertEqual(i[1], h4s[n].text)
 	
 	@url('/community/lams-involved')
 	def test_lams_involved(self):
 		self.assertTitle('Historypin | Community | Schools | Historypin in the Classroom')
-		self.assertEqual(self.e('.right h1').text, 'Institutions involved')
-		self.assertEqual(self.e('.right h2').text, 'What Institutions are saying about Historypin')
+		self.assertEqual('Institutions involved', self.e('.right h1').text)
+		self.assertEqual('What Institutions are saying about Historypin', self.e('.right h2').text)
 		
 		li = self.e('.logos-list li')
 		self.assertIsInstance(li, WebElement)
@@ -251,19 +251,19 @@ class Community(HPTestCase):
 		for n in range(len(how_tos)):
 			i = how_tos[n]
 			
-			self.assertEqual(headings[n].text, i['heading'])
+			self.assertEqual(i['heading'], headings[n].text)
 			
 			for item in i['items']:
-				self.assertEqual(links[k].get_attribute('href'), item[0])
-				self.assertEqual(links[k].text, item[1])
+				self.assertEqual(item[0], links[k].get_attribute('href'))
+				self.assertEqual(item[1], links[k].text)
 				
 				k += 1
 	
 	@url('/community/localprojects-resources')
 	def test_projects_resources(self):
 		self.assertTitle('Historypin | Community | Local Projects | Resources')
-		self.assertEqual(self.e('.right h1').text, 'Activities & Downloads for Local Projects')
-		self.assertEqual(self.e('.right h2').text, 'Downloadable Resources')
+		self.assertEqual('Activities & Downloads for Local Projects', self.e('.right h1').text)
+		self.assertEqual('Downloadable Resources', self.e('.right h2').text)
 		
 		resources = [
 			{
@@ -304,18 +304,18 @@ class Community(HPTestCase):
 		for n in range(len(resources)):
 			i = resources[n]
 			
-			self.assertEqual(headings[n].text, i['heading'])
+			self.assertEqual(i['heading'], headings[n].text)
 			
 			for item in i['items']:
-				self.assertEqual(list_items[k].text, item[0] + '\n' + item[2])
-				self.assertEqual(links[k].get_attribute('href'), item[1])
+				self.assertEqual(item[0] + '\n' + item[2], list_items[k].text)
+				self.assertEqual(item[1], links[k].get_attribute('href'))
 				
 				k += 1
 	
 	@url('/community/localprojects-case-studies')
 	def test_projects_studies(self):
 		self.assertTitle('Historypin | Community | Local Projects Case Studies')
-		self.assertEqual(self.e('.right h1').text, 'Local Projects Case Studies')
+		self.assertEqual('Local Projects Case Studies', self.e('.right h1').text)
 		
 		studies = [
 			['Magic Me, Tower Hamlets, London, UK', '/community/localprojects-case-study-magicme', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4c_thumb.jpg', u'A set of inter-generational workshop sessions held at the Sundial Community Centre and in the streets around the area, run in partnership with the UK’s leading provider of intergenerational arts activities.'],
@@ -332,42 +332,42 @@ class Community(HPTestCase):
 		
 		for n in range(len(studies)):
 			i = studies[n]
-			self.assertEqual(headings[n].text, i[0])
-			self.assertEqual(headings[n].get_attribute('href'), URL_BASE + i[1])
-			self.assertEqual(image_links[n].get_attribute('href'), URL_BASE + i[1])
-			self.assertEqual(images[n].get_attribute('src'), i[2])
-			self.assertEqual(paragraphs[n].text, i[3])
+			self.assertEqual(i[0], headings[n].text)
+			self.assertEqual(URL_BASE + i[1], headings[n].get_attribute('href'))
+			self.assertEqual(URL_BASE + i[1], image_links[n].get_attribute('href'))
+			self.assertEqual(i[2], images[n].get_attribute('src'))
+			self.assertEqual(i[3], paragraphs[n].text)
 		
 	@url('/community/localprojects-case-study-magicme')
 	def test_projects_studies_magicme(self):
 		self.assertTitle('Historypin | Community | Local Projects | Magic Me, Tower Hamlets, London, UK')
-		self.assertEqual(self.e('h1.title').text, 'Magic Me, Tower Hamlets, London, UK')
+		self.assertEqual('Magic Me, Tower Hamlets, London, UK', self.e('h1.title').text)
 		
 		imgs = self.es('.section img')
-		self.assertEqual(imgs[0].get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4c_main.jpg')
-		self.assertEqual(imgs[1].get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4c_sec.jpg')
-		self.assertEqual(self.e('.section a').get_attribute('href'), URL_BASE + '/channels/view/6932562/name/magicme/')
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4c_main.jpg', imgs[0].get_attribute('src'))
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4c_sec.jpg', imgs[1].get_attribute('src'))
+		self.assertEqual(URL_BASE + '/channels/view/6932562/name/magicme/', self.e('.section a').get_attribute('href'))
 	
 	@url('/community/localprojects-case-study-reading')
 	def test_projects_studies_reading(self):
 		self.assertTitle('Historypin | Community | Local Projects | Reading, Berkshire, UK')
-		self.assertEqual(self.e('h1.title').text, 'Reading, Berkshire, UK')
+		self.assertEqual('Reading, Berkshire, UK', self.e('h1.title').text)
 		
 		imgs = self.es('.section img')
 		headings = self.es('.section h3')
-		self.assertEqual(imgs[0].get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4a_main.jpg')
-		self.assertEqual(imgs[1].get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4a_sec.jpg')
-		self.assertEqual(self.e('.section p:nth-of-type(8) a').get_attribute('href'), URL_BASE + '/community/localprojects-reading/')
-		self.assertEqual(headings[0].text, 'What people had to say about it')
-		self.assertEqual(headings[1].text, 'What was the impact?')
-		self.assertEqual(self.e('.section h3~a').get_attribute('href'), URL_BASE + '/resources/images/reading_evaluation_infographic.jpg')
-		self.assertEqual(self.e('.section a img').get_attribute('src'), URL_BASE + '/resources/images/reading_evaluation_infographic_thumb.jpg')
-		self.assertEqual(self.e('.section h3~p a:nth-of-type(1)').get_attribute('href'), 'http://wawwd-resources.s3.amazonaws.com/Reading_Evaluation%20Report_Small.pdf')
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4a_main.jpg', imgs[0].get_attribute('src'))
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4a_sec.jpg', imgs[1].get_attribute('src'))
+		self.assertEqual(URL_BASE + '/community/localprojects-reading/', self.e('.section p:nth-of-type(8) a').get_attribute('href'))
+		self.assertEqual('What people had to say about it', headings[0].text)
+		self.assertEqual('What was the impact?', headings[1].text)
+		self.assertEqual(URL_BASE + '/resources/images/reading_evaluation_infographic.jpg', self.e('.section h3~a').get_attribute('href'))
+		self.assertEqual(URL_BASE + '/resources/images/reading_evaluation_infographic_thumb.jpg', self.e('.section a img').get_attribute('src'))
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/Reading_Evaluation%20Report_Small.pdf', self.e('.section h3~p a:nth-of-type(1)').get_attribute('href'))
 
 	@url('/community/localprojects-reading/')
 	def test_community_localprojects_reading(self):
 		self.assertTitle('Historypin | Community | Local Projects | Reading')
-		self.assertEqual(self.e('h1.title').text, 'Reading, UK')
+		self.assertEqual('Reading, UK', self.e('h1.title').text)
 		
 		headings = self.es('.section h2')
 		h2s = [
@@ -380,7 +380,7 @@ class Community(HPTestCase):
 		
 		for n in range(len(h2s)):
 			i = h2s[n]
-			self.assertEqual(headings[n].text, i)
+			self.assertEqual(i, headings[n].text)
 		
 		pinners = [
 			['/resources/images/content/community/reading/small_1.jpg', '/channels/view/id/6604879/', 'RG Community'],
@@ -395,15 +395,15 @@ class Community(HPTestCase):
 		pinner_links	= self.es('.col.w2:nth-of-type(1) ul a')
 		for n in range(len(pinners)):
 			i = pinners[n]
-			self.assertEqual(pinner_images[n].get_attribute('src'), URL_BASE + i[0])
-			self.assertEqual(pinner_links[n].get_attribute('href'), URL_BASE + i[1])
-			self.assertEqual(pinner_links[n].text, i[2])
+			self.assertEqual(URL_BASE + i[0], pinner_images[n].get_attribute('src'))
+			self.assertEqual(URL_BASE + i[1], pinner_links[n].get_attribute('href'))
+			self.assertEqual(i[2], pinner_links[n].text)
 		
 		
-		self.assertEqual(self.e('.col.w2:nth-of-type(2) img').get_attribute('src'), URL_BASE + '/resources/images/content/community/reading/take_a_tour.jpg')
+		self.assertEqual(URL_BASE + '/resources/images/content/community/reading/take_a_tour.jpg', self.e('.col.w2:nth-of-type(2) img').get_attribute('src'))
 		button = self.e('.col.w2:nth-of-type(2) a.button')
-		self.assertEqual(button.get_attribute('href'), URL_BASE + '/tours/view/id/6917547/title/Snapshots%20of%20Reading')
-		self.assertEqual(button.text, 'Take the Tour')
+		self.assertEqual(URL_BASE + '/tours/view/id/6917547/title/Snapshots%20of%20Reading', button.get_attribute('href'))
+		self.assertEqual('Take the Tour', button.text)
 		
 		pins = [
 			['/resources/images/content/community/reading/medium_1.jpg', '/map/#/geo:51.465794,-0.966198/zoom:15/dialog:1834055/tab:details/', 'Floods in Gosbrook Road, Caversham - April 1947'],
@@ -418,33 +418,33 @@ class Community(HPTestCase):
 		pin_links	= self.es('.cf a')
 		for n in range(len(pins)):
 			i = pins[n]
-			self.assertEqual(pin_images[n].get_attribute('src'), URL_BASE + i[0])
-			self.assertEqual(pin_links[n].get_attribute('href'), URL_BASE + i[1])
-			self.assertEqual(pin_links[n].text, i[2])
+			self.assertEqual(URL_BASE + i[0], pin_images[n].get_attribute('src'))
+			self.assertEqual(URL_BASE + i[1], pin_links[n].get_attribute('href'))
+			self.assertEqual(i[2], pin_links[n].text)
 		
 		images = self.es('h2:last-of-type ~ img')
-		self.assertEqual(images[0].get_attribute('src'), URL_BASE + '/resources/images/content/community/reading/pined_on_a_map.jpg')
-		self.assertEqual(images[1].get_attribute('src'), URL_BASE + '/resources/images/hlf_web.jpg')
-		self.assertEqual(images[2].get_attribute('src'), URL_BASE + '/resources/images/gul_web.jpg')
+		self.assertEqual(URL_BASE + '/resources/images/content/community/reading/pined_on_a_map.jpg', images[0].get_attribute('src'))
+		self.assertEqual(URL_BASE + '/resources/images/hlf_web.jpg', images[1].get_attribute('src'))
+		self.assertEqual(URL_BASE + '/resources/images/gul_web.jpg', images[2].get_attribute('src'))
 		
 	@url('/community/localprojects-case-study-sanfrancisco')
 	def test_projects_studies_sanfrancisco(self):
 		self.assertTitle('Historypin | Community | Local Projects | San Francisco, USA')
-		self.assertEqual(self.e('h1.title').text, 'San Francisco, USA')
-		self.assertEqual(self.e('.section img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4d_main.jpg')
-		self.assertEqual(self.e('.section p:nth-of-type(6) a').get_attribute('href'), URL_BASE + '/sfmta')
-		self.assertEqual(self.e('.section p:nth-of-type(6) a').text, 'SFMTA collection on Historypin')
+		self.assertEqual('San Francisco, USA', self.e('h1.title').text)
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4d_main.jpg', self.e('.section img').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/sfmta', self.e('.section p:nth-of-type(6) a').get_attribute('href'))
+		self.assertEqual('SFMTA collection on Historypin', self.e('.section p:nth-of-type(6) a').text)
 	
 	@url('/community/localprojects-case-study-lighthouse')
 	def test_projects_studies_lighthouse(self):
 		self.assertTitle('Historypin | Community | Local Projects | Lighthouse, Brighton, UK')
-		self.assertEqual(self.e('h1.title').text, 'Lighthouse, Brighton, UK')
-		self.assertEqual(self.e('.section p img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4b_main.jpg')
+		self.assertEqual('Lighthouse, Brighton, UK', self.e('h1.title').text)
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4b_main.jpg', self.e('.section p img').get_attribute('src'))
 	
 	@url('/community/topics-to-explore')
 	def test_topics_to_explore(self):
 		self.assertTitle('Historypin | Community | Topics to Explore')
-		self.assertEqual(self.e('.right h1').text, 'Topics to Explore')
+		self.assertEqual('Topics to Explore', self.e('.right h1').text)
 		
 		topics = [
 			{
@@ -493,21 +493,21 @@ class Community(HPTestCase):
 		for n in range(len(topics)):
 			i = topics[n]
 			
-			self.assertEqual(headings[n].text, i['heading'])
+			self.assertEqual(i['heading'], headings[n].text)
 			
 			for item in i['items']:
-				self.assertEqual(subheadings[k].text, item[0])
-				self.assertEqual(subheadings[k].get_attribute('href'), URL_BASE + item[1])
-				self.assertEqual(links[k].get_attribute('href'), URL_BASE + item[1])
-				self.assertEqual(images[k].get_attribute('src'), URL_BASE + item[2])
-				self.assertEqual(paragraphs[k].text, item[3])
+				self.assertEqual(item[0], subheadings[k].text)
+				self.assertEqual(URL_BASE + item[1], subheadings[k].get_attribute('href'))
+				self.assertEqual(URL_BASE + item[1], links[k].get_attribute('href'))
+				self.assertEqual(URL_BASE + item[2], images[k].get_attribute('src'))
+				self.assertEqual(item[3], paragraphs[k].text)
 				
 				k += 1
 	
 	@url('/community/schools-case-studies/')
 	def test_schools_studies(self):
 		self.assertTitle('Historypin | Community | Schools')
-		self.assertEqual(self.e('.right h1').text, 'Schools Case Studies')
+		self.assertEqual('Schools Case Studies', self.e('.right h1').text)
 		
 		studies = [
 			['English International College, Marbella, Spain', '/community/schools-eic', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6b_thumb.jpg', 'Historypin is used as the theme for Humanities Day and students create an exhibition after parents and locals invited in for Historypin coffee morning.'],
@@ -525,57 +525,57 @@ class Community(HPTestCase):
 		
 		for n in range(len(studies)):
 			i = studies[n]
-			self.assertEqual(headings[n].text, i[0])
-			self.assertEqual(headings[n].get_attribute('href'), URL_BASE + i[1])
-			self.assertEqual(image_links[n].get_attribute('href'), URL_BASE + i[1])
-			self.assertEqual(images[n].get_attribute('src'), i[2])
-			self.assertEqual(paragraphs[n].text, i[3])
+			self.assertEqual(i[0], headings[n].text)
+			self.assertEqual(URL_BASE + i[1], headings[n].get_attribute('href'))
+			self.assertEqual(URL_BASE + i[1], image_links[n].get_attribute('href'))
+			self.assertEqual(i[2], images[n].get_attribute('src'))
+			self.assertEqual(i[3], paragraphs[n].text)
 		
 	@url('/community/schools-eic/')
 	def test_schools_studies_eic(self):
 		self.assertTitle('Historypin | Community | Schools | English International College, Marbella, Spain')
-		self.assertEqual(self.e('h1.title').text, 'English International College, Marbella, Spain')
-		self.assertEqual(self.e('.section p img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6b_main.jpg')
-		self.assertEqual(self.e('h2:nth-of-type(1)').text, 'Amy, Year 9')
-		self.assertEqual(self.e('.section p:nth-of-type(10) img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6b_fav1.jpg')
+		self.assertEqual('English International College, Marbella, Spain', self.e('h1.title').text)
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6b_main.jpg', self.e('.section p img').get_attribute('src'))
+		self.assertEqual('Amy, Year 9', self.e('h2:nth-of-type(1)').text)
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6b_fav1.jpg', self.e('.section p:nth-of-type(10) img').get_attribute('src'))
 		
 	@url('/community/schools-billericay/')
 	def test_schools_studies_bill(self):
 		self.assertTitle('Historypin | Community | Schools | Billericay School, Essex, UK')
-		self.assertEqual(self.e('h1.title').text, 'Billericay School, Essex, UK')
-		self.assertEqual(self.e('.section p:nth-of-type(1) img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6d_main.jpg')
-		self.assertEqual(self.e('.section p:nth-of-type(12) a').get_attribute('href'),'http://billericayschool.net/speakup/2011/06/pinning-down-history/')
-		self.assertEqual(self.e('.section p:nth-of-type(12) a').text,'Read more about the project on their blog.')
-		self.assertEqual(self.e('h3:nth-of-type(1)').text, 'Video made by Billericay School for the day')
-		self.assertEqual(self.e('h3:nth-of-type(2)').text, 'Feature on Radio Essex about the Billericay Historypin project')
-		self.assertEqual(self.e('.section p:nth-of-type(14) img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6d_sec.jpg')
+		self.assertEqual('Billericay School, Essex, UK', self.e('h1.title').text)
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6d_main.jpg', self.e('.section p:nth-of-type(1) img').get_attribute('src'))
+		self.assertEqual('http://billericayschool.net/speakup/2011/06/pinning-down-history/', self.e('.section p:nth-of-type(12) a').get_attribute('href'))
+		self.assertEqual('Read more about the project on their blog.', self.e('.section p:nth-of-type(12) a').text)
+		self.assertEqual('Video made by Billericay School for the day', self.e('h3:nth-of-type(1)').text)
+		self.assertEqual('Feature on Radio Essex about the Billericay Historypin project', self.e('h3:nth-of-type(2)').text)
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6d_sec.jpg', self.e('.section p:nth-of-type(14) img').get_attribute('src'))
 	 
 	@url('/community/schools-cromer/')
 	def test_schools_studies_cromer(self):
 		self.assertTitle('Historypin | Community | Schools | Cromer, Norfolk, UK')
-		self.assertEqual(self.e('h1.title').text, 'Cromer, Norfolk, UK')
-		self.assertEqual(self.e('.section p:nth-of-type(1) img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6e_main.jpg')
+		self.assertEqual('Cromer, Norfolk, UK', self.e('h1.title').text)
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6e_main.jpg', self.e('.section p:nth-of-type(1) img').get_attribute('src'))
 	
 	@url('/community/schools-nelson/')
 	def test_schools_studies_nelson(self):
 		self.assertTitle('Historypin | Community | Schools | Nelson Rural School, New Brunswick, Canada')
-		self.assertEqual(self.e('h1.title').text, 'Nelson Rural School, New Brunswick, Canada')
-		self.assertEqual(self.e('.section img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6c_main.jpg')
-		self.assertEqual(self.e('.section p:nth-of-type(8) a').get_attribute('href'), URL_BASE + '/channels/view/8817007/name/nelsonrural7k/')
-		self.assertEqual(self.e('.section p:nth-of-type(8) a').text, u'Nelson School’s Historypin Channel')
+		self.assertEqual('Nelson Rural School, New Brunswick, Canada', self.e('h1.title').text)
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6c_main.jpg', self.e('.section img').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/channels/view/8817007/name/nelsonrural7k/', self.e('.section p:nth-of-type(8) a').get_attribute('href'))
+		self.assertEqual(u'Nelson School’s Historypin Channel', self.e('.section p:nth-of-type(8) a').text)
 		
 	@url('/community/schools-newport/')
 	def test_schools_studies_newport(self):
 		self.assertTitle('Historypin | Community | Schools | Newport Primary School, Essex, UK')
-		self.assertEqual(self.e('h1.title').text, 'Newport Primary School, Essex, UK')
-		self.assertEqual(self.e('.section p:nth-of-type(1) img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6f_main.jpg')
-		self.assertEqual(self.e('.section p:nth-of-type(7) img').get_attribute('src'), 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4f_sec.jpg')
+		self.assertEqual('Newport Primary School, Essex, UK', self.e('h1.title').text)
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6f_main.jpg', self.e('.section p:nth-of-type(1) img').get_attribute('src'))
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4f_sec.jpg', self.e('.section p:nth-of-type(7) img').get_attribute('src'))
 		
 	@url('/community/schools-resources/')
 	def test_schools_resources(self):
 		self.assertTitle('Historypin | Community | Schools | Activities and Downloadable Resources')
-		self.assertEqual(self.e('h1.title').text, 'Activities & Downloads for Schools')
-		self.assertEqual(self.e('h2:nth-of-type(1)').text, 'Downloadable Resources')
+		self.assertEqual('Activities & Downloads for Schools', self.e('h1.title').text)
+		self.assertEqual('Downloadable Resources', self.e('h2:nth-of-type(1)').text)
 		
 		resources = [
 			{
@@ -616,15 +616,15 @@ class Community(HPTestCase):
 		for n in range(len(resources)):
 			i = resources[n]
 			
-			self.assertEqual(headings[n].text, i['heading'])
+			self.assertEqual(i['heading'], headings[n].text)
 			
 			for item in i['items']:
-				self.assertEqual(list_items[k].text, item[0] + '\n' + item[2])
-				self.assertEqual(links[k].get_attribute('href'), item[1])
+				self.assertEqual(item[0] + '\n' + item[2], list_items[k].text)
+				self.assertEqual(item[1], links[k].get_attribute('href'))
 				
 				k += 1
 		
-		self.assertEqual(self.e('h2:nth-of-type(2)').text, 'Activities by subject')
+		self.assertEqual('Activities by subject', self.e('h2:nth-of-type(2)').text)
 		
 		activities = [
 			['History', 'Students explore the map between particular dates as an introduction to that period of history to see what photos, videos or audio they can find.'],
@@ -639,5 +639,5 @@ class Community(HPTestCase):
 		paragraphs = self.es('.inner.right h3 + p')
 		for n in range(len(activities)):
 			i = activities[n]
-			self.assertEqual(headings[n].text, i[0])
-			self.assertEqual(paragraphs[n].text, i[1])
+			self.assertEqual(i[0], headings[n].text)
+			self.assertEqual(i[1], paragraphs[n].text)
