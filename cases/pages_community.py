@@ -110,7 +110,7 @@ class Community(HPTestCase):
 				self.assertEqual(paragraphs[k].text, i[2])
 				
 				k += 1
-		
+	
 	@url('/community/localprojects')
 	def test_home_projects(self):
 		self.assertTitle('Historypin | Community | Local Projects')
@@ -190,9 +190,10 @@ class Community(HPTestCase):
 		self.assertEqual(self.e('.right h1').text, 'Institutions involved')
 		self.assertEqual(self.e('.right h2').text, 'What Institutions are saying about Historypin')
 		
-		# TODO check for the firs list item
-		# - ancor exists ancor
-		# - image
+		li = self.e('.logos-list li')
+		self.assertIsInstance(li, WebElement)
+		self.assertIsInstance(li.e('a'), WebElement)
+		self.assertIsInstance(li.e('img'), WebElement)
 	
 	@url('/community/howtos')
 	def test_how_tos(self):
@@ -244,18 +245,19 @@ class Community(HPTestCase):
 		
 		headings = self.es('.inner.right h2')
 		uls = self.es('.inner.right ul')
+		links = self.es('.inner.right ul a')
 		
-		# TODO move links outside of the for
+		k = 0
 		for n in range(len(how_tos)):
 			i = how_tos[n]
 			
 			self.assertEqual(headings[n].text, i['heading'])
 			
-			links = uls[n].es('a')
-			for k in range(len(i['items'])):
-				link = i['items'][k]
-				self.assertEqual(links[k].get_attribute('href'), link[0])
-				self.assertEqual(links[k].text, link[1])
+			for item in i['items']:
+				self.assertEqual(links[k].get_attribute('href'), item[0])
+				self.assertEqual(links[k].text, item[1])
+				
+				k += 1
 	
 	@url('/community/localprojects-resources')
 	def test_projects_resources(self):
@@ -323,16 +325,16 @@ class Community(HPTestCase):
 		]
 		
 		grid			= self.e('.grid')
-		headings		= grid.es('h3')
-		headings_links	= grid.es('h3 a')
-		images			= grid.es('a img')
-		# TODO image_links		= grid.es('a img')
+		headings		= grid.es('h3 a')
+		image_links		= grid.es('.inner > a')
+		images			= grid.es('img')
 		paragraphs		= grid.es('p')
 		
 		for n in range(len(studies)):
 			i = studies[n]
 			self.assertEqual(headings[n].text, i[0])
-			self.assertEqual(headings_links[n].get_attribute('href'), URL_BASE + i[1])
+			self.assertEqual(headings[n].get_attribute('href'), URL_BASE + i[1])
+			self.assertEqual(image_links[n].get_attribute('href'), URL_BASE + i[1])
 			self.assertEqual(images[n].get_attribute('src'), i[2])
 			self.assertEqual(paragraphs[n].text, i[3])
 		
@@ -379,8 +381,8 @@ class Community(HPTestCase):
 		for n in range(len(h2s)):
 			i = h2s[n]
 			self.assertEqual(headings[n].text, i)
-			
-		list_images = [
+		
+		pinners = [
 			['/resources/images/content/community/reading/small_1.jpg', '/channels/view/id/6604879/', 'RG Community'],
 			['/resources/images/content/community/reading/small_2.jpg', '/channels/view/id/7012010/', 'Museum of English Rural Life'],
 			['/resources/images/content/community/reading/small_3.jpg', '/channels/view/id/6160003/', 'Giles Knapp'],
@@ -389,21 +391,21 @@ class Community(HPTestCase):
 			['/resources/images/content/community/reading/small_8.jpg', '/channels/view/id/5787040/', 'Sitevolunteer'],
 		]
 		
-		# TODO Refac selector
-		images			= self.es('.col.w2:nth-of-type(1) ul img')
-		pinners_links	= self.es('.col.w2:nth-of-type(1) ul a')
+		pinner_images	= self.es('.col.w2:nth-of-type(1) ul img')
+		pinner_links	= self.es('.col.w2:nth-of-type(1) ul a')
+		for n in range(len(pinners)):
+			i = pinners[n]
+			self.assertEqual(pinner_images[n].get_attribute('src'), URL_BASE + i[0])
+			self.assertEqual(pinner_links[n].get_attribute('href'), URL_BASE + i[1])
+			self.assertEqual(pinner_links[n].text, i[2])
 		
-		for n in range(len(list_images)):
-			i = list_images[n]
-			self.assertEqual(images[n].get_attribute('src'), URL_BASE + i[0])
-			self.assertEqual(pinners_links[n].get_attribute('href'), URL_BASE + i[1])
-			self.assertEqual(pinners_links[n].text, i[2])
 		
 		self.assertEqual(self.e('.col.w2:nth-of-type(2) img').get_attribute('src'), URL_BASE + '/resources/images/content/community/reading/take_a_tour.jpg')
-		self.assertEqual(self.e('a.button').get_attribute('href'), URL_BASE + '/tours/view/id/6917547/title/Snapshots%20of%20Reading')
-		self.assertEqual(self.e('a.button span').text, 'Take the Tour')
+		button = self.e('.col.w2:nth-of-type(2) a.button')
+		self.assertEqual(button.get_attribute('href'), URL_BASE + '/tours/view/id/6917547/title/Snapshots%20of%20Reading')
+		self.assertEqual(button.text, 'Take the Tour')
 		
-		pinners = [
+		pins = [
 			['/resources/images/content/community/reading/medium_1.jpg', '/map/#/geo:51.465794,-0.966198/zoom:15/dialog:1834055/tab:details/', 'Floods in Gosbrook Road, Caversham - April 1947'],
 			['/resources/images/content/community/reading/medium_2.jpg', '/map/#/geo:51.455863,-0.990668/zoom:15/dialog:1228008/tab:streetview/', 'Traffic on Oxford Road, 1893'],
 			['/resources/images/content/community/reading/medium_3.jpg', '/map/#/geo:51.445213,-1.000692/zoom:15/dialog:5845061/tab:details/', 'Silver Jubilee Street Party Vine Crescent Reading, 1977'],
@@ -412,16 +414,15 @@ class Community(HPTestCase):
 			['/resources/images/content/community/reading/medium_6.jpg', '/map/#/geo:51.472803,-0.96989/zoom:14/dialog:6931485/tab:details/', 'Bernard Tripp at Bugs Bottom, 1943'],
 		]
 		
-		images	= self.es('.cf img')
-		links	= self.es('.cf a')
-		for n in range(len(pinners)):
-			i = pinners[n]
-			self.assertEqual(images[n].get_attribute('src'), URL_BASE + i[0])
-			self.assertEqual(links[n].get_attribute('href'), URL_BASE + i[1])
-			self.assertEqual(links[n].text, i[2])
-			
+		pin_images	= self.es('.cf img')
+		pin_links	= self.es('.cf a')
+		for n in range(len(pins)):
+			i = pins[n]
+			self.assertEqual(pin_images[n].get_attribute('src'), URL_BASE + i[0])
+			self.assertEqual(pin_links[n].get_attribute('href'), URL_BASE + i[1])
+			self.assertEqual(pin_links[n].text, i[2])
 		
-		images = self.es('h2 ~ img')
+		images = self.es('h2:last-of-type ~ img')
 		self.assertEqual(images[0].get_attribute('src'), URL_BASE + '/resources/images/content/community/reading/pined_on_a_map.jpg')
 		self.assertEqual(images[1].get_attribute('src'), URL_BASE + '/resources/images/hlf_web.jpg')
 		self.assertEqual(images[2].get_attribute('src'), URL_BASE + '/resources/images/gul_web.jpg')
@@ -485,7 +486,7 @@ class Community(HPTestCase):
 		headings 			= grid.es('h2')
 		subheadings 		= grid.es('h3 a')
 		links 				= grid.es('.inner > a')
-		images 				= grid.es('a img')
+		images 				= grid.es('img')
 		paragraphs 			= grid.es('p')
 		
 		k = 0
@@ -517,16 +518,16 @@ class Community(HPTestCase):
 		]
 		
 		grid			= self.e('.grid')
-		headings		= grid.es('h3')
-		headings_links	= grid.es('h3 a')
-		images			= grid.es('a img')
-		# TODO image_links		= grid.es('a img')
+		headings		= grid.es('h3 a')
+		images			= grid.es('img')
+		image_links		= grid.es('.inner > a')
 		paragraphs		= grid.es('p')
 		
 		for n in range(len(studies)):
 			i = studies[n]
 			self.assertEqual(headings[n].text, i[0])
-			self.assertEqual(headings_links[n].get_attribute('href'), URL_BASE + i[1])
+			self.assertEqual(headings[n].get_attribute('href'), URL_BASE + i[1])
+			self.assertEqual(image_links[n].get_attribute('href'), URL_BASE + i[1])
 			self.assertEqual(images[n].get_attribute('src'), i[2])
 			self.assertEqual(paragraphs[n].text, i[3])
 		
