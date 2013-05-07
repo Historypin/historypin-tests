@@ -58,7 +58,7 @@ class Homepage(HPTestCase):
 			self.assertIn(i[0]		, links[n].get_attribute('class'))
 			self.assertEqual(i[1]	, links[n].get_attribute('href'))
 	
-	@unittest.skip("TODO")
+	
 	@url('/')
 	def test_featured(self):
 		# TODO 
@@ -66,9 +66,10 @@ class Homepage(HPTestCase):
 		# - prev button
 		# - fullscreen
 		# - exit fullscreen
+		previous	= self.e('#featured a.prev')
+		next		= self.e('#featured a.next')
+		next.click()
 		
-		pass
-	
 	@unittest.skip("TODO")
 	@url('/')
 	def test_activity(self):
@@ -116,7 +117,9 @@ class Homepage(HPTestCase):
 		
 		browse_all = self.e('#featured-projects .bar a.right')
 		self.assertEqual(URL_BASE + '/projects/'	, browse_all.get_attribute('href'))
-		self.assertEqual('Browse all projects'		, browse_all.text, )
+		self.assertEqual('Browse all projects'		, browse_all.text)
+		
+		listing = self.es('')
 	
 	@url('/')
 	def test_icon_touts(self):
