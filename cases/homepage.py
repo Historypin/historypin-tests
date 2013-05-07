@@ -10,7 +10,7 @@ class Homepage(HPTestCase):
 		# - close-
 		# - refresh 
 		#   - the message should not be here anymore
-		
+		l
 		pass
 	
 	@url('/')
@@ -109,17 +109,21 @@ class Homepage(HPTestCase):
 		# sleep(.3)
 		# self.assertEqual(self.browser.current_url.split('#')[0], URL_BASE + '/map/')
 	
-	@unittest.skip("TODO")
 	@url('/')
 	def test_projects(self):
-		# TODO 
-		# - pages
+	
+		listing		= self.e('.listing .w320')
+		self.assertIsInstance(listing.e('h2'), WebElement)
+		self.assertIsInstance(listing.e('p'), WebElement)
+		self.assertIsInstance(listing.e('img'), WebElement)
+		self.assertIsInstance(listing.e('a.banner-holder'), WebElement)
+		pages = self.es('.slider-paging .page')
+		pages[0].click()
+		pages[1].click()
 		
 		browse_all = self.e('#featured-projects .bar a.right')
 		self.assertEqual(URL_BASE + '/projects/'	, browse_all.get_attribute('href'))
 		self.assertEqual('Browse all projects'		, browse_all.text)
-		
-		listing = self.es('')
 	
 	@url('/')
 	def test_icon_touts(self):
