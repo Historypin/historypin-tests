@@ -89,9 +89,9 @@ class Homepage(HPTestCase):
 		fulscr.click()
 		self.assertNotIn('home-fullscreen', body.get_attribute('class'))
 		sleep(.5)
-		# TODO 
+		
+		# TODO LATER
 		# - favourite
-
 	
 	@url('/')
 	def test_activity(self):
