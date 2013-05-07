@@ -7,13 +7,13 @@ class Pages(HPTestCase):
 	@url('/about-us/')
 	def test_about(self):
 		self.assertTitle('Historypin | A 90 second introduction')
-		self.assertEqual(self.e('h1.title').text, 'A 90 second introduction')
-		self.assertEqual(self.e('iframe').get_attribute('src'), 'http://www.youtube.com/embed/FdT3eKdto4w?rel=0')
+		self.assertEqual('A 90 second introduction'							, self.e('h1.title').text)
+		self.assertEqual('http://www.youtube.com/embed/FdT3eKdto4w?rel=0'	, self.e('iframe').get_attribute('src'))
 	
 	@url('/app/')
 	def test_app(self):
 		self.assertTitle('Historypin | App')
-		self.assertEqual(self.e('h2').text, 'What can you do on the Historypin app?')
+		self.assertEqual('What can you do on the Historypin app?', self.e('h2').text)
 		
 		items = [
 			['Android', '/resources/images/content/app/app_android.png', 'Google Play Store', 'https://market.android.com/details?id=com.historypin.Historypin&feature=search_result'],
@@ -21,20 +21,21 @@ class Pages(HPTestCase):
 			['Windows Phone 7', '/resources/images/content/app/app_wp7.png', 'Windows Phone Marketplace', 'http://www.windowsphone.com/en-US/apps/05638072-742e-460c-ab97-18d2b47ef06b'],
 		]
 		
-		headings	= self.es('.appstores .col h1')
-		images		= self.es('.appstores .col img')
-		links		= self.es('.appstores .col a')
+		cnt			= self.e('.appstores')
+		headings	= cnt.es('.col h1')
+		images		= cnt.es('.col img')
+		links		= cnt.es('.col a')
 		for n in range(len(items)):
 			i = items[n]
-			self.assertEqual(headings[n].text, i[0])
-			self.assertEqual(images[n].get_attribute('src'), URL_BASE + i[1])
-			self.assertEqual(links[n].text, i[2])
-			self.assertEqual(links[n].get_attribute('href'), i[3])
+			self.assertEqual(i[0]				, headings[n].text)
+			self.assertEqual(URL_BASE + i[1]	, images[n].get_attribute('src'))
+			self.assertEqual(i[2]				, links[n].text)
+			self.assertEqual(i[3]				, links[n].get_attribute('href'))
 	
 	@url('/contact/')
 	def test_contact(self):
 		self.assertTitle('Historypin | Contact')
-		self.assertEqual(self.e('.section h1.title').text, 'Contact')
+		self.assertEqual('Contact', self.e('.section h1.title').text)
 		
 		content = [
 			['General enquiries, technical enquiries, content enquiries', 'historypin@wearewhatwedo.org\n+44 (0)20 7148 7666\n71 St John Street\nLondon\nEC1M 4NJ\nUnited Kingdom', 'mailto:historypin@wearewhatwedo.org'],
@@ -45,15 +46,16 @@ class Pages(HPTestCase):
 			['Corporate Partnerships', 'Nick Stanhope\nnick.stanhope@wearewhatwedo.org\n+44 (0)20 7148 7667', 'mailto:nick.stanhope@wearewhatwedo.org'],
 		]
 		
-		headings	= self.es('.section h2')
-		paragraphs	= self.es('.section p')
-		links		= self.es('.section p a')
+		cnt			= self.e('.section')
+		headings	= cnt.es('h2')
+		paragraphs	= cnt.es('p')
+		links		= cnt.es('p a')
 		
 		for n in range(len(content)):
 			i = content[n]
-			self.assertEqual(headings[n].text, i[0])
-			self.assertEqual(paragraphs[n].text, i[1])
-			self.assertEqual(links[n].get_attribute('href'), i[2])
+			self.assertEqual(i[0], headings[n].text)
+			self.assertEqual(i[1], paragraphs[n].text)
+			self.assertEqual(i[2], links[n].get_attribute('href'))
 	
 	@url('/faq/')
 	def test_faq(self):
@@ -214,28 +216,25 @@ class Pages(HPTestCase):
 		for n in range(len(faq)):
 			i = faq[n]
 			
-			self.assertEqual(questions[n].text, i['heading'])
-			self.assertEqual(questions_h[n].text, i['heading'])
+			self.assertEqual(i['heading'], questions[n].text)
+			self.assertEqual(i['heading'], questions_h[n].text)
 			
-			for x in range(len(i['items'])):
-				j = i['items'][x]
-				
-				self.assertEqual(answers[k].get_attribute('href'), URL_BASE + '/faq/#' + j[0])
-				self.assertEqual(answers[k].text, j[1])
-				
-				self.assertEqual(answers_h[k].get_attribute('id'), j[0])
-				self.assertEqual(answers_h[k].text, j[1])
+			for item in i['items']:
+				self.assertEqual(URL_BASE + '/faq/#' + item[0]	, answers[k].get_attribute('href'))
+				self.assertEqual(item[1]						, answers[k].text)
+				self.assertEqual(item[0]						, answers_h[k].get_attribute('id'))
+				self.assertEqual(item[1]						, answers_h[k].text)
 				
 				k += 1
 	
 	@url('/presscentre/')
 	def test_press_center(self):
 		self.assertTitle('Historypin | Press Centre')
-		self.assertEqual(self.e('h1.title').text, 'Press Centre')
+		self.assertEqual('Press Centre', self.e('h1.title').text)
 		
 		headings = self.es('.section h2')
-		self.assertEqual(headings[0].text, 'Some of our favourite coverage')
-		self.assertEqual(headings[1].text, 'Coverage to date')
+		self.assertEqual('Some of our favourite coverage'	, headings[0].text)
+		self.assertEqual('Coverage to date'					, headings[1].text)
 		
 		links = [
 			# link, link text, additional text
@@ -309,19 +308,19 @@ class Pages(HPTestCase):
 		p_links		= self.es('#site-content .right a')
 		for n in range(len(links)):
 			i = links[n]
-			self.assertEqual(p_links[n].get_attribute('href'), i[0])
-			self.assertEqual(paragraphs[n].text, i[1] + '\n' + i[2])
+			self.assertEqual(i[0]				, p_links[n].get_attribute('href'))
+			self.assertEqual(i[1] + '\n' + i[2]	, paragraphs[n].text)
 		
 		cnt = self.e('.sidebar .inner:nth-of-type(1)')
-		self.assertEqual(cnt.e('h3').text, 'Contact Details')
+		self.assertEqual('Contact Details', cnt.e('h3').text)
 		
 		p, a = cnt.es('p'), cnt.es('p a')
-		self.assertEqual(p[0].text, 'UK & Global\nRebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7666')
-		self.assertEqual(a[0].get_attribute('href'), 'mailto:rebekkah.abraham@wearewhatwedo.org')
-		self.assertEqual(p[1].text, 'US\nJon Voss\njon.voss@wearewhatwedo.org\n+1 415 935 4701')
-		self.assertEqual(a[1].get_attribute('href'), 'mailto:jon.voss@wearewhatwedo.org')
+		self.assertEqual('UK & Global\nRebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7666'	, p[0].text)
+		self.assertEqual('mailto:rebekkah.abraham@wearewhatwedo.org'												, a[0].get_attribute('href'))
+		self.assertEqual('US\nJon Voss\njon.voss@wearewhatwedo.org\n+1 415 935 4701'								, p[1].text)
+		self.assertEqual('mailto:jon.voss@wearewhatwedo.org'														, a[1].get_attribute('href'))
 		
-		self.assertEqual(self.e('.sidebar .inner:nth-of-type(2) h3').text, 'Awards')
+		self.assertEqual('Awards', self.e('.sidebar .inner:nth-of-type(2) h3').text)
 		sidebar = [
 			['Webby for Best Charitable Organisation/Not-for-Profit Website', 'http://www.webbyawards.com/webbys/current.php?season=15#webby_entry_charitable_organizations_non-profit', '/resources/images/presscenter/webby_pink.png'],
 			['Sunday Times The App List 2012.', 'http://thetim.es/y1vL3P', '/resources/images/presscenter/sundaytimes500.png'],
@@ -331,27 +330,28 @@ class Pages(HPTestCase):
 		]
 		
 		
-		paragraphs	= self.es('.sidebar .inner p:nth-of-type(2)')[1:]
-		images		= self.es('.sidebar .inner img')
-		links		= self.es('.sidebar .inner a')[2:]
+		cnt			= self.e('.sidebar')
+		paragraphs	= cnt.es('p:nth-of-type(2)')[1:]
+		images		= cnt.es('img')
+		links		= cnt.es('a')[2:]
 		
 		for n in range(len(sidebar)):
 			i = sidebar[n]
 			
-			self.assertEqual(paragraphs[n].text, i[0])
-			self.assertEqual(images[n].get_attribute('src'), URL_BASE + i[2])
-			self.assertEqual(links[2 * n].get_attribute('href'), i[1])
-			self.assertEqual(links[2 * n + 1].get_attribute('href'), i[1])
+			self.assertEqual(i[0]				, paragraphs[n].text)
+			self.assertEqual(URL_BASE + i[2]	, images[n].get_attribute('src'))
+			self.assertEqual(i[1]				, links[2 * n].get_attribute('href'))
+			self.assertEqual(i[1]				, links[2 * n + 1].get_attribute('href'))
 		
 		cnt = self.e('.sidebar .inner:nth-of-type(7)')
-		self.assertEqual(cnt.e('h3').text, 'Press Pack')
-		self.assertEqual(cnt.e('a').get_attribute('href'), 'http://wawwd-resources.s3.amazonaws.com/presspacks/Historypin.zip')
-		self.assertEqual(cnt.e('p').text, u'Download press releases, pictures and all the info you\u2019ll need to write a fabulously complimentary article about us.')
+		self.assertEqual('Press Pack', cnt.e('h3').text)
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/presspacks/Historypin.zip', cnt.e('a').get_attribute('href'))
+		self.assertEqual(u'Download press releases, pictures and all the info you\u2019ll need to write a fabulously complimentary article about us.', cnt.e('p').text)
 	
 	@url('/privacy-policy/') 
 	def test_privacy_policy(self):
 		self.assertTitle('Historypin | Privacy Policy')
-		self.assertEqual(self.e('#site-content h1').text, 'Privacy Policy')
+		self.assertEqual('Privacy Policy', self.e('#site-content h1').text)
 		
 		items = [
 			'1. What do we mean by "Your Data"?',
@@ -368,12 +368,12 @@ class Pages(HPTestCase):
 		
 		headings = self.es('#site-content h2')
 		for n in range(len(items)):
-			self.assertEqual(headings[n].text, items[n])
+			self.assertEqual(items[n], headings[n].text)
 	
 	@url('/Friends-of-Historypin/')
 	def test_support(self):
 		self.assertTitle('Historypin | Friends of Historypin')
-		self.assertEqual(self.e('h2').text, 'What does the Foundation do?')
+		self.assertEqual('What does the Foundation do?', self.e('h2').text)
 		
 		images = [
 			'/resources/images/home/friends_of_Historypin.png',
@@ -383,7 +383,7 @@ class Pages(HPTestCase):
 		
 		imgs = self.es('.section img')
 		for n in range(len(images)):
-			self.assertEqual(imgs[n].get_attribute('src'), URL_BASE + images[n])
+			self.assertEqual(URL_BASE + images[n], imgs[n].get_attribute('src'))
 		
 		sidebar = [
 			{
@@ -403,35 +403,35 @@ class Pages(HPTestCase):
 			},
 		]
 		
-		sb			= self.e('.sidebar')
-		headings	= sb.es('h3')
-		paragraphs	= sb.es('p')
-		links		= sb.es('a')
+		cnt			= self.e('.sidebar')
+		headings	= cnt.es('h3')
+		paragraphs	= cnt.es('p')
+		links		= cnt.es('a')
 		
 		p, l = 0, 0
 		for n in range(len(sidebar)):
 			i = sidebar[n]
 			
-			self.assertEqual(headings[n].text, i['heading'])
+			self.assertEqual(i['heading'], headings[n].text)
 			
-			if 'link_h' in i: self.assertEqual(headings[n].e('a').get_attribute('href'), URL_BASE + i['link_h'])
+			if 'link_h' in i: self.assertEqual(URL_BASE + i['link_h'], headings[n].e('a').get_attribute('href'))
 			
 			for k in range(len(i['paragraphs'])):
-				self.assertEqual(paragraphs[p].text, i['paragraphs'][k])
+				self.assertEqual(i['paragraphs'][k], paragraphs[p].text)
 				
 				p += 1
 			
 			if 'links' in i:
 				link = i['link']
-				self.assertEqual(links[l].get_attribute('href'), link[0])
-				self.assertEqual(links[l].text, link[1])
+				self.assertEqual(link[0], links[l].get_attribute('href'))
+				self.assertEqual(link[1], links[l].text)
 				
 				l += 1
 	
 	@url('/terms-and-conditions/')
 	def test_toc(self):
 		self.assertTitle('Historypin | Terms and Conditions')
-		self.assertEqual(self.e('.rte h1').text, 'Historypin Terms and Conditions')
+		self.assertEqual('Historypin Terms and Conditions', self.e('.rte h1').text)
 		
 		links = [
 			['000', 'Intro'],
@@ -463,18 +463,17 @@ class Pages(HPTestCase):
 		for n in range(len(links)):
 			i = links[n]
 			
-			self.assertEqual(anchors[n].text, i[1])
-			self.assertEqual(anchors[n].get_attribute('href'), URL_BASE + '/terms-and-conditions/#' + i[0])
-			
-			self.assertEqual(headings[n].get_attribute('id'), i[0])
-			self.assertEqual(headings[n].text, i[1])
+			self.assertEqual(i[1]											, anchors[n].text)
+			self.assertEqual(URL_BASE + '/terms-and-conditions/#' + i[0]	, anchors[n].get_attribute('href'))
+			self.assertEqual(i[0]											, headings[n].get_attribute('id'))
+			self.assertEqual(i[1]											, headings[n].text)
 	
 	@url('/wearewhatwedo/')
 	def test_wawwd(self):
 		self.assertTitle('Historypin | We Are What We Do')
-		self.assertEqual(self.e('.title').text, 'We Are What We Do')
+		self.assertEqual('We Are What We Do', self.e('.title').text)
 		
 		a = self.e('.rte p:nth-child(5) a')
-		self.assertEqual(a.get_attribute('href'), 'http://wearewhatwedo.org/')
-		self.assertEqual(a.text, 'wearewhatwedo.org')
+		self.assertEqual('http://wearewhatwedo.org/'	, a.get_attribute('href'))
+		self.assertEqual('wearewhatwedo.org'			, a.text)
 
