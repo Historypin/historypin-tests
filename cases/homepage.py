@@ -16,7 +16,7 @@ class Homepage(HPTestCase):
 		self.browser.refresh()
 		self.assertRaises(NoSuchElementException, self.e, '.cookies-popup')
 	
-	@unittest.expectedFailure()
+	@unittest.expectedFailure
 	@url('/')
 	def test_navigation(self):
 		
@@ -123,13 +123,13 @@ class Homepage(HPTestCase):
 		sleep(.3)
 		self.assertEqual(self.browser.current_url.split('#')[0], URL_BASE + '/map/')
 	
-	@unittest.skip("TODO")
-	@url('/')
-	def test_explore_go_button(self):
+	# @unittest.skip("TODO")
+	# @url('/')
+	# def test_explore_go_button(self):
 		
-		self.assertEqual('Explore where you live...', self.e('#search h2').text)
+	# 	self.assertEqual('Explore where you live...', self.e('#search h2').text)
 		
-		self.e('#search-location').send_keys("London")
+	# 	self.e('#search-location').send_keys("London")
 		
 		# first_suggestion = self.e_wait('.pac-container .pac-item')
 		# self.assertEqual(first_suggestion.text, 'London, United Kingdom')
