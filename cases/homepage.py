@@ -8,7 +8,6 @@ class Homepage(HPTestCase):
 			['ss-cell', '/app/','Download the latest Historypin\nsmartphone app'],
 			['ss-trophy', '/presscentre/','We\'ve won a webby award for best charity non-profit website'],
 			['ss-user', '/team/','Meet the team working on Historypin around the world'],
-		
 		]
 		
 		links 	= self.es('.features a')
@@ -21,7 +20,7 @@ class Homepage(HPTestCase):
 			self.assertIn(i[0], classes[n].get_attribute('class'))
 			self.assertEqual(links[n].get_attribute('href'), URL_BASE + i[1])
 			self.assertEqual(links[n].text, i[2])
-		
+	
 	@url('/')
 	def test_explore(self):
 		
@@ -35,6 +34,21 @@ class Homepage(HPTestCase):
 		first_suggestion.click()
 		sleep(.3)
 		self.assertEqual(self.browser.current_url.split('#')[0], URL_BASE + '/map/')
+	
+	@unittest.skip("TODO")
+	@url('/')
+	def test_explore_go_button(self):
+		
+		self.assertEqual(self.e('#search h2').text, 'Explore where you live...')
+		
+		self.e('#search-location').send_keys("London")
+		
+		# first_suggestion = self.e_wait('.pac-container .pac-item')
+		# self.assertEqual(first_suggestion.text, 'London, United Kingdom')
+		
+		# first_suggestion.click()
+		# sleep(.3)
+		# self.assertEqual(self.browser.current_url.split('#')[0], URL_BASE + '/map/')
 	
 	@unittest.skip("TODO")
 	@url('/')
