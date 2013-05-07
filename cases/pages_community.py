@@ -26,8 +26,7 @@ class Community(HPTestCase):
 		headings = ['Latest News', 'Challenges', 'Get Involved']
 		h2s = self.es('.grid h2')
 		for n in range(len(headings)):
-			i = headings[n]
-			self.assertEqual(h2s[n].text, i)
+			self.assertEqual(h2s[n].text, headings[n])
 		
 		groups = [
 			['Pinning The Queen\'s History', 'What pics and stories do you have of the Queen\'s visits and Jubilee celebrations?', 'http://wearewhatwedo.org/queen.jpg', u'View The Queen’s Collection', URL_BASE + '/DiamondJubilee/'],

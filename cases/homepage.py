@@ -10,8 +10,8 @@ class Homepage(HPTestCase):
 			['ss-user', '/team/','Meet the team working on Historypin around the world'],
 		]
 		
-		links 	= self.es('.features a')
 		classes = self.es('.features a span')
+		links	= self.es('.features a')
 		
 		for n in range(len(features)):
 			i = features[n]
@@ -117,25 +117,48 @@ class Homepage(HPTestCase):
 	def test_header(self):
 		self.assertTitle('Historypin | Home')
 		
-		# TODO 
-		# - logo image and link
-		# - google plus
-		# - facebook
-		# - twitter
-		
+		branding = self.e('#branding h1')
+		self.assertEqual(branding.e('a').get_attribute('href'), URL_BASE + '/')
+		self.assertEqual(branding.e('img').get_attribute('src'), URL_BASE + '/resources/images/hp_logo.png')
 		self.assertEqual(self.e('#branding .home-top p').text, 'A global community collaborating around history')
-	
-	@unittest.skip("TODO")
+		
+		social_icons = [
+			['ss-social-circle', 'https://plus.google.com/116628462065893538180/posts'],
+			['ss-social-circle', 'http://www.facebook.com/pages/Historypin/192291707448024'],
+			['ss-social-circle', 'http://twitter.com/Historypin'],
+		]
+		
+		classes = self.es('.social_links.right ul .ss-icon')
+		links	= self.es('.social_links.right ul a')
+		
+		for n in range(len(social_icons)):
+			i = social_icons[n]
+			self.assertIn(i[0], classes[n].get_attribute('class'))
+			self.assertEqual(links[n].get_attribute('href'), i[1])
+		
 	@url('/')
 	def test_sponsors(self):
-		# TODO
-		# - supported text
-		# - nominet image and link
-		# - google image and link
 		
-		self.assertEqual(self.e('.support .donate').text, 'users\nDonate to support Historypin')
-		self.assertEqual(self.e('.support .donate').get_attribute('href'), URL_BASE + 'friends-of-Historypin')
-	
+		self.assertEqual(self.e('.support h5').text, 'Supported by:')
+		
+		partners = [
+			['http://www.nominettrust.org.uk/', '/resources/images/partners/nominet_colored.png'],
+			['http://www.google.co.uk/intl/en/about/', '/resources/images/partners/google_logo.jpg'],
+		]
+		
+		links	= self.es('.partners li a')
+		images	= self.es('.partners li img')
+		
+		for n in range(len(partners)):
+			i = partners[n]
+			self.assertEqual(links[n].get_attribute('href'), i[0])
+			self.assertEqual(images[n].get_attribute('src'), URL_BASE + i[1])
+		
+		support = self.es('.support .donate')
+		self.assertEqual(support[0].text, 'users\nDonate to support Historypin')
+		self.assertEqual(support[0].get_attribute('href'), URL_BASE + '/friends-of-Historypin')
+		self.assertIn('ss-icon', self.e('.support .donate .ss-icon').get_attribute('class'))
+		
 	@url('/')
 	def test_footer(self):
 		links = [
