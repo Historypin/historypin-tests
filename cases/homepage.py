@@ -36,7 +36,7 @@ class Homepage(HPTestCase):
 		sleep(.3)
 		self.assertEqual(self.browser.current_url.split('#')[0], URL_BASE + '/map/')
 	
-	@unittest.skip("TODO")
+	
 	@url('/')
 	def test_featured(self):
 		# TODO 
@@ -44,9 +44,10 @@ class Homepage(HPTestCase):
 		# - prev button
 		# - fullscreen
 		# - exit fullscreen
+		previous	= self.e('#featured a.prev')
+		next		= self.e('#featured a.next')
+		next.click()
 		
-		pass
-	
 	@unittest.skip("TODO")
 	@url('/')
 	def test_activity(self):
@@ -57,14 +58,15 @@ class Homepage(HPTestCase):
 		
 		pass
 	
-	@unittest.skip("TODO")
 	@url('/')
 	def test_projects(self):
 		# TODO 
 		# - pages
-		self.assertEqual(self.e('#featured-projects .bar a.right').get_attribute('href'), URL_BASE + '/projects/')
-		self.assertEqual(self.e('#featured-projects .bar a.right').text, 'Browse all projects')
+		projects = self.e('#featured-projects .bar a.right')
+		self.assertEqual(projects.get_attribute('href'), URL_BASE + '/projects/')
+		self.assertEqual(projects.text, 'Browse all projects')
 		
+		listing = self.es('')
 	
 	@url('/')
 	def test_navigation(self):
