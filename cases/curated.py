@@ -37,19 +37,17 @@ class Curated(HPTestCase):
 		self.assertIn('ss-icon'			, cnt.e('a span').get_attribute('class'))
 		
 		# TODO
-		# when logged in as admin to check icons for edit delete and publish/unpusblish
 		# - tours - to check tour icon
-	
+		# when logged in as admin to check icons for edit delete and publish/unpusblish
+		
 		button_text = self.es('.inner a.button.left span')
 		self.assertEqual('Make your own Collection'	, button_text[0].text)
 		self.assertEqual('See all Collections'		, button_text[1].text)
 		self.assertEqual('Make your own Tour'		, button_text[2].text)
 		self.assertEqual('See all Tours'			, button_text[3].text)
 		
-		button_add = self.es('.inner a.button.left:nth-of-type(1)')
+		button_add = self.es('.inner a.button.left')
 		self.assertEqual(URL_BASE + '/collections/add'	, button_add[0].get_attribute('href'))
-		self.assertEqual(URL_BASE + '/tours/add'		, button_add[1].get_attribute('href'))
-		
-		button_all = self.es('.inner a.button.left:nth-of-type(2)')
-		self.assertEqual(URL_BASE + '/collections/all/'	, button_all[0].get_attribute('href'))
-		self.assertEqual(URL_BASE + '/tours/all/'		, button_all[1].get_attribute('href'))
+		self.assertEqual(URL_BASE + '/collections/all/'	, button_add[1].get_attribute('href'))
+		self.assertEqual(URL_BASE + '/tours/add'		, button_add[2].get_attribute('href'))
+		self.assertEqual(URL_BASE + '/tours/all/'		, button_add[3].get_attribute('href'))
