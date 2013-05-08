@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from base import *
 
 class Homepage(HPTestCase):
@@ -106,8 +108,8 @@ class Homepage(HPTestCase):
 		sleep(.5)
 		
 		# TODO 
-		# expand button
 		# verify if the activity is expaned
+		# verify if projects are collapsed
 	
 	@url('/')
 	def test_explore(self):
