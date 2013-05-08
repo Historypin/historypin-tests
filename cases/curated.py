@@ -27,17 +27,24 @@ class Curated(HPTestCase):
 		self.assertEqual('Featured Collections'	, h3s[0].text)
 		self.assertEqual('Featured Tours'		, h3s[1].text)
 		
-		cnt	= self.e('#page-index .section.col.w2 .inner #photo_list_content .list li:nth-of-type(1)')
-		self.assertIsInstance(cnt.e('a')	, WebElement)
-		self.assertIsInstance(cnt.e('img')	, WebElement)
-		self.assertIsInstance(cnt.e('p')	, WebElement)
+		cnt	= self.es('#page-index .section.col.w2 .inner #photo_list_content .list li:nth-of-type(1)')
 		
-		self.assertIn('collection-icon'	, cnt.e('a span.ss-icon.ss-pictures').get_attribute('class'))
-		self.assertIn('ss-pictures'		, cnt.e('a span.ss-icon').get_attribute('class'))
-		self.assertIn('ss-icon'			, cnt.e('a span').get_attribute('class'))
+		self.assertIsInstance(cnt[0].e('a')	, WebElement)
+		self.assertIsInstance(cnt[0].e('img')	, WebElement)
+		self.assertIsInstance(cnt[0].e('p')	, WebElement)
 		
+		self.assertIn('collection-icon'	, cnt[0].e('a span').get_attribute('class'))
+		self.assertIn('ss-pictures'		, cnt[0].e('a span').get_attribute('class'))
+		self.assertIn('ss-icon'			, cnt[0].e('a span').get_attribute('class'))
+		
+		self.assertIsInstance(cnt[1].e('a')	, WebElement)
+		self.assertIsInstance(cnt[1].e('img')	, WebElement)
+		self.assertIsInstance(cnt[1].e('p')	, WebElement)
+		
+		self.assertIn('tour-icon'	, cnt[1].e('a span').get_attribute('class'))
+		self.assertIn('ss-hiker'		, cnt[1].e('a span').get_attribute('class'))
+		self.assertIn('ss-icon'			, cnt[1].e('a span').get_attribute('class'))
 		# TODO
-		# - tours - to check tour icon
 		# when logged in as admin to check icons for edit delete and publish/unpusblish
 		
 		button_text = self.es('.inner a.button.left span')
