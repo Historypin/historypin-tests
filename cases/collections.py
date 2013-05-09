@@ -44,7 +44,6 @@ class Collections(HPTestCase):
 		next = self.e('.show-next')
 		self.assertEqual('Next'									, next.text)
 		self.assertEqual(URL_BASE + '/collections/all/page/2/'	, next.get_attribute('href'))
-		# assert next link text 
 	
 	@url('/collections/view/id/7082165/title/Brooklyn%20Public%20Library%20Branches')
 	def test_view(self):
