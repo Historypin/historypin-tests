@@ -3,8 +3,8 @@
 from base import *
 
 class Collections(HPTestCase):
-	@url('/collections/')
-	def test_index(self):
+	
+	def __test_collection_listing(self):
 		self.assertTitle('Historypin | Collections')
 		
 		main_cnt	= self.e('.col.w34')
@@ -33,20 +33,18 @@ class Collections(HPTestCase):
 		self.assertIn('ss-pictures'		, cnt[0].e('a span').get_attribute('class'))
 		self.assertIn('ss-icon'			, cnt[0].e('a span').get_attribute('class'))
 	
+	@url('/collections/')
+	def test_index(self):
+		self.__test_collection_listing()
+	
 	@url('/collections/all')
 	def test_all(self):
-		# assert title
-		# what are collections 
-		# assert what are collections heading 
-		# assert what are collections heading 
-		# assert image link src
-		# assert paragraph
-		# assert button link and text
-		# assert All Collections and Return to... texts
-		# assert web elements img link text 
-		# assertIn collection icon
+		self.__test_collection_listing()
+		
+		next = self.e('.show-next')
+		self.assertEqual('Next'									, next.text)
+		self.assertEqual(URL_BASE + '/collections/all/page/2/'	, next.get_attribute('href'))
 		# assert next link text 
-		pass
 	
 	@url('/collections/view/id/7082165/title/Brooklyn%20Public%20Library%20Branches')
 	def test_view(self):
