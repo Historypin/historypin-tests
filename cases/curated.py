@@ -5,6 +5,7 @@ from base import *
 class Curated(HPTestCase):
 	@url('/curated/')
 	def test_index(self):
+		self.assertTitle('Historypin | Tours & Collections')
 		
 		main = [
 			['What are Collections?', 'Collections bring together content around a particular topic or theme. You can explore the Collections or create a Collection of your own.', '/collections/all', '/resources/images/collections_page_image.jpg'],
@@ -42,10 +43,9 @@ class Curated(HPTestCase):
 		self.assertIsInstance(cnt[1].e('p')	, WebElement)
 		
 		self.assertIn('tour-icon'	, cnt[1].e('a span').get_attribute('class'))
-		self.assertIn('ss-hiker'		, cnt[1].e('a span').get_attribute('class'))
-		self.assertIn('ss-icon'			, cnt[1].e('a span').get_attribute('class'))
-		# TODO
-		# when logged in as admin to check icons for edit delete and publish/unpusblish
+		
+		self.assertIn('ss-hiker'	, cnt[1].e('a span').get_attribute('class'))
+		self.assertIn('ss-icon'		, cnt[1].e('a span').get_attribute('class'))
 		
 		button_text = self.es('.inner a.button.left span')
 		self.assertEqual('Make your own Collection'	, button_text[0].text)
@@ -58,3 +58,6 @@ class Curated(HPTestCase):
 		self.assertEqual(URL_BASE + '/collections/all/'	, button_links[1].get_attribute('href'))
 		self.assertEqual(URL_BASE + '/tours/add'		, button_links[2].get_attribute('href'))
 		self.assertEqual(URL_BASE + '/tours/all/'		, button_links[3].get_attribute('href'))
+		
+		# TODO
+		# when logged in as admin to check icons for edit delete and publish/unpusblish
