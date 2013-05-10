@@ -72,23 +72,19 @@ class Collections(HPTestCase):
 		item = self.es('#list_view .list li')
 		for n in range(len(collection_view)):
 			i = collection_view[n]
-		self.assertEqual(URL_BASE + i[0]	, item[n].e('a.link-image').get_attribute('href'))
-		self.assertEqual(URL_BASE + i[1]	, item[n].e('img').get_attribute('src'))
-		self.assertEqual(i[2]				, item[n].e('p').text)
-		self.assertEqual(URL_BASE + i[3]	, item[n].e('.username-wrapper a').get_attribute('href'))
+			self.assertEqual(URL_BASE + i[0], item[n].e('a.link-image').get_attribute('href'))
+			self.assertEqual(URL_BASE + i[1], item[n].e('img').get_attribute('src'))
+			self.assertEqual(i[2]			, item[n].e('p').text)
+			self.assertEqual(URL_BASE + i[3], item[n].e('.username-wrapper a').get_attribute('href'))
 		
 		# TODO LATER
 		# - representing photo
-		
 	
 	@url('/collections/slideshow/id/6935421/')
 	def test_slideshow(self):
-		# assert text
-		# exit slideshow link and text
-		# 
-		# 
-		# 
-		# 
+		self.assertTitle('HistoryPin | Collection | Some of the Best')
+		self.assertEqual('Some of the Best\nExit Slideshow'										, self.e('#slide-content p').text)
+		self.assertEqual(URL_BASE + '/collections/view/id/6935421/title/Some%20of%20the%20Best'	, self.e('#slide-content a').get_attribute('href'))
 		# 
 		# 
 		# 
