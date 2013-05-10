@@ -45,28 +45,28 @@ class Collections(HPTestCase):
 		self.assertEqual('Next'									, next.text)
 		self.assertEqual(URL_BASE + '/collections/all/page/2/'	, next.get_attribute('href'))
 	
-	@url('/collections/view/id/6935421/title/Some%20of%20the%20Best')
+	@url('/collections/view/id/' + KEY_COLLECTION)
 	def test_view(self):
-		self.assertTitle('Historypin | Collection - Some of the Best')
+		self.assertTitle('Historypin | Collection - Test Collection for automated test')
 		
-		self.assertEqual(URL_BASE + '/services/thumb/phid/6604908/dim/451x302/crop/1/'	, self.e('img.index').get_attribute('src'))
-		self.assertEqual('Some of the Best'												, self.e('.info h2').text)
+		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/451x302/crop/1/'	, self.e('img.index').get_attribute('src'))
+		self.assertEqual('Test Collection for automated test'							, self.e('.info h2').text)
 		
 		paragraphs = self.es('.info p')
-		self.assertEqual('A selection of photos from our Collection.'	, paragraphs[0].text)
-		self.assertEqual('Created by Missouri History Museum'			, paragraphs[1].text)
-		self.assertEqual(URL_BASE + '/channels/view/6573747'			, paragraphs[1].e('a').get_attribute('href'))
+		self.assertEqual('Description for Test Collection for automated test'	, paragraphs[0].text)
+		self.assertEqual('Created by Gabss'										, paragraphs[1].text)
+		self.assertEqual(URL_BASE + '/channels/view/10649049'					, paragraphs[1].e('a').get_attribute('href'))
 		
 		button = self.e('.info ~ a')
-		self.assertEqual(URL_BASE + '/collections/slideshow/id/6935421/', button.get_attribute('href'))
-		self.assertEqual('Slide Show'									, button.text)
+		self.assertEqual(URL_BASE + '/collections/slideshow/id/22782015/'	, button.get_attribute('href'))
+		self.assertEqual('Slide Show'										, button.text)
 		
 		collection_view = [
-			['/map/#!/geo:38.638601,-90.286128/zoom:15/dialog:6604908/tab:details/', '/services/thumb/phid/6604908/dim/195x150/crop/1/', '1897, from Missouri History Museum', '/channels/view/6573747'],
-			['/map/#!/geo:38.643055,-90.18634/zoom:15/dialog:6623055/tab:details/', '/services/thumb/phid/6623055/dim/195x150/crop/1/', '1854, from Missouri History Museum', '/channels/view/6573747'],
-			['/map/#!/geo:38.627384,-90.187917/zoom:15/dialog:6612414/tab:details/', '/services/thumb/phid/6612414/dim/195x150/crop/1/', '1848, from Missouri History Museum', '/channels/view/6573747'],
-			['/map/#!/geo:38.626224,-90.189725/zoom:15/dialog:6619312/tab:details/', '/services/thumb/phid/6619312/dim/195x150/crop/1/', '1877, from Missouri History Museum', '/channels/view/6573747'],
-			['/map/#!/geo:38.612449,-90.196964/zoom:15/dialog:6605749/tab:details/', '/services/thumb/phid/6605749/dim/195x150/crop/1/', '1910, from Missouri History Museum', '/channels/view/6573747'],
+			['/map/#!/geo:42.693738,23.326101/zoom:15/dialog:22363018/tab:details/', '/services/thumb/phid/22363018/dim/195x150/crop/1/', '2 August 2012, from Gabss', '/channels/view/10649049'],
+			['/map/#!/geo:51.362619,0.513102/zoom:15/dialog:1031013/tab:details/', '/services/thumb/phid/1031013/dim/195x150/crop/1/', '13 July 1952, from Mirrorpix Archives', '/channels/view/571038'],
+			['/map/#!/geo:52.087599,-0.25404/zoom:15/dialog:1076031/tab:details/', '/services/thumb/phid/1076031/dim/195x150/crop/1/', '1 January 1914, from Biggleswade History Society', '/channels/view/1042029'],
+			['/map/#!/geo:-19.8891792,-43.8048137/zoom:15/dialog:2172029/tab:details/', '/services/thumb/phid/2172029/dim/195x150/crop/1/', '1898, from by Dyno', '/channels/view/2137026'],
+			['/map/#!/geo:43.622221047,-79.3740749359/zoom:15/dialog:3255004/tab:details/', '/services/thumb/phid/3255004/dim/195x150/crop/1/', '1908, from FQ', '/channels/view/3154007'],
 		]
 		
 		item = self.es('#list_view .list li')
@@ -80,14 +80,14 @@ class Collections(HPTestCase):
 		# TODO LATER
 		# - representing photo
 	
-	@url('/collections/slideshow/id/6935421/')
+	@url('/collections/slideshow/id/' + KEY_COLLECTION)
 	def test_slideshow(self):
-		self.assertTitle('HistoryPin | Collection | Some of the Best')
-		self.assertEqual('Some of the Best\nExit Slideshow'										, self.e('#slide-content p').text)
-		self.assertEqual(URL_BASE + '/collections/view/id/6935421/title/Some%20of%20the%20Best'	, self.e('#slide-content a').get_attribute('href'))
+		self.assertTitle('HistoryPin | Collection | Test Collection for automated test')
+		self.assertEqual('Test Collection for automated test\nExit Slideshow'										, self.e('#slide-content p').text)
+		self.assertEqual(URL_BASE + '/collections/view/id/22782015/title/Test%20Collection%20for%20automated%20test'	, self.e('#slide-content a').get_attribute('href'))
+		
+		# TODO LATER
 		# 
 		# 
 		# 
-		# 
-		pass
 	
