@@ -36,13 +36,10 @@ class Tours(HPTestCase):
 	@url('/tours/all')
 	def test_all(self):
 		self.__test_collection_listing()
-		# assert title
-		# assert main img
-		# assert heading
-		# assert make your own tour button 
-		# assert all tours and return ..link and text
-		# assertIsInstance for one element(check for link and img src text and channel link )
-		# assert next link and text
+		
+		next = self.e('.show-next')
+		self.assertEqual('Next'							, next.text)
+		self.assertEqual(URL_BASE + '/tours/all/page/2/', next.get_attribute('href'))
 	
 	@unittest.skip('TODO')
 	@url('/tours/view/id/' + KEY_TOUR)
