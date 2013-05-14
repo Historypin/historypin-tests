@@ -84,7 +84,7 @@ class Collections(HPTestCase):
 	def test_slideshow(self):
 		self.assertTitle('HistoryPin | Collection | Test Collection for automated test')
 		self.assertEqual('Test Collection for automated test\nExit Slideshow'										, self.e('#slide-content p').text)
-		self.assertEqual(URL_BASE + '/collections/view/id/22782015/title/Test%20Collection%20for%20automated%20test'	, self.e('#slide-content a').get_attribute('href'))
+		self.assertEqual(URL_BASE + '/collections/view/id/22782015/title/Test%20Collection%20for%20automated%20test', self.e('#slide-content a').get_attribute('href'))
 		
 		# TODO LATER
 		# 
