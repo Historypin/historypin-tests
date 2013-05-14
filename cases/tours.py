@@ -93,7 +93,6 @@ class Tours(HPTestCase):
 			
 			self.assertEqual(URL_BASE + '/services/thumb/phid/' + i[1] + '/dim/195x150/crop/1/', images[n].get_attribute('src'))
 			
-		# assert all images, links texts and start from here button text and link, and photo number start from here and start from here link like [1]
 		# TODO LATER
 		# - representing photo
 	
