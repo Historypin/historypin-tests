@@ -3,8 +3,8 @@
 from base import *
 
 class Tours(HPTestCase):
-	@url('/tours/')
-	def test_index(self):
+	
+	def __test_collection_listing(self):
 		self.assertTitle('Historypin | Tours')
 		main_cnt = self.e('.inner.cf')
 		self.assertEqual(URL_BASE + '/tours/'									, main_cnt.e('a.main-image').get_attribute('href'))
@@ -29,9 +29,13 @@ class Tours(HPTestCase):
 		self.assertIn('ss-hiker'	, cnt[0].e('a span').get_attribute('class'))
 		self.assertIn('ss-icon'		, cnt[0].e('a span').get_attribute('class'))
 		
+	@url('/tours/')
+	def test_index(self):
+		self.__test_collection_listing()
+	
 	@url('/tours/all')
-	@unittest.skip('TODO')
 	def test_all(self):
+		self.__test_collection_listing()
 		# assert title
 		# assert main img
 		# assert heading
@@ -39,7 +43,6 @@ class Tours(HPTestCase):
 		# assert all tours and return ..link and text
 		# assertIsInstance for one element(check for link and img src text and channel link )
 		# assert next link and text
-		pass
 	
 	@unittest.skip('TODO')
 	@url('/tours/view/id/' + KEY_TOUR)
