@@ -112,68 +112,57 @@ class Tours(HPTestCase):
 		self.assertIn('ss-door'																			, link_exit.e('span').get_attribute('class'))
 		self.assertIn('right'																			, link_exit.e('span').get_attribute('class'))
 		
-		next_button = self.e('.next-button.right')
-		next_button.click()
-		sleep(2)
-		next_button.click()
-		sleep(2)
-		next_button.click()
-		sleep(2)
-		next_button.click()
-		sleep(2)
-		self.assertEqual('Exit', self.e('.next-button.right span').text)
-		
-		
-		thumbs = self.es('.step-slider li')
-		thumbs[0].click()
-		sleep(2)
-		thumbs[1].click()
-		sleep(2)
-		thumbs[2].click()
-		sleep(2)
-		thumbs[3].click()
-		sleep(2)
-		thumbs[4].click()
-		sleep(2)
-		self.assertEqual('Exit', self.e('.next-button.right span').text)
-		
-		prev_button = self.e('.next-button.left')
-		prev_button.click()
-		sleep(2)
-		prev_button.click()
-		sleep(2)
-		prev_button.click()
-		sleep(2)
-		prev_button.click()
-		sleep(2)
-		
 		tour_items = [
-			["Photo: Airplane crash on Wallace Road - 13 July 1952 13 July 1952"				, '/map/#!/geo:51.362619,0.513102/zoom:20/dialog:1031013/tab:details/'			, '1031013/dim/461x309/', "Airplane crash on Wallace Road - 13 July 1952", "Air Accidents: Plane crash in Wallace Road, Rochester, Kent on Sunday, when an Auster Aircraft narrowly missed the rooftops of houses, struck a garden fence and crashed in a small clearing by the side of a church.", '1031013'],
-			["Photo: 'Hop Bine', Drove Road, Biggleswade 1914 - 1 January 1914 1 January 1914"	, '/map/#!/geo:52.087599,-0.25404/zoom:20/dialog:1076031/tab:details/'			, '1076031/dim/480x326/', "'Hop Bine', Drove Road, Biggleswade 1914 - 1 January 1914", "The 'Hop Bine' was built in 1870 ready for later development in the eastern side of Biggleswade. Its description in 1898 was -", '1076031'],
-			["Photo: Sabarabussu,MG,Brasil - 1898 1898"											, '/map/#!/geo:-19.8891792,-43.8048137/zoom:20/dialog:2172029/tab:details/'		, '2172029/dim/762x1000', "Sabarabussu,MG,Brasil - 1898", "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", '2172029'],
-			["Photo: Diving Horse at Hanlan's Point - 1908 1908"								, '/map/#!/geo:43.622221047,-79.3740749359/zoom:20/dialog:3255004/tab:details/'	, '3255004/dim/762x1000', "Diving Horse at Hanlan's Point - 1908", "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.", '3255004'],
-			["Photo: National Theatre in Sofia, Bulgaria - 2 August 2012 2 August 2012"			, '/map/#!/geo:42.693738,23.326101/zoom:20/dialog:22363018/tab:details/'		, '22363018/dim/727x544/', "National Theatre in Sofia, Bulgaria - 2 August 2012", "This is a photo of National Theatre in Sofia, Bulgaria", '22363018'],
+			["Airplane crash on Wallace Road - 13 July 1952"				, '13 July 1952'	, '/map/#!/geo:51.362619,0.513102/zoom:20/dialog:1031013/tab:details/'			, '1031013', "Air Accidents: Plane crash in Wallace Road, Rochester, Kent on Sunday, when an Auster Aircraft narrowly missed the rooftops of houses, struck a garden fence and crashed in a small clearing by the side of a church."],
+			["'Hop Bine', Drove Road, Biggleswade 1914 - 1 January 1914"	, '1 January 1914'	, '/map/#!/geo:52.087599,-0.25404/zoom:20/dialog:1076031/tab:details/'			, '1076031', "The 'Hop Bine' was built in 1870 ready for later development in the eastern side of Biggleswade. Its description in 1898 was -"],
+			["Sabarabussu,MG,Brasil - 1898"									, '1898'			, '/map/#!/geo:-19.8891792,-43.8048137/zoom:20/dialog:2172029/tab:details/'		, '2172029', "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."],
+			["Diving Horse at Hanlan's Point - 1908"						, '1908'			, '/map/#!/geo:43.622221047,-79.3740749359/zoom:20/dialog:3255004/tab:details/'	, '3255004', "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."],
+			["National Theatre in Sofia, Bulgaria - 2 August 2012"			, '2 August 2012'	, '/map/#!/geo:42.693738,23.326101/zoom:20/dialog:22363018/tab:details/'		, '22363018', "This is a photo of National Theatre in Sofia, Bulgaria"],
 		]
 		
+		next_button		= self.e('.next-button.right')
+		prev_button		= self.e('.next-button.left')
+		thumbs			= self.es('.step-slider li')
+		marker_img		= self.es('.hp-marker-img')
+		
+		self.hover(thumbs[0])
+		tooltip			= self.e('#tips')
 		
 		link_images		= URL_BASE + '/services/thumb/phid/'
 		link_marker_img	= URL_BASE + '/services/thumb/phid/'
 		
-		marker_img		= self.es('.hp-marker-img')
-		
-		for n in range(len(tour_items)):
-			i = tour_items[n]
-			thumbs[n].click()
+		def check_step(data):
 			image			= self.e_wait('.streetview-img')
 			photo_info		= self.e('.photo-info')
 			photo_title		= self.e('.tour-step-info h4')
 			paragraph		= self.e('.tour-step-info p')
 			
-			self.assertEqual(i[0]											, photo_info.text)
-			self.assertEqual(URL_BASE + i[1]								, photo_info.e('a').get_attribute('href'))
-			self.assertEqual(link_images + i[2]								, image.get_attribute('src'))
-			self.assertEqual(i[3]											, photo_title.text)
-			self.assertEqual(i[4]											, paragraph.text)
+			self.assertEqual('Photo: ' + data[0] + ' ' + data[1]				, photo_info.text)
+			self.assertEqual(URL_BASE + data[2]									, photo_info.e('a').get_attribute('href'))
+			self.assertIn(link_images + data[3] + '/dim/'						, image.get_attribute('src'))
+			self.assertEqual(data[0]											, photo_title.text)
+			self.assertEqual(data[4]											, paragraph.text)
 			# self.assertEqual(link_marker_img + i[5] + '/dim/52x39/crop/1/', marker_img[n].get_attribute('src'))
 		
-	
+		for n in range(len(tour_items)-1):
+			check_step(tour_items[n])
+			next_button.click()
+		check_step(tour_items[-1])
+		self.assertEqual('Exit', self.e('.next-button.right span').text)
+		
+		for n in range(len(tour_items)):
+			self.hover(thumbs[n])
+			self.assertEqual(tour_items[n][0], tooltip.text)
+			
+			thumbs[n].click()
+			check_step(tour_items[n])
+			
+		
+		self.assertEqual('Exit', self.e('.next-button.right span').text)
+		check_step(tour_items[-1])
+		for n in range(len(tour_items)-1)[::-1]:
+			prev_button.click()
+			check_step(tour_items[n])
+		
+		
+		

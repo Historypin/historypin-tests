@@ -41,7 +41,10 @@ class Browser(webdriver.Chrome):
 			return w.until(lambda driver: driver.e(selector))
 		except:
 			raise NoSuchElementException('The element could not be found')
-
+	
+	def hover(self, elem):
+		webdriver.common.action_chains.ActionChains(self).move_to_element(elem).perform()
+		sleep(.5)
 
 
 
@@ -60,6 +63,7 @@ class TestCase(unittest.TestCase):
 	es		= browser.es
 	e		= browser.e
 	e_wait	= browser.e_wait
+	hover	= browser.hover
 	
 	
 	@classmethod
