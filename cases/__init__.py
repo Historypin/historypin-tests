@@ -7,7 +7,7 @@ from curated import Curated
 from tours import Tours
 from collections import Collections
 
-
+from projects import Projects
 
 
 

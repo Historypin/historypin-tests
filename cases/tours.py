@@ -142,7 +142,7 @@ class Tours(HPTestCase):
 			self.assertIn(link_images + data[3] + '/dim/'						, image.get_attribute('src'))
 			self.assertEqual(data[0]											, photo_title.text)
 			self.assertEqual(data[4]											, paragraph.text)
-			# self.assertEqual(link_marker_img + i[5] + '/dim/52x39/crop/1/', marker_img[n].get_attribute('src'))
+			# self.assertEqual(link_marker_img + i[5] + '/dim/52x39/crop/1/'	, marker_img[n].get_attribute('src'))
 		
 		for n in range(len(tour_items)-1):
 			check_step(tour_items[n])
@@ -164,5 +164,4 @@ class Tours(HPTestCase):
 			prev_button.click()
 			check_step(tour_items[n])
 		
-		
-		
+	
