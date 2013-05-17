@@ -8,6 +8,6 @@ from tours import Tours
 from collections import Collections
 
 from projects import Projects
-
+from channels import Channels
 
 
