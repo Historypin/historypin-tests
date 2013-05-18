@@ -26,14 +26,24 @@ class Channel(HPTestCase):
 	
 	@url('/channels/view/10649049/')
 	def test_channel_details(self):
-		# TODO
-		# assert channel details text
-		# assert channel views text
-		# assert fans, pins, tours and collections text
-		# assert become a fan button text and link
-		# assert share text
+		
+		h3 = self.es('.chan.options h3')
+		self.assertEqual('Channel Details'	, h3[0].text)
+		self.assertEqual('Share:'			, h3[1].text)
+		
+		paragraph = self.e('.chan.options p')
+		self.assertIn('Channel views:'	, paragraph.text)
+		self.assertIn('Fans:'			, paragraph.text)
+		self.assertIn('Pins:'			, paragraph.text)
+		self.assertIn('Tours:'			, paragraph.text)
+		self.assertIn('Collections:'	, paragraph.text)
+		
+		button = self.e('.channel-button.left')
+		self.assertEqual('Become a Fan'										, button.text)
+		self.assertEqual(URL_BASE + '/user/?from=/channels/view/10649049/'	, button.get_attribute('href'))
+		
+		self.assertIn('ss-icon'			, self.e('span').get_attribute('class'))
 		# assert icons and links
-		pass
 	
 	@url('/channels/view/10649049/')
 	def test_map_tab(self):
@@ -44,7 +54,7 @@ class Channel(HPTestCase):
 		# assert input field Search by location
 		# assert input field Search by tag
 		# assert Go button link and text
-		# assert years slider
+		# assert years slideradd
 		pass
 	
 	@url('/channels/view/10649049/')
