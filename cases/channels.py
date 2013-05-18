@@ -26,14 +26,7 @@ class Channels(HPTestCase):
 		self.assertIsInstance(channel.e('a.logo')	, WebElement)
 		self.assertIsInstance(channel.e('a.name')	, WebElement)
 	
-	@url('/channels/')
-	def test_search(self):
-		self.e('.input-container input').click()
-		sleep(2)
-		self.e('.input-container input').send_keys("Gabss")
-		sleep(2)
-		self.e('.button.left').click()
-		
+	def __test_channel_assertion(self):
 		channel = self.e('.channels-list li')
 		self.assertEqual(URL_BASE + '/channels/view/id/10649049/'						, channel.e('a.logo').get_attribute('href'))
 		self.assertEqual(URL_BASE + '/channels/img/10649049/logo/1/dim/70x70/crop/1/'	, channel.e('a.logo img').get_attribute('src'))
@@ -44,9 +37,25 @@ class Channels(HPTestCase):
 		self.assertEqual('Return to Featured Channels'									, h2.text)
 		self.assertEqual(URL_BASE + '/channels/'										, h2.get_attribute('href'))
 	
+	@url('/channels/')
+	def test_search(self):
+		self.e('.input-container input').click()
+		sleep(2)
+		self.e('.input-container input').send_keys("Gabss")
+		sleep(2)
+		self.e('.button.left').click()
+		
+		self.__test_channel_assertion()
+	
 	@unittest.expectedFailure
 	@url('/channels/')
 	def test_search_email(self):
+		self.e('.input-container input').click()
+		sleep(2)
+		self.e('.input-container input').send_keys("g.ananieva@avalith.bg")
+		sleep(2)
+		self.e('.button.left').click()
+		self.__test_channel_assertion()
 		# TODO
 		# search by email:
 		# -type an email

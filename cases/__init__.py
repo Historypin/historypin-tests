@@ -9,5 +9,8 @@ from collections import Collections
 
 from projects import Projects
 from channels import Channels
+from channel import Channel
+
+from pinning import Pinning
 
 
