@@ -55,6 +55,7 @@ class Channels(HPTestCase):
 		self.e('.input-container input').send_keys("g.ananieva@avalith.bg")
 		sleep(2)
 		self.e('.button.left').click()
+		
 		self.__test_channel_assertion()
 		# TODO
 		# search by email:

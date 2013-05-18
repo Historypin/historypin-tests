@@ -6,12 +6,23 @@ class Channel(HPTestCase):
 	
 	@url('/channels/view/10649049/')
 	def test_channel_info(self):
-		# TODO
-		# assert title
-		# assert Gabss text
-		# assert channel logo
-		# assert text and links in photo info
-		pass
+		self.assertTitle('Gabss | Historypin')
+		
+		info = self.e('.chan.info')
+		self.assertEqual('Gabss'														, info.e('h2').text)
+		self.assertEqual(URL_BASE + '/channels/img/10649049/logo/1/dim/200x200/crop/1/'	, info.e('img').get_attribute('src'))
+		
+		self.assertEqual('Find out more at: avalith.bg'					, self.e('.chan.info br~p').text)
+		
+		link = self.es('.chan.info br~p a')
+		self.assertEqual('avalith.bg'									, link[0].text)
+		self.assertEqual('http://avalith.bg/'							, link[0].get_attribute('href'))
+		self.assertEqual('Find me on Facebook'							, link[1].text)
+		self.assertEqual('http://www.facebook.com/gabriela.ananieva.7'	, link[1].get_attribute('href'))
+		self.assertEqual('Follow me on Twitter'							, link[2].text)
+		self.assertEqual('http://twitter.com/@Tristania90'				, link[2].get_attribute('href'))
+		self.assertEqual('Visit my blog'								, link[3].text)
+		self.assertEqual('http://test/'									, link[3].get_attribute('href'))
 	
 	@url('/channels/view/10649049/')
 	def test_channel_details(self):
@@ -34,7 +45,6 @@ class Channel(HPTestCase):
 		# assert input field Search by tag
 		# assert Go button link and text
 		# assert years slider
-		# 
 		pass
 	
 	@url('/channels/view/10649049/')
