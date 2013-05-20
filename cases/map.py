@@ -6,18 +6,30 @@ class Map(HPTestCase):
 	
 	@url('/map/')
 	def test_index(self):
-		# TODO
-		# asssert title
-		# assert main panel:
-		# - assert search by place text
-		# - assert assert input text field
-		# - assert Go button link and text
-		# - assert Narrow down text
-		# - assert by date and by subject text
-		# - assert show  thumbnails 
-		# - assert fullscreen text and icon
-		# asset if map is visible(assertIsInstance)
-		pass
+		self.assertTitle('Historypin | Map')
+		
+		self.assertEqual('Search\nby place'										, self.e('.main-panel h1').text)
+		self.assertIsInstance(self.e('#search-filters .input-container input')	, WebElement)
+		
+		button	= self.e('a#photo_search_submit')
+		self.assertEqual(URL_BASE + '/map/#'		, button.get_attribute('href'))
+		self.assertEqual('GO'						, button.text)
+		
+		nav		= self.e('.filter-nav')
+		self.assertEqual('Narrow down'				, nav.e('h2').text)
+		self.assertEqual('by date'					, nav.e('p a.date').text)
+		self.assertEqual('by subject'				, nav.e('p a.subject').text)
+		
+		check_cnt = self.e('.check_container')
+		self.assertIsInstance(check_cnt.e('input')	, WebElement)
+		self.assertEqual('show thumbnails'			, check_cnt.e('label').text)
+		
+		fullscr = self.e('#fullscreen-on a')
+		self.assertEqual('Full\nScreen'				, fullscr.text)
+		self.assertIn('ss-icon'						, fullscr.e('span').get_attribute('class'))
+		self.assertIn('ss-scaleup'					, fullscr.e('span').get_attribute('class'))
+		
+		self.assertIsInstance(self.e('#map-canvas')	, WebElement)
 	
 	@url('/map/')
 	def test_search(self):
