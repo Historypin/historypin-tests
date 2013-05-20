@@ -40,7 +40,6 @@ class Channel(HPTestCase):
 		self.assertEqual('Become a Fan'										, button.text)
 		self.assertEqual(URL_BASE + '/user/?from=/channels/view/10649049/'	, button.get_attribute('href'))
 		
-		
 		social_buttons = self.e('.addthis_toolbox span')
 		self.assertIn('ss-icon', social_buttons.get_attribute('class'))
 		
@@ -101,6 +100,17 @@ class Channel(HPTestCase):
 		pass
 	
 	@url('/channels/view/10649049/')
+	def test_repeats_section(self):
+		
+		repeats = self.e('.chan.replicas')
+		
+		self.assertEqual('Historypin Repeats', repeats.e('h3').text)
+		self.assertEqual(u'Historypin Repeats are created using the Historypin Smartphone App. They are modern replicas of your photos taken by other people or modern replicas of other person’s photos taken by you.'
+																				, repeats.e('p:nth-of-type(1)').text)
+		self.assertEqual('http://www.v4-22-00.historypin-hrd.appspot.com/app/'	, repeats.e('p:nth-of-type(1) a').get_attribute('href'))
+		self.assertEqual('This Channel has no Historypin Repeats'				, repeats.e('p:nth-of-type(2)').text)
+		
+	@url('/channels/view/10649049/')
 	def test_comment_feed(self):
 		# TODO
 		# assert Comment Feed text
@@ -110,5 +120,4 @@ class Channel(HPTestCase):
 		# assert channel img
 		# assert assert chanenel text
 		# assert text in the comment
-		pass
 	
