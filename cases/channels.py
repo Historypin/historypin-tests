@@ -40,28 +40,28 @@ class Channels(HPTestCase):
 	@url('/channels/')
 	def test_search(self):
 		self.e('.input-container input').click()
-		sleep(2)
+		sleep(1)
 		self.e('.input-container input').send_keys("Gabss")
-		sleep(2)
+		sleep(1)
 		self.e('.button.left').click()
 		
 		self.__test_channel_assertion()
 	
-	@unittest.expectedFailure
 	@url('/channels/')
 	def test_search_email(self):
 		self.e('.input-container input').click()
-		sleep(2)
+		sleep(1)
 		self.e('.input-container input').send_keys("g.ananieva@avalith.bg")
-		sleep(2)
+		sleep(1)
 		self.e('.button.left').click()
 		
-		self.__test_channel_assertion()
-		# TODO
-		# search by email:
-		# -type an email
-		# -assert that the typed email is true
-		# -return to featured channels link and text
-		# assert channel img src link text channel link
-		# 
-		pass
+		channel = self.e('.channels-list li')
+		self.assertEqual(URL_BASE + '/channels/view/id/16857003/'				, channel.e('a.logo').get_attribute('href'))
+		self.assertEqual(URL_BASE + '/resources/avatars/100x100/avatar_1.png'	, channel.e('a.logo img').get_attribute('src'))
+		self.assertEqual('gabriela.ananieva'									, channel.e('a.name').text)
+		self.assertEqual(URL_BASE + '/channels/view/id/16857003/'				, channel.e('a.name').get_attribute('href'))
+		
+		h2 = self.e('.search-channels .right a')
+		self.assertEqual('Return to Featured Channels'									, h2.text)
+		self.assertEqual(URL_BASE + '/channels/'										, h2.get_attribute('href'))
+	
