@@ -55,13 +55,24 @@ class Channels(HPTestCase):
 		sleep(1)
 		self.e('.button.left').click()
 		
-		channel = self.e('.channels-list li')
-		self.assertEqual(URL_BASE + '/channels/view/id/16857003/'				, channel.e('a.logo').get_attribute('href'))
-		self.assertEqual(URL_BASE + '/resources/avatars/100x100/avatar_1.png'	, channel.e('a.logo img').get_attribute('src'))
-		self.assertEqual('gabriela.ananieva'									, channel.e('a.name').text)
-		self.assertEqual(URL_BASE + '/channels/view/id/16857003/'				, channel.e('a.name').get_attribute('href'))
-		
 		h2 = self.e('.search-channels .right a')
-		self.assertEqual('Return to Featured Channels'									, h2.text)
-		self.assertEqual(URL_BASE + '/channels/'										, h2.get_attribute('href'))
+		channel = self.e('.channels-list li')
+		info = ['/channels/view/id/16857003/', '/resources/avatars/100x100/avatar_1.png', 'gabriela.ananieva', 'Return to Featured Channels', '/channels/']
+		for n in range(len(info)):
+			self.assertEqual(URL_BASE + info[0]	, channel[n].e('a.logo').get_attribute('href'))
+			self.assertEqual(URL_BASE + info[0]	, channel[n].e('a.name').get_attribute('href'))
+			self.assertEqual(URL_BASE + info[1]	, channel[n].e('a.logo img').get_attribute('src'))
+			self.assertEqual(info[2]			, channel[n].e('a.name').text)
+			self.assertEqual(info[3]			, h2[n].text)
+			self.assertEqual(URL_BASE + info[4]	, h2[n].get_attribute('href'))
+			
+		# channel = self.e('.channels-list li')
+		# self.assertEqual(URL_BASE + '/channels/view/id/16857003/'				, channel.e('a.logo').get_attribute('href'))
+		# self.assertEqual(URL_BASE + '/resources/avatars/100x100/avatar_1.png'	, channel.e('a.logo img').get_attribute('src'))
+		# self.assertEqual('gabriela.ananieva'									, channel.e('a.name').text)
+		# self.assertEqual(URL_BASE + '/channels/view/id/16857003/'				, channel.e('a.name').get_attribute('href'))
+		# 
+		# h2 = self.e('.search-channels .right a')
+		# self.assertEqual('Return to Featured Channels'									, h2.text)
+		# self.assertEqual(URL_BASE + '/channels/'										, h2.get_attribute('href'))
 	
