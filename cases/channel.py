@@ -42,8 +42,15 @@ class Channel(HPTestCase):
 		self.assertEqual('Become a Fan'										, button.text)
 		self.assertEqual(URL_BASE + '/user/?from=/channels/view/10649049/'	, button.get_attribute('href'))
 		
-		self.assertIn('ss-icon'			, self.e('span').get_attribute('class'))
-		# assert icons and links
+		
+		social_buttons = self.e('.addthis_toolbox span')
+		self.assertIn('ss-icon', social_buttons.get_attribute('class'))
+		
+		social_icons = ['ss-social-circle', 'ss-social-circle', 'ss-social-circle', 'ss-plus']
+		
+		for n in range(len(social_icons)-1):
+			self.assertIn(social_icons[n], social_buttons.get_attribute('class'))
+		
 	
 	@url('/channels/view/10649049/')
 	def test_map_tab(self):
