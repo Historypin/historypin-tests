@@ -32,11 +32,9 @@ class Channel(HPTestCase):
 		self.assertEqual('Share:'			, h3[1].text)
 		
 		paragraph = self.e('.chan.options p')
-		self.assertIn('Channel views:'	, paragraph.text)
-		self.assertIn('Fans:'			, paragraph.text)
-		self.assertIn('Pins:'			, paragraph.text)
-		self.assertIn('Tours:'			, paragraph.text)
-		self.assertIn('Collections:'	, paragraph.text)
+		texts = ['Channel views:', 'Fans:', 'Pins:', 'Tours:', 'Collections:']
+		for n in range(len(texts)):
+			self.assertIn(texts[n], paragraph.text)
 		
 		button = self.e('.channel-button.left')
 		self.assertEqual('Become a Fan'										, button.text)
@@ -50,7 +48,6 @@ class Channel(HPTestCase):
 		
 		for n in range(len(social_icons)-1):
 			self.assertIn(social_icons[n], social_buttons.get_attribute('class'))
-		
 	
 	@url('/channels/view/10649049/')
 	def test_map_tab(self):
