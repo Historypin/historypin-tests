@@ -1,5 +1,5 @@
 from homepage import Homepage
-
+from map import Map
 from pages import Pages
 from pages_community import Community
 

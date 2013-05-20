@@ -90,7 +90,7 @@ class Channel(HPTestCase):
 	def test_tours_tab(self):
 		# TODO
 		# click on Tours Tab
-		# assert tours text
+		# assert tours text and link
 		# assert image src
 		# assert image link
 		# assert tour icon
