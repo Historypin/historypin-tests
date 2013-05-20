@@ -11,20 +11,20 @@ class Map(HPTestCase):
 		self.assertEqual('Search\nby place'										, self.e('.main-panel h1').text)
 		self.assertIsInstance(self.e('#search-filters .input-container input')	, WebElement)
 		
-		button	= self.e('a#photo_search_submit')
+		button		= self.e('a#photo_search_submit')
 		self.assertEqual(URL_BASE + '/map/#'		, button.get_attribute('href'))
 		self.assertEqual('GO'						, button.text)
 		
-		nav		= self.e('.filter-nav')
+		nav			= self.e('.filter-nav')
 		self.assertEqual('Narrow down'				, nav.e('h2').text)
 		self.assertEqual('by date'					, nav.e('p a.date').text)
 		self.assertEqual('by subject'				, nav.e('p a.subject').text)
 		
-		check_cnt = self.e('.check_container')
+		check_cnt	= self.e('.check_container')
 		self.assertIsInstance(check_cnt.e('input')	, WebElement)
 		self.assertEqual('show thumbnails'			, check_cnt.e('label').text)
 		
-		fullscr = self.e('#fullscreen-on a')
+		fullscr		= self.e('#fullscreen-on a')
 		self.assertEqual('Full\nScreen'				, fullscr.text)
 		self.assertIn('ss-icon'						, fullscr.e('span').get_attribute('class'))
 		self.assertIn('ss-scaleup'					, fullscr.e('span').get_attribute('class'))
@@ -53,8 +53,27 @@ class Map(HPTestCase):
 	@url('/map/')
 	def test_fullscreen_map(self):
 		
+		self.e('#fullscreen-on a').click()
+		sleep(2)
 		
-		pass
+		main_panel = self.e('.main-panel a')
+		self.assertEqual(URL_BASE + '/', main_panel.get_attribute('href'))
+		self.assertIn('fullscreen_logo', main_panel.get_attribute('class'))
+		
+		search_filters = self.e('#search-filters')
+		self.assertEqual('Location'									, search_filters.e('label').text)
+		self.assertIsInstance(search_filters.e('input')				, WebElement)
+		self.assertIsInstance(self.e('#photo_search_submit span')	, WebElement)
+		
+		self.assertEqual('Narrow down', self.e('.filter-nav h2').text)
+		
+		fullscr_off = self.e('#fullscreen-off')
+		self.assertEqual('Exit fullscreen', fullscr_off.text)
+		self.assertIn('ss-icon'		, fullscr_off.e('span').get_attribute('class'))
+		self.assertIn('ss-scaledown', fullscr_off.e('span').get_attribute('class'))
+		
+		fullscr_off.click()
+		sleep(2)
 	
 	@url('/map/')
 	def test_photo_cluster(self):
