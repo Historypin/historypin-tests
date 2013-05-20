@@ -104,20 +104,22 @@ class Channel(HPTestCase):
 		
 		repeats = self.e('.chan.replicas')
 		
-		self.assertEqual('Historypin Repeats', repeats.e('h3').text)
+		self.assertEqual('Historypin Repeats'									, repeats.e('h3').text)
 		self.assertEqual(u'Historypin Repeats are created using the Historypin Smartphone App. They are modern replicas of your photos taken by other people or modern replicas of other person’s photos taken by you.'
 																				, repeats.e('p:nth-of-type(1)').text)
 		self.assertEqual('http://www.v4-22-00.historypin-hrd.appspot.com/app/'	, repeats.e('p:nth-of-type(1) a').get_attribute('href'))
 		self.assertEqual('This Channel has no Historypin Repeats'				, repeats.e('p:nth-of-type(2)').text)
-		
+	
 	@url('/channels/view/10649049/')
 	def test_comment_feed(self):
-		# TODO
-		# assert Comment Feed text
-		# assert paragraph text
-		# asser img src
-		# assert img link 
-		# assert channel img
-		# assert assert chanenel text
-		# assert text in the comment
+		
+		text_feed = self.e('.chan.story')
+		self.assertEqual('Comment Feed'												, text_feed.e('h3').text)
+		self.assertEqual('Comments posted to your media by you or by other people.'	, text_feed.e('p').text)
+		
+		feed = self.e('.feed.scrollbarfix li')
+		
+		self.assertIsInstance(feed.e('a')	, WebElement)
+		self.assertIsInstance(feed.e('img')	, WebElement)
+		self.assertIsInstance(feed.e('p')	, WebElement)
 	
