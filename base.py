@@ -45,6 +45,10 @@ class Browser(webdriver.Chrome):
 	def hover(self, elem):
 		webdriver.common.action_chains.ActionChains(self).move_to_element(elem).perform()
 		sleep(.5)
+	
+	def double_click(self, elem):
+		webdriver.common.action_chains.ActionChains(self).double_click(elem).perform()
+		sleep(.5)
 
 
 
@@ -58,13 +62,13 @@ class TestCase(unittest.TestCase):
 	# 	cls.browser = Browser(PATH_CRHOME_DRIVER)
 	# 	cls.browser.maximize_window()
 	
-	go		= browser.go
-	refresh	= browser.refresh
-	es		= browser.es
-	e		= browser.e
-	e_wait	= browser.e_wait
-	hover	= browser.hover
-	
+	go				= browser.go
+	refresh			= browser.refresh
+	es				= browser.es
+	e				= browser.e
+	e_wait			= browser.e_wait
+	hover			= browser.hover
+	double_click	= browser.double_click
 	
 	@classmethod
 	def browser_close(cls):

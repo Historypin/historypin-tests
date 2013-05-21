@@ -50,27 +50,69 @@ class Map(HPTestCase):
 	def test_search_by_date(self):
 		
 		self.e('a.date').click()
-		sleep(1)
+		
+		search_bar = self.e_wait('.search-bar.by_date')
+		self.assertIsInstance(search_bar	, WebElement)
+		self.assertEqual('Refine by date'	, search_bar.e('h3').text)
+		
+		icons = self.es('.search-bar.by_date a span')
+		self.assertIn('ss-icon'		, icons[0].get_attribute('class'))
+		self.assertIn('ss-location'	, icons[0].get_attribute('class'))
+		self.assertIn('ss-icon'		, icons[1].get_attribute('class'))
+		self.assertIn('ss-location'	, icons[1].get_attribute('class'))
+		
+		self.assertEqual('1840', self.e('#from span').text)
+		self.assertEqual('2013', self.e('#to span').text)
+		
+		labels = [
+			['1840-01-01', '1840'],
+			['1850-01-01', '1850'],
+			['1860-01-01', '1860'],
+			['1870-01-01', '1870'],
+			['1880-01-01', '1880'],
+			['1890-01-01', '1890'],
+			['1900-01-01', '1900'],
+			['1910-01-01', '1910'],
+			['1920-01-01', '1920'],
+			['1930-01-01', '1930'],
+			['1940-01-01', '1940'],
+			['1950-01-01', '1950'],
+			['1960-01-01', '1960'],
+			['1970-01-01', '1970'],
+			['1980-01-01', '1980'],
+			['1990-01-01', '1990'],
+			['2000-01-01', '2000'],
+			['2010-01-01', ''], 	 # 2010 this is item is display: none
+			['2013-01-01', '2013'],
+		]
+		
+		link_label = self.es('#date-slider-labels a')
+		
+		for n in range(len(labels)):
+			i = labels[n]
+			self.assertEqual(URL_BASE + '/photos/search/date_from/' + i[0]	, link_label[n].get_attribute('href'))
+			self.assertEqual(i[1]											, link_label[n].text)
+		
+		date_from	= self.e_wait('#date-slider-labels li:nth-of-type(3) a')
+		date_to		= self.e_wait('#date-slider-labels li:nth-of-type(7) a')
+		date_from.click()
+		self.assertEqual('1860', date_from.text)
+		# date_to.click()
+		# self.assertEqual('1990', date_to.text)
 		
 		# TODO
-		# click on by date link
-		# assert search bar by date:
-		# - refine by date text
-		# - assert date selector
-		# - assert date slider labels
-		# - assert date slider marker from and to
 		# set a date from(e.g. 1887) and date to (e.g. 2005)
 		# check if the id='from' and span class has the 1887 value
-		# check if the id='to' and span class has the 2005 value
-		# click on a photo cluster
-		# in "Details' tab check if the photo is in the set interval
-		# close the dialogue
-		# click on a single photo marker
-		# in "Details' tab check if the photo is in the set interval
-		# close the dialogue
-		# assert Some content is hidden(reset) text
-		# double click on Some content.. link
-		pass
+		# check if the id='to' and span class has the 2005 value 
+		# assert that the date slider icon is on 1887
+		# assert that the date slider icon is on 2005
+		# assert if the URL is changing with selected years
+		
+		
+		reset = self.e('a.reset')
+		self.assertEqual('Some content is hidden (reset)', reset.text)
+		
+		self.double_click(reset)
 	
 	@url('/map/')
 	def test_search_by_subject(self):
