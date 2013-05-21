@@ -82,7 +82,7 @@ class Map(HPTestCase):
 			['1980-01-01', '1980'],
 			['1990-01-01', '1990'],
 			['2000-01-01', '2000'],
-			['2010-01-01', ''], 	 # 2010 this is item is display: none
+			['2010-01-01', ''], 	 # 2010 - this is item is display: none
 			['2013-01-01', '2013'],
 		]
 		
@@ -111,7 +111,6 @@ class Map(HPTestCase):
 		
 		reset = self.e('a.reset')
 		self.assertEqual('Some content is hidden (reset)', reset.text)
-		
 		self.double_click(reset)
 	
 	@url('/map/')
