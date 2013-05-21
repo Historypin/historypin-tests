@@ -108,32 +108,35 @@ class Map(HPTestCase):
 		# assert that the date slider icon is on 2005
 		# assert if the URL is changing with selected years
 		
-		
 		reset = self.e('a.reset')
 		self.assertEqual('Some content is hidden (reset)', reset.text)
 		self.double_click(reset)
 	
 	@url('/map/')
 	def test_search_by_subject(self):
-		# TODO
-		# click on by subject link
-		# assert search bar by subject:
-		# - Refine your results by subject text
-		# - Search by keyword text
-		# assert input text field
-		# - click in the input field
-		# - type "transport" keyword
-		# assert refine button link and text
-		# - click "Refine"
+		
+		self.e_wait('p a.subject').click()
+		tag = self.e('.by_tag')
+		self.assertEqual('Refine your results by subject'	, tag.e('h3').text)
+		self.assertEqual('Search by keyword'				, tag.e('label').text)
+		
+		tag.e('.input-container input').send_keys('transport')
+		
+		refine = tag.e('.button.right')
+		self.assertEqual('REFINE', refine.text)
+		refine.click()
+		self.assertIn('tags:transport', URL_BASE + '/map/#!/geo:51.6,0.05/zoom:7/tags:transport/')
+		
+		reset = self.e('a.reset')
+		self.assertEqual('Some content is hidden (reset)', reset.text)
+		self.double_click(reset)
+		
 		# click on a photo cluster
-		#	- in "Details' tab, assert that in Tags section there is transport keyword
+		# - in "Details' tab, assert that in Tags section there is transport keyword
 		# close the dialogue
 		# click on a single photo marker
-		# 		in "Details' tab, assert that in Tags section there is transport keyword
+		# - in "Details' tab, assert that in Tags section there is transport keyword
 		# close the dialogue
-		# assert Some content is hidden(reset) text
-		# double click on Some content.. link
-		pass
 	
 	@url('/map/')
 	def test_fullscreen_map(self):
