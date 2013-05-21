@@ -32,22 +32,66 @@ class Map(HPTestCase):
 		self.assertIsInstance(self.e('#map-canvas')	, WebElement)
 	
 	@url('/map/')
-	def test_search(self):
+	def test_search_by_place(self):
 		
+		input_cnt = self.e('#search-filters .input-container input')
+		input_cnt.click()
+		sleep(1)
 		
+		input_cnt.send_keys('Sofia')
+		sleep(1)
 		
-		pass
+		self.e('.button.left').click()
+		sleep(1)
+		
+		self.assertIn('42.697839,23.32167', URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/location:Sofia, Bulgaria/')
 	
 	@url('/map/')
 	def test_search_by_date(self):
 		
+		self.e('a.date').click()
+		sleep(1)
 		
+		# TODO
+		# click on by date link
+		# assert search bar by date:
+		# - refine by date text
+		# - assert date selector
+		# - assert date slider labels
+		# - assert date slider marker from and to
+		# set a date from(e.g. 1887) and date to (e.g. 2005)
+		# check if the id='from' and span class has the 1887 value
+		# check if the id='to' and span class has the 2005 value
+		# click on a photo cluster
+		# in "Details' tab check if the photo is in the set interval
+		# close the dialogue
+		# click on a single photo marker
+		# in "Details' tab check if the photo is in the set interval
+		# close the dialogue
+		# assert Some content is hidden(reset) text
+		# double click on Some content.. link
 		pass
 	
 	@url('/map/')
-	def test_search_by_place(self):
-		
-		
+	def test_search_by_subject(self):
+		# TODO
+		# click on by subject link
+		# assert search bar by subject:
+		# - Refine your results by subject text
+		# - Search by keyword text
+		# assert input text field
+		# - click in the input field
+		# - type "transport" keyword
+		# assert refine button link and text
+		# - click "Refine"
+		# click on a photo cluster
+		#	- in "Details' tab, assert that in Tags section there is transport keyword
+		# close the dialogue
+		# click on a single photo marker
+		# 		in "Details' tab, assert that in Tags section there is transport keyword
+		# close the dialogue
+		# assert Some content is hidden(reset) text
+		# double click on Some content.. link
 		pass
 	
 	@url('/map/')
@@ -65,26 +109,88 @@ class Map(HPTestCase):
 		self.assertIsInstance(search_filters.e('input')				, WebElement)
 		self.assertIsInstance(self.e('#photo_search_submit span')	, WebElement)
 		
-		self.assertEqual('Narrow down', self.e('.filter-nav h2').text)
+		self.assertEqual('Narrow down'		, self.e('.filter-nav h2').text)
 		
 		fullscr_off = self.e('#fullscreen-off')
-		self.assertEqual('Exit fullscreen', fullscr_off.text)
-		self.assertIn('ss-icon'		, fullscr_off.e('span').get_attribute('class'))
-		self.assertIn('ss-scaledown', fullscr_off.e('span').get_attribute('class'))
+		self.assertEqual('Exit fullscreen'	, fullscr_off.text)
+		self.assertIn('ss-icon'				, fullscr_off.e('span').get_attribute('class'))
+		self.assertIn('ss-scaledown'		, fullscr_off.e('span').get_attribute('class'))
 		
 		fullscr_off.click()
 		sleep(2)
 	
-	@url('/map/')
-	def test_photo_cluster(self):
-		#test photo cluster gallery
-		
+	@url('/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:details/')
+	def test_pin_dialogue(self):
+		# TODO
+		# Details Tab:
+		# - assert Details text
+		# - assert img src
+		# - assert heading
+		# - assert paragraph and views
+		# - assert Suggest more accurate details link and text
+		# - assert channel img and link and text pinned by
+		# - assert pin description text
+		# - Tags text and links
+		# - favourite, report streetview links and texts
+		# - assert see bigger icon and text
+		# - click on see bigger
+		# 	- assert image src and see smaller text
+		# click on see smaller
+		# Comments Tab:
+		# - click on Comments Tab
+		# - assert Comments text
+		# - in the sidebar:
+		# - assert image src
+		# - assert pinner info - img src, channel link, pinned by text
+		# - assert heading, paragraph, year 
+		# - in the stories list:
+		# - assert channel img text, channel link and paragraph
+		# - assert write story wrap link
+		# - assert avatar
+		# - click on area for writing a story
+		# - go back to the dialogue
+		# Streetview Tab:
+		# - click on Streetview tab
+		# - assert streetview text
+		# - assert text under the image
+		# - assert streetview slider and icon
+		# - assert reset text and icon
+		# - assert fullscr text and icon
+		# - click on fullscr
+		# - assert img src
+		# - assert exit fullscr link and text
+		# - click on exit fullscr
+		# Repeats Tab:
+		# - assert img src
+		# - assert HP Repeats text
+		# - assert paragraph
+		# - assert app link
+		# - assert paragraph 
+		# Copyright Tab:
+		# - assert copyright text
+		# -assert sidebar like in the comment tab
+		# assert share text
+		# assert share media icons
 		pass
 	
 	@url('/map/')
+	def test_pin_cluster(self):
+		# TODO
+		# assert a photo cluster img src
+		# click on the photo cluster
+		# in cluster gallery, assert thumbs link and text, paragraph, img src and link
+		# click on the first thumb
+		# func for testing dialogue
+		pass
+	
+	url('/map/')
 	def test_hp_marker(self):
-		#to test dialogue
-		
+		# TODO
+		# click on a single photo marker
+		# assert marker img src
+		# func for testing dialogue
+		# assert icons for left and right arrows
+		# click on the arrow for previous and next
 		pass
 	
 	@url('/map/')
