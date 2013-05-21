@@ -142,7 +142,6 @@ class Map(HPTestCase):
 	def test_fullscreen_map(self):
 		
 		self.e('#fullscreen-on a').click()
-		sleep(2)
 		
 		main_panel = self.e('.main-panel a')
 		self.assertEqual(URL_BASE + '/', main_panel.get_attribute('href'))
@@ -161,25 +160,64 @@ class Map(HPTestCase):
 		self.assertIn('ss-scaledown'		, fullscr_off.e('span').get_attribute('class'))
 		
 		fullscr_off.click()
-		sleep(2)
 	
 	@url('/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:details/')
-	def test_pin_dialogue(self):
+	def test_dialogue(self):
+		
+		sleep(3) # ajax on success
+		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/2000x440/quality/80/', self.e('#details_cnt .image .main-img').get_attribute('src'))
+		
+		info = self.e('#details_cnt .side.right.scrollbarfix .info')
+		self.assertEqual('National Theatre in Sofia, Bulgaria'				, info.e('h2.photo-title').text)
+		self.assertEqual('ulitsa "Kuzman Shapkarev" 1, 1000 Sofia, Bulgaria', info.e('strong .photo-address').text)
+		self.assertEqual('2 August 2012'									, info.e('strong .photo-date').text)
+		
+		details_link = self.e('.suggest-details-photo')
+		self.assertEqual(URL_BASE + '/contact-us/?suggest/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:details/'	, details_link.get_attribute('href'))
+		self.assertEqual('Suggest more accurate details'																	,details_link.text )
+		
+		about = self.e('.about')
+		self.assertEqual(URL_BASE + '/channels/img/10649049/logo/1/dim/46x46/'		, about.e('img').get_attribute('src'))
+		self.assertEqual('Pinned by\nGabss'										, about.e('p.pinned').text)
+		self.assertEqual(URL_BASE + '/channels/view/10649049/'						, about.e('p.pinned a').get_attribute('href'))
+		self.assertEqual('This is a photo of National Theatre in Sofia, Bulgaria'	, about.e('p.photo-story-copy').text)
+		
+		self.assertEqual('Tags: national, theatre', self.e('.tags').text)
+		keyword = self.es('.tags .photo-keywords a')
+		self.assertEqual(URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:details/tags:national/'	, keyword[0].get_attribute('href'))
+		self.assertEqual(URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:details/tags:theatre/'	, keyword[1].get_attribute('href'))
+		
+		actions = self.e('.bottom-actions')
+		
+		favourite = actions.e('.action.favourite span')
+		self.assertIn('ss-icon', favourite.get_attribute('class'))
+		self.assertIn('ss-heart', favourite.get_attribute('class'))
+		
+		report = actions.e('.action.report')
+		self.assertEqual(URL_BASE + '/contact-us/?report/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:details/', report.get_attribute('href'))
+		self.assertIn('ss-icon'	, report.e('span').get_attribute('class'))
+		self.assertIn('ss-alert', report.e('span').get_attribute('class'))
+		
+		streetview = actions.e('.action.photo-view-on-streetview.sv-marker')
+		self.assertEqual(URL_BASE + '/map/#streetview_cnt'	, streetview.get_attribute('href'))
+		self.assertEqual('Street View'						, streetview.text)
+		
+		fullscr = actions.e('.action.fullscr.right')
+		self.assertEqual('See Bigger  ', fullscr.text)
+		self.assertIn('ss-icon'		, fullscr.e('span').get_attribute('class'))
+		self.assertIn('ss-scaleup'	, fullscr.e('span').get_attribute('class'))
+		fullscr.click()
+		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/3000x500/quality/80/', self.e('#preview_cnt .image img').get_attribute('src'))
+		
+		fullscr_off = actions.e('.action.see-smaller.right')
+		self.assertEqual('See Smaller  '	, fullscr_off.text)
+		self.assertIn('ss-icon'			, fullscr_off.e('span').get_attribute('class'))
+		self.assertIn('ss-scaledown'	, fullscr_off.e('span').get_attribute('class'))
+		fullscr_off.click()
+		
 		# TODO
-		# Details Tab:
-		# - assert Details text
-		# - assert img src
-		# - assert heading
-		# - assert paragraph and views
-		# - assert Suggest more accurate details link and text
-		# - assert channel img and link and text pinned by
-		# - assert pin description text
-		# - Tags text and links
-		# - favourite, report streetview links and texts
-		# - assert see bigger icon and text
-		# - click on see bigger
-		# 	- assert image src and see smaller text
-		# click on see smaller
+		# url is changing to tab:details
+		
 		# Comments Tab:
 		# - click on Comments Tab
 		# - assert Comments text
@@ -193,6 +231,7 @@ class Map(HPTestCase):
 		# - assert avatar
 		# - click on area for writing a story
 		# - go back to the dialogue
+		
 		# Streetview Tab:
 		# - click on Streetview tab
 		# - assert streetview text
@@ -204,18 +243,20 @@ class Map(HPTestCase):
 		# - assert img src
 		# - assert exit fullscr link and text
 		# - click on exit fullscr
+		
 		# Repeats Tab:
 		# - assert img src
 		# - assert HP Repeats text
 		# - assert paragraph
 		# - assert app link
 		# - assert paragraph 
+		
 		# Copyright Tab:
 		# - assert copyright text
 		# -assert sidebar like in the comment tab
 		# assert share text
 		# assert share media icons
-		pass
+		
 	
 	@url('/map/')
 	def test_pin_cluster(self):
@@ -225,6 +266,8 @@ class Map(HPTestCase):
 		# in cluster gallery, assert thumbs link and text, paragraph, img src and link
 		# click on the first thumb
 		# func for testing dialogue
+		# assert icons for left and right arrows
+		# click on the arrow for previous and next
 		pass
 	
 	url('/map/')
@@ -233,8 +276,7 @@ class Map(HPTestCase):
 		# click on a single photo marker
 		# assert marker img src
 		# func for testing dialogue
-		# assert icons for left and right arrows
-		# click on the arrow for previous and next
+		# assert there are noicons for left and right arrows
 		pass
 	
 	@url('/map/')
