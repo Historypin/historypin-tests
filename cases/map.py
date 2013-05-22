@@ -256,7 +256,7 @@ class Map(HPTestCase):
 		self.assertEqual('Register now'									, col_right.e('a').text)
 		
 		self.goBack(URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:stories/')
-		
+		# 
 	@url('/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:details/')
 	def test_dialog_streetview(self):
 		
