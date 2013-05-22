@@ -256,9 +256,11 @@ class Map(HPTestCase):
 		self.assertEqual('Register now'									, col_right.e('a').text)
 		
 		self.goBack(URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:stories/')
-		# 
+		
 	@url('/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:details/')
 	def test_dialog_streetview(self):
+		dlg = self.e('#info-dialog')
+		tab = dlg.e('#streetview_cnt')
 		
 		sleep(3) # TODO do this to after_ajax
 		self.e_wait('.list_tabs a[href$=streetview_cnt]').click()
@@ -271,7 +273,7 @@ class Map(HPTestCase):
 		self.assertEqual('National Theatre in Sofia, Bulgaria'	, info.e('.photo-title').text)
 		self.assertEqual('2 August 2012'						, info.e('.photo-date').text)
 		
-		fade		= self.e_wait('#streetview_slider.action.fade > span') # fade opacity
+		fade		= self.e_wait('#streetview_slider.action.fade > span') # TODO - test fade opacity
 		fade_icon	= self.e('#streetview_slider .opacity-slider span')
 		self.assertEqual('Fade'		, fade.text)
 		self.assertIn('ss-icon'		, fade_icon.get_attribute('class'))
@@ -300,19 +302,36 @@ class Map(HPTestCase):
 		fullscr_off_icon= fullscr_off.e('span')
 		self.assertEqual('Exit Fullscreen  ', fullscr_off.text)
 		self.assertIn('ss-icon'		, fullscr_off_icon.get_attribute('class'))
-		self.assertIn('ss-scaleup'	, fullscr_off_icon.get_attribute('class')) #should be scaledown
+		self.assertIn('ss-scaleup'	, fullscr_off_icon.get_attribute('class')) #in the HTML - should be scaledown
 		
 		self.assertIsInstance(self.e('.map_preview'), WebElement)
 		fullscr_off.click()
 	
 	@url('/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:details/')
 	def test_dialog_repeats(self):
+		dlg = self.e('#info-dialog')
+		tab = dlg.e('#repeats_cnt')
+		
+		sleep(3) # TODO do this to after_ajax
+		dlg.e('.list_tabs a[href$=repeats_cnt]').click()
+		sleep(1)
+		
+		self.assertIn('tab:repeats'		, URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:repeats/')
+		self.assertEqual('Repeats (0)'	, dlg.e('.selected .tab').text)
+		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/2000x440/quality/80/', tab.e('.main img').get_attribute('src'))
+		
+		about_cnt = tab.e('.about')
+		self.assertEqual('Historypin Repeats'	, about_cnt.e('h2').text)
+		self.assertEqual(URL_BASE + '/app'		, about_cnt.e('p a').get_attribute('href'))
+		self.assertEqual('Historypin Repeats are modern replicas of older photos created using the Historypin Smartphone App', about_cnt.e('p').text)
+		
 		# Repeats Tab:
-		# - assert img src
-		# - assert HP Repeats text
-		# - assert paragraph
-		# - assert app link
-		# - assert paragraph 
+		# - click on a repeat
+		# - check repeat
+		
+		
+		
+		# for all tabs to click streetview and then go back()
 		pass
 	
 	@url('/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:details/')
@@ -323,7 +342,10 @@ class Map(HPTestCase):
 		# assert share text
 		# assert share media icons
 		pass
-		
+	
+	def test_dialog_deep_linking(self):
+		# test whether the corret tab is selected and tab continer is shown on deeplinking
+		pass
 	
 	@url('/map/')
 	def test_pin_cluster(self):
@@ -369,4 +391,3 @@ class Map(HPTestCase):
 			i = footer[n]
 			self.assertEqual(i[0]			, lists[n].get_attribute('href'))
 			self.assertEqual(i[1]			, lists[n].text)
-	
