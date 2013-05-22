@@ -29,6 +29,9 @@ class Browser(webdriver.Chrome):
 	def go(self, url):
 		self.get(URL_BASE + url)
 	
+	def goBack(self, url):
+		self.get(URL_BASE + url)
+	
 	def es(self, selector):
 		return self.find_elements_by_css_selector(selector)
 		
@@ -63,6 +66,7 @@ class TestCase(unittest.TestCase):
 	# 	cls.browser.maximize_window()
 	
 	go				= browser.go
+	goBack			= browser.goBack
 	refresh			= browser.refresh
 	es				= browser.es
 	e				= browser.e

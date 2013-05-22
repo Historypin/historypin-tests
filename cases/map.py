@@ -162,7 +162,7 @@ class Map(HPTestCase):
 		fullscr_off.click()
 	
 	@url('/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:details/')
-	def test_dialogue(self):
+	def test_dialog_details(self):
 		
 		sleep(3) # ajax on success
 		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/2000x440/quality/80/', self.e('#details_cnt .image .main-img').get_attribute('src'))
@@ -215,47 +215,114 @@ class Map(HPTestCase):
 		self.assertIn('ss-scaledown'	, fullscr_off.e('span').get_attribute('class'))
 		fullscr_off.click()
 		
-		# TODO
-		# url is changing to tab:details
+	@url('/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:details/')
+	def test_dialog_comments(self):
 		
-		# Comments Tab:
-		# - click on Comments Tab
-		# - assert Comments text
-		# - in the sidebar:
-		# - assert image src
-		# - assert pinner info - img src, channel link, pinned by text
-		# - assert heading, paragraph, year 
-		# - in the stories list:
-		# - assert channel img text, channel link and paragraph
-		# - assert write story wrap link
-		# - assert avatar
-		# - click on area for writing a story
-		# - go back to the dialogue
+		self.e_wait('.list_tabs a[href$=stories_cnt]').click()
+		self.assertIn('tab:stories'		, URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:stories/')
+		self.assertEqual('Comments (1)'	, self.e('.selected .tab').text)
 		
-		# Streetview Tab:
-		# - click on Streetview tab
-		# - assert streetview text
-		# - assert text under the image
-		# - assert streetview slider and icon
-		# - assert reset text and icon
-		# - assert fullscr text and icon
-		# - click on fullscr
-		# - assert img src
-		# - assert exit fullscr link and text
-		# - click on exit fullscr
+		sidebar = self.e('.info.scrollbarfix')
+		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/294x1000/'	, sidebar.e('.side-img ').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/channels/img/10649049/logo/1/dim/46x46/'		, sidebar.e('.photo-user-avatar.avatar').get_attribute('src'))
+		self.assertEqual('Pinned by: \nGabss'												, sidebar.e('.pinner p').text)
+		self.assertEqual(URL_BASE + '/channels/view/10649049/'						, sidebar.e('.pinner p a').get_attribute('href'))
+		self.assertEqual('National Theatre in Sofia, Bulgaria'						, sidebar.e('.photo-title').text)
+		self.assertEqual('ulitsa "Kuzman Shapkarev" 1, 1000 Sofia, Bulgaria'		, sidebar.e('.photo-address').text)
+		self.assertEqual('2 August 2012'											, sidebar.e('.photo-date').text)
 		
+		stories_list = self.e('.stories_list.scrollbarfix li')
+		self.assertEqual(URL_BASE + '/channels/img/10649049/logo/1/dim/100x100/'	, stories_list.e('img').get_attribute('src'))
+		self.assertEqual('This is a photo of National Theatre in Sofia, Bulgaria'	, stories_list.e('.story_cnt').text)
+		self.assertEqual('Posted by Gabss (Pinner) on 10 May 2013'				, stories_list.e('p:nth-of-type(2)').text)
+		self.assertEqual(URL_BASE + '/channels/view/10649049/'						, stories_list.e('p:nth-of-type(2) a').get_attribute('href'))
+		
+		self.assertEqual(URL_BASE + '/resources/avatars/50x50/avatar_1.png'	, self.e('.write_story_wrap img ').get_attribute('src'))
+		self.assertIsInstance(self.e('textarea'), WebElement)
+		
+		self.e('.write_story_wrap').click()
+		self.assertIn('/user/?from=/map/', URL_BASE + '/user/?from=/map/%23%21/geo%3A42.697839%2C23.32167/zoom%3A10/dialog%3A22363018/tab%3Awrite-story/')
+		
+		self.assertEqual('Historypin uses Google Accounts to keep your login details safe and secure.', self.e('.centered p').text)
+		
+		col_left = self.e('.col.w2:nth-of-type(1)')
+		self.assertEqual('I already have a Google Account'	,col_left.e('h4').text)
+		self.assertIsInstance(col_left.e('a')				, WebElement)
+		self.assertEqual('Login'							, col_left.e('a').text)
+		
+		col_right = self.e('.col.w2:nth-of-type(2)')
+		self.assertEqual("I don't have a Google Account"				, col_right.e('h4').text)
+		self.assertEqual('https://www.google.com/accounts/NewAccount'	, col_right.e('a').get_attribute('href'))
+		self.assertEqual('Register now'									, col_right.e('a').text)
+		
+		self.goBack(URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:stories/')
+		
+	@url('/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:details/')
+	def test_dialog_streetview(self):
+		
+		sleep(3) # TODO do this to after_ajax
+		self.e_wait('.list_tabs a[href$=streetview_cnt]').click()
+		sleep(1)
+		self.assertIn('tab:streetview'	, URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:streetview/')
+		self.assertEqual('Street View'	, self.e('.selected .tab').text)
+		
+		# self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/441x330/quality/80/'	, self.e('.streetview_container .streetview-img-wrapper .streetview-img').get_attribute('src'))
+		info = self.e('.sv-image-info')
+		self.assertEqual('National Theatre in Sofia, Bulgaria'	, info.e('.photo-title').text)
+		self.assertEqual('2 August 2012'						, info.e('.photo-date').text)
+		
+		fade		= self.e_wait('#streetview_slider.action.fade > span') # fade opacity
+		fade_icon	= self.e('#streetview_slider .opacity-slider span')
+		self.assertEqual('Fade'		, fade.text)
+		self.assertIn('ss-icon'		, fade_icon.get_attribute('class'))
+		self.assertIn('ss-newmoon'	, fade_icon.get_attribute('class'))
+		
+		reset		= self.e('#streetview_reset')
+		reset_icon	= reset.e('span')
+		self.assertEqual('  Reset'	, reset.text)
+		self.assertIn('ss-icon'		, reset_icon.get_attribute('class'))
+		self.assertIn('ss-refresh'	, reset_icon.get_attribute('class'))
+		
+		streetview = self.e('.sv-marker')
+		self.assertEqual('Street View', streetview.text)
+		streetview.click()
+		
+		fullscr			= self.e('#streetview_fullscreen')
+		fullscr_icon	= fullscr.e('span')
+		self.assertEqual('Fullscreen  ', fullscr.text)
+		self.assertIn('ss-icon'		, fullscr_icon.get_attribute('class'))
+		self.assertIn('ss-scaleup'	, fullscr_icon.get_attribute('class'))
+		fullscr.click()
+		
+		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/916x685/quality/80/', self.e('.streetview_container.streetview_fs .streetview-img-wrapper .streetview-img').get_attribute('src'))
+		
+		fullscr_off		= self.e('#streetview_fullscreen')
+		fullscr_off_icon= fullscr_off.e('span')
+		self.assertEqual('Exit Fullscreen  ', fullscr_off.text)
+		self.assertIn('ss-icon'		, fullscr_off_icon.get_attribute('class'))
+		self.assertIn('ss-scaleup'	, fullscr_off_icon.get_attribute('class')) #should be scaledown
+		
+		self.assertIsInstance(self.e('.map_preview'), WebElement)
+		fullscr_off.click()
+	
+	@url('/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:details/')
+	def test_dialog_repeats(self):
 		# Repeats Tab:
 		# - assert img src
 		# - assert HP Repeats text
 		# - assert paragraph
 		# - assert app link
 		# - assert paragraph 
-		
+		pass
+	
+	@url('/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:details/')
+	def test_dialog_copyright(self):
 		# Copyright Tab:
 		# - assert copyright text
 		# -assert sidebar like in the comment tab
 		# assert share text
 		# assert share media icons
+		pass
 		
 	
 	@url('/map/')
