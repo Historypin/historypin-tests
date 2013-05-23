@@ -56,7 +56,7 @@ class Browser(webdriver.Chrome):
 
 
 class TestCase(unittest.TestCase):
-	browser = Browser(PATH_CRHOME_DRIVER) # chrome
+	browser = Browser(PATH_CRHOME_DRIVER)  # chrome
 	# browser = Browser() # FF
 	browser.maximize_window()
 	

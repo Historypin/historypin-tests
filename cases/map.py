@@ -375,19 +375,50 @@ class Map(HPTestCase):
 		# test whether the corret tab is selected and tab continer is shown on deeplinking
 		pass
 	
-	@url('/map/')
+	@url('/map/#!/geo:42.694397,23.329198/zoom:14/')
 	def test_pin_cluster(self):
+		
+		sleep(2)
+		self.e_wait('#map-canvas .hp-marker-cluster').click()
+		sleep(3)
+		
+		cluster_gallery = self.e('#map-canvas .hp-info-window.infoWindow_gallery')
+		cluster_gallery.click()
+		thumbs = cluster_gallery.es('.gallery_photos.scrollbarfix li')
+		self.assertGreaterEqual(len(thumbs), 2)
+		
+		thumb_info = thumbs[0].e('.info')
+		self.assertIsInstance(thumb_info.e('h6'), WebElement)
+		self.assertIsInstance(thumb_info.e('h6 a'), WebElement)
+		self.assertIsInstance(thumb_info.e('p'), WebElement)
+		
+		thumb_info.e('h6 a').click()
+		sleep(5)
+		
+		dlg = self.e('#info-dialog')
+		icon_arrow_right = dlg.e('.next-photo')
+		self.assertIn('ss-icon'			, icon_arrow_right.e('span').get_attribute('class'))
+		self.assertIn('ss-navigateright', icon_arrow_right.e('span').get_attribute('class'))
+		icon_arrow_right.click()
+		sleep(2)
+		
+		icon_arrow_left = dlg.e('.prev-photo')
+		self.assertIn('ss-icon'			, icon_arrow_left.e('span').get_attribute('class'))
+		self.assertIn('ss-navigateleft'	, icon_arrow_left.e('span').get_attribute('class'))
+		# TODO LATER
+		# icon_arrow_left.click()
+		# self.assertFalse(icon_arrow_left.is_displayed(), 'None')
+		# sleep(2)
 		# TODO
-		# assert a photo cluster     img src
-		# click on the phoffffto    cluster
 		# in cluster gallery, assert thumbs link and text, paragraph, img src and link
 		# click on the first thumb
 		# func for testing dialogue
 		# assert icons for left and right arrows
 		# click on the arrow for previous and next
-		pass
+		
+		# TODO zoom on clicking big cluster
 	
-	url('/map/')
+	@url('/map/')
 	def test_hp_marker(self):
 		
 		# TODO
