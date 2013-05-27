@@ -48,11 +48,11 @@ class Channel(HPTestCase):
 		for n in range(len(social_icons)-1):
 			self.assertIn(social_icons[n], social_buttons.get_attribute('class'))
 	
-	@url('/attach/uid10649049/map/index/#!/geo:-20.393764,-25.431596/zoom:3/')
+	@url('/attach/uid10649049/map/index/#!/geo:26.816514,24.138716/zoom:2/')
 	def test_map_tab(self):
 		
 		map_tab = self.e('.list_tabs .first')
-		self.assertEqual('Map'										, map_tab.text)
+		self.assertEqual('Map'											, map_tab.text)
 		
 		self.assertIsInstance(self.e('#search-filters input#location')	, WebElement)
 		self.assertIsInstance(self.e('#search-filters input#tags')		, WebElement)
@@ -61,6 +61,16 @@ class Channel(HPTestCase):
 		
 		self.assertIsInstance(self.e('#date-selector #date-slider')	, WebElement)
 		self.assertIsInstance(self.e('#date-slider-labels li')		, WebElement)
+		
+		self.e_wait('#map-canvas .hp-marker[class=hp-marker]').click()
+		
+		dlg = self.e('#info-dialog')
+		self.assertIsInstance(dlg, WebElement)
+		icon_arrow_right = dlg.e('.next-photo')
+		icon_arrow_left = dlg.e('.prev-photo')
+		self.assertFalse(icon_arrow_left.is_displayed(), 'None')
+		self.assertFalse(icon_arrow_right.is_displayed(), 'None')
+		
 	
 	@url('/attach/uid10649049/map/index/#!/geo:-20.393764,-25.431596/zoom:3/')
 	def test_list_tab(self):
