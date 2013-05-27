@@ -92,10 +92,11 @@ class Channel(HPTestCase):
 		self.assertEqual('Sort by:'	, strong[0].text)
 		self.assertEqual('Show:'	, strong[1].text)
 		
-		date_upload = self.e('.list-filter input[id=date_upload]')
-		view_count = self.e('.list-filter input[id=view_count]')
-		all_items = self.e('.list-filter input[id=all]')
-		favourites = self.e('.list-filter input[id=unpinned]')
+		date_upload	= self.e('.list-filter input[id=date_upload]')
+		view_count	= self.e('.list-filter input[id=view_count]')
+		all_items	= self.e('.list-filter input[id=all]')
+		favourites	= self.e('.list-filter input[id=unpinned]')
+		
 		self.assertTrue(date_upload.is_selected()	, 'None')
 		self.assertFalse(view_count.is_selected()	, 'None')
 		self.assertTrue(all_items.is_selected()		, 'None')
@@ -118,24 +119,24 @@ class Channel(HPTestCase):
 		self.assertIn('popular', URL_BASE + '/attach/uid10649049/photos/list/#/show/all/get/popular/')
 		self.assertFalse(date_upload.is_selected()	, 'None')
 		self.assertIsInstance(img_holder, WebElement)
-		self.assertIsInstance(info, WebElement)
-		self.assertIsInstance(actions, WebElement)
+		self.assertIsInstance(info		, WebElement)
+		self.assertIsInstance(actions	, WebElement)
 		
 		favourites.click()
 		sleep(2)
 		self.assertIn('favourites', URL_BASE + '/attach/uid10649049/photos/list/#/get/popular/show/favourites/')
-		self.assertFalse(all_items.is_selected()			, 'None')
+		self.assertFalse(all_items.is_selected()	, 'None')
 		self.assertIsInstance(img_holder, WebElement)
-		self.assertIsInstance(info, WebElement)
-		self.assertIsInstance(actions, WebElement)
+		self.assertIsInstance(info		, WebElement)
+		self.assertIsInstance(actions	, WebElement)
 		
 		date_upload.click()
 		sleep(2)
 		self.assertTrue(date_upload.is_selected()	, 'None')
 		self.assertFalse(view_count.is_selected()	, 'None')
 		self.assertIsInstance(img_holder, WebElement)
-		self.assertIsInstance(info, WebElement)
-		self.assertIsInstance(actions, WebElement)
+		self.assertIsInstance(info		, WebElement)
+		self.assertIsInstance(actions	, WebElement)
 		
 	
 	@url('/attach/uid10649049/map/index/#!/geo:26.816514,24.138716/zoom:2/')
@@ -150,7 +151,7 @@ class Channel(HPTestCase):
 		
 		self.assertEqual(URL_BASE + '/attach/uid10649049/collections/view/id/22782015/title/Test%20Collection%20for%20automated%20test', item.get_attribute('href'))
 		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/195x150/crop/1/', item.e('img').get_attribute('src'))
-		self.assertIn('collection-icon', item.e('span').get_attribute('class'))
+		self.assertIn('collection-icon'	, item.e('span').get_attribute('class'))
 		self.assertIn('ss-icon'			, item.e('span').get_attribute('class'))
 		self.assertIn('ss-pictures'		, item.e('span').get_attribute('class'))
 		
@@ -200,6 +201,7 @@ class Channel(HPTestCase):
 	def test_comment_feed(self):
 		
 		text_feed = self.e('.chan.story')
+		
 		self.assertEqual('Comment Feed'												, text_feed.e('h3').text)
 		self.assertEqual('Comments posted to your media by you or by other people.'	, text_feed.e('p').text)
 		
