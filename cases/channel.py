@@ -140,16 +140,27 @@ class Channel(HPTestCase):
 	
 	@url('/attach/uid10649049/map/index/#!/geo:26.816514,24.138716/zoom:2/')
 	def test_collections_tab(self):
-		# TODO
-		# click on Collections Tab
-		# assert collections text
-		# assert collection img
-		# assert collection link
-		# assert icon
-		# assert text
-		# assert collection link
-		# assert channel link
-		pass
+		
+		collections_tab = self.e('.list_tabs li a[href$="/attach/uid10649049/collections/all/"]')
+		self.assertEqual('Collections'	, collections_tab.text)
+		collections_tab.click()
+		sleep(2)
+		
+		item = self.e('#photo_list_content .list li a')
+		
+		self.assertEqual(URL_BASE + '/attach/uid10649049/collections/view/id/22782015/title/Test%20Collection%20for%20automated%20test', item.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/195x150/crop/1/', item.e('img').get_attribute('src'))
+		self.assertIn('collection-icon', item.e('span').get_attribute('class'))
+		self.assertIn('ss-icon'			, item.e('span').get_attribute('class'))
+		self.assertIn('ss-pictures'		, item.e('span').get_attribute('class'))
+		
+		paragraph_link = self.es('#photo_list_content .list li p a')
+		
+		self.assertEqual(URL_BASE + '/attach/uid10649049/collections/view/id/22782015/title/Test%20Collection%20for%20automated%20test', paragraph_link[0].get_attribute('href'))
+		self.assertEqual('Test Collection for automated test', paragraph_link[0].text)
+		
+		self.assertEqual(URL_BASE + '/channels/view/10649049', paragraph_link[1].get_attribute('href'))
+		self.assertEqual('Gabss', paragraph_link[1].text)
 	
 	@url('/attach/uid10649049/map/index/#!/geo:26.816514,24.138716/zoom:2/')
 	def test_tours_tab(self):
