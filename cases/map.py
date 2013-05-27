@@ -405,28 +405,31 @@ class Map(HPTestCase):
 		icon_arrow_left = dlg.e('.prev-photo')
 		self.assertIn('ss-icon'			, icon_arrow_left.e('span').get_attribute('class'))
 		self.assertIn('ss-navigateleft'	, icon_arrow_left.e('span').get_attribute('class'))
-		# TODO LATER
 		# icon_arrow_left.click()
 		# self.assertFalse(icon_arrow_left.is_displayed(), 'None')
 		# sleep(2)
-		# TODO
-		# in cluster gallery, assert thumbs link and text, paragraph, img src and link
-		# click on the first thumb
-		# func for testing dialogue
-		# assert icons for left and right arrows
-		# click on the arrow for previous and next
-		
-		# TODO zoom on clicking big cluster
+		# TODO LATER
+		# zoom on clicking big cluster
 	
-	@url('/map/')
+	@url('/map/#!/geo:42.639733,23.295553/zoom:13/')
 	def test_hp_marker(self):
 		
-		# TODO
-		# click on a single photo marker
-		# assert marker img src
-		# func for testing dialogue
-		# assert there are noicons for left and right arrows
-		pass
+		dlg = self.e('#info-dialog')
+		
+		sleep(2)
+		self.e_wait('#map-canvas .hp-marker[class=hp-marker]').click()
+		sleep(2)
+		self.assertIsInstance(dlg, WebElement)
+		
+		icon_arrow_right = dlg.e('.next-photo')
+		icon_arrow_left = dlg.e('.prev-photo')
+		
+		self.assertFalse(icon_arrow_left.is_displayed(), 'None')
+		self.assertFalse(icon_arrow_right.is_displayed(), 'None')
+		
+		# TODO LATER
+		# deeplinking for map pins
+		# get the id from the img and compare with deep linking
 	
 	@url('/map/')
 	def test_footer(self):
