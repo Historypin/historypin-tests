@@ -48,23 +48,25 @@ class Channel(HPTestCase):
 		for n in range(len(social_icons)-1):
 			self.assertIn(social_icons[n], social_buttons.get_attribute('class'))
 	
-	@url('/channels/view/10649049/')
+	@url('/attach/uid10649049/map/index/#!/geo:-20.393764,-25.431596/zoom:3/')
 	def test_map_tab(self):
-		# TODO
-		# assert Map text and link
-		# click on map tab
-		# assert for embed frame that the link is /attach/uid10649049/map/#!/geo:42.697839,23.32167/zoom:20/
-		# assert input field Search by location
-		# assert input field Search by tag
-		# assert Go button link and text
-		# assert years slideradd
-		pass
+		
+		map_tab = self.e('.list_tabs .first')
+		self.assertEqual('Map'										, map_tab.text)
+		
+		self.assertIsInstance(self.e('#search-filters input#location')	, WebElement)
+		self.assertIsInstance(self.e('#search-filters input#tags')		, WebElement)
+		self.assertIsInstance(self.e('#photo_search_submit')			, WebElement)
+		self.assertEqual('GO', self.e('#photo_search_submit').e('span').text)
+		
+		self.assertIsInstance(self.e('#date-selector #date-slider')	, WebElement)
+		self.assertIsInstance(self.e('#date-slider-labels li')		, WebElement)
 	
-	@url('/channels/view/10649049/')
+	@url('/attach/uid10649049/map/index/#!/geo:-20.393764,-25.431596/zoom:3/')
 	def test_list_tab(self):
 		# TODO
 		# click on List Tab
-		# assert list text 
+		# assert list text
 		# assert list filter radio buttons and texts
 		# assert img link and text
 		# assert img icons - info actions
@@ -73,7 +75,7 @@ class Channel(HPTestCase):
 		# assert paragraphs
 		pass
 	
-	@url('/channels/view/10649049/')
+	@url('/attach/uid10649049/map/index/#!/geo:-20.393764,-25.431596/zoom:3/')
 	def test_collections_tab(self):
 		# TODO
 		# click on Collections Tab
@@ -86,7 +88,7 @@ class Channel(HPTestCase):
 		# assert channel link
 		pass
 	
-	@url('/channels/view/10649049/')
+	@url('/attach/uid10649049/map/index/#!/geo:-20.393764,-25.431596/zoom:3/')
 	def test_tours_tab(self):
 		# TODO
 		# click on Tours Tab
@@ -95,7 +97,7 @@ class Channel(HPTestCase):
 		# assert image link
 		# assert tour icon
 		# assert text
-		# assert tour link 
+		# assert tour link
 		# assert channel link
 		pass
 	
@@ -105,8 +107,7 @@ class Channel(HPTestCase):
 		repeats = self.e('.chan.replicas')
 		
 		self.assertEqual('Historypin Repeats'									, repeats.e('h3').text)
-		self.assertEqual(u'Historypin Repeats are created using the Historypin Smartphone App. They are modern replicas of your photos taken by other people or modern replicas of other person’s photos taken by you.'
-																				, repeats.e('p:nth-of-type(1)').text)
+		self.assertEqual(u'Historypin Repeats are created using the Historypin Smartphone App. They are modern replicas of your photos taken by other people or modern replicas of other person’s photos taken by you.', repeats.e('p:nth-of-type(1)').text)
 		self.assertEqual('http://www.v4-22-00.historypin-hrd.appspot.com/app/'	, repeats.e('p:nth-of-type(1) a').get_attribute('href'))
 		self.assertEqual('This Channel has no Historypin Repeats'				, repeats.e('p:nth-of-type(2)').text)
 	
@@ -122,4 +123,3 @@ class Channel(HPTestCase):
 		self.assertIsInstance(feed.e('a')	, WebElement)
 		self.assertIsInstance(feed.e('img')	, WebElement)
 		self.assertIsInstance(feed.e('p')	, WebElement)
-	

@@ -452,5 +452,5 @@ class Map(HPTestCase):
 		
 		for n in range(len(footer)):
 			i = footer[n]
-			self.assertEqual(i[0]			, lists[n].get_attribute('href'))
-			self.assertEqual(i[1]			, lists[n].text)
+			self.assertEqual(i[0], lists[n].get_attribute('href'))
+			self.assertEqual(i[1], lists[n].text)
