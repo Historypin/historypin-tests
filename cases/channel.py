@@ -72,20 +72,73 @@ class Channel(HPTestCase):
 		self.assertFalse(icon_arrow_right.is_displayed(), 'None')
 		
 	
-	@url('/attach/uid10649049/map/index/#!/geo:-20.393764,-25.431596/zoom:3/')
+	@url('/attach/uid10649049/map/index/#!/geo:26.816514,24.138716/zoom:2/')
 	def test_list_tab(self):
-		# TODO
-		# click on List Tab
-		# assert list text
-		# assert list filter radio buttons and texts
-		# assert img link and text
-		# assert img icons - info actions
-		# assert info
-		# assert h5s
-		# assert paragraphs
-		pass
+		
+		list_tab = self.e('.list_tabs li a[href$="/attach/uid10649049/photos/list/"]')
+		self.assertEqual('List'	, list_tab.text)
+		list_tab.click()
+		sleep(2)
+		
+		self.assertIsInstance(self.e('.list-filter'), WebElement)
+		
+		label = self.es('.list-filter label')
+		self.assertEqual('Most Recent'	, label[0].text)
+		self.assertEqual('Most Popular'	, label[1].text)
+		self.assertEqual('Content'		, label[2].text)
+		self.assertEqual('Favourites'	, label[3].text)
+		
+		strong = self.es('.list-filter strong')
+		self.assertEqual('Sort by:'	, strong[0].text)
+		self.assertEqual('Show:'	, strong[1].text)
+		
+		date_upload = self.e('.list-filter input[id=date_upload]')
+		view_count = self.e('.list-filter input[id=view_count]')
+		all_items = self.e('.list-filter input[id=all]')
+		favourites = self.e('.list-filter input[id=unpinned]')
+		self.assertTrue(date_upload.is_selected()	, 'None')
+		self.assertFalse(view_count.is_selected()	, 'None')
+		self.assertTrue(all_items.is_selected()		, 'None')
+		self.assertFalse(favourites.is_selected()	, 'None')
+		
+		
+		img_holder = self.e('#photo_list_content .list li .image-holder a[class="image"]')
+		self.assertEqual(URL_BASE + '/attach/uid10649049/map/#!/geo:42.693738,23.326101/zoom:20/dialog:22363018/tab:details/'	, img_holder.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/170x130/crop/1/'											, img_holder.e('img').get_attribute('src'))
+		
+		info = self.e('#photo_list_content .info')
+		self.assertIsInstance(info.e('h5'), WebElement)
+		self.assertIsInstance(info.e('p'), WebElement)
+		
+		actions = self.e('#photo_list_content .info-actions')
+		self.assertIn('ss-icon', actions.e('a span').get_attribute('class'))
+		
+		view_count.click()
+		sleep(2)
+		self.assertIn('popular', URL_BASE + '/attach/uid10649049/photos/list/#/show/all/get/popular/')
+		self.assertFalse(date_upload.is_selected()	, 'None')
+		self.assertIsInstance(img_holder, WebElement)
+		self.assertIsInstance(info, WebElement)
+		self.assertIsInstance(actions, WebElement)
+		
+		favourites.click()
+		sleep(2)
+		self.assertIn('favourites', URL_BASE + '/attach/uid10649049/photos/list/#/get/popular/show/favourites/')
+		self.assertFalse(all_items.is_selected()			, 'None')
+		self.assertIsInstance(img_holder, WebElement)
+		self.assertIsInstance(info, WebElement)
+		self.assertIsInstance(actions, WebElement)
+		
+		date_upload.click()
+		sleep(2)
+		self.assertTrue(date_upload.is_selected()	, 'None')
+		self.assertFalse(view_count.is_selected()	, 'None')
+		self.assertIsInstance(img_holder, WebElement)
+		self.assertIsInstance(info, WebElement)
+		self.assertIsInstance(actions, WebElement)
+		
 	
-	@url('/attach/uid10649049/map/index/#!/geo:-20.393764,-25.431596/zoom:3/')
+	@url('/attach/uid10649049/map/index/#!/geo:26.816514,24.138716/zoom:2/')
 	def test_collections_tab(self):
 		# TODO
 		# click on Collections Tab
@@ -98,7 +151,7 @@ class Channel(HPTestCase):
 		# assert channel link
 		pass
 	
-	@url('/attach/uid10649049/map/index/#!/geo:-20.393764,-25.431596/zoom:3/')
+	@url('/attach/uid10649049/map/index/#!/geo:26.816514,24.138716/zoom:2/')
 	def test_tours_tab(self):
 		# TODO
 		# click on Tours Tab
