@@ -164,16 +164,27 @@ class Channel(HPTestCase):
 	
 	@url('/attach/uid10649049/map/index/#!/geo:26.816514,24.138716/zoom:2/')
 	def test_tours_tab(self):
-		# TODO
-		# click on Tours Tab
-		# assert tours text and link
-		# assert image src
-		# assert image link
-		# assert tour icon
-		# assert text
-		# assert tour link
-		# assert channel link
-		pass
+		
+		tours_tab = self.e('.list_tabs li a[href$="/attach/uid10649049/tours/all/"]')
+		self.assertEqual('Tours'	, tours_tab.text)
+		tours_tab.click()
+		sleep(2)
+		
+		item = self.e('#photo_list_content .list li a')
+		
+		self.assertEqual(URL_BASE + '/attach/uid10649049/tours/view/id/22354015/title/Test%20Tour%20for%20automated%20test', item.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/1031013/dim/195x150/crop/1/', item.e('img').get_attribute('src'))
+		self.assertIn('tour-icon'	, item.e('span').get_attribute('class'))
+		self.assertIn('ss-icon'		, item.e('span').get_attribute('class'))
+		self.assertIn('ss-hiker'	, item.e('span').get_attribute('class'))
+		
+		paragraph_link = self.es('#photo_list_content .list li p a')
+		
+		self.assertEqual(URL_BASE + '/attach/uid10649049/tours/view/id/22354015/title/Test%20Tour%20for%20automated%20test', paragraph_link[0].get_attribute('href'))
+		self.assertEqual('Test Tour for automated test', paragraph_link[0].text)
+		
+		self.assertEqual(URL_BASE + '/channels/view/10649049', paragraph_link[1].get_attribute('href'))
+		self.assertEqual('Gabss', paragraph_link[1].text)
 	
 	@url('/channels/view/10649049/')
 	def test_repeats_section(self):
