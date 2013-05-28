@@ -321,4 +321,54 @@ class Channel(HPTestCase):
 			i = links[n]
 			self.assertEqual(i[0]	, links_help[n].get_attribute('href'))
 			self.assertEqual(i[1]	, links_help[n].text)
+	
+	@url('/channels/view/11675544/')
+	def test_tab_pin_something(self):
 		
+		sleep(2)
+		### TODO REFAC THIS
+		self.go('/user/')
+		login = self.e('.col.w2:nth-of-type(1) .next-button')
+		login.click()
+		
+		self.e('.email-div input').send_keys('gabriela.ananieva@wearewhatwedo.org')
+		self.e('#Passwd').send_keys('tristania1010')
+		self.e('#signIn').click()
+		sleep(5)
+		
+		### TODO REFAC THIS END
+		
+		tab_upload = self.e('.tab_nav li a[href="#tab-upload"]')
+		self.assertEqual('Pin something', tab_upload.text)
+		
+		tab_upload.click()
+		self.assertTrue(tab_upload.is_displayed(), 'None')
+		
+		tab_cnt = self.e('#tab-upload .main')
+		self.assertEqual('Pin Something', tab_cnt.e('h3').text)
+		
+		paragraph = tab_cnt.es('p')
+		self.assertEqual("We're always keen for new pins to be added to Historypin."						, paragraph[0].text)
+		self.assertEqual("If you have a very large number of things to add you can use our bulk uploader.\nFind out more about the bulk uploader."	, paragraph[1].text)
+		self.assertEqual(URL_BASE + '/bulkbridge/'				, paragraph[1].e('a').get_attribute('href'))
+		
+		button = tab_cnt.e('.button.left')
+		self.assertEqual(URL_BASE + '/upload/'	, button.get_attribute('href'))
+		self.assertEqual('Pin Something'		, button.text)
+		
+		links = [
+			[URL_BASE + '/community/howtos/'		, 'How To page'],
+			[URL_BASE + '/faq/'						, 'FAQs'],
+			['mailto:historypin@wearewhatwedo.org'	, 'historypin@wearewhatwedo.org'],
+		]
+		
+		help		= self.e('#tab-upload .help')
+		links_help	= help.es('p:last-of-type a')
+		
+		for n in range(len(links)):
+			i = links[n]
+			self.assertEqual(i[0]	, links_help[n].get_attribute('href'))
+			self.assertEqual(i[1]	, links_help[n].text)
+		
+		self.assertEqual('Get Help', help.e('h3').text)
+	
