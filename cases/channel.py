@@ -210,3 +210,28 @@ class Channel(HPTestCase):
 		self.assertIsInstance(feed.e('a')	, WebElement)
 		self.assertIsInstance(feed.e('img')	, WebElement)
 		self.assertIsInstance(feed.e('p')	, WebElement)
+	
+	@url('/channels/view/11675544/')
+	def test_tab_home(self):
+		
+		### TODO REFAC THIS
+		self.go('/user/')
+		login = self.e('.col.w2:nth-of-type(1) .next-button')
+		login.click()
+		
+		self.e('.email-div input').send_keys('gabriela.ananieva@wearewhatwedo.org')
+		self.e('#Passwd').send_keys('tristania1010')
+		self.e('#signIn').click()
+		sleep(5)
+		
+		### TODO REFAC THIS END
+		
+		tab_home = self.e('.tab_nav li a[href=#tab-home]')
+		self.assertEqual('Home', tab_home.text)
+		
+		tab_home.click()
+		self.assertTrue(tab_home.is_selected(), 'None')
+		
+		tab_cnt = self.e('#tab-home .main')
+		self.assertEqual('')
+		

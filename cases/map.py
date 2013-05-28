@@ -234,6 +234,7 @@ class Map(HPTestCase):
 		dlg = self.e('#info-dialog')
 		tab = dlg.e('#stories_cnt')
 		
+		sleep(2)
 		self.e_wait('.list_tabs a[href$=stories_cnt]').click()
 		self.assertIn('tab:stories'		, URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:stories/')
 		self.assertEqual('Comments (1)'	, dlg.e('.selected .tab').text)
@@ -258,18 +259,6 @@ class Map(HPTestCase):
 		
 		tab.e('.write_story_wrap').click()
 		self.assertIn('/user/?from=/map/', URL_BASE + '/user/?from=/map/%23%21/geo%3A42.697839%2C23.32167/zoom%3A10/dialog%3A22363018/tab%3Awrite-story/')
-		
-		self.assertEqual('Historypin uses Google Accounts to keep your login details safe and secure.', self.e('.centered p').text)
-		
-		col_left = self.e('.col.w2:nth-of-type(1)')
-		self.assertEqual('I already have a Google Account'	, col_left.e('h4').text)
-		self.assertIsInstance(col_left.e('a')				, WebElement)
-		self.assertEqual('Login'							, col_left.e('a').text)
-		
-		col_right = self.e('.col.w2:nth-of-type(2)')
-		self.assertEqual("I don't have a Google Account"				, col_right.e('h4').text)
-		self.assertEqual('https://www.google.com/accounts/NewAccount'	, col_right.e('a').get_attribute('href'))
-		self.assertEqual('Register now'									, col_right.e('a').text)
 		
 		self.goBack(URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:stories/')
 		
