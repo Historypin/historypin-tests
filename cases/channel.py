@@ -212,21 +212,8 @@ class Channel(HPTestCase):
 		self.assertIsInstance(feed.e('p')	, WebElement)
 	
 	@url('/channels/view/11675544/')
+	@logged_in
 	def test_tab_home(self):
-		
-		sleep(2)
-		### TODO REFAC THIS
-		self.go('/user/')
-		login = self.e('.col.w2:nth-of-type(1) .next-button')
-		login.click()
-		
-		self.e('.email-div input').send_keys('gabriela.ananieva@wearewhatwedo.org')
-		self.e('#Passwd').send_keys('tristania1010')
-		self.e('#signIn').click()
-		sleep(5)
-		
-		### TODO REFAC THIS END
-		
 		tab_home = self.e('.tab_nav li a[href="#tab-home"]')
 		self.assertEqual('Home', tab_home.text)
 		
@@ -323,21 +310,8 @@ class Channel(HPTestCase):
 			self.assertEqual(i[1]	, links_help[n].text)
 	
 	@url('/channels/view/11675544/')
+	@logged_in
 	def test_tab_pin_something(self):
-		
-		sleep(2)
-		### TODO REFAC THIS
-		self.go('/user/')
-		login = self.e('.col.w2:nth-of-type(1) .next-button')
-		login.click()
-		
-		self.e('.email-div input').send_keys('gabriela.ananieva@wearewhatwedo.org')
-		self.e('#Passwd').send_keys('tristania1010')
-		self.e('#signIn').click()
-		sleep(5)
-		
-		### TODO REFAC THIS END
-		
 		tab_upload = self.e('.tab_nav li a[href="#tab-upload"]')
 		self.assertEqual('Pin something', tab_upload.text)
 		
@@ -371,4 +345,3 @@ class Channel(HPTestCase):
 			self.assertEqual(i[1]	, links_help[n].text)
 		
 		self.assertEqual('Get Help', help.e('h3').text)
-	

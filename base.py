@@ -55,12 +55,12 @@ class Browser(webdriver.Chrome):
 		except:
 			raise NoSuchElementException('The element could not be found')
 	
-	def pageload_wait(self, timeout = 30):
-		try:
-			w = WebDriverWait(self, timeout)
-			return w.until(lambda driver: driver.execute_script("return document.readyState;") == "complete")
-		except:
-			raise Exception('Page could not load')  # NoSuchElementException('The element could not be found')
+	# def pageload_wait(self, timeout = 30):
+	# 	try:
+	# 		w = WebDriverWait(self, timeout)
+	# 		return w.until(lambda driver: driver.execute_script("return document.readyState;") == "complete")
+	# 	except:
+	# 		raise Exception('Page could not load')  # NoSuchElementException('The element could not be found')
 	
 	def hover(self, elem):
 		webdriver.common.action_chains.ActionChains(self).move_to_element(elem).perform()
@@ -84,7 +84,7 @@ class TestCase(unittest.TestCase):
 		cls.es				= cls.browser.es
 		cls.e				= cls.browser.e
 		cls.e_wait			= cls.browser.e_wait
-		cls.pageload_wait	= cls.browser.pageload_wait
+		# cls.pageload_wait	= cls.browser.pageload_wait
 		cls.hover			= cls.browser.hover
 		cls.double_click	= cls.browser.double_click
 	
@@ -142,7 +142,7 @@ class HPTestCase(TestCase):
 			cls.e('.email-div input').send_keys('gabriela.ananieva@wearewhatwedo.org')
 			cls.e('#Passwd').send_keys('tristania1010')
 			cls.e('#signIn').click()
-			LOGIN_COOKIE.update(cls.browser.get_cookie('ACSID'))
+			LOGIN_COOKIE.update(cls.browser.get_cookie('hpsid'))
 		
 		cls.login_cookie_del()
 		
