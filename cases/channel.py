@@ -214,6 +214,7 @@ class Channel(HPTestCase):
 	@url('/channels/view/11675544/')
 	def test_tab_home(self):
 		
+		sleep(2)
 		### TODO REFAC THIS
 		self.go('/user/')
 		login = self.e('.col.w2:nth-of-type(1) .next-button')
@@ -226,12 +227,98 @@ class Channel(HPTestCase):
 		
 		### TODO REFAC THIS END
 		
-		tab_home = self.e('.tab_nav li a[href=#tab-home]')
+		tab_home = self.e('.tab_nav li a[href="#tab-home"]')
 		self.assertEqual('Home', tab_home.text)
 		
 		tab_home.click()
-		self.assertTrue(tab_home.is_selected(), 'None')
+		self.assertTrue(tab_home.is_displayed(), 'None')
 		
 		tab_cnt = self.e('#tab-home .main')
-		self.assertEqual('')
+		
+		h3s = tab_cnt.es('h3')
+		self.assertEqual('Your Historypin Channel'	, h3s[0].text)
+		self.assertEqual('Share:'					, h3s[1].text)
+		
+		h4s = tab_cnt.es('h4')
+		self.assertEqual('What to do now:'					, h4s[0].text)
+		self.assertEqual('Personalise your Channel further:', h4s[1].text)
+		
+		to_dos = [
+			['/channels/view/11675544/#tab-upload'				, "Pin something!"],
+			['/channels/view/11675544/#tab-create-collection'	, "Create a Collection"],
+			['/channels/view/11675544/#tab-create-tour'			, "Create a Tour"],
+			['/map/'											, "Explore the map"],
+			['/channels/'										, "See other people's Channels"],
+		]
+		
+		to_do_main = tab_cnt.es('.inner.left:nth-of-type(1) li a')
+		
+		for n in range(len(to_dos)):
+			i = to_dos[n]
+			self.assertEqual(URL_BASE + i[0], to_do_main[n].get_attribute('href'))
+			self.assertEqual(i[1]			, to_do_main[n].e('span').text)
+		
+		paragraph = tab_cnt.es('p')
+		self.assertEqual("You can edit your channel at any time."					, paragraph[0].text)
+		self.assertEqual("Share your Channel so others can see what you've created"	, paragraph[1].text)
+		
+		links = [
+			['/#tab-settings'	, 'Edit Channel Info'],
+			['/#tab-design'		, 'Edit Channel Design'],
+			['/#tab-embed'		, 'Link to your Channel from your own website'],
+		]
+		
+		edit_main = tab_cnt.es('.inner.left:nth-of-type(2) li a')
+		
+		for n in range(len(links)):
+			i = links[n]
+			self.assertEqual(URL_BASE + '/channels/view/11675544' + i[0], edit_main[n].get_attribute('href'))
+			self.assertEqual(i[1]										, edit_main[n].e('span').text)
+		
+		social_buttons = tab_cnt.e('.addthis_toolbox span')
+		self.assertIn('ss-icon', social_buttons.get_attribute('class'))
+		
+		social_icons = ['ss-social-circle', 'ss-social-circle', 'ss-social-circle', 'ss-plus']
+		
+		for n in range(len(social_icons)-1):
+			self.assertIn(social_icons[n], social_buttons.get_attribute('class'))
+		
+		help = self.e('#tab-home .help')
+		
+		h3s_help = help.es('h3')
+		self.assertEqual("Get some inspiration"	, h3s_help[0].text)
+		self.assertEqual("Get help"				, h3s_help[1].text)
+		
+		self.assertEqual('Check out these examples to see what other people have done with their channels', help.e('p:nth-of-type(1)').text)
+		
+		examples = [
+			['/id/2238022/', 'Photos of the Past'],
+			['/id/8721093/', 'Sue Walker White'],
+			['/id/2662022/', 'Connecticut State Library'],
+			['/id/6487189/', 'London Metropolitan Archives'],
+			['/id/1042029/', 'Biggleswade History Society'],
+		]
+		
+		channels_help = help.es('a[href*=id]')
+		
+		for n in range(len(examples)):
+			i = examples[n]
+			self.assertEqual(URL_BASE + '/channels/view' + i[0]	, channels_help[n].get_attribute('href'))
+			self.assertEqual(i[1]								, channels_help[n].text)
+		
+		
+		self.assertEqual('If you get stuck or have any questions, check out our How To page and FAQs and please feel free to contact us at historypin@wearewhatwedo.org', help.e('p:last-of-type').text)
+		
+		links = [
+			[URL_BASE + '/community/howtos/'		, 'How To page'],
+			[URL_BASE + '/faq/'						, 'FAQs'],
+			['mailto:historypin@wearewhatwedo.org'	, 'historypin@wearewhatwedo.org'],
+		]
+		
+		links_help = help.es('p:last-of-type a')
+		
+		for n in range(len(links)):
+			i = links[n]
+			self.assertEqual(i[0]	, links_help[n].get_attribute('href'))
+			self.assertEqual(i[1]	, links_help[n].text)
 		
