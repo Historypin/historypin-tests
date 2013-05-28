@@ -5,8 +5,8 @@ from base import *
 class Login(HPTestCase):
 	
 	@url('/user/')
+	@logged_in
 	def test_join(self):
-		
 		self.assertEqual('Historypin uses Google Accounts to keep your login details safe and secure.', self.e('.centered p').text)
 		
 		col_left = self.e('.col.w2:nth-of-type(1)')
@@ -19,24 +19,17 @@ class Login(HPTestCase):
 		self.assertEqual('https://www.google.com/accounts/NewAccount'	, col_right.e('a').get_attribute('href'))
 		self.assertEqual('Register now'									, col_right.e('a').text)
 	
-	@url('/user/')
-	def test_login_logout(self):
+	# @url('/user/')
+	# def test_login_logout(self):
 		
-		login = self.e('.col.w2:nth-of-type(1) .next-button')
-		login.click()
+	# 	self.login()
 		
-		self.assertIn('https://accounts', 'https://accounts.google.com/ServiceLogin?service=ah&passive=true&continue=https://appengine.google.com/')
-		self.e('.email-div input').send_keys('gabriela.ananieva@wearewhatwedo.org')
-		self.e('#Passwd').send_keys('tristania1010')
-		self.e('#signIn').click()
+	# 	self.assertIn('11675544', URL_BASE + '/channels/view/11675544/#|photos/list/cache/0/')
 		
-		self.assertIn('11675544', URL_BASE + '/channels/view/11675544/#|photos/list/cache/0/')
+	# 	self.logout()
 		
-		logout = self.e('.nav li a[class=logout]')
-		logout.click()
-		
-		self.assertEqual('Login'				, self.e('.nav li a[href^=https]').text)
-		self.assertIn('https://www.google.com/'	, self.e('.nav li a[href^=https]').get_attribute('href'))
+	# 	self.assertEqual('Login'				, self.e('.nav li a[href^=https]').text)
+	# 	self.assertIn('https://www.google.com/'	, self.e('.nav li a[href^=https]').get_attribute('href'))
 		
 
 
