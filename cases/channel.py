@@ -369,6 +369,7 @@ class Channel(HPTestCase):
 		tab_cnt.e('p:last-of-type a').click()
 		sleep(2)
 		self.assertIsInstance(self.e('#youtube-dialog'), WebElement)
+		self.assertTrue(self.e('#youtube-dialog').is_displayed(), 'None')
 		self.e('.ui-dialog-titlebar-close').click()
 		sleep(2)
 		self.assertFalse(self.e('#youtube-dialog').is_displayed(), 'None')
@@ -419,3 +420,103 @@ class Channel(HPTestCase):
 			i = links[n]
 			self.assertEqual(i[0]	, links_help[n].get_attribute('href'))
 			self.assertEqual(i[1]	, links_help[n].text)
+	
+	@url('/channels/view/11675544/')
+	@logged_in
+	def test_tab_tours(self):
+		
+		tab_tour = self.e('.tab_nav li a[href="#tab-create-tour"]')
+		self.assertEqual('Tours', tab_tour.text)
+		
+		tab_tour.click()
+		self.assertTrue(tab_tour.is_displayed(), 'None')
+		
+		tab_cnt = self.e('#tab-create-tour .main')
+		self.assertEqual('Tours', tab_cnt.e('h3').text)
+		
+		paragraph = tab_cnt.es('p')
+		self.assertEqual("A Tour tells a narrative, walking people step-by-step through a series of pins in a set order. They are great for telling a story of person's life, describing the history of an event or showing a journey. You can view a Tour in Map View, List View and Tour View.", paragraph[0].text)
+		self.assertEqual("Watch this How to video to see how to create a Tour"	, paragraph[1].text)
+		
+		self.assertEqual('See How', tab_cnt.e('h4').text)
+		
+		tab_cnt.e('p:last-of-type a').click()
+		sleep(2)
+		self.assertIsInstance(self.e('#youtube-dialog'), WebElement)
+		self.assertTrue(self.e('#youtube-dialog').is_displayed(), 'None')
+		self.e('.ui-dialog-titlebar-close').click()
+		sleep(2)
+		self.assertFalse(self.e('#youtube-dialog').is_displayed(), 'None')
+		
+		button_create = tab_cnt.e('.button.left')
+		self.assertEqual(URL_BASE + '/tours/add/', button_create.get_attribute('href'))
+		self.assertEqual('Create a new Tour', button_create.e('span').text)
+		
+		button_manage = tab_cnt.e('.scroll_to_embed')
+		self.assertEqual('http://attach.10941289.uid11675544.v4-22-00.historypin-hrd.appspot.com/tours/all/', button_manage.get_attribute('href'))
+		self.assertEqual('Manage my Tours', button_manage.e('span').text)
+		
+		help = self.e('#tab-create-tour .help')
+		
+		h3s_help = help.es('h3')
+		self.assertEqual("Get Inspiration"	, h3s_help[0].text)
+		self.assertEqual("Get Help"			, h3s_help[1].text)
+		
+		self.assertEqual('Check out these examples to see Tours other people have made.', help.e('p:nth-of-type(1)').text)
+		
+		tours = [
+			['/8279489/title/The%20March%20on%20Washington'							, 'The 1963 March on Washington'],
+			['/6631649/title/A%20historical%20guided%20tour%20of%20Kew%20Gardens'	, 'A historical guided tour of Kew Gardens'],
+			['/7764038/title/Road%20Trip'											, 'Road Trip'],
+			['/8748071/title/Dereham%20Circular%20History%20Tour%201'				, 'A Tour around Dereham, Norfolk'],
+			['/6605903/title/Queen%20Elizabeth%20II'								, "Queen Elizabeth II's life"],
+		]
+		
+		channels_help = help.es('a[href*=id]')
+		
+		for n in range(len(tours)):
+			i = tours[n]
+			self.assertEqual(URL_BASE + '/tourss/view/id' + i[0]	, channels_help[n].get_attribute('href'))
+			self.assertEqual(i[1]									, channels_help[n].text)
+		
+		
+		self.assertEqual('If you get stuck or have any questions, check out our How To page and FAQs and please feel free to contact us at historypin@wearewhatwedo.org', help.e('p:last-of-type').text)
+		
+		links = [
+			[URL_BASE + '/community/howtos/'		, 'How To page'],
+			[URL_BASE + '/faq/'						, 'FAQs'],
+			['mailto:historypin@wearewhatwedo.org'	, 'historypin@wearewhatwedo.org'],
+		]
+		
+		links_help = help.es('p:last-of-type a')
+		
+		for n in range(len(links)):
+			i = links[n]
+			self.assertEqual(i[0]	, links_help[n].get_attribute('href'))
+			self.assertEqual(i[1]	, links_help[n].text)
+	
+	@url('/channels/view/11675544/')
+	@logged_in
+	def test_tab_statistics(self):
+		# TODO
+		# click on statistics tab
+		# assert statistics text
+		# assert statics views text
+		# assert fans text
+		# click on my fans list
+		# click channels i'm fan of
+		# assert activity section
+		# assert activity
+		pass
+	
+	@url('/channels/view/11675544/')
+	@logged_in
+	def test_tab_hide_toolbar(self):
+		# TODO
+		# assert with assertTrue that the tabs are displayed
+		# assert hidew tool bar text 
+		# click on hide tool bar text
+		# 
+		# 
+		# 
+		pass
