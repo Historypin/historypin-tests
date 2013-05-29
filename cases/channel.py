@@ -498,27 +498,43 @@ class Channel(HPTestCase):
 	@url('/channels/view/11675544/')
 	@logged_in
 	def test_tab_statistics(self):
-		# TODO
-		# click on statistics tab
-		# assert statistics text
-		# assert statics views text
-		# assert fans text
-		# click on my fans list
-		# click channels i'm fan of
-		# assert activity section
-		# assert activity
-		pass
+		
+		tab_statistics = self.e('.tab_nav li a[href="#tab-reports"]')
+		self.assertEqual('Statistics', tab_statistics.text)
+		
+		tab_statistics.click()
+		self.assertTrue(tab_statistics.is_displayed(), 'None')
+		
+		tab_cnt = self.e('#tab-reports .main')
+		self.assertEqual('Statistics', tab_cnt.e('h3').text)
+		
+		cnt = ['Views', 'Total Pin views:', 'Total Tours Views:', 'Total Collections Views:', 'Fans', 'My Fans:', "Channels I'm a fan of:",
+				'Activity', 'Pins:', 'Unpinned Items:', 'Tours made:', 'Collections made:', 'Comments added:', 'Favs:']
+		
+		statistics = tab_cnt.es('.stats_table tr td:first-of-type')
+		
+		for n in range(len(cnt)): self.assertEqual(cnt[n], statistics[n].text)
+		
+		fans = tab_cnt.es('.stats_table tr td a')
+		self.assertEqual(URL_BASE + '/channels/view/11675544/#tab-subscribers'	, fans[0].get_attribute('href'))
+		self.assertEqual('0 - See list', fans[0].text)
+		self.assertEqual(URL_BASE + '/channels/view/11675544/#tab-subscriptions', fans[1].get_attribute('href'))
+		self.assertEqual('2 - See list', fans[1].text)
 	
 	@url('/channels/view/11675544/')
 	@logged_in
 	def test_tab_hide_toolbar(self):
-		# TODO
-		# assert with assertTrue that the tabs are displayed
-		# assert hidew tool bar text
-		# click on hide tool bar
-		# assert with assertFalse that the tabs are not displayed
-		# assert show tool bar text
-		pass
+		
+		self.assertTrue(self.e('.tab_nav').is_displayed(), 'None')
+		
+		tab_toolbar = self.e('.tab_nav.hideshowtoolbar ')
+		self.assertEqual('Hide Tool Bar', tab_toolbar.e('.preview:nth-of-type(1)').text)
+		
+		tab_toolbar.click()
+		self.assertFalse(self.e('.tab_cnt .main').is_displayed(), 'None')
+		
+		active = tab_toolbar.e('.preview:nth-of-type(2)')
+		self.assertEqual('Show Tool Bar', active.text)
 	
 	@url('/channels/view/11675544/')
 	@logged_in
