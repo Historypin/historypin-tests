@@ -136,12 +136,15 @@ class HPTestCase(TestCase):
 		if IS_ON_SDK:
 			cls.e('#submit-login').click()
 			# cls.pageload_wait()
+			sleep(1)
 			
 			LOGIN_COOKIE.update(cls.browser.get_cookie('dev_appserver_login'))
 		else:
 			cls.e('.email-div input').send_keys('gabriela.ananieva@wearewhatwedo.org')
 			cls.e('#Passwd').send_keys('tristania1010')
 			cls.e('#signIn').click()
+			sleep(5)
+			# print cls.browser.get_cookie('hpsid')
 			LOGIN_COOKIE.update(cls.browser.get_cookie('hpsid'))
 		
 		cls.login_cookie_del()
