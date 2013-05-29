@@ -436,7 +436,7 @@ class Channel(HPTestCase):
 		
 		paragraph = tab_cnt.es('p')
 		self.assertEqual("A Tour tells a narrative, walking people step-by-step through a series of pins in a set order. They are great for telling a story of person's life, describing the history of an event or showing a journey. You can view a Tour in Map View, List View and Tour View.", paragraph[0].text)
-		self.assertEqual("Watch this How to video to see how to create a Tour"	, paragraph[1].text)
+		self.assertEqual("Watch this How to video to see how to create a Tour"	, paragraph[3].text)
 		
 		self.assertEqual('See How', tab_cnt.e('h4').text)
 		
@@ -476,7 +476,7 @@ class Channel(HPTestCase):
 		
 		for n in range(len(tours)):
 			i = tours[n]
-			self.assertEqual(URL_BASE + '/tourss/view/id' + i[0]	, channels_help[n].get_attribute('href'))
+			self.assertEqual(URL_BASE + '/tours/view/id' + i[0]	, channels_help[n].get_attribute('href'))
 			self.assertEqual(i[1]									, channels_help[n].text)
 		
 		
@@ -514,9 +514,17 @@ class Channel(HPTestCase):
 	def test_tab_hide_toolbar(self):
 		# TODO
 		# assert with assertTrue that the tabs are displayed
-		# assert hidew tool bar text 
-		# click on hide tool bar text
-		# 
-		# 
-		# 
+		# assert hidew tool bar text
+		# click on hide tool bar
+		# assert with assertFalse that the tabs are not displayed
+		# assert show tool bar text
+		pass
+	
+	@url('/channels/view/11675544/')
+	@logged_in
+	def test_channel_account_settings(self):
+		
+		
+		
+		
 		pass

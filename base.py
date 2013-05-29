@@ -96,7 +96,7 @@ class TestCase(unittest.TestCase):
 		self.assertIn(title, self.browser.title)
 
 
-LOGIN_COOKIE = {}
+LOGIN_COOKIES = []
 
 def run(*tests):
 	import cases
@@ -127,9 +127,6 @@ class HPTestCase(TestCase):
 	def login(cls):
 		cls.go('/user/')
 		
-		# print dir(cls.browser)
-		# return
-		
 		login = cls.e('.col.w2:nth-of-type(1) .next-button')
 		login.click()
 		
@@ -138,14 +135,14 @@ class HPTestCase(TestCase):
 			# cls.pageload_wait()
 			sleep(1)
 			
-			LOGIN_COOKIE.update(cls.browser.get_cookie('dev_appserver_login'))
+			LOGIN_COOKIES.append(cls.browser.get_cookie('dev_appserver_login'))
 		else:
 			cls.e('.email-div input').send_keys('gabriela.ananieva@wearewhatwedo.org')
 			cls.e('#Passwd').send_keys('tristania1010')
 			cls.e('#signIn').click()
-			sleep(5)
-			# print cls.browser.get_cookie('hpsid')
-			LOGIN_COOKIE.update(cls.browser.get_cookie('hpsid'))
+			sleep(1)
+			
+			LOGIN_COOKIES.append(cls.browser.get_cookie('hpsid'))
 		
 		cls.login_cookie_del()
 		
@@ -154,11 +151,13 @@ class HPTestCase(TestCase):
 	
 	@classmethod
 	def login_cookie_set(cls):
-		cls.browser.add_cookie(LOGIN_COOKIE)
+		for i in LOGIN_COOKIES:
+			if i: cls.browser.add_cookie(i)
 	
 	@classmethod
 	def login_cookie_del(cls):
-		cls.browser.delete_cookie(LOGIN_COOKIE['name'])
+		for i in LOGIN_COOKIES:
+			if i: cls.browser.delete_cookie(i['name'])
 	
 	# def logout(self):
 	# 	self.go(URL_BASE + '/user/logout/')
