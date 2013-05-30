@@ -68,8 +68,8 @@ class Channel(HPTestCase):
 		self.assertIsInstance(dlg, WebElement)
 		icon_arrow_right = dlg.e('.next-photo')
 		icon_arrow_left = dlg.e('.prev-photo')
-		self.assertFalse(icon_arrow_left.is_displayed(), 'None')
-		self.assertFalse(icon_arrow_right.is_displayed(), 'None')
+		self.assertFalse(icon_arrow_left.is_displayed())
+		self.assertFalse(icon_arrow_right.is_displayed())
 		
 	
 	@url('/attach/uid10649049/map/index/#!/geo:26.816514,24.138716/zoom:2/')
@@ -97,10 +97,10 @@ class Channel(HPTestCase):
 		all_items	= self.e('.list-filter input[id=all]')
 		favourites	= self.e('.list-filter input[id=unpinned]')
 		
-		self.assertTrue(date_upload.is_selected()	, 'None')
-		self.assertFalse(view_count.is_selected()	, 'None')
-		self.assertTrue(all_items.is_selected()		, 'None')
-		self.assertFalse(favourites.is_selected()	, 'None')
+		self.assertTrue(date_upload.is_selected())
+		self.assertFalse(view_count.is_selected())
+		self.assertTrue(all_items.is_selected())
+		self.assertFalse(favourites.is_selected())
 		
 		
 		img_holder = self.e('#photo_list_content .list li .image-holder a[class="image"]')
@@ -117,7 +117,7 @@ class Channel(HPTestCase):
 		view_count.click()
 		sleep(2)
 		self.assertIn('popular', URL_BASE + '/attach/uid10649049/photos/list/#/show/all/get/popular/')
-		self.assertFalse(date_upload.is_selected()	, 'None')
+		self.assertFalse(date_upload.is_selected())
 		self.assertIsInstance(img_holder, WebElement)
 		self.assertIsInstance(info		, WebElement)
 		self.assertIsInstance(actions	, WebElement)
@@ -125,15 +125,15 @@ class Channel(HPTestCase):
 		favourites.click()
 		sleep(2)
 		self.assertIn('favourites', URL_BASE + '/attach/uid10649049/photos/list/#/get/popular/show/favourites/')
-		self.assertFalse(all_items.is_selected()	, 'None')
+		self.assertFalse(all_items.is_selected())
 		self.assertIsInstance(img_holder, WebElement)
 		self.assertIsInstance(info		, WebElement)
 		self.assertIsInstance(actions	, WebElement)
 		
 		date_upload.click()
 		sleep(2)
-		self.assertTrue(date_upload.is_selected()	, 'None')
-		self.assertFalse(view_count.is_selected()	, 'None')
+		self.assertTrue(date_upload.is_selected())
+		self.assertFalse(view_count.is_selected())
 		self.assertIsInstance(img_holder, WebElement)
 		self.assertIsInstance(info		, WebElement)
 		self.assertIsInstance(actions	, WebElement)
@@ -218,7 +218,7 @@ class Channel(HPTestCase):
 		self.assertEqual('Home', tab_home.text)
 		
 		tab_home.click()
-		self.assertTrue(tab_home.is_displayed(), 'None')
+		self.assertTrue(tab_home.is_displayed())
 		
 		tab_cnt = self.e('#tab-home .main')
 		
@@ -317,7 +317,7 @@ class Channel(HPTestCase):
 		self.assertEqual('Pin something', tab_upload.text)
 		
 		tab_upload.click()
-		self.assertTrue(tab_upload.is_displayed(), 'None')
+		self.assertTrue(tab_upload.is_displayed())
 		
 		tab_cnt = self.e('#tab-upload .main')
 		self.assertEqual('Pin Something', tab_cnt.e('h3').text)
@@ -355,7 +355,7 @@ class Channel(HPTestCase):
 		self.assertEqual('Collections', tab_collection.text)
 		
 		tab_collection.click()
-		self.assertTrue(tab_collection.is_displayed(), 'None')
+		self.assertTrue(tab_collection.is_displayed())
 		
 		tab_cnt = self.e('#tab-create-collection .main')
 		self.assertEqual('Collections', tab_cnt.e('h3').text)
@@ -369,10 +369,10 @@ class Channel(HPTestCase):
 		tab_cnt.e('p:last-of-type a').click()
 		sleep(2)
 		self.assertIsInstance(self.e('#youtube-dialog'), WebElement)
-		self.assertTrue(self.e('#youtube-dialog').is_displayed(), 'None')
+		self.assertTrue(self.e('#youtube-dialog').is_displayed())
 		self.e('.ui-dialog-titlebar-close').click()
 		sleep(2)
-		self.assertFalse(self.e('#youtube-dialog').is_displayed(), 'None')
+		self.assertFalse(self.e('#youtube-dialog').is_displayed())
 		
 		button_create = tab_cnt.e('.button.left')
 		self.assertEqual(URL_BASE + '/collections/add/', button_create.get_attribute('href'))
@@ -429,7 +429,7 @@ class Channel(HPTestCase):
 		self.assertEqual('Tours', tab_tour.text)
 		
 		tab_tour.click()
-		self.assertTrue(tab_tour.is_displayed(), 'None')
+		self.assertTrue(tab_tour.is_displayed())
 		
 		tab_cnt = self.e('#tab-create-tour .main')
 		self.assertEqual('Tours', tab_cnt.e('h3').text)
@@ -443,10 +443,10 @@ class Channel(HPTestCase):
 		tab_cnt.e('p:last-of-type a').click()
 		sleep(2)
 		self.assertIsInstance(self.e('#youtube-dialog'), WebElement)
-		self.assertTrue(self.e('#youtube-dialog').is_displayed(), 'None')
+		self.assertTrue(self.e('#youtube-dialog').is_displayed())
 		self.e('.ui-dialog-titlebar-close').click()
 		sleep(2)
-		self.assertFalse(self.e('#youtube-dialog').is_displayed(), 'None')
+		self.assertFalse(self.e('#youtube-dialog').is_displayed())
 		
 		button_create = tab_cnt.e('.button.left')
 		self.assertEqual(URL_BASE + '/tours/add/', button_create.get_attribute('href'))
@@ -503,13 +503,12 @@ class Channel(HPTestCase):
 		self.assertEqual('Statistics', tab_statistics.text)
 		
 		tab_statistics.click()
-		self.assertTrue(tab_statistics.is_displayed(), 'None')
+		self.assertTrue(tab_statistics.is_displayed())
 		
 		tab_cnt = self.e('#tab-reports .main')
 		self.assertEqual('Statistics', tab_cnt.e('h3').text)
 		
-		cnt = ['Views', 'Total Pin views:', 'Total Tours Views:', 'Total Collections Views:', 'Fans', 'My Fans:', "Channels I'm a fan of:",
-				'Activity', 'Pins:', 'Unpinned Items:', 'Tours made:', 'Collections made:', 'Comments added:', 'Favs:']
+		cnt = ['Views', 'Total Pin views:', 'Total Tours Views:', 'Total Collections Views:', 'Fans', 'My Fans:', "Channels I'm a fan of:", 'Activity', 'Pins:', 'Unpinned Items:', 'Tours made:', 'Collections made:', 'Comments added:', 'Favs:']
 		
 		statistics = tab_cnt.es('.stats_table tr td:first-of-type')
 		
@@ -525,22 +524,228 @@ class Channel(HPTestCase):
 	@logged_in
 	def test_tab_hide_toolbar(self):
 		
-		self.assertTrue(self.e('.tab_nav').is_displayed(), 'None')
+		self.assertTrue(self.e('.tab_nav').is_displayed())
 		
 		tab_toolbar = self.e('.tab_nav.hideshowtoolbar ')
 		self.assertEqual('Hide Tool Bar', tab_toolbar.e('.preview:nth-of-type(1)').text)
 		
 		tab_toolbar.click()
-		self.assertFalse(self.e('.tab_cnt .main').is_displayed(), 'None')
+		self.assertFalse(self.e('.tab_cnt .main').is_displayed())
 		
 		active = tab_toolbar.e('.preview:nth-of-type(2)')
 		self.assertEqual('Show Tool Bar', active.text)
 	
 	@url('/channels/view/11675544/')
 	@logged_in
-	def test_channel_account_settings(self):
+	def test_channel_info(self):
+		
+		editor = self.e('.channel_editor')
+		
+		settings = editor.e('.settings')
+		self.assertEqual('Channel & Account Settings', settings.text)
+		self.assertIn('ss-icon'		, settings.e('span').get_attribute('class'))
+		self.assertIn('ss-settings'	, settings.e('span').get_attribute('class'))
+		
+		settings.click()
+		
+		settings_menu = editor.e('.settings_menu')
+		self.assertTrue(settings_menu.is_displayed())
+		
+		heading = settings_menu.es('li strong')
+		self.assertEqual('Channel Settings'	, heading[0].text)
+		self.assertEqual('Sharing & Embeds'	, heading[1].text)
+		self.assertEqual('Stuff I like'		, heading[2].text)
+		
+		channel_info = settings_menu.e('li:nth-of-type(2) a')
+		self.assertEqual('Channel Info'										, channel_info.text)
+		self.assertEqual(URL_BASE + '/channels/view/11675544/#tab-settings'	, channel_info.get_attribute('href'))
+		
+		channel_info.click()
+		
+		tab_settings = editor.e('#tab-settings')
+		self.assertTrue(tab_settings.is_displayed())
+		
+		self.assertEqual('Channel Info', tab_settings.e('h3').text)
+		
+		help = self.e('#tab-settings .help')
+		self.assertEqual('Get help', help.e('h3').text)
+		
+		self.assertEqual('If you get stuck or have any questions, check out our How To page and FAQs and please feel free to contact us at historypin@wearewhatwedo.org', help.e('p:last-of-type').text)
+		
+		links = [
+			[URL_BASE + '/community/howtos/'		, 'How To page'],
+			[URL_BASE + '/faq/'						, 'FAQs'],
+			['mailto:historypin@wearewhatwedo.org'	, 'historypin@wearewhatwedo.org'],
+		]
+		
+		links_help = help.es('p:last-of-type a')
+		
+		for n in range(len(links)):
+			i = links[n]
+			self.assertEqual(i[0]	, links_help[n].get_attribute('href'))
+			self.assertEqual(i[1]	, links_help[n].text)
+		
+		info = tab_settings.e('.form')
+		
+		form_texts = ['Channel Name', 'Channel Type', 'About', 'External site link', 'Twitter username', 'Facebook link', 'Google Plus link', 'Blog link']
+		
+		label = info.es('label')
+		for n in range(len(form_texts)): self.assertEqual(form_texts[n], label[n].text)
+		
+		channel_name = info.e('.input-container #channel_name')
+		channel_name.clear()
+		channel_name.send_keys('Gabriela Ananieva')
+		
+		channel_type = info.e('.input-container #channel_type')
+		channel_type.click()
+		channel_type.e('option:nth-of-type(3)').click()
+		
+		desc = info.e('#channel_desc')
+		desc.click()
+		desc.clear()
+		desc.send_keys('This is a test description')
+		
+		site_link = info.e('#external_site')
+		site_link.clear()
+		site_link.send_keys('http://avalith.bg')
+		
+		twitter_name = info.e('#twitter_link')
+		twitter_name.clear()
+		twitter_name.send_keys('@Tristania90')
+		
+		fb_link = info.e('#facebook_link')
+		fb_link.clear()
+		fb_link.send_keys('https://www.facebook.com/gabriela.ananieva.7')
+		
+		google_link = info.e('#google_plus_link')
+		google_link.clear()
+		google_link.send_keys('http://avalith.bg')
+		
+		blog_link = info.e('#blog_link')
+		blog_link.clear()
+		blog_link.send_keys('http://avalith.bg')
+		
+		button = tab_settings.e('.save_settings')
+		self.assertEqual('Save Changes', button.e('span').text)
+		button.click()
+		
+		sleep(5)  # TODO remove this after ajax_wait
+		
+		# check if data is populated in the form
+		
+		chan_info = self.e('.chan.info')
+		self.assertEqual(URL_BASE + '/resources/avatars/200x200/avatar_3.png', chan_info.e('img').get_attribute('src'))
+		self.assertEqual('Gabriela Ananieva'			, chan_info.e('h2').text)
+		self.assertEqual('This is a test description'	, chan_info.e('.urlize').text)
+		self.assertEqual('Find out more at: avalith.bg'	, chan_info.e('p:nth-of-type(2)').text)
+		self.assertEqual('http://avalith.bg/'			, chan_info.e('p:nth-of-type(2) a').get_attribute('href'))
 		
 		
+		sns = chan_info.es('.sns a')
+		links = [
+			['Find us on Facebook'		, 'http://https//www.facebook.com/gabriela.ananieva.7'],
+			['Follow us on Twitter'		, 'http://twitter.com/@Tristania90'],
+			['Visit our Google+ Page'	, 'http://avalith.bg/'],
+			['Visit our blog'			, 'http://avalith.bg/'],
+		]
 		
+		for n in range(len(links)):
+			i = links[n]
+			self.assertEqual(i[0], sns[n].text)
+			self.assertEqual(i[1], sns[n].get_attribute('href'))
 		
+	@url('/channels/view/11675544/')
+	@logged_in
+	def test_channel_design(self):
+		
+		editor = self.e('.channel_editor')
+		settings = editor.e('.settings')
+		settings.click()
+		
+		settings_menu = editor.e('.settings_menu')
+		self.assertTrue(settings_menu.is_displayed())
+		
+		design = settings_menu.e('a[href="#tab-design"]')
+		self.assertEqual(URL_BASE + '/channels/view/11675544/#tab-design', design.get_attribute('href'))
+		self.assertEqual('Channel Design', design.text)
+		
+		design.click()
+		sleep(3)
+		tab_design = editor.e('#tab-design')
+		self.assertTrue(tab_design.is_displayed())
+		
+		# assert channel design text
+		# assert choose a colour theme text
+		# with assert in check if container wrap have atrribute 'class'
+		# TODO LATER
+		# upload a photo
+		# upload a banner
+		# upload a background image
+	
+	@url('/channels/view/11675544/')
+	@logged_in
+	def test_sharing(self):
+		# TODO
+		# click on Channel and account settings
+		# assert sharing and embeds text
+		# assert link with my site text and link
+		# click on the link
+		# assert Link with my site text
+		# assert link to my channel text
+		# assert get a badge text parag
+		# assert Badge Get Badge Code link and tect
+		# click on badge code link
+		# see if dialog is visible
+		# assert copy and paste text
+		# assertIn for href
+		# close the dialog
+		# check with assertFalse that is not visible anymore
+		# assert img src
+		# assert Social Media Icon Get Icon Code text and link
+		# click on badge code link
+		# see if dialog is visible
+		# assert copy and paste text
+		# assertIn for href
+		# close the dialog
+		# check with assertFalse that is not visible anymore
+		# assert social pin icon with assertIsInstance
+		# assert Embed my content on my site text
+		# assert paragrapgh text
+		# assert image src
+		# assert show texts
+		# assert generade code button text and link
+		# checkboxes:
+		# - click on show map view checkbox
+		# - assert that is checked
+		# - click on generate code
+		# - see if dialog is visible
+		# - assert your code text, assert par, assert link
+		# - assertIn for href
+		# - close the dialog
+		# - check with assertFalse that is not visible anymore
+		# - click on show map again to uncheck it
+		# - assert for all - list view, published collections and tours
+		# assert help section
+		# assert h3s
+		# assert paragraphs
+		# assert links and text for channels
+		pass
+	
+	@url('/channels/view/11675544/')
+	@logged_in
+	def test_stuff_i_like(self):
+		# TODO
+		# click on channel and account link
+		# assert Stuff I like text
+		# assert Channels fan of text and link
+		# click on the link
+		# see if toolbar is visible
+		# assert Channels I'm text
+		# assert img links and text for all channels
+		# click on channel and account link
+		# assert My fans link and textc
+		# click on it
+		# see if toolbar is visible
+		# assert My fans: text
+		# assert You have no fans yet text
 		pass
