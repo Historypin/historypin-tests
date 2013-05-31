@@ -719,14 +719,167 @@ class Channel(HPTestCase):
 		wrapper = self.e('#container_wrap')
 		self.assertIn('charcoal', wrapper.get_attribute('class'))
 		
-		# themes = tab_design.e('.theme-select')
-		# themes.e('a.blue').click()
-		# sleep(3)
-		# button.click()
+		editor = self.e('.channel_editor')
+		settings = editor.e('.settings')
 		
-		# sleep(5)
-		# self.assertIn('blue', wrapper.get_attribute('class'))
-		# with assert in check if container wrap have atrribute 'class'
+		settings.click()
+		settings_menu = editor.e('.settings_menu')
+		self.assertTrue(settings_menu.is_displayed())
+		design = settings_menu.e('a[href="#tab-design"]')
+		design.click()
+		
+		tab_design = editor.e('#tab-design')
+		themes = tab_design.e('.theme-select')
+		themes.e('a.blue').click()
+		sleep(3)
+		
+		button = self.e('.submit.button.left')
+		button.click()
+		
+		wrapper = self.e('#container_wrap')
+		self.assertIn('blue', wrapper.get_attribute('class'))
+		
+		
+		editor = self.e('.channel_editor')
+		settings = editor.e('.settings')
+		
+		settings.click()
+		settings_menu = editor.e('.settings_menu')
+		self.assertTrue(settings_menu.is_displayed())
+		design = settings_menu.e('a[href="#tab-design"]')
+		design.click()
+		
+		tab_design = editor.e('#tab-design')
+		themes = tab_design.e('.theme-select')
+		themes.e('a.gray').click()
+		sleep(3)
+		
+		button = self.e('.submit.button.left')
+		button.click()
+		
+		wrapper = self.e('#container_wrap')
+		self.assertIn('gray', wrapper.get_attribute('class'))
+										
+		editor = self.e('.channel_editor')
+		settings = editor.e('.settings')
+		
+		settings.click()
+		settings_menu = editor.e('.settings_menu')
+		self.assertTrue(settings_menu.is_displayed())
+		design = settings_menu.e('a[href="#tab-design"]')
+		design.click()
+		
+		tab_design = editor.e('#tab-design')
+		themes = tab_design.e('.theme-select')
+		themes.e('a.green').click()
+		sleep(3)
+		
+		button = self.e('.submit.button.left')
+		button.click()
+		
+		wrapper = self.e('#container_wrap')
+		self.assertIn('green', wrapper.get_attribute('class'))
+															
+		editor = self.e('.channel_editor')
+		settings = editor.e('.settings')
+		
+		settings.click()
+		settings_menu = editor.e('.settings_menu')
+		self.assertTrue(settings_menu.is_displayed())
+		design = settings_menu.e('a[href="#tab-design"]')
+		design.click()
+		
+		tab_design = editor.e('#tab-design')
+		themes = tab_design.e('.theme-select')
+		themes.e('a.navy').click()
+		sleep(3)
+		
+		button = self.e('.submit.button.left')
+		button.click()
+		
+		wrapper = self.e('#container_wrap')
+		self.assertIn('navy', wrapper.get_attribute('class'))
+																
+		editor = self.e('.channel_editor')
+		settings = editor.e('.settings')
+		
+		settings.click()
+		settings_menu = editor.e('.settings_menu')
+		self.assertTrue(settings_menu.is_displayed())
+		design = settings_menu.e('a[href="#tab-design"]')
+		design.click()
+		
+		tab_design = editor.e('#tab-design')
+		themes = tab_design.e('.theme-select')
+		themes.e('a.orange').click()
+		sleep(3)
+		
+		button = self.e('.submit.button.left')
+		button.click()
+		
+		wrapper = self.e('#container_wrap')
+		self.assertIn('orange', wrapper.get_attribute('class'))
+														
+		editor = self.e('.channel_editor')
+		settings = editor.e('.settings')
+		
+		settings.click()
+		settings_menu = editor.e('.settings_menu')
+		self.assertTrue(settings_menu.is_displayed())
+		design = settings_menu.e('a[href="#tab-design"]')
+		design.click()
+		
+		tab_design = editor.e('#tab-design')
+		themes = tab_design.e('.theme-select')
+		themes.e('a.pink').click()
+		sleep(3)
+		
+		button = self.e('.submit.button.left')
+		button.click()
+		
+		wrapper = self.e('#container_wrap')
+		self.assertIn('pink', wrapper.get_attribute('class'))
+											
+		editor = self.e('.channel_editor')
+		settings = editor.e('.settings')
+		
+		settings.click()
+		settings_menu = editor.e('.settings_menu')
+		self.assertTrue(settings_menu.is_displayed())
+		design = settings_menu.e('a[href="#tab-design"]')
+		design.click()
+		
+		tab_design = editor.e('#tab-design')
+		themes = tab_design.e('.theme-select')
+		themes.e('a.purple').click()
+		sleep(3)
+		
+		button = self.e('.submit.button.left')
+		button.click()
+		
+		wrapper = self.e('#container_wrap')
+		self.assertIn('purple', wrapper.get_attribute('class'))
+										
+		editor = self.e('.channel_editor')
+		settings = editor.e('.settings')
+		
+		settings.click()
+		settings_menu = editor.e('.settings_menu')
+		self.assertTrue(settings_menu.is_displayed())
+		design = settings_menu.e('a[href="#tab-design"]')
+		design.click()
+		
+		tab_design = editor.e('#tab-design')
+		themes = tab_design.e('.theme-select')
+		themes.e('a.red').click()
+		sleep(3)
+		
+		button = self.e('.submit.button.left')
+		button.click()
+		
+		wrapper = self.e('#container_wrap')
+		self.assertIn('red', wrapper.get_attribute('class'))
+										
 		# TODO LATER
 		# upload a photo
 		# upload a banner
