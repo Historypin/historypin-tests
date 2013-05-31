@@ -704,7 +704,6 @@ class Channel(HPTestCase):
 		self.assertTrue(tab_design.is_displayed())
 		
 		self.assertEqual('Channel Design'		, tab_design.e('h3').text)
-		self.assertEqual('Choose a colour theme', tab_design.e('h5').text)
 		
 		button = self.e('.submit.button.left')
 		self.assertEqual('Save Design', button.e('span').text)
@@ -738,8 +737,7 @@ class Channel(HPTestCase):
 		
 		wrapper = self.e('#container_wrap')
 		self.assertIn('blue', wrapper.get_attribute('class'))
-		
-		
+											
 		editor = self.e('.channel_editor')
 		settings = editor.e('.settings')
 		
@@ -880,6 +878,21 @@ class Channel(HPTestCase):
 		wrapper = self.e('#container_wrap')
 		self.assertIn('red', wrapper.get_attribute('class'))
 										
+		editor = self.e('.channel_editor')
+		settings = editor.e('.settings')
+		
+		settings.click()
+		settings_menu = editor.e('.settings_menu')
+		self.assertTrue(settings_menu.is_displayed())
+		design = settings_menu.e('a[href="#tab-design"]')
+		design.click()
+		
+		tab_design = editor.e('#tab-design')
+		
+		h5s = tab_design.es('h5')
+		
+		headings = ['Choose a colour theme', 'Upload your photo or logo', 'Upload a Banner', 'Upload a Background Image']
+		for n in range(len(headings)): self.assertEqual(headings[n], h5s[n].text)
 		# TODO LATER
 		# upload a photo
 		# upload a banner
@@ -923,64 +936,305 @@ class Channel(HPTestCase):
 		self.assertEqual('Copy and paste this HTML to insert the Historypin Badge into your website.', dialog.e('h4').text)
 		self.assertIn("http://www.historypin.com/channels/view/11675544/", dialog.e('textarea').text)
 		
-		# self.hover(dialog.e('.ui-dialog-titlebar-close'))
-		dialog.parent_node().e('.ui-dialog-titlebar-close').click()  # TODO get appropriate close button not the first one
+		dialog.parent_node().e('.ui-dialog-titlebar-close').click()
+		self.assertFalse(dialog.is_displayed())
+									
+		editor = self.e('.channel_editor')
+		settings = editor.e('.settings')
+		settings.click()
+		settings_menu = editor.e('.settings_menu')
+		
+		link_site = settings_menu.e('li:nth-of-type(6) a')
+		link_site.click()
+		tab_embed = editor.e('#tab-embed')
+		self.assertTrue(tab_embed.is_displayed())
+		
+		get_icon = tab_embed.es('.col.w2:nth-of-type(2) a')[1]
+		self.assertIn('social_pin', get_icon.get_attribute('class'))
+		get_icon.click()
+		sleep(3)
+		
+		dialog = self.e('.embed-social-media')
+		self.assertEqual('Copy and paste this HTML to insert the Historypin Social Media icon into your website.', dialog.e('h4').text)
+		self.assertIn("http://www.historypin.com/channels/view/11675544/", dialog.e('textarea').text)
+		
+		dialog.parent_node().e('.ui-dialog-titlebar-close').click()
+		self.assertFalse(dialog.is_displayed())
+											
+		editor = self.e('.channel_editor')
+		settings = editor.e('.settings')
+		
+		settings.click()
+		
+		settings_menu = editor.e('.settings_menu')
+		
+		link_site = settings_menu.e('li:nth-of-type(6) a')
+		link_site.click()
+		
+		tab_embed = editor.e('#tab-embed')
+		self.assertTrue(tab_embed.is_displayed())
+		
+		embed_cnt = tab_embed.e('.embed-cnt')
+		self.assertEqual('Embed my content on my site', embed_cnt.e('h4').text)
+		self.assertEqual("You can now embed your Channel on Historypin into your site. Note, only Tours and Collections made from stuff you've uploaded will appear, not those containing other people's stuff you've favourited.", embed_cnt.e('p').text)
+		self.assertEqual(URL_BASE + '/resources/images/embed_on_site.png', embed_cnt.e('img').get_attribute('src'))
+		
+		button = embed_cnt.e('.button.left')
+		self.assertEqual('Generate Code', button.e('span').text)
+		
+		views = ['Show Map View', 'Show Photo List View', 'Show Published Collections', 'Show Published Tours']
+		label = embed_cnt.es('label')
+		
+		for n in range(len(views)): self.assertEqual(views[n], label[n].text)
+		
+		checkbox = embed_cnt.es('input')
+		self.assertFalse(checkbox[0].is_selected())
+		self.assertFalse(checkbox[1].is_selected())
+		self.assertFalse(checkbox[2].is_selected())
+		self.assertFalse(checkbox[3].is_selected())
+		
+		checkbox[0].click()
+		self.assertTrue(checkbox[0].is_selected())
+		sleep(2)
+		button.click()
+		
+		dialog = self.e('.embed-channel')
+		self.assertEqual('Your Code:', dialog.e('h4').text)
+		self.assertEqual('Copy and paste the following HTML and insert it in your website. You can find more detailed instructions and tips on custom parameters here', dialog.e('p').text)
+		self.assertEqual(URL_BASE + '/embed/help/', dialog.e('p a').get_attribute('href'))
+		self.assertIn("http://attach.uid11675544.v4-22-00.historypin-hrd.appspot.com/e/17/", dialog.e('textarea').text)
+		
+		dialog.parent_node().e('.ui-dialog-titlebar-close').click()
 		
 		self.assertFalse(dialog.is_displayed())
+		checkbox[0].click()
+		self.assertFalse(checkbox[0].is_selected())
 		
-		# TODO
-		# close the dialog
-		# check with assertFalse that is not visible anymore
-		# assert img src
-		# click on img link
-		# assert dialog visibility
-		# assert text
-		# assert textarea
-		# close the dialog
-		# assert Social Media Icon Get Icon Code text and link
-		# click on badge code link
-		# see if dialog is visible
-		# assert copy and paste text
-		# assertIn for href
-		# close the dialog
-		# check with assertFalse that is not visible anymore
-		# assert social pin icon with assertIsInstance
-		# assert Embed my content on my site text
-		# assert paragrapgh text
-		# assert image src
-		# assert show texts
-		# assert generade code button text and link
-		# checkboxes:
-		# - click on show map view checkbox
-		# - assert that is checked
-		# - click on generate code
-		# - see if dialog is visible
-		# - assert your code text, assert par, assert link
-		# - assertIn for href
-		# - close the dialog
-		# - check with assertFalse that is not visible anymore
-		# - click on show map again to uncheck it
-		# - assert for all - list view, published collections and tours
-		# assert help section
-		# assert h3s
-		# assert paragraphs
-		# assert links and text for channels
+												
+		
+		editor = self.e('.channel_editor')
+		settings = editor.e('.settings')
+		
+		settings.click()
+		
+		settings_menu = editor.e('.settings_menu')
+		
+		link_site = settings_menu.e('li:nth-of-type(6) a')
+		link_site.click()
+		
+		tab_embed = editor.e('#tab-embed')
+		self.assertTrue(tab_embed.is_displayed())
+		
+		embed_cnt = tab_embed.e('.embed-cnt')
+		
+		button = embed_cnt.e('.button.left')
+		self.assertEqual('Generate Code', button.e('span').text)
+		
+		checkbox = embed_cnt.es('input')
+		self.assertFalse(checkbox[0].is_selected())
+		self.assertFalse(checkbox[1].is_selected())
+		self.assertFalse(checkbox[2].is_selected())
+		self.assertFalse(checkbox[3].is_selected())
+		
+		checkbox[1].click()
+		self.assertTrue(checkbox[1].is_selected())
+		button.click()
+		
+		dialog = self.e('.embed-channel')
+		self.assertEqual('Your Code:', dialog.e('h4').text)
+		self.assertEqual('Copy and paste the following HTML and insert it in your website. You can find more detailed instructions and tips on custom parameters here', dialog.e('p').text)
+		self.assertEqual(URL_BASE + '/embed/help/', dialog.e('p a').get_attribute('href'))
+		self.assertIn("http://attach.uid11675544.v4-22-00.historypin-hrd.appspot.com/e/18/", dialog.e('textarea').text)
+		
+		dialog.parent_node().e('.ui-dialog-titlebar-close').click()
+		
+		self.assertFalse(dialog.is_displayed())
+		checkbox[1].click()
+		self.assertFalse(checkbox[1].is_selected())
+														
+		
+		editor = self.e('.channel_editor')
+		settings = editor.e('.settings')
+		
+		settings.click()
+		
+		settings_menu = editor.e('.settings_menu')
+		
+		link_site = settings_menu.e('li:nth-of-type(6) a')
+		link_site.click()
+		
+		tab_embed = editor.e('#tab-embed')
+		self.assertTrue(tab_embed.is_displayed())
+		
+		embed_cnt = tab_embed.e('.embed-cnt')
+		
+		button = embed_cnt.e('.button.left')
+		self.assertEqual('Generate Code', button.e('span').text)
+		
+		checkbox = embed_cnt.es('input')
+		self.assertFalse(checkbox[0].is_selected())
+		self.assertFalse(checkbox[1].is_selected())
+		self.assertFalse(checkbox[2].is_selected())
+		self.assertFalse(checkbox[3].is_selected())
+		
+		checkbox[2].click()
+		self.assertTrue(checkbox[2].is_selected())
+		button.click()
+		
+		dialog = self.e('.embed-channel')
+		self.assertEqual('Your Code:', dialog.e('h4').text)
+		self.assertEqual('Copy and paste the following HTML and insert it in your website. You can find more detailed instructions and tips on custom parameters here', dialog.e('p').text)
+		self.assertEqual(URL_BASE + '/embed/help/', dialog.e('p a').get_attribute('href'))
+		self.assertIn("http://attach.uid11675544.v4-22-00.historypin-hrd.appspot.com/e/20/", dialog.e('textarea').text)
+		
+		dialog.parent_node().e('.ui-dialog-titlebar-close').click()
+		sleep(2)
+		self.assertFalse(dialog.is_displayed())
+		checkbox[2].click()
+		sleep(2)
+		self.assertFalse(checkbox[2].is_selected())
+																
+		
+		editor = self.e('.channel_editor')
+		settings = editor.e('.settings')
+		
+		settings.click()
+		
+		settings_menu = editor.e('.settings_menu')
+		
+		link_site = settings_menu.e('li:nth-of-type(6) a')
+		link_site.click()
+		
+		tab_embed = editor.e('#tab-embed')
+		self.assertTrue(tab_embed.is_displayed())
+		
+		embed_cnt = tab_embed.e('.embed-cnt')
+		
+		button = embed_cnt.e('.button.left')
+		self.assertEqual('Generate Code', button.e('span').text)
+		
+		checkbox = embed_cnt.es('input')
+		self.assertFalse(checkbox[0].is_selected())
+		self.assertFalse(checkbox[1].is_selected())
+		self.assertFalse(checkbox[2].is_selected())
+		self.assertFalse(checkbox[3].is_selected())
+		
+		checkbox[3].click()
+		self.assertTrue(checkbox[3].is_selected())
+		button.click()
+		
+		dialog = self.e('.embed-channel')
+		self.assertEqual('Your Code:', dialog.e('h4').text)
+		self.assertEqual('Copy and paste the following HTML and insert it in your website. You can find more detailed instructions and tips on custom parameters here', dialog.e('p').text)
+		self.assertEqual(URL_BASE + '/embed/help/', dialog.e('p a').get_attribute('href'))
+		self.assertIn("http://attach.uid11675544.v4-22-00.historypin-hrd.appspot.com/e/24/", dialog.e('textarea').text)
+		
+		dialog.parent_node().e('.ui-dialog-titlebar-close').click()
+		
+		self.assertFalse(dialog.is_displayed())
+		checkbox[3].click()
+		
+		self.assertFalse(checkbox[3].is_selected())
+							
+		editor = self.e('.channel_editor')
+		settings = editor.e('.settings')
+		
+		settings.click()
+		
+		settings_menu = editor.e('.settings_menu')
+		
+		link_site = settings_menu.e('li:nth-of-type(6) a')
+		link_site.click()
+		
+		tab_embed = editor.e('#tab-embed')
+		self.assertTrue(tab_embed.is_displayed())
+		
+		help = tab_embed.e('.help')
+		
+		h3s_help = help.es('h3')
+		self.assertEqual("Get some inspiration"	, h3s_help[0].text)
+		self.assertEqual("Get help"				, h3s_help[1].text)
+		
+		self.assertEqual('Check out these examples to see what other people have done on their site.', help.e('p:nth-of-type(1)').text)
+		
+		examples = [
+			['http://www.everythingcurious.co.uk/Bath_in_Time_About_Us/HistoryPin.html'	, 'Bath in Time'],
+			['http://www.steveclifford.com/?page_id=4'									, 'Steve Clifford'],
+			['http://www.biggleswadehistory.org.uk/historypin.htm'						, 'Biggleswade History Society'],
+			['http://digital.library.lse.ac.uk/collections/streetlife#historypin'		, 'LSE Library'],
+			['http://www.arthurlloyd.co.uk/Theatreland/Theatreland.htm'					, 'Arthurlloydcouk'],
+		]
+		
+		sites_help = help.es('a[href*=id]')
+		
+		for n in range(len(examples)):
+			i = examples[n]
+			self.assertEqual(i[0]	, sites_help[n].get_attribute('href'))
+			self.assertEqual(i[1]								, sites_help[n].text)
+		
+		
+		self.assertEqual('If you get stuck or have any questions, check out our How To page and FAQs and please feel free to contact us at historypin@wearewhatwedo.org', help.e('p:last-of-type').text)
+		
+		links = [
+			[URL_BASE + '/community/howtos/'		, 'How To page'],
+			[URL_BASE + '/faq/'						, 'FAQs'],
+			['mailto:historypin@wearewhatwedo.org'	, 'historypin@wearewhatwedo.org'],
+		]
+		
+		links_help = help.es('p:last-of-type a')
+		
+		for n in range(len(links)):
+			i = links[n]
+			self.assertEqual(i[0]	, links_help[n].get_attribute('href'))
+			self.assertEqual(i[1]	, links_help[n].text)
 	
 	@url('/channels/view/11675544/')
 	@logged_in
 	def test_stuff_i_like(self):
-		# TODO
-		# click on channel and account link
-		# assert Stuff I like text
-		# assert Channels fan of text and link
-		# click on the link
-		# see if toolbar is visible
-		# assert Channels I'm text
-		# assert img links and text for all channels
-		# click on channel and account link
-		# assert My fans link and textc
-		# click on it
-		# see if toolbar is visible
-		# assert My fans: text
-		# assert You have no fans yet text
-		pass
+		
+		editor		= self.e('.channel_editor')
+		settings	= editor.e('.settings')
+		
+		settings.click()
+		
+		settings_menu	= editor.e('.settings_menu')
+		channels		= settings_menu.e('li:nth-of-type(9) a')
+		
+		channels.click()
+		
+		tab_subscriptions = editor.e('#tab-subscriptions')
+		self.assertTrue(tab_subscriptions.is_displayed())
+		
+		self.assertEqual("Channels I'm a fan of:", tab_subscriptions.e('h3').text)
+		
+		channels = [
+			['7947312/'		, '/7947312/'	, 'City of Richmond Archives'],
+			['6994288/'		, '/6994288/'	, 'uf history hunt'],
+			['10668143/'	, '/10668143/'	, 'Stanford University Archives'],
+		]
+		
+		channels_list = tab_subscriptions.e('.channels-list')
+		logo_link = channels_list.es('.logo')
+		img = channels_list.es('img')
+		channel = channels_list.es('.name')
+		
+		for n in range(len(channels)):
+			i = channels[n]
+			self.assertEqual(URL_BASE + '/channels/view/' 		+ i[0], logo_link[n].get_attribute('href'))
+			self.assertEqual(URL_BASE + '/channels/view/id/' 	+ i[0], channel[n].get_attribute('href'))
+			self.assertEqual(URL_BASE + '/channels/img' 		+ i[1] + 'logo/1/dim/70x70/crop/1/', img[n].get_attribute('src'))
+			self.assertEqual(i[2], channel[n].text)
+		
+		editor		= self.e('.channel_editor')
+		settings	= editor.e('.settings')
+		
+		settings.click()
+		
+		settings_menu	= editor.e('.settings_menu')
+		fans			= settings_menu.e('li:nth-of-type(10) a')
+		fans.click()
+		
+		tab_subsrcribers = editor.e('#tab-subscribers')
+		self.assertTrue(tab_subsrcribers.is_displayed())
+		self.assertEqual("My fans:"				, tab_subsrcribers.e('h3').text)
+		self.assertEqual("You have no fans yet.", tab_subsrcribers.e('p').text)
