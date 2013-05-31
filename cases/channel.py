@@ -629,9 +629,38 @@ class Channel(HPTestCase):
 		self.assertEqual('Save Changes', button.e('span').text)
 		button.click()
 		
-		sleep(5)  # TODO remove this after ajax_wait
+		sleep(10)  # TODO remove this after ajax_wait
 		
-		# check if data is populated in the form
+		editor = self.e('.channel_editor')
+		settings = editor.e('.settings')
+		settings.click()
+		settings_menu = editor.e('.settings_menu')
+		heading = settings_menu.es('li strong')
+		channel_info = settings_menu.e('li:nth-of-type(2) a')
+		channel_info.click()
+		
+		tab_settings = editor.e('#tab-settings')
+		# self.assertTrue(tab_settings.is_displayed())
+		info = tab_settings.e('.form')
+		
+		channel_name = info.e('.input-container #channel_name')
+		channel_type = info.e('.input-container #channel_type')
+		desc = info.e('#channel_desc')
+		site_link = info.e('#external_site')
+		twitter_name = info.e('#twitter_link')
+		fb_link = info.e('#facebook_link')
+		google_link = info.e('#google_plus_link')
+		blog_link = info.e('#blog_link')
+		button = tab_settings.e('.save_settings')
+		
+		self.assertEqual('Gabriela Ananieva'							, channel_name.get_attribute('value'))
+		self.assertEqual('3'											, channel_type.e('option:nth-of-type(3)').get_attribute('value'))
+		self.assertEqual('This is a test description'					, desc.text)
+		self.assertEqual('http://avalith.bg'							, site_link.get_attribute('value'))
+		self.assertEqual('@Tristania90'									, twitter_name.get_attribute('value'))
+		self.assertEqual('https://www.facebook.com/gabriela.ananieva.7'	, fb_link.get_attribute('value'))
+		self.assertEqual('http://avalith.bg'							, google_link.get_attribute('value'))
+		self.assertEqual('http://avalith.bg'							, blog_link.get_attribute('value'))
 		
 		chan_info = self.e('.chan.info')
 		self.assertEqual(URL_BASE + '/resources/avatars/200x200/avatar_3.png', chan_info.e('img').get_attribute('src'))
@@ -674,8 +703,29 @@ class Channel(HPTestCase):
 		tab_design = editor.e('#tab-design')
 		self.assertTrue(tab_design.is_displayed())
 		
-		# assert channel design text
-		# assert choose a colour theme text
+		self.assertEqual('Channel Design'		, tab_design.e('h3').text)
+		self.assertEqual('Choose a colour theme', tab_design.e('h5').text)
+		
+		button = self.e('.submit.button.left')
+		self.assertEqual('Save Design', button.e('span').text)
+		
+		wrapper = self.e('#container_wrap')
+		
+		themes = tab_design.e('.theme-select')
+		themes.e('a.charcoal').click()
+		button.click()
+		sleep(10)
+		
+		wrapper = self.e('#container_wrap')
+		self.assertIn('charcoal', wrapper.get_attribute('class'))
+		
+		# themes = tab_design.e('.theme-select')
+		# themes.e('a.blue').click()
+		# sleep(3)
+		# button.click()
+		
+		# sleep(5)
+		# self.assertIn('blue', wrapper.get_attribute('class'))
 		# with assert in check if container wrap have atrribute 'class'
 		# TODO LATER
 		# upload a photo
@@ -685,22 +735,55 @@ class Channel(HPTestCase):
 	@url('/channels/view/11675544/')
 	@logged_in
 	def test_sharing(self):
+		
+		editor = self.e('.channel_editor')
+		settings = editor.e('.settings')
+		settings.click()
+		sleep(2)
+		
+		settings_menu = editor.e('.settings_menu')
+		self.assertTrue(settings_menu.is_displayed())
+		
+		link_site = settings_menu.e('li:nth-of-type(6) a')
+		self.assertEqual(URL_BASE + '/channels/view/11675544/#tab-embed', link_site.get_attribute('href'))
+		self.assertEqual('Link with my site', link_site.text)
+		
+		link_site.click()
+		
+		tab_embed = editor.e('#tab-embed')
+		self.assertTrue(tab_embed.is_displayed())
+		
+		self.assertEqual('Link with my site', tab_embed.e('.main h3').text)
+		
+		headings = ['Link to my channel', 'Badge Get Badge Code', 'Social Media Icon Get Icon Code', 'Embed my content on my site']
+		
+		h4s = tab_embed.es('h4')
+		
+		for n in range(len(headings)): self.assertEqual(headings[n], h4s[n].text)
+		
+		get_badge = tab_embed.e('.col.w2:nth-of-type(1) h4 a')
+		get_badge.click()
+		sleep(3)
+		
+		dialog = self.e('.embed-profile')
+		self.assertTrue(dialog.is_displayed())
+		self.assertEqual('Copy and paste this HTML to insert the Historypin Badge into your website.', dialog.e('h4').text)
+		self.assertIn("http://www.historypin.com/channels/view/11675544/", dialog.e('textarea').text)
+		
+		# self.hover(dialog.e('.ui-dialog-titlebar-close'))
+		dialog.parent_node().e('.ui-dialog-titlebar-close').click()  # TODO get appropriate close button not the first one
+		
+		self.assertFalse(dialog.is_displayed())
+		
 		# TODO
-		# click on Channel and account settings
-		# assert sharing and embeds text
-		# assert link with my site text and link
-		# click on the link
-		# assert Link with my site text
-		# assert link to my channel text
-		# assert get a badge text parag
-		# assert Badge Get Badge Code link and tect
-		# click on badge code link
-		# see if dialog is visible
-		# assert copy and paste text
-		# assertIn for href
 		# close the dialog
 		# check with assertFalse that is not visible anymore
 		# assert img src
+		# click on img link
+		# assert dialog visibility
+		# assert text
+		# assert textarea
+		# close the dialog
 		# assert Social Media Icon Get Icon Code text and link
 		# click on badge code link
 		# see if dialog is visible
@@ -729,7 +812,6 @@ class Channel(HPTestCase):
 		# assert h3s
 		# assert paragraphs
 		# assert links and text for channels
-		pass
 	
 	@url('/channels/view/11675544/')
 	@logged_in

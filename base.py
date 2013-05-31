@@ -14,6 +14,7 @@ from conf import *
 WebElement.e	= WebElement.find_element_by_css_selector
 WebElement.es	= WebElement.find_elements_by_css_selector
 WebElement.css	= WebElement.value_of_css_property
+WebElement.parent_node = lambda self: self.find_element_by_xpath('./parent::node()')
 
 def url(url):
 	def wrapper(fn):
