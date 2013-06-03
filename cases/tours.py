@@ -99,12 +99,12 @@ class Tours(HPTestCase):
 	@url('/tours/take/id/' + KEY_TOUR)
 	def test_take(self):
 		
-		self.assertTitle('Historypin | Tours') # HTML - page title should be fixed to HistoryPin | Tour | Test Tour for automated test
+		self.assertTitle('Historypin | Tours')  # HTML - page title should be fixed to HistoryPin | Tour | Test Tour for automated test
 		self.assertEqual('Test Tour for automated test', self.e('.title h3').text)
 		
 		paragraph = self.e('.title p')
 		self.assertEqual('by Gabss'															, paragraph.text)
-		self.assertEqual('http://v4-22-00.historypin-hrd.appspot.com/channels/view/10649049', paragraph.e('a').get_attribute('href')) # HTML - fix link to be relative
+		self.assertEqual('http://v4-22-00.historypin-hrd.appspot.com/channels/view/10649049', paragraph.e('a').get_attribute('href'))  # HTML - fix link to be relative
 		
 		link_exit = self.e('#exit-tour')
 		self.assertEqual(URL_BASE + '/tours/view/id/22354015/title/Test%20Tour%20for%20automated%20test', link_exit.get_attribute('href'))
@@ -163,5 +163,73 @@ class Tours(HPTestCase):
 		for n in range(len(tour_items)-1)[::-1]:
 			prev_button.click()
 			check_step(tour_items[n])
-		
 	
+	@url('/tours/add/id/16502051/#16502051')
+	@logged_in
+	def test_edit_tour(self):
+		# TODO
+		# Step 1:
+		# - Create a tour text
+		# - assert steps texts
+		# - assert that first one is filled up
+		# - aserst
+		# - assert help text in the sidebar
+		# - assert title text
+		# - assert current text
+		# - change it
+		# - assert is changed
+		# - assert give your tour a title text
+		# - assert descr title
+		# - assert current desc
+		# - change it
+		# - assert new desc
+		# - assert describe your tour text
+		# - assert next step button text
+		# - click on it
+		# -# Step 2:
+		# - assert tha the secont step is filled
+		# - assert your content tab text
+		# - assert search bar
+		# - assert year slider
+		# - assert pinned item - plus icon, on hover text and year
+		# - click on your favourites
+		# - assert search bar
+		# - assert year slider
+		# - assert for items(same as pinned)
+		# - assert in the sidebar help text
+		# - assert Collection items text
+		# - assert three items and on hover their text
+		# - assert that there are three items
+		# - click on the x icon of first photo
+		# - assert that there are two items
+		# - in your content tab, click on plus icon to add the third
+		# - assert they are three
+		# - click on next order button
+		# Step 3:
+		# - assert order the steps is filled up
+		# - assert describe text
+		# - aassert img s assert is instance
+		# - assert img's number
+		# - assert step title text
+		# - assert current text
+		# - assert step desc and text
+		# - click next
+		# - assert order the steps is filled up
+		# - assert describe text
+		# - aassert img s assert is instance
+		# - assert img's number
+		# - assert step title text
+		# - assert current text
+		# - assert step desc and text
+		# assert previuos and next if they are visible
+		# - click next
+		# - assert order the steps is filled up
+		# - assert describe text
+		# - aassert img s assert is instance
+		# - assert img's number
+		# - assert step title text
+		# - assert current text
+		# - assert step desc and text
+		# - assert that next is not visible assert prev
+		# - click publish
+		pass

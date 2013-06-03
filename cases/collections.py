@@ -62,21 +62,20 @@ class Collections(HPTestCase):
 		self.assertEqual('Slide Show'										, button.text)
 		
 		collection_view = [
-			['/map/#!/geo:42.693738,23.326101/zoom:15/dialog:22363018/tab:details/', '/services/thumb/phid/22363018/dim/195x150/crop/1/', '2 August 2012, from Gabss', '/channels/view/10649049'],
-			['/map/#!/geo:51.362619,0.513102/zoom:15/dialog:1031013/tab:details/', '/services/thumb/phid/1031013/dim/195x150/crop/1/', '13 July 1952, from Mirrorpix Archives', '/channels/view/571038'],
-			['/map/#!/geo:52.087599,-0.25404/zoom:15/dialog:1076031/tab:details/', '/services/thumb/phid/1076031/dim/195x150/crop/1/', '1 January 1914, from Biggleswade History Society', '/channels/view/1042029'],
-			['/map/#!/geo:-19.8891792,-43.8048137/zoom:15/dialog:2172029/tab:details/', '/services/thumb/phid/2172029/dim/195x150/crop/1/', '1898, from by Dyno', '/channels/view/2137026'],
-			['/map/#!/geo:43.622221047,-79.3740749359/zoom:15/dialog:3255004/tab:details/', '/services/thumb/phid/3255004/dim/195x150/crop/1/', '1908, from FQ', '/channels/view/3154007'],
+			['/map/#!/geo:42.693738,23.326101/zoom:15/dialog:22363018/tab:details/'			, '/22363018/'	, '2 August 2012, from Gabss', '/channels/view/10649049'],
+			['/map/#!/geo:51.362619,0.513102/zoom:15/dialog:1031013/tab:details/'			, '/1031013/'	, '3 July 1952, from Mirrorpix Archives', '/channels/view/571038'],
+			['/map/#!/geo:52.087599,-0.25404/zoom:15/dialog:1076031/tab:details/'			, '/1076031/'	, '1 January 1914, from Biggleswade History Society', '/channels/view/1042029'],
+			['/map/#!/geo:-19.8891792,-43.8048137/zoom:15/dialog:2172029/tab:details/'		, '/2172029/'	, '1898, from by Dyno', '/channels/view/2137026'],
+			['/map/#!/geo:43.622221047,-79.3740749359/zoom:15/dialog:3255004/tab:details/'	, '/3255004/'	, '1908, from FQ', '/channels/view/3154007'],
 		]
 		
 		item = self.es('#list_view .list li')
 		for n in range(len(collection_view)):
 			i = collection_view[n]
 			self.assertEqual(URL_BASE + i[0], item[n].e('a.link-image').get_attribute('href'))
-			self.assertEqual(URL_BASE + i[1], item[n].e('img').get_attribute('src'))
+			self.assertEqual(URL_BASE + '/services/thumb/phid' + i[1] + '/dim/195x150/crop/1', item[n].e('img').get_attribute('src'))
 			self.assertEqual(i[2]			, item[n].e('p').text)
 			self.assertEqual(URL_BASE + i[3], item[n].e('.username-wrapper a').get_attribute('href'))
-		
 		# TODO LATER
 		# - representing photo
 	
@@ -85,9 +84,141 @@ class Collections(HPTestCase):
 		self.assertTitle('HistoryPin | Collection | Test Collection for automated test')
 		self.assertEqual('Test Collection for automated test\nExit Slideshow'										, self.e('#slide-content p').text)
 		self.assertEqual(URL_BASE + '/collections/view/id/22782015/title/Test%20Collection%20for%20automated%20test', self.e('#slide-content a').get_attribute('href'))
-		
 		# TODO LATER
-		# 
-		# 
-		# 
 	
+	@url('/collections/add/id/26157007/#26157007')
+	@logged_in
+	def test_edit_collection(self):
+		self.assertTitle('Historypin | Collection')
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual('Create a collection', site_cnt.e('h1').text)
+		
+		progress_bar = site_cnt.e('.progress-bar')
+		
+		first = progress_bar.e('.first.current a')
+		self.assertEqual('Describe the collection', first.text)
+		
+		self.assertIn('ss-icon'		, first.e('span').get_attribute('class'))
+		self.assertIn('ss-fullmoon'	, first.e('span').get_attribute('class'))
+		
+		second = progress_bar.e('li:nth-of-type(2) a')
+		self.assertEqual('Choose\ncontent', second.text)
+		
+		self.assertIn('ss-icon'		, second.e('span').get_attribute('class'))
+		self.assertIn('ss-fullmoon'	, second.e('span').get_attribute('class'))
+		
+		third = progress_bar.e('li:nth-of-type(3) a')
+		self.assertEqual('Order\ncontent', third.text)
+		
+		self.assertIn('ss-icon'		, third.e('span').get_attribute('class'))
+		self.assertIn('ss-fullmoon'	, third.e('span').get_attribute('class'))
+		
+		paragraph = self.es('.text-hint p')
+		self.assertEqual('You can describe your Collection here.', paragraph[0].text)
+		self.assertEqual('You can add content to your Collection that you have pinned or you have favourited on the map', paragraph[1].text)
+		
+		step_cnt = site_cnt.es('#site-content .step-content .inn')[0]
+		label = step_cnt.es('label')
+		self.assertEqual('Title:'		, label[0].text)
+		self.assertEqual('Description:'	, label[1].text)
+		
+		info = step_cnt.es('.input-info')
+		self.assertEqual('Give your Collection a title that makes it unique.'						, info[0].text)
+		self.assertEqual('Describe your Collection. This will appear on the Collection homepage.'	, info[1].text)
+		
+		sleep(5)  # AJAX
+		title = self.e('#tour-title')
+		title.clear()
+		title.send_keys('Theaters in Bulgaria')
+		# self.assertEqual('Theaters in Bulgaria', title.get_attribute('value'))  #in edit to check if the new title is the same
+		
+		desc = self.e('#tour-description')
+		desc.clear()
+		desc.send_keys('Collection for famous theaters in Bulgaria')
+		#in edit to check if the new desc is the same
+		
+		self.assertEqual('Next step: Choose content', self.e('.next-button span').text)
+		self.e('.next-button').click()
+		
+							
+		self.assertEqual('You can describe your Collection here.', self.e('.text-hint p').text)
+		
+		step_cnt	= self.es('.step-content')[1]
+		browse		= step_cnt.e('.browse-photos')
+		tabs		= browse.e('.tabs-nav')
+		
+		sleep(2)
+		filter_bar = self.e('.filter-bar')
+		self.assertEqual('Search', filter_bar.e('label').text)
+		self.assertIsInstance(filter_bar.e('input'), WebElement)
+		
+		self.assertIsInstance(filter_bar.e('#date-slider-labels'), WebElement)
+		
+		item = step_cnt.e('.choose-photos.yours li')
+		self.assertEqual(URL_BASE + '/services/thumb/phid/26162010/dim/152x108/crop/1/', item.e('img').get_attribute('src'))
+		# to check icon for adding
+		
+		self.hover(item.e('img'))
+		self.assertEqual('Bulgarian Army Theater'	, item.e('.photo-title').text)
+		self.assertEqual('1 May 2013'				, item.e('.date').text)
+		
+		# remove all photos from the collection items and then in edit againg to add them
+		self.assertIsInstance(self.e('.step-sidebar .image-container'), WebElement)
+		remove_item = self.es('.step-sidebar .remove-photo')
+		remove_item[0].click()
+		remove_item[1].click()
+		remove_item[2].click()
+		
+		icon = item.e('.add-photo span')
+		self.assertIn('ss-icon', icon.get_attribute('class'))
+		self.assertIn('ss-plus', icon.get_attribute('class'))
+		item.e('.add-photo').click()
+		
+		tabs.e('li:nth-of-type(2) a').click()
+		
+		favs = step_cnt.es('.choose-photos.favourites li')
+		url = URL_BASE + '/services/thumb/phid'
+		self.assertEqual(url + '/322003/dim/152x108/crop/1/'	, favs[0].e('img').get_attribute('src'))
+		self.assertEqual(url + '/22363018/dim/152x108/crop/1/'	, favs[1].e('img').get_attribute('src'))
+		self.assertEqual(url + '/2090034/dim/152x108/crop/1/'	, favs[2].e('img').get_attribute('src'))
+		self.assertEqual(url + '/1501007/dim/152x108/crop/1/'	, favs[3].e('img').get_attribute('src'))
+		
+		self.hover(favs[0].e('img'))
+		self.assertEqual('Morden College east elevation and chapel', favs[0].e('.photo-title').text)
+		self.hover(favs[1].e('img'))
+		self.assertEqual('National Theatre in Sofia, Bulgaria', favs[1].e('.photo-title').text)
+		self.hover(favs[2].e('img'))
+		self.assertEqual('Pinner High St from Church', favs[2].e('.photo-title').text)
+		self.hover(favs[3])
+		self.assertEqual('Ivan Vazov National Theatre', favs[3].e('.photo-title').text)
+		
+		favs[0].e('.add-photo').click()
+		favs[1].e('.add-photo').click()
+		favs[2].e('.add-photo').click()
+		self.assertIsInstance(self.e('.step-sidebar .image-container'), WebElement)
+		
+		button = self.es('.inn .next-button')[1]
+		button.click()
+												
+		tour_step = self.e('#tour-step3')
+		sidebar = tour_step.e('.step-sidebar')
+		self.assertEqual('Drag and drop the content to reorder them'				, sidebar.e('h2').text)
+		self.assertEqual('This is the content you have chosen for your Collection.'	, sidebar.e('p').text)
+		
+		img = tour_step.es('#sortable li img')
+		url = URL_BASE + '/services/thumb/phid'
+		
+		self.assertEqual(url + '/2090034/dim/152x108/crop/1/'	, img[0].get_attribute('src'))
+		self.assertEqual(url + '/322003/dim/152x108/crop/1/'	, img[1].get_attribute('src'))
+		self.assertEqual(url + '/22363018/dim/152x108/crop/1/'	, img[2].get_attribute('src'))
+		
+		photo_number = tour_step.es('#sortable li .photo-number span')
+		self.assertEqual('1', photo_number[0].text)
+		self.assertEqual('2', photo_number[1].text)
+		self.assertEqual('3', photo_number[2].text)
+		# TODO
+		# - assert three images and their numbers
+		# - drag the second item on the first place
+		# - assert publish and save draft button
+		# - click on publish
