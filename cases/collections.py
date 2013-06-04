@@ -131,12 +131,10 @@ class Collections(HPTestCase):
 		title = self.e('#tour-title')
 		title.clear()
 		title.send_keys('Theaters in Bulgaria')
-		# self.assertEqual('Theaters in Bulgaria', title.get_attribute('value'))  #in edit to check if the new title is the same
 		
 		desc = self.e('#tour-description')
 		desc.clear()
 		desc.send_keys('Collection for famous theaters in Bulgaria')
-		#in edit to check if the new desc is the same
 		
 		self.assertEqual('Next step: Choose content', self.e('.next-button span').text)
 		self.e('.next-button').click()
@@ -163,7 +161,6 @@ class Collections(HPTestCase):
 		self.assertEqual('Bulgarian Army Theater'	, item.e('.photo-title').text)
 		self.assertEqual('1 May 2013'				, item.e('.date').text)
 		
-		# remove all photos from the collection items and then in edit againg to add them
 		self.assertIsInstance(self.e('.step-sidebar .image-container'), WebElement)
 		remove_item = self.es('.step-sidebar .remove-photo')
 		remove_item[0].click()
@@ -206,19 +203,41 @@ class Collections(HPTestCase):
 		self.assertEqual('Drag and drop the content to reorder them'				, sidebar.e('h2').text)
 		self.assertEqual('This is the content you have chosen for your Collection.'	, sidebar.e('p').text)
 		
-		img = tour_step.es('#sortable li img')
-		url = URL_BASE + '/services/thumb/phid'
-		
-		self.assertEqual(url + '/2090034/dim/152x108/crop/1/'	, img[0].get_attribute('src'))
-		self.assertEqual(url + '/322003/dim/152x108/crop/1/'	, img[1].get_attribute('src'))
-		self.assertEqual(url + '/22363018/dim/152x108/crop/1/'	, img[2].get_attribute('src'))
-		
 		photo_number = tour_step.es('#sortable li .photo-number span')
 		self.assertEqual('1', photo_number[0].text)
 		self.assertEqual('2', photo_number[1].text)
 		self.assertEqual('3', photo_number[2].text)
-		# TODO
-		# - assert three images and their numbers
-		# - drag the second item on the first place
-		# - assert publish and save draft button
-		# - click on publish
+		
+		actions = self.e('.actions .cancel span')
+		self.assertIn('ss-icon'		, actions.get_attribute('class'))
+		self.assertIn('ss-hyphen'	, actions.get_attribute('class'))
+		
+		publish = self.es('.next-button.done')[1]
+		self.assertEqual('Publish', publish.e('span').text)
+		publish.click()
+		sleep(3)
+									
+		# TODO drag and drop for one item
+		self.go('/collections/add/id/26157007/#26157007')
+		sleep(3)
+		title = self.e('#tour-title')
+		self.assertEqual('Theaters in Bulgaria', title.get_attribute('value'))
+		desc = self.e('#tour-description')
+		self.assertEqual('Collection for famous theaters in Bulgaria', desc.get_attribute('value'))
+		
+		self.assertEqual('Next step: Choose content', self.e('.next-button span').text)
+		self.e('.next-button').click()
+		
+		sleep(3)
+		button = self.es('.inn .next-button')[1]
+		button.click()
+		
+		items = self.es('#sortable > li')
+		self.assertIsInstance(items[0], WebElement)
+		self.assertIsInstance(items[1], WebElement)
+		self.assertIsInstance(items[2], WebElement)
+		self.assertIsInstance(items[3], WebElement)
+		
+		publish = self.es('.next-button.done')[1]
+		self.assertEqual('Publish', publish.e('span').text)
+		publish.click()
