@@ -167,69 +167,229 @@ class Tours(HPTestCase):
 	@url('/tours/add/id/16502051/#16502051')
 	@logged_in
 	def test_edit_tour(self):
-		# TODO
-		# Step 1:
-		# - Create a tour text
-		# - assert steps texts
-		# - assert that first one is filled up
-		# - aserst
-		# - assert help text in the sidebar
-		# - assert title text
-		# - assert current text
-		# - change it
-		# - assert is changed
-		# - assert give your tour a title text
-		# - assert descr title
-		# - assert current desc
-		# - change it
-		# - assert new desc
-		# - assert describe your tour text
-		# - assert next step button text
-		# - click on it
-		# -# Step 2:
-		# - assert tha the secont step is filled
-		# - assert your content tab text
-		# - assert search bar
-		# - assert year slider
-		# - assert pinned item - plus icon, on hover text and year
-		# - click on your favourites
-		# - assert search bar
-		# - assert year slider
-		# - assert for items(same as pinned)
-		# - assert in the sidebar help text
-		# - assert Collection items text
-		# - assert three items and on hover their text
-		# - assert that there are three items
-		# - click on the x icon of first photo
-		# - assert that there are two items
-		# - in your content tab, click on plus icon to add the third
-		# - assert they are three
-		# - click on next order button
-		# Step 3:
-		# - assert order the steps is filled up
-		# - assert describe text
-		# - aassert img s assert is instance
-		# - assert img's number
-		# - assert step title text
-		# - assert current text
-		# - assert step desc and text
-		# - click next
-		# - assert order the steps is filled up
-		# - assert describe text
-		# - aassert img s assert is instance
-		# - assert img's number
-		# - assert step title text
-		# - assert current text
-		# - assert step desc and text
-		# assert previuos and next if they are visible
-		# - click next
-		# - assert order the steps is filled up
-		# - assert describe text
-		# - aassert img s assert is instance
-		# - assert img's number
-		# - assert step title text
-		# - assert current text
-		# - assert step desc and text
-		# - assert that next is not visible assert prev
-		# - click publish
-		pass
+		site_cnt = self.e('#site-content')
+		
+		self.assertTitle('Historypin | Tour')
+		sleep(2)
+		self.assertEqual('Create a tour', self.e('.tour-head h1').text)
+		
+		progress_bar = self.e('.progress-bar')
+		first = progress_bar.e('.progress-bar .first.current a')
+		self.assertEqual('Describe the tour', first.text)
+		
+		self.assertIn('ss-icon'		, first.e('span').get_attribute('class'))
+		self.assertIn('ss-fullmoon'	, first.e('span').get_attribute('class'))
+		
+		second = progress_bar.e('li:nth-of-type(2) a')
+		self.assertEqual('Choose content', second.text)
+		
+		self.assertIn('ss-icon'		, second.e('span').get_attribute('class'))
+		self.assertIn('ss-fullmoon'	, second.e('span').get_attribute('class'))
+		
+		third = progress_bar.e('li:nth-of-type(3) a')
+		self.assertEqual('Order the steps', third.text)
+		
+		self.assertIn('ss-icon'		, third.e('span').get_attribute('class'))
+		self.assertIn('ss-fullmoon'	, third.e('span').get_attribute('class'))
+		
+		paragraph = self.es('.text-hint p')
+		self.assertEqual('You can describe your Tour here.', paragraph[0].text)
+		self.assertEqual('You can add content to your Tour that you have pinned or you have favourited on the map', paragraph[1].text)
+		
+		step_cnt = site_cnt.es('#site-content .step-content .inn')[0]
+		label = step_cnt.es('label')
+		self.assertEqual('Title:'		, label[0].text)
+		self.assertEqual('Description:'	, label[1].text)
+		
+		info = step_cnt.es('.input-info')
+		self.assertEqual('Give your tour a title. It will appear across all steps in the tour.'	, info[0].text)
+		self.assertEqual('Describe your tour. This will appear on the introduction page.'		, info[1].text)
+		
+		sleep(3)  # AJAX
+		title = self.e('#tour-title')
+		title.clear()
+		title.send_keys('Beautiful buildings in Bulgaria')
+		
+		desc = self.e('#tour-description')
+		desc.clear()
+		desc.send_keys('Tour about beautiful buildings in Bulgaria')
+		
+		self.assertEqual('Choose content', self.e('.next-button span').text)
+		self.e('.next-button').click()
+							
+		
+		step_cnt	= self.es('.step-content')[1]
+		browse		= step_cnt.e('.browse-photos')
+		tabs		= browse.e('.tabs-nav')
+		
+		sleep(2)
+		filter_bar = self.e('.filter-bar')
+		self.assertIsInstance(filter_bar.e('input'), WebElement)
+		
+		self.assertIsInstance(filter_bar.e('#date-slider-labels'), WebElement)
+		
+		sleep(3)
+		item = step_cnt.e('.choose-photos.yours li')
+		self.assertEqual(URL_BASE + '/services/thumb/phid/26162010/dim/152x108/crop/1/', item.e('img').get_attribute('src'))
+		
+		sleep(3)
+		self.hover(item.e('img'))
+		self.assertEqual('Bulgarian Army Theater'	, item.e('.photo-title').text)
+		self.assertEqual('1 May 2013'				, item.e('.date').text)
+		
+		self.assertIsInstance(self.e('.step-sidebar .image-container'), WebElement)
+		remove_item = self.es('.step-sidebar .remove-photo')
+		remove_item[0].click()
+		remove_item[1].click()
+		remove_item[2].click()
+		
+		icon = item.e('.add-photo span')
+		self.assertIn('ss-icon', icon.get_attribute('class'))
+		self.assertIn('ss-plus', icon.get_attribute('class'))
+		item.e('.add-photo').click()
+		
+		tabs.e('li:nth-of-type(2) a').click()
+		
+		favs = step_cnt.es('.choose-photos.favourites li')
+		url = URL_BASE + '/services/thumb/phid'
+		self.assertEqual(url + '/322003/dim/152x108/crop/1/'	, favs[0].e('img').get_attribute('src'))
+		self.assertEqual(url + '/22363018/dim/152x108/crop/1/'	, favs[1].e('img').get_attribute('src'))
+		self.assertEqual(url + '/2090034/dim/152x108/crop/1/'	, favs[2].e('img').get_attribute('src'))
+		self.assertEqual(url + '/1501007/dim/152x108/crop/1/'	, favs[3].e('img').get_attribute('src'))
+		
+		self.hover(favs[0].e('img'))
+		self.assertEqual('Morden College east elevation and chapel', favs[0].e('.photo-title').text)
+		self.hover(favs[1].e('img'))
+		self.assertEqual('National Theatre in Sofia, Bulgaria', favs[1].e('.photo-title').text)
+		self.hover(favs[2].e('img'))
+		self.assertEqual('Pinner High St from Church', favs[2].e('.photo-title').text)
+		self.hover(favs[3])
+		self.assertEqual('Ivan Vazov National Theatre', favs[3].e('.photo-title').text)
+		
+		favs[0].e('.add-photo').click()
+		favs[1].e('.add-photo').click()
+		favs[2].e('.add-photo').click()
+		self.assertIsInstance(self.e('.step-sidebar .image-container'), WebElement)
+		
+		button = self.es('.inn .next-button')[1]
+		button.click()
+								
+		step_cnt	= self.es('.step-content')[2]
+		self.assertEqual('Drag and drop the content to reorder them.', step_cnt.e('p').text)
+		
+		item_first = step_cnt.e('#sortable > li:nth-of-type(1)')
+		self.assertEqual(URL_BASE + '/services/thumb/phid/26162010/dim/152x108/crop/1/', item_first.e('a img').get_attribute('src'))
+		self.assertIsInstance(item_first.e('.photo-number')	, WebElement)
+		self.assertIsInstance(item_first.e('.actions')		, WebElement)
+		
+		item_second = step_cnt.e('#sortable > li:nth-of-type(2)')
+		self.assertEqual(URL_BASE + '/services/thumb/phid/322003/dim/152x108/crop/1/', item_second.e('a img').get_attribute('src'))
+		self.assertIsInstance(item_second.e('.photo-number')	, WebElement)
+		self.assertIsInstance(item_second.e('.actions')		, WebElement)
+		
+		item_third = step_cnt.e('#sortable > li:nth-of-type(3)')
+		self.assertEqual(URL_BASE + '/services/thumb/phid/2090034/dim/152x108/crop/1/', item_third.e('a img').get_attribute('src'))
+		self.assertIsInstance(item_third.e('.photo-number')	, WebElement)
+		self.assertIsInstance(item_third.e('.actions')		, WebElement)
+		
+		
+		step = self.e('.step-maker.inn')
+		self.assertEqual('Describe Step:', step.e('h4').text)
+		
+		image_cnt = step.e('.image-container')
+		self.assertEqual(URL_BASE + '/services/thumb/phid/26162010/dim/152x108/crop/1/', image_cnt.e('img').get_attribute('src'))
+		self.assertIsInstance(image_cnt.e('.step-number'), WebElement)
+		self.assertEqual('1', image_cnt.e('.step-number').text)
+		
+		step_title = step.e('li:nth-of-type(2)')
+		self.assertEqual('Step Title:'							, step_title.e('label').text)
+		self.assertEqual('Bulgarian Army Theater - 1 May 2013'	, step_title.e('input').get_attribute('value'))
+		
+		step_desc = step.e('li:nth-of-type(3)')
+		self.assertEqual('Step Description:'										, step_desc.e('label').text)
+		self.assertEqual('This is a photo of the famous Bulgarian Army Theater .'	, step_desc.e('textarea').get_attribute('value'))
+		
+		self.assertFalse(step.e('.show-prev.s3-prev').is_displayed())
+		
+		next = step.e('.show-next.s3-next')
+		self.assertTrue(step.e('.show-next.s3-next').is_displayed())
+		self.assertIn('ss-icon'	, next.e('span').get_attribute('class'))
+		self.assertIn('ss-right', next.e('span').get_attribute('class'))
+		next.click()
+			
+		step = self.e('.step-maker.inn')
+		self.assertEqual('Describe Step:', step.e('h4').text)
+		
+		image_cnt = step.e('.image-container')
+		self.assertEqual(URL_BASE + '/services/thumb/phid/322003/dim/152x108/crop/1/', image_cnt.e('img').get_attribute('src'))
+		self.assertIsInstance(image_cnt.e('.step-number'), WebElement)
+		self.assertEqual('2', image_cnt.e('.step-number').text)
+		
+		step_title = step.e('li:nth-of-type(2)')
+		self.assertEqual('Step Title:'							, step_title.e('label').text)
+		self.assertEqual('Morden College east elevation and chapel - 2010'	, step_title.e('input').get_attribute('value'))
+		
+		step_desc = step.e('li:nth-of-type(3)')
+		self.assertEqual('Step Description:'										, step_desc.e('label').text)
+		self.assertEqual(''	, step_desc.e('textarea').get_attribute('value'))
+		
+		prev = step.e('.show-prev.s3-prev')
+		self.assertTrue(prev.is_displayed())
+		prev.click()
+		next.click()
+		
+		next = step.e('.show-next.s3-next')
+		self.assertTrue(next.is_displayed())
+		self.assertIn('ss-icon'	, next.e('span').get_attribute('class'))
+		self.assertIn('ss-right', next.e('span').get_attribute('class'))
+		next.click()
+				
+		step = self.e('.step-maker.inn')
+		self.assertEqual('Describe Step:', step.e('h4').text)
+		
+		image_cnt = step.e('.image-container')
+		self.assertEqual(URL_BASE + '/services/thumb/phid/2090034/dim/152x108/crop/1/', image_cnt.e('img').get_attribute('src'))
+		self.assertIsInstance(image_cnt.e('.step-number'), WebElement)
+		self.assertEqual('3', image_cnt.e('.step-number').text)
+		
+		step_title = step.e('li:nth-of-type(2)')
+		self.assertEqual('Step Title:'							, step_title.e('label').text)
+		self.assertEqual('Pinner High St from Church - 1910 - 1920'	, step_title.e('input').get_attribute('value'))
+		
+		step_desc = step.e('li:nth-of-type(3)')
+		self.assertEqual('Step Description:'										, step_desc.e('label').text)
+		self.assertEqual(''	, step_desc.e('textarea').get_attribute('value'))
+		
+		prev = step.e('.show-prev.s3-prev')
+		self.assertTrue(prev.is_displayed())
+		
+		publish = step_cnt.e('.next-button.done:nth-of-type(2)')
+		self.assertEqual('Publish', publish.e('span').text)
+		publish.click()
+		sleep(2)
+		
+		self.go('/tours/add/id/16502051/#16502051')
+		sleep(3)
+		title = self.e('#tour-title')
+		self.assertEqual('Beautiful buildings in Bulgaria', title.get_attribute('value'))
+		desc = self.e('#tour-description')
+		self.assertEqual('Tour about beautiful buildings in Bulgaria', desc.get_attribute('value'))
+		
+		self.assertEqual('Choose content', self.e('.next-button span').text)
+		self.e('.next-button').click()
+		
+		sidebar = self.e('#tour-step3 .step-sidebar ul')
+		self.assertIsInstance(sidebar, WebElement)
+		sleep(3)
+		button = self.es('.inn .next-button')[1]
+		button.click()
+		
+		items = self.es('#sortable > li')
+		self.assertIsInstance(items[0], WebElement)
+		self.assertIsInstance(items[1], WebElement)
+		self.assertIsInstance(items[2], WebElement)
+		self.assertIsInstance(items[3], WebElement)
+		
+		publish = self.es('.next-button.done')[1]
+		self.assertEqual('Publish', publish.e('span').text)
+		publish.click()
