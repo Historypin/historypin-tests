@@ -59,10 +59,10 @@ class Channels(HPTestCase):
 		self.assertEqual('Search Results for "g.ananieva@avalith.bg":', self.e('.search > h2').text)
 		
 		channel = self.e('.channels-list li')
-		self.assertEqual(URL_BASE + '/channels/view/id/16857003/'				, channel.e('a.logo').get_attribute('href'))
-		self.assertEqual(URL_BASE + '/resources/avatars/100x100/avatar_1.png'	, channel.e('a.logo img').get_attribute('src'))
-		self.assertEqual('gabriela.ananieva'									, channel.e('a.name').text)
-		self.assertEqual(URL_BASE + '/channels/view/id/16857003/'				, channel.e('a.name').get_attribute('href'))
+		self.assertEqual(URL_BASE + '/channels/view/id/11675544/'				, channel.e('a.logo').get_attribute('href'))
+		self.assertEqual(URL_BASE + '/resources/avatars/100x100/avatar_3.png'	, channel.e('a.logo img').get_attribute('src'))
+		self.assertEqual('Gabriela Ananieva'									, channel.e('a.name').text)
+		self.assertEqual(URL_BASE + '/channels/view/id/11675544/'				, channel.e('a.name').get_attribute('href'))
 		
 		h2 = self.e('.search-channels .right a')
 		self.assertEqual('Return to Featured Channels'									, h2.text)

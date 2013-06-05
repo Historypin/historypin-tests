@@ -38,7 +38,7 @@ class Channel(HPTestCase):
 		
 		button = self.e('.channel-button.left')
 		self.assertEqual('Become a Fan'										, button.text)
-		self.assertEqual(URL_BASE + '/user/?from=/channels/view/10649049/'	, button.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/channels/view/10649049/#'	, button.get_attribute('href'))
 		
 		social_buttons = self.e('.addthis_toolbox span')
 		self.assertIn('ss-icon', social_buttons.get_attribute('class'))
@@ -104,8 +104,8 @@ class Channel(HPTestCase):
 		
 		
 		img_holder = self.e('#photo_list_content .list li .image-holder a[class="image"]')
-		self.assertEqual(URL_BASE + '/attach/uid10649049/map/#!/geo:42.693738,23.326101/zoom:20/dialog:22363018/tab:details/'	, img_holder.get_attribute('href'))
-		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/170x130/crop/1/'											, img_holder.e('img').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/attach/uid10649049/photos/index/#!/geo:42.693918,23.326077/zoom:20/dialog:25865106/tab:details/'	, img_holder.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/25865106/dim/170x130/crop/1/'											, img_holder.e('img').get_attribute('src'))
 		
 		info = self.e('#photo_list_content .info')
 		self.assertIsInstance(info.e('h5'), WebElement)
@@ -518,7 +518,7 @@ class Channel(HPTestCase):
 		self.assertEqual(URL_BASE + '/channels/view/11675544/#tab-subscribers'	, fans[0].get_attribute('href'))
 		self.assertEqual('0 - See list', fans[0].text)
 		self.assertEqual(URL_BASE + '/channels/view/11675544/#tab-subscriptions', fans[1].get_attribute('href'))
-		self.assertEqual('2 - See list', fans[1].text)
+		self.assertEqual('3 - See list', fans[1].text)
 	
 	@url('/channels/view/11675544/')
 	@logged_in
@@ -530,7 +530,7 @@ class Channel(HPTestCase):
 		self.assertEqual('Hide Tool Bar', tab_toolbar.e('.preview:nth-of-type(1)').text)
 		
 		tab_toolbar.click()
-		self.assertFalse(self.e('.tab_cnt .main').is_displayed())
+		self.assertTrue(self.e('.tab_cnt .main').is_displayed())
 		
 		active = tab_toolbar.e('.preview:nth-of-type(2)')
 		self.assertEqual('Show Tool Bar', active.text)
@@ -1152,7 +1152,7 @@ class Channel(HPTestCase):
 		help = tab_embed.e('.help')
 		
 		h3s_help = help.es('h3')
-		self.assertEqual("Get some inspiration"	, h3s_help[0].text)
+		self.assertEqual("Get Some Inspiration"	, h3s_help[0].text)
 		self.assertEqual("Get help"				, h3s_help[1].text)
 		
 		self.assertEqual('Check out these examples to see what other people have done on their site.', help.e('p:nth-of-type(1)').text)
@@ -1165,7 +1165,7 @@ class Channel(HPTestCase):
 			['http://www.arthurlloyd.co.uk/Theatreland/Theatreland.htm'					, 'Arthurlloydcouk'],
 		]
 		
-		sites_help = help.es('a[href*=id]')
+		sites_help = help.es('a')
 		
 		for n in range(len(examples)):
 			i = examples[n]
@@ -1238,3 +1238,8 @@ class Channel(HPTestCase):
 		self.assertTrue(tab_subsrcribers.is_displayed())
 		self.assertEqual("My fans:"				, tab_subsrcribers.e('h3').text)
 		self.assertEqual("You have no fans yet.", tab_subsrcribers.e('p').text)
+	
+	@url('/upload-item/pin/phid/26162010/edit/1/')
+	@logged_in
+	def test_edit_item(self):
+		pass

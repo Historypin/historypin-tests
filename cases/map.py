@@ -163,16 +163,17 @@ class Map(HPTestCase):
 	
 	@url('/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:details/')
 	def test_dialog_details(self):
-		
+		sleep(4)
 		dlg = self.e('#info-dialog')
 		sleep(3)  # ajax on success
 		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/2000x440/quality/80/', dlg.e('#details_cnt .image .main-img').get_attribute('src'))
 		
 		info = self.e('#details_cnt .side.right.scrollbarfix .info')
-		self.assertEqual('National Theatre in Sofia, Bulgaria'				, info.e('h2.photo-title').text)
+		self.assertEqual(''				, info.e('h2.photo-title').text)
 		self.assertEqual('ulitsa "Kuzman Shapkarev" 1, 1000 Sofia, Bulgaria', info.e('strong .photo-address').text)
-		self.assertEqual('2 August 2012'									, info.e('strong .photo-date').text)
+		self.assertEqual(''									, info.e('strong .photo-date').text)
 		
+		sleep(4)
 		details_link = dlg.e('.suggest-details-photo')
 		self.assertEqual(URL_BASE + '/contact-us/?suggest/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:details/'	, details_link.get_attribute('href'))
 		self.assertEqual('Suggest more accurate details'																	, details_link.text )
@@ -254,7 +255,7 @@ class Map(HPTestCase):
 		self.assertEqual('Posted by Gabss (Pinner) on 10 May 2013'					, stories_list.e('p:nth-of-type(2)').text)
 		self.assertEqual(URL_BASE + '/channels/view/10649049/'						, stories_list.e('p:nth-of-type(2) a').get_attribute('href'))
 		
-		self.assertEqual(URL_BASE + '/resources/avatars/50x50/avatar_1.png'	, tab.e('.write_story_wrap img ').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/resources/avatars/50x50/avatar_3.png'	, tab.e('.write_story_wrap img ').get_attribute('src'))
 		self.assertIsInstance(tab.e('textarea'), WebElement)
 		
 		tab.e('.write_story_wrap').click()

@@ -63,7 +63,7 @@ class Collections(HPTestCase):
 		
 		collection_view = [
 			['/map/#!/geo:42.693738,23.326101/zoom:15/dialog:22363018/tab:details/'			, '/22363018/'	, '2 August 2012, from Gabss', '/channels/view/10649049'],
-			['/map/#!/geo:51.362619,0.513102/zoom:15/dialog:1031013/tab:details/'			, '/1031013/'	, '3 July 1952, from Mirrorpix Archives', '/channels/view/571038'],
+			['/map/#!/geo:51.362619,0.513102/zoom:15/dialog:1031013/tab:details/'			, '/1031013/'	, '13 July 1952, from Mirrorpix Archives', '/channels/view/571038'],
 			['/map/#!/geo:52.087599,-0.25404/zoom:15/dialog:1076031/tab:details/'			, '/1076031/'	, '1 January 1914, from Biggleswade History Society', '/channels/view/1042029'],
 			['/map/#!/geo:-19.8891792,-43.8048137/zoom:15/dialog:2172029/tab:details/'		, '/2172029/'	, '1898, from by Dyno', '/channels/view/2137026'],
 			['/map/#!/geo:43.622221047,-79.3740749359/zoom:15/dialog:3255004/tab:details/'	, '/3255004/'	, '1908, from FQ', '/channels/view/3154007'],
@@ -73,7 +73,7 @@ class Collections(HPTestCase):
 		for n in range(len(collection_view)):
 			i = collection_view[n]
 			self.assertEqual(URL_BASE + i[0], item[n].e('a.link-image').get_attribute('href'))
-			self.assertEqual(URL_BASE + '/services/thumb/phid' + i[1] + '/dim/195x150/crop/1', item[n].e('img').get_attribute('src'))
+			self.assertEqual(URL_BASE + '/services/thumb/phid' + i[1] + 'dim/195x150/crop/1/', item[n].e('img').get_attribute('src'))
 			self.assertEqual(i[2]			, item[n].e('p').text)
 			self.assertEqual(URL_BASE + i[3], item[n].e('.username-wrapper a').get_attribute('href'))
 		# TODO LATER

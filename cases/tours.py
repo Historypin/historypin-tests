@@ -148,7 +148,7 @@ class Tours(HPTestCase):
 			check_step(tour_items[n])
 			next_button.click()
 		check_step(tour_items[-1])
-		self.assertEqual('Exit', self.e('.next-button.right span').text)
+		self.assertEqual('Next', self.e('.next-button.right span').text)
 		
 		for n in range(len(tour_items)):
 			self.hover(thumbs[n])
@@ -158,7 +158,7 @@ class Tours(HPTestCase):
 			check_step(tour_items[n])
 			
 		
-		self.assertEqual('Exit', self.e('.next-button.right span').text)
+		self.assertEqual('Next', self.e('.next-button.right span').text)
 		check_step(tour_items[-1])
 		for n in range(len(tour_items)-1)[::-1]:
 			prev_button.click()
