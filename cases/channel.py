@@ -1266,7 +1266,7 @@ class Channel(HPTestCase):
 		self.assertEqual('Tags'					, label[2].text)
 		
 		title.clear()
-		title.send_keys('Bulgarian Army Theater')  # check if the title is the same with get attribute value
+		title.send_keys('Bulgarian Army Theater')
 		self.assertEqual('Remaining characters: 28', paragraph[0].text)
 		
 		desc.clear()
@@ -1281,8 +1281,98 @@ class Channel(HPTestCase):
 		option.click()
 		option.e('option:nth-of-type(2)').click()
 		
+		license.e('#photo_info_copyright').click()
+		license.e('#photo_info_copyright').clear()
 		license.e('#photo_info_copyright').send_keys('Test')
+		sleep(3)
+		
+		license.e('#photo_info_link').click()
+		license.e('#photo_info_link').clear()
 		license.e('#photo_info_link').send_keys('http://novini.bg')
+		sleep(3)
+		
+		license.e('#photo_info_author').click()
+		license.e('#photo_info_author').clear()
 		license.e('#photo_info_author').send_keys('Unknown')
+		sleep(3)
+		
+		license.e('#photo_info_notes').click()
+		license.e('#photo_info_notes').clear()
 		license.e('#photo_info_notes').send_keys('Test Notes')
 		
+		date_select = edit_page.e('.section.date-select')
+		date_select.e('#day option:nth-of-type(3)').click()  # assert for all
+		date_select.e('#month option:nth-of-type(3)').click()  # assert for all
+		date_select.e('#year option:nth-of-type(2)').click()  # assert for all
+		
+		note = edit_page.e('.notice .inner')
+		self.assertIn('ss-icon'	, note.e('span').get_attribute('class'))
+		self.assertIn('ss-alert', note.e('span').get_attribute('class'))
+		self.assertEqual('Note: To make it appear on the map you need to add both the date and the place'							, note.e('h2').text)
+		self.assertEqual('Without these details, your stuff will only appear on your channel. You can always add this info later.'	, note.e('p').text)
+		
+		place = edit_page.e('#location_editor')
+		
+		checkbox = place.e('#has_streetview')
+		checkbox.click()
+		self.assertFalse(place.e('#pin-tab-sv').is_displayed())
+		checkbox.click()
+		self.assertTrue(checkbox.is_selected())
+		self.assertTrue(place.e('#pin-tab-sv').is_displayed())
+		
+		sleep(3)
+		location = place.e('#location')  # assert the address
+		# self.assertEqual('Find on map', location.e('span').text)
+		
+		cancel = edit_page.e('.cancel')
+		self.assertEqual('Cancel', cancel.e('span').text)
+		self.assertEqual(URL_BASE + '/upload/', cancel.get_attribute('href'))
+		
+		save = edit_page.e('#photo_pin')
+		self.assertEqual('Save and Continue', save.e('span').text)
+		self.assertEqual(URL_BASE + '/upload-item/pin/phid/26162010/edit/1/#', save.get_attribute('href'))
+		save.click()
+		
+		self.go('/upload-item/pin/phid/26162010/edit/1/')
+		
+		edit_page = self.e('#edit_photo_page')
+		
+		info		= edit_page.e('.inner.left')
+		label		= info.es('label')
+		title		= info.es('input')[0]
+		desc		= info.e('textarea')
+		tags		= info.es('input')[1]
+		paragraph	= info.es('p')
+		
+		self.assertEqual('Bulgarian Army Theater', title.get_attribute('value'))
+		self.assertEqual('This is a photo of the famous Bulgarian Army Theater .', desc.get_attribute('value'))
+		self.assertEqual('theater, theatre, bulgarian army', tags.get_attribute('value'))
+		
+		license			= edit_page.e('.section.license')
+		option			= license.e('#photo_info_license_type')
+		
+		self.assertEqual('N'				, option.e('option:nth-of-type(2)').get_attribute('value'))
+		self.assertEqual('Test'				, license.e('#photo_info_copyright').get_attribute('value'))
+		self.assertEqual('http://novini.bg'	, license.e('#photo_info_link').get_attribute('value'))
+		self.assertEqual('Unknown'			, license.e('#photo_info_author').get_attribute('value'))
+		self.assertEqual('Test Notes'		, license.e('#photo_info_notes').get_attribute('value'))
+		
+		date_select = edit_page.e('.section.date-select')
+		self.assertEqual('02'	, date_select.e('#day option:nth-of-type(3)').get_attribute('value'))
+		self.assertEqual('2'	, date_select.e('#month option:nth-of-type(3)').get_attribute('value'))
+		self.assertEqual('2013'	, date_select.e('#year option:nth-of-type(2)').get_attribute('value'))
+		
+		place = edit_page.e('#location_editor')
+		
+		checkbox = place.e('#has_streetview')
+		self.assertTrue(checkbox.is_selected())
+		self.assertTrue(place.e('#pin-tab-sv').is_displayed())
+		
+		location = place.e('#location')
+		self.assertEqual('ulitsa "Georgi S. Rakovski" 98, 1000 Sofia, Bulgaria', location.get_attribute('value'))
+	
+	@url('/upload/confirm/edit/1')
+	@logged_in
+	def test_confirm_page(self):
+		
+		pass
