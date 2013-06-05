@@ -6,7 +6,7 @@ class Projects(HPTestCase):
 	
 	@url('/projects/')
 	def test_index(self):
-		self.assertTitle('Historypin')  #HTML should be fixed to be Historypin | Projects
+		self.assertTitle('Historypin')  # HTML should be fixed to be Historypin | Projects
 		
 		paragraph = self.e('.home-top p')
 		self.assertEqual(u'Explore our Historypin Projects and add your own memories. If you’d like to work with us to create a new Historypin Project, get in touch.'

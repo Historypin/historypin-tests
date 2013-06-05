@@ -33,8 +33,8 @@ class Channel(HPTestCase):
 		
 		paragraph = self.e('.chan.options p')
 		texts = ['Channel views:', 'Fans:', 'Pins:', 'Tours:', 'Collections:']
-		for n in range(len(texts)):
-			self.assertIn(texts[n], paragraph.text)
+		
+		for n in range(len(texts)): self.assertIn(texts[n], paragraph.text)
 		
 		button = self.e('.channel-button.left')
 		self.assertEqual('Become a Fan'										, button.text)
@@ -1242,4 +1242,47 @@ class Channel(HPTestCase):
 	@url('/upload-item/pin/phid/26162010/edit/1/')
 	@logged_in
 	def test_edit_item(self):
-		pass
+		
+		self.assertTitle('Historypin | My Content | Edit')
+		
+		edit_page = self.e('#edit_photo_page')
+		heading = edit_page.es('h3')
+		self.assertEqual('Current item'				, heading[0].text)
+		self.assertEqual('Licence'					, heading[1].text)
+		self.assertEqual('Date required field'		, heading[2].text)
+		self.assertEqual('Place required field'		, heading[3].text)
+		
+		self.assertEqual(URL_BASE + '/services/thumb/phid/26162010/dim/260x1000/', edit_page.e('#photo-preview img').get_attribute('src'))
+		
+		info		= edit_page.e('.inner.left')
+		label		= info.es('label')
+		title		= info.es('input')[0]
+		tags		= info.es('input')[1]
+		desc		= info.e('textarea')
+		paragraph	= info.es('p')
+		
+		self.assertEqual('Title required field'	, label[0].text)
+		self.assertEqual('Description'			, label[1].text)
+		self.assertEqual('Tags'					, label[2].text)
+		
+		title.clear()
+		title.send_keys('Bulgarian Army Theater')  # check if the title is the same with get attribute value
+		self.assertEqual('Remaining characters: 28', paragraph[0].text)
+		
+		desc.clear()
+		desc.send_keys('This is a photo of the famous Bulgarian Army Theater .')
+		
+		tags.clear()
+		tags.send_keys('theater, theatre, bulgarian army')
+		self.assertEqual('Remaining characters: 468', paragraph[1].text)
+		
+		license = edit_page.e('.section.license')
+		option = license.e('#photo_info_license_type')
+		option.click()
+		option.e('option:nth-of-type(2)').click()
+		
+		license.e('#photo_info_copyright').send_keys('Test')
+		license.e('#photo_info_link').send_keys('http://novini.bg')
+		license.e('#photo_info_author').send_keys('Unknown')
+		license.e('#photo_info_notes').send_keys('Test Notes')
+		
