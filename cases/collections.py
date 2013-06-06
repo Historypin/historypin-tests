@@ -159,7 +159,7 @@ class Collections(HPTestCase):
 		
 		self.hover(item.e('img'))
 		self.assertEqual('Bulgarian Army Theater'	, item.e('.photo-title').text)
-		self.assertEqual('1 May 2013'				, item.e('.date').text)
+		self.assertEqual('2 February 2013'				, item.e('.date').text)
 		
 		self.assertIsInstance(self.e('.step-sidebar .image-container'), WebElement)
 		remove_item = self.es('.step-sidebar .remove-photo')

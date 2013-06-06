@@ -476,4 +476,8 @@ class Pages(HPTestCase):
 		a = self.e('.rte p:nth-child(5) a')
 		self.assertEqual('http://wearewhatwedo.org/'	, a.get_attribute('href'))
 		self.assertEqual('wearewhatwedo.org'			, a.text)
+	
+	@url('/bulkbridge/')
+	def test_bulkbridge_page(self):
+		pass
 
