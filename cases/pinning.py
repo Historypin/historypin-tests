@@ -37,6 +37,17 @@ class Pinning(HPTestCase):
 		self.assertEqual('Want to upload large amounts of content? Read about our Bulk Uploader', self.e('.bottom-p').text)
 		self.assertEqual(URL_BASE + '/bulkbridge/', self.e('.bottom-p a').get_attribute('href'))
 	
-	@url('/')
-	def test_index(self):
-		pass
+	@url('/upload-item/index/')
+	def test_upload_photo_page(self):
+		
+		cnt_upload = self.e('.upload-content')
+		self.assertEqual('Upload a photo', cnt_upload.e('h2').text)
+		self.assertIsInstance(self.e('.fileinput-button'), WebElement)
+		self.assertIsInstance(self.e('.delete.ui-button'), WebElement)
+		
+		cnt = self.e('.dropzone-container')
+		self.assertEqual('Drag your images here to add them. They will upload automatically.', cnt.e('h3').text)
+		self.assertEqual('Pssst. JPG and PNG files up to 5 megabytes only please.', cnt.e('h5').text)
+		
+		self.assertEqual('Are you an archive and want to upload large amounts of content? Try our Bulk Uploader for Firefox and Chrome.', self.e('.bottom-p').text)
+		self.assertEqual(URL_BASE + '/bulkbridge/', self.e('.bottom-p a').get_attribute('href'))
