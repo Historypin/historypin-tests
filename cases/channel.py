@@ -45,8 +45,7 @@ class Channel(HPTestCase):
 		
 		social_icons = ['ss-social-circle', 'ss-social-circle', 'ss-social-circle', 'ss-plus']
 		
-		for n in range(len(social_icons)-1):
-			self.assertIn(social_icons[n], social_buttons.get_attribute('class'))
+		for n in range(len(social_icons)-1): self.assertIn(social_icons[n], social_buttons.get_attribute('class'))
 	
 	@url('/attach/uid10649049/map/index/#!/geo:26.816514,24.138716/zoom:2/')
 	def test_map_tab(self):
@@ -1375,4 +1374,31 @@ class Channel(HPTestCase):
 	@logged_in
 	def test_confirm_page(self):
 		
-		pass
+		self.assertTitle('Historypin | My Content | Edit')
+		
+		self.assertEqual('All done', self.e('.done.current').text)
+		
+		self.assertIn('ss-icon'		, self.e('.done.current span').get_attribute('class'))
+		self.assertIn('ss-newmoon'	, self.e('.done.current span').get_attribute('class'))
+		
+		all_done = self.e('.all_done')
+		self.assertEqual('All done'						, all_done.es('h3')[0].text)
+		self.assertEqual('Your changes have been saved.', all_done.e('p').text)
+		
+		button_add = all_done.e('.channel-button:nth-of-type(1)')
+		self.assertEqual('Add more content'		, button_add.e('span').text)
+		self.assertEqual(URL_BASE + '/upload/'	, button_add.get_attribute('href'))
+		
+		button_view = all_done.e('.channel-button:nth-of-type(2)')
+		self.assertEqual('View my content'						, button_view.e('span').text)
+		self.assertEqual(URL_BASE + '/channels/view/11675544/'	, button_view.get_attribute('href'))
+		
+		self.assertEqual("Now why not share what you've just pinned?", all_done.es('h3')[1].text)
+		self.assertEqual("Share:", all_done.es('h3')[2].text)
+		
+		social_buttons = self.e('.addthis_toolbox span')
+		self.assertIn('ss-icon', social_buttons.get_attribute('class'))
+		
+		social_icons = ['ss-social-circle', 'ss-social-circle', 'ss-social-circle', 'ss-plus']
+		
+		for n in range(len(social_icons)-1): self.assertIn(social_icons[n], social_buttons.get_attribute('class'))
