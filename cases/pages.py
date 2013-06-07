@@ -199,8 +199,8 @@ class Pages(HPTestCase):
 			{
 				'heading': 'Contact',
 				'items': [
-					['title61','I\'m a journalist and want to write a fabulously complimentary article about you. What do I do?'],
-					['title62','I\'ve got another question, what should I do?'],
+					['title61', 'I\'m a journalist and want to write a fabulously complimentary article about you. What do I do?'],
+					['title62', 'I\'ve got another question, what should I do?'],
 				],
 			},
 		]
@@ -492,7 +492,7 @@ class Pages(HPTestCase):
 			['How to I get started?'		, 'title4'],
 		]
 		
-		list = site_cnt.e('.toc li a')
+		list = site_cnt.es('.toc li a')
 		
 		for n in range(len(titles)):
 			i = titles[n]
@@ -502,3 +502,44 @@ class Pages(HPTestCase):
 		button = site_cnt.e('.button.left')
 		self.assertEqual("I'm ready to do a Bulk Upload", button.e('span').text)
 		self.assertEqual(URL_BASE + '/upload-bulk/'		, button.get_attribute('href'))
+		
+		csv = self.e('ol li:nth-of-type(1)')
+		self.assertEqual('Download our CSV template and the Instructions on how to complete it.', csv.text)
+		
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/Historypin_Bulk_Upload_Template.csv'									, csv.es('a')[0].get_attribute('href'))
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/Historypin_Instructions_for_Completing_a_CSV_template_March_2012.xls'	, csv.es('a')[1].get_attribute('href'))
+		
+		sidebar		= self.e('.sidebar')
+		downloads	= sidebar.e('.inner:nth-of-type(1)')
+		anchors		= downloads.es('a')
+		
+		self.assertEqual('Downloadables', downloads.e('h3').text)
+		
+		tpl = [
+			['CSV template download'			, 'http://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/Historypin_Bulk_Upload_Template.csv'],
+			['Instructions to complete the CSV'	, 'http://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/Historypin_Instructions_for_Completing_a_CSV_template_March_2012.xls'],
+			['Advice and tips'					, 'http://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/Bulk_Upload_Advice_and_Tips.pdf'],
+		]
+		
+		for n in range(len(tpl)):
+			i = tpl[n]
+			self.assertEqual(i[0], anchors[n].text)
+			self.assertEqual(i[1], anchors[n].get_attribute('href'))
+		
+		help = sidebar.e('.inner:nth-of-type(2)')
+		self.assertEqual('Get help', help.e('h3').text)
+		
+		self.assertEqual('If you get stuck or have any questions, check out our How To page and FAQs and please feel free to contact us at historypin@wearewhatwedo.org', help.e('p').text)
+		
+		links = [
+			[URL_BASE + '/community/howtos/'		, 'How To page'],
+			[URL_BASE + '/faq/'						, 'FAQs'],
+			['mailto:historypin@wearewhatwedo.org'	, 'historypin@wearewhatwedo.org'],
+		]
+		
+		links_help = help.es('p a')
+		
+		for n in range(len(links)):
+			i = links[n]
+			self.assertEqual(i[0]	, links_help[n].get_attribute('href'))
+			self.assertEqual(i[1]	, links_help[n].text)
