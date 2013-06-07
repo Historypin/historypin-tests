@@ -479,5 +479,26 @@ class Pages(HPTestCase):
 	
 	@url('/bulkbridge/')
 	def test_bulkbridge_page(self):
-		pass
-
+		
+		self.assertTitle('Historypin | Bulk Uploader for Chrome and Firefox')
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual('Bulk Uploader for Chrome and Firefox', site_cnt.e('h1').text)
+		
+		titles = [
+			['What is the Bulk Uploader?'	, 'title1'],
+			['How does it work?'			, 'title2'],
+			['What requirements are there?'	, 'title3'],
+			['How to I get started?'		, 'title4'],
+		]
+		
+		list = site_cnt.e('.toc li a')
+		
+		for n in range(len(titles)):
+			i = titles[n]
+			self.assertEqual(i[0], list[n].text)
+			self.assertEqual(URL_BASE + '/bulkbridge/#' + i[1], list[n].get_attribute('href'))
+		
+		button = site_cnt.e('.button.left')
+		self.assertEqual("I'm ready to do a Bulk Upload", button.e('span').text)
+		self.assertEqual(URL_BASE + '/upload-bulk/'		, button.get_attribute('href'))
