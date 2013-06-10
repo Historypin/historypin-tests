@@ -43,21 +43,22 @@ class Tours(HPTestCase):
 		self.assertEqual(URL_BASE + '/tours/all/page/2/', next.get_attribute('href'))
 	
 	@url('/tours/view/id/' + KEY_TOUR)
+	@logged_in
 	def test_view(self):
-		self.assertTitle('Historypin | Tours - Test Tour for automated test')
+		self.assertTitle('Historypin | Tours - Beautiful buildings in Bulgaria')
 		
-		self.assertEqual(URL_BASE + '/services/thumb/phid/1031013/dim/451x302/crop/1/'	, self.e('img.index').get_attribute('src'))
-		self.assertEqual(URL_BASE + '/tours/view/id/22354015/title/Test%2520Tour%2520for%2520automated%2520test/#', self.e('a.main-image').get_attribute('href'))
-		self.assertEqual('Test Tour for automated test'									, self.e('.info h2').text)
+		# self.assertEqual(URL_BASE + '/services/thumb/phid/26162010/dim/451x302/crop/1/'	, self.e('img.index').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/tours/view/id/16502051/title/Beautiful%2520buildings%2520in%2520Bulgaria/#', self.e('a.main-image').get_attribute('href'))
+		self.assertEqual('Beautiful buildings in Bulgaria'									, self.e('.info h2').text)
 		
 		paragraphs = self.es('.info p')
-		self.assertEqual('Description for Test Tour for automated test'					, paragraphs[0].text)
-		self.assertEqual('Created by Gabss'												, paragraphs[1].text)
-		self.assertEqual(URL_BASE + '/channels/view/10649049'							, paragraphs[1].e('a').get_attribute('href'))
+		self.assertEqual('Tour about beautiful buildings in Bulgaria'					, paragraphs[0].text)
+		self.assertEqual('Created by Gabriela Ananieva'												, paragraphs[1].text)
+		self.assertEqual(URL_BASE + '/channels/view/11675544'							, paragraphs[1].e('a').get_attribute('href'))
 		
 		button = self.e('.tour-button')
-		self.assertEqual('Take the Tour'																	, button.text)
-		self.assertEqual(URL_BASE + '/tours/take/id/22354015/title/Test%20Tour%20for%20automated%20test/#1'	, button.get_attribute('href'))
+		self.assertEqual('Take the Tour'																		, button.text)
+		self.assertEqual(URL_BASE + '/tours/take/id/16502051/title/Beautiful%20buildings%20in%20Bulgaria/#1'	, button.get_attribute('href'))
 		
 		tabs = self.es('.list_tabs li')
 		self.assertIsInstance(tabs[0]	, WebElement)
@@ -68,11 +69,10 @@ class Tours(HPTestCase):
 		self.assertEqual('Tour View'	, tabs[2].e('span').text)
 		
 		photo_list_cnt = [
-				['1', '1031013', 'Airplane crash on Wallace Road - 13 July 1952'],
-				['2', '1076031', "'Hop Bine', Drove Road, Biggleswade 1914 - 1 January 1914"],
-				['3', '2172029', 'Sabarabussu,MG,Brasil - 1898'],
-				['4', '3255004', 'Diving Horse at Hanlan\'s Point - 1908'],
-				['5', '22363018', 'National Theatre in Sofia, Bulgaria - 2 August 2012'],
+				['1', '26162010', 'Bulgarian Army Theater - 1 May 2013'],
+				['2', '322003'	, "Morden College east elevation and chapel - 2010"],
+				['3', '2090034'	, 'Pinner High St from Church - 1910 - 1920'],
+				['4', '22363018', 'National Theatre in Sofia, Bulgaria - 2 August 2012'],
 		]
 		
 		photos_list	= self.e('#list_view .list')
@@ -81,7 +81,7 @@ class Tours(HPTestCase):
 		images		= photos_list.es('img')
 		paragraphs	= photos_list.es('p:nth-of-type(1)')
 		start		= photos_list.es('.start-here')
-		start_link	= URL_BASE + '/tours/take/id/22354015/title/Test%20Tour%20for%20automated%20test/#'
+		start_link	= URL_BASE + '/tours/take/id/16502051/title/Beautiful%20buildings%20in%20Bulgaria/#'
 		
 		for n in range(len(photo_list_cnt)):
 			i = photo_list_cnt[n]
@@ -92,11 +92,14 @@ class Tours(HPTestCase):
 			self.assertEqual('Start from here'	, start[n].text)
 			
 			self.assertEqual(URL_BASE + '/services/thumb/phid/' + i[1] + '/dim/195x150/crop/1/', images[n].get_attribute('src'))
-			
-		# TODO LATER
-		# - representing photo
+		
+		representing_photo = photos_list.e('li:nth-of-type(4) .info-actions a')
+		representing_photo.click()
+		sleep(3)
+		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/451x302/crop/1/'	, self.e('img.index').get_attribute('src'))
 	
 	@url('/tours/take/id/' + KEY_TOUR)
+	@logged_in
 	def test_take(self):
 		
 		self.assertTitle('Historypin | Tours')  # HTML - page title should be fixed to HistoryPin | Tour | Test Tour for automated test

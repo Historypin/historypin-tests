@@ -7,4 +7,4 @@ IS_ON_SDK = not URL_BASE.endswith('.appspot.com')
 PATH_CRHOME_DRIVER	= '/usr/lib64/chromium-browser/chromedriver'
 
 KEY_COLLECTION = '26157007'
-KEY_TOUR = '22354015'
+KEY_TOUR = '16502051'

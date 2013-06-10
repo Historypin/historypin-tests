@@ -55,18 +55,18 @@ class Collections(HPTestCase):
 		
 		paragraphs = self.es('.info p')
 		self.assertEqual('Collection for famous theaters in Bulgaria'	, paragraphs[0].text)
-		self.assertEqual('Created by Gabriela Ananieva'										, paragraphs[1].text)
-		self.assertEqual(URL_BASE + '/channels/view/11675544'					, paragraphs[1].e('a').get_attribute('href'))
+		self.assertEqual('Created by Gabriela Ananieva'					, paragraphs[1].text)
+		self.assertEqual(URL_BASE + '/channels/view/11675544'			, paragraphs[1].e('a').get_attribute('href'))
 		
 		button = self.e('.info ~ a')
 		self.assertEqual(URL_BASE + '/collections/slideshow/id/26157007/'	, button.get_attribute('href'))
 		self.assertEqual('Slide Show'										, button.text)
 		
 		collection_view = [
-			['/map/#!/geo:42.693738,23.326101/zoom:15/dialog:22363018/tab:details/'							, '/22363018/'	, '2 August 2012, from Gabss'				, '/channels/view/10649049'],
-			['/map/#!/geo:51.4691539556,0.0169086456299/zoom:15/dialog:322003/tab:details/'					, '/322003/'	, '2010, from elizabeth'					, '/channels/view/305005'],
-			['/map/#!/geo:51.594547,-0.379828/zoom:15/dialog:2090034/tab:details/'							, '/2090034/'	, '1910 - 1920, from ivormt'				, '/channels/view/2086073'],
-			['/map/#!/geo:42.694696,23.329027/zoom:15/dialog:26162010/tab:details/'							, '/26162010/'	, '2 February 2013, from Gabriela Ananieva', '/channels/view/11675544'],
+			['/map/#!/geo:42.693738,23.326101/zoom:15/dialog:22363018/tab:details/'			, '/22363018/'	, '2 August 2012, from Gabss'				, '/channels/view/10649049'],
+			['/map/#!/geo:51.4691539556,0.0169086456299/zoom:15/dialog:322003/tab:details/'	, '/322003/'	, '2010, from elizabeth'					, '/channels/view/305005'],
+			['/map/#!/geo:51.594547,-0.379828/zoom:15/dialog:2090034/tab:details/'			, '/2090034/'	, '1910 - 1920, from ivormt'				, '/channels/view/2086073'],
+			['/map/#!/geo:42.694696,23.329027/zoom:15/dialog:26162010/tab:details/'			, '/26162010/'	, '2 February 2013, from Gabriela Ananieva'	, '/channels/view/11675544'],
 		]
 		
 		item = self.es('#list_view .list li')
@@ -87,16 +87,84 @@ class Collections(HPTestCase):
 		sleep(4)
 		self.browser.refresh()
 		self.assertEqual(URL_BASE + '/services/thumb/phid/26162010/dim/451x302/crop/1/'	, self.e('img.index').get_attribute('src'))
-		# TODO LATER
-		# - representing photo
+		# - after some minuted to check if the photo is changed, because it's not changed after the refresh
 	
-	@url('/collections/view/id/' + KEY_COLLECTION)
+	@url('/collections/slideshow/id/' + KEY_COLLECTION)
+	@logged_in
 	def test_slideshow(self):
-		self.assertTitle('HistoryPin | Collection | Test Collection for automated test')
-		self.assertEqual('Test Collection for automated test\nExit Slideshow'										, self.e('#slide-content p').text)
-		self.assertEqual(URL_BASE + '/collections/view/id/22782015/title/Test%20Collection%20for%20automated%20test', self.e('#slide-content a').get_attribute('href'))
 		
-		# TODO LATER
+		self.assertTitle('HistoryPin | Collection | Theaters in Bulgaria')
+		self.assertEqual('Theaters in Bulgaria\nExit Slideshow'									, self.e('#slide-content p').text)
+		self.assertEqual(URL_BASE + '/collections/view/id/26157007/title/Theaters%20in%20Bulgaria', self.e('#slide-content a').get_attribute('href'))
+		
+		controls	= self.e('#controls')
+		counter		= controls.e('#slidecounter')
+		step_text	= controls.e('#slidecaption a')
+		next_thumb	= self.e_wait('#nextthumb img')
+		prev_thumb	= self.e_wait('#prevthumb img')
+		
+		navigation	= controls.e('#navigation')
+		prev_slide	= navigation.e('#prevslide')
+		pause		= navigation.e('#pauseplay')
+		next_slide	= navigation.e('#nextslide')
+		
+		sleep(3)
+		pause.click()
+		
+		self.assertEqual(URL_BASE + '/services/thumb/phid/26162010/', prev_thumb.get_attribute('src'))
+		self.assertIn('1/4', counter.text)
+		self.assertEqual('"National Theatre in Sofia, Bulgaria"- 2 August 2012 by Gabss', step_text.text)
+		self.assertEqual(URL_BASE + '/map/#!/geo:42.693738,23.326101/zoom:9/dialog:22363018/tab:details/', step_text.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/322003/', next_thumb.get_attribute('src'))
+		next_slide.click()
+		
+		sleep(3)
+		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/', prev_thumb.get_attribute('src'))
+		self.assertIn('2/4', counter.text)
+		self.assertEqual('"Morden College east elevation and chapel"- 2010 by elizabeth', step_text.text)
+		self.assertEqual(URL_BASE + '/map/#!/geo:51.4691539556,0.0169086456299/zoom:9/dialog:322003/tab:details/', step_text.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/2090034/', next_thumb.get_attribute('src'))
+		next_slide.click()
+		
+		sleep(3)
+		self.assertEqual(URL_BASE + '/services/thumb/phid/322003/', prev_thumb.get_attribute('src'))
+		self.assertIn('3/4', counter.text)
+		self.assertEqual('"Pinner High St from Church"- 1910 - 1920 by ivormt', step_text.text)
+		self.assertEqual(URL_BASE + '/map/#!/geo:51.594547,-0.379828/zoom:9/dialog:2090034/tab:details/', step_text.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/26162010/', next_thumb.get_attribute('src'))
+		next_slide.click()
+		
+		sleep(3)
+		self.assertEqual(URL_BASE + '/services/thumb/phid/2090034/', prev_thumb.get_attribute('src'))
+		self.assertIn('4/4', counter.text)
+		self.assertEqual('"Bulgarian Army Theater"- 2 February 2013 by Gabriela Ananieva', step_text.text)
+		self.assertEqual(URL_BASE + '/map/#!/geo:42.694696,23.329027/zoom:9/dialog:26162010/tab:details/', step_text.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/', next_thumb.get_attribute('src'))
+		prev_slide.click()
+		
+		sleep(3)
+		self.assertEqual(URL_BASE + '/services/thumb/phid/322003/', prev_thumb.get_attribute('src'))
+		self.assertIn('3/4', counter.text)
+		self.assertEqual('"Pinner High St from Church"- 1910 - 1920 by ivormt', step_text.text)
+		self.assertEqual(URL_BASE + '/map/#!/geo:51.594547,-0.379828/zoom:9/dialog:2090034/tab:details/', step_text.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/26162010/', next_thumb.get_attribute('src'))
+		prev_slide.click()
+		
+		sleep(3)
+		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/', prev_thumb.get_attribute('src'))
+		self.assertIn('2/4', counter.text)
+		self.assertEqual('"Morden College east elevation and chapel"- 2010 by elizabeth', step_text.text)
+		self.assertEqual(URL_BASE + '/map/#!/geo:51.4691539556,0.0169086456299/zoom:9/dialog:322003/tab:details/', step_text.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/2090034/', next_thumb.get_attribute('src'))
+		sleep(3)
+		prev_slide.click()
+		self.assertEqual(URL_BASE + '/services/thumb/phid/26162010/', prev_thumb.get_attribute('src'))
+		self.assertIn('1/4', counter.text)
+		self.assertEqual('"National Theatre in Sofia, Bulgaria"- 2 August 2012 by Gabss', step_text.text)
+		self.assertEqual(URL_BASE + '/map/#!/geo:42.693738,23.326101/zoom:9/dialog:22363018/tab:details/', step_text.get_attribute('href'))
+		self.assertEqual(URL_BASE + 'http://www.historypin.com/services/thumb/phid/322003/', next_thumb.get_attribute('src'))
+		
+		self.e('#slide-content a').click()
 	
 	@url('/collections/add/id/26157007/#26157007')
 	@logged_in
