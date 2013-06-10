@@ -103,24 +103,23 @@ class Tours(HPTestCase):
 	def test_take(self):
 		
 		self.assertTitle('Historypin | Tours')  # HTML - page title should be fixed to HistoryPin | Tour | Test Tour for automated test
-		self.assertEqual('Test Tour for automated test', self.e('.title h3').text)
+		self.assertEqual('Beautiful buildings in Bulgaria', self.e('.title h3').text)
 		
 		paragraph = self.e('.title p')
-		self.assertEqual('by Gabss'															, paragraph.text)
-		self.assertEqual('http://v4-22-00.historypin-hrd.appspot.com/channels/view/10649049', paragraph.e('a').get_attribute('href'))  # HTML - fix link to be relative
+		self.assertEqual('by Gabriela Ananieva'															, paragraph.text)
+		self.assertEqual('http://v4-22-00.historypin-hrd.appspot.com/channels/view/11675544', paragraph.e('a').get_attribute('href'))
 		
 		link_exit = self.e('#exit-tour')
-		self.assertEqual(URL_BASE + '/tours/view/id/22354015/title/Test%20Tour%20for%20automated%20test', link_exit.get_attribute('href'))
-		self.assertEqual('Exit tour'																	, link_exit.text)
-		self.assertIn('ss-door'																			, link_exit.e('span').get_attribute('class'))
-		self.assertIn('right'																			, link_exit.e('span').get_attribute('class'))
+		self.assertEqual(URL_BASE + '/tours/view/id/16502051/title/Beautiful%20buildings%20in%20Bulgaria'	, link_exit.get_attribute('href'))
+		self.assertEqual('Exit tour'																		, link_exit.text)
+		self.assertIn('ss-door'																				, link_exit.e('span').get_attribute('class'))
+		self.assertIn('right'																				, link_exit.e('span').get_attribute('class'))
 		
 		tour_items = [
-			["Airplane crash on Wallace Road - 13 July 1952"				, '13 July 1952'	, '/map/#!/geo:51.362619,0.513102/zoom:20/dialog:1031013/tab:details/'			, '1031013', "Air Accidents: Plane crash in Wallace Road, Rochester, Kent on Sunday, when an Auster Aircraft narrowly missed the rooftops of houses, struck a garden fence and crashed in a small clearing by the side of a church."],
-			["'Hop Bine', Drove Road, Biggleswade 1914 - 1 January 1914"	, '1 January 1914'	, '/map/#!/geo:52.087599,-0.25404/zoom:20/dialog:1076031/tab:details/'			, '1076031', "The 'Hop Bine' was built in 1870 ready for later development in the eastern side of Biggleswade. Its description in 1898 was -"],
-			["Sabarabussu,MG,Brasil - 1898"									, '1898'			, '/map/#!/geo:-19.8891792,-43.8048137/zoom:20/dialog:2172029/tab:details/'		, '2172029', "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."],
-			["Diving Horse at Hanlan's Point - 1908"						, '1908'			, '/map/#!/geo:43.622221047,-79.3740749359/zoom:20/dialog:3255004/tab:details/'	, '3255004', "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."],
-			["National Theatre in Sofia, Bulgaria - 2 August 2012"			, '2 August 2012'	, '/map/#!/geo:42.693738,23.326101/zoom:20/dialog:22363018/tab:details/'		, '22363018', "This is a photo of National Theatre in Sofia, Bulgaria"],
+			["Bulgarian Army Theater - 1 May 2013"					, '2 February 2013'		, '/map/#!/geo:42.694696,23.329027/zoom:20/dialog:26162010/tab:details/'		, '26162010', "This is a photo of the famous Bulgarian Army Theater ."],
+			["Morden College east elevation and chapel - 2010"		, '2010'				, '/map/#!/geo:51.4691539556,0.0169086456299/zoom:20/dialog:322003/tab:details/', '322003'	, ""],
+			["Pinner High St from Church - 1910 - 1920"				, '1910 - 1920'			, '/map/#!/geo:51.594547,-0.379828/zoom:20/dialog:2090034/tab:details/'			, '2090034'	, ""],
+			["National Theatre in Sofia, Bulgaria - 2 August 2012"	, '2 August 2012'		, '/map/#!/geo:42.693738,23.326101/zoom:20/dialog:22363018/tab:details/'		, '22363018', "This is a photo of National Theatre in Sofia, Bulgaria"],
 		]
 		
 		next_button		= self.e('.next-button.right')
