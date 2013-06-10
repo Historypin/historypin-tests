@@ -46,11 +46,11 @@ class Collections(HPTestCase):
 		self.assertEqual('Next'									, next.text)
 		self.assertEqual(URL_BASE + '/collections/all/page/2/'	, next.get_attribute('href'))
 	
-	@url('/collections/view/id/26157007/title/Theaters%20in%20Bulgaria')
+	@url('/collections/view/id/' + KEY_COLLECTION)
 	def test_view(self):
 		self.assertTitle('Historypin | Collection - Theaters in Bulgaria')
 		
-		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/451x302/crop/1/'	, self.e('img.index').get_attribute('src'))
+		# self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/451x302/crop/1/'	, self.e('img.index').get_attribute('src'))
 		self.assertEqual('Theaters in Bulgaria'							, self.e('.info h2').text)
 		
 		paragraphs = self.es('.info p')
@@ -66,7 +66,7 @@ class Collections(HPTestCase):
 			['/map/#!/geo:42.693738,23.326101/zoom:15/dialog:22363018/tab:details/'							, '/22363018/'	, '2 August 2012, from Gabss'				, '/channels/view/10649049'],
 			['/map/#!/geo:51.4691539556,0.0169086456299/zoom:15/dialog:322003/tab:details/'					, '/322003/'	, '2010, from elizabeth'					, '/channels/view/305005'],
 			['/map/#!/geo:51.594547,-0.379828/zoom:15/dialog:2090034/tab:details/'							, '/2090034/'	, '1910 - 1920, from ivormt'				, '/channels/view/2086073'],
-			['/map/#!/geo:42.694696,23.329027/zoom:15/dialog:26162010/tab:details/', '/26162010/'	, '2 February 2013, from Gabriela Ananieva', '/channels/view/11675544'],
+			['/map/#!/geo:42.694696,23.329027/zoom:15/dialog:26162010/tab:details/'							, '/26162010/'	, '2 February 2013, from Gabriela Ananieva', '/channels/view/11675544'],
 		]
 		
 		item = self.es('#list_view .list li')
@@ -76,14 +76,26 @@ class Collections(HPTestCase):
 			self.assertEqual(URL_BASE + '/services/thumb/phid' + i[1] + 'dim/195x150/crop/1/', item[n].e('img').get_attribute('src'))
 			self.assertEqual(i[2]			, item[n].e('p').text)
 			self.assertEqual(URL_BASE + i[3], item[n].e('.username-wrapper a').get_attribute('href'))
+		
+		actions			= self.es('.info-actions')[3]
+		smile_icon		= actions.e('a:nth-of-type(2)')
+		
+		self.assertIn('ss-icon'	, actions.e('span').get_attribute('class'))
+		self.assertIn('ss-smile', smile_icon.e('span').get_attribute('class'))
+		
+		smile_icon.click()
+		sleep(4)
+		self.browser.refresh()
+		self.assertEqual(URL_BASE + '/services/thumb/phid/26162010/dim/451x302/crop/1/'	, self.e('img.index').get_attribute('src'))
 		# TODO LATER
 		# - representing photo
 	
-	@url('/collections/view/id/26157007/title/Theaters%20in%20Bulgaria')
+	@url('/collections/view/id/' + KEY_COLLECTION)
 	def test_slideshow(self):
 		self.assertTitle('HistoryPin | Collection | Test Collection for automated test')
 		self.assertEqual('Test Collection for automated test\nExit Slideshow'										, self.e('#slide-content p').text)
 		self.assertEqual(URL_BASE + '/collections/view/id/22782015/title/Test%20Collection%20for%20automated%20test', self.e('#slide-content a').get_attribute('href'))
+		
 		# TODO LATER
 	
 	@url('/collections/add/id/26157007/#26157007')
