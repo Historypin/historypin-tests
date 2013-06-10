@@ -38,6 +38,7 @@ class Collections(HPTestCase):
 		self.__test_collection_listing()
 	
 	@url('/collections/all')
+	@logged_in
 	def test_all(self):
 		self.__test_collection_listing()
 		
@@ -45,28 +46,27 @@ class Collections(HPTestCase):
 		self.assertEqual('Next'									, next.text)
 		self.assertEqual(URL_BASE + '/collections/all/page/2/'	, next.get_attribute('href'))
 	
-	@url('/collections/view/id/' + KEY_COLLECTION)
+	@url('/collections/view/id/26157007/title/Theaters%20in%20Bulgaria')
 	def test_view(self):
-		self.assertTitle('Historypin | Collection - Test Collection for automated test')
+		self.assertTitle('Historypin | Collection - Theaters in Bulgaria')
 		
 		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/451x302/crop/1/'	, self.e('img.index').get_attribute('src'))
-		self.assertEqual('Test Collection for automated test'							, self.e('.info h2').text)
+		self.assertEqual('Theaters in Bulgaria'							, self.e('.info h2').text)
 		
 		paragraphs = self.es('.info p')
-		self.assertEqual('Description for Test Collection for automated test'	, paragraphs[0].text)
-		self.assertEqual('Created by Gabss'										, paragraphs[1].text)
-		self.assertEqual(URL_BASE + '/channels/view/10649049'					, paragraphs[1].e('a').get_attribute('href'))
+		self.assertEqual('Collection for famous theaters in Bulgaria'	, paragraphs[0].text)
+		self.assertEqual('Created by Gabriela Ananieva'										, paragraphs[1].text)
+		self.assertEqual(URL_BASE + '/channels/view/11675544'					, paragraphs[1].e('a').get_attribute('href'))
 		
 		button = self.e('.info ~ a')
-		self.assertEqual(URL_BASE + '/collections/slideshow/id/22782015/'	, button.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/collections/slideshow/id/26157007/'	, button.get_attribute('href'))
 		self.assertEqual('Slide Show'										, button.text)
 		
 		collection_view = [
-			['/map/#!/geo:42.693738,23.326101/zoom:15/dialog:22363018/tab:details/'			, '/22363018/'	, '2 August 2012, from Gabss', '/channels/view/10649049'],
-			['/map/#!/geo:51.362619,0.513102/zoom:15/dialog:1031013/tab:details/'			, '/1031013/'	, '13 July 1952, from Mirrorpix Archives', '/channels/view/571038'],
-			['/map/#!/geo:52.087599,-0.25404/zoom:15/dialog:1076031/tab:details/'			, '/1076031/'	, '1 January 1914, from Biggleswade History Society', '/channels/view/1042029'],
-			['/map/#!/geo:-19.8891792,-43.8048137/zoom:15/dialog:2172029/tab:details/'		, '/2172029/'	, '1898, from by Dyno', '/channels/view/2137026'],
-			['/map/#!/geo:43.622221047,-79.3740749359/zoom:15/dialog:3255004/tab:details/'	, '/3255004/'	, '1908, from FQ', '/channels/view/3154007'],
+			['/map/#!/geo:42.693738,23.326101/zoom:15/dialog:22363018/tab:details/'							, '/22363018/'	, '2 August 2012, from Gabss'				, '/channels/view/10649049'],
+			['/map/#!/geo:51.4691539556,0.0169086456299/zoom:15/dialog:322003/tab:details/'					, '/322003/'	, '2010, from elizabeth'					, '/channels/view/305005'],
+			['/map/#!/geo:51.594547,-0.379828/zoom:15/dialog:2090034/tab:details/'							, '/2090034/'	, '1910 - 1920, from ivormt'				, '/channels/view/2086073'],
+			['/map/#!/geo:42.694696,23.329027/zoom:15/dialog:26162010/tab:details/', '/26162010/'	, '2 February 2013, from Gabriela Ananieva', '/channels/view/11675544'],
 		]
 		
 		item = self.es('#list_view .list li')
@@ -79,7 +79,7 @@ class Collections(HPTestCase):
 		# TODO LATER
 		# - representing photo
 	
-	@url('/collections/slideshow/id/' + KEY_COLLECTION)
+	@url('/collections/view/id/26157007/title/Theaters%20in%20Bulgaria')
 	def test_slideshow(self):
 		self.assertTitle('HistoryPin | Collection | Test Collection for automated test')
 		self.assertEqual('Test Collection for automated test\nExit Slideshow'										, self.e('#slide-content p').text)
