@@ -396,8 +396,10 @@ class Map(HPTestCase):
 		icon_arrow_left = dlg.e('.prev-photo')
 		self.assertIn('ss-icon'			, icon_arrow_left.e('span').get_attribute('class'))
 		self.assertIn('ss-navigateleft'	, icon_arrow_left.e('span').get_attribute('class'))
+		
+		self.assertTrue(icon_arrow_left.is_displayed(), '')
+		# sleep(4)
 		# icon_arrow_left.click()
-		# self.assertFalse(icon_arrow_left.is_displayed(), 'None')
 		# sleep(2)
 		# TODO LATER
 		# zoom on clicking big cluster
