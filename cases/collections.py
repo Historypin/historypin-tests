@@ -63,19 +63,19 @@ class Collections(HPTestCase):
 		self.assertEqual('Slide Show'										, button.text)
 		
 		collection_view = [
-			['/map/#!/geo:42.693738,23.326101/zoom:15/dialog:22363018/tab:details/'			, '/22363018/'	, '2 August 2012, from Gabss'				, '/channels/view/10649049'],
-			['/map/#!/geo:51.4691539556,0.0169086456299/zoom:15/dialog:322003/tab:details/'	, '/322003/'	, '2010, from elizabeth'					, '/channels/view/305005'],
-			['/map/#!/geo:51.594547,-0.379828/zoom:15/dialog:2090034/tab:details/'			, '/2090034/'	, '1910 - 1920, from ivormt'				, '/channels/view/2086073'],
-			['/map/#!/geo:42.694696,23.329027/zoom:15/dialog:26162010/tab:details/'			, '/26162010/'	, '2 February 2013, from Gabriela Ananieva'	, '/channels/view/11675544'],
+			['geo:42.693738,23.326101/zoom:15/dialog:22363018'			, '/22363018/'	, '2 August 2012, from Gabss'				, '/10649049'],
+			['geo:51.4691539556,0.0169086456299/zoom:15/dialog:322003'	, '/322003/'	, '2010, from elizabeth'					, '/305005'],
+			['geo:51.594547,-0.379828/zoom:15/dialog:2090034'			, '/2090034/'	, '1910 - 1920, from ivormt'				, '/2086073'],
+			['geo:42.694696,23.329027/zoom:15/dialog:26162010'			, '/26162010/'	, '2 February 2013, from Gabriela Ananieva'	, '/11675544'],
 		]
 		
 		item = self.es('#list_view .list li')
 		for n in range(len(collection_view)):
 			i = collection_view[n]
-			self.assertEqual(URL_BASE + i[0], item[n].e('a.link-image').get_attribute('href'))
+			self.assertEqual(URL_BASE + '/map/#!/' + i[0] + '/tab:details/', item[n].e('a.link-image').get_attribute('href'))
 			self.assertEqual(URL_BASE + '/services/thumb/phid' + i[1] + 'dim/195x150/crop/1/', item[n].e('img').get_attribute('src'))
 			self.assertEqual(i[2]			, item[n].e('p').text)
-			self.assertEqual(URL_BASE + i[3], item[n].e('.username-wrapper a').get_attribute('href'))
+			self.assertEqual(URL_BASE + i[3] + '/channels/view', item[n].e('.username-wrapper a').get_attribute('href'))
 		
 		actions			= self.es('.info-actions')[3]
 		smile_icon		= actions.e('a:nth-of-type(2)')

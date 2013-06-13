@@ -16,9 +16,9 @@ class Pages(HPTestCase):
 		self.assertEqual('What can you do on the Historypin app?', self.e('h2').text)
 		
 		items = [
-			['Android', '/resources/images/content/app/app_android.png', 'Google Play Store', 'https://market.android.com/details?id=com.historypin.Historypin&feature=search_result'],
-			['iOS', '/resources/images/content/app/app_iphone.png', 'iOS App Store', 'http://itunes.apple.com/app/historypin/id455228207?mt=8'],
-			['Windows Phone 7', '/resources/images/content/app/app_wp7.png', 'Windows Phone Marketplace', 'http://www.windowsphone.com/en-US/apps/05638072-742e-460c-ab97-18d2b47ef06b'],
+			['Android'			, '/resources/images/content/app/app_android.png'	, 'Google Play Store'			, 'https://market.android.com/details?id=com.historypin.Historypin&feature=search_result'],
+			['iOS'				, '/resources/images/content/app/app_iphone.png'	 'iOS App Store'				, 'http://itunes.apple.com/app/historypin/id455228207?mt=8'],
+			['Windows Phone 7'	, '/resources/images/content/app/app_wp7.png'		, 'Windows Phone Marketplace'	, 'http://www.windowsphone.com/en-US/apps/05638072-742e-460c-ab97-18d2b47ef06b'],
 		]
 		
 		cnt			= self.e('.appstores')

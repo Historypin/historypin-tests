@@ -26,6 +26,7 @@ class Projects(HPTestCase):
 			['23580013-japan-project'	, u"Historypin 日本上陸！"		, u"日本での展開について詳しく知る"																				, '23580013/type/project_image'],
 		]
 		
+		
 		links			= self.es('.col .inn h2 > a')
 		headings		= self.es('.col .inn h2')
 		paragraphs		= self.es('.col .inn p')
