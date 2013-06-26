@@ -6,7 +6,7 @@ class Homepage(HPTestCase):
 	@url('/')
 	def test_cookie_message(self):
 		self.assertEqual(
-			'We want you to enjoy your visit to our website. That\'s why we use cookies to enhance your experience.\nBy staying on our website you agree to our use of cookies. Find out more about the cookies we use.', 
+			'We want you to enjoy your visit to our website. That\'s why we use cookies to enhance your experience.\nBy staying on our website you agree to our use of cookies. Find out more about the cookies we use.',
 			self.e('.cookies-popup p').text,
 		)
 		
