@@ -128,7 +128,7 @@ class HPTestCase(TestCase):
 	def login(cls):
 		cls.go('/user/')
 		
-		login = cls.e('.col.w2:nth-of-type(1) .next-button')
+		login = cls.e('#site-content .login .buttons li:nth-of-type(1) a')
 		login.click()
 		
 		if IS_ON_SDK:
