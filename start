@@ -1,0 +1,8 @@
+#!/usr/bin/python
+
+import sys
+
+from base import run
+
+
+run(*sys.argv[1:])
