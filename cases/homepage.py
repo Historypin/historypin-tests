@@ -5,7 +5,10 @@ from base import *
 class Homepage(HPTestCase):
 	@url('/')
 	def test_cookie_message(self):
-		self.assertEqual('We want you to enjoy your visit to our website. That\'s why we use cookies to enhance your experience.\nBy staying on our website you agree to our use of cookies. Find out more about the cookies we use.', self.e('.cookies-popup p').text)
+		self.assertEqual(
+			'We want you to enjoy your visit to our website. That\'s why we use cookies to enhance your experience.\nBy staying on our website you agree to our use of cookies. Find out more about the cookies we use.',
+			self.e('.cookies-popup p').text,
+		)
 		
 		self.assertEqual(URL_BASE + '/pages/cookies/',				self.e('.cookies-popup p a').get_attribute('href'))
 		a = self.e('.cookies-popup a.right')
