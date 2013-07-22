@@ -11,8 +11,7 @@ class Tours(HPTestCase):
 		self.assertEqual(URL_BASE + '/tours/'									, main_cnt.e('a.main-image').get_attribute('href'))
 		self.assertEqual(URL_BASE + '/resources/images/tour-homepage-index.png'	, main_cnt.e('img').get_attribute('src'))
 		self.assertEqual('What are Tours?'										, main_cnt.e('h1').text)
-		self.assertEqual('Tours lead you step-by-step through a series of pieces of content, telling a story, exploring a place or walking through time. Take one of the Tours below or put your own together, using any content on Historypin.'
-						, main_cnt.e('p').text)
+		self.assertEqual('Tours lead you step-by-step through a series of pieces of content, telling a story, exploring a place or walking through time. Take one of the Tours below or put your own together, using any content on Historypin.', main_cnt.e('p').text)
 		button = main_cnt.e('a.next-button')
 		self.assertEqual(URL_BASE + '/tours/add'								, button.get_attribute('href'))
 		self.assertEqual('Make your own tour'									, button.text)
@@ -131,7 +130,7 @@ class Tours(HPTestCase):
 		tooltip			= self.e('#tips')
 		
 		link_images		= URL_BASE + '/services/thumb/phid/'
-		link_marker_img	= URL_BASE + '/services/thumb/phid/'
+		# link_marker_img	= URL_BASE + '/services/thumb/phid/'
 		
 		def check_step(data):
 			image			= self.e_wait('.streetview-img')

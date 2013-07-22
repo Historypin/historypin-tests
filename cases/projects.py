@@ -9,8 +9,7 @@ class Projects(HPTestCase):
 		self.assertTitle('Historypin')  # HTML should be fixed to be Historypin | Projects
 		
 		paragraph = self.e('.home-top p')
-		self.assertEqual(u'Explore our Historypin Projects and add your own memories. If you’d like to work with us to create a new Historypin Project, get in touch.'
-			, paragraph.text)
+		self.assertEqual(u'Explore our Historypin Projects and add your own memories. If you’d like to work with us to create a new Historypin Project, get in touch.', paragraph.text)
 		self.assertEqual(URL_BASE + '/contact', paragraph.e('a').get_attribute('href'))
 		
 		projects = [

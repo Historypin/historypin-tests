@@ -17,19 +17,21 @@ class Pages(HPTestCase):
 		
 		items = [
 			['Android'			, '/resources/images/content/app/app_android.png'	, 'Google Play Store'			, 'https://market.android.com/details?id=com.historypin.Historypin&feature=search_result'],
-			['iOS'				, '/resources/images/content/app/app_iphone.png'	 'iOS App Store'				, 'http://itunes.apple.com/app/historypin/id455228207?mt=8'],
+			['iOS'				, '/resources/images/content/app/app_iphone.png'	, 'iOS App Store'				, 'http://itunes.apple.com/app/historypin/id455228207?mt=8'],
 			['Windows Phone 7'	, '/resources/images/content/app/app_wp7.png'		, 'Windows Phone Marketplace'	, 'http://www.windowsphone.com/en-US/apps/05638072-742e-460c-ab97-18d2b47ef06b'],
 		]
 		
 		cnt			= self.e('.appstores')
 		headings	= cnt.es('.col h1')
 		images		= cnt.es('.col img')
+		texts		= cnt.es('.col a span')
 		links		= cnt.es('.col a')
+		
 		for n in range(len(items)):
 			i = items[n]
 			self.assertEqual(i[0]				, headings[n].text)
 			self.assertEqual(URL_BASE + i[1]	, images[n].get_attribute('src'))
-			self.assertEqual(i[2]				, links[n].text)
+			self.assertEqual(i[2]				, texts[n].text)
 			self.assertEqual(i[3]				, links[n].get_attribute('href'))
 	
 	@url('/contact/')
@@ -446,7 +448,7 @@ class Pages(HPTestCase):
 			['090', '9. Password, Profile and Security'],
 			['100', '10. Your promises to us'],
 			['110', '11. Termination and Cancellation'],
-			['120', '12. Use of Content'],
+			['120', '12. Contributed Content'],
 			['130', '13. Limitation on our Liability'],
 			['140', '14. Complaints and Feedback'],
 			['150', '15. Security and Privacy'],

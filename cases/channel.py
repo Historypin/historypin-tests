@@ -31,7 +31,7 @@ class Channel(HPTestCase):
 		self.assertEqual('Channel Details'	, h3[0].text)
 		self.assertEqual('Share:'			, h3[1].text)
 		
-		paragraph = self.e('.chan.options p')
+		# paragraph = self.e('.chan.options p')
 		#TODO fix this
 		# texts = ['Channel views:', 'Fans:', 'Pins:', 'Tours:', 'Collections:']
 		
@@ -57,6 +57,7 @@ class Channel(HPTestCase):
 		self.assertIsInstance(self.e('#search-filters input#location')	, WebElement)
 		self.assertIsInstance(self.e('#search-filters input#tags')		, WebElement)
 		self.assertIsInstance(self.e('#photo_search_submit')			, WebElement)
+		
 		self.assertEqual('GO', self.e('#photo_search_submit').e('span').text)
 		
 		self.assertIsInstance(self.e('#date-selector #date-slider')	, WebElement)
@@ -92,10 +93,11 @@ class Channel(HPTestCase):
 		self.assertEqual('Sort by:'	, strong[0].text)
 		self.assertEqual('Show:'	, strong[1].text)
 		
-		date_upload	= self.e('.list-filter input[id=date_upload]')
-		view_count	= self.e('.list-filter input[id=view_count]')
-		all_items	= self.e('.list-filter input[id=all]')
-		favourites	= self.e('.list-filter input[id=unpinned]')
+		filters = self.e('.list-filter')
+		date_upload	= filters.e('.input[id=date_upload]')
+		view_count	= filters.e('.input[id=view_count]')
+		all_items	= filters.e('.input[id=all]')
+		favourites	= filters.e('.input[id=unpinned]')
 		
 		self.assertTrue(date_upload.is_selected())
 		self.assertFalse(view_count.is_selected())

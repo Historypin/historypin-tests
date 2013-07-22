@@ -5,10 +5,7 @@ from base import *
 class Homepage(HPTestCase):
 	@url('/')
 	def test_cookie_message(self):
-		self.assertEqual(
-			'We want you to enjoy your visit to our website. That\'s why we use cookies to enhance your experience.\nBy staying on our website you agree to our use of cookies. Find out more about the cookies we use.', 
-			self.e('.cookies-popup p').text,
-		)
+		self.assertEqual('We want you to enjoy your visit to our website. That\'s why we use cookies to enhance your experience.\nBy staying on our website you agree to our use of cookies. Find out more about the cookies we use.', self.e('.cookies-popup p').text)
 		
 		self.assertEqual(URL_BASE + '/pages/cookies/',				self.e('.cookies-popup p a').get_attribute('href'))
 		a = self.e('.cookies-popup a.right')
@@ -97,18 +94,19 @@ class Homepage(HPTestCase):
 	
 	@url('/')
 	def test_activity(self):
+		
 		self.assertGreater(int(self.e('.counter').text.replace(',', '')), 0)
 		more = self.e('#activity .more')
-		less = self.e('#activity .less')
 		
 		more.click()
 		sleep(.5)
 		
+		less = self.e('#activity .less')
 		less.click()
 		sleep(.5)
 		
-		# TODO 
-		# verify if the activity is expaned
+		# TODO
+		# verify if the activity is expaned to check if element has style property with height= 388 and 700px
 		# verify if projects are collapsed
 	
 	@url('/')
@@ -170,10 +168,10 @@ class Homepage(HPTestCase):
 	# 	for n in range(len(features)):
 	# 		i = features[n]
 			
-	# 		self.assertIn('ss-icon'				, icons[n].get_attribute('class'))
-	# 		# self.assertIn(i[0]					, icons[n].get_attribute('class'))
+	# 		self.assertIn('ss-icon'	, icons[n].get_attribute('class'))
+	# 		# self.assertIn(i[0]	, icons[n].get_attribute('class'))
 	# 		self.assertEqual(i[1]	, links[n].get_attribute('href'))
-	# 		self.assertEqual(i[2]				, links[n].text)
+	# 		self.assertEqual(i[2]	, links[n].text)
 	
 	@url('/')
 	def test_sponsors(self):

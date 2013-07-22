@@ -170,11 +170,11 @@ class Map(HPTestCase):
 		
 		info = self.e('#details_cnt .side.right.scrollbarfix .info')
 		self.assertEqual(''				, info.e('h2.photo-title').text)
-		self.assertEqual('ulitsa "Kuzman Shapkarev" 1, 1000 Sofia, Bulgaria', info.e('strong .photo-address').text)
-		self.assertEqual(''									, info.e('strong .photo-date').text)
+		self.assertEqual('ulitsa "Kuzman Shapkarev" 1, 1000 Sofia, Bulgaria', info.e('strong .photo-address').text)  # ulitsa "Kuzman Shapkarev" 1, 1000 Sofia, Bulgaria - probel with this - sometimes doesn't find the string, sometimes does
+		self.assertEqual('2 August 2012'									, info.e('strong .photo-date').text)
 		
 		sleep(4)
-		details_link = dlg.e('.suggest-details-photo')
+		details_link = dlg.e('a.suggest-details-photo')
 		self.assertEqual(URL_BASE + '/contact-us/?suggest/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:details/'	, details_link.get_attribute('href'))
 		self.assertEqual('Suggest more accurate details'																	, details_link.text )
 		
@@ -187,7 +187,7 @@ class Map(HPTestCase):
 		self.assertEqual('Tags: national, theatre', dlg.e('.tags').text)
 		keyword = dlg.es('.tags .photo-keywords a')
 		self.assertEqual(URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:details/tags:national/'	, keyword[0].get_attribute('href'))
-		self.assertEqual(URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:details/tags:theatre/'	, keyword[1].get_attribute('href'))
+		self.assertEqual(URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:details/tags: theatre/'	, keyword[1].get_attribute('href'))
 		
 		actions = dlg.e('.bottom-actions')
 		
@@ -255,7 +255,7 @@ class Map(HPTestCase):
 		self.assertEqual('Posted by Gabss (Pinner) on 10 May 2013'					, stories_list.e('p:nth-of-type(2)').text)
 		self.assertEqual(URL_BASE + '/channels/view/10649049/'						, stories_list.e('p:nth-of-type(2) a').get_attribute('href'))
 		
-		self.assertEqual(URL_BASE + '/resources/avatars/50x50/avatar_3.png'	, tab.e('.write_story_wrap img ').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/resources/avatars/50x50/avatar_1.png'	, tab.e('.write_story_wrap img ').get_attribute('src'))
 		self.assertIsInstance(tab.e('textarea'), WebElement)
 		
 		# TODO - should fix this because in all tests - logged in
@@ -304,7 +304,7 @@ class Map(HPTestCase):
 		self.assertIn('ss-scaleup'	, fullscr_icon.get_attribute('class'))
 		fullscr.click()
 		
-		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/441x330/quality/80/', dlg.e('.streetview_container.streetview_fs .streetview-img-wrapper .streetview-img').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/916x685/quality/80/', dlg.e('.streetview_container.streetview_fs .streetview-img-wrapper .streetview-img').get_attribute('src'))
 		
 		fullscr_off		= dlg.e('#streetview_fullscreen')
 		fullscr_off_icon = fullscr_off.e('span')

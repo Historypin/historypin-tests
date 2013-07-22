@@ -1,24 +1,30 @@
 # -*- coding: utf-8 -*-
 
-from base import *
+# from base import *
 
-class Login(HPTestCase):
-	@url('/user/')
-	def test_join(self):
-		pass
-	# @url('/user/')
-	# def test_join(self):
-	# 	self.assertEqual('Historypin uses Google Accounts to keep your login details safe and secure.', self.e('.centered p').text)
+# class Login(HPTestCase):
+# 	@url('/user/')
+# 	def test_join(self):
+		# new login page should be tested
 		
-	# 	col_left = self.e('.col.w2:nth-of-type(1)')
-	# 	self.assertEqual('I already have a Google Account'	, col_left.e('h4').text)
-	# 	self.assertIsInstance(col_left.e('a')				, WebElement)
-	# 	self.assertEqual('Login'							, col_left.e('a').text)
+		# buttons = self.e('.buttons li')
 		
-	# 	col_right = self.e('.col.w2:nth-of-type(2)')
-	# 	self.assertEqual("I don't have a Google Account"				, col_right.e('h4').text)
-	# 	self.assertEqual('https://www.google.com/accounts/NewAccount'	, col_right.e('a').get_attribute('href'))
-	# 	self.assertEqual('Register now'									, col_right.e('a').text)
+		# social_buttons	= buttons.e('a span:nth-of-type(1)')
+		# self.assertIn('ss-icon', social_buttons.get_attribute('class'))
+		
+		# social_icons = ['ss-social-circle', 'ss-social-circle', 'ss-social-circle']
+		
+		# for n in range(len(social_icons)-1): self.assertIn(social_icons[n], social_buttons.get_attribute('class'))
+		
+		# social_texts	= buttons.e('a span:nth-of-type(2)')
+		# labels = ['Google', 'Facebook', 'Twitter']
+		
+		# for n in range(len(labels)): self.assertEqual(labels[n], social_texts.text)
+		
+	
+	
+	
+	
 	
 	# @url('/user/')
 	# def test_login_logout(self):
@@ -31,7 +37,6 @@ class Login(HPTestCase):
 		
 	# 	self.assertEqual('Login'				, self.e('.nav li a[href^=https]').text)
 	# 	self.assertIn('https://www.google.com/'	, self.e('.nav li a[href^=https]').get_attribute('href'))
-		
-
+	
 
 
