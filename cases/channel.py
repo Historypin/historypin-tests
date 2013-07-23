@@ -281,18 +281,18 @@ class Channel(HPTestCase):
 		self.assertEqual('Check out these examples to see what other people have done with their channels', help.e('p:nth-of-type(1)').text)
 		
 		examples = [
-			['/id/2238022/', 'Photos of the Past'],
-			['/id/8721093/', 'Sue Walker White'],
-			['/id/2662022/', 'Connecticut State Library'],
-			['/id/6487189/', 'London Metropolitan Archives'],
-			['/id/1042029/', 'Biggleswade History Society'],
+			['2238022/', 'Photos of the Past'],
+			['8721093/', 'Sue Walker White'],
+			['2662022/', 'Connecticut State Library'],
+			['6487189/', 'London Metropolitan Archives'],
+			['1042029/', 'Biggleswade History Society'],
 		]
 		
 		channels_help = help.es('a[href*=id]')
 		
 		for n in range(len(examples)):
 			i = examples[n]
-			self.assertEqual(URL_BASE + '/channels/view' + i[0]	, channels_help[n].get_attribute('href'))
+			self.assertEqual(URL_BASE + '/channels/view/id/' + i[0]	, channels_help[n].get_attribute('href'))
 			self.assertEqual(i[1]								, channels_help[n].text)
 		
 		

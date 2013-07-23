@@ -44,7 +44,7 @@ class Pages(HPTestCase):
 			['Media', 'Rebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@wearewhatwedo.org'],
 			['Schools, local projects and volunteers', 'Rebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@wearewhatwedo.org'],
 			['Library, archive and museum partnerships', 'Rebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@wearewhatwedo.org'],
-			['Web', 'Mark Frost\nmark.frost@wearewhatwedo.org\n+44 (0)20 7148 7675', 'mailto:mark.frost@wearewhatwedo.org'],
+			['Web', 'Alex Stanhope\nalex.stanhope@wearewhatwedo.org\n+44 (0)20 7148 7666', 'mailto:alex.stanhope@wearewhatwedo.org'],
 			['Corporate Partnerships', 'Nick Stanhope\nnick.stanhope@wearewhatwedo.org\n+44 (0)20 7148 7667', 'mailto:nick.stanhope@wearewhatwedo.org'],
 		]
 		
