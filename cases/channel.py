@@ -522,9 +522,10 @@ class Channel(HPTestCase):
 		self.assertEqual(URL_BASE + '/channels/view/11675544/#tab-subscriptions', fans[1].get_attribute('href'))
 		self.assertEqual('3 - See list', fans[1].text)
 	
-	@url('/channels/view/11675544/')
 	@logged_in
+	@url('/channels/view/11675544/')
 	def test_tab_hide_toolbar(self):
+		import pdb; pdb.set_trace()
 		
 		self.assertTrue(self.e('.tab_nav').is_displayed())
 		

@@ -1,10 +1,10 @@
-import unittest, functools
+import unittest
 
 from time import sleep
 
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.common.keys import Keys
+# from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -23,7 +23,7 @@ def url(url):
 			fn(*args, **kwargs)
 		return wrapped
 	return wrapper
-	
+
 
 def logged_in(fn):
 	def wrapped(*args, **kwargs):
@@ -33,8 +33,8 @@ def logged_in(fn):
 	return wrapped
 
 
-class Browser(webdriver.Chrome):
 # class Browser(webdriver.Firefox):
+class Browser(webdriver.Chrome):
 	def go(self, url):
 		self.get(URL_BASE + url)
 		# self.pageload_wait()
@@ -131,19 +131,18 @@ class HPTestCase(TestCase):
 		login = cls.e('#site-content .login .buttons li:nth-of-type(1) a')
 		login.click()
 		
-		if IS_ON_SDK:
-			cls.e('#submit-login').click()
-			# cls.pageload_wait()
-			sleep(1)
-			
-			LOGIN_COOKIES.append(cls.browser.get_cookie('dev_appserver_login'))
-		else:
-			cls.e('.email-div input').send_keys('gabriela.ananieva@wearewhatwedo.org')
-			cls.e('#Passwd').send_keys('tristania1010')
-			cls.e('#signIn').click()
-			sleep(1)
-			
-			LOGIN_COOKIES.append(cls.browser.get_cookie('hpsid'))
+		cls.e('.email-div input').send_keys('gabriela.ananieva@wearewhatwedo.org')
+		cls.e('#Passwd').send_keys('tristania1010')
+		cls.e('#signIn').click()
+		sleep(3)
+		
+		try:
+			cls.e('#submit_approve_access').click()
+			sleep(3)
+		except:
+			pass
+		
+		LOGIN_COOKIES.append(cls.browser.get_cookie('hpsid'))
 		
 		cls.login_cookie_del()
 		
