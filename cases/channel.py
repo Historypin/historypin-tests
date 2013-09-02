@@ -500,7 +500,6 @@ class Channel(HPTestCase):
 	@url('/channels/view/11675544/')
 	@logged_in
 	def test_tab_statistics(self):
-		
 		tab_statistics = self.e('.tab_nav li a[href="#tab-reports"]')
 		self.assertEqual('Statistics', tab_statistics.text)
 		
@@ -525,8 +524,6 @@ class Channel(HPTestCase):
 	@logged_in
 	@url('/channels/view/11675544/')
 	def test_tab_hide_toolbar(self):
-		import pdb; pdb.set_trace()
-		
 		self.assertTrue(self.e('.tab_nav').is_displayed())
 		
 		tab_toolbar = self.e('.tab_nav.hideshowtoolbar ')
