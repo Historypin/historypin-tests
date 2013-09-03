@@ -73,6 +73,20 @@ class Pages(HPTestCase):
 				],
 			},
 			{
+				'heading': 'Managing your Account',
+				'items': [
+					['title91', 'How do I connect my Twitter Account with my existing Historypin Channel?'],
+					['title92', 'How do I connect my Facebook Account with my existing Historypin Channel?'],
+					['title93', 'How do I connect my Google Account with my existing Historypin Channel?'],
+					['title94', 'How do I disconnect my Google / Facebook / Twitter account from my Historypin Channel?'],
+					['title95', 'I am having problems connecting my Google / Facebook / Twitter Account to my Historypin Channel.'],
+					['title96', 'Can I have one Facebook, Twitter or Google Account connected to more than one Historypin Channel?'],
+					['title97', 'Can I have one Historypin Channel connected to multiple Facebook or Google or Twitter accounts?'],
+					['title98', 'Can I change the Google Account associated with my Historypin Channel?'],
+					['title99', 'Can I delete my Historypin Channel?'],
+				],
+			},
+			{
 				'heading': 'Using the site',
 				'items': [
 					['title6', 'What kind of content can I add to Historypin?'],
@@ -101,6 +115,7 @@ class Pages(HPTestCase):
 					['title113', 'I am having trouble uploading photos, what should I do?'],
 					['title114', 'How do I change my Username?'],
 				],
+			
 			},
 			{
 				'heading': 'Bulk Uploader',
@@ -207,8 +222,8 @@ class Pages(HPTestCase):
 			},
 		]
 		
-		toc				= self.es('.toc > li')
-		cnt				= self.es('.faq-group')
+		# toc				= self.es('.toc > li')
+		# cnt				= self.es('.faq-group')
 		questions		= self.es('.toc > li strong')
 		questions_h		= self.es('.faq-group h2')
 		answers			= self.es('.toc > li li a')
