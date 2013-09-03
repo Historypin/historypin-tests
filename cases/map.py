@@ -410,7 +410,7 @@ class Map(HPTestCase):
 		dlg = self.e('#info-dialog')
 		
 		sleep(2)
-		self.e_wait('#map-canvas .hp-marker[class=hp-marker]').click()
+		self.e_wait('#map-canvas .hp-marker').click()
 		sleep(2)
 		self.assertIsInstance(dlg, WebElement)
 		

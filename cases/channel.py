@@ -177,6 +177,7 @@ class Channel(HPTestCase):
 		
 		self.assertEqual(URL_BASE + '/attach/uid10649049/tours/view/id/22354015/title/Test%20Tour%20for%20automated%20test', item.get_attribute('href'))
 		self.assertEqual(URL_BASE + '/services/thumb/phid/1031013/dim/195x150/crop/1/', item.e('img').get_attribute('src'))
+		
 		self.assertIn('tour-icon'	, item.e('span').get_attribute('class'))
 		self.assertIn('ss-icon'		, item.e('span').get_attribute('class'))
 		self.assertIn('ss-hiker'	, item.e('span').get_attribute('class'))
@@ -189,15 +190,15 @@ class Channel(HPTestCase):
 		self.assertEqual(URL_BASE + '/channels/view/10649049', paragraph_link[1].get_attribute('href'))
 		self.assertEqual('Gabss', paragraph_link[1].text)
 	
-	@url('/channels/view/10649049/')
-	def test_repeats_section(self):
+	# @url('/channels/view/10649049/')
+	# def test_repeats_section(self):
 		
-		repeats = self.e('.chan.replicas')
+	# 	repeats = self.e('.chan.replicas')
 		
-		self.assertEqual('Historypin Repeats'									, repeats.e('h3').text)
-		self.assertEqual(u'Historypin Repeats are created using the Historypin Smartphone App. They are modern replicas of your photos taken by other people or modern replicas of other person’s photos taken by you.', repeats.e('p:nth-of-type(1)').text)
-		self.assertEqual('http://www.v4-22-00.historypin-hrd.appspot.com/app/'	, repeats.e('p:nth-of-type(1) a').get_attribute('href'))
-		self.assertEqual('This Channel has no Historypin Repeats'				, repeats.e('p:nth-of-type(2)').text)
+	# 	self.assertEqual('Historypin Repeats'									, repeats.e('h3').text)
+	# 	self.assertEqual(u'Historypin Repeats are created using the Historypin Smartphone App. They are modern replicas of your photos taken by other people or modern replicas of other person’s photos taken by you.', repeats.e('p:nth-of-type(1)').text)
+	# 	self.assertEqual('http://www.v4-22-00.historypin-hrd.appspot.com/app/'	, repeats.e('p:nth-of-type(1) a').get_attribute('href'))
+	# 	self.assertEqual('This Channel has no Historypin Repeats'				, repeats.e('p:nth-of-type(2)').text)
 	
 	# @url('/channels/view/10649049/')
 	# def test_comment_feed(self):
@@ -1002,7 +1003,7 @@ class Channel(HPTestCase):
 		self.assertEqual('Your Code:', dialog.e('h4').text)
 		self.assertEqual('Copy and paste the following HTML and insert it in your website. You can find more detailed instructions and tips on custom parameters here', dialog.e('p').text)
 		self.assertEqual(URL_BASE + '/embed/help/', dialog.e('p a').get_attribute('href'))
-		self.assertIn("http://attach.uid11675544.v4-22-00.historypin-hrd.appspot.com/e/17/", dialog.e('textarea').text)
+		self.assertIn("http://attach.uid11675544.v4-25-00.historypin-hrd.appspot.com/e/17/", dialog.e('textarea').text)
 		
 		dialog.parent_node().e('.ui-dialog-titlebar-close').click()
 		
@@ -1044,7 +1045,7 @@ class Channel(HPTestCase):
 		self.assertEqual('Your Code:', dialog.e('h4').text)
 		self.assertEqual('Copy and paste the following HTML and insert it in your website. You can find more detailed instructions and tips on custom parameters here', dialog.e('p').text)
 		self.assertEqual(URL_BASE + '/embed/help/', dialog.e('p a').get_attribute('href'))
-		self.assertIn("http://attach.uid11675544.v4-22-00.historypin-hrd.appspot.com/e/18/", dialog.e('textarea').text)
+		self.assertIn("http://attach.uid11675544.v4-25-00.historypin-hrd.appspot.com/e/18/", dialog.e('textarea').text)
 		
 		dialog.parent_node().e('.ui-dialog-titlebar-close').click()
 		
@@ -1085,7 +1086,7 @@ class Channel(HPTestCase):
 		self.assertEqual('Your Code:', dialog.e('h4').text)
 		self.assertEqual('Copy and paste the following HTML and insert it in your website. You can find more detailed instructions and tips on custom parameters here', dialog.e('p').text)
 		self.assertEqual(URL_BASE + '/embed/help/', dialog.e('p a').get_attribute('href'))
-		self.assertIn("http://attach.uid11675544.v4-22-00.historypin-hrd.appspot.com/e/20/", dialog.e('textarea').text)
+		self.assertIn("http://attach.uid11675544.v4-25-00.historypin-hrd.appspot.com/e/20/", dialog.e('textarea').text)
 		
 		dialog.parent_node().e('.ui-dialog-titlebar-close').click()
 		sleep(2)
@@ -1127,7 +1128,7 @@ class Channel(HPTestCase):
 		self.assertEqual('Your Code:', dialog.e('h4').text)
 		self.assertEqual('Copy and paste the following HTML and insert it in your website. You can find more detailed instructions and tips on custom parameters here', dialog.e('p').text)
 		self.assertEqual(URL_BASE + '/embed/help/', dialog.e('p a').get_attribute('href'))
-		self.assertIn("http://attach.uid11675544.v4-22-00.historypin-hrd.appspot.com/e/24/", dialog.e('textarea').text)
+		self.assertIn("http://attach.uid11675544.v4-25-00.historypin-hrd.appspot.com/e/24/", dialog.e('textarea').text)
 		
 		dialog.parent_node().e('.ui-dialog-titlebar-close').click()
 		

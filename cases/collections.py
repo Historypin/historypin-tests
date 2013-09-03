@@ -244,7 +244,8 @@ class Collections(HPTestCase):
 		self.assertEqual('Bulgarian Army Theater'	, item.e('.photo-title').text)
 		self.assertEqual('2 February 2013'				, item.e('.date').text)
 		
-		self.assertIsInstance(self.e('.step-sidebar .image-container'), WebElement)
+		self.assertIsInstance(self.e('.step-sidebar li .image-container'), WebElement)
+		
 		remove_item = self.es('.step-sidebar .remove-photo')
 		remove_item[0].click()
 		remove_item[1].click()
