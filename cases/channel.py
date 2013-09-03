@@ -48,10 +48,31 @@ class Channel(HPTestCase):
 		
 		for n in range(len(social_icons)-1): self.assertIn(social_icons[n], social_buttons.get_attribute('class'))
 	
+	@url('/attach/uid10649049/photos/activity_feed/')
+	def test_activity_tab(self):
+		
+		activity_tab = self.e('.list_tabs .first.selected:nth-of-type(1)')
+		self.assertEqual('Activity Feed', activity_tab.text)
+		
+		meta = self.e('.meta')
+		self.assertIsInstance(meta.e('.photo-date'), WebElement)
+		
+		self.assertEqual(URL_BASE + '/channels/view/10649049/', meta.e('.photo-user').get_attribute('href'))
+		self.assertEqual('Gabss', meta.e('.photo-user').text)
+		
+		self.assertEqual(URL_BASE + '/channels/img/10649049/logo/1/dim/100x100/', self.e('.avatar.fluid').get_attribute('src'))
+		
+		pin = self.e('.pin')
+		self.assertIsInstance(pin.e('a:nth-of-type(1)'), WebElement)
+		self.assertIsInstance(pin.e('a:nth-of-type(1) img'), WebElement)
+		
+		self.assertIsInstance(pin.e('a:nth-of-type(2)'), WebElement)
+		
+	
 	@url('/attach/uid10649049/map/index/#!/geo:26.816514,24.138716/zoom:2/')
 	def test_map_tab(self):
 		
-		map_tab = self.e('.list_tabs .first')
+		map_tab = self.e('.list_tabs li a[href$="/attach/uid10649049/photos/index/"]')
 		self.assertEqual('Map'											, map_tab.text)
 		
 		self.assertIsInstance(self.e('#search-filters input#location')	, WebElement)

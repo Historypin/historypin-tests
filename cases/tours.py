@@ -61,11 +61,11 @@ class Tours(HPTestCase):
 		
 		tabs = self.es('.list_tabs li')
 		self.assertIsInstance(tabs[0]	, WebElement)
-		self.assertEqual('Map View'		, tabs[0].e('span').text)
+		self.assertEqual('Map view'		, tabs[0].e('span').text)
 		self.assertIsInstance(tabs[1]	, WebElement)
-		self.assertEqual('List View'	, tabs[1].e('span').text)
+		self.assertEqual('List view'	, tabs[1].e('span').text)
 		self.assertIsInstance(tabs[2]	, WebElement)
-		self.assertEqual('Tour View'	, tabs[2].e('span').text)
+		self.assertEqual('Tour view'	, tabs[2].e('span').text)
 		
 		photo_list_cnt = [
 				['1', '26162010', 'Bulgarian Army Theater - 1 May 2013'],
@@ -106,7 +106,7 @@ class Tours(HPTestCase):
 		
 		paragraph = self.e('.title p')
 		self.assertEqual('by Gabriela Ananieva'															, paragraph.text)
-		self.assertEqual('http://v4-22-00.historypin-hrd.appspot.com/channels/view/11675544', paragraph.e('a').get_attribute('href'))
+		self.assertEqual('http://v4-25-00.historypin-hrd.appspot.com/channels/view/11675544', paragraph.e('a').get_attribute('href'))
 		
 		link_exit = self.e('#exit-tour')
 		self.assertEqual(URL_BASE + '/tours/view/id/16502051/title/Beautiful%20buildings%20in%20Bulgaria'	, link_exit.get_attribute('href'))
@@ -115,7 +115,7 @@ class Tours(HPTestCase):
 		self.assertIn('right'																				, link_exit.e('span').get_attribute('class'))
 		
 		tour_items = [
-			["Bulgarian Army Theater - 1 May 2013"					, '2 February 2013'		, '/map/#!/geo:42.694696,23.329027/zoom:20/dialog:26162010/tab:details/'		, '26162010', "This is a photo of the famous Bulgarian Army Theater ."],
+			["Bulgarian Army Theater - 1 May 2013"					, '2 February 2013'		, '/map/#!/geo:42.694693,23.329025/zoom:20/dialog:26162010/tab:details/'		, '26162010', "This is a photo of the famous Bulgarian Army Theater ."],
 			["Morden College east elevation and chapel - 2010"		, '2010'				, '/map/#!/geo:51.4691539556,0.0169086456299/zoom:20/dialog:322003/tab:details/', '322003'	, ""],
 			["Pinner High St from Church - 1910 - 1920"				, '1910 - 1920'			, '/map/#!/geo:51.594547,-0.379828/zoom:20/dialog:2090034/tab:details/'			, '2090034'	, ""],
 			["National Theatre in Sofia, Bulgaria - 2 August 2012"	, '2 August 2012'		, '/map/#!/geo:42.693738,23.326101/zoom:20/dialog:22363018/tab:details/'		, '22363018', "This is a photo of National Theatre in Sofia, Bulgaria"],
@@ -279,7 +279,7 @@ class Tours(HPTestCase):
 		self.assertEqual('Drag and drop the content to reorder them.', step_cnt.e('p').text)
 		
 		item_first = step_cnt.e('#sortable > li:nth-of-type(1)')
-		self.assertEqual(URL_BASE + '/services/thumb/phid/26162010/dim/152x108/crop/1/', item_first.e('a img').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/152x108/crop/1/', item_first.e('a img').get_attribute('src'))
 		self.assertIsInstance(item_first.e('.photo-number')	, WebElement)
 		self.assertIsInstance(item_first.e('.actions')		, WebElement)
 		
@@ -298,17 +298,17 @@ class Tours(HPTestCase):
 		self.assertEqual('Describe Step:', step.e('h4').text)
 		
 		image_cnt = step.e('.image-container')
-		self.assertEqual(URL_BASE + '/services/thumb/phid/26162010/dim/152x108/crop/1/', image_cnt.e('img').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/152x108/crop/1/', image_cnt.e('img').get_attribute('src'))
 		self.assertIsInstance(image_cnt.e('.step-number'), WebElement)
 		self.assertEqual('1', image_cnt.e('.step-number').text)
 		
 		step_title = step.e('li:nth-of-type(2)')
 		self.assertEqual('Step Title:'							, step_title.e('label').text)
-		self.assertEqual('Bulgarian Army Theater - 1 May 2013'	, step_title.e('input').get_attribute('value'))
+		self.assertEqual('National Theatre in Sofia, Bulgaria - 2 August 2012'	, step_title.e('input').get_attribute('value'))
 		
 		step_desc = step.e('li:nth-of-type(3)')
 		self.assertEqual('Step Description:'										, step_desc.e('label').text)
-		self.assertEqual('This is a photo of the famous Bulgarian Army Theater .'	, step_desc.e('textarea').get_attribute('value'))
+		self.assertEqual('This is a photo of National Theatre in Sofia, Bulgaria'	, step_desc.e('textarea').get_attribute('value'))
 		
 		self.assertFalse(step.e('.show-prev.s3-prev').is_displayed())
 		
