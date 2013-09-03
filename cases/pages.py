@@ -323,12 +323,14 @@ class Pages(HPTestCase):
 		self.assertEqual('mailto:jon.voss@wearewhatwedo.org'														, a[1].get_attribute('href'))
 		
 		self.assertEqual('Awards', self.e('.sidebar .inner:nth-of-type(2) h3').text)
+		
 		sidebar = [
-			['Webby for Best Charitable Organisation/Not-for-Profit Website', 'http://www.webbyawards.com/webbys/current.php?season=15#webby_entry_charitable_organizations_non-profit', '/resources/images/presscenter/webby_pink.png'],
-			['Sunday Times The App List 2012.', 'http://thetim.es/y1vL3P', '/resources/images/presscenter/sundaytimes500.png'],
-			['Lovie Award for Best Education & Reference Website', 'http://lovieawards.eu/winners/', '/resources/images/presscenter/lovie_pink.png'],
+			['Webby for Best Charitable Organisation/Not-for-Profit Website'	, 'http://www.webbyawards.com/webbys/current.php?season=15#webby_entry_charitable_organizations_non-profit', '/resources/images/presscenter/webby_pink.png'],
+			['Sunday Times The App List 2012.'									, 'http://thetim.es/y1vL3P'	, '/resources/images/presscenter/sundaytimes500.png'],
+			['Lovie Award for Best Education & Reference Website'				, 'http://lovieawards.eu/winners/', '/resources/images/presscenter/lovie_pink.png'],
 			['American Association of School Librarians 2012 Best Website for Teaching and Learning', 'http://www.ala.org/aasl/guidelinesandstandards/bestlist/bestwebsitestop25', '/resources/images/presscenter/aasl.jpg'],
-			['Family Tree Magazine: 101 best family history websites', 'http://www.familytreemagazine.com/article/best-old-map-and-photo-websites-for-genealogy-2012', '/resources/images/presscenter/101-best-genealogy-websites-2012.jpg'],
+			['Family Tree Magazine: 101 best family history websites'			, 'http://www.familytreemagazine.com/article/best-old-map-and-photo-websites-for-genealogy-2012', '/resources/images/presscenter/101-best-genealogy-websites-2012.jpg'],
+			["We're in featured in Common Sense Media's Back to School Guide"	, 'http://www.commonsensemedia.org/mobile-app-reviews/historypin', '/resources/images/presscenter/badge_checkusout.png'],
 		]
 		
 		
@@ -345,12 +347,12 @@ class Pages(HPTestCase):
 			self.assertEqual(i[1]				, links[2 * n].get_attribute('href'))
 			self.assertEqual(i[1]				, links[2 * n + 1].get_attribute('href'))
 		
-		cnt = self.e('.sidebar .inner:nth-of-type(7)')
+		cnt = self.e('.sidebar .inner:nth-of-type(8)')
 		self.assertEqual('Press Pack', cnt.e('h3').text)
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/presspacks/Historypin.zip', cnt.e('a').get_attribute('href'))
 		self.assertEqual(u'Download press releases, pictures and all the info you\u2019ll need to write a fabulously complimentary article about us.', cnt.e('p').text)
 	
-	@url('/privacy-policy/') 
+	@url('/privacy-policy/')
 	def test_privacy_policy(self):
 		self.assertTitle('Historypin | Privacy Policy')
 		self.assertEqual('Privacy Policy', self.e('#site-content h1').text)
