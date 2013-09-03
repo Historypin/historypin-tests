@@ -1268,7 +1268,7 @@ class Channel(HPTestCase):
 		
 		title.clear()
 		title.send_keys('Bulgarian Army Theater')
-		self.assertEqual('Remaining characters: 28', paragraph[0].text)
+		self.assertEqual('Remaining characters: 78', paragraph[0].text)
 		
 		desc.clear()
 		desc.send_keys('This is a photo of the famous Bulgarian Army Theater .')
@@ -1370,7 +1370,7 @@ class Channel(HPTestCase):
 		self.assertTrue(place.e('#pin-tab-sv').is_displayed())
 		
 		location = place.e('#location')
-		self.assertEqual('ulitsa "Georgi S. Rakovski" 98, 1000 Sofia, Bulgaria', location.get_attribute('value'))
+		self.assertEqual('Georgi Rakovski Street 98, 1000 Sofia, Bulgaria', location.get_attribute('value'))
 	
 	@logged_in
 	@url('/upload/confirm/edit/1')
