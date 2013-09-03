@@ -41,8 +41,8 @@ class Tours(HPTestCase):
 		self.assertEqual('Next'							, next.text)
 		self.assertEqual(URL_BASE + '/tours/all/page/2/', next.get_attribute('href'))
 	
-	@url('/tours/view/id/' + KEY_TOUR)
 	@logged_in
+	@url('/tours/view/id/' + KEY_TOUR)
 	def test_view(self):
 		self.assertTitle('Historypin | Tours - Beautiful buildings in Bulgaria')
 		
@@ -97,8 +97,8 @@ class Tours(HPTestCase):
 		sleep(3)
 		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/451x302/crop/1/'	, self.e('img.index').get_attribute('src'))
 	
-	@url('/tours/take/id/' + KEY_TOUR)
 	@logged_in
+	@url('/tours/take/id/' + KEY_TOUR)
 	def test_take(self):
 		
 		self.assertTitle('Historypin | Tours')  # HTML - page title should be fixed to HistoryPin | Tour | Test Tour for automated test
@@ -165,8 +165,8 @@ class Tours(HPTestCase):
 			prev_button.click()
 			check_step(tour_items[n])
 	
-	@url('/tours/add/id/16502051/#16502051')
 	@logged_in
+	@url('/tours/add/id/16502051/#16502051')
 	def test_edit_tour(self):
 		site_cnt = self.e('#site-content')
 		

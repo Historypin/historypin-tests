@@ -37,8 +37,8 @@ class Collections(HPTestCase):
 	def test_index(self):
 		self.__test_collection_listing()
 	
-	@url('/collections/all')
 	@logged_in
+	@url('/collections/all')
 	def test_all(self):
 		self.__test_collection_listing()
 		
@@ -89,8 +89,8 @@ class Collections(HPTestCase):
 		self.assertEqual(URL_BASE + '/services/thumb/phid/26162010/dim/451x302/crop/1/'	, self.e('img.index').get_attribute('src'))
 		# - after some minuted to check if the photo is changed, because it's not changed after the refresh
 	
-	@url('/collections/slideshow/id/' + KEY_COLLECTION)
 	@logged_in
+	@url('/collections/slideshow/id/' + KEY_COLLECTION)
 	def test_slideshow(self):
 		
 		self.assertTitle('HistoryPin | Collection | Theaters in Bulgaria')
@@ -169,8 +169,8 @@ class Collections(HPTestCase):
 		
 		# self.e('#slide-content a').click()
 	
-	@url('/collections/add/id/26157007/#26157007')
 	@logged_in
+	@url('/collections/add/id/26157007/#26157007')
 	def test_edit_collection(self):
 		self.assertTitle('Historypin | Collection')
 		

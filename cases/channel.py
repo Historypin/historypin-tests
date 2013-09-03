@@ -37,9 +37,9 @@ class Channel(HPTestCase):
 		
 		# for n in range(len(texts)): self.assertIn(texts[n], paragraph.text)
 		
-		button = self.e('.channel-button.left')
+		button = self.e('.chan.options .channel-button.left')
 		self.assertEqual('Become a Fan'										, button.text)
-		self.assertEqual(URL_BASE + '/channels/view/10649049/#'				, button.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/user/?from=/channels/view/10649049/'				, button.get_attribute('href'))
 		
 		social_buttons = self.e('.addthis_toolbox span')
 		self.assertIn('ss-icon', social_buttons.get_attribute('class'))
@@ -63,7 +63,7 @@ class Channel(HPTestCase):
 		self.assertIsInstance(self.e('#date-selector #date-slider')	, WebElement)
 		self.assertIsInstance(self.e('#date-slider-labels li')		, WebElement)
 		
-		self.e_wait('#map-canvas .hp-marker[class=hp-marker]').click()
+		self.e_wait('#map-canvas .hp-marker.hp-marker-cluster').click()
 		
 		dlg = self.e('#info-dialog')
 		self.assertIsInstance(dlg, WebElement)
@@ -94,10 +94,10 @@ class Channel(HPTestCase):
 		self.assertEqual('Show:'	, strong[1].text)
 		
 		filters = self.e('.list-filter')
-		date_upload	= filters.e('.input[id=date_upload]')
-		view_count	= filters.e('.input[id=view_count]')
-		all_items	= filters.e('.input[id=all]')
-		favourites	= filters.e('.input[id=unpinned]')
+		date_upload	= filters.e('input[id=date_upload]')
+		view_count	= filters.e('input[id=view_count]')
+		all_items	= filters.e('input[id=all]')
+		favourites	= filters.e('input[id=unpinned]')
 		
 		self.assertTrue(date_upload.is_selected())
 		self.assertFalse(view_count.is_selected())
@@ -199,22 +199,22 @@ class Channel(HPTestCase):
 		self.assertEqual('http://www.v4-22-00.historypin-hrd.appspot.com/app/'	, repeats.e('p:nth-of-type(1) a').get_attribute('href'))
 		self.assertEqual('This Channel has no Historypin Repeats'				, repeats.e('p:nth-of-type(2)').text)
 	
-	@url('/channels/view/10649049/')
-	def test_comment_feed(self):
+	# @url('/channels/view/10649049/')
+	# def test_comment_feed(self):
 		
-		text_feed = self.e('.chan.story')
+	# 	text_feed = self.e('.chan.story')
 		
-		self.assertEqual('Comment Feed'												, text_feed.e('h3').text)
-		self.assertEqual('Comments posted to your media by you or by other people.'	, text_feed.e('p').text)
+	# 	self.assertEqual('Comment Feed'												, text_feed.e('h3').text)
+	# 	self.assertEqual('Comments posted to your media by you or by other people.'	, text_feed.e('p').text)
 		
-		feed = self.e('.feed.scrollbarfix li')
+	# 	feed = self.e('.feed.scrollbarfix li')
 		
-		self.assertIsInstance(feed.e('a')	, WebElement)
-		self.assertIsInstance(feed.e('img')	, WebElement)
-		self.assertIsInstance(feed.e('p')	, WebElement)
+	# 	self.assertIsInstance(feed.e('a')	, WebElement)
+	# 	self.assertIsInstance(feed.e('img')	, WebElement)
+	# 	self.assertIsInstance(feed.e('p')	, WebElement)
 	
-	@url('/channels/view/11675544/')
 	@logged_in
+	@url('/channels/view/11675544/')
 	def test_tab_home(self):
 		tab_home = self.e('.tab_nav li a[href="#tab-home"]')
 		self.assertEqual('Home', tab_home.text)
@@ -311,8 +311,8 @@ class Channel(HPTestCase):
 			self.assertEqual(i[0]	, links_help[n].get_attribute('href'))
 			self.assertEqual(i[1]	, links_help[n].text)
 	
-	@url('/channels/view/11675544/')
 	@logged_in
+	@url('/channels/view/11675544/')
 	def test_tab_pin_something(self):
 		
 		tab_upload = self.e('.tab_nav li a[href="#tab-upload"]')
@@ -349,8 +349,8 @@ class Channel(HPTestCase):
 		
 		self.assertEqual('Get Help', help.e('h3').text)
 	
-	@url('/channels/view/11675544/')
 	@logged_in
+	@url('/channels/view/11675544/')
 	def test_tab_collections(self):
 		
 		tab_collection = self.e('.tab_nav li a[href="#tab-create-collection"]')
@@ -423,8 +423,8 @@ class Channel(HPTestCase):
 			self.assertEqual(i[0]	, links_help[n].get_attribute('href'))
 			self.assertEqual(i[1]	, links_help[n].text)
 	
-	@url('/channels/view/11675544/')
 	@logged_in
+	@url('/channels/view/11675544/')
 	def test_tab_tours(self):
 		
 		tab_tour = self.e('.tab_nav li a[href="#tab-create-tour"]')
@@ -497,8 +497,8 @@ class Channel(HPTestCase):
 			self.assertEqual(i[0]	, links_help[n].get_attribute('href'))
 			self.assertEqual(i[1]	, links_help[n].text)
 	
-	@url('/channels/view/11675544/')
 	@logged_in
+	@url('/channels/view/11675544/')
 	def test_tab_statistics(self):
 		tab_statistics = self.e('.tab_nav li a[href="#tab-reports"]')
 		self.assertEqual('Statistics', tab_statistics.text)
@@ -535,8 +535,8 @@ class Channel(HPTestCase):
 		active = tab_toolbar.e('.preview:nth-of-type(2)')
 		self.assertEqual('Show Tool Bar', active.text)
 	
-	@url('/channels/view/11675544/')
 	@logged_in
+	@url('/channels/view/11675544/')
 	def test_channel_info(self):
 		
 		editor = self.e('.channel_editor')
@@ -683,8 +683,8 @@ class Channel(HPTestCase):
 			self.assertEqual(i[0], sns[n].text)
 			self.assertEqual(i[1], sns[n].get_attribute('href'))
 		
-	@url('/channels/view/11675544/')
 	@logged_in
+	@url('/channels/view/11675544/')
 	def test_channel_design(self):
 		
 		editor = self.e('.channel_editor')
@@ -898,8 +898,8 @@ class Channel(HPTestCase):
 		# upload a banner
 		# upload a background image
 	
-	@url('/channels/view/11675544/')
 	@logged_in
+	@url('/channels/view/11675544/')
 	def test_sharing(self):
 		
 		editor = self.e_wait('.channel_editor')
@@ -1188,8 +1188,8 @@ class Channel(HPTestCase):
 			self.assertEqual(i[0]	, links_help[n].get_attribute('href'))
 			self.assertEqual(i[1]	, links_help[n].text)
 	
-	@url('/channels/view/11675544/')
 	@logged_in
+	@url('/channels/view/11675544/')
 	def test_stuff_i_like(self):
 		
 		editor		= self.e('.channel_editor')
@@ -1239,8 +1239,8 @@ class Channel(HPTestCase):
 		self.assertEqual("My fans:"				, tab_subsrcribers.e('h3').text)
 		self.assertEqual("You have no fans yet.", tab_subsrcribers.e('p').text)
 	
-	@url('/upload-item/pin/phid/26162010/edit/1/')
 	@logged_in
+	@url('/upload-item/pin/phid/26162010/edit/1/')
 	def test_edit_item(self):
 		
 		self.assertTitle('Historypin | My Content | Edit')
@@ -1371,8 +1371,8 @@ class Channel(HPTestCase):
 		location = place.e('#location')
 		self.assertEqual('ulitsa "Georgi S. Rakovski" 98, 1000 Sofia, Bulgaria', location.get_attribute('value'))
 	
-	@url('/upload/confirm/edit/1')
 	@logged_in
+	@url('/upload/confirm/edit/1')
 	def test_confirm_page(self):
 		
 		self.assertTitle('Historypin | My Content | Edit')
