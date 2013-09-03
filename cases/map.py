@@ -169,14 +169,14 @@ class Map(HPTestCase):
 		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/2000x440/quality/80/', dlg.e('#details_cnt .image .main-img').get_attribute('src'))
 		
 		info = self.e('#details_cnt .side.right.scrollbarfix .info')
-		self.assertEqual(''				, info.e('h2.photo-title').text)
+		self.assertEqual('National Theatre in Sofia, Bulgaria'				, info.e('h2.photo-title').text)
 		self.assertEqual('ulitsa "Kuzman Shapkarev" 1, 1000 Sofia, Bulgaria', info.e('strong .photo-address').text)  # ulitsa "Kuzman Shapkarev" 1, 1000 Sofia, Bulgaria - probel with this - sometimes doesn't find the string, sometimes does
 		self.assertEqual('2 August 2012'									, info.e('strong .photo-date').text)
 		
 		sleep(4)
-		details_link = dlg.e('a.suggest-details-photo')
-		self.assertEqual(URL_BASE + '/contact-us/?suggest/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:details/'	, details_link.get_attribute('href'))
-		self.assertEqual('Suggest more accurate details'																	, details_link.text )
+		details_link = dlg.e('.open-tab-dialog')
+		self.assertEqual(URL_BASE + '/map/#write-story_cnt'	, details_link.get_attribute('href'))
+		self.assertEqual('Suggest more accurate details'	, details_link.text )
 		
 		about = dlg.e('.about')
 		self.assertEqual(URL_BASE + '/channels/img/10649049/logo/1/dim/46x46/'		, about.e('img').get_attribute('src'))
@@ -211,6 +211,15 @@ class Map(HPTestCase):
 		fullscr.click()
 		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/3000x500/quality/80/', self.e('#preview_cnt .image img').get_attribute('src'))
 		
+		self.assertEqual('Share:', dlg.e('h3').text)
+		social_buttons = dlg.e('.addthis_toolbox span')
+		self.assertIn('ss-icon', social_buttons.get_attribute('class'))
+		
+		social_icons = ['ss-social-circle', 'ss-social-circle', 'ss-social-circle', 'ss-plus']
+		
+		for n in range(len(social_icons)-1):
+			self.assertIn(social_icons[n], social_buttons.get_attribute('class'))
+		
 		fullscr_off = actions.e('.action.see-smaller.right')
 		self.assertEqual('See Smaller  '	, fullscr_off.text)
 		self.assertIn('ss-icon'			, fullscr_off.e('span').get_attribute('class'))
@@ -220,14 +229,7 @@ class Map(HPTestCase):
 		self.e('.action.photo-view-on-streetview.sv-marker[href$=streetview_cnt]').click()
 		self.goBack('.list_tabs a[href$=details_cnt]')
 		
-		self.assertEqual('Share:', dlg.e('h3').text)
-		social_buttons = dlg.e('.addthis_toolbox span')
-		self.assertIn('ss-icon', social_buttons.get_attribute('class'))
 		
-		social_icons = ['ss-social-circle', 'ss-social-circle', 'ss-social-circle', 'ss-plus']
-		
-		for n in range(len(social_icons)-1):
-			self.assertIn(social_icons[n], social_buttons.get_attribute('class'))
 	
 	@url('/map/#!/geo:42.697839,23.32167/zoom:10/dialog:22363018/tab:details/')
 	def test_dialog_comments(self):
