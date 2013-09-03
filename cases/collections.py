@@ -93,7 +93,7 @@ class Collections(HPTestCase):
 	@url('/collections/slideshow/id/' + KEY_COLLECTION)
 	def test_slideshow(self):
 		
-		self.assertTitle('HistoryPin | Collection | Theaters in Bulgaria')
+		self.assertTitle('Historypin | Collection - Theaters in Bulgaria')
 		self.assertEqual('Theaters in Bulgaria\nExit Slideshow'										, self.e('#slide-content p').text)
 		self.assertEqual(URL_BASE + '/collections/view/id/26157007/title/Theaters%20in%20Bulgaria'	, self.e('#slide-content a').get_attribute('href'))
 		

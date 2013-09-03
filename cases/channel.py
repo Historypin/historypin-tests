@@ -382,7 +382,7 @@ class Channel(HPTestCase):
 		self.assertEqual('Create a new Collection', button_create.e('span').text)
 		
 		button_manage = tab_cnt.e('.scroll_to_embed')
-		self.assertEqual('http://attach.10941289.uid11675544.v4-22-00.historypin-hrd.appspot.com/collections/all', button_manage.get_attribute('href'))
+		self.assertEqual('http://attach.10941289.uid11675544.v4-25-00.historypin-hrd.appspot.com/collections/all', button_manage.get_attribute('href'))
 		self.assertEqual('Manage my Collections', button_manage.e('span').text)
 		
 		help = self.e('#tab-create-collection .help')
@@ -456,7 +456,7 @@ class Channel(HPTestCase):
 		self.assertEqual('Create a new Tour', button_create.e('span').text)
 		
 		button_manage = tab_cnt.e('.scroll_to_embed')
-		self.assertEqual('http://attach.10941289.uid11675544.v4-22-00.historypin-hrd.appspot.com/tours/all/', button_manage.get_attribute('href'))
+		self.assertEqual('http://attach.10941289.uid11675544.v4-25-00.historypin-hrd.appspot.com/tours/all/', button_manage.get_attribute('href'))
 		self.assertEqual('Manage my Tours', button_manage.e('span').text)
 		
 		help = self.e('#tab-create-tour .help')
