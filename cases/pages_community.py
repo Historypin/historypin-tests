@@ -149,9 +149,9 @@ class Community(HPTestCase):
 		
 		h3s = [
 			['Get Started', 'http://wawwd-resources.s3.amazonaws.com/Getting%20Started%20on%20Historypin.pdf', 'Getting Started Guide'],
-			['Institutions Involved', URL_BASE +'/community/lams-involved', u'See what other institutions are already involved and what they’re saying about Historypin.'],
+			['Institutions Involved', URL_BASE + '/community/lams-involved', u'See what other institutions are already involved and what they’re saying about Historypin.'],
 			['10 reasons to get Involved', '', ''],
-			['Frequently Asked Questions', 'http://www.historypin.com/faq/', 'FAQ section'], #fix link to be with the current version
+			['Frequently Asked Questions', 'http://www.historypin.com/faq/', 'FAQ section'],  # fix link to be with the current version
 		]
 		
 		k = 0

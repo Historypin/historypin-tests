@@ -117,7 +117,7 @@ class Homepage(HPTestCase):
 		
 		self.assertEqual('Explore where you live...', self.e('#search h2').text)
 		
-		self.e('#search-location').send_keys("London")
+		self.e('#search-location').send_keys("London, United Kingdom")
 		
 		first_suggestion = self.e_wait('.pac-container .pac-item')
 		self.assertEqual('London, United Kingdom', first_suggestion.text)

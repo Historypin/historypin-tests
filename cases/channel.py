@@ -37,7 +37,7 @@ class Channel(HPTestCase):
 		
 		# for n in range(len(texts)): self.assertIn(texts[n], paragraph.text)
 		
-		button = self.e('.chan.options .channel-button.left')
+		button = self.e_wait('.chan.options .channel-button.left')
 		self.assertEqual('Become a Fan'										, button.text)
 		self.assertEqual(URL_BASE + '/user/?from=/channels/view/10649049/'				, button.get_attribute('href'))
 		
@@ -127,8 +127,8 @@ class Channel(HPTestCase):
 		
 		
 		img_holder = self.e('#photo_list_content .list li .image-holder a[class="image"]')
-		self.assertEqual(URL_BASE + '/attach/uid10649049/photos/index/#!/geo:42.693918,23.326077/zoom:20/dialog:22363018/tab:details/'	, img_holder.get_attribute('href'))
-		self.assertEqual(URL_BASE + '/services/thumb/phid/25865106/dim/170x130/crop/1/'											, img_holder.e('img').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/attach/uid10649049/map/index/#!/geo:42.702623,23.344574/zoom:20/dialog:36084012/tab:details/'	, img_holder.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/36084012/dim/170x130/crop/1/'											, img_holder.e('img').get_attribute('src'))
 		
 		info = self.e('#photo_list_content .info')
 		self.assertIsInstance(info.e('h5'), WebElement)
