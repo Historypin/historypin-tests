@@ -545,6 +545,36 @@ class Channel(HPTestCase):
 	
 	@logged_in
 	@url('/channels/view/11675544/')
+	def test_tab_authentication(self):
+		tab_auth = self.e('.tab_nav li a[href="#tab-auth"]')
+		self.assertEqual('Authentication', tab_auth.text)
+		
+		tab_auth.click()
+		
+		tab_cnt = self.e('#tab-auth')
+		self.assertEqual('Authentication', tab_cnt.e('h3').text)
+		
+		cnt = [
+			['Google'	, 'Status:', 'Connected'		, 'Disconnect'	, '/user/login/connect/-1'],
+			['Twitter'	, 'Status:', 'Not Connected'	, 'Connect'		, '/user/twitter_login/connect/1'],
+			['Facebook'	, 'Status:', 'Not Connected'	, 'Connect'		, '/channels/view/11675544/#'],
+		]
+		
+		h4s = tab_cnt.es('tr td h4')
+		status = tab_cnt.es('tr:nth-child(2) td:nth-child(1)')
+		connect = tab_cnt.es('tr:nth-child(2) td:nth-child(2)')
+		connection = tab_cnt.es('a')
+		
+		for n in range(len(cnt)):
+			i = cnt[n]
+			self.assertEqual(i[0], h4s[n].text)
+			self.assertEqual(i[1], status[n].text)
+			self.assertEqual(i[2], connect[n].text)
+			self.assertEqual(i[3], connection[n].text)
+			self.assertEqual(URL_BASE + i[4], connection[n].get_attribute('href'))
+	
+	@logged_in
+	@url('/channels/view/11675544/')
 	def test_tab_hide_toolbar(self):
 		self.assertTrue(self.e('.tab_nav').is_displayed())
 		

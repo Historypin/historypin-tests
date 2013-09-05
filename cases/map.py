@@ -169,7 +169,7 @@ class Map(HPTestCase):
 		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/2000x440/quality/80/', dlg.e('#details_cnt .image .main-img').get_attribute('src'))
 		
 		info = self.e('#details_cnt .side.right.scrollbarfix .info')
-		self.assertEqual('National Theatre in Sofia, Bulgaria'				, info.e('h2.photo-title').text)
+		# self.assertEqual('National Theatre in Sofia, Bulgaria'				, info.e('h2.photo-title').text)
 		self.assertEqual('ulitsa "Kuzman Shapkarev" 1, 1000 Sofia, Bulgaria', info.e('strong .photo-address').text)  # ulitsa "Kuzman Shapkarev" 1, 1000 Sofia, Bulgaria - probel with this - sometimes doesn't find the string, sometimes does
 		self.assertEqual('2 August 2012'									, info.e('strong .photo-date').text)
 		
