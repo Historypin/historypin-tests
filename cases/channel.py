@@ -575,6 +575,54 @@ class Channel(HPTestCase):
 	
 	@logged_in
 	@url('/channels/view/11675544/')
+	def test_tab_alerts(self):
+		tab_alerts = self.e('.tab_nav li a[href="#tab-alerts"]')
+		self.assertEqual('Alerts', tab_alerts.text)
+		
+		tab_alerts.click()
+		
+		tab_cnt = self.e('#tab-alerts')
+		self.assertEqual('Manage my alerts', tab_cnt.e('h3').text)
+		
+		button = tab_cnt.e('.button.submit')
+		
+		texts = tab_cnt.es('label')
+		
+		labels = ['I would like to receive Historypin email newsletters', 'I would like to receive email alerts from Historypin about my items,\n(for example, when someone comments, favourites or repeats my photos, videos and audio recordings)', 'Alert email address']
+		
+		for n in range(len(labels)): self.assertEqual(labels[n], texts[n].text)
+		
+		checkbox = tab_cnt.es('input[type="checkbox"]')
+		sleep(3)
+		checkbox[0].click()
+		button.click()
+		self.assertTrue(checkbox[0].is_selected())
+		checkbox[0].click()
+		sleep(3)
+		button.click()
+		
+		checkbox[1].click()
+		button.click()
+		self.assertTrue(checkbox[1].is_selected())
+		checkbox[1].click()
+		button.click()
+		
+		self.assertEqual('Just so you know, you can change these settings from your channel at any time', tab_cnt.e('p').text)
+		
+		email = tab_cnt.e('#new_mail')
+		
+		self.assertEqual('gabriela.ananieva@wearewhatwedo.org', email.get_attribute('value'))
+		# email.send_keys('g.ananieva@avalith.bg')
+		# button.click()
+		# self.assertEqual('g.ananieva@avalith.bg', email.text)
+		
+		# email.send_keys('gabriela.ananieva@wearewhatwedo.org')
+		# button.click()
+		# self.assertEqual('gabriela.ananieva@wearewhatwedo.org', email.get_attribute('value'))
+		# this functionality is not working yet
+	
+	@logged_in
+	@url('/channels/view/11675544/')
 	def test_tab_hide_toolbar(self):
 		self.assertTrue(self.e('.tab_nav').is_displayed())
 		
