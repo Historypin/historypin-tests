@@ -612,14 +612,25 @@ class Channel(HPTestCase):
 		email = tab_cnt.e('#new_mail')
 		
 		self.assertEqual('gabriela.ananieva@wearewhatwedo.org', email.get_attribute('value'))
-		# email.send_keys('g.ananieva@avalith.bg')
-		# button.click()
-		# self.assertEqual('g.ananieva@avalith.bg', email.text)
+		email.clear()
+		email.send_keys('g.ananieva@avalith.bg')
+		button.click()
+		self.assertEqual('g.ananieva@avalith.bg', email.get_attribute('value'))
 		
-		# email.send_keys('gabriela.ananieva@wearewhatwedo.org')
-		# button.click()
-		# self.assertEqual('gabriela.ananieva@wearewhatwedo.org', email.get_attribute('value'))
-		# this functionality is not working yet
+		self.browser.refresh()
+		
+		tab_alerts 	= self.e('.tab_nav li a[href="#tab-alerts"]')
+		tab_alerts.click()
+		
+		tab_cnt 	= self.e('#tab-alerts')
+		button 		= tab_cnt.e('.button.submit')
+		
+		email = tab_cnt.e('#new_mail')
+		email.clear()
+		
+		email.send_keys('gabriela.ananieva@wearewhatwedo.org')
+		button.click()
+		self.assertEqual('gabriela.ananieva@wearewhatwedo.org', email.get_attribute('value'))
 	
 	@logged_in
 	@url('/channels/view/11675544/')
