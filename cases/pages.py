@@ -487,6 +487,17 @@ class Pages(HPTestCase):
 			self.assertEqual(i[0]											, headings[n].get_attribute('id'))
 			self.assertEqual(i[1]											, headings[n].text)
 	
+	@url('/cookies/')
+	def test_cookies(self):
+		#  change title to be HP | Cookies (not contact)
+		self.assertEqual('Cookies', self.e('h2').text)
+		
+		cnt = self.e('.page.rte')
+		self.assertEqual(u'The use_hitbox cookie updates the ‘views’ counter on YouTube when you have viewed a video from that site through ours.', cnt.e('p:nth-of-type(2)').text)
+		
+		self.assertEqual('http://www.google.co.uk/intl/en/analytics/privacyoverview.html', cnt.e('a:first-of-type').get_attribute('href'))
+		self.assertEqual('http://www.google.co.uk/intl/en/analytics/privacyoverview.html', cnt.e('a:first-of-type').text)
+	
 	@url('/wearewhatwedo/')
 	def test_wawwd(self):
 		self.assertTitle('Historypin | We Are What We Do')
