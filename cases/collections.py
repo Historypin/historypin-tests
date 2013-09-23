@@ -46,6 +46,7 @@ class Collections(HPTestCase):
 		self.assertEqual('Next'									, next.text)
 		self.assertEqual(URL_BASE + '/collections/all/page/2/'	, next.get_attribute('href'))
 	
+	@logged_in
 	@url('/collections/view/id/' + KEY_COLLECTION)
 	def test_view(self):
 		self.assertTitle('Historypin | Collection - Theaters in Bulgaria')
@@ -56,17 +57,17 @@ class Collections(HPTestCase):
 		paragraphs = self.es('.info p')
 		self.assertEqual('Collection for famous theaters in Bulgaria'	, paragraphs[0].text)
 		self.assertEqual('Created by Gabriela Ananieva'					, paragraphs[1].text)
-		self.assertEqual(URL_BASE + '/channels/view/11675544'			, paragraphs[1].e('a').get_attribute('href'))
+		self.assertEqual(URL_BASE + '/channels/view/%d' % ID_USER		, paragraphs[1].e('a').get_attribute('href'))
 		
 		button = self.e('.info ~ a')
 		self.assertEqual(URL_BASE + '/collections/slideshow/id/26157007/'	, button.get_attribute('href'))
 		self.assertEqual('Slide Show'										, button.text)
 		
 		collection_view = [
-			['geo:42.693738,23.326101/zoom:15/dialog:22363018'			, '/22363018/'	, '2 August 2012, from Gabss'				, '/10649049'],
 			['geo:51.4691539556,0.0169086456299/zoom:15/dialog:322003'	, '/322003/'	, '2010, from elizabeth'					, '/305005'],
 			['geo:51.594547,-0.379828/zoom:15/dialog:2090034'			, '/2090034/'	, '1910 - 1920, from ivormt'				, '/2086073'],
-			['geo:42.694696,23.329027/zoom:15/dialog:26162010'			, '/26162010/'	, '2 February 2013, from Gabriela Ananieva'	, '/11675544'],
+			['geo:42.693738,23.326101/zoom:15/dialog:22363018'			, '/22363018/'	, '2 August 2012, from Gabss'				, '/10649049'],
+			['geo:42.694693,23.329025/zoom:15/dialog:26162010'			, '/26162010/'	, '2 February 2013, from Gabriela Ananieva'	, '/%d' % ID_USER],
 		]
 		
 		item = self.es('#list_view .list li')
@@ -75,9 +76,9 @@ class Collections(HPTestCase):
 			self.assertEqual(URL_BASE + '/map/#!/' + i[0] + '/tab:details/', item[n].e('a.link-image').get_attribute('href'))
 			self.assertEqual(URL_BASE + '/services/thumb/phid' + i[1] + 'dim/195x150/crop/1/', item[n].e('img').get_attribute('src'))
 			self.assertEqual(i[2]			, item[n].e('p').text)
-			self.assertEqual(URL_BASE + i[3] + '/channels/view', item[n].e('.username-wrapper a').get_attribute('href'))
+			self.assertEqual(URL_BASE + '/channels/view' + i[3], item[n].e('.username-wrapper a').get_attribute('href'))
 		
-		actions			= self.es('.info-actions')[3]
+		actions			= self.e('li:nth-of-type(4) .info-actions')
 		smile_icon		= actions.e('a:nth-of-type(2)')
 		
 		self.assertIn('ss-icon'	, actions.e('span').get_attribute('class'))
@@ -86,7 +87,7 @@ class Collections(HPTestCase):
 		smile_icon.click()
 		sleep(4)
 		self.browser.refresh()
-		self.assertEqual(URL_BASE + '/services/thumb/phid/26162010/dim/451x302/crop/1/'	, self.e('img.index').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/322003/dim/451x302/crop/1/'	, self.e('img.index').get_attribute('src'))
 		# - after some minuted to check if the photo is changed, because it's not changed after the refresh
 	
 	@logged_in

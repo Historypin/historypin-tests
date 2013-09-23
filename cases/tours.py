@@ -53,7 +53,7 @@ class Tours(HPTestCase):
 		paragraphs = self.es('.info p')
 		self.assertEqual('Tour about beautiful buildings in Bulgaria'					, paragraphs[0].text)
 		self.assertEqual('Created by Gabriela Ananieva'												, paragraphs[1].text)
-		self.assertEqual(URL_BASE + '/channels/view/11675544'							, paragraphs[1].e('a').get_attribute('href'))
+		self.assertEqual(URL_BASE + '/channels/view/%d' % ID_USER							, paragraphs[1].e('a').get_attribute('href'))
 		
 		button = self.e('.tour-button')
 		self.assertEqual('Take the Tour'																		, button.text)
@@ -106,7 +106,7 @@ class Tours(HPTestCase):
 		
 		paragraph = self.e('.title p')
 		self.assertEqual('by Gabriela Ananieva'															, paragraph.text)
-		self.assertEqual('http://v4-25-00.historypin-hrd.appspot.com/channels/view/11675544', paragraph.e('a').get_attribute('href'))
+		self.assertEqual('http://v4-25-00.historypin-hrd.appspot.com/channels/view/%d' % ID_USER, paragraph.e('a').get_attribute('href'))
 		
 		link_exit = self.e('#exit-tour')
 		self.assertEqual(URL_BASE + '/tours/view/id/16502051/title/Beautiful%20buildings%20in%20Bulgaria'	, link_exit.get_attribute('href'))
