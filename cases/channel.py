@@ -173,7 +173,7 @@ class Channel(HPTestCase):
 		item = self.e('#photo_list_content .list li a')
 		
 		self.assertEqual(URL_BASE + '/attach/uid10649049/collections/view/id/22782015/title/Test%20Collection%20for%20automated%20test', item.get_attribute('href'))
-		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/195x150/crop/1/', item.e('img').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/195x150/crop/1/' % ID_COLLECTION_IMAGES[2], item.e('img').get_attribute('src'))
 		self.assertIn('collection-icon'	, item.e('span').get_attribute('class'))
 		self.assertIn('ss-icon'			, item.e('span').get_attribute('class'))
 		self.assertIn('ss-pictures'		, item.e('span').get_attribute('class'))
@@ -669,7 +669,7 @@ class Channel(HPTestCase):
 		
 		channel_info = settings_menu.e('li:nth-of-type(2) a')
 		self.assertEqual('Channel Info'											, channel_info.text)
-		self.assertEqual(URL_BASE + '/channels/view/%d/#tab-settings' + ID_USER	, channel_info.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/channels/view/%d/#tab-settings' % ID_USER	, channel_info.get_attribute('href'))
 		
 		channel_info.click()
 		
@@ -1352,7 +1352,7 @@ class Channel(HPTestCase):
 		self.assertEqual("You have no fans yet.", tab_subsrcribers.e('p').text)
 	
 	@logged_in
-	@url('/upload-item/pin/phid/26162010/edit/1/')
+	@url('/upload-item/pin/phid/%d/edit/1/' % ID_EDIT_ITEM)
 	def test_edit_item(self):
 		
 		self.assertTitle('Historypin | My Content | Edit')
@@ -1364,7 +1364,7 @@ class Channel(HPTestCase):
 		self.assertEqual('Date required field'		, heading[2].text)
 		self.assertEqual('Place required field'		, heading[3].text)
 		
-		self.assertEqual(URL_BASE + '/services/thumb/phid/26162010/dim/260x1000/', edit_page.e('#photo-preview img').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/260x1000/' % ID_EDIT_ITEM, edit_page.e('#photo-preview img').get_attribute('src'))
 		
 		info		= edit_page.e('.inner.left')
 		label		= info.es('label')
@@ -1442,10 +1442,10 @@ class Channel(HPTestCase):
 		
 		save = edit_page.e('#photo_pin')
 		self.assertEqual('Save and Continue', save.e('span').text)
-		self.assertEqual(URL_BASE + '/upload-item/pin/phid/26162010/edit/1/#', save.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/upload-item/pin/phid/%d/edit/1/#' % ID_EDIT_ITEM, save.get_attribute('href'))
 		save.click()
 		
-		self.go('/upload-item/pin/phid/26162010/edit/1/')
+		self.go('/upload-item/pin/phid/%d/edit/1/' % ID_EDIT_ITEM)
 		
 		edit_page = self.e('#edit_photo_page')
 		
@@ -1504,7 +1504,7 @@ class Channel(HPTestCase):
 		
 		button_view = all_done.e('.channel-button:nth-of-type(2)')
 		self.assertEqual('View my content'							, button_view.e('span').text)
-		self.assertEqual(URL_BASE + '/channels/view/%id/' % ID_USER	, button_view.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/channels/view/%d/' % ID_USER	, button_view.get_attribute('href'))
 		
 		self.assertEqual("Now why not share what you've just pinned?", all_done.es('h3')[1].text)
 		self.assertEqual("Share:", all_done.es('h3')[2].text)
