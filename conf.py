@@ -15,7 +15,8 @@ ID_TOUR_IMAGES			= [322003, 2090034, 22363018, 26162010]
 # HP - 322003 - Morden College east elevation and chapel, 2090034- Pinner High St from Church, 22363018 - National Theatre in Sofia, Bulgaria, 26162010 - Bulgarian Army Theater [322003, 2090034, 22363018, 26162010]
 # SQL - - Morden College east elevation and chapel, - Pinner High St from Church, - National Theatre in Sofia, Bulgaria, - Bulgarian Army Theater [ids from SQL]
 
-ID_USER = 84568 			# SQL- 84568 HP - 11675544
+ID_USER			= 84568 		# SQL- 84568 HP - 11675544
+ID_USER_VIEW	= 82832  		# SQL - 82832 HP - 10649049
 
 ID_MAP_ITEM		= 22363018  # SQl - HP - 22363018
 ID_EDIT_ITEM	= 26162010  # SQl - HP - 26162010

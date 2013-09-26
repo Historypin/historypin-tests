@@ -47,7 +47,7 @@ class Tours(HPTestCase):
 		self.assertTitle('Historypin | Tours - Beautiful buildings in Bulgaria')
 		
 		# self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/451x302/crop/1/' % ID_TOUR_IMAGES[3], self.e('img.index').get_attribute('src'))
-		self.assertEqual(URL_BASE + '/tours/view/id/%d/title/Beautiful%2520buildings%2520in%2520Bulgaria/#' % ID_TOUR, self.e('a.main-image').get_attribute('href'))
+		self.assertEqual(URL_BASE + '/tours/view/id/%d/title/Beautiful%%2520buildings%%2520in%%2520Bulgaria/#' % ID_TOUR, self.e('a.main-image').get_attribute('href'))
 		self.assertEqual('Beautiful buildings in Bulgaria'									, self.e('.info h2').text)
 		
 		paragraphs = self.es('.info p')
@@ -57,7 +57,7 @@ class Tours(HPTestCase):
 		
 		button = self.e('.tour-button')
 		self.assertEqual('Take the Tour'																		, button.text)
-		self.assertEqual(URL_BASE + '/tours/take/id/%d/title/Beautiful%20buildings%20in%20Bulgaria/#1' % ID_TOUR, button.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/tours/take/id/%d/title/Beautiful%%20buildings%%20in%%20Bulgaria/#1' % ID_TOUR, button.get_attribute('href'))
 		
 		tabs = self.es('.list_tabs li')
 		self.assertIsInstance(tabs[0]	, WebElement)
@@ -80,7 +80,7 @@ class Tours(HPTestCase):
 		images		= photos_list.es('img')
 		paragraphs	= photos_list.es('p:nth-of-type(1)')
 		start		= photos_list.es('.start-here')
-		start_link	= URL_BASE + '/tours/take/id/%d/title/Beautiful%20buildings%20in%20Bulgaria/#' % ID_TOUR
+		start_link	= URL_BASE + '/tours/take/id/%d/title/Beautiful%%20buildings%%20in%%20Bulgaria/#' % ID_TOUR
 		
 		for n in range(len(photo_list_cnt)):
 			i = photo_list_cnt[n]
@@ -106,7 +106,7 @@ class Tours(HPTestCase):
 		
 		paragraph = self.e('.title p')
 		self.assertEqual('by Gabriela Ananieva'															, paragraph.text)
-		self.assertEqual('http://v4-25-00.historypin-hrd.appspot.com/channels/view/%d' % ID_USER, paragraph.e('a').get_attribute('href'))
+		self.assertEqual(URL_BASE + '/channels/view/%d' % ID_USER, paragraph.e('a').get_attribute('href'))
 		
 		link_exit = self.e('#exit-tour')
 		self.assertEqual(URL_BASE + '/tours/view/id/%d/title/Beautiful%20buildings%20in%20Bulgaria' % ID_TOUR, link_exit.get_attribute('href'))
@@ -166,7 +166,7 @@ class Tours(HPTestCase):
 			check_step(tour_items[n])
 	
 	@logged_in
-	@url('/tours/add/id/%d/#%d' % ID_TOUR)
+	@url('/tours/add/id/%d/#%d' % (ID_TOUR, ID_TOUR))
 	def test_edit_tour(self):
 		site_cnt = self.e('#site-content')
 		
@@ -369,7 +369,7 @@ class Tours(HPTestCase):
 		publish.click()
 		sleep(2)
 		
-		self.go('/tours/add/id/%d/#%d' % ID_TOUR)
+		self.go('/tours/add/id/%d/#%d' % (ID_TOUR, ID_TOUR))
 		sleep(3)
 		title = self.e('#tour-title')
 		self.assertEqual('Beautiful buildings in Bulgaria', title.get_attribute('value'))

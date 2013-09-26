@@ -66,7 +66,7 @@ class Collections(HPTestCase):
 		collection_view = [
 			['geo:51.4691539556,0.0169086456299/zoom:15/dialog:%d' % ID_COLLECTION_IMAGES[0], '/%d/' % ID_COLLECTION_IMAGES[0], '2010, from elizabeth'					, '/305005'],
 			['geo:51.594547,-0.379828/zoom:15/dialog:%d' % ID_COLLECTION_IMAGES[1], '/%d/' % ID_COLLECTION_IMAGES[1], '1910 - 1920, from ivormt'				, '/2086073'],
-			['geo:42.693738,23.326101/zoom:15/dialog:%d' % ID_COLLECTION_IMAGES[2], '/%d/' % ID_COLLECTION_IMAGES[2]	, '2 August 2012, from Gabss'				, '/10649049'],
+			['geo:42.693738,23.326101/zoom:15/dialog:%d' % ID_COLLECTION_IMAGES[2], '/%d/' % ID_COLLECTION_IMAGES[2]	, '2 August 2012, from Gabss'				, '/%d' % ID_USER_VIEW],
 			['geo:42.694693,23.329025/zoom:15/dialog:%d' % ID_COLLECTION_IMAGES[3], '/%d/' % ID_COLLECTION_IMAGES[3], '2 February 2013, from Gabriela Ananieva'	, '/%d' % ID_USER],
 		]
 		
@@ -171,7 +171,7 @@ class Collections(HPTestCase):
 		# self.e('#slide-content a').click()
 	
 	@logged_in
-	@url('/collections/add/id/%d/#%d' % ID_COLLECTION)
+	@url('/collections/add/id/%d/#%d' % (ID_COLLECTION, ID_COLLECTION))
 	def test_edit_collection(self):
 		self.assertTitle('Historypin | Collection')
 		
@@ -303,7 +303,7 @@ class Collections(HPTestCase):
 		sleep(3)
 									
 		# TODO drag and drop for one item
-		self.go('/collections/add/id/%d/#%d' % ID_COLLECTION)
+		self.go('/collections/add/id/%d/#%d' % (ID_COLLECTION, ID_COLLECTION))
 		sleep(3)
 		title = self.e('#tour-title')
 		self.assertEqual('Theaters in Bulgaria', title.get_attribute('value'))
