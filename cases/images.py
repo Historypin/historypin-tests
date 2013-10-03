@@ -4,14 +4,14 @@ from base import *
 
 class Images(HPTestCase):
 	
-	# TODO 
+	# TODO
 	# items
 	# - thumb
 	# ...
 	# channels
 	# - logo
 	# ...
-	# 
+	#
 	# projects
 	# - logo
 	# - banner
