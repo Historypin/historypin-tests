@@ -1,7 +1,8 @@
 
 PATH_CRHOME_DRIVER	= '/usr/lib64/chromium-browser/chromedriver'
 
-VERSION = 'v4-sql'
+# VERSION = 'v4-sql'
+VERSION = 'v4-25-13'
 LINK_BASE = '%s.historypin-hrd.appspot.com' % (VERSION)
 # LINK_BASE = 'historypin.com'
 
@@ -17,12 +18,10 @@ if VERSION == 'v4-sql':
 	ID_TOUR_VIEW		= 22354015  # SQL
 	
 	ID_COLLECTION_IMAGES	= [322003, 2090034, 22363018, 26162010]
-	# HP - 322003 - Morden College east elevation and chapel, 2090034- Pinner High St from Church, 22363018 - National Theatre in Sofia, Bulgaria, 26162010 - Bulgarian Army Theater [322003, 2090034, 22363018, 26162010]
 	# SQL - - Morden College east elevation and chapel, - Pinner High St from Church, - National Theatre in Sofia, Bulgaria, - Bulgarian Army Theater [ids from SQL]
 	
 	ID_TOUR_IMAGES			= [322003, 2090034, 22363018, 26162010]
 	
-	# HP - 322003 - Morden College east elevation and chapel, 2090034- Pinner High St from Church, 22363018 - National Theatre in Sofia, Bulgaria, 26162010 - Bulgarian Army Theater [322003, 2090034, 22363018, 26162010]
 	# SQL - - Morden College east elevation and chapel, - Pinner High St from Church, - National Theatre in Sofia, Bulgaria, - Bulgarian Army Theater [ids from SQL]
 	
 	FAVOURITE_CHANNELS			= [7947312, 6994288, 10668143]  # SQL -
@@ -45,12 +44,10 @@ else:
 	
 	ID_COLLECTION_IMAGES	= [322003, 2090034, 22363018, 26162010]
 	# HP - 322003 - Morden College east elevation and chapel, 2090034- Pinner High St from Church, 22363018 - National Theatre in Sofia, Bulgaria, 26162010 - Bulgarian Army Theater [322003, 2090034, 22363018, 26162010]
-	# SQL - - Morden College east elevation and chapel, - Pinner High St from Church, - National Theatre in Sofia, Bulgaria, - Bulgarian Army Theater [ids from SQL]
 	
 	ID_TOUR_IMAGES			= [322003, 2090034, 22363018, 26162010]
 	
 	# HP - 322003 - Morden College east elevation and chapel, 2090034- Pinner High St from Church, 22363018 - National Theatre in Sofia, Bulgaria, 26162010 - Bulgarian Army Theater [322003, 2090034, 22363018, 26162010]
-	# SQL - - Morden College east elevation and chapel, - Pinner High St from Church, - National Theatre in Sofia, Bulgaria, - Bulgarian Army Theater [ids from SQL]
 	
 	FAVOURITE_CHANNELS			= [7947312, 6994288, 10668143]
 	FAVOURITE_CHANNELS_IMAGES	= [7947312, 6994288, 10668143]

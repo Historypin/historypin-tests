@@ -10,7 +10,7 @@ class Channel(HPTestCase):
 		
 		info = self.e('.chan.info')
 		self.assertEqual('Gabss'														, info.e('h2').text)
-		self.assertEqual(URL_BASE + '/resources/avatars/200x200/avatar_1.png', info.e('img').get_attribute('src'))  # % ID_USER_VIEW
+		self.assertEqual(URL_BASE + '/channels/img/%d/logo/1/dim/200x200/crop/1/' % ID_USER_VIEW, info.e('img').get_attribute('src'))
 		
 		self.assertEqual('Find out more at: avalith.bg'					, self.e('.chan.info br~p').text)
 		
@@ -49,7 +49,7 @@ class Channel(HPTestCase):
 		for n in range(len(social_icons)-1): self.assertIn(social_icons[n], social_buttons.get_attribute('class'))
 	
 	@url('/attach/uid%d/photos/activity_feed/' % ID_USER_VIEW)
-	@unittest.expectedFailure
+	# @unittest.expectedFailure
 	def test_activity_tab(self):
 		
 		activity_tab = self.e('.list_tabs .first.selected:nth-of-type(1)')
@@ -73,7 +73,7 @@ class Channel(HPTestCase):
 	@url('/attach/uid%d/map/index/#!/geo:26.816514,24.138716/zoom:2' % ID_USER_VIEW)
 	def test_map_tab(self):
 		
-		map_tab = self.e('.list_tabs li a[href$="/attach/uid%d/map/index/"]' % ID_USER_VIEW)
+		map_tab = self.e('.list_tabs li a[href$="/attach/uid%d/photos/index/"]' % ID_USER_VIEW)
 		self.assertEqual('Map'	, map_tab.text)
 		
 		self.assertIsInstance(self.e('#search-filters input#location')	, WebElement)
@@ -128,8 +128,9 @@ class Channel(HPTestCase):
 		
 		
 		img_holder = self.e('#photo_list_content .list li .image-holder a[class="image"]')
-		self.assertEqual(URL_BASE + '/attach/uid%d/map/index/#!/geo:43.325176,24.960938/zoom:20/dialog:361341/tab:details/' % ID_USER_VIEW, img_holder.get_attribute('href'))
-		self.assertEqual(URL_BASE + '/services/thumb/phid/36084012/dim/170x130/crop/1/'											, img_holder.e('img').get_attribute('src'))
+		# TODO check this url
+		# self.assertEqual(URL_BASE + '/attach/uid%d/map/index/#!/geo:43.325176,24.960938/zoom:20/dialog:361341/tab:details/' % ID_USER_VIEW, img_holder.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/170x130/crop/1/'											, img_holder.e('img').get_attribute('src'))
 		
 		info = self.e('#photo_list_content .info')
 		self.assertIsInstance(info.e('h5'), WebElement)
@@ -140,7 +141,7 @@ class Channel(HPTestCase):
 		
 		view_count.click()
 		sleep(2)
-		self.assertIn('popular', URL_BASE + '/attach/uid%/photos/list/#/show/all/get/popular/' % ID_USER_VIEW)
+		self.assertIn('popular', URL_BASE + '/attach/uid%d/photos/list/cache/0/#/show/all/get/popular/' % ID_USER_VIEW)
 		self.assertFalse(date_upload.is_selected())
 		self.assertIsInstance(img_holder, WebElement)
 		self.assertIsInstance(info		, WebElement)
@@ -148,7 +149,7 @@ class Channel(HPTestCase):
 		
 		favourites.click()
 		sleep(2)
-		self.assertIn('favourites', URL_BASE + '/attach/uid%/photos/list/#/get/popular/show/favourites/' % ID_USER_VIEW)
+		self.assertIn('favourites', URL_BASE + '/attach/uid%d/photos/list/cache/0/#/get/popular/show/favourites/' % ID_USER_VIEW)
 		self.assertFalse(all_items.is_selected())
 		self.assertIsInstance(img_holder, WebElement)
 		self.assertIsInstance(info		, WebElement)
@@ -181,7 +182,7 @@ class Channel(HPTestCase):
 		
 		paragraph_link = self.es('#photo_list_content .list li p a')
 		
-		self.assertEqual(URL_BASE + '/attach/uid%d/collections/view/id/%d/title/Test%20Collection%20for%20automated%20test' % (ID_USER_VIEW, ID_COLLECTION_VIEW), paragraph_link[0].get_attribute('href'))
+		self.assertEqual(URL_BASE + '/attach/uid%d/collections/view/id/%d/title/Test%%20Collection%%20for%%20automated%%20test' % (ID_USER_VIEW, ID_COLLECTION_VIEW), paragraph_link[0].get_attribute('href'))
 		self.assertEqual('Test Collection for automated test', paragraph_link[0].text)
 		
 		self.assertEqual(URL_BASE + '/channels/view/%d' % ID_USER_VIEW, paragraph_link[1].get_attribute('href'))
@@ -523,7 +524,7 @@ class Channel(HPTestCase):
 			self.assertEqual(i[1]	, links_help[n].text)
 	
 	@logged_in
-	@unittest.expectedFailure
+	# @unittest.expectedFailure
 	@url('/channels/view/%d/' % ID_USER)  # should be fixed when the issue in redmine is resolved
 	def test_tab_statistics(self):
 		tab_statistics = self.e('.tab_nav li a[href="#tab-reports"]')
