@@ -1327,9 +1327,9 @@ class Channel(HPTestCase):
 		self.assertEqual("Channels I'm a fan of:", tab_subscriptions.e('h3').text)
 		
 		channels = [
-			['7947312/'		, '/7947312/'	, 'City of Richmond Archives'],
-			['6994288/'		, '/6994288/'	, 'uf history hunt'],
-			['10668143/'	, '/10668143/'	, 'Stanford University Archives'],
+			['%d/' % FAVOURITE_CHANNELS[0], '/%d/' % FAVOURITE_CHANNELS_IMAGES[0], 'City of Richmond Archives'],
+			['%d/' % FAVOURITE_CHANNELS[1], '/%d/' % FAVOURITE_CHANNELS_IMAGES[1], 'uf history hunt'],
+			['%d/' % FAVOURITE_CHANNELS[2], '/%d/' % FAVOURITE_CHANNELS_IMAGES[2], 'Stanford University Archives'],
 		]
 		
 		channels_list = tab_subscriptions.e('.channels-list')
