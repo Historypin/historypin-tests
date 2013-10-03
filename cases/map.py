@@ -240,7 +240,7 @@ class Map(HPTestCase):
 		sleep(2)
 		self.e_wait('.list_tabs a[href$=stories_cnt]').click()
 		self.assertIn('tab:stories'		, URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:stories/' % ID_MAP_ITEM)
-		self.assertEqual('Comments and suggestions (1)'	, dlg.e('.selected .tab').text)
+		self.assertEqual('Comments and suggestions (2)'	, dlg.e('.selected .tab').text)
 		
 		sidebar						= dlg.e('.info.scrollbarfix')
 		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/294x1000/' % ID_MAP_ITEM, sidebar.e('.side-img ').get_attribute('src'))
