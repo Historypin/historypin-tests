@@ -19,12 +19,12 @@ if VERSION == 'v4-sql':
 	ID_COLLECTION_VIEW	= 22782015  # SQL
 	ID_TOUR_VIEW		= 22354015  # SQL
 	
-	ID_COLLECTION_IMAGES	= [322003, 2090034, 22363018, 26162010]
-	# SQL - - Morden College east elevation and chapel, - Pinner High St from Church, - National Theatre in Sofia, Bulgaria, - Bulgarian Army Theater [ids from SQL]
+	ID_COLLECTION_IMAGES	= [22363018, 26162010]
+	# SQL  National Theatre in Sofia, Bulgaria, - Bulgarian Army Theater [ids from SQL]
 	
-	ID_TOUR_IMAGES			= [322003, 2090034, 22363018, 26162010]
+	ID_TOUR_IMAGES			= [22363018, 26162010]
 	
-	# SQL - - Morden College east elevation and chapel, - Pinner High St from Church, - National Theatre in Sofia, Bulgaria, - Bulgarian Army Theater [ids from SQL]
+	# SQL National Theatre in Sofia, Bulgaria, - Bulgarian Army Theater [ids from SQL]
 	
 	FAVOURITE_CHANNELS			= [7947312, 6994288, 10668143]  # SQL -
 	FAVOURITE_CHANNELS_IMAGES	= [7947312, 6994288, 10668143]  # SQL -
@@ -44,10 +44,10 @@ else:
 	ID_COLLECTION_VIEW	= 22782015  # when not logged in
 	ID_TOUR_VIEW		= 22354015
 	
-	ID_COLLECTION_IMAGES	= [322003, 2090034, 22363018, 26162010]
+	ID_COLLECTION_IMAGES	= [22363018, 26162010]
 	# HP - 322003 - Morden College east elevation and chapel, 2090034- Pinner High St from Church, 22363018 - National Theatre in Sofia, Bulgaria, 26162010 - Bulgarian Army Theater [322003, 2090034, 22363018, 26162010]
 	
-	ID_TOUR_IMAGES			= [322003, 2090034, 22363018, 26162010]
+	ID_TOUR_IMAGES			= [322363018, 26162010]
 	
 	# HP - 322003 - Morden College east elevation and chapel, 2090034- Pinner High St from Church, 22363018 - National Theatre in Sofia, Bulgaria, 26162010 - Bulgarian Army Theater [322003, 2090034, 22363018, 26162010]
 	
