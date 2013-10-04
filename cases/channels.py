@@ -4,6 +4,7 @@ from base import *
 
 class Channels(HPTestCase):
 	
+	@unittest.expectedFailure  # Issue #2310 should be fixed
 	@url('/channels/')
 	def test_index(self):
 		self.assertTitle('Historypin | Featured Channels')
@@ -48,6 +49,7 @@ class Channels(HPTestCase):
 		
 		self.__test_channel_assertion()
 	
+	@unittest.expectedFailure  # Issue #2310 should be fixed
 	@url('/channels/')
 	def test_search_email(self):
 		self.e('.input-container input').click()

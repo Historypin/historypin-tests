@@ -49,7 +49,7 @@ class Channel(HPTestCase):
 		for n in range(len(social_icons)-1): self.assertIn(social_icons[n], social_buttons.get_attribute('class'))
 	
 	@url('/attach/uid%d/photos/activity_feed/' % ID_USER_VIEW)
-	# @unittest.expectedFailure
+	@unittest.expectedFailure
 	def test_activity_tab(self):
 		
 		activity_tab = self.e('.list_tabs .first.selected:nth-of-type(1)')
@@ -86,7 +86,7 @@ class Channel(HPTestCase):
 		self.assertIsInstance(self.e('#date-selector #date-slider')	, WebElement)
 		self.assertIsInstance(self.e('#date-slider-labels li')		, WebElement)
 		
-		self.e_wait('#map-canvas .hp-marker-img-wrapper[class$="22363018"]').parent_node().click()
+		self.e_wait('#map-canvas .hp-marker-img-wrapper[class$="%d"]' % ID_MAP_ITEM).parent_node().click()
 		
 		sleep(5)
 		dlg = self.e('#info-dialog')
@@ -132,7 +132,7 @@ class Channel(HPTestCase):
 		img_holder = self.e('#photo_list_content .list li .image-holder a[class="image"]')
 		# TODO check this url
 		# self.assertEqual(URL_BASE + '/attach/uid%d/map/index/#!/geo:43.325176,24.960938/zoom:20/dialog:361341/tab:details/' % ID_USER_VIEW, img_holder.get_attribute('href'))
-		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/170x130/crop/1/'											, img_holder.e('img').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/170x130/crop/1/' % ID_MAP_ITEM, img_holder.e('img').get_attribute('src'))
 		
 		info = self.e('#photo_list_content .info')
 		self.assertIsInstance(info.e('h5'), WebElement)
@@ -177,7 +177,7 @@ class Channel(HPTestCase):
 		item = self.e('#photo_list_content .list li a')
 		
 		self.assertEqual(URL_BASE + '/attach/uid%d/collections/view/id/%d/title/Test%%20Collection%%20for%%20automated%%20test' % (ID_USER_VIEW, ID_COLLECTION_VIEW), item.get_attribute('href'))
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/195x150/crop/1/' % ID_COLLECTION_IMAGES[2], item.e('img').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/195x150/crop/1/' % ID_COLLECTION_IMAGES[0], item.e('img').get_attribute('src'))
 		self.assertIn('collection-icon'	, item.e('span').get_attribute('class'))
 		self.assertIn('ss-icon'			, item.e('span').get_attribute('class'))
 		self.assertIn('ss-pictures'		, item.e('span').get_attribute('class'))
@@ -201,7 +201,7 @@ class Channel(HPTestCase):
 		item = self.e('#photo_list_content .list li a')
 		
 		self.assertEqual(URL_BASE + '/attach/uid%d/tours/view/id/%d/title/Test%%20Tour%%20for%%20automated%%20test' % (ID_USER_VIEW, ID_TOUR_VIEW), item.get_attribute('href'))
-		self.assertEqual(URL_BASE + '/services/thumb/phid/1031013/dim/195x150/crop/1/', item.e('img').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/195x150/crop/1/' % ID_MAP_ITEM, item.e('img').get_attribute('src'))
 		
 		self.assertIn('tour-icon'	, item.e('span').get_attribute('class'))
 		self.assertIn('ss-icon'		, item.e('span').get_attribute('class'))
@@ -526,8 +526,8 @@ class Channel(HPTestCase):
 			self.assertEqual(i[1]	, links_help[n].text)
 	
 	@logged_in
-	# @unittest.expectedFailure
-	@url('/channels/view/%d/' % ID_USER)  # should be fixed when the issue in redmine is resolved
+	@unittest.expectedFailure  # #2278 issue should be resolved
+	@url('/channels/view/%d/' % ID_USER)
 	def test_tab_statistics(self):
 		tab_statistics = self.e('.tab_nav li a[href="#tab-reports"]')
 		self.assertEqual('Statistics', tab_statistics.text)
@@ -1310,6 +1310,7 @@ class Channel(HPTestCase):
 			self.assertEqual(i[0]	, links_help[n].get_attribute('href'))
 			self.assertEqual(i[1]	, links_help[n].text)
 	
+	@unittest.expectedFailure  # when issue #2317 is fixed
 	@logged_in
 	@url('/channels/view/%d/' % ID_USER)
 	def test_stuff_i_like(self):

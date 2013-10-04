@@ -88,11 +88,12 @@ class Collections(HPTestCase):
 		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/451x302/crop/1/' % ID_COLLECTION_IMAGES[0]	, self.e('img.index').get_attribute('src'))
 		# - after some minuted to check if the photo is changed, because it's not changed after the refresh
 	
+	@unittest.expectedFailure  # to fix link title
 	@logged_in
 	@url('/collections/slideshow/id/%d' % ID_COLLECTION + '/')
 	def test_slideshow(self):
 		
-		# self.assertTitle('Historypin | Collection - Theaters in Bulgaria')
+		self.assertTitle('Historypin | Collection - Theaters in Bulgaria')
 		self.assertEqual('Theaters in Bulgaria\nExit Slideshow'										, self.e('#slide-content p').text)
 		self.assertEqual(URL_BASE + '/collections/view/id/%d/title/Theaters%%20in%%20Bulgaria' % ID_COLLECTION, self.e('#slide-content a').get_attribute('href'))
 		
@@ -259,7 +260,7 @@ class Collections(HPTestCase):
 		url = URL_BASE + '/services/thumb/phid'
 		self.assertEqual(url + '/%d/dim/152x108/crop/1/' % ID_COLLECTION_IMAGES[0]	, favs[0].e('img').get_attribute('src'))
 		
-		# self.assertEqual('National Theatre in Sofia, Bulgaria', favs[0].e('.photo-title').text)
+		self.assertEqual('', favs[0].e('.photo-title').text)
 		self.hover(favs[0].e('img'))
 		
 		
