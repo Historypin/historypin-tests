@@ -1,5 +1,7 @@
 
 PATH_CRHOME_DRIVER	= '/usr/lib64/chromium-browser/chromedriver'
+GO_TIMEOUT = 1
+
 
 # VERSION = 'v4-sql'
 VERSION = 'v4-25-13'

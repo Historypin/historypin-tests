@@ -37,6 +37,7 @@ def logged_in(fn):
 class Browser(webdriver.Chrome):
 	def go(self, url):
 		self.get(URL_BASE + url)
+		sleep(GO_TIMEOUT)
 		# self.pageload_wait()
 	
 	# TODO get rid of this it is exactly the same
