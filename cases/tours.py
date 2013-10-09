@@ -91,7 +91,7 @@ class Tours(HPTestCase):
 			
 			self.assertEqual(URL_BASE + '/services/thumb/phid/' + i[1] + '/dim/195x150/crop/1/', images[n].get_attribute('src'))
 		
-		representing_photo = photos_list.e('li:nth-of-type(2) .info-actions a')
+		representing_photo = photos_list.e('li:nth-of-type(2) .info-actions a.icon.choose.tour')
 		representing_photo.click()
 		sleep(3)
 		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/451x302/crop/1/' % ID_TOUR_IMAGES[1]	, self.e('img.index').get_attribute('src'))
@@ -101,12 +101,11 @@ class Tours(HPTestCase):
 		sleep(3)
 		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/451x302/crop/1/' % ID_TOUR_IMAGES[0]	, self.e('img.index').get_attribute('src'))
 	
-	@unittest.expectedFailure  # TODO FIX LINK www
 	@logged_in
 	@url('/tours/take/id/%d' % ID_TOUR + '/')
 	def test_take(self):
 		
-		self.assertTitle('Historypin | Tours')  # HTML - page title should be fixed to HistoryPin | Tour | Test Tour for automated test
+		self.assertTitle('Historypin | Tours')
 		self.assertEqual('Beautiful buildings in Bulgaria', self.e('.title h3').text)
 		
 		paragraph = self.e('.title p')
@@ -120,8 +119,8 @@ class Tours(HPTestCase):
 		self.assertIn('right'		, link_exit.e('span').get_attribute('class'))
 		
 		tour_items = [
-			["National Theatre in Sofia, Bulgaria - 2 August 2012"	, '2 August 2012'	, '/map/#!/geo:42.693738,23.326101/zoom:20/dialog:%d/tab:details/' % ID_TOUR_IMAGES[0], '%d' % ID_TOUR_IMAGES[0], "This is a photo of National Theatre in Sofia, Bulgaria"],
-			["Bulgarian Army Theater - 2 February 2013"				, '2 February 2013'	, '/map/#!/geo:42.694705,23.329034/zoom:20/dialog:%d/tab:details/' % ID_TOUR_IMAGES[1], '%d' % ID_TOUR_IMAGES[1], "This is a photo of the famous Bulgarian Army Theater ."],
+			["National Theatre in Sofia, Bulgaria - 2 August 2012"	, '2 August 2012'	, '/map/#!/geo:42.693737,23.326101/zoom:20/dialog:%d/tab:details/' % ID_TOUR_IMAGES[0], '%d' % ID_TOUR_IMAGES[0], "This is a photo of National Theatre in Sofia, Bulgaria"],
+			["Bulgarian Army Theater - 2 February 2013"				, '2 February 2013'	, '/map/#!/geo:42.694691,23.328911/zoom:20/dialog:%d/tab:details/' % ID_TOUR_IMAGES[1], '%d' % ID_TOUR_IMAGES[1], "This is a photo of the famous Bulgarian Army Theater ."],
 		]
 		
 		next_button		= self.e('.next-button.right')

@@ -169,7 +169,7 @@ class Map(HPTestCase):
 		
 		info = self.e('#details_cnt .info')
 		# self.assertEqual('National Theatre in Sofia, Bulgaria'				, info.e('h2.photo-title').text)
-		self.assertEqual('ulitsa "Kuzman Shapkarev" 1, 1000 Sofia, Bulgaria', info.e('.photo-address').text)  # ulitsa "Kuzman Shapkarev" 1, 1000 Sofia, Bulgaria - probel with this - sometimes doesn't find the string, sometimes does
+		self.assertEqual('ulitsa "Kuzman Shapkarev" 1-3, 1000 Sofia, Bulgaria', info.e('.photo-address').text)  # ulitsa "Kuzman Shapkarev" 1-3, 1000 Sofia, Bulgaria - probel with this - sometimes doesn't find the string, sometimes does
 		self.assertEqual('2 August 2012'							, info.e('.photo-date').text)
 		
 		sleep(4)
@@ -247,7 +247,7 @@ class Map(HPTestCase):
 		self.assertEqual('Pinned by: \nGabss'							, sidebar.e('.pinner p').text)
 		self.assertEqual(URL_BASE + '/channels/view/%d/' % ID_USER_VIEW	, sidebar.e('.pinner p a').get_attribute('href'))
 		self.assertEqual('National Theatre in Sofia, Bulgaria'						, sidebar.e('.photo-title').text)
-		self.assertEqual('ulitsa "Kuzman Shapkarev" 1, 1000 Sofia, Bulgaria'		, sidebar.e('.photo-address').text)
+		self.assertEqual('ulitsa "Kuzman Shapkarev" 1-3, 1000 Sofia, Bulgaria'		, sidebar.e('.photo-address').text)
 		self.assertEqual('2 August 2012'											, sidebar.e('.photo-date').text)
 		
 		stories_list = tab.e('.stories_list.scrollbarfix .comment')
@@ -360,7 +360,7 @@ class Map(HPTestCase):
 		self.assertEqual('Pinned by: \nGabss'										, sidebar.e('.pinner p').text)
 		self.assertEqual(URL_BASE + '/channels/view/%d/' % ID_USER_VIEW, sidebar.e('.pinner p a').get_attribute('href'))
 		self.assertEqual('National Theatre in Sofia, Bulgaria'						, sidebar.e('.photo-title').text)
-		self.assertEqual('ulitsa "Kuzman Shapkarev" 1, 1000 Sofia, Bulgaria'		, sidebar.e('.photo-address').text)
+		self.assertEqual('ulitsa "Kuzman Shapkarev" 1-3, 1000 Sofia, Bulgaria'		, sidebar.e('.photo-address').text)
 		self.assertEqual('2 August 2012'											, sidebar.e('.photo-date').text)
 		
 		self.assertEqual('Copyright (c) all rights reserved'						, tab.e('p .licensed').text)

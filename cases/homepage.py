@@ -64,7 +64,6 @@ class Homepage(HPTestCase):
 			self.assertIn(i[0]		, links[n].get_attribute('class'))
 			self.assertEqual(i[1]	, links[n].get_attribute('href'))
 	
-	@unittest.expectedFailure  # Issue #2297 should be fixed
 	@url('/')
 	def test_featured(self):
 		prev	= self.e('#featured .prev')
