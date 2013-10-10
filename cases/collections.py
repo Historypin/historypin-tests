@@ -88,7 +88,7 @@ class Collections(HPTestCase):
 		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/451x302/crop/1/' % ID_COLLECTION_IMAGES[1], self.e('img.index').get_attribute('src'))
 		# - after some minuted to check if the photo is changed, because it's not changed after the refresh
 	
-	@unittest.expectedFailure  # when issue #2370 is fixed
+	# @unittest.expectedFailure  # when issue #2370 is fixed
 	@logged_in
 	@url('/collections/slideshow/id/%d' % ID_COLLECTION + '/')
 	def test_slideshow(self):
@@ -114,7 +114,7 @@ class Collections(HPTestCase):
 		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/' % ID_COLLECTION_IMAGES[1], prev_thumb.get_attribute('src'))
 		self.assertIn('1/2', counter.text)
 		self.assertEqual('"National Theatre in Sofia, Bulgaria"- 2 August 2012 by Gabriela Ananieva', step_text.text)
-		self.assertEqual(URL_BASE + '/map/#!/geo:42.693737,23.326101/zoom:9/dialog:%d/tab:details/' % ID_COLLECTION_IMAGES[0], step_text.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/map/#!/geo:42.693737,23.326101/zoom:9/dialog:%d/tab:details/' % ID_COLLECTION_IMAGES[1], step_text.get_attribute('href'))
 		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/' % ID_COLLECTION_IMAGES[1], next_thumb.get_attribute('src'))
 		next_slide.click()
 		sleep(3)

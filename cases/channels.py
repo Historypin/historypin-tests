@@ -49,7 +49,6 @@ class Channels(HPTestCase):
 		
 		self.__test_channel_assertion()
 	
-	@unittest.expectedFailure  # Issue #2310 should be fixed
 	@url('/channels/')
 	def test_search_email(self):
 		self.e('.input-container input').click()
@@ -61,12 +60,12 @@ class Channels(HPTestCase):
 		self.assertEqual('Search Results for "g.ananieva@avalith.bg":', self.e('.search > h2').text)
 		
 		channel = self.e('.channels-list li')
-		self.assertEqual(URL_BASE + '/channels/view/id/%d/' % ID_USER, channel.e('a.logo').get_attribute('href'))
-		self.assertEqual(URL_BASE + '/resources/avatars/100x100/avatar_3.png'	, channel.e('a.logo img').get_attribute('src'))
-		self.assertEqual('Gabriela Ananieva'									, channel.e('a.name').text)
-		self.assertEqual(URL_BASE + '/channels/view/id/%d/' % ID_USER, channel.e('a.name').get_attribute('href'))
+		self.assertEqual(URL_BASE + '/channels/view/id/%d/' % ID_USER_VIEW, channel.e('a.logo').get_attribute('href'))
+		self.assertEqual(URL_BASE + '/channels/img/%d/logo/1/dim/70x70/crop/1/' % ID_USER_VIEW, channel.e('a.logo img').get_attribute('src'))
+		self.assertEqual('Gabss'									, channel.e('a.name').text)
+		self.assertEqual(URL_BASE + '/channels/view/id/%d/' % ID_USER_VIEW, channel.e('a.name').get_attribute('href'))
 		
 		h2 = self.e('.search-channels .right a')
-		self.assertEqual('Return to Featured Channels'									, h2.text)
-		self.assertEqual(URL_BASE + '/channels/'										, h2.get_attribute('href'))
+		self.assertEqual('Return to Featured Channels'	, h2.text)
+		self.assertEqual(URL_BASE + '/channels/'		, h2.get_attribute('href'))
 	
