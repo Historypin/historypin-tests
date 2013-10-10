@@ -33,11 +33,12 @@ class Channel(HPTestCase):
 		self.assertEqual('Share:'			, h3[1].text)
 		
 		# paragraph = self.e('.chan.options p')
-		#TODO fix this
 		# texts = ['Channel views:', 'Fans:', 'Pins:', 'Tours:', 'Collections:']
 		
 		# for n in range(len(texts)): self.assertIn(texts[n], paragraph.text)
-		button = self.e_wait('.chan.options .channel-button.left')
+		
+		sleep(4)  # AJAX
+		button = self.e('.chan.options .channel-button.left')
 		self.assertEqual('Become a Fan'												, button.text)
 		self.assertEqual(URL_BASE + '/user/?from=/channels/view/%d/' % ID_USER_VIEW	, button.get_attribute('href'))
 		

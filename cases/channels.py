@@ -4,7 +4,6 @@ from base import *
 
 class Channels(HPTestCase):
 	
-	@unittest.expectedFailure  # Issue #2310 should be fixed
 	@url('/channels/')
 	def test_index(self):
 		self.assertTitle('Historypin | Featured Channels')

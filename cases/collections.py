@@ -11,8 +11,7 @@ class Collections(HPTestCase):
 		self.assertEqual('What are Collections?'									, main_cnt.e('h1').text)
 		self.assertEqual(URL_BASE + '/collections/'									, main_cnt.e('a.main-image.no-shadow').get_attribute('href'))
 		self.assertEqual(URL_BASE + '/resources/images/collections_page_image.jpg'	, main_cnt.e('img').get_attribute('src'))
-		self.assertEqual('Collections bring together content around a particular topic or theme. You can explore the Collections or create a Collection of your own.',
-						main_cnt.e('p').text)
+		self.assertEqual('Collections bring together content around a particular topic or theme. You can explore the Collections or create a Collection of your own.', main_cnt.e('p').text)
 		
 		button		= self.e('.col.w34 a.next-button.left')
 		self.assertEqual(URL_BASE + '/collections/add'	, button.get_attribute('href'))
@@ -64,8 +63,8 @@ class Collections(HPTestCase):
 		self.assertEqual('Slide Show'										, button.text)
 		
 		collection_view = [
-			['geo:42.693737,23.326101/zoom:15/dialog:%d'	% ID_COLLECTION_IMAGES[0], '/%d/' % ID_COLLECTION_IMAGES[0], '2 August 2012, from Gabss'				, '/%d' % ID_USER_VIEW],
-			['geo:42.694691,23.328911/zoom:15/dialog:%d'	% ID_COLLECTION_IMAGES[1], '/%d/' % ID_COLLECTION_IMAGES[1], '2 February 2013, from Gabriela Ananieva'	, '/%d' % ID_USER],
+			['geo:42.694706,23.329035/zoom:15/dialog:%d'	% ID_COLLECTION_IMAGES[0], '/%d/' % ID_COLLECTION_IMAGES[0], '2 February 2013, from Gabriela Ananieva'	, '/%d' % ID_USER],
+			['geo:42.693737,23.326101/zoom:15/dialog:%d'	% ID_COLLECTION_IMAGES[1], '/%d/' % ID_COLLECTION_IMAGES[1], '2 August 2012, from Gabss'				, '/%d' % ID_USER_VIEW],
 		]
 		
 		item = self.es('#list_view .list li')
@@ -76,19 +75,24 @@ class Collections(HPTestCase):
 			self.assertEqual(i[2]			, item[n].e('p').text)
 			self.assertEqual(URL_BASE + '/channels/view' + i[3], item[n].e('.username-wrapper a').get_attribute('href'))
 		
+		photos_list	= self.e('#list_view .list')
 		actions		= self.e('li:nth-of-type(2) .info-actions')
 		smile_icon	= actions.e('.choose')
 		
 		self.assertIn('ss-icon'	, actions.e('span').get_attribute('class'))
 		self.assertIn('ss-smile', smile_icon.e('span').get_attribute('class'))
 		
-		smile_icon.click()
-		sleep(4)
+		representing_photo = photos_list.e('li:nth-of-type(2) .info-actions .choose')
+		representing_photo.click()
+		sleep(3)
+		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/451x302/crop/1/' % ID_COLLECTION_IMAGES[1]	, self.e('img.index').get_attribute('src'))
+		
+		representing_photo = photos_list.e('li:nth-of-type(1) .info-actions .choose')
+		representing_photo.click()
+		sleep(3)
 		self.browser.refresh()
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/451x302/crop/1/' % ID_COLLECTION_IMAGES[1], self.e('img.index').get_attribute('src'))
-		# - after some minuted to check if the photo is changed, because it's not changed after the refresh
+		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/451x302/crop/1/' % ID_COLLECTION_IMAGES[0]	, self.e('img.index').get_attribute('src'))
 	
-	# @unittest.expectedFailure  # when issue #2370 is fixed
 	@logged_in
 	@url('/collections/slideshow/id/%d' % ID_COLLECTION + '/')
 	def test_slideshow(self):
@@ -113,8 +117,8 @@ class Collections(HPTestCase):
 		
 		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/' % ID_COLLECTION_IMAGES[1], prev_thumb.get_attribute('src'))
 		self.assertIn('1/2', counter.text)
-		self.assertEqual('"National Theatre in Sofia, Bulgaria"- 2 August 2012 by Gabriela Ananieva', step_text.text)
-		self.assertEqual(URL_BASE + '/map/#!/geo:42.693737,23.326101/zoom:9/dialog:%d/tab:details/' % ID_COLLECTION_IMAGES[1], step_text.get_attribute('href'))
+		self.assertEqual('"Bulgarian Army Theater"- 2 February 2013 by Gabriela Ananieva', step_text.text)
+		self.assertEqual(URL_BASE + '/map/#!/geo:42.694706,23.329035/zoom:9/dialog:%d/tab:details/' % ID_COLLECTION_IMAGES[0], step_text.get_attribute('href'))
 		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/' % ID_COLLECTION_IMAGES[1], next_thumb.get_attribute('src'))
 		next_slide.click()
 		sleep(3)
@@ -239,7 +243,7 @@ class Collections(HPTestCase):
 		
 		item = step_cnt.e('.choose-photos.yours li')
 		
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/152x108/crop/1/' % ID_COLLECTION_IMAGES[1], item.e('img').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/152x108/crop/1/' % ID_COLLECTION_IMAGES[0], item.e('img').get_attribute('src'))
 		# to check icon for adding
 		
 		self.hover(item.e('img'))
@@ -262,7 +266,7 @@ class Collections(HPTestCase):
 		
 		favs = step_cnt.es('.choose-photos.favourites li')
 		url = URL_BASE + '/services/thumb/phid'
-		self.assertEqual(url + '/%d/dim/152x108/crop/1/' % ID_COLLECTION_IMAGES[0]	, favs[0].e('img').get_attribute('src'))
+		self.assertEqual(url + '/%d/dim/152x108/crop/1/' % ID_COLLECTION_IMAGES[1]	, favs[0].e('img').get_attribute('src'))
 		
 		self.assertEqual('', favs[0].e('.photo-title').text)
 		self.hover(favs[0].e('img'))
