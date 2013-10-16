@@ -495,8 +495,9 @@ class Pages(HPTestCase):
 		cnt = self.e('.page.rte')
 		self.assertEqual(u'The use_hitbox cookie updates the ‘views’ counter on YouTube when you have viewed a video from that site through ours.', cnt.e('p:nth-of-type(2)').text)
 		
-		self.assertEqual('http://www.google.co.uk/intl/en/analytics/privacyoverview.html', cnt.e('a:first-of-type').get_attribute('href'))
-		self.assertEqual('http://www.google.co.uk/intl/en/analytics/privacyoverview.html', cnt.e('a:first-of-type').text)
+		link_privacy = 'http://www.google.co.uk/intl/en/analytics/privacyoverview.html'
+		self.assertEqual(link_privacy, cnt.e('a:first-of-type').get_attribute('href'))
+		self.assertEqual(link_privacy, cnt.e('a:first-of-type').text)
 	
 	@url('/wearewhatwedo/')
 	def test_wawwd(self):
