@@ -16,9 +16,9 @@ class Pages(HPTestCase):
 		self.assertEqual('What can you do on the Historypin app?', self.e('h2').text)
 		
 		items = [
-			['Android'			, '/resources/images/content/app/app_android.png'	, 'Google Play Store'			, 'https://market.android.com/details?id=com.historypin.Historypin&feature=search_result'],
-			['iOS'				, '/resources/images/content/app/app_iphone.png'	, 'iOS App Store'				, 'http://itunes.apple.com/app/historypin/id455228207?mt=8'],
-			['Windows Phone 7'	, '/resources/images/content/app/app_wp7.png'		, 'Windows Phone Marketplace'	, 'http://www.windowsphone.com/en-US/apps/05638072-742e-460c-ab97-18d2b47ef06b'],
+			['Android'			, 'app_android.png'	, 'Google Play Store'			, 'https://market.android.com/details?id=com.historypin.Historypin&feature=search_result'],
+			['iOS'				, 'app_iphone.png'	, 'iOS App Store'				, 'http://itunes.apple.com/app/historypin/id455228207?mt=8'],
+			['Windows Phone 7'	, 'app_wp7.png'		, 'Windows Phone Marketplace'	, 'http://www.windowsphone.com/en-US/apps/05638072-742e-460c-ab97-18d2b47ef06b'],
 		]
 		
 		cnt			= self.e('.appstores')
@@ -30,7 +30,7 @@ class Pages(HPTestCase):
 		for n in range(len(items)):
 			i = items[n]
 			self.assertEqual(i[0]				, headings[n].text)
-			self.assertEqual(URL_BASE + i[1]	, images[n].get_attribute('src'))
+			self.assertEqual(URL_BASE + '/resources/images/content/app/' + i[1]	, images[n].get_attribute('src'))
 			self.assertEqual(i[2]				, texts[n].text)
 			self.assertEqual(i[3]				, links[n].get_attribute('href'))
 	
@@ -395,14 +395,14 @@ class Pages(HPTestCase):
 		self.assertEqual('What does the Foundation do?', self.e('h2').text)
 		
 		images = [
-			'/resources/images/home/friends_of_Historypin.png',
-			'/resources/images/home/friendsOfPhoto01.jpg',
-			'/resources/images/home/friendsOfPhoto02.jpg',
+			'friends_of_Historypin.png',
+			'friendsOfPhoto01.jpg',
+			'friendsOfPhoto02.jpg',
 		]
 		
 		imgs = self.es('.section img')
 		for n in range(len(images)):
-			self.assertEqual(URL_BASE + images[n], imgs[n].get_attribute('src'))
+			self.assertEqual(URL_BASE + '/resources/images/home/' + images[n], imgs[n].get_attribute('src'))
 		
 		sidebar = [
 			{
@@ -536,8 +536,9 @@ class Pages(HPTestCase):
 		csv = self.e('ol li:nth-of-type(1)')
 		self.assertEqual('Download our CSV template and the Instructions on how to complete it.', csv.text)
 		
-		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/Historypin_Bulk_Upload_Template.csv'									, csv.es('a')[0].get_attribute('href'))
-		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/Historypin_Instructions_for_Completing_a_CSV_template_March_2012.xls'	, csv.es('a')[1].get_attribute('href'))
+		link = 'http://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/'
+		self.assertEqual(link + 'Historypin_Bulk_Upload_Template.csv'									, csv.es('a')[0].get_attribute('href'))
+		self.assertEqual(link + 'Historypin_Instructions_for_Completing_a_CSV_template_March_2012.xls'	, csv.es('a')[1].get_attribute('href'))
 		
 		sidebar		= self.e('.sidebar')
 		downloads	= sidebar.e('.inner:nth-of-type(1)')
@@ -546,15 +547,15 @@ class Pages(HPTestCase):
 		self.assertEqual('Downloadables', downloads.e('h3').text)
 		
 		tpl = [
-			['CSV template download'			, 'http://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/Historypin_Bulk_Upload_Template.csv'],
-			['Instructions to complete the CSV'	, 'http://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/Historypin_Instructions_for_Completing_a_CSV_template_March_2012.xls'],
-			['Advice and tips'					, 'http://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/Bulk_Upload_Advice_and_Tips.pdf'],
+			['CSV template download'			, 'Historypin_Bulk_Upload_Template.csv'],
+			['Instructions to complete the CSV'	, 'Historypin_Instructions_for_Completing_a_CSV_template_March_2012.xls'],
+			['Advice and tips'					, 'Bulk_Upload_Advice_and_Tips.pdf'],
 		]
 		
 		for n in range(len(tpl)):
 			i = tpl[n]
 			self.assertEqual(i[0], anchors[n].text)
-			self.assertEqual(i[1], anchors[n].get_attribute('href'))
+			self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/' + i[1], anchors[n].get_attribute('href'))
 		
 		help = sidebar.e('.inner:nth-of-type(2)')
 		self.assertEqual('Get help', help.e('h3').text)
