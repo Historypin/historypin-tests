@@ -3,20 +3,19 @@
 from base import *
 
 class Projects(HPTestCase):
-	@unittest.expectedFailure  # TODO fix issue #2377
 	@url('/projects/')
 	def test_index(self):
-		self.assertTitle('Historypin')  # HTML should be fixed to be Historypin | Projects
+		self.assertTitle('Historypin | Projects')
 		
 		paragraph = self.e('.home-top p')
 		self.assertEqual(u'Explore our Historypin Projects and add your own memories. If you’d like to work with us to create a new Historypin Project, get in touch.', paragraph.text)
 		self.assertEqual(URL_BASE + '/contact', paragraph.e('a').get_attribute('href'))
 		
 		projects = [
-			['%d-hp-olympics' % ID_PROJECTS[0], "Olympic memories", "There have been world record numbers of world records, jetpacks at opening ceremonies, boycotts from sparring nations, and all those British medals at this year's extravaganza in London. Have you got photos and memories from the Olympics through the ages?", '%d' % ID_PROJECTS_IMAGES[0]],
+			['%d-hp-olympics' % ID_PROJECTS[0], "Olympic memories"					, "Have you got photos and memories from the Olympics through the ages?", '%d' % ID_PROJECTS_IMAGES[0]],
 			['%d-DiamondJubilee' % ID_PROJECTS[1], "Pinning The Queen's history"	, "Have you celebrated a Royal Jubilee over the past 60 years or even seen a Royal visit?"				, '%d' % ID_PROJECTS_IMAGES[1]],
 			['%d-balboa'		% ID_PROJECTS[2], "Balboa Park"						, "Celebrating the Centennial of the 1915-1916 Panama-California Exposition in San Diego, CA."				, '%d' % ID_PROJECTS_IMAGES[2]],
-			['%d-chevy'			% ID_PROJECTS[3], "Me and my Chevy"					, "Share your memories of your first cars, family holidays, road trips and more."							, '%d' % ID_PROJECTS_IMAGES[3]],
+			['%d-chevy'			% ID_PROJECTS[3], "Me and My Chevy"					, "Share your memories of your first cars, family holidays, road trips and more."							, '%d' % ID_PROJECTS_IMAGES[3]],
 			['%d-grandparents'	% ID_PROJECTS[4], "Amazing Grandparents"			, "Is your Gran, Grandad, Nan or Pops awesome? Add your grandparents to our Hall of Fame."					, '%d' % ID_PROJECTS_IMAGES[4]],
 			['%d-remember'		% ID_PROJECTS[5], "Remember how we used to..."		, "work, play, watch and listen, cook and clean, keep warm and celebrate. How did you used to do things?"	, '%d' % ID_PROJECTS_IMAGES[5]],
 			['%d-yearofthebay'	% ID_PROJECTS[6], "Year of the Bay"					, "What events, big and small, have shaped the San Francisco Bay? Share your memories."						, '%d' % ID_PROJECTS_IMAGES[6]],
