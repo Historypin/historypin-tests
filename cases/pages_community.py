@@ -594,33 +594,35 @@ class Community(HPTestCase):
 		self.assertEqual('Activities & Downloads for Schools', self.e('h1.title').text)
 		self.assertEqual('Downloadable Resources', self.e('h2:nth-of-type(1)').text)
 		
+		link = 'historypin/docs/'
+		
 		resources = [
 			{
 				'heading': 'Activity Sheets',
 				'items': [
 					['Activity Sheet 1: Recording the story behind a photo'	, 'Worksheet_story%20collections.pdf', 'Blank template for recording info gathered in a interview or session'],
-					['Activity Sheet 2: Recording the story behind a photo'	, 'historypin/docs/Activity_Sheet_2_Recording_the_story_behind_a_photo.pdf', 'Worksheet with a series of questions guiding you through interview or session'],
-					['Activity Sheet 3: Exploring Historypin'				, 'historypin/docs/Activity_Sheet_3_Exploring_Historypin.pdf', 'Worksheet with series of activities of things to find and do on Historypin'],
+					['Activity Sheet 2: Recording the story behind a photo'	, '%sActivity_Sheet_2_Recording_the_story_behind_a_photo.pdf' % link, 'Worksheet with a series of questions guiding you through interview or session'],
+					['Activity Sheet 3: Exploring Historypin'				, '%sActivity_Sheet_3_Exploring_Historypin.pdf' % link, 'Worksheet with series of activities of things to find and do on Historypin'],
 				],
 			},
 			{
 				'heading': 'Tip Sheets',
 				'items': [
-					['Tip Sheet 1: Taking a Photo of a Photo'								, 'historypin/docs/Tip_Sheet_1_Taking_a_Photo_of_a_Photo.pdf', 'All you need to know about taking the perfect photo of a photo - the easy way to digitise old photographs'],
-					['Tip Sheet 2: Ideas for local projects'								, 'historypin/docs/Tip_Sheet_2_Ideas_for_local_projects.pdf', 'Ideas and examples of the types of local projects you can run (both online and offline events)'],
-					['Tip Sheet 3: Tips on Planning your Historypin Local Project'			, 'historypin/docs/Tip_Sheet_3_Tips_on_Planning_your_Historypin_Local_Project.pdf', 'Tips on how to set up and plan your local project (both online and offline events)'],
-					['Tip Sheet 4: Tips on the techie parts of running a session or event'	, 'historypin/docs/Tip_Sheet_4_Tips_on_the_techie_parts_of_running_a_session_or_event.pdf', 'Practical advice if you are running online sessions'],
-					['Tip Sheet 5: Tip on Interviewing someone'								, 'historypin/docs/Tip_Sheet_5_Tip_on_Interviewing_someone.pdf', 'Things to think about before and during your conversation, plus ideas for questions'],
-					['Historypin Presentation template'										, 'historypin/docs/Historypin_Presentation.ppt', 'Powerpoint presentation to introduce Historypin to your school, group or organisation (includes spare slides for adding info about your session or event)'],
+					['Tip Sheet 1: Taking a Photo of a Photo'								, '%sTip_Sheet_1_Taking_a_Photo_of_a_Photo.pdf' % link, 'All you need to know about taking the perfect photo of a photo - the easy way to digitise old photographs'],
+					['Tip Sheet 2: Ideas for local projects'								, '%sTip_Sheet_2_Ideas_for_local_projects.pdf' % link, 'Ideas and examples of the types of local projects you can run (both online and offline events)'],
+					['Tip Sheet 3: Tips on Planning your Historypin Local Project'			, '%sTip_Sheet_3_Tips_on_Planning_your_Historypin_Local_Project.pdf' % link, 'Tips on how to set up and plan your local project (both online and offline events)'],
+					['Tip Sheet 4: Tips on the techie parts of running a session or event'	, '%sTip_Sheet_4_Tips_on_the_techie_parts_of_running_a_session_or_event.pdf' % link, 'Practical advice if you are running online sessions'],
+					['Tip Sheet 5: Tip on Interviewing someone'								, '%sTip_Sheet_5_Tip_on_Interviewing_someone.pdf' % link, 'Things to think about before and during your conversation, plus ideas for questions'],
+					['Historypin Presentation template'										, '%sHistorypin_Presentation.ppt' % link, 'Powerpoint presentation to introduce Historypin to your school, group or organisation (includes spare slides for adding info about your session or event)'],
 				],
 			},
 			{
 				'heading': 'Posters, flyers and certificates',
 				'items': [
-					['Poster advertising your event or session'								, 'historypin/docs/Poster_advertising_your_event_or_session.pdf', 'With fillable inable gaps for your details'],
-					['Flyer advertising your event or session'								, 'historypin/docs/Flyer_advertising_your_event_or_session.pdf', 'With fillable inable gaps for your details'],
-					['Invite announcing your event'											, 'historypin/docs/Invite_announcing_your_event.pdf', 'With fillable inable gaps for your details'],
-					['Certificate for participants'											, 'historypin/docs/Certificate_for_participants.pdf', 'For awarding to people for their work discovering and sharing history with fillable inable gaps for your details'],
+					['Poster advertising your event or session'								, '%sPoster_advertising_your_event_or_session.pdf' % link, 'With fillable inable gaps for your details'],
+					['Flyer advertising your event or session'								, '%sFlyer_advertising_your_event_or_session.pdf' % link, 'With fillable inable gaps for your details'],
+					['Invite announcing your event'											, '%sInvite_announcing_your_event.pdf' % link, 'With fillable inable gaps for your details'],
+					['Certificate for participants'											, '%sCertificate_for_participants.pdf' % link, 'For awarding to people for their work discovering and sharing history with fillable inable gaps for your details'],
 				],
 			},
 		]
