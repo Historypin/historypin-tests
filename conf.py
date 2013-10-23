@@ -12,7 +12,7 @@ URL_BASE = 'http://www.%s' % LINK_BASE
 
 IS_ON_SDK = not (LINK_BASE.endswith('.appspot.com') or LINK_BASE.endswith('.historypin.com'))
 
-if VERSION == 'v5-00-02':
+if VERSION == 'v5-00-05':
 	ID_COLLECTION	= 3033
 	ID_TOUR			= 1706
 	
