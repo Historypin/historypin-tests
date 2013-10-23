@@ -23,7 +23,7 @@ class Projects(HPTestCase):
 			['%d-1989'			% ID_PROJECTS[8], "Europeana 1989"					, "Share your stories, photographs and videos about the Fall of the Iron Curtain."							, '%d' % ID_PROJECTS_IMAGES[8]],
 			['%d-japan-project'	% ID_PROJECTS[9], u"Historypin 日本上陸！"			, u"日本での展開について詳しく知る"																				, '%d' % ID_PROJECTS_IMAGES[9]],
 			['%d-putting-art-on-the-map' % ID_PROJECTS[10], 'Putting Art on the Map', 'Explore, curate and enrich the Imperial War Museums\' First World War artworks.'							, '%d' % ID_PROJECTS_IMAGES[10]],
-			['%d--all-our-stories' % ID_PROJECTS[11], 'All Our Stories'				, 'Explore an archive of community projects funded by the Heritage Lottery Fund.'							, '%d' % ID_PROJECTS_IMAGES[11]],
+			['%d-all-our-stories' % ID_PROJECTS[11], 'All Our Stories'				, 'Explore an archive of community projects funded by the Heritage Lottery Fund.'							, '%d' % ID_PROJECTS_IMAGES[11]],
 		]
 		
 		
