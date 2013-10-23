@@ -35,8 +35,8 @@ if VERSION == 'v5-00-02':
 	ID_MAP_ITEM		= 149729  # SQl
 	ID_EDIT_ITEM	= 160180  # SQl
 	
-	ID_PROJECTS			= [3, 5, 6, 8, 10, 15, 22, 26, 34, 39, 41]
-	ID_PROJECTS_IMAGES	= [3, 5, 6, 8, 10, 15, 22, 26, 34, 39, 41]
+	ID_PROJECTS			= [3, 5, 6, 8, 10, 15, 22, 26, 34, 39, 41, 44]
+	ID_PROJECTS_IMAGES	= [3, 5, 6, 8, 10, 15, 22, 26, 34, 39, 41, 44]
 	
 	# TODO change the ids after migration
 	CHANNELS_EXAMPLES = [2238022, 8721093, 2662022, 6487189, 1042029]
