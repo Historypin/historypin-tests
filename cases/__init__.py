@@ -9,7 +9,11 @@ from tours import Tours
 from collections import Collections
 
 from projects import Projects
+
+from projects_cases.olympics import Project_Olympics
+
 from channels import Channels
 from channel import Channel
 
 from pinning import Pinning
+
