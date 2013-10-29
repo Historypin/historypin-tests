@@ -131,7 +131,7 @@ class HPTestCase(TestCase):
 		login = cls.e('#site-content .login .buttons li:nth-of-type(1) a')
 		login.click()
 		
-		cls.e('.email-div input').send_keys('gabriela.ananieva@wearewhatwedo.org')
+		cls.e('#Email').send_keys('gabriela.ananieva@wearewhatwedo.org')
 		cls.e('#Passwd').send_keys('tristania1010')
 		cls.e('#signIn').click()
 		sleep(3)
