@@ -10,9 +10,19 @@ from collections import Collections
 
 from projects import Projects
 
+from projects_cases.allourstories import Project_Project_AllOurStories
+from projects_cases.balboa import Project_Balboa
+from projects_cases.chevy import Project_Chevy
+from projects_cases.europeana import Project_Europeana
+from projects_cases.grandparents import Project_Grandparents
+from projects_cases.hp_japan import Project_HPJapan
+from projects_cases.npower import Project_NPower
 from projects_cases.olympics import Project_Olympics
 from projects_cases.ptqh import Project_PTQH
-from projects_cases.chevy import Project_Chevy
+from projects_cases.putting_art import Project_PuttingArt
+from projects_cases.sandy import Project_Sandy
+from projects_cases.yotb import Project_YOTB
+
 
 from channels import Channels
 from channel import Channel
