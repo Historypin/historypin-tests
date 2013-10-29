@@ -4,13 +4,13 @@ from base import *
 
 class Channel(HPTestCase):
 	
-	@url('/channels/view/10649049/')
-	def test_channel_info(self):
+	@url('/channels/view/%d/' % ID_USER_VIEW)
+	def test_channel_description(self):
 		self.assertTitle('Gabss | Historypin')
 		
 		info = self.e('.chan.info')
 		self.assertEqual('Gabss'														, info.e('h2').text)
-		self.assertEqual(URL_BASE + '/channels/img/10649049/logo/1/dim/200x200/crop/1/'	, info.e('img').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/channels/img/%d/logo/1/dim/200x200/crop/1/' % ID_USER_VIEW, info.e('img').get_attribute('src'))
 		
 		self.assertEqual('Find out more at: avalith.bg'					, self.e('.chan.info br~p').text)
 		
@@ -24,22 +24,23 @@ class Channel(HPTestCase):
 		self.assertEqual('Visit my blog'								, link[3].text)
 		self.assertEqual('http://test/'									, link[3].get_attribute('href'))
 	
-	@url('/channels/view/10649049/')
+	@url('/channels/view/%d/' % ID_USER_VIEW)
 	def test_channel_details(self):
+		# sleep(5)
 		
 		h3 = self.es('.chan.options h3')
 		self.assertEqual('Channel Details'	, h3[0].text)
 		self.assertEqual('Share:'			, h3[1].text)
 		
 		# paragraph = self.e('.chan.options p')
-		#TODO fix this
 		# texts = ['Channel views:', 'Fans:', 'Pins:', 'Tours:', 'Collections:']
 		
 		# for n in range(len(texts)): self.assertIn(texts[n], paragraph.text)
 		
-		button = self.e('.channel-button.left')
-		self.assertEqual('Become a Fan'										, button.text)
-		self.assertEqual(URL_BASE + '/channels/view/10649049/#'				, button.get_attribute('href'))
+		# sleep(4)  # AJAX
+		button = self.e('.chan.options .channel-button.left')
+		self.assertEqual('Become a Fan'												, button.text)
+		self.assertEqual(URL_BASE + '/user/?from=/channels/view/%d/' % ID_USER_VIEW	, button.get_attribute('href'))
 		
 		social_buttons = self.e('.addthis_toolbox span')
 		self.assertIn('ss-icon', social_buttons.get_attribute('class'))
@@ -48,11 +49,34 @@ class Channel(HPTestCase):
 		
 		for n in range(len(social_icons)-1): self.assertIn(social_icons[n], social_buttons.get_attribute('class'))
 	
-	@url('/attach/uid10649049/map/index/#!/geo:26.816514,24.138716/zoom:2/')
-	def test_map_tab(self):
+	@url('/attach/uid%d/photos/activity_feed/' % ID_USER_VIEW)
+	def test_activity_tab(self):
 		
-		map_tab = self.e('.list_tabs .first')
-		self.assertEqual('Map'											, map_tab.text)
+		sleep(3)
+		activity_tab = self.e('#embed_tabs li a[href$="/attach/uid%d/photos/activity_feed/"]' % ID_USER_VIEW)
+		self.assertEqual('Activity Feed', activity_tab.text)
+		
+		meta = self.e('.meta')
+		self.assertIsInstance(meta.e('.photo-date'), WebElement)
+		
+		self.assertEqual(URL_BASE + '/channels/view/%d/' % ID_USER_VIEW, meta.e('.photo-user').get_attribute('href'))
+		self.assertEqual('Gabss', meta.e('.photo-user').text)
+		
+		self.assertEqual(URL_BASE + '/channels/img/%d/logo/1/dim/100x100/' % ID_USER_VIEW, self.e('.avatar.fluid').get_attribute('src'))
+		
+		pin = self.e('.pin')
+		self.assertIsInstance(pin.e('a:nth-of-type(1)'), WebElement)
+		self.assertIsInstance(pin.e('a:nth-of-type(1) img'), WebElement)
+		
+		self.assertIsInstance(pin.e('a:nth-of-type(2)'), WebElement)
+		
+	
+	@url('/attach/uid%d/map/index/#!/geo:26.816514,24.138716/zoom:2' % ID_USER_VIEW)
+	def test_map_tab(self):
+		sleep(2)
+		
+		map_tab = self.e('.list_tabs li a[href$="/attach/uid%d/map/index/"]' % ID_USER_VIEW)  # won't pass, because in the cluster, first photo doesn't exist, but is not deleted from the map
+		self.assertEqual('Map'	, map_tab.text)
 		
 		self.assertIsInstance(self.e('#search-filters input#location')	, WebElement)
 		self.assertIsInstance(self.e('#search-filters input#tags')		, WebElement)
@@ -63,20 +87,21 @@ class Channel(HPTestCase):
 		self.assertIsInstance(self.e('#date-selector #date-slider')	, WebElement)
 		self.assertIsInstance(self.e('#date-slider-labels li')		, WebElement)
 		
-		self.e_wait('#map-canvas .hp-marker[class=hp-marker]').click()
+		self.e_wait('#map-canvas .hp-marker-img-wrapper[class$="%d"]' % ID_MAP_ITEM).parent_node().click()
 		
+		sleep(5)
 		dlg = self.e('#info-dialog')
 		self.assertIsInstance(dlg, WebElement)
-		icon_arrow_right = dlg.e('.next-photo')
-		icon_arrow_left = dlg.e('.prev-photo')
-		self.assertFalse(icon_arrow_left.is_displayed())
-		self.assertFalse(icon_arrow_right.is_displayed())
+		# icon_arrow_right = dlg.e('.next-photo')
+		# icon_arrow_left = dlg.e('.prev-photo')
+		# self.assertFalse(icon_arrow_left.is_displayed())
+		# self.assertFalse(icon_arrow_right.is_displayed())
 		
 	
-	@url('/attach/uid10649049/map/index/#!/geo:26.816514,24.138716/zoom:2/')
+	@url('/attach/uid%d/map/index/#!/geo:26.816514,24.138716/zoom:2/' % ID_USER_VIEW)
 	def test_list_tab(self):
 		
-		list_tab = self.e('.list_tabs li a[href$="/attach/uid10649049/photos/list/"]')
+		list_tab = self.e('.list_tabs li a[href$="/attach/uid%d/photos/list/"]' % ID_USER_VIEW)
 		self.assertEqual('List'	, list_tab.text)
 		list_tab.click()
 		sleep(2)
@@ -94,10 +119,10 @@ class Channel(HPTestCase):
 		self.assertEqual('Show:'	, strong[1].text)
 		
 		filters = self.e('.list-filter')
-		date_upload	= filters.e('.input[id=date_upload]')
-		view_count	= filters.e('.input[id=view_count]')
-		all_items	= filters.e('.input[id=all]')
-		favourites	= filters.e('.input[id=unpinned]')
+		date_upload	= filters.e('input[id=date_upload]')
+		view_count	= filters.e('input[id=view_count]')
+		all_items	= filters.e('input[id=all]')
+		favourites	= filters.e('input[id=favourites]')
 		
 		self.assertTrue(date_upload.is_selected())
 		self.assertFalse(view_count.is_selected())
@@ -106,8 +131,9 @@ class Channel(HPTestCase):
 		
 		
 		img_holder = self.e('#photo_list_content .list li .image-holder a[class="image"]')
-		self.assertEqual(URL_BASE + '/attach/uid10649049/photos/index/#!/geo:42.693918,23.326077/zoom:20/dialog:22363018/tab:details/'	, img_holder.get_attribute('href'))
-		self.assertEqual(URL_BASE + '/services/thumb/phid/25865106/dim/170x130/crop/1/'											, img_holder.e('img').get_attribute('src'))
+		# TODO check this url
+		# self.assertEqual(URL_BASE + '/attach/uid%d/map/index/#!/geo:43.325176,24.960938/zoom:20/dialog:361341/tab:details/' % ID_USER_VIEW, img_holder.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/170x130/crop/1/' % ID_MAP_ITEM, img_holder.e('img').get_attribute('src'))
 		
 		info = self.e('#photo_list_content .info')
 		self.assertIsInstance(info.e('h5'), WebElement)
@@ -118,7 +144,7 @@ class Channel(HPTestCase):
 		
 		view_count.click()
 		sleep(2)
-		self.assertIn('popular', URL_BASE + '/attach/uid10649049/photos/list/#/show/all/get/popular/')
+		self.assertIn('popular', URL_BASE + '/attach/uid%d/photos/list/cache/0/#/show/all/get/popular/' % ID_USER_VIEW)
 		self.assertFalse(date_upload.is_selected())
 		self.assertIsInstance(img_holder, WebElement)
 		self.assertIsInstance(info		, WebElement)
@@ -126,7 +152,7 @@ class Channel(HPTestCase):
 		
 		favourites.click()
 		sleep(2)
-		self.assertIn('favourites', URL_BASE + '/attach/uid10649049/photos/list/#/get/popular/show/favourites/')
+		self.assertIn('favourites', URL_BASE + '/attach/uid%d/photos/list/cache/0/#/get/popular/show/favourites/' % ID_USER_VIEW)
 		self.assertFalse(all_items.is_selected())
 		self.assertIsInstance(img_holder, WebElement)
 		self.assertIsInstance(info		, WebElement)
@@ -141,80 +167,81 @@ class Channel(HPTestCase):
 		self.assertIsInstance(actions	, WebElement)
 		
 	
-	@url('/attach/uid10649049/map/index/#!/geo:26.816514,24.138716/zoom:2/')
+	@url('/attach/uid%d/map/index/#!/geo:26.816514,24.138716/zoom:2/' % ID_USER_VIEW)
 	def test_collections_tab(self):
 		
-		collections_tab = self.e('.list_tabs li a[href$="/attach/uid10649049/collections/all/"]')
+		collections_tab = self.e('.list_tabs li a[href$="/attach/uid%d/collections/all/"]' % ID_USER_VIEW)
 		self.assertEqual('Collections'	, collections_tab.text)
 		collections_tab.click()
 		sleep(2)
 		
 		item = self.e('#photo_list_content .list li a')
 		
-		self.assertEqual(URL_BASE + '/attach/uid10649049/collections/view/id/22782015/title/Test%20Collection%20for%20automated%20test', item.get_attribute('href'))
-		self.assertEqual(URL_BASE + '/services/thumb/phid/22363018/dim/195x150/crop/1/', item.e('img').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/attach/uid%d/collections/view/id/%d/title/Test%%20Collection%%20for%%20automated%%20test' % (ID_USER_VIEW, ID_COLLECTION_VIEW), item.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/195x150/crop/1/' % ID_COLLECTION_IMAGES[1], item.e('img').get_attribute('src'))
 		self.assertIn('collection-icon'	, item.e('span').get_attribute('class'))
 		self.assertIn('ss-icon'			, item.e('span').get_attribute('class'))
 		self.assertIn('ss-pictures'		, item.e('span').get_attribute('class'))
 		
 		paragraph_link = self.es('#photo_list_content .list li p a')
 		
-		self.assertEqual(URL_BASE + '/attach/uid10649049/collections/view/id/22782015/title/Test%20Collection%20for%20automated%20test', paragraph_link[0].get_attribute('href'))
+		self.assertEqual(URL_BASE + '/attach/uid%d/collections/view/id/%d/title/Test%%20Collection%%20for%%20automated%%20test' % (ID_USER_VIEW, ID_COLLECTION_VIEW), paragraph_link[0].get_attribute('href'))
 		self.assertEqual('Test Collection for automated test', paragraph_link[0].text)
 		
-		self.assertEqual(URL_BASE + '/channels/view/10649049', paragraph_link[1].get_attribute('href'))
+		self.assertEqual(URL_BASE + '/channels/view/%d' % ID_USER_VIEW, paragraph_link[1].get_attribute('href'))
 		self.assertEqual('Gabss', paragraph_link[1].text)
 	
-	@url('/attach/uid10649049/map/index/#!/geo:26.816514,24.138716/zoom:2/')
+	@url('/attach/uid%d/map/index/#!/geo:26.816514,24.138716/zoom:2/' % ID_USER_VIEW)
 	def test_tours_tab(self):
 		
-		tours_tab = self.e('.list_tabs li a[href$="/attach/uid10649049/tours/all/"]')
+		tours_tab = self.e('.list_tabs li a[href$="/attach/uid%d/tours/all/"]' % ID_USER_VIEW)
 		self.assertEqual('Tours'	, tours_tab.text)
 		tours_tab.click()
 		sleep(2)
 		
 		item = self.e('#photo_list_content .list li a')
 		
-		self.assertEqual(URL_BASE + '/attach/uid10649049/tours/view/id/22354015/title/Test%20Tour%20for%20automated%20test', item.get_attribute('href'))
-		self.assertEqual(URL_BASE + '/services/thumb/phid/1031013/dim/195x150/crop/1/', item.e('img').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/attach/uid%d/tours/view/id/%d/title/Test%%20Tour%%20for%%20automated%%20test' % (ID_USER_VIEW, ID_TOUR_VIEW), item.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/706/dim/195x150/crop/1/', item.e('img').get_attribute('src'))
+		
 		self.assertIn('tour-icon'	, item.e('span').get_attribute('class'))
 		self.assertIn('ss-icon'		, item.e('span').get_attribute('class'))
 		self.assertIn('ss-hiker'	, item.e('span').get_attribute('class'))
 		
 		paragraph_link = self.es('#photo_list_content .list li p a')
 		
-		self.assertEqual(URL_BASE + '/attach/uid10649049/tours/view/id/22354015/title/Test%20Tour%20for%20automated%20test', paragraph_link[0].get_attribute('href'))
+		self.assertEqual(URL_BASE + '/attach/uid%d/tours/view/id/%d/title/Test%%20Tour%%20for%%20automated%%20test' % (ID_USER_VIEW, ID_TOUR_VIEW), paragraph_link[0].get_attribute('href'))
 		self.assertEqual('Test Tour for automated test', paragraph_link[0].text)
 		
-		self.assertEqual(URL_BASE + '/channels/view/10649049', paragraph_link[1].get_attribute('href'))
+		self.assertEqual(URL_BASE + '/channels/view/%d' % ID_USER_VIEW, paragraph_link[1].get_attribute('href'))
 		self.assertEqual('Gabss', paragraph_link[1].text)
 	
-	@url('/channels/view/10649049/')
-	def test_repeats_section(self):
+	# @url('/channels/view/%d/' % ID_USER_VIEW)
+	# def test_repeats_section(self):
 		
-		repeats = self.e('.chan.replicas')
+	# 	repeats = self.e('.chan.replicas')
 		
-		self.assertEqual('Historypin Repeats'									, repeats.e('h3').text)
-		self.assertEqual(u'Historypin Repeats are created using the Historypin Smartphone App. They are modern replicas of your photos taken by other people or modern replicas of other person’s photos taken by you.', repeats.e('p:nth-of-type(1)').text)
-		self.assertEqual('http://www.v4-22-00.historypin-hrd.appspot.com/app/'	, repeats.e('p:nth-of-type(1) a').get_attribute('href'))
-		self.assertEqual('This Channel has no Historypin Repeats'				, repeats.e('p:nth-of-type(2)').text)
+	# 	self.assertEqual('Historypin Repeats'									, repeats.e('h3').text)
+	# 	self.assertEqual(u'Historypin Repeats are created using the Historypin Smartphone App. They are modern replicas of your photos taken by other people or modern replicas of other person’s photos taken by you.', repeats.e('p:nth-of-type(1)').text)
+	# 	self.assertEqual('http://www.v4-22-00.historypin-hrd.appspot.com/app/'	, repeats.e('p:nth-of-type(1) a').get_attribute('href'))
+	# 	self.assertEqual('This Channel has no Historypin Repeats'				, repeats.e('p:nth-of-type(2)').text)
 	
-	@url('/channels/view/10649049/')
-	def test_comment_feed(self):
+	# @url('/channels/view/%d/' % ID_USER_VIEW)
+	# def test_comment_feed(self):
 		
-		text_feed = self.e('.chan.story')
+	# 	text_feed = self.e('.chan.story')
 		
-		self.assertEqual('Comment Feed'												, text_feed.e('h3').text)
-		self.assertEqual('Comments posted to your media by you or by other people.'	, text_feed.e('p').text)
+	# 	self.assertEqual('Comment Feed'												, text_feed.e('h3').text)
+	# 	self.assertEqual('Comments posted to your media by you or by other people.'	, text_feed.e('p').text)
 		
-		feed = self.e('.feed.scrollbarfix li')
+	# 	feed = self.e('.feed.scrollbarfix li')
 		
-		self.assertIsInstance(feed.e('a')	, WebElement)
-		self.assertIsInstance(feed.e('img')	, WebElement)
-		self.assertIsInstance(feed.e('p')	, WebElement)
+	# 	self.assertIsInstance(feed.e('a')	, WebElement)
+	# 	self.assertIsInstance(feed.e('img')	, WebElement)
+	# 	self.assertIsInstance(feed.e('p')	, WebElement)
 	
-	@url('/channels/view/11675544/')
 	@logged_in
+	@url('/channels/view/%d/' % ID_USER)
 	def test_tab_home(self):
 		tab_home = self.e('.tab_nav li a[href="#tab-home"]')
 		self.assertEqual('Home', tab_home.text)
@@ -233,11 +260,11 @@ class Channel(HPTestCase):
 		self.assertEqual('Personalise your Channel further:', h4s[1].text)
 		
 		to_dos = [
-			['/channels/view/11675544/#tab-upload'				, "Pin something!"],
-			['/channels/view/11675544/#tab-create-collection'	, "Create a Collection"],
-			['/channels/view/11675544/#tab-create-tour'			, "Create a Tour"],
-			['/map/'											, "Explore the map"],
-			['/channels/'										, "See other people's Channels"],
+			['/channels/view/%d/#tab-upload' % ID_USER				, "Pin something!"],
+			['/channels/view/%d/#tab-create-collection' % ID_USER	, "Create a Collection"],
+			['/channels/view/%d/#tab-create-tour' % ID_USER			, "Create a Tour"],
+			['/map/'												, "Explore the map"],
+			['/channels/'											, "See other people's Channels"],
 		]
 		
 		to_do_main = tab_cnt.es('.inner.left:nth-of-type(1) li a')
@@ -261,7 +288,7 @@ class Channel(HPTestCase):
 		
 		for n in range(len(links)):
 			i = links[n]
-			self.assertEqual(URL_BASE + '/channels/view/11675544' + i[0], edit_main[n].get_attribute('href'))
+			self.assertEqual(URL_BASE + '/channels/view/%d' % ID_USER + i[0], edit_main[n].get_attribute('href'))
 			self.assertEqual(i[1]										, edit_main[n].e('span').text)
 		
 		social_buttons = tab_cnt.e('.addthis_toolbox span')
@@ -281,11 +308,11 @@ class Channel(HPTestCase):
 		self.assertEqual('Check out these examples to see what other people have done with their channels', help.e('p:nth-of-type(1)').text)
 		
 		examples = [
-			['2238022/', 'Photos of the Past'],
-			['8721093/', 'Sue Walker White'],
-			['2662022/', 'Connecticut State Library'],
-			['6487189/', 'London Metropolitan Archives'],
-			['1042029/', 'Biggleswade History Society'],
+			['%d/' % CHANNELS_EXAMPLES[0], 'Photos of the Past'],
+			['%d/' % CHANNELS_EXAMPLES[1], 'Sue Walker White'],
+			['%d/' % CHANNELS_EXAMPLES[2], 'Connecticut State Library'],
+			['%d/' % CHANNELS_EXAMPLES[3], 'London Metropolitan Archives'],
+			['%d/' % CHANNELS_EXAMPLES[4], 'Biggleswade History Society'],
 		]
 		
 		channels_help = help.es('a[href*=id]')
@@ -311,8 +338,8 @@ class Channel(HPTestCase):
 			self.assertEqual(i[0]	, links_help[n].get_attribute('href'))
 			self.assertEqual(i[1]	, links_help[n].text)
 	
-	@url('/channels/view/11675544/')
 	@logged_in
+	@url('/channels/view/%d/' % ID_USER)
 	def test_tab_pin_something(self):
 		
 		tab_upload = self.e('.tab_nav li a[href="#tab-upload"]')
@@ -349,8 +376,8 @@ class Channel(HPTestCase):
 		
 		self.assertEqual('Get Help', help.e('h3').text)
 	
-	@url('/channels/view/11675544/')
 	@logged_in
+	@url('/channels/view/%d/' % ID_USER)
 	def test_tab_collections(self):
 		
 		tab_collection = self.e('.tab_nav li a[href="#tab-create-collection"]')
@@ -381,7 +408,7 @@ class Channel(HPTestCase):
 		self.assertEqual('Create a new Collection', button_create.e('span').text)
 		
 		button_manage = tab_cnt.e('.scroll_to_embed')
-		self.assertEqual('http://attach.10941289.uid11675544.v4-22-00.historypin-hrd.appspot.com/collections/all', button_manage.get_attribute('href'))
+		self.assertEqual('%s/collections/all' % URL_ATTACH, button_manage.get_attribute('href'))
 		self.assertEqual('Manage my Collections', button_manage.e('span').text)
 		
 		help = self.e('#tab-create-collection .help')
@@ -393,11 +420,11 @@ class Channel(HPTestCase):
 		self.assertEqual('Check out these examples to see Collections other people have made:', help.e('p:nth-of-type(1)').text)
 		
 		collections = [
-			['/3762008/title/The%20Facial%20Hair%20Through%20Time%20Collection'	, 'The Facial Hair Through Time Collection'],
-			['/6600998/title/The%20Under%20Construction%20Collection'			, 'The Under Construction Collection'],
-			['/7700038/title/Motoring%20in%20Victoria%20BC'						, 'Motoring in Victoria, Canada'],
-			['/8798159/title/Street%20Life%20in%20London'						, 'Street Life in London'],
-			['/8691041/title/Women%20at%20Work'									, 'Women at Work'],
+			['/%d/title/The%%20Facial%%20Hair%%20Through%%20Time%%20Collection' % COLLECTION_EXAMPLES[0], 'The Facial Hair Through Time Collection'],
+			['/%d/title/The%%20Under%%20Construction%%20Collection' % COLLECTION_EXAMPLES[1], 'The Under Construction Collection'],
+			['/%d/title/Motoring%%20in%%20Victoria%%20BC' % COLLECTION_EXAMPLES[2], 'Motoring in Victoria, Canada'],
+			['/%d/title/Street%%20Life%%20in%%20London' % COLLECTION_EXAMPLES[3], 'Street Life in London'],
+			['/%d/title/Women%%20at%%20Work' % COLLECTION_EXAMPLES[4], 'Women at Work'],
 		]
 		
 		channels_help = help.es('a[href*=id]')
@@ -423,8 +450,8 @@ class Channel(HPTestCase):
 			self.assertEqual(i[0]	, links_help[n].get_attribute('href'))
 			self.assertEqual(i[1]	, links_help[n].text)
 	
-	@url('/channels/view/11675544/')
 	@logged_in
+	@url('/channels/view/%d/' % ID_USER)
 	def test_tab_tours(self):
 		
 		tab_tour = self.e('.tab_nav li a[href="#tab-create-tour"]')
@@ -455,7 +482,7 @@ class Channel(HPTestCase):
 		self.assertEqual('Create a new Tour', button_create.e('span').text)
 		
 		button_manage = tab_cnt.e('.scroll_to_embed')
-		self.assertEqual('http://attach.10941289.uid11675544.v4-22-00.historypin-hrd.appspot.com/tours/all/', button_manage.get_attribute('href'))
+		self.assertEqual('%s/tours/all/' % URL_ATTACH, button_manage.get_attribute('href'))
 		self.assertEqual('Manage my Tours', button_manage.e('span').text)
 		
 		help = self.e('#tab-create-tour .help')
@@ -467,10 +494,10 @@ class Channel(HPTestCase):
 		self.assertEqual('Check out these examples to see Tours other people have made.', help.e('p:nth-of-type(1)').text)
 		
 		tours = [
-			['/8279489/title/The%20March%20on%20Washington'							, 'The 1963 March on Washington'],
-			['/6631649/title/A%20historical%20guided%20tour%20of%20Kew%20Gardens'	, 'A historical guided tour of Kew Gardens'],
+			['/%d/title/The%%20March%%20on%%20Washington' % TOUR_EXAMPLES[0], 'The 1963 March on Washington'],  # make a variable to match SQl IDs
+			['/%d/title/A%%20historical%%20guided%%20tour%%20of%%20Kew%%20Gardens' % TOUR_EXAMPLES[1], 'A historical guided tour of Kew Gardens'],
 			['/7764038/title/Road%20Trip'											, 'Road Trip'],
-			['/8748071/title/Dereham%20Circular%20History%20Tour%201'				, 'A Tour around Dereham, Norfolk'],
+			['/8748071/title/Dereham%20Circular%20History%20Tour%201'			, 'A Tour around Dereham, Norfolk'],
 			['/6605903/title/Queen%20Elizabeth%20II'								, "Queen Elizabeth II's life"],
 		]
 		
@@ -497,8 +524,8 @@ class Channel(HPTestCase):
 			self.assertEqual(i[0]	, links_help[n].get_attribute('href'))
 			self.assertEqual(i[1]	, links_help[n].text)
 	
-	@url('/channels/view/11675544/')
 	@logged_in
+	@url('/channels/view/%d/' % ID_USER)
 	def test_tab_statistics(self):
 		tab_statistics = self.e('.tab_nav li a[href="#tab-reports"]')
 		self.assertEqual('Statistics', tab_statistics.text)
@@ -516,27 +543,116 @@ class Channel(HPTestCase):
 		for n in range(len(cnt)): self.assertEqual(cnt[n], statistics[n].text)
 		
 		fans = tab_cnt.es('.stats_table tr td a')
-		self.assertEqual(URL_BASE + '/channels/view/11675544/#tab-subscribers'	, fans[0].get_attribute('href'))
+		self.assertEqual(URL_BASE + '/channels/view/%d/#tab-subscribers' % ID_USER	, fans[0].get_attribute('href'))
 		self.assertEqual('0 - See list', fans[0].text)
-		self.assertEqual(URL_BASE + '/channels/view/11675544/#tab-subscriptions', fans[1].get_attribute('href'))
+		self.assertEqual(URL_BASE + '/channels/view/%d/#tab-subscriptions' % ID_USER, fans[1].get_attribute('href'))
 		self.assertEqual('3 - See list', fans[1].text)
 	
 	@logged_in
-	@url('/channels/view/11675544/')
+	@url('/channels/view/%d/' % ID_USER)
+	def test_tab_authentication(self):
+		tab_auth = self.e('.tab_nav li a[href="#tab-auth"]')
+		self.assertEqual('Authentication', tab_auth.text)
+		
+		tab_auth.click()
+		
+		tab_cnt = self.e('#tab-auth')
+		self.assertEqual('Authentication', tab_cnt.e('h3').text)
+		
+		cnt = [
+			['Google'	, 'Status:', 'Connected'		, 'Disconnect'	, '/user/login/connect/-1'],
+			['Twitter'	, 'Status:', 'Not Connected'	, 'Connect'		, '/user/twitter_login/connect/1'],
+			['Facebook'	, 'Status:', 'Not Connected'	, 'Connect'		, '/channels/view/%d/#' % ID_USER],
+		]
+		
+		h4s = tab_cnt.es('tr td h4')
+		status = tab_cnt.es('tr:nth-child(2) td:nth-child(1)')
+		connect = tab_cnt.es('tr:nth-child(2) td:nth-child(2)')
+		connection = tab_cnt.es('a')
+		
+		for n in range(len(cnt)):
+			i = cnt[n]
+			self.assertEqual(i[0], h4s[n].text)
+			self.assertEqual(i[1], status[n].text)
+			self.assertEqual(i[2], connect[n].text)
+			self.assertEqual(i[3], connection[n].text)
+			self.assertEqual(URL_BASE + i[4], connection[n].get_attribute('href'))
+	
+	@logged_in
+	@url('/channels/view/%d/' % ID_USER)
+	def test_tab_alerts(self):
+		tab_alerts = self.e('.tab_nav li a[href="#tab-alerts"]')
+		self.assertEqual('Alerts', tab_alerts.text)
+		
+		tab_alerts.click()
+		
+		tab_cnt = self.e('#tab-alerts')
+		self.assertEqual('Manage my alerts', tab_cnt.e('h3').text)
+		
+		button = tab_cnt.e('.button.submit')
+		
+		texts = tab_cnt.es('label')
+		
+		labels = ['I would like to receive Historypin email newsletters', 'I would like to receive email alerts from Historypin about my items,\n(for example, when someone comments, favourites or repeats my photos, videos and audio recordings)', 'Alert email address']
+		
+		for n in range(len(labels)): self.assertEqual(labels[n], texts[n].text)
+		
+		checkbox = tab_cnt.es('input[type="checkbox"]')
+		sleep(3)
+		checkbox[0].click()
+		button.click()
+		self.assertTrue(checkbox[0].is_selected())
+		checkbox[0].click()
+		sleep(3)
+		button.click()
+		
+		checkbox[1].click()
+		button.click()
+		self.assertTrue(checkbox[1].is_selected())
+		checkbox[1].click()
+		button.click()
+		
+		self.assertEqual('Just so you know, you can change these settings from your channel at any time', tab_cnt.e('p').text)
+		
+		email = tab_cnt.e('#new_mail')
+		
+		self.assertEqual('gabriela.ananieva@wearewhatwedo.org', email.get_attribute('value'))
+		email.clear()
+		email.send_keys('g.ananieva@avalith.bg')
+		button.click()
+		self.assertEqual('g.ananieva@avalith.bg', email.get_attribute('value'))
+		
+		self.browser.refresh()
+		
+		tab_alerts 	= self.e('.tab_nav li a[href="#tab-alerts"]')
+		tab_alerts.click()
+		
+		tab_cnt 	= self.e('#tab-alerts')
+		button 		= tab_cnt.e('.button.submit')
+		
+		email = tab_cnt.e('#new_mail')
+		email.clear()
+		
+		email.send_keys('gabriela.ananieva@wearewhatwedo.org')
+		button.click()
+		self.assertEqual('gabriela.ananieva@wearewhatwedo.org', email.get_attribute('value'))
+	
+	@logged_in
+	@url('/channels/view/%d/' % ID_USER)
 	def test_tab_hide_toolbar(self):
-		self.assertTrue(self.e('.tab_nav').is_displayed())
+		self.assertTrue(self.es('.tab_nav')[0].is_displayed())
 		
 		tab_toolbar = self.e('.tab_nav.hideshowtoolbar ')
 		self.assertEqual('Hide Tool Bar', tab_toolbar.e('.preview:nth-of-type(1)').text)
 		
 		tab_toolbar.click()
-		self.assertTrue(self.e('.tab_cnt .main').is_displayed())
+		self.assertTrue(tab_toolbar.is_displayed())
 		
 		active = tab_toolbar.e('.preview:nth-of-type(2)')
 		self.assertEqual('Show Tool Bar', active.text)
 	
-	@url('/channels/view/11675544/')
 	@logged_in
+	@url('/channels/view/%d/' % ID_USER)
 	def test_channel_info(self):
 		
 		editor = self.e('.channel_editor')
@@ -557,8 +673,10 @@ class Channel(HPTestCase):
 		self.assertEqual('Stuff I like'		, heading[2].text)
 		
 		channel_info = settings_menu.e('li:nth-of-type(2) a')
-		self.assertEqual('Channel Info'										, channel_info.text)
-		self.assertEqual(URL_BASE + '/channels/view/11675544/#tab-settings'	, channel_info.get_attribute('href'))
+		self.assertEqual('Channel Info'											, channel_info.text)
+		self.assertEqual(URL_BASE + '/channels/view/%d/#tab-settings' % ID_USER	, channel_info.get_attribute('href'))
+		
+		
 		
 		channel_info.click()
 		
@@ -683,8 +801,8 @@ class Channel(HPTestCase):
 			self.assertEqual(i[0], sns[n].text)
 			self.assertEqual(i[1], sns[n].get_attribute('href'))
 		
-	@url('/channels/view/11675544/')
 	@logged_in
+	@url('/channels/view/%d/' % ID_USER)
 	def test_channel_design(self):
 		
 		editor = self.e('.channel_editor')
@@ -695,7 +813,7 @@ class Channel(HPTestCase):
 		self.assertTrue(settings_menu.is_displayed())
 		
 		design = settings_menu.e('a[href="#tab-design"]')
-		self.assertEqual(URL_BASE + '/channels/view/11675544/#tab-design', design.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/channels/view/%d/#tab-design' % ID_USER, design.get_attribute('href'))
 		self.assertEqual('Channel Design', design.text)
 		
 		design.click()
@@ -898,8 +1016,9 @@ class Channel(HPTestCase):
 		# upload a banner
 		# upload a background image
 	
-	@url('/channels/view/11675544/')
 	@logged_in
+	@unittest.expectedFailure  # the link for sharing in the dialog is wrong
+	@url('/channels/view/%d/' % ID_USER)
 	def test_sharing(self):
 		
 		editor = self.e_wait('.channel_editor')
@@ -911,7 +1030,7 @@ class Channel(HPTestCase):
 		self.assertTrue(settings_menu.is_displayed())
 		
 		link_site = settings_menu.e('li:nth-of-type(6) a')
-		self.assertEqual(URL_BASE + '/channels/view/11675544/#tab-embed', link_site.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/channels/view/%d/#tab-embed' % ID_USER, link_site.get_attribute('href'))
 		self.assertEqual('Link with my site', link_site.text)
 		
 		link_site.click()
@@ -934,7 +1053,7 @@ class Channel(HPTestCase):
 		dialog = self.e('.embed-profile')
 		self.assertTrue(dialog.is_displayed())
 		self.assertEqual('Copy and paste this HTML to insert the Historypin Badge into your website.', dialog.e('h4').text)
-		self.assertIn("http://www.historypin.com/channels/view/11675544/", dialog.e('textarea').text)
+		self.assertIn("http://www.historypin.com/channels/view/%d/" % ID_USER, dialog.e('textarea').text)
 		
 		dialog.parent_node().e('.ui-dialog-titlebar-close').click()
 		self.assertFalse(dialog.is_displayed())
@@ -956,7 +1075,7 @@ class Channel(HPTestCase):
 		
 		dialog = self.e('.embed-social-media')
 		self.assertEqual('Copy and paste this HTML to insert the Historypin Social Media icon into your website.', dialog.e('h4').text)
-		self.assertIn("http://www.historypin.com/channels/view/11675544/", dialog.e('textarea').text)
+		self.assertIn("http://www.historypin.com/channels/view/%d/" % ID_USER, dialog.e('textarea').text)
 		
 		dialog.parent_node().e('.ui-dialog-titlebar-close').click()
 		self.assertFalse(dialog.is_displayed())
@@ -1002,7 +1121,8 @@ class Channel(HPTestCase):
 		self.assertEqual('Your Code:', dialog.e('h4').text)
 		self.assertEqual('Copy and paste the following HTML and insert it in your website. You can find more detailed instructions and tips on custom parameters here', dialog.e('p').text)
 		self.assertEqual(URL_BASE + '/embed/help/', dialog.e('p a').get_attribute('href'))
-		self.assertIn("http://attach.uid11675544.v4-22-00.historypin-hrd.appspot.com/e/17/", dialog.e('textarea').text)
+		self.assertIn("%s/e/17/" % URL_ATTACH, dialog.e('textarea').text)
+		# '%s/collections/all' % URL_ATTACH
 		
 		dialog.parent_node().e('.ui-dialog-titlebar-close').click()
 		
@@ -1044,7 +1164,7 @@ class Channel(HPTestCase):
 		self.assertEqual('Your Code:', dialog.e('h4').text)
 		self.assertEqual('Copy and paste the following HTML and insert it in your website. You can find more detailed instructions and tips on custom parameters here', dialog.e('p').text)
 		self.assertEqual(URL_BASE + '/embed/help/', dialog.e('p a').get_attribute('href'))
-		self.assertIn("http://attach.uid11675544.v4-22-00.historypin-hrd.appspot.com/e/18/", dialog.e('textarea').text)
+		self.assertIn("%s/e/18/" % URL_ATTACH, dialog.e('textarea').text)
 		
 		dialog.parent_node().e('.ui-dialog-titlebar-close').click()
 		
@@ -1085,7 +1205,7 @@ class Channel(HPTestCase):
 		self.assertEqual('Your Code:', dialog.e('h4').text)
 		self.assertEqual('Copy and paste the following HTML and insert it in your website. You can find more detailed instructions and tips on custom parameters here', dialog.e('p').text)
 		self.assertEqual(URL_BASE + '/embed/help/', dialog.e('p a').get_attribute('href'))
-		self.assertIn("http://attach.uid11675544.v4-22-00.historypin-hrd.appspot.com/e/20/", dialog.e('textarea').text)
+		self.assertIn("%s/e/20/" + URL_ATTACH, dialog.e('textarea').text)
 		
 		dialog.parent_node().e('.ui-dialog-titlebar-close').click()
 		sleep(2)
@@ -1127,7 +1247,7 @@ class Channel(HPTestCase):
 		self.assertEqual('Your Code:', dialog.e('h4').text)
 		self.assertEqual('Copy and paste the following HTML and insert it in your website. You can find more detailed instructions and tips on custom parameters here', dialog.e('p').text)
 		self.assertEqual(URL_BASE + '/embed/help/', dialog.e('p a').get_attribute('href'))
-		self.assertIn("http://attach.uid11675544.v4-22-00.historypin-hrd.appspot.com/e/24/", dialog.e('textarea').text)
+		self.assertIn('%s/e/24/' % URL_ATTACH, dialog.e('textarea').text)
 		
 		dialog.parent_node().e('.ui-dialog-titlebar-close').click()
 		
@@ -1188,8 +1308,8 @@ class Channel(HPTestCase):
 			self.assertEqual(i[0]	, links_help[n].get_attribute('href'))
 			self.assertEqual(i[1]	, links_help[n].text)
 	
-	@url('/channels/view/11675544/')
 	@logged_in
+	@url('/channels/view/%d/' % ID_USER)
 	def test_stuff_i_like(self):
 		
 		editor		= self.e('.channel_editor')
@@ -1208,9 +1328,9 @@ class Channel(HPTestCase):
 		self.assertEqual("Channels I'm a fan of:", tab_subscriptions.e('h3').text)
 		
 		channels = [
-			['7947312/'		, '/7947312/'	, 'City of Richmond Archives'],
-			['6994288/'		, '/6994288/'	, 'uf history hunt'],
-			['10668143/'	, '/10668143/'	, 'Stanford University Archives'],
+			['%d/' % FAVOURITE_CHANNELS[0], '/%d/' % FAVOURITE_CHANNELS_IMAGES[0], 'City of Richmond Archives'],
+			['%d/' % FAVOURITE_CHANNELS[1], '/%d/' % FAVOURITE_CHANNELS_IMAGES[1], 'uf history hunt'],
+			['%d/' % FAVOURITE_CHANNELS[2], '/%d/' % FAVOURITE_CHANNELS_IMAGES[2], 'Stanford University Archives'],
 		]
 		
 		channels_list = tab_subscriptions.e('.channels-list')
@@ -1221,7 +1341,7 @@ class Channel(HPTestCase):
 		for n in range(len(channels)):
 			i = channels[n]
 			self.assertEqual(URL_BASE + '/channels/view/' 		+ i[0], logo_link[n].get_attribute('href'))
-			self.assertEqual(URL_BASE + '/channels/view/id/' 	+ i[0], channel[n].get_attribute('href'))
+			self.assertEqual(URL_BASE + '/channels/view/' 	+ i[0], channel[n].get_attribute('href'))
 			self.assertEqual(URL_BASE + '/channels/img' 		+ i[1] + 'logo/1/dim/70x70/crop/1/', img[n].get_attribute('src'))
 			self.assertEqual(i[2], channel[n].text)
 		
@@ -1239,8 +1359,9 @@ class Channel(HPTestCase):
 		self.assertEqual("My fans:"				, tab_subsrcribers.e('h3').text)
 		self.assertEqual("You have no fans yet.", tab_subsrcribers.e('p').text)
 	
-	@url('/upload-item/pin/phid/26162010/edit/1/')
 	@logged_in
+	@unittest.expectedFailure  # Issue 2321 should be fixed
+	@url('/upload-item/pin/phid/%d/edit/1/' % ID_EDIT_ITEM)
 	def test_edit_item(self):
 		
 		self.assertTitle('Historypin | My Content | Edit')
@@ -1252,7 +1373,7 @@ class Channel(HPTestCase):
 		self.assertEqual('Date required field'		, heading[2].text)
 		self.assertEqual('Place required field'		, heading[3].text)
 		
-		self.assertEqual(URL_BASE + '/services/thumb/phid/26162010/dim/260x1000/', edit_page.e('#photo-preview img').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/260x1000/' % ID_EDIT_ITEM, edit_page.e('#photo-preview img').get_attribute('src'))
 		
 		info		= edit_page.e('.inner.left')
 		label		= info.es('label')
@@ -1267,7 +1388,7 @@ class Channel(HPTestCase):
 		
 		title.clear()
 		title.send_keys('Bulgarian Army Theater')
-		self.assertEqual('Remaining characters: 28', paragraph[0].text)
+		self.assertEqual('Remaining characters: 78', paragraph[0].text)
 		
 		desc.clear()
 		desc.send_keys('This is a photo of the famous Bulgarian Army Theater .')
@@ -1276,8 +1397,8 @@ class Channel(HPTestCase):
 		tags.send_keys('theater, theatre, bulgarian army')
 		self.assertEqual('Remaining characters: 468', paragraph[1].text)
 		
-		license = edit_page.e('.section.license')
-		option = license.e('#photo_info_license_type')
+		license	= edit_page.e('.section.license')
+		option	= license.e('#photo_info_license_type')
 		option.click()
 		option.e('option:nth-of-type(2)').click()
 		
@@ -1330,10 +1451,10 @@ class Channel(HPTestCase):
 		
 		save = edit_page.e('#photo_pin')
 		self.assertEqual('Save and Continue', save.e('span').text)
-		self.assertEqual(URL_BASE + '/upload-item/pin/phid/26162010/edit/1/#', save.get_attribute('href'))
+		self.assertEqual(URL_BASE + '/upload-item/pin/phid/%d/edit/1/#' % ID_EDIT_ITEM, save.get_attribute('href'))
 		save.click()
 		
-		self.go('/upload-item/pin/phid/26162010/edit/1/')
+		self.go('/upload-item/pin/phid/%d/edit/1/' % ID_EDIT_ITEM)
 		
 		edit_page = self.e('#edit_photo_page')
 		
@@ -1369,10 +1490,10 @@ class Channel(HPTestCase):
 		self.assertTrue(place.e('#pin-tab-sv').is_displayed())
 		
 		location = place.e('#location')
-		self.assertEqual('ulitsa "Georgi S. Rakovski" 98, 1000 Sofia, Bulgaria', location.get_attribute('value'))
+		self.assertEqual('Georgi Rakovski Street 98, 1000 Sofia, Bulgaria', location.get_attribute('value'))
 	
-	@url('/upload/confirm/edit/1')
 	@logged_in
+	@url('/upload/confirm/edit/1')
 	def test_confirm_page(self):
 		
 		self.assertTitle('Historypin | My Content | Edit')
@@ -1391,8 +1512,8 @@ class Channel(HPTestCase):
 		self.assertEqual(URL_BASE + '/upload/'	, button_add.get_attribute('href'))
 		
 		button_view = all_done.e('.channel-button:nth-of-type(2)')
-		self.assertEqual('View my content'						, button_view.e('span').text)
-		self.assertEqual(URL_BASE + '/channels/view/11675544/'	, button_view.get_attribute('href'))
+		self.assertEqual('View my content'							, button_view.e('span').text)
+		self.assertEqual(URL_BASE + '/channels/view/%d/' % ID_USER	, button_view.get_attribute('href'))
 		
 		self.assertEqual("Now why not share what you've just pinned?", all_done.es('h3')[1].text)
 		self.assertEqual("Share:", all_done.es('h3')[2].text)

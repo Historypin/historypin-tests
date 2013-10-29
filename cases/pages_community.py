@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from base import *
-import logging
 class Community(HPTestCase):
 	
 	@url('/community/')
@@ -28,13 +27,15 @@ class Community(HPTestCase):
 		for n in range(len(headings)):
 			self.assertEqual(headings[n], h2s[n].text)
 		
+		link_images	= 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/'
+		
 		groups = [
-			['Pinning The Queen\'s History', 'What pics and stories do you have of the Queen\'s visits and Jubilee celebrations?', 'http://wearewhatwedo.org/queen.jpg', u'View The Queen’s Collection', URL_BASE + '/DiamondJubilee/'],
-			['The Chevy Centenary', u'We’re looking for pics and stories of each of the Chevy models created over the last 100 years.', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/chevy_img.png', 'View Chevy Collection', URL_BASE + '/chevy/'],
-			['Life Story Challenge', 'Create a Life Story about someone you know with photos and memories telling the story of their life.', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/icon_life_stories.png', 'View Life Stories Challenge', 'http://www.11492009-gats.historypin.com/en/page/life-stories/'],
-			['Google Groups', u'Talk to other users, learn from each other’s experience, plus give us feedback as we experiment with new features.', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/icon_google_groups.png', 'Visit the Group', 'https://groups.google.com/forum/?fromgroups#!forum/historypin'],
-			['Meet the team', 'Check out the people working away to bring you Historypin.', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/theteam.jpg', 'Meet the team', URL_BASE + '/team'],
-			['The Foundation', 'Find out about our Charitable Foundation which works on the ground in local communities and education.', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/friends_of_historypin.jpg', 'Read more', URL_BASE + '/Friends-Of-Historypin/'],
+			['Pinning The Queen\'s History', 'What pics and stories do you have of the Queen\'s visits and Jubilee celebrations?'					, 'http://wearewhatwedo.org/queen.jpg', u'View The Queen’s Collection', URL_BASE + '/DiamondJubilee/'],
+			['The Chevy Centenary', u'We’re looking for pics and stories of each of the Chevy models created over the last 100 years.'				, link_images + 'chevy_img.png', 'View Chevy Collection', URL_BASE + '/chevy/'],
+			['Life Story Challenge', 'Create a Life Story about someone you know with photos and memories telling the story of their life.'			, link_images + 'icon_life_stories.png', 'View Life Stories Challenge', 'http://www.11492009-gats.historypin.com/en/page/life-stories/'],
+			['Google Groups', u'Talk to other users, learn from each other’s experience, plus give us feedback as we experiment with new features.'	, link_images + 'icon_google_groups.png', 'Visit the Group', 'https://groups.google.com/forum/?fromgroups#!forum/historypin'],
+			['Meet the team', 'Check out the people working away to bring you Historypin.'															, link_images + 'theteam.jpg', 'Meet the team', URL_BASE + '/team'],
+			['The Foundation', 'Find out about our Charitable Foundation which works on the ground in local communities and education.'				, link_images + 'friends_of_historypin.jpg', 'Read more', URL_BASE + '/Friends-Of-Historypin/'],
 		]
 		
 		headings	= self.es('.group ~ .group .col h3')
@@ -55,21 +56,24 @@ class Community(HPTestCase):
 	
 	@url('/community/schools')
 	def test_sidebar(self):
+		
+		link_community = URL_BASE + '/community'
+		
 		sidebar = [
-			['Community Homepage', URL_BASE + '/community', 'Lots of news, ideas, and info for Historypinners round the world'],
-			['Schools Homepage', URL_BASE + '/community/schools', 'Want to run a Historypin session or event in your school?'],
-			['Local Projects Homepage', URL_BASE + '/community/localprojects', 'Want to run a Historypin session or event with your group?'],
-			['Libraries, Archives and Museums Homepage', URL_BASE + '/community/lams', 'Want to get your institution involved?'],
-			['Libraries, Archives and Museums Involved', URL_BASE + '/community/lams-involved', 'Find out the institutions that are already sharing their history on Historypin.'],
-			['How To Guides', URL_BASE + '/community/howtos', 'Downloadable pdfs and videos to explain how to do everything'],
-			['Activities & Downloadables for schools', URL_BASE + '/community/schools-resources', 'Resources to make running sessions and events easier.'],
-			['Activities & Downloadables for projects', URL_BASE + '/community/localprojects-resources', 'Resources to make running sessions and events easier.'],
-			['Topics to Explore', URL_BASE + '/community/topics-to-explore', 'Some of the most interesting photos, Tours and Collections to explore in sessions.'],
-			['School Case Studies', URL_BASE + '/community/schools-case-studies', 'Some examples of schools around the word using Historypin'],
-			['Local Project Case Studies', URL_BASE + '/community/localprojects-case-studies', 'Some examples of local projects around the world using Historypin'],
-			['Support Us', URL_BASE + '/donate/', u'Donate to Friends of Historypin and you’ll be helping support Historypin Community and Education Programmes.\n\nRegistered Charity Number 1134546'],
+			['Community Homepage'						, link_community, 'Lots of news, ideas, and info for Historypinners round the world'],
+			['Schools Homepage'							, link_community + '/schools', 'Want to run a Historypin session or event in your school?'],
+			['Local Projects Homepage'					, link_community + '/localprojects', 'Want to run a Historypin session or event with your group?'],
+			['Libraries, Archives and Museums Homepage'	, link_community + '/lams', 'Want to get your institution involved?'],
+			['Libraries, Archives and Museums Involved'	, link_community + '/lams-involved', 'Find out the institutions that are already sharing their history on Historypin.'],
+			['How To Guides'							, link_community + '/howtos', 'Downloadable pdfs and videos to explain how to do everything'],
+			['Activities & Downloadables for schools'	, link_community + '/schools-resources', 'Resources to make running sessions and events easier.'],
+			['Activities & Downloadables for projects'	, link_community + '/localprojects-resources', 'Resources to make running sessions and events easier.'],
+			['Topics to Explore'						, link_community + '/topics-to-explore', 'Some of the most interesting photos, Tours and Collections to explore in sessions.'],
+			['School Case Studies'						, link_community + '/schools-case-studies', 'Some examples of schools around the word using Historypin'],
+			['Local Project Case Studies'				, link_community + '/localprojects-case-studies', 'Some examples of local projects around the world using Historypin'],
+			['Support Us'								, URL_BASE		+ '/donate/', u'Donate to Friends of Historypin and you’ll be helping support Historypin Community and Education Programmes.\n\nRegistered Charity Number 1134546'],
 			['Blog', 'http://blog.historypin.com/', 'Find out the latest community, site development, partnership and Challenges news'],
-			['Contact', URL_BASE + '/contact-us', 'For more information contact Rebekkah Abraham, Historypin Content Manager on rebekkah.abraham@wearewhatwedo.org.'],
+			['Contact'									, URL_BASE + '/contact-us', 'For more information contact Rebekkah Abraham, Historypin Content Manager on rebekkah.abraham@wearewhatwedo.org.'],
 		]
 		
 		headings	= self.es('.sidebar .inner h4')
@@ -149,9 +153,9 @@ class Community(HPTestCase):
 		
 		h3s = [
 			['Get Started', 'http://wawwd-resources.s3.amazonaws.com/Getting%20Started%20on%20Historypin.pdf', 'Getting Started Guide'],
-			['Institutions Involved', URL_BASE +'/community/lams-involved', u'See what other institutions are already involved and what they’re saying about Historypin.'],
+			['Institutions Involved', URL_BASE + '/community/lams-involved', u'See what other institutions are already involved and what they’re saying about Historypin.'],
 			['10 reasons to get Involved', '', ''],
-			['Frequently Asked Questions', 'http://www.historypin.com/faq/', 'FAQ section'], #fix link to be with the current version
+			['Frequently Asked Questions', 'http://www.historypin.com/faq/', 'FAQ section'],  # fix link to be with the current version
 		]
 		
 		k = 0
@@ -199,52 +203,54 @@ class Community(HPTestCase):
 	def test_how_tos(self):
 		self.assertTitle('Historypin | Community | Schools | Historypin in the Classroom')
 		
+		link_resources	= 'http://wawwd-resources.s3.amazonaws.com/historypin/'
+		youtube_link	= 'https://www.youtube.com/'
+		
 		how_tos = [
 			{
 				'heading': 'Exploring',
 				'items': [
-					['http://wawwd-resources.s3.amazonaws.com/historypin/HP_GUIDE_2012_Creating%20an%20account%20and%20logging%20in.pdf', 'How to create an account and log in'],
-					['http://wawwd-resources.s3.amazonaws.com/historypin/HP_GUIDE_2012_How%20to%20explore%20Historypin.pdf', 'How to explore Historypin'],
-					['http://wawwd-resources.s3.amazonaws.com/historypin/HP_GUIDE_2012_Exploring%20Tours%20and%20Collections.pdf', 'How to explore Tours and Collections'],
-					['https://www.youtube.com/watch?v=wTXA1iuB1EA', 'Video: How to navigate the map'],
-					['https://www.youtube.com/watch?v=GA7g7jjCgpo', 'Video: How to look at content and stories'],
-					['https://www.youtube.com/watch?v=01cO2pS_iF4', 'Video: How to listen to audio clips'],
-					['https://www.youtube.com/watch?v=URP0BNfuGY8', 'Video: How to navigate Street View'],
-					['https://www.youtube.com/watch?v=CFDet-0_BOw', 'Video: How to explore a Collection'],
-					['https://www.youtube.com/watch?v=uDILtzhWNi0', 'Video: How to explore a Tour'],
+					[link_resources	+ 'HP_GUIDE_2012_Creating%20an%20account%20and%20logging%20in.pdf', 'How to create an account and log in'],
+					[link_resources	+ 'HP_GUIDE_2012_How%20to%20explore%20Historypin.pdf', 'How to explore Historypin'],
+					[link_resources	+ 'HP_GUIDE_2012_Exploring%20Tours%20and%20Collections.pdf', 'How to explore Tours and Collections'],
+					[youtube_link	+ 'watch?v=wTXA1iuB1EA', 'Video: How to navigate the map'],
+					[youtube_link	+ 'watch?v=GA7g7jjCgpo', 'Video: How to look at content and stories'],
+					[youtube_link	+ 'watch?v=01cO2pS_iF4', 'Video: How to listen to audio clips'],
+					[youtube_link	+ 'watch?v=URP0BNfuGY8', 'Video: How to navigate Street View'],
+					[youtube_link	+ 'watch?v=CFDet-0_BOw', 'Video: How to explore a Collection'],
+					[youtube_link	+ 'watch?v=uDILtzhWNi0', 'Video: How to explore a Tour'],
 				]
 			},
 			
 			{
 				'heading': 'Adding',
 				'items': [
-					['http://wawwd-resources.s3.amazonaws.com/historypin/HP_GUIDE_2012_Your%20Channel.pdf', 'Your Channel'],
-					['http://wawwd-resources.s3.amazonaws.com/historypin/HP_GUIDE_2012_Pinning.pdf', 'How to pin a photo'],
-					['https://www.youtube.com/watch?v=7RWb7nw2q6w', 'Video: How to pin a photo'],
-					['https://www.youtube.com/watch?v=v6THvhAERfo', 'Video: How to pin a photo to Street View'],
-					['https://www.youtube.com/watch?v=EFrBBC9puSs', 'Video: How to create a Historypin account if you already have a Gmail account'],
-					['https://www.youtube.com/watch?v=eYt0ZYsXP9M', 'Video: How to create a Historypin account if you have a an email account other than Gmail'],
-					['https://www.youtube.com/watch?v=UOrnhWvvRpk', 'Video: How to create a Historypin account if you don\'t have an email account'],
-					['https://www.youtube.com/watch?v=6gJ07pY1qus', 'Video: How to add a story to a photo'],
-					['https://www.youtube.com/watch?v=NmbVYc8cVwM', 'Video: How to add favourites'],
+					[link_resources + 'HP_GUIDE_2012_Your%20Channel.pdf', 'Your Channel'],
+					[link_resources + 'HP_GUIDE_2012_Pinning.pdf', 'How to pin a photo'],
+					[youtube_link	+ 'watch?v=7RWb7nw2q6w', 'Video: How to pin a photo'],
+					[youtube_link	+ 'watch?v=v6THvhAERfo', 'Video: How to pin a photo to Street View'],
+					[youtube_link	+ 'watch?v=EFrBBC9puSs', 'Video: How to create a Historypin account if you already have a Gmail account'],
+					[youtube_link	+ 'watch?v=eYt0ZYsXP9M', 'Video: How to create a Historypin account if you have a an email account other than Gmail'],
+					[youtube_link	+ 'watch?v=UOrnhWvvRpk', 'Video: How to create a Historypin account if you don\'t have an email account'],
+					[youtube_link	+ 'watch?v=6gJ07pY1qus', 'Video: How to add a story to a photo'],
+					[youtube_link	+ 'watch?v=NmbVYc8cVwM', 'Video: How to add favourites'],
 				]
 			},
 			
 			{
 				'heading': 'Curating',
 				'items': [
-					['http://wawwd-resources.s3.amazonaws.com/historypin/HP_GUIDE_2012_Creating%20your%20own%20Collection.pdf', 'How to Create a Collection'],
-					['http://wawwd-resources.s3.amazonaws.com/historypin/HP_GUIDE_2012_Creating%20an%20account%20and%20logging%20in.pdf', 'How to Create a Tour'],
-					['http://wawwd-resources.s3.amazonaws.com/historypin/HP_GUIDE_2012_Exploring%20Tours%20and%20Collections.pdf', 'How to explore Tours and Collections'],
-					['https://www.youtube.com/watch?v=rlF6ehpEAZk', 'Video: How to create a tour'],
-					['https://www.youtube.com/watch?v=0Fs58oGZPLY', 'Video: How to create a Collection'],
-					['http://wawwd-resources.s3.amazonaws.com/historypin/HP_GUIDE_2012.pdf', 'Complete Historypin Guide'],
+					[link_resources + 'HP_GUIDE_2012_Creating%20your%20own%20Collection.pdf', 'How to Create a Collection'],
+					[link_resources + 'HP_GUIDE_2012_Creating%20an%20account%20and%20logging%20in.pdf', 'How to Create a Tour'],
+					[link_resources + 'HP_GUIDE_2012_Exploring%20Tours%20and%20Collections.pdf', 'How to explore Tours and Collections'],
+					[youtube_link	+ 'watch?v=rlF6ehpEAZk', 'Video: How to create a tour'],
+					[youtube_link	+ 'watch?v=0Fs58oGZPLY', 'Video: How to create a Collection'],
+					[link_resources + 'HP_GUIDE_2012.pdf', 'Complete Historypin Guide'],
 				]
 			},
 		]
 		
 		headings = self.es('.inner.right h2')
-		uls = self.es('.inner.right ul')
 		links = self.es('.inner.right ul a')
 		
 		k = 0
@@ -269,29 +275,29 @@ class Community(HPTestCase):
 			{
 				'heading': 'Activity Sheets',
 				'items': [
-					['Activity Sheet 1: Recording the story behind a photo', 'http://wawwd-resources.s3.amazonaws.com/Worksheet_story%20collections.pdf', 'Blank template for recording info gathered in a interview or session'],
-					['Activity Sheet 2: Recording the story behind a photo', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Activity_Sheet_2_Recording_the_story_behind_a_photo.pdf', 'Worksheet with a series of questions guiding you through interview or session'],
-					['Activity Sheet 3: Exploring Historypin', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Activity_Sheet_3_Exploring_Historypin.pdf', 'Worksheet with series of activities of things to find and do on Historypin'],
+					['Activity Sheet 1: Recording the story behind a photo'	, 'Worksheet_story%20collections.pdf', 'Blank template for recording info gathered in a interview or session'],
+					['Activity Sheet 2: Recording the story behind a photo'	, 'historypin/docs/Activity_Sheet_2_Recording_the_story_behind_a_photo.pdf', 'Worksheet with a series of questions guiding you through interview or session'],
+					['Activity Sheet 3: Exploring Historypin'				, 'historypin/docs/Activity_Sheet_3_Exploring_Historypin.pdf', 'Worksheet with series of activities of things to find and do on Historypin'],
 				],
 			},
 			{
 				'heading': 'Tip Sheets',
 				'items': [
-					['Tip Sheet 1: Taking a Photo of a Photo', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_1_Taking_a_Photo_of_a_Photo.pdf', 'All you need to know about taking the perfect photo of a photo - the easy way to digitise old photographs'],
-					['Tip Sheet 2: Ideas for local projects', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_2_Ideas_for_local_projects.pdf', 'Ideas and examples of the types of local projects you can run (both online and offline events)'],
-					['Tip Sheet 3: Tips on Planning your Historypin Local Project', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_3_Tips_on_Planning_your_Historypin_Local_Project.pdf', 'Tips on how to set up and plan your local project (both online and offline events)'],
-					['Tip Sheet 4: Tips on the techie parts of running a session or event', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_4_Tips_on_the_techie_parts_of_running_a_session_or_event.pdf', 'Practical advice if you are running online sessions'],
-					['Tip Sheet 5: Tip on Interviewing someone', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_5_Tip_on_Interviewing_someone.pdf', 'Things to think about before and during your conversation, plus ideas for questions'],
-					['Historypin Presentation template', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Historypin_Presentation.ppt', 'Powerpoint presentation to introduce Historypin to your school, group or organisation (includes spare slides for adding info about your session or event)'],
+					['Tip Sheet 1: Taking a Photo of a Photo'								, 'historypin/docs/Tip_Sheet_1_Taking_a_Photo_of_a_Photo.pdf', 'All you need to know about taking the perfect photo of a photo - the easy way to digitise old photographs'],
+					['Tip Sheet 2: Ideas for local projects'								, 'historypin/docs/Tip_Sheet_2_Ideas_for_local_projects.pdf', 'Ideas and examples of the types of local projects you can run (both online and offline events)'],
+					['Tip Sheet 3: Tips on Planning your Historypin Local Project'			, 'historypin/docs/Tip_Sheet_3_Tips_on_Planning_your_Historypin_Local_Project.pdf', 'Tips on how to set up and plan your local project (both online and offline events)'],
+					['Tip Sheet 4: Tips on the techie parts of running a session or event'	, 'historypin/docs/Tip_Sheet_4_Tips_on_the_techie_parts_of_running_a_session_or_event.pdf', 'Practical advice if you are running online sessions'],
+					['Tip Sheet 5: Tip on Interviewing someone'								, 'historypin/docs/Tip_Sheet_5_Tip_on_Interviewing_someone.pdf', 'Things to think about before and during your conversation, plus ideas for questions'],
+					['Historypin Presentation template'										, 'historypin/docs/Historypin_Presentation.ppt', 'Powerpoint presentation to introduce Historypin to your school, group or organisation (includes spare slides for adding info about your session or event)'],
 				],
 			},
 			{
 				'heading': 'Posters, flyers and certificates',
 				'items': [
-					['Poster advertising your event or session', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Poster_advertising_your_event_or_session.pdf', 'With fillable inable gaps for your details'],
-					['Flyer advertising your event or session', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Flyer_advertising_your_event_or_session.pdf', 'With fillable inable gaps for your details'],
-					['Invite announcing your event', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Invite_announcing_your_event.pdf', 'With fillable inable gaps for your details'],
-					['Certificate for participants', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Certificate_for_participants.pdf', 'For awarding to people for their work discovering and sharing history with fillable inable gaps for your details'],
+					['Poster advertising your event or session'	, 'historypin/docs/Poster_advertising_your_event_or_session.pdf', 'With fillable inable gaps for your details'],
+					['Flyer advertising your event or session'	, 'historypin/docs/Flyer_advertising_your_event_or_session.pdf', 'With fillable inable gaps for your details'],
+					['Invite announcing your event'				, 'historypin/docs/Invite_announcing_your_event.pdf', 'With fillable inable gaps for your details'],
+					['Certificate for participants'				, 'historypin/docs/Certificate_for_participants.pdf', 'For awarding to people for their work discovering and sharing history with fillable inable gaps for your details'],
 				],
 			},
 		]
@@ -308,7 +314,7 @@ class Community(HPTestCase):
 			
 			for item in i['items']:
 				self.assertEqual(item[0] + '\n' + item[2], list_items[k].text)
-				self.assertEqual(item[1], links[k].get_attribute('href'))
+				self.assertEqual('http://wawwd-resources.s3.amazonaws.com/' + item[1], links[k].get_attribute('href'))
 				
 				k += 1
 	
@@ -318,10 +324,10 @@ class Community(HPTestCase):
 		self.assertEqual('Local Projects Case Studies', self.e('.right h1').text)
 		
 		studies = [
-			['Magic Me, Tower Hamlets, London, UK', '/community/localprojects-case-study-magicme', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4c_thumb.jpg', u'A set of inter-generational workshop sessions held at the Sundial Community Centre and in the streets around the area, run in partnership with the UK’s leading provider of intergenerational arts activities.'],
-			['Reading, Berkshire, UK', '/community/localprojects-case-study-reading', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4a_thumb.jpg', 'A huge community project involving Reading Museum, local schools, care homes, community groups and societies, mapping the history of an entire town.'],
-			['San Francisco, USA', '/community/localprojects-case-study-sanfrancisco', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4e_thumb.jpg', 'A special exhibition of photos from the San Francisco Transit Authority Archive at the Market Street Railway Museum and bus shelters around the city, allowing for amazing real-life then-and-now comparisons.'],
-			['Lighthouse, Brighton, UK', '/community/localprojects-case-study-lighthouse', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4b_thumb.jpg', 'An inter-generational project bringing together school students and older residents of Brighton alive during World War 2. Films, an exhibition and Collections on Historypin were created.'],
+			['Magic Me, Tower Hamlets, London, UK'	, 'localprojects-case-study-magicme'		, '4c_thumb.jpg', u'A set of inter-generational workshop sessions held at the Sundial Community Centre and in the streets around the area, run in partnership with the UK’s leading provider of intergenerational arts activities.'],
+			['Reading, Berkshire, UK'				, 'localprojects-case-study-reading'		, '4a_thumb.jpg', 'A huge community project involving Reading Museum, local schools, care homes, community groups and societies, mapping the history of an entire town.'],
+			['San Francisco, USA'					, 'localprojects-case-study-sanfrancisco'	, '4e_thumb.jpg', 'A special exhibition of photos from the San Francisco Transit Authority Archive at the Market Street Railway Museum and bus shelters around the city, allowing for amazing real-life then-and-now comparisons.'],
+			['Lighthouse, Brighton, UK'				, 'localprojects-case-study-lighthouse'		, '4b_thumb.jpg', 'An inter-generational project bringing together school students and older residents of Brighton alive during World War 2. Films, an exhibition and Collections on Historypin were created.'],
 		]
 		
 		grid			= self.e('.grid')
@@ -333,9 +339,9 @@ class Community(HPTestCase):
 		for n in range(len(studies)):
 			i = studies[n]
 			self.assertEqual(i[0], headings[n].text)
-			self.assertEqual(URL_BASE + i[1], headings[n].get_attribute('href'))
-			self.assertEqual(URL_BASE + i[1], image_links[n].get_attribute('href'))
-			self.assertEqual(i[2], images[n].get_attribute('src'))
+			self.assertEqual(URL_BASE + '/community/' + i[1], headings[n].get_attribute('href'))
+			self.assertEqual(URL_BASE + '/community/' + i[1], image_links[n].get_attribute('href'))
+			self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/' + i[2], images[n].get_attribute('src'))
 			self.assertEqual(i[3], paragraphs[n].text)
 		
 	@url('/community/localprojects-case-study-magicme')
@@ -343,9 +349,11 @@ class Community(HPTestCase):
 		self.assertTitle('Historypin | Community | Local Projects | Magic Me, Tower Hamlets, London, UK')
 		self.assertEqual('Magic Me, Tower Hamlets, London, UK', self.e('h1.title').text)
 		
+		link_imgs = 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/'
 		imgs = self.es('.section img')
-		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4c_main.jpg', imgs[0].get_attribute('src'))
-		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4c_sec.jpg', imgs[1].get_attribute('src'))
+		
+		self.assertEqual(link_imgs + '4c_main.jpg', imgs[0].get_attribute('src'))
+		self.assertEqual(link_imgs + '4c_sec.jpg', imgs[1].get_attribute('src'))
 		self.assertEqual(URL_BASE + '/channels/view/6932562/name/magicme/', self.e('.section a').get_attribute('href'))
 	
 	@url('/community/localprojects-case-study-reading')
@@ -353,13 +361,15 @@ class Community(HPTestCase):
 		self.assertTitle('Historypin | Community | Local Projects | Reading, Berkshire, UK')
 		self.assertEqual('Reading, Berkshire, UK', self.e('h1.title').text)
 		
+		link_imgs = 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/'
 		imgs = self.es('.section img')
 		headings = self.es('.section h3')
-		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4a_main.jpg', imgs[0].get_attribute('src'))
-		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4a_sec.jpg', imgs[1].get_attribute('src'))
+		
+		self.assertEqual(link_imgs + '4a_main.jpg'	, imgs[0].get_attribute('src'))
+		self.assertEqual(link_imgs + '4a_sec.jpg'	, imgs[1].get_attribute('src'))
 		self.assertEqual(URL_BASE + '/community/localprojects-reading/', self.e('.section p:nth-of-type(8) a').get_attribute('href'))
-		self.assertEqual('What people had to say about it', headings[0].text)
-		self.assertEqual('What was the impact?', headings[1].text)
+		self.assertEqual('What people had to say about it'	, headings[0].text)
+		self.assertEqual('What was the impact?'				, headings[1].text)
 		self.assertEqual(URL_BASE + '/resources/images/reading_evaluation_infographic.jpg', self.e('.section h3~a').get_attribute('href'))
 		self.assertEqual(URL_BASE + '/resources/images/reading_evaluation_infographic_thumb.jpg', self.e('.section a img').get_attribute('src'))
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/Reading_Evaluation%20Report_Small.pdf', self.e('.section h3~p a:nth-of-type(1)').get_attribute('href'))
@@ -383,20 +393,20 @@ class Community(HPTestCase):
 			self.assertEqual(i, headings[n].text)
 		
 		pinners = [
-			['/resources/images/content/community/reading/small_1.jpg', '/channels/view/id/6604879/', 'RG Community'],
-			['/resources/images/content/community/reading/small_2.jpg', '/channels/view/id/7012010/', 'Museum of English Rural Life'],
-			['/resources/images/content/community/reading/small_3.jpg', '/channels/view/id/6160003/', 'Giles Knapp'],
-			['/resources/images/content/community/reading/small_4.jpg', '/channels/view/id/1892068/', 'Reading Museum'],
-			['/resources/images/content/community/reading/small_5.jpg', '/channels/view/id/1968007/', 'Malcolm'],
-			['/resources/images/content/community/reading/small_8.jpg', '/channels/view/id/5787040/', 'Sitevolunteer'],
+			['small_1.jpg', '6604879/', 'RG Community'],
+			['small_2.jpg', '7012010/', 'Museum of English Rural Life'],
+			['small_3.jpg', '6160003/', 'Giles Knapp'],
+			['small_4.jpg', '1892068/', 'Reading Museum'],
+			['small_5.jpg', '1968007/', 'Malcolm'],
+			['small_8.jpg', '5787040/', 'Sitevolunteer'],
 		]
 		
 		pinner_images	= self.es('.col.w2:nth-of-type(1) ul img')
 		pinner_links	= self.es('.col.w2:nth-of-type(1) ul a')
 		for n in range(len(pinners)):
 			i = pinners[n]
-			self.assertEqual(URL_BASE + i[0], pinner_images[n].get_attribute('src'))
-			self.assertEqual(URL_BASE + i[1], pinner_links[n].get_attribute('href'))
+			self.assertEqual(URL_BASE + '/resources/images/content/community/reading/' + i[0], pinner_images[n].get_attribute('src'))
+			self.assertEqual(URL_BASE + '/channels/view/id/' + i[1], pinner_links[n].get_attribute('href'))
 			self.assertEqual(i[2], pinner_links[n].text)
 		
 		
@@ -406,26 +416,27 @@ class Community(HPTestCase):
 		self.assertEqual('Take the Tour', button.text)
 		
 		pins = [
-			['/resources/images/content/community/reading/medium_1.jpg', '/map/#/geo:51.465794,-0.966198/zoom:15/dialog:1834055/tab:details/', 'Floods in Gosbrook Road, Caversham - April 1947'],
-			['/resources/images/content/community/reading/medium_2.jpg', '/map/#/geo:51.455863,-0.990668/zoom:15/dialog:1228008/tab:streetview/', 'Traffic on Oxford Road, 1893'],
-			['/resources/images/content/community/reading/medium_3.jpg', '/map/#/geo:51.445213,-1.000692/zoom:15/dialog:5845061/tab:details/', 'Silver Jubilee Street Party Vine Crescent Reading, 1977'],
-			['/resources/images/content/community/reading/medium_4.jpg', '/map/#/geo:51.456665,-0.970927/zoom:16/dialog:6610677/tab:streetview/', 'Town Hall, Reading,1900'],
-			['/resources/images/content/community/reading/medium_5.jpg', '/map/#/geo:51.44799,-1.023132/zoom:16/dialog:5841163/tab:details/', 'Cast of Play in Garden of St. Michael\'s Rectory, 1951 - 1953'],
-			['/resources/images/content/community/reading/medium_6.jpg', '/map/#/geo:51.472803,-0.96989/zoom:14/dialog:6931485/tab:details/', 'Bernard Tripp at Bugs Bottom, 1943'],
+			['medium_1.jpg', 'geo:51.465794,-0.966198/zoom:15/dialog:1834055/tab:details/'		, 'Floods in Gosbrook Road, Caversham - April 1947'],
+			['medium_2.jpg', 'geo:51.455863,-0.990668/zoom:15/dialog:1228008/tab:streetview/'	, 'Traffic on Oxford Road, 1893'],
+			['medium_3.jpg', 'geo:51.445213,-1.000692/zoom:15/dialog:5845061/tab:details/'		, 'Silver Jubilee Street Party Vine Crescent Reading, 1977'],
+			['medium_4.jpg', 'geo:51.456665,-0.970927/zoom:16/dialog:6610677/tab:streetview/'	, 'Town Hall, Reading,1900'],
+			['medium_5.jpg', 'geo:51.44799,-1.023132/zoom:16/dialog:5841163/tab:details/'		, 'Cast of Play in Garden of St. Michael\'s Rectory, 1951 - 1953'],
+			['medium_6.jpg', 'geo:51.472803,-0.96989/zoom:14/dialog:6931485/tab:details/'		, 'Bernard Tripp at Bugs Bottom, 1943'],
 		]
 		
 		pin_images	= self.es('.cf img')
 		pin_links	= self.es('.cf a')
 		for n in range(len(pins)):
 			i = pins[n]
-			self.assertEqual(URL_BASE + i[0], pin_images[n].get_attribute('src'))
-			self.assertEqual(URL_BASE + i[1], pin_links[n].get_attribute('href'))
+			self.assertEqual(URL_BASE + '/resources/images/content/community/reading/' + i[0], pin_images[n].get_attribute('src'))
+			self.assertEqual(URL_BASE + '/map/#/' + i[1], pin_links[n].get_attribute('href'))
 			self.assertEqual(i[2], pin_links[n].text)
 		
+		link_imgs = URL_BASE + '/resources/images/'
 		images = self.es('h2:last-of-type ~ img')
-		self.assertEqual(URL_BASE + '/resources/images/content/community/reading/pined_on_a_map.jpg', images[0].get_attribute('src'))
-		self.assertEqual(URL_BASE + '/resources/images/hlf_web.jpg', images[1].get_attribute('src'))
-		self.assertEqual(URL_BASE + '/resources/images/gul_web.jpg', images[2].get_attribute('src'))
+		self.assertEqual(link_imgs + 'content/community/reading/pined_on_a_map.jpg', images[0].get_attribute('src'))
+		self.assertEqual(link_imgs + 'hlf_web.jpg', images[1].get_attribute('src'))
+		self.assertEqual(link_imgs + 'gul_web.jpg', images[2].get_attribute('src'))
 		
 	@url('/community/localprojects-case-study-sanfrancisco')
 	def test_projects_studies_sanfrancisco(self):
@@ -441,43 +452,49 @@ class Community(HPTestCase):
 		self.assertEqual('Lighthouse, Brighton, UK', self.e('h1.title').text)
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4b_main.jpg', self.e('.section p img').get_attribute('src'))
 	
+	@unittest.expectedFailure  # Issue #2433 should be fixed
 	@url('/community/topics-to-explore')
 	def test_topics_to_explore(self):
 		self.assertTitle('Historypin | Community | Topics to Explore')
 		self.assertEqual('Topics to Explore', self.e('.right h1').text)
 		
+		collections = '/collections/view/id/'
+		tours = '/tours/view/id/'
+		
+		thumb_url = '/services/thumb/phid/%d/dim/142x100/crop/1/quality/90'
+		
 		topics = [
 			{
 				'heading': 'Collections',
 				'items': [
-					['The 1906 San Francisco Earthquake', '/collections/view/id/6621364/title/The%201906%20San%20Francisco%20Earthqauke', '/services/thumb/phid/5947051/dim/142x100/crop/1/quality/90', 'This Collection of photos of San Francisco after the 1906 earthquake and fire gathers photos around a historical event.'],
-					['The Facial Hair Through Time Collection', '/collections/view/id/3762008/title/The%20Facial%20Hair%20Through%20Time%20Collection', '/services/thumb/phid/2438073/dim/142x100/crop/1/quality/90', 'This Collection of facial hair from different times and places around the world gathers photos around a particular theme.'],
-					['Fabulous Fashion', '/collections/view/id/6593909/title/Fabulous%20Fashion', '/services/thumb/phid/6160458/dim/142x100/crop/1/quality/90', 'This Collection illustrates change over time through photos of fashionable outfits arranged in chronological order.'],
-					['Codford Army Camps, Wiltshire, May-June 1919', '/collections/view/id/8237152/title/Codford%20Army%20Camps,%20Wiltshire,%20May-June%201919', '/services/thumb/phid/8230049/dim/142x100/crop/1/quality/90', u'This Collection is of family photos taken by the user’s relative who was in the army and took photos during his postings in the 1919.'],
-					['University of Florida Homecoming', '/collections/view/id/7604020/title/University%20of%20Florida%20Homecoming', '/services/thumb/phid/7447179/dim/142x100/crop/1/quality/90', 'This Collection of Homecoming celebrations at the University of Florida gathers photos of an annual event through the years.'],
-					['Sport in Reading', '/collections/view/id/7763032/title/Sport', '/services/thumb/phid/6926137/dim/142x100/crop/1/quality/90', 'This Collection was created by a class of 13 year old students who collected photos around the theme of sporting events in their local area.'],
+					['The 1906 San Francisco Earthquake'			, collections + '6621364/title/The%201906%20San%20Francisco%20Earthqauke'										, thumb_url % 5947051, 'This Collection of photos of San Francisco after the 1906 earthquake and fire gathers photos around a historical event.'],
+					['The Facial Hair Through Time Collection'		, collections + '{0}/title/The%20Facial%20Hair%20Through%20Time%20Collection'.format(COLLECTION_EXAMPLES[0])	, thumb_url % 2438073, 'This Collection of facial hair from different times and places around the world gathers photos around a particular theme.'],
+					['Fabulous Fashion'								, collections + '6593909/title/Fabulous%20Fashion'																, thumb_url % 6160458, 'This Collection illustrates change over time through photos of fashionable outfits arranged in chronological order.'],
+					['Codford Army Camps, Wiltshire, May-June 1919'	, collections + '8237152/title/Codford%20Army%20Camps,%20Wiltshire,%20May-June%201919'							, thumb_url % 8230049, u'This Collection is of family photos taken by the user’s relative who was in the army and took photos during his postings in the 1919.'],
+					['University of Florida Homecoming'				, collections + '7604020/title/University%20of%20Florida%20Homecoming'											, thumb_url % 7447179, 'This Collection of Homecoming celebrations at the University of Florida gathers photos of an annual event through the years.'],
+					['Sport in Reading'								, collections + '7763032/title/Sport'																			, thumb_url % 6926137, 'This Collection was created by a class of 13 year old students who collected photos around the theme of sporting events in their local area.'],
 				],
 			},
 			{
 				'heading': 'Tours',
 				'items': [
-					['New York Immigration', '/tours/view/id/7188013/title/New%20York%20Immigration', '/services/thumb/phid/3226006/dim/142x100/crop/1/quality/90', 'This Tour explores a historical theme and illustrates 19th century immigration to the US with a snapshot of immigrant life in 19th century NYC.'],
-					['World War Two', '/tours/view/id/6618250/title/World%20War%20Two', '/services/thumb/phid/1019016/dim/142x100/crop/1/quality/90', 'This Tour narrates a historical event and uses photos and audio clips to highlight key events during WWII from 1939-1945.'],
-					[u'Tour of Hackney’s Past and Present', '/tours/view/id/9353267/title/Key%20Stage%20One%20Tour%20of%20Hackney%27s%20Past%20and%20Present', '/services/thumb/phid/8344085/dim/142x100/crop/1/quality/90', 'This Tour was created by a teacher and asks questions about historical photos of Hackney, London.'],
-					['Queen Elizabeth II', '/tours/view/id/6605903/title/Queen%20Elizabeth%20II', '/services/thumb/phid/1046016/dim/142x100/crop/1/quality/90', u'This Tour narrates the biography or a person by highlighting key events of Queen Elizabeth II’s life.'],
-					['A historical guided tour of Kew Gardens', '/tours/view/id/6631649/title/A%20historical%20guided%20tour%20of%20Kew%20Gardens', '/services/thumb/phid/2238024/dim/142x100/crop/1/quality/90', 'This Tour takes you on a historical walking Tour around Royal Botanical Gardens at Kew, UK.'],
-					['The Grand Tour', '/tours/view/id/6921045/title/The%20Grand%20Tour', '/services/thumb/phid/4873006/dim/142x100/crop/1/quality/90', 'This Tour illustrates a famous route using historical photos.'],
+					['New York Immigration'						, tours + '7188013/title/New%20York%20Immigration'											, thumb_url % 3226006, 'This Tour explores a historical theme and illustrates 19th century immigration to the US with a snapshot of immigrant life in 19th century NYC.'],
+					['World War Two'							, tours + '6618250/title/World%20War%20Two'													, thumb_url % 1019016, 'This Tour narrates a historical event and uses photos and audio clips to highlight key events during WWII from 1939-1945.'],
+					[u'Tour of Hackney’s Past and Present'		, tours + '9353267/title/Key%20Stage%20One%20Tour%20of%20Hackney%27s%20Past%20and%20Present', thumb_url % 8344085, 'This Tour was created by a teacher and asks questions about historical photos of Hackney, London.'],
+					['Queen Elizabeth II'						, tours + '6605903/title/Queen%20Elizabeth%20II'											, thumb_url % 1046016, u'This Tour narrates the biography or a person by highlighting key events of Queen Elizabeth II’s life.'],
+					['A historical guided tour of Kew Gardens'	, tours + '6631649/title/A%20historical%20guided%20tour%20of%20Kew%20Gardens'				, thumb_url % 2238024, 'This Tour takes you on a historical walking Tour around Royal Botanical Gardens at Kew, UK.'],
+					['The Grand Tour'							, tours + '6921045/title/The%20Grand%20Tour'												, thumb_url % 4873006, 'This Tour illustrates a famous route using historical photos.'],
 				],
 			},
 			{
 				'heading': 'Photos, Videos and Audio clips',
 				'items': [
-					[u'Occupy London camp in front of St Paul’s Cathedral, 16 October 2011', '/photos/#/geo:51.513745,-0.100594/zoom:15/date_from:1840-01-01/date_to:2011-11-11/dialog:7903122/tab:stories_tab_content/', '/services/thumb/phid/7903122/dim/142x100/crop/1/quality/90', u'This photo captures a modern moment of history, showing the protest occupying St Paul’s Church Yard, London in October 2011.'],
-					['Earthquake damage, 25 February 2011', '/photos/#/geo:-43.507721,172.729543/zoom:10/sv:6657335/heading:-171.09375/pitch:-0.75000/sv_zoom:1.00000/', '/services/thumb/phid/6657335/dim/142x100/crop/1/quality/90', 'This photo, overlaid on Street View, shows buildings damaged by the earthquake in Christchurch, New Zealand in February 2011, illustrating the damage done by natural disasters.'],
-					['Damage on Piccadilly, 1940 - 1942', '/map/#!/geo:51.509108,-0.136672/zoom:20/dialog:9547184/tab:stories_tab_content/', '/services/thumb/phid/9547184/dim/142x100/quality/90', 'This video clip illustrates bomb damage to Picadilly, London in the early 1940s.'],
-					[u'JFK’s Inaugural Speech, 20th January 1961', '/map/#!/geo:38.891454,-77.01214/zoom:15/dialog:6607380/tab:stories_tab_content/', '/services/thumb/phid/6607380/dim/142x100/quality/90', u'This audio clip plays an extract from John F Kennedy’s inaugural speech in 1961.'],
-					['Historypin Repeats', '/channels/view/id/571038/', '/channels/img/571038/logo/1/dim/142x100/crop/1/', 'This Channel has got some great Historypin Repeats - modern replicas of historical photos on Historypin, taken by people using the smartphone app.'],
-					['Joe Voss, Jefferson Memorial, 1948 - 1952', '/photos/#/geo:38.889263,-77.05008/zoom:15/date_from:1840-01-01/date_to:2011-11-11/dialog:7205444/tab:more_tab_content/', '/services/thumb/phid/7205444/dim/142x100/crop/1/quality/90', 'This photo shows a Historypin Repeat. This Historypinner has pinned a photo of his Dad at Jefferson Memorial, Washington DC in the 1950s and used the Historypin app to take a photo of himself in the same spot in 2011.'],
+					[u'Occupy London camp in front of St Paul’s Cathedral, 16 October 2011'		, '/photos/#/geo:51.513745,-0.100594/zoom:15/date_from:1840-01-01/date_to:2011-11-11/dialog:7903122/tab:stories_tab_content/'	, thumbs + '7903122/dim/142x100/crop/1/quality/90', u'This photo captures a modern moment of history, showing the protest occupying St Paul’s Church Yard, London in October 2011.'],
+					['Earthquake damage, 25 February 2011'										, '/photos/#/geo:-43.507721,172.729543/zoom:10/sv:6657335/heading:-171.09375/pitch:-0.75000/sv_zoom:1.00000/'					, thumbs + '6657335/dim/142x100/crop/1/quality/90', 'This photo, overlaid on Street View, shows buildings damaged by the earthquake in Christchurch, New Zealand in February 2011, illustrating the damage done by natural disasters.'],
+					['Damage on Piccadilly, 1940 - 1942'										, '/map/#!/geo:51.509108,-0.136672/zoom:20/dialog:9547184/tab:stories_tab_content/'												, thumbs + '9547184/dim/142x100/quality/90', 'This video clip illustrates bomb damage to Picadilly, London in the early 1940s.'],
+					[u'JFK’s Inaugural Speech, 20th January 1961'								, '/map/#!/geo:38.891454,-77.01214/zoom:15/dialog:6607380/tab:stories_tab_content/'												, thumbs + '6607380/dim/142x100/quality/90', u'This audio clip plays an extract from John F Kennedy’s inaugural speech in 1961.'],
+					['Historypin Repeats'														, '/channels/view/id/571038/', '/channels/img/571038/logo/1/dim/142x100/crop/1/', 'This Channel has got some great Historypin Repeats - modern replicas of historical photos on Historypin, taken by people using the smartphone app.'],
+					['Joe Voss, Jefferson Memorial, 1948 - 1952'								, '/photos/#/geo:38.889263,-77.05008/zoom:15/date_from:1840-01-01/date_to:2011-11-11/dialog:7205444/tab:more_tab_content/'		, thumbs + '7205444/dim/142x100/crop/1/quality/90', 'This photo shows a Historypin Repeat. This Historypinner has pinned a photo of his Dad at Jefferson Memorial, Washington DC in the 1950s and used the Historypin app to take a photo of himself in the same spot in 2011.'],
 				],
 			}
 		]
@@ -510,11 +527,11 @@ class Community(HPTestCase):
 		self.assertEqual('Schools Case Studies', self.e('.right h1').text)
 		
 		studies = [
-			['English International College, Marbella, Spain', '/community/schools-eic', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6b_thumb.jpg', 'Historypin is used as the theme for Humanities Day and students create an exhibition after parents and locals invited in for Historypin coffee morning.'],
-			['Nelson Rural School, New Brunswick, Canada', '/community/schools-nelson', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6c_thumb.jpg', 'Students become local historians and archivists, going out into the community to find owners of old photographs and conduct interviews, recording it all on Historypin.'],
-			['Billericay, Essex, UK', '/community/schools-billericay', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6d_thumb.jpg', '12-13 year old boys plan their own workshop where they meet with 12 senior citizens from the local area.'],
-			['Cromer, Norfolk, UK', '/community/schools-cromer', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6e_thumb.jpg', 'History students assist at event in community centre where local residents are invited to bring along and upload their old photos and memories of Cromer.'],
-			['Newport Primary School, Essex, UK', '/community/schools-newport', 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6f_thumb.jpg', '9-11 years olds take part in offline activities around photographs and stories, then hold event where older people from local care homes and neighbourhoods share their histories.'],
+			['English International College, Marbella, Spain'	, 'schools-eic'			, '6b_thumb.jpg', 'Historypin is used as the theme for Humanities Day and students create an exhibition after parents and locals invited in for Historypin coffee morning.'],
+			['Nelson Rural School, New Brunswick, Canada'		, 'schools-nelson'		, '6c_thumb.jpg', 'Students become local historians and archivists, going out into the community to find owners of old photographs and conduct interviews, recording it all on Historypin.'],
+			['Billericay, Essex, UK'							, 'schools-billericay'	, '6d_thumb.jpg', '12-13 year old boys plan their own workshop where they meet with 12 senior citizens from the local area.'],
+			['Cromer, Norfolk, UK'								, 'schools-cromer'		, '6e_thumb.jpg', 'History students assist at event in community centre where local residents are invited to bring along and upload their old photos and memories of Cromer.'],
+			['Newport Primary School, Essex, UK'				, 'schools-newport'		, '6f_thumb.jpg', '9-11 years olds take part in offline activities around photographs and stories, then hold event where older people from local care homes and neighbourhoods share their histories.'],
 		]
 		
 		grid			= self.e('.grid')
@@ -526,9 +543,9 @@ class Community(HPTestCase):
 		for n in range(len(studies)):
 			i = studies[n]
 			self.assertEqual(i[0], headings[n].text)
-			self.assertEqual(URL_BASE + i[1], headings[n].get_attribute('href'))
-			self.assertEqual(URL_BASE + i[1], image_links[n].get_attribute('href'))
-			self.assertEqual(i[2], images[n].get_attribute('src'))
+			self.assertEqual(URL_BASE + '/community/' + i[1], headings[n].get_attribute('href'))
+			self.assertEqual(URL_BASE + '/community/' + i[1], image_links[n].get_attribute('href'))
+			self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/' + i[2], images[n].get_attribute('src'))
 			self.assertEqual(i[3], paragraphs[n].text)
 		
 	@url('/community/schools-eic/')
@@ -549,7 +566,7 @@ class Community(HPTestCase):
 		self.assertEqual('Video made by Billericay School for the day', self.e('h3:nth-of-type(1)').text)
 		self.assertEqual('Feature on Radio Essex about the Billericay Historypin project', self.e('h3:nth-of-type(2)').text)
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6d_sec.jpg', self.e('.section p:nth-of-type(14) img').get_attribute('src'))
-	 
+	
 	@url('/community/schools-cromer/')
 	def test_schools_studies_cromer(self):
 		self.assertTitle('Historypin | Community | Schools | Cromer, Norfolk, UK')
@@ -577,33 +594,35 @@ class Community(HPTestCase):
 		self.assertEqual('Activities & Downloads for Schools', self.e('h1.title').text)
 		self.assertEqual('Downloadable Resources', self.e('h2:nth-of-type(1)').text)
 		
+		link = 'historypin/docs/'
+		
 		resources = [
 			{
 				'heading': 'Activity Sheets',
 				'items': [
-					['Activity Sheet 1: Recording the story behind a photo', 'http://wawwd-resources.s3.amazonaws.com/Worksheet_story%20collections.pdf', 'Blank template for recording info gathered in a interview or session'],
-					['Activity Sheet 2: Recording the story behind a photo', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Activity_Sheet_2_Recording_the_story_behind_a_photo.pdf', 'Worksheet with a series of questions guiding you through interview or session'],
-					['Activity Sheet 3: Exploring Historypin', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Activity_Sheet_3_Exploring_Historypin.pdf', 'Worksheet with series of activities of things to find and do on Historypin'],
+					['Activity Sheet 1: Recording the story behind a photo'	, 'Worksheet_story%20collections.pdf', 'Blank template for recording info gathered in a interview or session'],
+					['Activity Sheet 2: Recording the story behind a photo'	, '%sActivity_Sheet_2_Recording_the_story_behind_a_photo.pdf' % link, 'Worksheet with a series of questions guiding you through interview or session'],
+					['Activity Sheet 3: Exploring Historypin'				, '%sActivity_Sheet_3_Exploring_Historypin.pdf' % link, 'Worksheet with series of activities of things to find and do on Historypin'],
 				],
 			},
 			{
 				'heading': 'Tip Sheets',
 				'items': [
-					['Tip Sheet 1: Taking a Photo of a Photo', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_1_Taking_a_Photo_of_a_Photo.pdf', 'All you need to know about taking the perfect photo of a photo - the easy way to digitise old photographs'],
-					['Tip Sheet 2: Ideas for local projects', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_2_Ideas_for_local_projects.pdf', 'Ideas and examples of the types of local projects you can run (both online and offline events)'],
-					['Tip Sheet 3: Tips on Planning your Historypin Local Project', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_3_Tips_on_Planning_your_Historypin_Local_Project.pdf', 'Tips on how to set up and plan your local project (both online and offline events)'],
-					['Tip Sheet 4: Tips on the techie parts of running a session or event', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_4_Tips_on_the_techie_parts_of_running_a_session_or_event.pdf', 'Practical advice if you are running online sessions'],
-					['Tip Sheet 5: Tip on Interviewing someone', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Tip_Sheet_5_Tip_on_Interviewing_someone.pdf', 'Things to think about before and during your conversation, plus ideas for questions'],
-					['Historypin Presentation template', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Historypin_Presentation.ppt', 'Powerpoint presentation to introduce Historypin to your school, group or organisation (includes spare slides for adding info about your session or event)'],
+					['Tip Sheet 1: Taking a Photo of a Photo'								, '%sTip_Sheet_1_Taking_a_Photo_of_a_Photo.pdf' % link, 'All you need to know about taking the perfect photo of a photo - the easy way to digitise old photographs'],
+					['Tip Sheet 2: Ideas for local projects'								, '%sTip_Sheet_2_Ideas_for_local_projects.pdf' % link, 'Ideas and examples of the types of local projects you can run (both online and offline events)'],
+					['Tip Sheet 3: Tips on Planning your Historypin Local Project'			, '%sTip_Sheet_3_Tips_on_Planning_your_Historypin_Local_Project.pdf' % link, 'Tips on how to set up and plan your local project (both online and offline events)'],
+					['Tip Sheet 4: Tips on the techie parts of running a session or event'	, '%sTip_Sheet_4_Tips_on_the_techie_parts_of_running_a_session_or_event.pdf' % link, 'Practical advice if you are running online sessions'],
+					['Tip Sheet 5: Tip on Interviewing someone'								, '%sTip_Sheet_5_Tip_on_Interviewing_someone.pdf' % link, 'Things to think about before and during your conversation, plus ideas for questions'],
+					['Historypin Presentation template'										, '%sHistorypin_Presentation.ppt' % link, 'Powerpoint presentation to introduce Historypin to your school, group or organisation (includes spare slides for adding info about your session or event)'],
 				],
 			},
 			{
 				'heading': 'Posters, flyers and certificates',
 				'items': [
-					['Poster advertising your event or session', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Poster_advertising_your_event_or_session.pdf', 'With fillable inable gaps for your details'],
-					['Flyer advertising your event or session', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Flyer_advertising_your_event_or_session.pdf', 'With fillable inable gaps for your details'],
-					['Invite announcing your event', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Invite_announcing_your_event.pdf', 'With fillable inable gaps for your details'],
-					['Certificate for participants', 'http://wawwd-resources.s3.amazonaws.com/historypin/docs/Certificate_for_participants.pdf', 'For awarding to people for their work discovering and sharing history with fillable inable gaps for your details'],
+					['Poster advertising your event or session'								, '%sPoster_advertising_your_event_or_session.pdf' % link, 'With fillable inable gaps for your details'],
+					['Flyer advertising your event or session'								, '%sFlyer_advertising_your_event_or_session.pdf' % link, 'With fillable inable gaps for your details'],
+					['Invite announcing your event'											, '%sInvite_announcing_your_event.pdf' % link, 'With fillable inable gaps for your details'],
+					['Certificate for participants'											, '%sCertificate_for_participants.pdf' % link, 'For awarding to people for their work discovering and sharing history with fillable inable gaps for your details'],
 				],
 			},
 		]
@@ -620,7 +639,7 @@ class Community(HPTestCase):
 			
 			for item in i['items']:
 				self.assertEqual(item[0] + '\n' + item[2], list_items[k].text)
-				self.assertEqual(item[1], links[k].get_attribute('href'))
+				self.assertEqual('http://wawwd-resources.s3.amazonaws.com/' + item[1], links[k].get_attribute('href'))
 				
 				k += 1
 		

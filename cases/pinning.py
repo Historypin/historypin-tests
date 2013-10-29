@@ -4,6 +4,7 @@ from base import *
 
 class Pinning(HPTestCase):
 	
+	@logged_in
 	@url('/upload/')
 	def test_add_stuff_page(self):
 		
@@ -37,6 +38,7 @@ class Pinning(HPTestCase):
 		self.assertEqual('Want to upload large amounts of content? Read about our Bulk Uploader', self.e('.bottom-p').text)
 		self.assertEqual(URL_BASE + '/bulkbridge/', self.e('.bottom-p a').get_attribute('href'))
 	
+	@logged_in
 	@url('/upload-item/index/')
 	def test_upload_photo_page(self):
 		

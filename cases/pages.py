@@ -16,9 +16,9 @@ class Pages(HPTestCase):
 		self.assertEqual('What can you do on the Historypin app?', self.e('h2').text)
 		
 		items = [
-			['Android'			, '/resources/images/content/app/app_android.png'	, 'Google Play Store'			, 'https://market.android.com/details?id=com.historypin.Historypin&feature=search_result'],
-			['iOS'				, '/resources/images/content/app/app_iphone.png'	, 'iOS App Store'				, 'http://itunes.apple.com/app/historypin/id455228207?mt=8'],
-			['Windows Phone 7'	, '/resources/images/content/app/app_wp7.png'		, 'Windows Phone Marketplace'	, 'http://www.windowsphone.com/en-US/apps/05638072-742e-460c-ab97-18d2b47ef06b'],
+			['Android'			, 'app_android.png'	, 'Google Play Store'			, 'https://market.android.com/details?id=com.historypin.Historypin&feature=search_result'],
+			['iOS'				, 'app_iphone.png'	, 'iOS App Store'				, 'http://itunes.apple.com/app/historypin/id455228207?mt=8'],
+			['Windows Phone 7'	, 'app_wp7.png'		, 'Windows Phone Marketplace'	, 'http://www.windowsphone.com/en-US/apps/05638072-742e-460c-ab97-18d2b47ef06b'],
 		]
 		
 		cnt			= self.e('.appstores')
@@ -30,7 +30,7 @@ class Pages(HPTestCase):
 		for n in range(len(items)):
 			i = items[n]
 			self.assertEqual(i[0]				, headings[n].text)
-			self.assertEqual(URL_BASE + i[1]	, images[n].get_attribute('src'))
+			self.assertEqual(URL_BASE + '/resources/images/content/app/' + i[1]	, images[n].get_attribute('src'))
 			self.assertEqual(i[2]				, texts[n].text)
 			self.assertEqual(i[3]				, links[n].get_attribute('href'))
 	
@@ -73,6 +73,20 @@ class Pages(HPTestCase):
 				],
 			},
 			{
+				'heading': 'Managing your Account',
+				'items': [
+					['title91', 'How do I connect my Twitter Account with my existing Historypin Channel?'],
+					['title92', 'How do I connect my Facebook Account with my existing Historypin Channel?'],
+					['title93', 'How do I connect my Google Account with my existing Historypin Channel?'],
+					['title94', 'How do I disconnect my Google / Facebook / Twitter account from my Historypin Channel?'],
+					['title95', 'I am having problems connecting my Google / Facebook / Twitter Account to my Historypin Channel.'],
+					['title96', 'Can I have one Facebook, Twitter or Google Account connected to more than one Historypin Channel?'],
+					['title97', 'Can I have one Historypin Channel connected to multiple Facebook or Google or Twitter accounts?'],
+					['title98', 'Can I change the Google Account associated with my Historypin Channel?'],
+					['title99', 'Can I delete my Historypin Channel?'],
+				],
+			},
+			{
 				'heading': 'Using the site',
 				'items': [
 					['title6', 'What kind of content can I add to Historypin?'],
@@ -101,6 +115,7 @@ class Pages(HPTestCase):
 					['title113', 'I am having trouble uploading photos, what should I do?'],
 					['title114', 'How do I change my Username?'],
 				],
+			
 			},
 			{
 				'heading': 'Bulk Uploader',
@@ -207,8 +222,8 @@ class Pages(HPTestCase):
 			},
 		]
 		
-		toc				= self.es('.toc > li')
-		cnt				= self.es('.faq-group')
+		# toc				= self.es('.toc > li')
+		# cnt				= self.es('.faq-group')
 		questions		= self.es('.toc > li strong')
 		questions_h		= self.es('.faq-group h2')
 		answers			= self.es('.toc > li li a')
@@ -323,12 +338,14 @@ class Pages(HPTestCase):
 		self.assertEqual('mailto:jon.voss@wearewhatwedo.org'														, a[1].get_attribute('href'))
 		
 		self.assertEqual('Awards', self.e('.sidebar .inner:nth-of-type(2) h3').text)
+		
 		sidebar = [
-			['Webby for Best Charitable Organisation/Not-for-Profit Website', 'http://www.webbyawards.com/webbys/current.php?season=15#webby_entry_charitable_organizations_non-profit', '/resources/images/presscenter/webby_pink.png'],
-			['Sunday Times The App List 2012.', 'http://thetim.es/y1vL3P', '/resources/images/presscenter/sundaytimes500.png'],
-			['Lovie Award for Best Education & Reference Website', 'http://lovieawards.eu/winners/', '/resources/images/presscenter/lovie_pink.png'],
+			['Webby for Best Charitable Organisation/Not-for-Profit Website'	, 'http://www.webbyawards.com/webbys/current.php?season=15#webby_entry_charitable_organizations_non-profit', '/resources/images/presscenter/webby_pink.png'],
+			['Sunday Times The App List 2012.'									, 'http://thetim.es/y1vL3P'	, '/resources/images/presscenter/sundaytimes500.png'],
+			['Lovie Award for Best Education & Reference Website'				, 'http://lovieawards.eu/winners/', '/resources/images/presscenter/lovie_pink.png'],
 			['American Association of School Librarians 2012 Best Website for Teaching and Learning', 'http://www.ala.org/aasl/guidelinesandstandards/bestlist/bestwebsitestop25', '/resources/images/presscenter/aasl.jpg'],
-			['Family Tree Magazine: 101 best family history websites', 'http://www.familytreemagazine.com/article/best-old-map-and-photo-websites-for-genealogy-2012', '/resources/images/presscenter/101-best-genealogy-websites-2012.jpg'],
+			['Family Tree Magazine: 101 best family history websites'			, 'http://www.familytreemagazine.com/article/best-old-map-and-photo-websites-for-genealogy-2012', '/resources/images/presscenter/101-best-genealogy-websites-2012.jpg'],
+			["We're in featured in Common Sense Media's Back to School Guide"	, 'http://www.commonsensemedia.org/mobile-app-reviews/historypin', '/resources/images/presscenter/badge_checkusout.png'],
 		]
 		
 		
@@ -345,12 +362,12 @@ class Pages(HPTestCase):
 			self.assertEqual(i[1]				, links[2 * n].get_attribute('href'))
 			self.assertEqual(i[1]				, links[2 * n + 1].get_attribute('href'))
 		
-		cnt = self.e('.sidebar .inner:nth-of-type(7)')
+		cnt = self.e('.sidebar .inner:nth-of-type(8)')
 		self.assertEqual('Press Pack', cnt.e('h3').text)
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/presspacks/Historypin.zip', cnt.e('a').get_attribute('href'))
 		self.assertEqual(u'Download press releases, pictures and all the info you\u2019ll need to write a fabulously complimentary article about us.', cnt.e('p').text)
 	
-	@url('/privacy-policy/') 
+	@url('/privacy-policy/')
 	def test_privacy_policy(self):
 		self.assertTitle('Historypin | Privacy Policy')
 		self.assertEqual('Privacy Policy', self.e('#site-content h1').text)
@@ -378,14 +395,14 @@ class Pages(HPTestCase):
 		self.assertEqual('What does the Foundation do?', self.e('h2').text)
 		
 		images = [
-			'/resources/images/home/friends_of_Historypin.png',
-			'/resources/images/home/friendsOfPhoto01.jpg',
-			'/resources/images/home/friendsOfPhoto02.jpg',
+			'friends_of_Historypin.png',
+			'friendsOfPhoto01.jpg',
+			'friendsOfPhoto02.jpg',
 		]
 		
 		imgs = self.es('.section img')
 		for n in range(len(images)):
-			self.assertEqual(URL_BASE + images[n], imgs[n].get_attribute('src'))
+			self.assertEqual(URL_BASE + '/resources/images/home/' + images[n], imgs[n].get_attribute('src'))
 		
 		sidebar = [
 			{
@@ -470,6 +487,18 @@ class Pages(HPTestCase):
 			self.assertEqual(i[0]											, headings[n].get_attribute('id'))
 			self.assertEqual(i[1]											, headings[n].text)
 	
+	@url('/cookies/')
+	def test_cookies(self):
+		#  change title to be HP | Cookies (not contact)
+		self.assertEqual('Cookies', self.e('h2').text)
+		
+		cnt = self.e('.page.rte')
+		self.assertEqual(u'The use_hitbox cookie updates the ‘views’ counter on YouTube when you have viewed a video from that site through ours.', cnt.e('p:nth-of-type(2)').text)
+		
+		link_privacy = 'http://www.google.co.uk/intl/en/analytics/privacyoverview.html'
+		self.assertEqual(link_privacy, cnt.e('a:first-of-type').get_attribute('href'))
+		self.assertEqual(link_privacy, cnt.e('a:first-of-type').text)
+	
 	@url('/wearewhatwedo/')
 	def test_wawwd(self):
 		self.assertTitle('Historypin | We Are What We Do')
@@ -508,8 +537,9 @@ class Pages(HPTestCase):
 		csv = self.e('ol li:nth-of-type(1)')
 		self.assertEqual('Download our CSV template and the Instructions on how to complete it.', csv.text)
 		
-		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/Historypin_Bulk_Upload_Template.csv'									, csv.es('a')[0].get_attribute('href'))
-		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/Historypin_Instructions_for_Completing_a_CSV_template_March_2012.xls'	, csv.es('a')[1].get_attribute('href'))
+		link = 'http://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/'
+		self.assertEqual(link + 'Historypin_Bulk_Upload_Template.csv'									, csv.es('a')[0].get_attribute('href'))
+		self.assertEqual(link + 'Historypin_Instructions_for_Completing_a_CSV_template_March_2012.xls'	, csv.es('a')[1].get_attribute('href'))
 		
 		sidebar		= self.e('.sidebar')
 		downloads	= sidebar.e('.inner:nth-of-type(1)')
@@ -518,15 +548,15 @@ class Pages(HPTestCase):
 		self.assertEqual('Downloadables', downloads.e('h3').text)
 		
 		tpl = [
-			['CSV template download'			, 'http://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/Historypin_Bulk_Upload_Template.csv'],
-			['Instructions to complete the CSV'	, 'http://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/Historypin_Instructions_for_Completing_a_CSV_template_March_2012.xls'],
-			['Advice and tips'					, 'http://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/Bulk_Upload_Advice_and_Tips.pdf'],
+			['CSV template download'			, 'Historypin_Bulk_Upload_Template.csv'],
+			['Instructions to complete the CSV'	, 'Historypin_Instructions_for_Completing_a_CSV_template_March_2012.xls'],
+			['Advice and tips'					, 'Bulk_Upload_Advice_and_Tips.pdf'],
 		]
 		
 		for n in range(len(tpl)):
 			i = tpl[n]
 			self.assertEqual(i[0], anchors[n].text)
-			self.assertEqual(i[1], anchors[n].get_attribute('href'))
+			self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/' + i[1], anchors[n].get_attribute('href'))
 		
 		help = sidebar.e('.inner:nth-of-type(2)')
 		self.assertEqual('Get help', help.e('h3').text)
