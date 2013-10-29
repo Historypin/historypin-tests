@@ -37,7 +37,6 @@ def logged_in(fn):
 class Browser(webdriver.Chrome):
 	def go(self, url):
 		self.get(URL_BASE + url)
-		sleep(GO_TIMEOUT)
 		# self.pageload_wait()
 	
 	# TODO get rid of this it is exactly the same
@@ -131,6 +130,7 @@ class HPTestCase(TestCase):
 		
 		login = cls.e('#site-content .login .buttons li:nth-of-type(1) a')
 		login.click()
+		sleep(3)
 		
 		cls.e('#Email').send_keys('gabriela.ananieva@wearewhatwedo.org')
 		cls.e('#Passwd').send_keys('tristania1010')
