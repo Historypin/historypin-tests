@@ -11,7 +11,7 @@ class Project_Chevy(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Me and My Chevy', site_cnt.e('h1').text)
 		
-		self.assertIn(u'Since the first Chevrolet car appeared on our streets in 1911, Chevys have been a massive part of our culture.\nExplore The Chevrolet channel', site_cnt.e('.main_description').text)
+		self.assertIn(u'Since the first Chevrolet car appeared on our streets in 1911, Chevys have been a massive part of our culture.', site_cnt.e('.main_description').text)
 		
 		chevy_channel = site_cnt.e('.page-top a')
 		self.assertEqual(URL_BASE + '/channels/view/id/28802/'	, chevy_channel.get_attribute('href'))
