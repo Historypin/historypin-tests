@@ -107,13 +107,16 @@ class Project_PTQH(HPTestCase):
 	
 	@url('/project/5-DiamondJubilee/visits/')
 	def test_visits(self):
-		# TODO
-		# check the title
-		# check the video element present
-		# check title
-		# check text
-		# check at least one visit
-		pass
+		
+		self.assertTitle("Pinning The Queen's history")
+		
+		self.assertIsInstance(self.e('param'), WebElement)
+		self.assertEqual(u'The Queen\u2019s   State and Commonwealth visits\n1952 \u2013 2012'	, self.e('h2').text)
+		self.assertEqual(u'Click on a visit to see what’s been pinned in each country...'		, self.e('h4').text)
+		
+		link_visit = self.e('.list:nth-of-type(1) li:nth-of-type(1) a')
+		self.assertEqual(URL_BASE + '/project/5-DiamondJubilee/map/index/index/geo/-0.221313,38.054509/zoom/6/', link_visit.get_attribute('href'))
+		self.assertEqual('Kenya', link_visit.e('span').text)
 	
 	@url('/project/5-DiamondJubilee/map/')
 	def test_map(self):
