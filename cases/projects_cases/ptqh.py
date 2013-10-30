@@ -134,12 +134,16 @@ class Project_PTQH(HPTestCase):
 	
 	@url('/project/5-DiamondJubilee/pin/')
 	def test_pin_page(self):
-		# TODO
-		# check the title
-		# check the button link and text
-		# check the image
-		# check share text and icons
-		pass
+		
+		self.assertTitle("Pinning The Queen's history")
+		
+		site_cnt = self.e('#site-content')
+		
+		self.assertEqual("Make your content part of The Queen's History", site_cnt.e('h1').text)
+		self.assertIn("If you would like to submit your pictures, videos or audio recordings of the Queen's visits", site_cnt.e('p:first-of-type').text)
+		
+		self.assertEqual(URL_BASE + '/project/5-DiamondJubilee/upload/'									, site_cnt.e('a').get_attribute('href'))
+		self.assertEqual(URL_BASE + '/resources/images/webapps/buckingham/queen_elizabeth_pinning.jpg'	, site_cnt.e('img').get_attribute('src'))
 	
 	@url('/project/5-DiamondJubilee/about/')
 	def test_about(self):
