@@ -147,11 +147,31 @@ class Project_PTQH(HPTestCase):
 	
 	@url('/project/5-DiamondJubilee/about/')
 	def test_about(self):
-		# check the title
-		# check the titles
-		# check the images
-		# check the texts
-		pass
+		
+		self.assertTitle("Pinning The Queen's history")
+		
+		img_link = URL_BASE + '/resources/images/webapps/buckingham/'
+		
+		items_about = [
+			['About the project', '%squeen_elizabeth.jpg'	% img_link],
+			['Historypin'		, '%shistorypin_logo.jpg'	% img_link],
+			['Google'			, '%sgoogle_logo.jpg'		% img_link],
+		]
+		
+		site_cnt	= self.e('#site-content')
+		h1s			= site_cnt.es('.section h1')
+		imgs		= site_cnt.es('.section img')
+		
+		for n in range(len(items_about)):
+			i = items_about[n]
+			self.assertEqual(i[0], h1s[n].text)
+			self.assertEqual(i[1], imgs[n].get_attribute('src'))
+		
+		links = site_cnt.es('.section a')
+		
+		self.assertEqual('http://wearewhatwedo.org/', links[0].get_attribute('href'))
+		self.assertEqual('http://historypin.com/'	, links[1].get_attribute('href'))
+		self.assertEqual('http://google.com/'		, links[2].get_attribute('href'))
 	
 	@url('/project/5-DiamondJubilee/contact/')
 	def test_contact(self):
