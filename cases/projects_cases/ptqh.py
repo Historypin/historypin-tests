@@ -175,8 +175,13 @@ class Project_PTQH(HPTestCase):
 	
 	@url('/project/5-DiamondJubilee/contact/')
 	def test_contact(self):
-		# check the title
-		# check the titles
-		# check the images
-		# check the texts
-		pass
+		
+		self.assertTitle("Pinning The Queen's history")
+		
+		section = self.e('.section')
+		self.assertEqual('Contact', section.e('h1').text)
+		
+		headings_h2 = ['General enquiries, technical enquiries, content enquiries', 'Media', 'Schools, local projects and volunteers', 'Library, archive and museum partnerships', 'Web', 'Corporate Partnerships']
+		
+		h2s = section.es('h2')
+		for n in range(len(headings_h2)): self.assertEqual(headings_h2[n], h2s[n].text)
