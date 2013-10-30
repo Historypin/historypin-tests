@@ -120,13 +120,17 @@ class Project_PTQH(HPTestCase):
 	
 	@url('/project/5-DiamondJubilee/map/')
 	def test_map(self):
-		# TODO
-		# title
-		# check text
-		# check the input
-		# check year slider
-		# check if there is a map
-		pass
+		
+		self.assertTitle("Pinning The Queen's history")
+		
+		filter_bar = self.e('#filter-bar')
+		
+		self.assertEqual('find content near'								, filter_bar.e('label').text)
+		self.assertIsInstance(filter_bar.e('#location')						, WebElement)
+		self.assertIsInstance(filter_bar.e('#photo_search_submit')			, WebElement)
+		self.assertIsInstance(self.e('.ui-slider-range.ui-widget-header')	, WebElement)
+		self.assertIsInstance(self.e('#date-slider-labels li')				, WebElement)
+		self.assertIsInstance(self.e('#map')								, WebElement)
 	
 	@url('/project/5-DiamondJubilee/pin/')
 	def test_pin_page(self):
