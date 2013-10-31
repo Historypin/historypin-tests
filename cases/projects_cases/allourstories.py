@@ -65,5 +65,4 @@ class Project_AllOurStories(HPTestCase):
 		hrefs = self.es('.search .name')
 		
 		for n in range(len(channels_links)): self.assertEqual(URL_BASE + channels_links[n], hrefs[n].get_attribute('href'))
-		
 	
