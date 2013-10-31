@@ -8,6 +8,7 @@ class Project_NPower(HPTestCase):
 		
 		self.assertTitle('Remember how we used to... | Home')
 		
+	
 		site_cnt = self.e('#site-content')
 		desc = site_cnt.e('.right > a')
 		
@@ -106,3 +107,39 @@ class Project_NPower(HPTestCase):
 			self.assertEqual(i[0], links[n].get_attribute('href'))
 			self.assertEqual(URL_BASE + '/resources/images/webapps/npower/' + i[1], imgs[n].get_attribute('src'))
 	
+	@url('/project/16-remember-keep-warm')
+	def test_keep_warm(self):
+		# TODO
+		# assert title
+		# assert link and image
+		# assert text
+		# assert upload button
+		# assert explore more text
+		# assert project ims links titles
+		# assert titles
+		# assert embed link
+		pass
+	
+	@url('/project/18-remember-play')
+	def test_play(self):
+		pass
+	
+	@url('/project/19-remember-cook-and-clean')
+	def test_cook_clean(self):
+		pass
+	
+	@url('/project/21-remember-celebrate')
+	def test_celebrate(self):
+		pass
+	
+	@url('/project/23-remember-watch-and-listen')
+	def test_watch_listen(self):
+		pass
+	
+	@url('/project/24-remember-work')
+	def test_work(self):
+		pass
+	
+	@url('/project/31-remember-timeline')
+	def test_timeline(self):
+		pass
