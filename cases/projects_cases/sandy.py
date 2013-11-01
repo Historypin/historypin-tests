@@ -6,9 +6,9 @@ class Project_Sandy(HPTestCase):
 	
 	def __test_icon_touts(self):
 		
-		site_cnt = self.e('#site-content')
+		site_cnt				= self.e('#site-content')
 		
-		icon_tout1 = site_cnt.e('#icon-tout-0 a')
+		icon_tout1				= site_cnt.e('#icon-tout-0 a')
 		
 		self.assertEqual('%s/project/26-sandy/pages/donate/' % URL_BASE				, icon_tout1.get_attribute('href'))
 		self.assertEqual('Donate to support the rebuild'							, icon_tout1.text)
@@ -26,6 +26,27 @@ class Project_Sandy(HPTestCase):
 		self.assertEqual('Featured photos by Sleepness, Rob Ketcherside, Wallyg and Jim Henderson', featured.text)
 		
 		self.assertIsInstance(self.e('.addthis_toolbox'), WebElement)
+	
+	def __test_support(self):
+		
+		support_cnt = self.e('.support')
+		self.assertEqual('With support from:', support_cnt.e('h5').text)
+		
+		partners = [
+			['http://www.google.co.uk/intl/en/about/'	, 'google_logo.jpg'],
+			['http://metro.org/'						, 'metropolitan.png'],
+			['http://www2.archivists.org/'				, 'saa.png'],
+			['http://www.aaslh.org/'					, 'aaslh.png'],
+		]
+		
+		links	= support_cnt.es('li a')
+		imgs	= support_cnt.es('li a img')
+		
+		for n in range(len(partners)):
+			i = partners[n]
+			self.assertEqual(i[0], links[n].get_attribute('href'))
+			self.assertEqual(URL_BASE + '/resources/images/partners/' + i[1], imgs[n].get_attribute('src'))
+			
 	
 	@url('/project/26-sandy/')
 	def test_index(self):
@@ -80,6 +101,7 @@ class Project_Sandy(HPTestCase):
 		self.assertEqual('%s/attach/project/26-sandy/photos/index/' % URL_BASE, self.e('#embed-frame').get_attribute('src'))
 		
 		self.__test_icon_touts()
+		self.__test_support()
 	
 	@url('/project/27-before-sandy/')
 	def test_before_sandy(self):
@@ -124,7 +146,7 @@ class Project_Sandy(HPTestCase):
 		self.assertEqual('%s/attach/project/27-before-sandy/photos/gallery/' % URL_BASE, self.e('#embed-frame').get_attribute('src'))
 		
 		self.__test_icon_touts()
-		
+		self.__test_support()
 	
 	@url('/project/28-after-sandy/')
 	def test_during_sandy(self):
