@@ -3,8 +3,34 @@
 from base import *
 
 class Project_Sandy(HPTestCase):
+	
+	def __test_icon_touts(self):
+		
+		site_cnt = self.e('#site-content')
+		
+		icon_tout1 = site_cnt.e('#icon-tout-0 a')
+		
+		self.assertEqual('%s/project/26-sandy/pages/donate/' % URL_BASE				, icon_tout1.get_attribute('href'))
+		self.assertEqual('Donate to support the rebuild'							, icon_tout1.text)
+		self.assertIn('ss-icon'		, icon_tout1.e('span').get_attribute('class'))
+		self.assertIn('ss-users'	, icon_tout1.e('span').get_attribute('class'))
+		
+		icon_tout2 = site_cnt.e('#icon-tout-1 a')
+		
+		self.assertEqual('http://blog.historypin.com/category/hurricane-sandy'	, icon_tout2.get_attribute('href'))
+		self.assertEqual('Read the latest news on our blog'						, icon_tout2.text)
+		self.assertIn('ss-icon'		, icon_tout2.e('span').get_attribute('class'))
+		self.assertIn('ss-openbook'	, icon_tout2.e('span').get_attribute('class'))
+		
+		featured = self.e('.bottom-p')
+		self.assertEqual('Featured photos by Sleepness, Rob Ketcherside, Wallyg and Jim Henderson', featured.text)
+		
+		self.assertIsInstance(self.e('.addthis_toolbox'), WebElement)
+	
 	@url('/project/26-sandy/')
 	def test_index(self):
+		
+		self.assertTitle('Hurricane Sandy | Home')
 		
 		site_cnt = self.e('#site-content')
 		h1_link = site_cnt.e('h1 a')
@@ -51,19 +77,63 @@ class Project_Sandy(HPTestCase):
 			self.assertEqual(i[2], texts[n].text)
 			self.assertEqual(URL_BASE + '/projects/img/pid/' + i[3] + '/type/banner,project_image,logo/dim/313x214/crop/1/', imgs[n].get_attribute('src'))
 		
+		self.assertEqual('%s/attach/project/26-sandy/photos/index/' % URL_BASE, self.e('#embed-frame').get_attribute('src'))
+		
+		self.__test_icon_touts()
 	
-	@url('/project/26-sandy/')
+	@url('/project/27-before-sandy/')
 	def test_before_sandy(self):
-		pass
+		
+		site_cnt = self.e('#site-content')
+		h1_link = site_cnt.e('h1 a')
+		self.assertEqual('%s/project/26-sandy' % URL_BASE				, h1_link.get_attribute('href'))
+		self.assertEqual('Hurricane Sandy:\nRecord, Remember, Rebuild'	, h1_link.text)
+		
+		tout = site_cnt.e('.text-tout')
+		self.assertEqual('Before Sandy'									, tout.e('h2').text)
+		self.assertIn('What did neighborhoods look like before Sandy?'	, tout.e('p').text)
+		
+		button_upload = tout.e('a')
+		self.assertEqual('%s/project/26-sandy/upload/projects/?subproject=27' % URL_BASE	, button_upload.get_attribute('href'))
+		self.assertEqual('Contribute'								, button_upload.e('span').text)
+		
+		self.assertEqual('%s/projects/img/pid/27/type/project_image/dim/980x411/crop/1/' % URL_BASE, site_cnt.e('.main-image img').get_attribute('src'))
+		
+		projects = site_cnt.e('.highlights.cf')
+		
+		projects_items = [
+			['After Sandy'		, '28-after-sandy/'	, 'Explore how people are starting to rebuild their homes and communities.'				, '28'],
+			['During Sandy'		, '29-during-sandy/', 'Memories and materials from when Sandy passed through communities and neighborhoods.', '29'],
+			['Back to homepage'	, '26-sandy/'		, 'See all the materials shared from before, during and after Sandy.'					, '26'],
+		]
+		
+		h2s			= projects.es('h2')
+		h2s_links	= projects.es('h2 a')
+		texts		= projects.es('p')
+		img_links	= projects.es('p + a')
+		imgs		= projects.es('img')
+		
+		for n in range(len(projects_items)):
+			i = projects_items[n]
+			self.assertEqual(i[0], h2s[n].text)
+			self.assertEqual(URL_BASE + '/project/' + i[1], h2s_links[n].get_attribute('href'))
+			self.assertEqual(URL_BASE + '/project/' + i[1], img_links[n].get_attribute('href'))
+			self.assertEqual(i[2], texts[n].text)
+			self.assertEqual(URL_BASE + '/projects/img/pid/' + i[3] + '/type/banner,project_image,logo/dim/313x214/crop/1/', imgs[n].get_attribute('src'))
+		
+		self.assertEqual('%s/attach/project/27-before-sandy/photos/gallery/' % URL_BASE, self.e('#embed-frame').get_attribute('src'))
+		
+		self.__test_icon_touts()
+		
 	
-	@url('/project/26-sandy/')
+	@url('/project/28-after-sandy/')
 	def test_during_sandy(self):
 		pass
 	
-	@url('/project/26-sandy/')
+	@url('/project/29-during-sandy/')
 	def test_after_sandy(self):
 		pass
 	
-	@url('/project/26-sandy/')
+	@url('/project/26-sandy/pages/donate/')
 	def test_donate(self):
 		pass
