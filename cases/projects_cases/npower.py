@@ -36,6 +36,8 @@ class Project_NPower(HPTestCase):
 		
 		site_cnt = self.e('#site-content')
 		bottom_p = site_cnt.e('.bottom-p')
+		
+		
 		self.assertIn('Featured photos shared by', bottom_p.text)
 			
 		channels = [
@@ -53,6 +55,11 @@ class Project_NPower(HPTestCase):
 			i = channels[n]
 			self.assertEqual(URL_BASE + '/channels/view/' + i[0], channels_links[n].get_attribute('href'))
 			self.assertEqual(i[1], channels_links[n].text)
+	
+		back_project = site_cnt.e('h3 a')
+		sefl.assertEqual('%s/project/15-remember' % URL_BASE, back_project.get_attribute('href'))
+		sefl.assertEqual('Back to project'					, back_project.text)
+		
 		
 		last_paragraph = self.e('.bottom-p + p')
 		self.assertEqual('In partnership with', last_paragraph.e('span').text)
@@ -396,9 +403,67 @@ class Project_NPower(HPTestCase):
 			self.assertEqual(URL_BASE + '/project/' + i[1], img_links[n].get_attribute('href'))
 			self.assertEqual(URL_BASE + '/projects/img/pid/' + i[2] + '/type/project_image,banner_image/dim/320x144/crop/1/', imgs[n].get_attribute('src'))
 		
+		self.__test_touts()
+		self.__test_channels()
+		
 		self.assertEqual('%s/attach/project/24-remember-work/photos/gallery/' % URL_BASE, self.e('#embed-frame').get_attribute('src'))
 		
 	
 	@url('/project/31-remember-timeline')
 	def test_timeline(self):
-		pass
+		
+		self.assertTitle('Timeline of Inventions | Home')
+		
+		site_cnt = self.e('#site-content')
+		desc = site_cnt.e('.right')
+		
+		self.assertEqual('%s/project/15-remember/' % URL_BASE							, desc.e('a').get_attribute('href'))
+		self.assertEqual('%s/projects/img/pid/31/type/logo/dim/600x120/' % URL_BASE		, desc.e('a img').get_attribute('src'))
+		
+		self.assertIn('Energy and technological advances over the last century have revolutionised the way we work', desc.e('p').text)
+		
+		button_upload = site_cnt.e('.left a')
+		
+		# self.assertEqual('%s/project/15-remember/upload/projects/bridge/1/?subproject=24' % URL_BASE, button_upload.get_attribute('href')) TODO fix this after issue #2641
+		self.assertEqual('Pin your memories'														, button_upload.e('span').text)
+		
+		
+		paragraph = self.e('#site-content > p')
+		self.assertEqual('In partnership with', paragraph.e('span').text)
+		
+		partners = [
+			['http://www.npower.com/'	, 'npower_logo.png'],
+			['http://www.mirrorpix.com/', 'mirrorpix.jpg'],
+		]
+		
+		links	= paragraph.es('a')
+		imgs	= paragraph.es('a img')
+		
+		for n in range(len(partners)):
+			i = partners[n]
+			self.assertEqual(i[0], links[n].get_attribute('href'))
+			self.assertEqual(URL_BASE + '/resources/images/webapps/npower/' + i[1], imgs[n].get_attribute('src'))
+		
+		self.go('/attach/project/31-remember-timeline/photos/timeline/')
+		
+		sleep(3)
+		
+		timeline	= self.e('#my-timeline')
+		layout		= timeline.e('.layout-media')
+		
+		self.assertIsInstance(layout.e('.date')	, WebElement)
+		self.assertIsInstance(layout.e('h3')	, WebElement)
+		self.assertIsInstance(layout.e('img')	, WebElement)
+		
+		nav_next = timeline.e('.nav-next')
+		
+		self.assertIsInstance(nav_next.e('.date')	, WebElement)
+		self.assertIsInstance(nav_next.e('.title')	, WebElement)
+		nav_next.e('.icon').click()
+		
+		nav_prev = timeline.e('.nav-previous')
+		self.assertIsInstance(nav_prev.e('.date')	, WebElement)
+		self.assertIsInstance(nav_prev.e('.title')	, WebElement)
+		
+		self.assertIsInstance(self.e('.vco-navigation'), WebElement)
+	
