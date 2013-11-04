@@ -198,8 +198,71 @@ class Project_Sandy(HPTestCase):
 	
 	@url('/project/28-after-sandy/')
 	def test_after_sandy(self):
-		pass
+		
+		self.assertTitle('After Sandy | Home')
+		
+		site_cnt = self.e('#site-content')
+		h1_link = site_cnt.e('h1 a')
+		self.assertEqual('%s/project/26-sandy' % URL_BASE				, h1_link.get_attribute('href'))
+		self.assertEqual('Hurricane Sandy:\nRecord, Remember, Rebuild'	, h1_link.text)
+		
+		tout = site_cnt.e('.text-tout')
+		self.assertEqual('After Sandy'																, tout.e('h2').text)
+		self.assertEqual('Explore how people are starting to rebuild their homes and communities.'	, tout.e('p').text)
+		
+		button_upload = tout.e('a')
+		self.assertEqual('%s/project/26-sandy/upload/projects/?subproject=28' % URL_BASE, button_upload.get_attribute('href'))
+		self.assertEqual('Contribute'													, button_upload.e('span').text)
+		
+		projects = site_cnt.e('.highlights.cf')
+		
+		projects_items = [
+			['Before Sandy'		, '27-before-sandy/', 'What did neighborhoods in the US and the Caribbean look like before Sandy?'			, '27'],
+			['During Sandy'		, '29-during-sandy/', 'Memories and materials from when Sandy passed through communities and neighborhoods.', '29'],
+			['Back to homepage'	, '26-sandy/'		, 'See all the materials shared from before, during and after Sandy.'					, '26'],
+		]
+		
+		h2s			= projects.es('h2')
+		h2s_links	= projects.es('h2 a')
+		texts		= projects.es('p')
+		img_links	= projects.es('p + a')
+		imgs		= projects.es('img')
+		
+		for n in range(len(projects_items)):
+			i = projects_items[n]
+			self.assertEqual(i[0], h2s[n].text)
+			self.assertEqual(URL_BASE + '/project/' + i[1], h2s_links[n].get_attribute('href'))
+			self.assertEqual(URL_BASE + '/project/' + i[1], img_links[n].get_attribute('href'))
+			self.assertEqual(i[2], texts[n].text)
+			self.assertEqual(URL_BASE + '/projects/img/pid/' + i[3] + '/type/banner,project_image,logo/dim/313x214/crop/1/', imgs[n].get_attribute('src'))
+		
+		self.assertEqual('%s/attach/project/28-after-sandy/photos/gallery/' % URL_BASE, self.e('#embed-frame').get_attribute('src'))
+		
+		self.__test_icon_touts()
+		self.__test_support()
+		
 	
 	@url('/project/26-sandy/pages/donate/')
 	def test_donate(self):
-		pass
+		
+		self.assertTitle('Hurricane Sandy')
+		
+		site_cnt = self.e('#site-content')
+		h1_link = site_cnt.e('h1 a')
+		self.assertEqual('%s/project/26-sandy' % URL_BASE				, h1_link.get_attribute('href'))
+		self.assertEqual('Hurricane Sandy:\nRecord, Remember, Rebuild'	, h1_link.text)
+		
+		donation_cnt = site_cnt.e('.cf')
+		
+		self.assertIn('If you would like to support communities affected by Hurricane Sandy,', donation_cnt.e('p:nth-of-type(1)').text)
+		
+		button_donate = donation_cnt.e('.center')
+		
+		self.assertEqual('https://npo.networkforgood.org/Donate/Donate.aspx?npoSubscriptionId=1005594&skinid=107989', button_donate.get_attribute('href'))
+		self.assertEqual('Donate to help the rebuild', button_donate.e('span').text)
+		
+		self.assertEqual('%s/resources/images/sandy_donate_img.jpg' % URL_BASE, donation_cnt.e('img').get_attribute('src'))
+		
+		self.__test_support()
+		
+	
