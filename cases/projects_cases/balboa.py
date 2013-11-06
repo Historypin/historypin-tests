@@ -36,10 +36,19 @@ class Project_Balboa(HPTestCase):
 	@url('/attach/project/6-balboa/map/')
 	def test_map_tab(self):
 		
+		filter_bar = self.e('#filter-bar')
 		
+		self.assertEqual('Search tags', filter_bar.e('label').text)
+		self.assertIsInstance(filter_bar.e('input')	, WebElement)
+		self.assertIsInstance(self.e('#tags_search'), WebElement)
 		
+		date_slider_icons = self.es('#date-slider a')
+		self.assertIn('ss-icon'		, date_slider_icons[0].e('span').get_attribute('class'))
+		self.assertIn('ss-location'	, date_slider_icons[0].e('span').get_attribute('class'))
 		
-		pass
+		self.assertIn('ss-icon'		, date_slider_icons[1].e('span').get_attribute('class'))
+		self.assertIn('ss-location'	, date_slider_icons[1].e('span').get_attribute('class'))
+		
 	
 	@url('/attach/project/6-balboa/collections/all/')
 	def test_collections_tab(self):

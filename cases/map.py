@@ -162,7 +162,7 @@ class Map(HPTestCase):
 		fullscr_off.click()
 	
 	@url('/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:details/' % ID_MAP_ITEM)
-	def test_dialog_details(self):  # this issue fails only in the test suite
+	def test_dialog_details(self):  # this test case fails only in the test suite
 		sleep(15)  # ajax on success
 		dlg = self.e('#info-dialog')
 		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/2000x440/quality/80/' % ID_MAP_ITEM, dlg.e('#details_cnt .image .main-img').get_attribute('src'))
