@@ -64,13 +64,34 @@ class Project_Balboa(HPTestCase):
 		
 		collections_cnt = self.e('#list')
 		
-		self.assertIsInstance(collections_cnt.e('li:nth-of-type(1) > a'), WebElement)
-		self.assertIsInstance(collections_cnt.e('li:nth-of-type(1) p a'), WebElement)
-		self.assertIsInstance(collections_cnt.e('li:nth-of-type(1) p a:nth-of-type(2)'), WebElement)
+		self.assertIsInstance(collections_cnt.e('li:nth-of-type(1) > a')				, WebElement)
+		self.assertIsInstance(collections_cnt.e('li:nth-of-type(1) p a')				, WebElement)
+		self.assertIsInstance(collections_cnt.e('li:nth-of-type(1) p a:nth-of-type(2)')	, WebElement)
 		
+	
+	@url('/attach/project/6-balboa/tours/all/')
+	def test_tours_tab(self):
+		
+		self.assertEqual("balboa hasn't yet published any Tours.", self.e('#page-index h3').text)
 	
 	@url('/attach/project/6-balboa/contribute/')
 	def test_contribute_tab(self):
-		pass
-	
+		
+		contribute_cnt = self.e('#tab-contribute')
+		self.assertEqual('Pin your photos using', contribute_cnt.e('h1').text)
+		
+		self.assertEqual('%s/user/?from=/project/6-balboa%%23%%7Cupload/' % URL_BASE, contribute_cnt.e('.pin_bridge').get_attribute('href'))
+		
+		paragraph_links = [
+			['Pin your photos to Balboa Park using Historypin'			, '%s/user/?from=/project/6-balboa%%23%%7Cupload/' % URL_BASE],
+			['Find out more about the not-for-profit project Historypin', 'http://www.historypin.com/'],
+		]
+		
+		links = contribute_cnt.es('p a')
+		
+		for n in range(len(paragraph_links)):
+			i = paragraph_links[n]
+			self.assertEqual(i[0], links[n].text)
+			self.assertEqual(i[1], links[n].get_attribute('href'))
+		
 	
