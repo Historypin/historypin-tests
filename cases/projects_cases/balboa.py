@@ -61,7 +61,13 @@ class Project_Balboa(HPTestCase):
 	
 	@url('/attach/project/6-balboa/collections/all/')
 	def test_collections_tab(self):
-		pass
+		
+		collections_cnt = self.e('#list')
+		
+		self.assertIsInstance(collections_cnt.e('li:nth-of-type(1) > a'), WebElement)
+		self.assertIsInstance(collections_cnt.e('li:nth-of-type(1) p a'), WebElement)
+		self.assertIsInstance(collections_cnt.e('li:nth-of-type(1) p a:nth-of-type(2)'), WebElement)
+		
 	
 	@url('/attach/project/6-balboa/contribute/')
 	def test_contribute_tab(self):
