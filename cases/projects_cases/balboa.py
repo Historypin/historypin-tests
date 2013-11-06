@@ -49,6 +49,15 @@ class Project_Balboa(HPTestCase):
 		self.assertIn('ss-icon'		, date_slider_icons[1].e('span').get_attribute('class'))
 		self.assertIn('ss-location'	, date_slider_icons[1].e('span').get_attribute('class'))
 		
+		self.e('.hp-marker.hp-marker-cluster').click()
+		sleep(3)
+		
+		cluster = self.e('#galleryInfoWindow_contents li:nth-of-type(1)')
+		
+		self.assertIsInstance(cluster.e('.hp-info-gallery-pin img'), WebElement)
+		self.assertIsInstance(cluster.e('.info h6 a'), WebElement)
+		self.assertIsInstance(cluster.e('.info p'), WebElement)
+		
 	
 	@url('/attach/project/6-balboa/collections/all/')
 	def test_collections_tab(self):
