@@ -2,8 +2,8 @@
 PATH_CRHOME_DRIVER	= '/usr/lib64/chromium-browser/chromedriver'
 GO_TIMEOUT = 1
 
-
-VERSION = 'v5-00-10'
+VERSION = 'v5-multilingual'
+# VERSION = 'v5-00-10'
 # VERSION = 'http://www.historypin.com'
 LINK_BASE = '%s.historypin-hrd.appspot.com' % (VERSION)
 # LINK_BASE = 'historypin.com'
@@ -12,7 +12,7 @@ URL_BASE = 'http://www.%s' % LINK_BASE
 
 IS_ON_SDK = not (LINK_BASE.endswith('.appspot.com') or LINK_BASE.endswith('.historypin.com'))
 
-if VERSION == 'v5-00-10':
+if VERSION == 'v5-multilingual':
 	ID_COLLECTION	= 3033
 	ID_TOUR			= 1706
 	

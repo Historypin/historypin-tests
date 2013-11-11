@@ -18,7 +18,7 @@ class Project_PuttingArt(HPTestCase):
 		self.assertEqual('https://twitter.com/search?q=%23artmap', twitter_link.get_attribute('href'))
 		self.assertEqual('#artmap', twitter_link.text)
 		
-		self.assertEqual(URL_BASE + '/attach/project/41-putting-art-on-the-map/mysteries/index/', self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('%s/attach/project/41-putting-art-on-the-map/mysteries/index/' % URL_BASE, self.e('#embed-frame').get_attribute('src'))
 		
 		tout_items = [
 			['Live event in York'	, 'tout1_image', 'Join us at Yorkshire Museum on 6th November to crowdsource works from the Home Front.', '/2013/10/31/crowdsourcing-the-home-front-at-yorkshire-museum/', ],

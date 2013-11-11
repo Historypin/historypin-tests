@@ -9,19 +9,19 @@ class Collections(HPTestCase):
 		
 		main_cnt	= self.e('.col.w34')
 		self.assertEqual('What are Collections?'									, main_cnt.e('h1').text)
-		self.assertEqual(URL_BASE + '/collections/'									, main_cnt.e('a.main-image.no-shadow').get_attribute('href'))
-		self.assertEqual(URL_BASE + '/resources/images/collections_page_image.jpg'	, main_cnt.e('img').get_attribute('src'))
+		self.assertEqual('%s/collections/'									% URL_BASE, main_cnt.e('a.main-image.no-shadow').get_attribute('href'))
+		self.assertEqual('%s/resources/images/collections_page_image.jpg'	% URL_BASE, main_cnt.e('img').get_attribute('src'))
 		self.assertEqual('Collections bring together content around a particular topic or theme. You can explore the Collections or create a Collection of your own.', main_cnt.e('p').text)
 		
 		button		= self.e('.col.w34 a.next-button.left')
-		self.assertEqual(URL_BASE + '/collections/add'	, button.get_attribute('href'))
+		self.assertEqual('/collections/add'	% URL_BASE	, button.get_attribute('href'))
 		self.assertEqual('Make your own collection'		, button.e('span').text)
 		
 		self.assertEqual('All Collections'				, self.e('h3:last-of-type').text)
 		
 		h3 = self.e('h3.right a')
 		self.assertEqual('Return to Tours & Collections', h3.text)
-		self.assertEqual(URL_BASE + '/curated'			, h3.get_attribute('href'))
+		self.assertEqual('%s/curated'	% URL_BASE, h3.get_attribute('href'))
 		
 		cnt	= self.es('#photo_list_content .list li:nth-of-type(1)')
 		self.assertIsInstance(cnt[0].e('a')	, WebElement)
@@ -43,7 +43,7 @@ class Collections(HPTestCase):
 		
 		next = self.e('.show-next')
 		self.assertEqual('Next'									, next.text)
-		self.assertEqual(URL_BASE + '/collections/all/page/2/'	, next.get_attribute('href'))
+		self.assertEqual('%s/collections/all/page/2/' % URL_BASE, next.get_attribute('href'))
 	
 	@logged_in
 	@url('/collections/view/id/%d' % ID_COLLECTION + '/')
@@ -56,10 +56,10 @@ class Collections(HPTestCase):
 		paragraphs = self.es('.info p')
 		self.assertEqual('Collection for famous theaters in Bulgaria'	, paragraphs[0].text)
 		self.assertEqual('Created by Gabriela Ananieva'					, paragraphs[1].text)
-		self.assertEqual(URL_BASE + '/channels/view/%d' % ID_USER		, paragraphs[1].e('a').get_attribute('href'))
+		self.assertEqual('%s/channels/view/%d' % (URL_BASE, ID_USER)	, paragraphs[1].e('a').get_attribute('href'))
 		
 		button = self.e('.info ~ a')
-		self.assertEqual(URL_BASE + '/collections/slideshow/id/%d/' % ID_COLLECTION, button.get_attribute('href'))
+		self.assertEqual('%s/collections/slideshow/id/%d/' % (URL_BASE, ID_COLLECTION), button.get_attribute('href'))
 		self.assertEqual('Slide Show'										, button.text)
 		
 		collection_view = [
@@ -85,13 +85,13 @@ class Collections(HPTestCase):
 		representing_photo = photos_list.e('li:nth-of-type(2) .info-actions .choose')
 		representing_photo.click()
 		sleep(3)
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/451x302/crop/1/' % ID_COLLECTION_IMAGES[1]	, self.e('img.index').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/451x302/crop/1/' % (URL_BASE, ID_COLLECTION_IMAGES[1]), self.e('img.index').get_attribute('src'))
 		
 		representing_photo = photos_list.e('li:nth-of-type(1) .info-actions .choose')
 		representing_photo.click()
 		sleep(3)
 		self.browser.refresh()
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/451x302/crop/1/' % ID_COLLECTION_IMAGES[0]	, self.e('img.index').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/451x302/crop/1/' % (URL_BASE, ID_COLLECTION_IMAGES[0]), self.e('img.index').get_attribute('src'))
 	
 	@logged_in
 	@url('/collections/slideshow/id/%d' % ID_COLLECTION + '/')
@@ -99,7 +99,7 @@ class Collections(HPTestCase):
 		
 		self.assertTitle('Historypin | Collection | Theaters in Bulgaria')
 		self.assertEqual('Theaters in Bulgaria\nExit Slideshow'										, self.e('#slide-content p').text)
-		self.assertEqual(URL_BASE + '/collections/view/id/%d/title/Theaters%%20in%%20Bulgaria' % ID_COLLECTION, self.e('#slide-content a').get_attribute('href'))
+		self.assertEqual('%s/collections/view/id/%d/title/Theaters%%20in%%20Bulgaria' % (URL_BASE, ID_COLLECTION), self.e('#slide-content a').get_attribute('href'))
 		
 		controls	= self.e('#controls')
 		counter		= controls.e('#slidecounter')
@@ -115,11 +115,11 @@ class Collections(HPTestCase):
 		sleep(3)
 		pause.click()
 		
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/' % ID_COLLECTION_IMAGES[1], prev_thumb.get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/' % (URL_BASE, ID_COLLECTION_IMAGES[1]), prev_thumb.get_attribute('src'))
 		self.assertIn('1/2', counter.text)
 		self.assertEqual('"Bulgarian Army Theater"- 2 February 2013 by Gabriela Ananieva', step_text.text)
-		self.assertEqual(URL_BASE + '/map/#!/geo:42.694706,23.329035/zoom:9/dialog:%d/tab:details/' % ID_COLLECTION_IMAGES[0], step_text.get_attribute('href'))
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/' % ID_COLLECTION_IMAGES[1], next_thumb.get_attribute('src'))
+		self.assertEqual('%s/map/#!/geo:42.694706,23.329035/zoom:9/dialog:%d/tab:details/' % (URL_BASE, ID_COLLECTION_IMAGES[0]), step_text.get_attribute('href'))
+		self.assertEqual('%s/services/thumb/phid/%d/' % (URL_BASE, ID_COLLECTION_IMAGES[1]), next_thumb.get_attribute('src'))
 		next_slide.click()
 		sleep(3)
 		
@@ -265,8 +265,8 @@ class Collections(HPTestCase):
 		sleep(5)  # AJAX
 		
 		favs = step_cnt.es('.choose-photos.favourites li')
-		url = URL_BASE + '/services/thumb/phid'
-		self.assertEqual(url + '/%d/dim/152x108/crop/1/' % ID_COLLECTION_IMAGES[1]	, favs[0].e('img').get_attribute('src'))
+		url = '%s/services/thumb/phid' % URL_BASE
+		self.assertEqual('%s/%d/dim/152x108/crop/1/' % (url, ID_COLLECTION_IMAGES[1]), favs[0].e('img').get_attribute('src'))
 		
 		self.assertEqual('', favs[0].e('.photo-title').text)
 		self.hover(favs[0].e('img'))

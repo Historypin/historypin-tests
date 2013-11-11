@@ -9,7 +9,7 @@ class Projects(HPTestCase):
 		
 		paragraph = self.e('.home-top p')
 		self.assertEqual(u'Explore our Historypin Projects and add your own memories. If you’d like to work with us to create a new Historypin Project, get in touch.', paragraph.text)
-		self.assertEqual(URL_BASE + '/contact', paragraph.e('a').get_attribute('href'))
+		self.assertEqual('%s/contact' % URL_BASE, paragraph.e('a').get_attribute('href'))
 		
 		projects = [
 			['%d-hp-olympics' % ID_PROJECTS[0], "Olympic memories"					, "Have you got photos and memories from the Olympics through the ages?"									, '%d' % ID_PROJECTS_IMAGES[0]],

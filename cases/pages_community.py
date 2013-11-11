@@ -580,7 +580,7 @@ class Community(HPTestCase):
 		self.assertTitle('Historypin | Community | Schools | Nelson Rural School, New Brunswick, Canada')
 		self.assertEqual('Nelson Rural School, New Brunswick, Canada', self.e('h1.title').text)
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6c_main.jpg', self.e('.section img').get_attribute('src'))
-		self.assertEqual(URL_BASE + '/channels/view/8817007/name/nelsonrural7k/', self.e('.section p:nth-of-type(8) a').get_attribute('href'))
+		self.assertEqual('%s/channels/view/8817007/name/nelsonrural7k/' % URL_BASE, self.e('.section p:nth-of-type(8) a').get_attribute('href'))
 		self.assertEqual(u'Nelson School’s Historypin Channel', self.e('.section p:nth-of-type(8) a').text)
 		
 	@url('/community/schools-newport/')

@@ -13,10 +13,10 @@ class Project_Grandparents(HPTestCase):
 		
 		self.assertIn('Is your Gran, Grandad, Nan or Pops awesome?', site_cnt.e('.page-top p').text)
 		
-		grandparents_link = URL_BASE + '/project/10-grandparents'
+		grandparents_link = '%s/project/10-grandparents' % URL_BASE
 		hp_link = 'http://www.historypin.com'
 		
-		img_link = URL_BASE + '/resources/images/webapps/grandparents/'
+		img_link = '%s/resources/images/webapps/grandparents/' % URL_BASE
 		wawwd_link = 'http://wawwd-resources.s3.amazonaws.com/historypin/images/community/'
 		
 		touts = [
@@ -39,5 +39,5 @@ class Project_Grandparents(HPTestCase):
 			self.assertEqual(i[3], paragraphs[n].text)
 		
 		
-		self.assertEqual(URL_BASE + '/attach/project/10-grandparents/photos/gallery/', self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('%s/attach/project/10-grandparents/photos/gallery/' % URL_BASE, self.e('#embed-frame').get_attribute('src'))
 	

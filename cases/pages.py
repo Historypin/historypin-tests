@@ -532,14 +532,14 @@ class Pages(HPTestCase):
 		
 		button = site_cnt.e('.button.left')
 		self.assertEqual("I'm ready to do a Bulk Upload", button.e('span').text)
-		self.assertEqual(URL_BASE + '/upload-bulk/'		, button.get_attribute('href'))
+		self.assertEqual('%s/upload-bulk/' % URL_BASE, button.get_attribute('href'))
 		
 		csv = self.e('ol li:nth-of-type(1)')
 		self.assertEqual('Download our CSV template and the Instructions on how to complete it.', csv.text)
 		
 		link = 'http://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/'
-		self.assertEqual(link + 'Historypin_Bulk_Upload_Template.csv'									, csv.es('a')[0].get_attribute('href'))
-		self.assertEqual(link + 'Historypin_Instructions_for_Completing_a_CSV_template_March_2012.xls'	, csv.es('a')[1].get_attribute('href'))
+		self.assertEqual('%sHistorypin_Bulk_Upload_Template.csv'									% link, csv.es('a')[0].get_attribute('href'))
+		self.assertEqual('%sHistorypin_Instructions_for_Completing_a_CSV_template_March_2012.xls'	% link, csv.es('a')[1].get_attribute('href'))
 		
 		sidebar		= self.e('.sidebar')
 		downloads	= sidebar.e('.inner:nth-of-type(1)')
@@ -564,8 +564,8 @@ class Pages(HPTestCase):
 		self.assertEqual('If you get stuck or have any questions, check out our How To page and FAQs and please feel free to contact us at historypin@wearewhatwedo.org', help.e('p').text)
 		
 		links = [
-			[URL_BASE + '/community/howtos/'		, 'How To page'],
-			[URL_BASE + '/faq/'						, 'FAQs'],
+			['%s/community/howtos/'		% URL_BASE	, 'How To page'],
+			['%s/faq/'					% URL_BASE	, 'FAQs'],
 			['mailto:historypin@wearewhatwedo.org'	, 'historypin@wearewhatwedo.org'],
 		]
 		
