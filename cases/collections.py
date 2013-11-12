@@ -243,7 +243,7 @@ class Collections(HPTestCase):
 		
 		item = step_cnt.e('.choose-photos.yours li')
 		
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/152x108/crop/1/' % ID_COLLECTION_IMAGES[0], item.e('img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BASE, ID_COLLECTION_IMAGES[0]), item.e('img').get_attribute('src'))
 		# to check icon for adding
 		
 		self.hover(item.e('img'))

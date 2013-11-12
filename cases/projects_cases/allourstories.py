@@ -49,7 +49,7 @@ class Project_AllOurStories(HPTestCase):
 		self.assertIsInstance(item_first[1], WebElement)
 		self.assertIsInstance(item_first[2], WebElement)
 		
-		self.assertEqual('%s/attach/project/44-all-our-stories/photos/index/' % URL_BASE, self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('%s/attach/project/44-all-our-stories/map/index/' % URL_BASE, self.e('#embed-frame').get_attribute('src'))
 	
 	@url('/project/44-all-our-stories/channels/')
 	def test_projects(self):
@@ -60,9 +60,10 @@ class Project_AllOurStories(HPTestCase):
 		self.assertEqual('%s/project/44-all-our-stories/' % URL_BASE, button_home.get_attribute('href'))
 		self.assertEqual('Home', button_home.e('span').text)
 		
-		channels_links = ['/channels/view/id/49062/', '/channels/view/id/50346/', '/channels/view/id/49168/', '/channels/view/id/49246/', '/channels/view/id/49279/', '/channels/view/id/50582/', '/channels/view/id/40775/']
+		channel = self.e('.channels-list li:first-of-type')
+		self.assertIsInstance(channel.e('.logo'), WebElement)
+		self.assertIsInstance(channel.e('.name'), WebElement)
 		
-		hrefs = self.es('.search .name')
+		self.assertIsInstance(self.e('.addthis_toolbox'), WebElement)
 		
-		for n in range(len(channels_links)): self.assertEqual(URL_BASE + channels_links[n], hrefs[n].get_attribute('href'))
 	

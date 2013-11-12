@@ -13,7 +13,7 @@ class Project_Balboa(HPTestCase):
 		self.assertEqual('http://balboapark.org/', logo_link.get_attribute('href'))
 		self.assertEqual('%s/resources/images/webapps/balboa/logo.png' % URL_BASE, logo_link.e('img').get_attribute('src'))
 		
-		self.assertEqual('%s/attach/project/6-balboa/photos/index/' % URL_BASE, self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('%s/attach/project/6-balboa/map/index/' % URL_BASE, self.e('#embed-frame').get_attribute('src'))
 		
 		balboa_link = 'http://www.balboapark.org'
 		

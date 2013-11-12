@@ -132,7 +132,7 @@ class Channel(HPTestCase):
 		
 		img_holder = self.e('#photo_list_content .list li .image-holder a[class="image"]')
 		# TODO check this url
-		# self.assertEqual(URL_BASE + '/attach/uid%d/map/index/#!/geo:43.325176,24.960938/zoom:20/dialog:361341/tab:details/' % ID_USER_VIEW, img_holder.get_attribute('href'))
+		# self.assertEqual('%s/attach/uid%d/map/index/#!/geo:43.325176,24.960938/zoom:20/dialog:361341/tab:details/' % (URL_BASE, ID_USER_VIEW), img_holder.get_attribute('href'))
 		self.assertEqual('%s/services/thumb/phid/%d/dim/170x130/crop/1/' % (URL_BASE, ID_MAP_ITEM), img_holder.e('img').get_attribute('src'))
 		
 		info = self.e('#photo_list_content .info')
@@ -404,7 +404,7 @@ class Channel(HPTestCase):
 		self.assertFalse(self.e('#youtube-dialog').is_displayed())
 		
 		button_create = tab_cnt.e('.button.left')
-		self.assertEqual(URL_BASE + '/collections/add/', button_create.get_attribute('href'))
+		self.assertEqual('%s/collections/add/' % URL_BASE, button_create.get_attribute('href'))
 		self.assertEqual('Create a new Collection', button_create.e('span').text)
 		
 		button_manage = tab_cnt.e('.scroll_to_embed')
@@ -478,7 +478,7 @@ class Channel(HPTestCase):
 		self.assertFalse(self.e('#youtube-dialog').is_displayed())
 		
 		button_create = tab_cnt.e('.button.left')
-		self.assertEqual(URL_BASE + '/tours/add/', button_create.get_attribute('href'))
+		self.assertEqual('%s/tours/add/' % URL_BASE, button_create.get_attribute('href'))
 		self.assertEqual('Create a new Tour', button_create.e('span').text)
 		
 		button_manage = tab_cnt.e('.scroll_to_embed')
@@ -1371,7 +1371,7 @@ class Channel(HPTestCase):
 		self.assertEqual('Date required field'		, heading[2].text)
 		self.assertEqual('Place required field'		, heading[3].text)
 		
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/260x1000/' % ID_EDIT_ITEM, edit_page.e('#photo-preview img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/260x1000/' % (URL_BASE, ID_EDIT_ITEM), edit_page.e('#photo-preview img').get_attribute('src'))
 		
 		info		= edit_page.e('.inner.left')
 		label		= info.es('label')

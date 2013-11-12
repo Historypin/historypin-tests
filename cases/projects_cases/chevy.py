@@ -42,4 +42,4 @@ class Project_Chevy(HPTestCase):
 		self.assertIsInstance(self.e('.chevy_dialog'), WebElement)
 		self.e('.ui-dialog-titlebar-close.ui-corner-all').click()
 		
-		self.assertEqual(URL_BASE + '/attach/project/8-chevy/photos/index/', self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/attach/project/8-chevy/map/index/', self.e('#embed-frame').get_attribute('src'))

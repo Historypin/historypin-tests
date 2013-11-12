@@ -33,7 +33,7 @@ class Projects(HPTestCase):
 		images			= self.es('.col .inn img')
 		banner_links	= self.es('.col .inn .banner-holder')
 		
-		url				= URL_BASE + '/project/'
+		url				= '%s/project/' % URL_BASE
 		
 		for n in range(len(projects)):
 			i = projects[n]

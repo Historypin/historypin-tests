@@ -10,7 +10,7 @@ class Homepage(HPTestCase):
 			self.e('.cookies-popup p').text,
 		)
 		
-		self.assertEqual(URL_BASE + '/pages/cookies/',				self.e('.cookies-popup p a').get_attribute('href'))
+		self.assertEqual('%s/pages/cookies/' % URL_BASE, self.e('.cookies-popup p a').get_attribute('href'))
 		a = self.e('.cookies-popup a.right')
 		self.assertEqual('Close this message  close', a.text)
 		a.click()
@@ -23,16 +23,16 @@ class Homepage(HPTestCase):
 	def test_navigation(self):
 		
 		links = [
-			[ 'Home'					, URL_BASE + '/' ],
-			[ 'Map'						, URL_BASE + '/map/' ],
-			[ 'Projects'				, URL_BASE + '/projects/' ],
-			[ 'Channels'				, URL_BASE + '/channels/' ],
-			[ 'Tours and Collections'	, URL_BASE + '/curated/' ],
-			[ 'Get Involved'			, URL_BASE + '/community/' ],
+			[ 'Home'					, '%s/' % URL_BASE ],
+			[ 'Map'						, '%s/map/' % URL_BASE ],
+			[ 'Projects'				, '%s/projects/' % URL_BASE ],
+			[ 'Channels'				, '%s/channels/' % URL_BASE ],
+			[ 'Tours and Collections'	, '%s/curated/' % URL_BASE ],
+			[ 'Get Involved'			, '%s/community/' % URL_BASE ],
 			[ 'Blog'					, 'http://blog.historypin.com/' ],
-			[ 'Login'					, URL_BASE + '/_ah/login?continue=http%3A//www.localhost.com%3A8080/user/login/' ],
-			[ 'Join'					, URL_BASE + '/user/' ],
-			[ 'Pin'						, URL_BASE + '/upload/' ],
+			[ 'Login'					, '%s/_ah/login?continue=http%3A//www.localhost.com%3A8080/user/login/' % URL_BASE ],
+			[ 'Join'					, '%s/user/' % URL_BASE ],
+			[ 'Pin'						, '%s/upload/' % URL_BASE ],
 		]
 		
 		elements = self.es('#header .nav a')
@@ -124,7 +124,7 @@ class Homepage(HPTestCase):
 		
 		first_suggestion.click()
 		sleep(.3)
-		self.assertEqual(self.browser.current_url.split('#')[0], URL_BASE + '/map/')
+		self.assertEqual(self.browser.current_url.split('#')[0], '%s/map/' % URL_BASE)
 	
 	# @unittest.skip("TODO")
 	# @url('/')

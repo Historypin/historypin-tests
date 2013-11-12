@@ -174,8 +174,8 @@ class Map(HPTestCase):
 		
 		sleep(4)
 		details_link = dlg.e('.open-tab-dialog')
-		self.assertEqual(URL_BASE + '/map/#write-story_cnt'	, details_link.get_attribute('href'))
-		self.assertEqual('Suggest more accurate details'	, details_link.text )
+		self.assertEqual('%s/map/#write-story_cnt' % URL_BASE	, details_link.get_attribute('href'))
+		self.assertEqual('Suggest more accurate details'		, details_link.text )
 		
 		about = dlg.e('.about')
 		self.assertEqual('%s/channels/img/%d/logo/1/dim/46x46/' % (URL_BASE, ID_USER_VIEW), about.e('img').get_attribute('src'))
@@ -238,7 +238,7 @@ class Map(HPTestCase):
 		
 		sleep(2)
 		self.e_wait('.list_tabs a[href$=stories_cnt]').click()
-		self.assertIn('tab:stories'		, URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:stories/' % ID_MAP_ITEM)
+		self.assertIn('tab:stories'		, '%s/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:stories/' % (URL_BASE, ID_MAP_ITEM))
 		self.assertEqual('Comments and suggestions (1)'	, dlg.e('.selected .tab').text)
 		
 		sidebar						= dlg.e('.info.scrollbarfix')
