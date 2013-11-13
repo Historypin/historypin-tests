@@ -39,10 +39,6 @@ class Browser(webdriver.Chrome):
 		self.get('' if url.startswith('http') else URL_BASE + url)
 		# self.pageload_wait()
 	
-	# TODO get rid of this it is exactly the same
-	def goBack(self, url):
-		self.get(URL_BASE + url)
-	
 	def es(self, selector):
 		return self.find_elements_by_css_selector(selector)
 		
@@ -80,7 +76,6 @@ class TestCase(unittest.TestCase):
 		cls.browser.maximize_window()
 		
 		cls.go				= cls.browser.go
-		cls.goBack			= cls.browser.goBack  # TODO remove this
 		cls.refresh			= cls.browser.refresh
 		cls.es				= cls.browser.es
 		cls.e				= cls.browser.e

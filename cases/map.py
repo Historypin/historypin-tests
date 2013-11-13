@@ -226,7 +226,7 @@ class Map(HPTestCase):
 		fullscr_off.click()
 		
 		self.e('.action.photo-view-on-streetview.sv-marker[href$=streetview_cnt]').click()
-		self.goBack('.list_tabs a[href$=details_cnt]')
+		self.go('.list_tabs a[href$=details_cnt]')
 		
 		
 	
@@ -265,7 +265,7 @@ class Map(HPTestCase):
 		# tab.e('.write_story_wrap').click()
 		# self.assertIn('/user/?from=/map/', URL_BASE + '/user/?from=/map/%23%21/geo%3A42.697839%2C23.32167/zoom%3A10/dialog%3A22363018/tab%3Awrite-story/')
 		
-		# self.goBack(URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:stories/' % ID_MAP_ITEM)
+		# self.go(URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:stories/' % ID_MAP_ITEM)
 		
 	@url('/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:details/' % ID_MAP_ITEM)
 	def test_dialog_streetview(self):

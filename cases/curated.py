@@ -59,5 +59,3 @@ class Curated(HPTestCase):
 		self.assertEqual('%s/tours/add'			% URL_BASE, button_links[2].get_attribute('href'))
 		self.assertEqual('%s/tours/all/'		% URL_BASE, button_links[3].get_attribute('href'))
 		
-		# TODO
-		# when logged in as admin to check icons for edit delete and publish/unpusblish

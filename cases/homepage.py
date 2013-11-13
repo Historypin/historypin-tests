@@ -119,6 +119,7 @@ class Homepage(HPTestCase):
 		
 		self.e('#search-location').send_keys("London, United Kingdom")
 		
+		sleep(2)
 		first_suggestion = self.e_wait('.pac-container .pac-item-refresh')
 		# self.assertEqual('London, United Kingdom', first_suggestion.text) TODO to fix this
 		
@@ -198,36 +199,36 @@ class Homepage(HPTestCase):
 	@url('/')
 	def test_footer(self):
 		links = [
-			[ 'About'							, '%s/about-us/' % URL_BASE ],
-			[ 'FAQ'								, '%s/faq/' % URL_BASE ],
-			[ 'How To Guides'					, '%s/how-to/' % URL_BASE ],
-			[ 'We Are What We Do'				, '%s/wearewhatwedo/' % URL_BASE ],
-			[ 'Team'							, '%s/team/' % URL_BASE ],
-			[ 'Press Centre'					, '%s/presscentre/' % URL_BASE ],
-			[ 'Contact'							, '%s/contact/' % URL_BASE ],
+			[ 'About'							, '%s/about-us/' % URL_BASE],
+			[ 'FAQ'								, '%s/faq/' % URL_BASE],
+			[ 'How To Guides'					, '%s/how-to/' % URL_BASE],
+			[ 'We Are What We Do'				, '%s/wearewhatwedo/' % URL_BASE],
+			[ 'Team'							, '%s/team/' % URL_BASE],
+			[ 'Press Centre'					, '%s/presscentre/' % URL_BASE],
+			[ 'Contact'							, '%s/contact/' % URL_BASE],
 			
-			[ 'Map'								, '%s/map/' % URL_BASE ],
-			[ 'Projects'						, '%s/projects/' % URL_BASE ],
-			[ 'Tours and Collections'			, '%s/curated/' % URL_BASE ],
-			[ 'Channels'						, '%s/channels/' % URL_BASE ],
-			[ 'Pin'								, '%s/upload/' % URL_BASE ],
-			[ 'Mobile App'						, '%s/app/' % URL_BASE ],
+			[ 'Map'								, '%s/map/' % URL_BASE],
+			[ 'Projects'						, '%s/projects/' % URL_BASE],
+			[ 'Tours and Collections'			, '%s/curated/' % URL_BASE],
+			[ 'Channels'						, '%s/channels/' % URL_BASE],
+			[ 'Pin'								, '%s/upload/' % URL_BASE],
+			[ 'Mobile App'						, '%s/app/' % URL_BASE],
 			
-			[ 'Community'						, '%s/community/' % URL_BASE ],
-			[ 'Local Projects'					, '%s/community/localprojects/' % URL_BASE ],
-			[ 'Schools'							, '%s/community/schools/' % URL_BASE ],
-			[ 'Libraries, Archives and Museums'	, '%s/community/lams/' % URL_BASE ],
-			[ 'Support Historypin'				, '%s/Friends-of-Historypin/' % URL_BASE ],
+			[ 'Community'						, '%s/community/' % URL_BASE],
+			[ 'Local Projects'					, '%s/community/localprojects/' % URL_BASE],
+			[ 'Schools'							, '%s/community/schools/' % URL_BASE],
+			[ 'Libraries, Archives and Museums'	, '%s/community/lams/' % URL_BASE],
+			[ 'Support Historypin'				, '%s/Friends-of-Historypin/' % URL_BASE],
 			
 			[ 'Blog'							, 'http://blog.historypin.com/' ],
 			[ 'Facebook'						, 'http://www.facebook.com/pages/Historypin/192291707448024/' ],
 			[ 'Twitter'							, 'http://twitter.com/Historypin/' ],
 			[ 'Google+'							, 'https://plus.google.com/116628462065893538180/posts/' ],
-			[ 'Newsletter'						, '%s/newsletter/' % URL_BASE ],
+			[ 'Newsletter'						, '%s/newsletter/' % URL_BASE],
 			
-			[ 'Privacy policy'					, '%s/privacy-policy/' % URL_BASE ],
-			[ 'Cookies'							, '%s/cookies/' % URL_BASE ],
-			[ 'Terms and Conditions'			, '%s/terms-and-conditions/' % URL_BASE ],
+			[ 'Privacy policy'					, '%s/privacy-policy/' % URL_BASE],
+			[ 'Cookies'							, '%s/cookies/' % URL_BASE],
+			[ 'Terms and Conditions'			, '%s/terms-and-conditions/' % URL_BASE],
 			[ u'\xa9 We Are What We Do'			, 'http://www.wearewhatwedo.org/' ],
 		]
 		
