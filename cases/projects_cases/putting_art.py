@@ -21,8 +21,8 @@ class Project_PuttingArt(HPTestCase):
 		self.assertEqual('%s/attach/project/41-putting-art-on-the-map/mysteries/index/' % URL_BASE, self.e('#embed-frame').get_attribute('src'))
 		
 		tout_items = [
-			['Live event in York'	, 'tout1_image', 'Join us at Yorkshire Museum on 6th November to crowdsource works from the Home Front.', '/2013/10/31/crowdsourcing-the-home-front-at-yorkshire-museum/', ],
-			['Curate our artworks'	, 'tout2_image', 'Create your own Collection or Tour with the First World War artworks.'				, '/?p=3765', ],
+			['Live event in York'	, 'tout1_image', 'Read about our live crowdsourcing session in York'					, '/?p=4021'],
+			['Curate our artworks'	, 'tout2_image', 'Create your own Collection or Tour with the First World War artworks.', '/?p=3765'],
 		]
 		
 		h3s			= site_cnt.es('.tout.w2 h3')

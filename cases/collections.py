@@ -14,7 +14,7 @@ class Collections(HPTestCase):
 		self.assertEqual('Collections bring together content around a particular topic or theme. You can explore the Collections or create a Collection of your own.', main_cnt.e('p').text)
 		
 		button		= self.e('.col.w34 a.next-button.left')
-		self.assertEqual('/collections/add'	% URL_BASE	, button.get_attribute('href'))
+		self.assertEqual('%s/collections/add'	% URL_BASE	, button.get_attribute('href'))
 		self.assertEqual('Make your own collection'		, button.e('span').text)
 		
 		self.assertEqual('All Collections'				, self.e('h3:last-of-type').text)
@@ -63,8 +63,8 @@ class Collections(HPTestCase):
 		self.assertEqual('Slide Show'										, button.text)
 		
 		collection_view = [
-			['geo:42.694706,23.329035/zoom:15/dialog:%d'	% ID_COLLECTION_IMAGES[0], '/%d/' % ID_COLLECTION_IMAGES[0], '2 February 2013, from Gabriela Ananieva'	, '/%d' % ID_USER],
-			['geo:42.693737,23.326101/zoom:15/dialog:%d'	% ID_COLLECTION_IMAGES[1], '/%d/' % ID_COLLECTION_IMAGES[1], '2 August 2012, from Gabss'				, '/%d' % ID_USER_VIEW],
+			['geo:42.694705,23.329034/zoom:15/dialog:%d'	% ID_COLLECTION_IMAGES[0], '/%d/' % ID_COLLECTION_IMAGES[0], '2 February 2013, from Gabriela Ananieva'	, '/%d' % ID_USER],
+			['geo:42.693738,23.326101/zoom:15/dialog:%d'	% ID_COLLECTION_IMAGES[1], '/%d/' % ID_COLLECTION_IMAGES[1], '2 August 2012, from Gabss'				, '/%d' % ID_USER_VIEW],
 		]
 		
 		item = self.es('#list_view .list li')
@@ -118,7 +118,7 @@ class Collections(HPTestCase):
 		self.assertEqual('%s/services/thumb/phid/%d/' % (URL_BASE, ID_COLLECTION_IMAGES[1]), prev_thumb.get_attribute('src'))
 		self.assertIn('1/2', counter.text)
 		self.assertEqual('"Bulgarian Army Theater"- 2 February 2013 by Gabriela Ananieva', step_text.text)
-		self.assertEqual('%s/map/#!/geo:42.694706,23.329035/zoom:9/dialog:%d/tab:details/' % (URL_BASE, ID_COLLECTION_IMAGES[0]), step_text.get_attribute('href'))
+		self.assertEqual('%s/map/#!/geo:42.694705,23.329034/zoom:9/dialog:%d/tab:details/' % (URL_BASE, ID_COLLECTION_IMAGES[0]), step_text.get_attribute('href'))
 		self.assertEqual('%s/services/thumb/phid/%d/' % (URL_BASE, ID_COLLECTION_IMAGES[1]), next_thumb.get_attribute('src'))
 		next_slide.click()
 		sleep(3)

@@ -55,11 +55,6 @@ class Project_NPower(HPTestCase):
 			i = channels[n]
 			self.assertEqual(URL_BASE + '/channels/view/' + i[0], channels_links[n].get_attribute('href'))
 			self.assertEqual(i[1], channels_links[n].text)
-	
-		back_project = site_cnt.e('h3 a')
-		sefl.assertEqual('%s/project/15-remember' % URL_BASE, back_project.get_attribute('href'))
-		sefl.assertEqual('Back to project'					, back_project.text)
-		
 		
 		last_paragraph = self.e('.bottom-p + p')
 		self.assertEqual('In partnership with', last_paragraph.e('span').text)
@@ -424,8 +419,8 @@ class Project_NPower(HPTestCase):
 		
 		button_upload = site_cnt.e('.left a')
 		
-		# self.assertEqual('%s/project/15-remember/upload/projects/bridge/1/?subproject=24' % URL_BASE, button_upload.get_attribute('href')) TODO fix this after issue #2641
-		self.assertEqual('Pin your memories'														, button_upload.e('span').text)
+		self.assertEqual('%s/project/15-remember/upload/' % URL_BASE, button_upload.get_attribute('href'))
+		self.assertEqual('Pin your memories'						, button_upload.e('span').text)
 		
 		
 		paragraph = self.e('#site-content > p')
@@ -443,6 +438,10 @@ class Project_NPower(HPTestCase):
 			i = partners[n]
 			self.assertEqual(i[0], links[n].get_attribute('href'))
 			self.assertEqual(URL_BASE + '/resources/images/webapps/npower/' + i[1], imgs[n].get_attribute('src'))
+		
+		back_project = site_cnt.e('h3 a')
+		self.assertEqual('%s/project/15-remember' % URL_BASE, back_project.get_attribute('href'))
+		self.assertEqual('Back to project'					, back_project.text)
 		
 		self.go('/attach/project/31-remember-timeline/photos/timeline/')
 		
@@ -466,4 +465,4 @@ class Project_NPower(HPTestCase):
 		self.assertIsInstance(nav_prev.e('.title')	, WebElement)
 		
 		self.assertIsInstance(self.e('.vco-navigation'), WebElement)
-	
+		

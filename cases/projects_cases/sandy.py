@@ -98,7 +98,7 @@ class Project_Sandy(HPTestCase):
 			self.assertEqual(i[2], texts[n].text)
 			self.assertEqual(URL_BASE + '/projects/img/pid/' + i[3] + '/type/banner,project_image,logo/dim/313x214/crop/1/', imgs[n].get_attribute('src'))
 		
-		self.assertEqual('%s/attach/project/26-sandy/photos/index/' % URL_BASE, self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('%s/attach/project/26-sandy/map/index/' % URL_BASE, self.e('#embed-frame').get_attribute('src'))
 		
 		self.__test_icon_touts()
 		self.__test_support()

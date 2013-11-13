@@ -39,8 +39,8 @@ class Channel(HPTestCase):
 		
 		# sleep(4)  # AJAX
 		button = self.e('.chan.options .channel-button.left')
-		self.assertEqual('Become a Fan'												, button.text)
-		self.assertEqual('/user/?from=/channels/view/%d/' % (URL_BASE, ID_USER_VIEW), button.get_attribute('href'))
+		self.assertEqual('Become a Fan'													, button.text)
+		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER_VIEW)	, button.get_attribute('href'))
 		
 		social_buttons = self.e('.addthis_toolbox span')
 		self.assertIn('ss-icon', social_buttons.get_attribute('class'))
@@ -655,6 +655,7 @@ class Channel(HPTestCase):
 	@url('/channels/view/%d/' % ID_USER)
 	def test_channel_info(self):
 		
+		sleep(4)
 		editor = self.e('.channel_editor')
 		
 		settings = editor.e('.settings')
