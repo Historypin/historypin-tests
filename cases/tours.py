@@ -8,13 +8,13 @@ class Tours(HPTestCase):
 		self.assertTitle('Historypin | Tours')
 		
 		main_cnt = self.e('.inner.cf')
-		self.assertEqual(URL_BASE + '/tours/'									, main_cnt.e('a.main-image').get_attribute('href'))
-		self.assertEqual(URL_BASE + '/resources/images/tour-homepage-index.png'	, main_cnt.e('img').get_attribute('src'))
+		self.assertEqual('%s/tours/' % URL_BASE, main_cnt.e('a.main-image').get_attribute('href'))
+		self.assertEqual('%s/resources/images/tour-homepage-index.png' % URL_BASE, main_cnt.e('img').get_attribute('src'))
 		self.assertEqual('What are Tours?'										, main_cnt.e('h1').text)
 		self.assertEqual('Tours lead you step-by-step through a series of pieces of content, telling a story, exploring a place or walking through time. Take one of the Tours below or put your own together, using any content on Historypin.', main_cnt.e('p').text)
 		button = main_cnt.e('a.next-button')
-		self.assertEqual(URL_BASE + '/tours/add'								, button.get_attribute('href'))
-		self.assertEqual('Make your own tour'									, button.text)
+		self.assertEqual('%s/tours/add'	% URL_BASE	, button.get_attribute('href'))
+		self.assertEqual('Make your own tour'		, button.text)
 		
 		self.assertEqual('Return to Tours & Collections', self.e('h3.right').text)
 		self.assertEqual(URL_BASE + '/curated'			, self.e('h3.right a').get_attribute('href'))
@@ -38,8 +38,8 @@ class Tours(HPTestCase):
 		self.__test_tour_listing()
 		
 		next = self.e('.show-next')
-		self.assertEqual('Next'							, next.text)
-		self.assertEqual(URL_BASE + '/tours/all/page/2/', next.get_attribute('href'))
+		self.assertEqual('Next'								, next.text)
+		self.assertEqual('%s/tours/all/page/2/' % URL_BASE	, next.get_attribute('href'))
 	
 	@logged_in
 	@url('/tours/view/id/%d' % ID_TOUR + '/')
@@ -48,17 +48,17 @@ class Tours(HPTestCase):
 		self.assertTitle('Historypin | Tours | Beautiful buildings in Bulgaria')
 		
 		# self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/451x302/crop/1/' % ID_TOUR_IMAGES[3], self.e('img.index').get_attribute('src'))
-		self.assertEqual(URL_BASE + '/tours/view/id/%d/title/Beautiful%%2520buildings%%2520in%%2520Bulgaria/#' % ID_TOUR, self.e('a.main-image').get_attribute('href'))
+		self.assertEqual('%s/tours/view/id/%d/title/Beautiful%%2520buildings%%2520in%%2520Bulgaria/#' % (URL_BASE, ID_TOUR), self.e('a.main-image').get_attribute('href'))
 		self.assertEqual('Beautiful buildings in Bulgaria'									, self.e('.info h2').text)
 		
 		paragraphs = self.es('.info p')
-		self.assertEqual('Tour about beautiful buildings in Bulgaria'					, paragraphs[0].text)
-		self.assertEqual('Created by Gabriela Ananieva'												, paragraphs[1].text)
-		self.assertEqual(URL_BASE + '/channels/view/%d' % ID_USER							, paragraphs[1].e('a').get_attribute('href'))
+		self.assertEqual('Tour about beautiful buildings in Bulgaria', paragraphs[0].text)
+		self.assertEqual('Created by Gabriela Ananieva'				, paragraphs[1].text)
+		self.assertEqual('%s/channels/view/%d' % (URL_BASE, ID_USER), paragraphs[1].e('a').get_attribute('href'))
 		
 		button = self.e('.tour-button')
 		self.assertEqual('Take the Tour'																		, button.text)
-		self.assertEqual(URL_BASE + '/tours/take/id/%d/title/Beautiful%%20buildings%%20in%%20Bulgaria/#1' % ID_TOUR, button.get_attribute('href'))
+		self.assertEqual('%s/tours/take/id/%d/title/Beautiful%%20buildings%%20in%%20Bulgaria/#1' % (URL_BASE, ID_TOUR), button.get_attribute('href'))
 		
 		tabs = self.es('.list_tabs li')
 		self.assertIsInstance(tabs[0]	, WebElement)
@@ -79,7 +79,7 @@ class Tours(HPTestCase):
 		images		= photos_list.es('img')
 		paragraphs	= photos_list.es('p:nth-of-type(1)')
 		start		= photos_list.es('.start-here')
-		start_link	= URL_BASE + '/tours/take/id/%d/title/Beautiful%%20buildings%%20in%%20Bulgaria/#' % ID_TOUR
+		start_link	= '%s/tours/take/id/%d/title/Beautiful%%20buildings%%20in%%20Bulgaria/#' % (URL_BASE, ID_TOUR)
 		
 		for n in range(len(photo_list_cnt)):
 			i = photo_list_cnt[n]
@@ -94,13 +94,13 @@ class Tours(HPTestCase):
 		representing_photo = photos_list.e('li:nth-of-type(2) .info-actions .choose')
 		representing_photo.click()
 		sleep(3)
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/451x302/crop/1/' % ID_TOUR_IMAGES[1]	, self.e('img.index').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/451x302/crop/1/' % (URL_BASE, ID_TOUR_IMAGES[1]), self.e('img.index').get_attribute('src'))
 		
 		representing_photo = photos_list.e('li:nth-of-type(1) .info-actions .choose')
 		representing_photo.click()
 		sleep(3)
 		self.browser.refresh()
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/451x302/crop/1/' % ID_TOUR_IMAGES[0]	, self.e('img.index').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/451x302/crop/1/' % (URL_BASE, ID_TOUR_IMAGES[0]), self.e('img.index').get_attribute('src'))
 	
 	@logged_in
 	@url('/tours/take/id/%d' % ID_TOUR + '/')
@@ -111,17 +111,17 @@ class Tours(HPTestCase):
 		
 		paragraph = self.e('.title p')
 		self.assertEqual('by Gabriela Ananieva'															, paragraph.text)
-		self.assertEqual(URL_BASE + '/channels/view/%d' % ID_USER, paragraph.e('a').get_attribute('href'))
+		self.assertEqual('%s/channels/view/%d' % (URL_BASE, ID_USER), paragraph.e('a').get_attribute('href'))
 		
 		link_exit = self.e('#exit-tour')
-		self.assertEqual(URL_BASE + '/tours/view/id/%d/title/Beautiful%%20buildings%%20in%%20Bulgaria' % ID_TOUR, link_exit.get_attribute('href'))
+		self.assertEqual('%s/tours/view/id/%d/title/Beautiful%%20buildings%%20in%%20Bulgaria' % (URL_BASE, ID_TOUR), link_exit.get_attribute('href'))
 		self.assertEqual('Exit tour', link_exit.text)
 		self.assertIn('ss-door'		, link_exit.e('span').get_attribute('class'))
 		self.assertIn('right'		, link_exit.e('span').get_attribute('class'))
 		
 		tour_items = [
-			["Bulgarian Army Theater - 2 February 2013"				, '2 February 2013'	, '/map/#!/geo:42.694706,23.329035/zoom:20/dialog:%d/tab:details/' % ID_TOUR_IMAGES[0], '%d' % ID_TOUR_IMAGES[0], "This is a photo of the famous Bulgarian Army Theater ."],
-			["National Theatre in Sofia, Bulgaria - 2 August 2012"	, '2 August 2012'	, '/map/#!/geo:42.693737,23.326101/zoom:20/dialog:%d/tab:details/' % ID_TOUR_IMAGES[1], '%d' % ID_TOUR_IMAGES[1], "This is a photo of National Theatre in Sofia, Bulgaria"],
+			["Bulgarian Army Theater - 2 February 2013"				, '2 February 2013'	, '/map/#!/geo:42.694705,23.329034/zoom:20/dialog:%d/tab:details/' % ID_TOUR_IMAGES[0], '%d' % ID_TOUR_IMAGES[0], "This is a photo of the famous Bulgarian Army Theater ."],
+			["National Theatre in Sofia, Bulgaria - 2 August 2012"	, '2 August 2012'	, '/map/#!/geo:42.693738,23.326101/zoom:20/dialog:%d/tab:details/' % ID_TOUR_IMAGES[1], '%d' % ID_TOUR_IMAGES[1], "This is a photo of National Theatre in Sofia, Bulgaria"],
 		]
 		
 		next_button		= self.e('.next-button.right')
@@ -132,7 +132,7 @@ class Tours(HPTestCase):
 		self.hover(thumbs[0])
 		tooltip			= self.e('#tips')
 		
-		link_images		= URL_BASE + '/services/thumb/phid/'
+		link_images		= '%s/services/thumb/phid/' % URL_BASE
 		# link_marker_img	= URL_BASE + '/services/thumb/phid/'
 		
 		def check_step(data):
@@ -236,7 +236,7 @@ class Tours(HPTestCase):
 		
 		sleep(3)
 		item = step_cnt.e('.choose-photos.yours .remove-photo[href="%d"]' % ID_TOUR_IMAGES[0]).parent_node()
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/152x108/crop/1/' % ID_TOUR_IMAGES[0], item.e('img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BASE, ID_TOUR_IMAGES[0]), item.e('img').get_attribute('src'))
 		
 		sleep(3)
 		self.hover(item.e('img'))
@@ -261,8 +261,8 @@ class Tours(HPTestCase):
 			favs_cnt.e('.remove-photo[href="%d"]' % ID_TOUR_IMAGES[1]).parent_node(),
 			
 		]
-		url = URL_BASE + '/services/thumb/phid'
-		self.assertEqual(url + '/%d/dim/152x108/crop/1/' % ID_TOUR_IMAGES[1], favs[0].e('img').get_attribute('src'))
+		url = '%s/services/thumb/phid' % URL_BASE
+		self.assertEqual('%s/%d/dim/152x108/crop/1/' % (url, ID_TOUR_IMAGES[1]), favs[0].e('img').get_attribute('src'))
 		
 		# self.assertEqual('National Theatre in Sofia, Bulgaria', favs[0].e('.photo-title').text)
 		

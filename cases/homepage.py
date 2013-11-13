@@ -10,7 +10,7 @@ class Homepage(HPTestCase):
 			self.e('.cookies-popup p').text,
 		)
 		
-		self.assertEqual(URL_BASE + '/pages/cookies/',				self.e('.cookies-popup p a').get_attribute('href'))
+		self.assertEqual('%s/pages/cookies/' % URL_BASE, self.e('.cookies-popup p a').get_attribute('href'))
 		a = self.e('.cookies-popup a.right')
 		self.assertEqual('Close this message  close', a.text)
 		a.click()
@@ -23,16 +23,16 @@ class Homepage(HPTestCase):
 	def test_navigation(self):
 		
 		links = [
-			[ 'Home'					, URL_BASE + '/' ],
-			[ 'Map'						, URL_BASE + '/map/' ],
-			[ 'Projects'				, URL_BASE + '/projects/' ],
-			[ 'Channels'				, URL_BASE + '/channels/' ],
-			[ 'Tours and Collections'	, URL_BASE + '/curated/' ],
-			[ 'Get Involved'			, URL_BASE + '/community/' ],
+			[ 'Home'					, '%s/' % URL_BASE ],
+			[ 'Map'						, '%s/map/' % URL_BASE ],
+			[ 'Projects'				, '%s/projects/' % URL_BASE ],
+			[ 'Channels'				, '%s/channels/' % URL_BASE ],
+			[ 'Tours and Collections'	, '%s/curated/' % URL_BASE ],
+			[ 'Get Involved'			, '%s/community/' % URL_BASE ],
 			[ 'Blog'					, 'http://blog.historypin.com/' ],
-			[ 'Login'					, URL_BASE + '/_ah/login?continue=http%3A//www.localhost.com%3A8080/user/login/' ],
-			[ 'Join'					, URL_BASE + '/user/' ],
-			[ 'Pin'						, URL_BASE + '/upload/' ],
+			[ 'Login'					, '%s/_ah/login?continue=http%3A//www.localhost.com%3A8080/user/login/' % URL_BASE ],
+			[ 'Join'					, '%s/user/' % URL_BASE ],
+			[ 'Pin'						, '%s/upload/' % URL_BASE ],
 		]
 		
 		elements = self.es('#header .nav a')
@@ -46,8 +46,8 @@ class Homepage(HPTestCase):
 		self.assertTitle('Historypin | Home')
 		
 		branding = self.e('#branding h1')
-		self.assertEqual(URL_BASE + '/'								, branding.e('a').get_attribute('href'))
-		self.assertEqual(URL_BASE + '/resources/images/hp_logo.png'	, branding.e('img').get_attribute('src'))
+		self.assertEqual('%s/'								% URL_BASE, branding.e('a').get_attribute('href'))
+		self.assertEqual('%s/resources/images/hp_logo.png'	% URL_BASE, branding.e('img').get_attribute('src'))
 		self.assertEqual('A global community collaborating around history', self.e('#branding .home-top p').text)
 		
 		social_icons = [
@@ -124,7 +124,7 @@ class Homepage(HPTestCase):
 		
 		first_suggestion.click()
 		sleep(.3)
-		self.assertEqual(self.browser.current_url.split('#')[0], URL_BASE + '/map/')
+		self.assertEqual(self.browser.current_url.split('#')[0], '%s/map/' % URL_BASE)
 	
 	# @unittest.skip("TODO")
 	# @url('/')
@@ -154,7 +154,7 @@ class Homepage(HPTestCase):
 		pages[1].click()
 		
 		browse_all = self.e('#featured-projects .bar a.right')
-		self.assertEqual(URL_BASE + '/projects/'	, browse_all.get_attribute('href'))
+		self.assertEqual('%s/projects/' % URL_BASE	, browse_all.get_attribute('href'))
 		self.assertEqual('Browse all projects'		, browse_all.text)
 	
 	# @url('/')
@@ -192,42 +192,42 @@ class Homepage(HPTestCase):
 		
 		support = self.es('.support .donate')
 		self.assertEqual('users\nDonate to support Historypin'	, support[0].text)
-		self.assertEqual(URL_BASE + '/friends-of-Historypin'	, support[0].get_attribute('href'))
+		self.assertEqual('%s/friends-of-Historypin'	% URL_BASE, support[0].get_attribute('href'))
 		self.assertIn('ss-icon', self.e('.support .donate .ss-icon').get_attribute('class'))
 		
 	@url('/')
 	def test_footer(self):
 		links = [
-			[ 'About'							, URL_BASE + '/about-us/' ],
-			[ 'FAQ'								, URL_BASE + '/faq/' ],
-			[ 'How To Guides'					, URL_BASE + '/how-to/' ],
-			[ 'We Are What We Do'				, URL_BASE + '/wearewhatwedo/' ],
-			[ 'Team'							, URL_BASE + '/team/' ],
-			[ 'Press Centre'					, URL_BASE + '/presscentre/' ],
-			[ 'Contact'							, URL_BASE + '/contact/' ],
+			[ 'About'							, '%s/about-us/' % URL_BASE ],
+			[ 'FAQ'								, '%s/faq/' % URL_BASE ],
+			[ 'How To Guides'					, '%s/how-to/' % URL_BASE ],
+			[ 'We Are What We Do'				, '%s/wearewhatwedo/' % URL_BASE ],
+			[ 'Team'							, '%s/team/' % URL_BASE ],
+			[ 'Press Centre'					, '%s/presscentre/' % URL_BASE ],
+			[ 'Contact'							, '%s/contact/' % URL_BASE ],
 			
-			[ 'Map'								, URL_BASE + '/map/' ],
-			[ 'Projects'						, URL_BASE + '/projects/' ],
-			[ 'Tours and Collections'			, URL_BASE + '/curated/' ],
-			[ 'Channels'						, URL_BASE + '/channels/' ],
-			[ 'Pin'								, URL_BASE + '/upload/' ],
-			[ 'Mobile App'						, URL_BASE + '/app/' ],
+			[ 'Map'								, '%s/map/' % URL_BASE ],
+			[ 'Projects'						, '%s/projects/' % URL_BASE ],
+			[ 'Tours and Collections'			, '%s/curated/' % URL_BASE ],
+			[ 'Channels'						, '%s/channels/' % URL_BASE ],
+			[ 'Pin'								, '%s/upload/' % URL_BASE ],
+			[ 'Mobile App'						, '%s/app/' % URL_BASE ],
 			
-			[ 'Community'						, URL_BASE + '/community/' ],
-			[ 'Local Projects'					, URL_BASE + '/community/localprojects/' ],
-			[ 'Schools'							, URL_BASE + '/community/schools/' ],
-			[ 'Libraries, Archives and Museums'	, URL_BASE + '/community/lams/' ],
-			[ 'Support Historypin'				, URL_BASE + '/Friends-of-Historypin/' ],
+			[ 'Community'						, '%s/community/' % URL_BASE ],
+			[ 'Local Projects'					, '%s/community/localprojects/' % URL_BASE ],
+			[ 'Schools'							, '%s/community/schools/' % URL_BASE ],
+			[ 'Libraries, Archives and Museums'	, '%s/community/lams/' % URL_BASE ],
+			[ 'Support Historypin'				, '%s/Friends-of-Historypin/' % URL_BASE ],
 			
 			[ 'Blog'							, 'http://blog.historypin.com/' ],
 			[ 'Facebook'						, 'http://www.facebook.com/pages/Historypin/192291707448024/' ],
 			[ 'Twitter'							, 'http://twitter.com/Historypin/' ],
 			[ 'Google+'							, 'https://plus.google.com/116628462065893538180/posts/' ],
-			[ 'Newsletter'						, URL_BASE + '/newsletter/' ],
+			[ 'Newsletter'						, '%s/newsletter/' % URL_BASE ],
 			
-			[ 'Privacy policy'					, URL_BASE + '/privacy-policy/' ],
-			[ 'Cookies'							, URL_BASE + '/cookies/' ],
-			[ 'Terms and Conditions'			, URL_BASE + '/terms-and-conditions/' ],
+			[ 'Privacy policy'					, '%s/privacy-policy/' % URL_BASE ],
+			[ 'Cookies'							, '%s/cookies/' % URL_BASE ],
+			[ 'Terms and Conditions'			, '%s/terms-and-conditions/' % URL_BASE ],
 			[ u'\xa9 We Are What We Do'			, 'http://www.wearewhatwedo.org/' ],
 		]
 		

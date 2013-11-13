@@ -12,7 +12,7 @@ class Map(HPTestCase):
 		self.assertIsInstance(self.e('#search-filters .input-container input')	, WebElement)
 		
 		button		= self.e('a#photo_search_submit')
-		self.assertEqual(URL_BASE + '/map/#'		, button.get_attribute('href'))
+		self.assertEqual('%s/map/#'	% URL_BASE, button.get_attribute('href'))
 		self.assertEqual('GO'						, button.text)
 		
 		nav			= self.e('.filter-nav')
@@ -44,7 +44,7 @@ class Map(HPTestCase):
 		self.e('.button.left').click()
 		sleep(1)
 		
-		self.assertIn('42.697839,23.32167', URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/location:Sofia, Bulgaria/')
+		self.assertIn('42.697839,23.32167', '%s/map/#!/geo:42.697839,23.32167/zoom:10/location:Sofia, Bulgaria/' % URL_BASE)
 	
 	@url('/map/')
 	def test_search_by_date(self):
@@ -125,7 +125,7 @@ class Map(HPTestCase):
 		refine = tag.e('.button.right')
 		self.assertEqual('REFINE', refine.text)
 		refine.click()
-		self.assertIn('tags:transport', URL_BASE + '/map/#!/geo:51.6,0.05/zoom:7/tags:transport/')
+		self.assertIn('tags:transport', '%s/map/#!/geo:51.6,0.05/zoom:7/tags:transport/' % URL_BASE)
 		
 		reset = self.e('a.reset')
 		self.assertEqual('Some content is hidden (reset)', reset.text)
@@ -144,7 +144,7 @@ class Map(HPTestCase):
 		self.e('#fullscreen-on a').click()
 		
 		main_panel = self.e('.main-panel a')
-		self.assertEqual(URL_BASE + '/', main_panel.get_attribute('href'))
+		self.assertEqual('%s/' % URL_BASE, main_panel.get_attribute('href'))
 		self.assertIn('fullscreen_logo', main_panel.get_attribute('class'))
 		
 		search_filters = self.e('#search-filters')
@@ -162,10 +162,10 @@ class Map(HPTestCase):
 		fullscr_off.click()
 	
 	@url('/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:details/' % ID_MAP_ITEM)
-	def test_dialog_details(self):  # this issue fails only in the test suite
+	def test_dialog_details(self):  # this test case fails only in the test suite
 		sleep(15)  # ajax on success
 		dlg = self.e('#info-dialog')
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/2000x440/quality/80/' % ID_MAP_ITEM, dlg.e('#details_cnt .image .main-img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/2000x440/quality/80/' % (URL_BASE, ID_MAP_ITEM), dlg.e('#details_cnt .image .main-img').get_attribute('src'))
 		
 		info = self.e('#details_cnt .info')
 		self.assertEqual('National Theatre in Sofia, Bulgaria'				, info.e('h2.photo-title').text)
@@ -174,19 +174,19 @@ class Map(HPTestCase):
 		
 		sleep(4)
 		details_link = dlg.e('.open-tab-dialog')
-		self.assertEqual(URL_BASE + '/map/#write-story_cnt'	, details_link.get_attribute('href'))
-		self.assertEqual('Suggest more accurate details'	, details_link.text )
+		self.assertEqual('%s/map/#write-story_cnt' % URL_BASE	, details_link.get_attribute('href'))
+		self.assertEqual('Suggest more accurate details'		, details_link.text )
 		
 		about = dlg.e('.about')
-		self.assertEqual(URL_BASE + '/channels/img/%d/logo/1/dim/46x46/' % ID_USER_VIEW, about.e('img').get_attribute('src'))
+		self.assertEqual('%s/channels/img/%d/logo/1/dim/46x46/' % (URL_BASE, ID_USER_VIEW), about.e('img').get_attribute('src'))
 		self.assertEqual('Pinned by\nGabss'											, about.e('p.pinned').text)
-		self.assertEqual(URL_BASE + '/channels/view/%d/' % ID_USER_VIEW, about.e('p.pinned a').get_attribute('href'))
+		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER_VIEW), about.e('p.pinned a').get_attribute('href'))
 		self.assertEqual('This is a photo of National Theatre in Sofia, Bulgaria'	, about.e('p.photo-story-copy').text)
 		
 		self.assertEqual('Tags: national, theatre', dlg.e('.tags').text)
 		keyword = dlg.es('.tags .photo-keywords a')
-		self.assertEqual(URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:details/tags:national/' % ID_MAP_ITEM, keyword[0].get_attribute('href'))
-		self.assertEqual(URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:details/tags: theatre/' % ID_MAP_ITEM, keyword[1].get_attribute('href'))
+		self.assertEqual('%s/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:details/tags:national/' % (URL_BASE, ID_MAP_ITEM), keyword[0].get_attribute('href'))
+		self.assertEqual('%s/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:details/tags: theatre/' % (URL_BASE, ID_MAP_ITEM), keyword[1].get_attribute('href'))
 		
 		actions = dlg.e('.bottom-actions')
 		
@@ -195,20 +195,20 @@ class Map(HPTestCase):
 		self.assertIn('ss-heart', favourite.get_attribute('class'))
 		
 		report = actions.e('.action.report')
-		self.assertEqual(URL_BASE + '/contact-us/?report/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:details/' % ID_MAP_ITEM, report.get_attribute('href'))
+		self.assertEqual('%s/contact-us/?report/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:details/' % (URL_BASE, ID_MAP_ITEM), report.get_attribute('href'))
 		self.assertIn('ss-icon'	, report.e('span').get_attribute('class'))
 		self.assertIn('ss-alert', report.e('span').get_attribute('class'))
 		
 		streetview = actions.e('.action.photo-view-on-streetview.sv-marker')
-		self.assertEqual(URL_BASE + '/map/#streetview_cnt'	, streetview.get_attribute('href'))
+		self.assertEqual('%s/map/#streetview_cnt' % URL_BASE, streetview.get_attribute('href'))
 		self.assertEqual('Street View'						, streetview.text)
 		
 		fullscr = actions.e('.action.fullscr.right')
-		self.assertEqual('See Bigger  ', fullscr.text)
+		self.assertEqual('  See Bigger', fullscr.text)
 		self.assertIn('ss-icon'		, fullscr.e('span').get_attribute('class'))
 		self.assertIn('ss-scaleup'	, fullscr.e('span').get_attribute('class'))
 		fullscr.click()
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/3000x500/quality/80/' % ID_MAP_ITEM, self.e('#preview_cnt .image img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/3000x500/quality/80/' % (URL_BASE, ID_MAP_ITEM), self.e('#preview_cnt .image img').get_attribute('src'))
 		
 		self.assertEqual('Share:', dlg.e('h3').text)
 		social_buttons = dlg.e('.addthis_toolbox span')
@@ -220,7 +220,7 @@ class Map(HPTestCase):
 			self.assertIn(social_icons[n], social_buttons.get_attribute('class'))
 		
 		fullscr_off = actions.e('.action.see-smaller.right')
-		self.assertEqual('See Smaller  '	, fullscr_off.text)
+		self.assertEqual('  See Smaller'	, fullscr_off.text)
 		self.assertIn('ss-icon'			, fullscr_off.e('span').get_attribute('class'))
 		self.assertIn('ss-scaledown'	, fullscr_off.e('span').get_attribute('class'))
 		fullscr_off.click()
@@ -238,27 +238,27 @@ class Map(HPTestCase):
 		
 		sleep(2)
 		self.e_wait('.list_tabs a[href$=stories_cnt]').click()
-		self.assertIn('tab:stories'		, URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:stories/' % ID_MAP_ITEM)
+		self.assertIn('tab:stories'		, '%s/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:stories/' % (URL_BASE, ID_MAP_ITEM))
 		self.assertEqual('Comments and suggestions (1)'	, dlg.e('.selected .tab').text)
 		
 		sidebar						= dlg.e('.info.scrollbarfix')
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/294x1000/' % ID_MAP_ITEM, sidebar.e('.side-img ').get_attribute('src'))
-		self.assertEqual(URL_BASE + '/channels/img/%d/logo/1/dim/46x46/' % ID_USER_VIEW, sidebar.e('.photo-user-avatar.avatar').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/294x1000/' 	% (URL_BASE, ID_MAP_ITEM), sidebar.e('.side-img ').get_attribute('src'))
+		self.assertEqual('%s/channels/img/%d/logo/1/dim/46x46/'		% (URL_BASE, ID_USER_VIEW), sidebar.e('.photo-user-avatar.avatar').get_attribute('src'))
 		self.assertEqual('Pinned by: \nGabss'							, sidebar.e('.pinner p').text)
-		self.assertEqual(URL_BASE + '/channels/view/%d/' % ID_USER_VIEW	, sidebar.e('.pinner p a').get_attribute('href'))
+		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER_VIEW), sidebar.e('.pinner p a').get_attribute('href'))
 		self.assertEqual('National Theatre in Sofia, Bulgaria'						, sidebar.e('.photo-title').text)
 		# self.assertEqual('ulitsa "Kuzman Shapkarev" 1-3, 1000 Sofia, Bulgaria'	, sidebar.e('.photo-address').text)  # TODO fix link to be with with address ulitsa "Kuzman Shapkarev" 1, 1000 Sofia, Bulgaria
 		self.assertEqual('2 August 2012'											, sidebar.e('.photo-date').text)
 		
 		stories_list = tab.e('.stories_list.scrollbarfix .comment')
-		self.assertEqual(URL_BASE + '/channels/img/%d/logo/1/dim/100x100/' % ID_USER_VIEW, stories_list.e('img').get_attribute('src'))
+		self.assertEqual('%s/channels/img/%d/logo/1/dim/100x100/' % (URL_BASE, ID_USER_VIEW), stories_list.e('img').get_attribute('src'))
 		self.assertEqual('Comment:'													, stories_list.e('.story_text > h6').text)
 		self.assertEqual('This is a photo of National Theatre in Sofia, Bulgaria'	, stories_list.e('.story_cnt').text)
 		self.assertEqual('Gabss (pinner) has made a comment'						, stories_list.e('.activity').text)
 		self.assertEqual('10 May 2013'												, stories_list.e('.photo-date').text)
-		self.assertEqual(URL_BASE + '/channels/view/%d/' % ID_USER_VIEW, stories_list.e('.activity a').get_attribute('href'))
+		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER_VIEW), stories_list.e('.activity a').get_attribute('href'))
 		
-		self.assertEqual(URL_BASE + '/resources/avatars/50x50/avatar_2.png'	, tab.e('.write_story_wrap img ').get_attribute('src'))
+		self.assertEqual('%s/resources/avatars/50x50/avatar_2.png' % URL_BASE, tab.e('.write_story_wrap img ').get_attribute('src'))
 		self.assertIsInstance(tab.e('textarea'), WebElement)
 		
 		# TODO - should fix this because in all tests - logged in
@@ -276,7 +276,7 @@ class Map(HPTestCase):
 		sleep(3)  # TODO do this to after_ajax
 		dlg.e('.list_tabs a[href$=streetview_cnt]').click()
 		sleep(1)
-		self.assertIn('tab:streetview'	, URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:streetview/' % ID_MAP_ITEM)
+		self.assertIn('tab:streetview'	, '%s/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:streetview/' % (URL_BASE, ID_MAP_ITEM))
 		self.assertEqual('Street View'	, dlg.e('.selected .tab').text)
 		
 		# self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/441x330/quality/80/' % ID_MAP_ITEM, self.e('.streetview_container .streetview-img-wrapper .streetview-img').get_attribute('src'))
@@ -307,7 +307,7 @@ class Map(HPTestCase):
 		self.assertIn('ss-scaleup'	, fullscr_icon.get_attribute('class'))
 		fullscr.click()
 		
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/916x685/quality/80/' % ID_MAP_ITEM, dlg.e('.streetview_container.streetview_fs .streetview-img-wrapper .streetview-img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/916x685/quality/80/' % (URL_BASE, ID_MAP_ITEM), dlg.e('.streetview_container.streetview_fs .streetview-img-wrapper .streetview-img').get_attribute('src'))
 		
 		fullscr_off		= dlg.e('#streetview_fullscreen')
 		fullscr_off_icon = fullscr_off.e('span')
@@ -328,13 +328,13 @@ class Map(HPTestCase):
 		dlg.e('.list_tabs a[href$=repeats_cnt]').click()
 		sleep(1)
 		
-		self.assertIn('tab:repeats'		, URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:repeats/' % ID_MAP_ITEM)
+		self.assertIn('tab:repeats'		, '%s/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:repeats/' % (URL_BASE, ID_MAP_ITEM))
 		self.assertEqual('Repeats (0)'	, dlg.e('.selected .tab').text)
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/2000x440/quality/80/' % ID_MAP_ITEM, tab.e('.main img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/2000x440/quality/80/' % (URL_BASE, ID_MAP_ITEM), tab.e('.main img').get_attribute('src'))
 		
 		about_cnt = tab.e('.about')
 		self.assertEqual('Historypin Repeats'	, about_cnt.e('h2').text)
-		self.assertEqual(URL_BASE + '/app'		, about_cnt.e('p a').get_attribute('href'))
+		self.assertEqual('%s/app' % URL_BASE	, about_cnt.e('p a').get_attribute('href'))
 		self.assertEqual('Historypin Repeats are modern replicas of older photos created using the Historypin Smartphone App', about_cnt.e('p').text)
 		
 		# TODO
@@ -351,14 +351,14 @@ class Map(HPTestCase):
 		dlg.e('.list_tabs a[href$=copyright_cnt]').click()
 		sleep(1)
 		
-		self.assertIn('tab:copyright', URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:copyright/' % ID_MAP_ITEM)
+		self.assertIn('tab:copyright', '%s/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:copyright/' % (URL_BASE, ID_MAP_ITEM))
 		self.assertEqual('Copyright', dlg.e('.selected .tab').text)
 		
 		sidebar	= dlg.e('.info.scrollbarfix')
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/294x1000/' % ID_MAP_ITEM, sidebar.e('.side-img ').get_attribute('src'))
-		self.assertEqual(URL_BASE + '/channels/img/%d/logo/1/dim/46x46/' % ID_USER_VIEW, sidebar.e('.photo-user-avatar.avatar').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/294x1000/' % (URL_BASE, ID_MAP_ITEM), sidebar.e('.side-img ').get_attribute('src'))
+		self.assertEqual('%s/channels/img/%d/logo/1/dim/46x46/' % (URL_BASE, ID_USER_VIEW), sidebar.e('.photo-user-avatar.avatar').get_attribute('src'))
 		self.assertEqual('Pinned by: \nGabss'										, sidebar.e('.pinner p').text)
-		self.assertEqual(URL_BASE + '/channels/view/%d/' % ID_USER_VIEW, sidebar.e('.pinner p a').get_attribute('href'))
+		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER_VIEW), sidebar.e('.pinner p a').get_attribute('href'))
 		self.assertEqual('National Theatre in Sofia, Bulgaria'						, sidebar.e('.photo-title').text)
 		# self.assertEqual('ulitsa "Kuzman Shapkarev" 1-3, 1000 Sofia, Bulgaria'		, sidebar.e('.photo-address').text)  #TODO fix link to be with with address ulitsa "Kuzman Shapkarev" 1, 1000 Sofia, Bulgaria
 		self.assertEqual('2 August 2012'											, sidebar.e('.photo-date').text)
@@ -431,16 +431,16 @@ class Map(HPTestCase):
 	def test_footer(self):
 		
 		footer = [
-			[URL_BASE + '/'						, 'Home'],
-			[URL_BASE + '/about-us'				, 'About'],
-			[URL_BASE + '/faq'					, 'FAQs'],
-			[URL_BASE + '/presscentre'			, 'Press Centre'],
-			[URL_BASE + '/donate'				, 'Support us'],
-			[URL_BASE + '/app'					, 'Mobile App'],
-			[URL_BASE + '/terms-and-conditions'	, 'Terms and Conditions'],
-			[URL_BASE + '/privacy-policy'		, 'Privacy Policy'],
-			[URL_BASE + '/cookies'				, 'Cookies'],
-			[URL_BASE + '/contact'				, 'Contact'],
+			['%s/'						% URL_BASE, 'Home'],
+			['%s/about-us'				% URL_BASE, 'About'],
+			['%s/faq'					% URL_BASE, 'FAQs'],
+			['%s/presscentre'			% URL_BASE, 'Press Centre'],
+			['%s/donate'				% URL_BASE, 'Support us'],
+			['%s/app'					% URL_BASE, 'Mobile App'],
+			['%s/terms-and-conditions'	% URL_BASE, 'Terms and Conditions'],
+			['%s/privacy-policy'		% URL_BASE, 'Privacy Policy'],
+			['%s/cookies'				% URL_BASE, 'Cookies'],
+			['%s/contact'				% URL_BASE, 'Contact'],
 			['http://wearewhatwedo.org/'		, u'© 2012 We Are What We Do'],
 		]
 		

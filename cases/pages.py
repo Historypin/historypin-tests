@@ -268,14 +268,14 @@ class Pages(HPTestCase):
 			['http://www.northumberlandtoday.com/ArticleDisplay.aspx?e=3464879', u'Archives ‘pinning\u2019 local history', 'Northumberland Today, March 2012'],
 			['http://www.huffingtonpost.com/2012/02/22/muni-celebrates-its-past-while-service-cuts-loom_n_1294386.html', 'Muni Celebrates Its Past, But Sees Service Cuts In Its Future', 'Huffington Post, 22nd February 2012'],
 			['http://www.guardian.co.uk/theobserver/2012/feb/18/50-new-radicals-schemes-thinkers?newsfeed=true', 'Britain\'s 50 New Radicals', 'The Guardian, 18th February 2012'],
-			[URL_BASE + '/presscentre/The%20Guardian,%2018th%20February%202012', 'The Sunday Times App List', 'The Sunday Times, 22nd January 2012'],
+			['%s/presscentre/The%20Guardian,%2018th%20February%202012' % URL_BASE, 'The Sunday Times App List', 'The Sunday Times, 22nd January 2012'],
 			['http://www.theglobeandmail.com/news/technology/digital-culture/social-networking/app-connects-historic-photos-to-modern-points-on-the-map/article2291181/', 'App connects historic photos to modern points on the map', 'The Globe and Mail, 4th January 2012'],
 			['http://www.getreading.co.uk/sport/football/readingfc/s/2105567_1966_and_the_reading_fc_kit_that_took_the_biscuit', '1966 and the Reading FC kit that took the biscuit', 'Get Reading, 23rd December 2012'],
 			['http://blogs.archives.gov/online-public-access/?p=6768', 'Put a Pin in It! National Archives Joins Historypin', 'NARAtions: The Blog of the US National Archives, November 30th 2011'],
 			['http://www.birminghammail.net/news/top-stories/2011/11/08/historypin-site-unlocks-the-secrets-of-birmingham-s-past-97319-29736748/?utm_source=dlvr.it&utm_medium=twitter', 'Historypin site unlocks the secrets of Birmingham\'s past', 'Birmingham Mail, 8th November 2011'],
 			['http://www.dailymail.co.uk/news/article-2058223/Website-Historypin-shows-streets-looked-170-years-ago.html', u'It\u2019s a Google Streetmap of history: How our famous landmarks looked up to 170 years ago', 'Daily Mail, 7th November 2011'],
 			['http://wearewhatwedo.org/press-cuttings/a-history-in-pin-ups-3/', 'A history in pin-ups', u'Reader\u2019s Digest, Asia, November 2011'],
-			[URL_BASE + '/presscentre/Reader%E2%80%99s%20Digest,%20Asia,%20November%202011', 'Post Your Pictures, Then Take A Walk Through History', 'NPR, 23rd October 2011'],
+			['%s/presscentre/Reader%E2%80%99s%20Digest,%20Asia,%20November%202011' % URL_BASE, 'Post Your Pictures, Then Take A Walk Through History', 'NPR, 23rd October 2011'],
 			['http://blogs.abc.net.au/victoria/2011/10/sunday-16-october-.html?site=melbourne&program=melbourne_sundays', 'Interview with Nick Stanhope by Alan Brough', '774 ABC Melbourne (Radio), 16th October 2011'],
 			['http://wearewhatwedo.org/press-cuttings/app-of-the-week-historypin/', 'App of the Week', 'Sunday Times, 2nd October 2011'],
 			['http://www.reuters.com/article/2011/09/12/us-app-historypin-idUSTRE78B1MW20110912?feedType=RSS&feedName=internetNews', 'Historypin app lets people create a "time machine"', 'Reuters, 12th September 2011'],
@@ -532,14 +532,14 @@ class Pages(HPTestCase):
 		
 		button = site_cnt.e('.button.left')
 		self.assertEqual("I'm ready to do a Bulk Upload", button.e('span').text)
-		self.assertEqual(URL_BASE + '/upload-bulk/'		, button.get_attribute('href'))
+		self.assertEqual('%s/upload-bulk/' % URL_BASE, button.get_attribute('href'))
 		
 		csv = self.e('ol li:nth-of-type(1)')
 		self.assertEqual('Download our CSV template and the Instructions on how to complete it.', csv.text)
 		
 		link = 'http://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/'
-		self.assertEqual(link + 'Historypin_Bulk_Upload_Template.csv'									, csv.es('a')[0].get_attribute('href'))
-		self.assertEqual(link + 'Historypin_Instructions_for_Completing_a_CSV_template_March_2012.xls'	, csv.es('a')[1].get_attribute('href'))
+		self.assertEqual('%sHistorypin_Bulk_Upload_Template.csv'									% link, csv.es('a')[0].get_attribute('href'))
+		self.assertEqual('%sHistorypin_Instructions_for_Completing_a_CSV_template_March_2012.xls'	% link, csv.es('a')[1].get_attribute('href'))
 		
 		sidebar		= self.e('.sidebar')
 		downloads	= sidebar.e('.inner:nth-of-type(1)')
@@ -564,8 +564,8 @@ class Pages(HPTestCase):
 		self.assertEqual('If you get stuck or have any questions, check out our How To page and FAQs and please feel free to contact us at historypin@wearewhatwedo.org', help.e('p').text)
 		
 		links = [
-			[URL_BASE + '/community/howtos/'		, 'How To page'],
-			[URL_BASE + '/faq/'						, 'FAQs'],
+			['%s/community/howtos/'		% URL_BASE	, 'How To page'],
+			['%s/faq/'					% URL_BASE	, 'FAQs'],
 			['mailto:historypin@wearewhatwedo.org'	, 'historypin@wearewhatwedo.org'],
 		]
 		

@@ -10,7 +10,7 @@ from collections import Collections
 
 from projects import Projects
 
-from projects_cases.allourstories import Project_Project_AllOurStories
+from projects_cases.allourstories import Project_AllOurStories
 from projects_cases.balboa import Project_Balboa
 from projects_cases.chevy import Project_Chevy
 from projects_cases.europeana import Project_Europeana

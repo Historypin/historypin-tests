@@ -54,10 +54,10 @@ class Curated(HPTestCase):
 		self.assertEqual('See all Tours'			, button_text[3].text)
 		
 		button_links = self.es('.inner a.button.left')
-		self.assertEqual(URL_BASE + '/collections/add'	, button_links[0].get_attribute('href'))
-		self.assertEqual(URL_BASE + '/collections/all/'	, button_links[1].get_attribute('href'))
-		self.assertEqual(URL_BASE + '/tours/add'		, button_links[2].get_attribute('href'))
-		self.assertEqual(URL_BASE + '/tours/all/'		, button_links[3].get_attribute('href'))
+		self.assertEqual('%s/collections/add'	% URL_BASE, button_links[0].get_attribute('href'))
+		self.assertEqual('%s/collections/all/'	% URL_BASE, button_links[1].get_attribute('href'))
+		self.assertEqual('%s/tours/add'			% URL_BASE, button_links[2].get_attribute('href'))
+		self.assertEqual('%s/tours/all/'		% URL_BASE, button_links[3].get_attribute('href'))
 		
 		# TODO
 		# when logged in as admin to check icons for edit delete and publish/unpusblish

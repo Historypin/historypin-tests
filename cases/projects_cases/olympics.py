@@ -13,9 +13,9 @@ class Project_Olympics(HPTestCase):
 		
 		self.assertIn('There have been world record numbers of world records, jetpacks at opening ceremonies, boycotts from sparring nations, and all those British medals at the 2012 extravaganza in London. ', site_cnt.e('.main_description').text)
 		
-		olympics_link	= URL_BASE + '/project/3-hp-olympics'
+		olympics_link	= '%s/project/3-hp-olympics' % URL_BASE
 		wawwd_link		= 'http://wawwd-resources.s3.amazonaws.com/historypin/projects/olympics/'
-		img_link		= URL_BASE + '/resources/images/webapps/hp-olympics/'
+		img_link		= '%s/resources/images/webapps/hp-olympics/' % URL_BASE
 		
 		touts = [
 			['Pin your Olympic Content'			, '%s/upload/' % olympics_link		, '%smain_pin_img.jpg' % img_link		, 'Add any photos, videos or memories from the Olympics\nthrough the ages to this collection here.'],
@@ -40,5 +40,5 @@ class Project_Olympics(HPTestCase):
 		self.assertIsInstance(self.e('.olympics_dialog'), WebElement)
 		self.e('.ui-dialog-titlebar-close.ui-corner-all').click()
 		
-		self.assertEqual(URL_BASE + '/attach/project/3-hp-olympics/photos/index/', self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/attach/project/3-hp-olympics/map/index/', self.e('#embed-frame').get_attribute('src'))
 	
