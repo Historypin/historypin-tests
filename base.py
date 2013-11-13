@@ -36,7 +36,7 @@ def logged_in(fn):
 # class Browser(webdriver.Firefox):
 class Browser(webdriver.Chrome):
 	def go(self, url):
-		self.get('' if url.startswith('http') else URL_BASE + url)
+		self.get(('' if url.startswith('http') else URL_BASE) + url)
 		# self.pageload_wait()
 	
 	# TODO get rid of this it is exactly the same
