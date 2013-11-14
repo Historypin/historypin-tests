@@ -3,6 +3,7 @@
 from base import *
 
 # TODO - check the Europeana navigation for each language from the option menu in each page (list for the translations, func for each assertion and for loop)
+# TODO - check footer links for each language from the option menu in each page (list for the translations, func for each assertion and for loop)
 
 class Project_Europeana(HPTestCase):
 	@url('http://www.europeana1989.eu/en/')
@@ -303,10 +304,93 @@ class Project_Europeana(HPTestCase):
 		self.assertEqual(u'Zasady zwiększania zbiorów Europeana 1989', site_cnt.e('h2').text)
 	
 	@url('http://www.europeana1989.eu/en/contact/')
-	def test_contact(self):
-		# TODO
-		# assert a title, img and text
-		pass
+	def test_contact_en(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(3)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual('Contact', site_cnt.e('h2').text)
+		
+	
+	@url('http://www.europeana1989.eu/cz/contact/')
+	def test_contact_cz(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(1)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual('Kontakt', site_cnt.e('h2').text)
+	
+	@url('http://www.europeana1989.eu/de/contact/')
+	def test_contact_de(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(2)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual('Kontakt', site_cnt.e('h2').text)
+	
+	@url('http://www.europeana1989.eu/es/contact/')
+	def test_contact_es(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(4)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual('Kontaktandmed', site_cnt.e('h2').text)
+	
+	@url('http://www.europeana1989.eu/hu/contact/')
+	def test_contact_hu(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(5)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual('Kapcsolat', site_cnt.e('h2').text)
+	
+	@url('http://www.europeana1989.eu/lt/contact/')
+	def test_contact_lt(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(6)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual('Kontaktai', site_cnt.e('h2').text)
+	
+	@url('http://www.europeana1989.eu/lv/contact/')
+	def test_contact_lv(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(7)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual(u'Kontaktçðanâs', site_cnt.e('h2').text)
+	
+	@url('http://www.europeana1989.eu/pl/contact/')
+	def test_contact_pl(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(8)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual('Kontakt', site_cnt.e('h2').text)
 	
 	@url('http://www.europeana1989.eu/en/privacy-policy/')
 	def test_privacy_policy(self):
