@@ -218,6 +218,89 @@ class Project_Europeana(HPTestCase):
 		
 		self.assertTitle('Europeana 1989')
 		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(3)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual('Europeana 1989 Terms for User Contributions', site_cnt.e('h2').text)
+		
+	
+	@url('http://www.europeana1989.eu/cz/terms/')
+	def test_terms_cz(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(1)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual(u'Podmínky pro příspěvky uživatelů Europeana 1989', site_cnt.e('h2').text)
+	
+	@url('http://www.europeana1989.eu/de/terms/')
+	def test_terms_de(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(2)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual(u'Nutzungsbedingungen für Beiträge zum Projekt Europeana 1989', site_cnt.e('h2').text)
+	
+	@url('http://www.europeana1989.eu/es/terms/')
+	def test_terms_es(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(4)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual(u'Europeana 1989 kaastöötingimused', site_cnt.e('h2').text)
+	
+	@url('http://www.europeana1989.eu/hu/terms/')
+	def test_terms_hu(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(5)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual(u'Europeana 1989 feltételek a felhasználói hozzájárulásokhoz', site_cnt.e('h2').text)
+	
+	@url('http://www.europeana1989.eu/lt/terms/')
+	def test_terms_lt(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(6)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual(u'„Europeana 1989“ naudotojų bendradarbiavimo sąlygos', site_cnt.e('h2').text)
+	
+	@url('http://www.europeana1989.eu/lv/terms/')
+	def test_terms_lv(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(7)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual(u'Europeana 1989 Noteikumi lietotāju ieguldījuma sniegšanai', site_cnt.e('h2').text)
+	
+	@url('http://www.europeana1989.eu/pl/terms/')
+	def test_terms_pl(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(8)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual(u'Zasady zwiększania zbiorów Europeana 1989', site_cnt.e('h2').text)
 	
 	@url('http://www.europeana1989.eu/en/contact/')
 	def test_contact(self):
