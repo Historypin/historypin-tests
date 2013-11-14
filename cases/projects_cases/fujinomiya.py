@@ -1,0 +1,21 @@
+# -*- coding: utf-8 -*-
+
+from base import *
+
+class Project_Fujinomiya(HPTestCase):
+	@url('http://www.v5-japan.historypin-hrd.appspot.com/jp/project/47-fujinomiya-project')
+	def test_index(self):
+		# TODO
+		# assert title
+		# assert nav links and texts
+		# assert hp texts
+		# assert explore and upload texts and links of buttons
+		# assert icon touts links, images and texts
+		# assert is instance for activity feed
+		# assert icon touts
+		# assert share text
+		# assert links under share buttons
+		# assert text under the logo
+		# assert custom footer
+		pass
+	
