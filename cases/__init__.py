@@ -10,10 +10,13 @@ from collections import Collections
 
 from projects import Projects
 
+from projects_cases.attach import Attach
+
 from projects_cases.allourstories import Project_AllOurStories
 from projects_cases.balboa import Project_Balboa
 from projects_cases.chevy import Project_Chevy
 from projects_cases.europeana import Project_Europeana
+from projects_cases.fujinomiya import Project_Fujinomiya
 from projects_cases.grandparents import Project_Grandparents
 from projects_cases.hp_japan import Project_HPJapan
 from projects_cases.npower import Project_NPower
