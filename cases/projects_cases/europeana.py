@@ -2,6 +2,8 @@
 
 from base import *
 
+# TODO - check the Europeana navigation for each language from the option menu in each page (list for the translations, func for each assertion and for loop)
+
 class Project_Europeana(HPTestCase):
 	@url('http://www.europeana1989.eu/en/')
 	def test_index(self):
@@ -116,7 +118,121 @@ class Project_Europeana(HPTestCase):
 		
 	
 	@url('http://www.europeana1989.eu/en/about/')
-	def test_about(self):
+	def test_about_en(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(3)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual('Why are we doing this?', site_cnt.e('h2').text)
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
+	
+	@url('http://www.europeana1989.eu/cz/about/')
+	def test_about_cz(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(1)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual(u'Proč to děláme?', site_cnt.e('h2').text)
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
+		
+	@url('http://www.europeana1989.eu/de/about/')
+	def test_about_de(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(2)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual('Warum gibt es Europeana 1989?', site_cnt.e('h2').text)
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
+	
+	@url('http://www.europeana1989.eu/es/about/')
+	def test_about_es(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(4)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual('Miks me seda teeme?', site_cnt.e('h2').text)
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
+	
+	@url('http://www.europeana1989.eu/hu/about/')
+	def test_about_hu(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(5)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual(u'Miért csináljuk?', site_cnt.e('h2').text)
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
+	
+	@url('http://www.europeana1989.eu/lt/about/')
+	def test_about_lt(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(6)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual(u'Kodėl mes tai darome?', site_cnt.e('h2').text)
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
+	
+	@url('http://www.europeana1989.eu/lv/about/')
+	def test_about_lv(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(7)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual(u'Kāpēc mēs to darām?', site_cnt.e('h2').text)
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
+	
+	@url('http://www.europeana1989.eu/pl/about/')
+	def test_about_pl(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(8)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual('Dlaczego to robimy?', site_cnt.e('h2').text)
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
+	
+	@url('http://www.europeana1989.eu/en/terms/')
+	def test_terms_en(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+	
+	@url('http://www.europeana1989.eu/en/contact/')
+	def test_contact(self):
+		# TODO
+		# assert a title, img and text
+		pass
+	
+	@url('http://www.europeana1989.eu/en/privacy-policy/')
+	def test_privacy_policy(self):
+		# TODO
+		# assert a title, img and text
+		pass
+	
+	@url('http://www.europeana1989.eu/en/cookies/')
+	def test_cookies(self):
 		# TODO
 		# assert a title, img and text
 		pass
