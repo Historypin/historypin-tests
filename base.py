@@ -37,7 +37,7 @@ def logged_in(fn):
 class Browser(webdriver.Chrome):
 	def go(self, url):
 		self.get(('' if url.startswith('http') else URL_BASE) + url)
-		# self.pageload_wait()
+		self.pageload_wait()
 	
 	def es(self, selector):
 		return self.find_elements_by_css_selector(selector)
@@ -52,12 +52,15 @@ class Browser(webdriver.Chrome):
 		except:
 			raise NoSuchElementException('The element could not be found')
 	
-	# def pageload_wait(self, timeout = 30):
-	# 	try:
-	# 		w = WebDriverWait(self, timeout)
-	# 		return w.until(lambda driver: driver.execute_script("return document.readyState;") == "complete")
-	# 	except:
-	# 		raise Exception('Page could not load')  # NoSuchElementException('The element could not be found')
+	def pageload_wait(self, timeout = 30):
+		sleep(1)
+		# TODO Fix this to work with something else than dummy sleep
+		# self.e_wait('body')
+		# try:
+		# 	w = WebDriverWait(self, timeout)
+		# 	return w.until(lambda driver: driver.execute_script("return document.readyState;") == "complete")
+		# except:
+		# 	raise Exception('Page could not load')
 	
 	def hover(self, elem):
 		webdriver.common.action_chains.ActionChains(self).move_to_element(elem).perform()
@@ -112,7 +115,7 @@ def run(*tests):
 		suite.addTests(unittest.TestLoader().loadTestsFromModule(cases))
 	
 	TestCase.browser_start(Browser(PATH_CRHOME_DRIVER))
-	HPTestCase.login()
+	# HPTestCase.login()
 	
 	unittest.TextTestRunner(verbosity = 1).run(suite)
 	TestCase.browser_close()
@@ -147,6 +150,9 @@ class HPTestCase(TestCase):
 	
 	@classmethod
 	def login_cookie_set(cls):
+		if not LOGIN_COOKIES:
+			HPTestCase.login()
+		
 		for i in LOGIN_COOKIES:
 			if i: cls.browser.add_cookie(i)
 	

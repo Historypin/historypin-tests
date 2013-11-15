@@ -2,8 +2,6 @@
 
 from base import *
 
-# TODO - check footer links for each language from the option menu in each page (list for the translations, func for each assertion and for loop)
-
 class Project_Europeana(HPTestCase):
 	
 	@url('http://www.europeana1989.eu/cz/')
@@ -136,6 +134,8 @@ class Project_Europeana(HPTestCase):
 			i = pl_links[n]
 			self.assertEqual(i[0], nav_links[n].get_attribute('href'))
 			self.assertEqual(i[1], nav_links[n].text)
+	
+	# @url()
 	
 	@url('http://www.europeana1989.eu/en/')
 	def test_index(self):
@@ -616,25 +616,99 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
 	
-	@url('http://www.europeana1989.eu/en/cookies/')
-	def test_cookies(self):
-		# TODO
-		# assert a title, img and text
-		pass
-	
 	@url('http://www.europeana1989.eu/en/baltic-way/')
-	def test_balctic_way(self):
+	def test_balctic_way_en(self):
 		
-		self.assertTitle('Europeana 1989 | Relive the Baltic Way – Pin yourself on the map')
+		self.assertTitle(u'Europeana 1989 | Relive the Baltic Way – Pin yourself on the map')
 		
 		site_cnt = self.e('#site-content')
 		
-		links = site_cnt.es('a')
+		self.assertEqual(u'Relive the Baltic Way – Pin yourself on the map', site_cnt.e('h1').text)
+		self.assertIn('Relive the Baltic Way online.', site_cnt.e('h1 + p').text)
+		
+		europeana_link	= 'http://www.europeana1989.eu/en/'
+		
+		links = site_cnt.es('.page-top > a')
 		
 		links_cnt = [
-			['http://www.europeana1989.eu/en/project/34-1989/', 'Back to 1989 homepage'],
-			['', ''],
-			['', ''],
+			['project/34-1989/'	, 'Back to 1989 homepage'],
+			['upload/index/'	, 'Contribute'],
 		]
 		
+		for n in range(len(links_cnt)):
+			i = links_cnt[n]
+			self.assertEqual(europeana_link + i[0], links[n].get_attribute('href'))
+			self.assertEqual(i[1], links[n].text)
+		
+		self.assertIsInstance(self.e('#embed-frame'), WebElement)
+	
+	@url('http://www.europeana1989.eu/cz/baltic-way/')
+	def test_balctic_way_cz(self):
+		
+		self.assertTitle(u'Europeana 1989 | Baltský řetěz - Připněte své fotografie na mapu')
+		
+		site_cnt = self.e('#site-content')
+		
+		self.assertEqual(u'Baltský řetěz - Připněte své fotografie na mapu', site_cnt.e('h1').text)
+		self.assertIn(u'Oživme baltský řetěz online.', site_cnt.e('h1 + p').text)
+	
+	@url('http://www.europeana1989.eu/de/baltic-way/')
+	def test_balctic_way_de(self):
+		
+		self.assertTitle(u'Europeana 1989 | Der Baltischer Weg - Pinnen Sie Ihr Foto auf die Karte')
+		
+		site_cnt = self.e('#site-content')
+		
+		self.assertEqual(u'Der Baltischer Weg - Pinnen Sie Ihr Foto auf die Karte', site_cnt.e('h1').text)
+		self.assertIn(u'Lasst uns den Baltischen Weg online wieder aufleben.', site_cnt.e('h1 + p').text)
+	
+	@url('http://www.europeana1989.eu/es/baltic-way/')
+	def test_balctic_way_es(self):
+		
+		self.assertTitle(u'Europeana 1989 | Kus olite teie Balti keti ajal? Pange ennast kaardile!')
+		
+		site_cnt = self.e('#site-content')
+		
+		self.assertEqual(u'Kus olite teie Balti keti ajal? Pange ennast kaardile!', site_cnt.e('h1').text)
+		self.assertIn(u'Siin on võimalus Balti kett taas kord läbi teha.', site_cnt.e('h1 + p').text)
+	
+	@url('http://www.europeana1989.eu/hu/baltic-way/')
+	def test_balctic_way_hu(self):
+		
+		self.assertTitle(u'Europeana 1989 | Élje át újra a Balti utat – Kerüljön fel a térképre')
+		
+		site_cnt = self.e('#site-content')
+		
+		self.assertEqual(u'Élje át újra a Balti utat – Kerüljön fel a térképre', site_cnt.e('h1').text)
+		self.assertIn(u'Online a Balti úton.', site_cnt.e('h1 + p').text)
+	
+	@url('http://www.europeana1989.eu/lt/baltic-way/')
+	def test_balctic_way_lt(self):
+		
+		self.assertTitle(u'Europeana 1989 | Atkurkime Baltijos kelią internete')
+		
+		site_cnt = self.e('#site-content')
+		
+		self.assertEqual(u'Atkurkime Baltijos kelią internete', site_cnt.e('h1').text)
+		self.assertIn(u'Atkurkime Baltijos kelią internete.', site_cnt.e('h1 + p').text)
+	
+	@url('http://www.europeana1989.eu/lv/baltic-way/')
+	def test_balctic_way_lv(self):
+		
+		self.assertTitle(u'Europeana 1989 | Atjauno Baltijas ceļu – atzīmē sevi kartē!')
+		
+		site_cnt = self.e('#site-content')
+		
+		self.assertEqual(u'Atjauno Baltijas ceļu – atzīmē sevi kartē!', site_cnt.e('h1').text)
+		self.assertIn(u'Atjauno Baltijas ceļu tiešsaistē!', site_cnt.e('h1 + p').text)
+	
+	@url('http://www.europeana1989.eu/pl/baltic-way/')
+	def test_balctic_way_pl(self):
+		
+		self.assertTitle(u'Europeana 1989 | Bałtycki Łańcuch - przypnij się do mapy')
+		
+		site_cnt = self.e('#site-content')
+		
+		self.assertEqual(u'Bałtycki Łańcuch - przypnij się do mapy', site_cnt.e('h1').text)
+		self.assertIn(u'Niech Łańcuch Bałtycki odżyje jeszcze raz online.', site_cnt.e('h1 + p').text)
 	

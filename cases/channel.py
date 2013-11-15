@@ -374,7 +374,7 @@ class Channel(HPTestCase):
 			self.assertEqual(i[0]	, links_help[n].get_attribute('href'))
 			self.assertEqual(i[1]	, links_help[n].text)
 		
-		self.assertEqual('Get Help', help.e('h3').text)
+		self.assertEqual('Get help', help.e('h3').text)
 	
 	@logged_in
 	@url('/channels/view/%d/' % ID_USER)
