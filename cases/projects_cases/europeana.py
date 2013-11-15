@@ -541,43 +541,80 @@ class Project_Europeana(HPTestCase):
 	
 	@url('http://www.europeana1989.eu/cz/privacy-policy/')
 	def test_privacy_policy_cz(self):
-		pass
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(1)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
 	
 	@url('http://www.europeana1989.eu/de/privacy-policy/')
 	def test_privacy_policy_de(self):
-		# TODO
-		# assert a title, img and text
-		pass
-	
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(2)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
+		
 	@url('http://www.europeana1989.eu/es/privacy-policy/')
 	def test_privacy_policy_es(self):
-		# TODO
-		# assert a title, img and text
-		pass
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(4)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
 	
 	@url('http://www.europeana1989.eu/hu/privacy-policy/')
 	def test_privacy_policy_hu(self):
-		# TODO
-		# assert a title, img and text
-		pass
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(5)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
 	
 	@url('http://www.europeana1989.eu/lt/privacy-policy/')
 	def test_privacy_policy_lt(self):
-		# TODO
-		# assert a title, img and text
-		pass
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(6)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
 	
 	@url('http://www.europeana1989.eu/lv/privacy-policy/')
 	def test_privacy_policy_lv(self):
-		# TODO
-		# assert a title, img and text
-		pass
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(7)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
 	
 	@url('http://www.europeana1989.eu/pl/privacy-policy/')
 	def test_privacy_policy_pl(self):
-		# TODO
-		# assert a title, img and text
-		pass
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(8)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
 	
 	@url('http://www.europeana1989.eu/en/cookies/')
 	def test_cookies(self):
