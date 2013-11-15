@@ -2,10 +2,141 @@
 
 from base import *
 
-# TODO - check the Europeana navigation for each language from the option menu in each page (list for the translations, func for each assertion and for loop)
 # TODO - check footer links for each language from the option menu in each page (list for the translations, func for each assertion and for loop)
 
 class Project_Europeana(HPTestCase):
+	
+	@url('http://www.europeana1989.eu/cz/')
+	def test_sub_nav_cz(self):
+		
+		europeana_link = 'http://www.europeana1989.eu/cz/'
+		cz_links = [
+			[europeana_link	, 'Domov'],
+			['%sexplore/#|map/' % europeana_link, 'Prozkoumat'],
+			['%supload/index/' % europeana_link	, u'Přispět'],
+			['http://pro.europeana.eu/web/europeana-1989/'	, 'O'],
+		]
+		
+		nav_links = self.es('.sub-navigation li a')
+		
+		for n in range(len(cz_links)):
+			i = cz_links[n]
+			self.assertEqual(i[0], nav_links[n].get_attribute('href'))
+			self.assertEqual(i[1], nav_links[n].text)
+	
+	@url('http://www.europeana1989.eu/de/')
+	def test_sub_nav_de(self):
+		
+		europeana_link = 'http://www.europeana1989.eu/de/'
+		de_links = [
+			[europeana_link	, 'Home'],
+			['%sexplore/#|map/' % europeana_link, 'Entdecken'],
+			['%supload/index/' % europeana_link	, u'Beitrag posten'],
+			['http://pro.europeana.eu/web/europeana-1989/'	, u'Über'],
+		]
+		
+		nav_links = self.es('.sub-navigation li a')
+		
+		for n in range(len(de_links)):
+			i = de_links[n]
+			self.assertEqual(i[0], nav_links[n].get_attribute('href'))
+			self.assertEqual(i[1], nav_links[n].text)
+	
+	@url('http://www.europeana1989.eu/es/')
+	def test_sub_nav_es(self):
+		
+		europeana_link = 'http://www.europeana1989.eu/es/'
+		
+		es_links = [
+			[europeana_link	, 'Kodu'],
+			['%sexplore/#|map/' % europeana_link, 'Uurige'],
+			['%supload/index/' % europeana_link	, u'Andke oma panus'],
+			['http://pro.europeana.eu/web/europeana-1989/'	, 'Info'],
+		]
+		
+		nav_links = self.es('.sub-navigation li a')
+		
+		for n in range(len(es_links)):
+			i = es_links[n]
+			self.assertEqual(i[0], nav_links[n].get_attribute('href'))
+			self.assertEqual(i[1], nav_links[n].text)
+	
+	@url('http://www.europeana1989.eu/hu/')
+	def test_sub_nav_hu(self):
+		
+		europeana_link = 'http://www.europeana1989.eu/hu/'
+		
+		hu_links = [
+			[europeana_link	, u'Kezdőlap'],
+			['%sexplore/#|map/' % europeana_link, u'Fedezze fel'],
+			['%supload/index/' % europeana_link	, u'Töltse fel'],
+			['http://pro.europeana.eu/web/europeana-1989/'	, u'Rólunk'],
+		]
+		
+		nav_links = self.es('.sub-navigation li a')
+		
+		for n in range(len(hu_links)):
+			i = hu_links[n]
+			self.assertEqual(i[0], nav_links[n].get_attribute('href'))
+			self.assertEqual(i[1], nav_links[n].text)
+	
+	@url('http://www.europeana1989.eu/lt/')
+	def test_sub_nav_lt(self):
+		
+		europeana_link = 'http://www.europeana1989.eu/lt/'
+		
+		lt_links = [
+			[europeana_link	, u'Pradinis'],
+			['%sexplore/#|map/' % europeana_link, u'Naršyti'],
+			['%supload/index/' % europeana_link	, u'Pridėti'],
+			['http://pro.europeana.eu/web/europeana-1989/'	, u'Apie'],
+		]
+		
+		nav_links = self.es('.sub-navigation li a')
+		
+		for n in range(len(lt_links)):
+			i = lt_links[n]
+			self.assertEqual(i[0], nav_links[n].get_attribute('href'))
+			self.assertEqual(i[1], nav_links[n].text)
+	
+	@url('http://www.europeana1989.eu/lv/')
+	def test_sub_nav_lv(self):
+		
+		europeana_link = 'http://www.europeana1989.eu/lv/'
+		
+		lv_links = [
+			[europeana_link	, u'Sākums'],
+			['%sexplore/#|map/' % europeana_link, u'Pārlūkot'],
+			['%supload/index/' % europeana_link	, u'Pievienot saturu'],
+			['http://pro.europeana.eu/web/europeana-1989/'	, u'Par'],
+		]
+		
+		nav_links = self.es('.sub-navigation li a')
+		
+		for n in range(len(lv_links)):
+			i = lv_links[n]
+			self.assertEqual(i[0], nav_links[n].get_attribute('href'))
+			self.assertEqual(i[1], nav_links[n].text)
+		
+	@url('http://www.europeana1989.eu/pl/')
+	def test_sub_nav_pl(self):
+		
+		europeana_link = 'http://www.europeana1989.eu/pl/'
+		
+		pl_links = [
+			[europeana_link	, u'Strona glówna'],
+			['%sexplore/#|map/' % europeana_link, u'Zobacz kolekcję'],
+			['%supload/index/' % europeana_link	, u'Dodaj pamiątkę'],
+			['http://pro.europeana.eu/web/europeana-1989/'	, u'O nas'],
+		]
+		
+		nav_links = self.es('.sub-navigation li a')
+		
+		for n in range(len(pl_links)):
+			i = pl_links[n]
+			self.assertEqual(i[0], nav_links[n].get_attribute('href'))
+			self.assertEqual(i[1], nav_links[n].text)
+	
 	@url('http://www.europeana1989.eu/en/')
 	def test_index(self):
 		
@@ -142,6 +273,7 @@ class Project_Europeana(HPTestCase):
 		self.assertEqual(u'Proč to děláme?', site_cnt.e('h2').text)
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
 		
+		
 	@url('http://www.europeana1989.eu/de/about/')
 	def test_about_de(self):
 		
@@ -153,6 +285,7 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Warum gibt es Europeana 1989?', site_cnt.e('h2').text)
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
+		
 	
 	@url('http://www.europeana1989.eu/es/about/')
 	def test_about_es(self):
@@ -165,6 +298,7 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Miks me seda teeme?', site_cnt.e('h2').text)
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
+		
 	
 	@url('http://www.europeana1989.eu/hu/about/')
 	def test_about_hu(self):
@@ -177,6 +311,7 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual(u'Miért csináljuk?', site_cnt.e('h2').text)
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
+		
 	
 	@url('http://www.europeana1989.eu/lt/about/')
 	def test_about_lt(self):
@@ -189,6 +324,7 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual(u'Kodėl mes tai darome?', site_cnt.e('h2').text)
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
+		
 	
 	@url('http://www.europeana1989.eu/lv/about/')
 	def test_about_lv(self):
@@ -201,6 +337,7 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual(u'Kāpēc mēs to darām?', site_cnt.e('h2').text)
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
+		
 	
 	@url('http://www.europeana1989.eu/pl/about/')
 	def test_about_pl(self):
@@ -313,7 +450,6 @@ class Project_Europeana(HPTestCase):
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Contact', site_cnt.e('h2').text)
-		
 	
 	@url('http://www.europeana1989.eu/cz/contact/')
 	def test_contact_cz(self):
@@ -369,7 +505,7 @@ class Project_Europeana(HPTestCase):
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Kontaktai', site_cnt.e('h2').text)
-	
+		
 	@url('http://www.europeana1989.eu/lv/contact/')
 	def test_contact_lv(self):
 		
@@ -380,7 +516,7 @@ class Project_Europeana(HPTestCase):
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual(u'Kontaktçðanâs', site_cnt.e('h2').text)
-	
+		
 	@url('http://www.europeana1989.eu/pl/contact/')
 	def test_contact_pl(self):
 		
@@ -393,7 +529,52 @@ class Project_Europeana(HPTestCase):
 		self.assertEqual('Kontakt', site_cnt.e('h2').text)
 	
 	@url('http://www.europeana1989.eu/en/privacy-policy/')
-	def test_privacy_policy(self):
+	def test_privacy_policy_en(self):
+		
+		self.assertTitle('Europeana 1989')
+		
+		option_menu = self.e('#language_select')
+		self.assertTrue(option_menu.e('option:nth-of-type(3)').is_selected())
+		
+		site_cnt = self.e('#site-content')
+		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
+	
+	@url('http://www.europeana1989.eu/cz/privacy-policy/')
+	def test_privacy_policy_cz(self):
+		pass
+	
+	@url('http://www.europeana1989.eu/de/privacy-policy/')
+	def test_privacy_policy_de(self):
+		# TODO
+		# assert a title, img and text
+		pass
+	
+	@url('http://www.europeana1989.eu/es/privacy-policy/')
+	def test_privacy_policy_es(self):
+		# TODO
+		# assert a title, img and text
+		pass
+	
+	@url('http://www.europeana1989.eu/hu/privacy-policy/')
+	def test_privacy_policy_hu(self):
+		# TODO
+		# assert a title, img and text
+		pass
+	
+	@url('http://www.europeana1989.eu/lt/privacy-policy/')
+	def test_privacy_policy_lt(self):
+		# TODO
+		# assert a title, img and text
+		pass
+	
+	@url('http://www.europeana1989.eu/lv/privacy-policy/')
+	def test_privacy_policy_lv(self):
+		# TODO
+		# assert a title, img and text
+		pass
+	
+	@url('http://www.europeana1989.eu/pl/privacy-policy/')
+	def test_privacy_policy_pl(self):
 		# TODO
 		# assert a title, img and text
 		pass
@@ -406,5 +587,17 @@ class Project_Europeana(HPTestCase):
 	
 	@url('http://www.europeana1989.eu/en/baltic-way/')
 	def test_balctic_way(self):
-		pass
+		
+		self.assertTitle('Europeana 1989 | Relive the Baltic Way – Pin yourself on the map')
+		
+		site_cnt = self.e('#site-content')
+		
+		links = site_cnt.es('a')
+		
+		links_cnt = [
+			['http://www.europeana1989.eu/en/project/34-1989/', 'Back to 1989 homepage'],
+			['', ''],
+			['', ''],
+		]
+		
 	
