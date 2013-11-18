@@ -628,7 +628,7 @@ class Project_Europeana(HPTestCase):
 		
 		europeana_link	= 'http://www.europeana1989.eu/en/'
 		
-		links = site_cnt.es('.page-top > a')
+		links			= site_cnt.es('.page-top > a')
 		
 		links_cnt = [
 			['project/34-1989/'	, 'Back to 1989 homepage'],
