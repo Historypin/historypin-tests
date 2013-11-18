@@ -105,9 +105,9 @@ class Project_Fujinomiya(HPTestCase):
 		footer_links = footer.es('a')
 		
 		footer_items = [
-			['%s/terms-and-conditions/'	% blog_link, 'Terms and conditions'],
-			['%s/privacy-policy/'		% blog_link, 'Privacy policy'],
-			['%s/cookies/'				% blog_link, 'Cookies'],
+			['%s/terms-and-conditions/'	% blog_link	, 'Terms and conditions'],
+			['%s/privacy-policy/'		% blog_link	, 'Privacy policy'],
+			['%s/cookies/'				% blog_link	, 'Cookies'],
 			['http://wearewhatwedo.org/'			, u'© We Are What We Do'],
 		]
 		
