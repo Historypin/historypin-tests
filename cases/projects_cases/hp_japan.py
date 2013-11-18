@@ -140,10 +140,10 @@ class Project_HPJapan(HPTestCase):
 	
 	@url(JAPAN_PROJECT_LINK)
 	def test_explore(self):
-		# TODO
-		# assert embed frame src
-		# include funcs for touts and footer
 		
+		self.assertTitle(u'Historypin 日本上陸！')
+		
+		self.assertEqual('%s/jp/attach/project/48-japan-project/map/index/' % JAPAN_LINK, self.e('#embed-frame').get_attribute('src'))  # TODO fix this after the project is set live
 		
 		self.__test_main_touts()
 		self.__test_icon_touts()
