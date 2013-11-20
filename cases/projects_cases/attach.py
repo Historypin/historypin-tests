@@ -115,7 +115,7 @@ class Attach():
 	
 	def attach_tab_comments(self):
 		self.go('/attach' + self.PROJECT_URL + '/#|photos/stories/')
-		# TODO fix this not find the element
+		# TODO fix this not finding the element
 		sleep(10)
 		comment = self.e('.stories li:nth-of-type(1)')
 		
@@ -123,3 +123,42 @@ class Attach():
 		self.assertIsInstance(comment.e('.story a'), WebElement)
 		self.assertIsInstance(comment.e('.story p'), WebElement)
 		self.assertIsInstance(comment.e('.story .details a'), WebElement)
+	
+	def attach_tab_list(self):
+		self.go('/attach' + self.PROJECT_URL + '/photos/list/')
+		
+		filter_bar = self.e('.list-filter')
+		
+		self.assertEqual('Sort by:', filter_bar.e('p strong').text)
+		
+		input_recent = filter_bar.e('#date_upload')
+		
+		self.assertIsInstance(input_recent, WebElement)
+		self.assertTrue(input_recent.is_selected())
+		
+		sleep(3)
+		picture = self.e('.list:nth-of-type(1) li:nth-of-type(1)')
+		self.assertIsInstance(picture.e('a img'), WebElement)
+		
+		self.assertIsInstance(picture.e('.info-actions a'), WebElement)
+		self.assertIsInstance(picture.e('.info h5'), WebElement)
+		self.assertIsInstance(picture.e('.info p'), WebElement)
+		
+		input_popular = filter_bar.e('#view_count')
+		self.assertIsInstance(input_popular, WebElement)
+		
+		input_popular.click()
+		self.assertFalse(input_recent.is_selected())
+		
+		sleep(3)
+		picture = self.e('.list:nth-of-type(1) li:nth-of-type(1)')
+		self.assertIsInstance(picture.e('a img'), WebElement)
+		
+		self.assertIsInstance(picture.e('.info-actions a'), WebElement)
+		self.assertIsInstance(picture.e('.info h5'), WebElement)
+		self.assertIsInstance(picture.e('.info p'), WebElement)
+	
+	def attach_tab_mysteries(self):
+		self.go('/attach' + self.PROJECT_URL + '/mysteries/index/')
+		
+		pass

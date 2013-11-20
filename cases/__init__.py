@@ -25,7 +25,7 @@ from projects_cases.ptqh import Project_PTQH
 from projects_cases.putting_art import Project_PuttingArt
 from projects_cases.sandy import Project_Sandy
 from projects_cases.yotb import Project_YOTB
-
+from projects_cases.yarra import Project_Yarra
 
 from channels import Channels
 from channel import Channel
