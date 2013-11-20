@@ -1,10 +1,19 @@
 # -*- coding: utf-8 -*-
 
 from base import *
+from attach import Attach
 
-class Project_Grandparents(HPTestCase):
+class Project_Grandparents(HPTestCase, Attach):
 	
 	PROJECT_URL = '/project/10-grandparents'
+	
+	ATTACH_TABS = [
+		['%s/attach%s/map/index/' % (URL_BASE, PROJECT_URL), '%s/attach%s/photos/gallery/' % (URL_BASE, PROJECT_URL)],
+	]
+	
+	test_attach_tabs	= Attach.attach_tabs
+	test_tab_map		= Attach.attach_tab_map
+	test_tab_gallery	= Attach.attach_tab_gallery
 	
 	@url(PROJECT_URL)
 	def test_index(self):
