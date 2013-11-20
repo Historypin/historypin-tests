@@ -1,10 +1,20 @@
 # -*- coding: utf-8 -*-
 
 from base import *
+from attach import Attach
 
-class Project_AllOurStories(HPTestCase):
+class Project_AllOurStories(HPTestCase, Attach):
 	
 	PROJECT_URL = '/project/44-all-our-stories'
+	
+	ATTACH_TABS = [
+		['%s/attach%s/map/index/' % (URL_BASE, PROJECT_URL), '%s/attach%s/photos/gallery/' % (URL_BASE, PROJECT_URL), '%s/attach%s/photos/slideshow/' % (URL_BASE, PROJECT_URL)],
+	]
+	
+	test_attach_tabs	= Attach.attach_tabs
+	test_tab_map		= Attach.attach_tab_map
+	test_tab_gallery	= Attach.attach_tab_gallery
+	test_tab_slideshow	= Attach.attach_tab_slideshow
 	
 	@url(PROJECT_URL)
 	def test_index(self):
@@ -19,9 +29,10 @@ class Project_AllOurStories(HPTestCase):
 		
 		self.assertIn('During 2013 over 500 organisations were awarded grants for dynamic', desc_main.text)
 		
-		button_proj = desc_main.e('a')
+		sleep(2)
+		button_proj = desc_main.e('.button.left')
 		self.assertEqual('%s/channels/'	% proj_link, button_proj.get_attribute('href'))
-		self.assertEqual('All Our Stories projects'							, button_proj.e('span').text)
+		self.assertEqual('All Our Stories projects', button_proj.text)
 		
 		link_section = site_cnt.e('.additional-links')
 		
@@ -61,7 +72,7 @@ class Project_AllOurStories(HPTestCase):
 		
 		button_home = self.e('.button-wrapper a')
 		self.assertEqual('%s/project/44-all-our-stories/' % URL_BASE, button_home.get_attribute('href'))
-		self.assertEqual('Home', button_home.e('span').text)
+		self.assertEqual('Home', button_home.text)
 		
 		channel = self.e('.channels-list li:first-of-type')
 		self.assertIsInstance(channel.e('.logo'), WebElement)
