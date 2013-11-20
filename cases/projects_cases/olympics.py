@@ -13,8 +13,8 @@ class Project_Olympics(HPTestCase, Attach):
 	
 	test_attach_tabs		= Attach.attach_tabs
 	test_tab_map			= Attach.attach_tab_map
-	test_tab_gallery		= Attach.attach_tab_gallery
 	test_tab_collections	= Attach.attach_tab_collections
+	test_tab_gallery		= Attach.attach_tab_gallery
 	test_tab_tours			= Attach.attach_tab_tours
 	
 	@url(PROJECT_URL)
