@@ -3,7 +3,10 @@
 from base import *
 
 class Project_YOTB(HPTestCase):
-	@url('/project/22-yearofthebay')
+	
+	PROJECT_URL = '/project/22-yearofthebay'
+	
+	@url(PROJECT_URL)
 	def test_index(self):
 		
 		self.assertTitle('Year of the Bay | Home')

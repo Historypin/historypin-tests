@@ -3,7 +3,10 @@
 from base import *
 
 class Project_AllOurStories(HPTestCase):
-	@url('/project/44-all-our-stories')
+	
+	PROJECT_URL = '/project/44-all-our-stories'
+	
+	@url(PROJECT_URL)
 	def test_index(self):
 		
 		self.assertTitle('All Our Stories | Home')
@@ -51,7 +54,7 @@ class Project_AllOurStories(HPTestCase):
 		
 		self.assertEqual('%s/attach/project/44-all-our-stories/map/index/' % URL_BASE, self.e('#embed-frame').get_attribute('src'))
 	
-	@url('/project/44-all-our-stories/channels/')
+	@url(PROJECT_URL + '/channels/')
 	def test_projects(self):
 		
 		self.assertTitle('All Our Stories | Featured Channels')

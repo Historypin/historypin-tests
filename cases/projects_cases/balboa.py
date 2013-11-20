@@ -3,7 +3,10 @@
 from base import *
 
 class Project_Balboa(HPTestCase):
-	@url('/project/6-balboa')
+	
+	PROJECT_URL = '/project/6-balboa'
+	
+	@url(PROJECT_URL)
 	def test_index(self):
 		
 		self.assertTitle('Balboa Park | Home')
@@ -34,7 +37,7 @@ class Project_Balboa(HPTestCase):
 		
 	
 	@url('/attach/project/6-balboa/map/')
-	def test_map_tab(self):
+	def test_tab_map(self):
 		
 		filter_bar = self.e('#filter-bar')
 		
@@ -60,7 +63,7 @@ class Project_Balboa(HPTestCase):
 		
 	
 	@url('/attach/project/6-balboa/collections/all/')
-	def test_collections_tab(self):
+	def test_tab_collections(self):
 		
 		collections_cnt = self.e('#list')
 		
@@ -70,12 +73,12 @@ class Project_Balboa(HPTestCase):
 		
 	
 	@url('/attach/project/6-balboa/tours/all/')
-	def test_tours_tab(self):
+	def test_tab_tours(self):
 		
 		self.assertEqual("balboa hasn't yet published any Tours.", self.e('#page-index h3').text)
 	
 	@url('/attach/project/6-balboa/contribute/')
-	def test_contribute_tab(self):
+	def test_tab_contribute(self):
 		
 		contribute_cnt = self.e('#tab-contribute')
 		self.assertEqual('Pin your photos using', contribute_cnt.e('h1').text)

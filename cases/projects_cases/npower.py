@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from base import *
+from attach import Attach
 
-class Project_NPower(HPTestCase):
+class Project_NPower(HPTestCase, Attach):
 	# subprojects = {
 	# 	'keepwarm'	: [123, 'title'],
 	# 	'play'		: [123, 'title'],
@@ -10,9 +11,9 @@ class Project_NPower(HPTestCase):
 	# 	'celebrate'	: [123, 'title'],
 	# 	'watch'		: [123, 'title'],
 	# }
+	PROJECT_URL = '/project/15-remember'
 	
-	# def __test_subproject_link(self, name, dom):
-	# __test_subproject_link('play')
+	test_tab_comments = Attach.attach_tab_comments
 	
 	def __test_touts(self):
 		
@@ -74,7 +75,7 @@ class Project_NPower(HPTestCase):
 			self.assertEqual(URL_BASE + '/resources/images/webapps/npower/' + i[1], imgs[n].get_attribute('src'))
 		
 	
-	@url('/project/15-remember')
+	@url(PROJECT_URL)
 	def test_index(self):
 		
 		self.assertTitle('Remember how we used to... | Home')
@@ -140,7 +141,7 @@ class Project_NPower(HPTestCase):
 		site_cnt = self.e('#site-content')
 		desc = site_cnt.e('.right > a')
 		
-		self.assertEqual('%s/project/15-remember' % URL_BASE						, desc.get_attribute('href'))
+		self.assertEqual('%s/project/15-remember/' % URL_BASE						, desc.get_attribute('href'))
 		self.assertEqual('%s/projects/img/pid/16/type/logo/dim/600x120/' % URL_BASE	, desc.e('img').get_attribute('src'))
 		
 		self.assertEqual('Curled up by the hearth with the dog, terrible Christmas jumpers, bedtime stories, coal fires, agas, cocoa and bed warmers galore!', site_cnt.e('.right p').text)
@@ -186,7 +187,7 @@ class Project_NPower(HPTestCase):
 		site_cnt = self.e('#site-content')
 		desc = site_cnt.e('.right > a')
 		
-		self.assertEqual('%s/project/15-remember' % URL_BASE						, desc.get_attribute('href'))
+		self.assertEqual('%s/project/15-remember/' % URL_BASE						, desc.get_attribute('href'))
 		self.assertEqual('%s/projects/img/pid/18/type/logo/dim/600x120/' % URL_BASE	, desc.e('img').get_attribute('src'))
 		
 		self.assertEqual('Classic console games and arcade machines. Pinball, Space Invaders and Pac-Man plus all the other games we used to play.', site_cnt.e('.right p').text)
@@ -232,7 +233,7 @@ class Project_NPower(HPTestCase):
 		site_cnt = self.e('#site-content')
 		desc = site_cnt.e('.right > a')
 		
-		self.assertEqual('%s/project/15-remember' % URL_BASE						, desc.get_attribute('href'))
+		self.assertEqual('%s/project/15-remember/' % URL_BASE						, desc.get_attribute('href'))
 		self.assertEqual('%s/projects/img/pid/19/type/logo/dim/600x120/' % URL_BASE	, desc.e('img').get_attribute('src'))
 		
 		self.assertEqual('Dirty dishes in the days before dishwashers, cooking up a feast with all the family, arduous chores and the legends that did them.', site_cnt.e('.right p').text)
@@ -278,7 +279,7 @@ class Project_NPower(HPTestCase):
 		site_cnt = self.e('#site-content')
 		desc = site_cnt.e('.right > a')
 		
-		self.assertEqual('%s/project/15-remember' % URL_BASE						, desc.get_attribute('href'))
+		self.assertEqual('%s/project/15-remember/' % URL_BASE						, desc.get_attribute('href'))
 		self.assertEqual('%s/projects/img/pid/21/type/logo/dim/600x120/' % URL_BASE	, desc.e('img').get_attribute('src'))
 		
 		self.assertEqual('Dancing, decorations, parties! The bright lights of Christmas, bonfires and fireworks, wedding snaps with dodgy dos and birthdays from our youth.', site_cnt.e('.right p').text)
@@ -324,7 +325,7 @@ class Project_NPower(HPTestCase):
 		site_cnt = self.e('#site-content')
 		desc = site_cnt.e('.right > a')
 		
-		self.assertEqual('%s/project/15-remember' % URL_BASE						, desc.get_attribute('href'))
+		self.assertEqual('%s/project/15-remember/' % URL_BASE						, desc.get_attribute('href'))
 		self.assertEqual('%s/projects/img/pid/23/type/logo/dim/600x120/' % URL_BASE	, desc.e('img').get_attribute('src'))
 		
 		self.assertEqual('Bigger and boxier! Enormous tellies, impressive vinyl collections, the original home videos and technological classics.', site_cnt.e('.right p').text)
@@ -368,7 +369,7 @@ class Project_NPower(HPTestCase):
 		site_cnt = self.e('#site-content')
 		desc = site_cnt.e('.right > a')
 		
-		self.assertEqual('%s/project/15-remember' % URL_BASE						, desc.get_attribute('href'))
+		self.assertEqual('%s/project/15-remember/' % URL_BASE						, desc.get_attribute('href'))
 		self.assertEqual('%s/projects/img/pid/24/type/logo/dim/600x120/' % URL_BASE	, desc.e('img').get_attribute('src'))
 		
 		self.assertEqual('Offices, factories, schools or shops or wherever you could make a bob. Massive mobiles, regulation uniforms and that classic Amstrad CPC 464.', site_cnt.e('.right p').text)
@@ -440,7 +441,7 @@ class Project_NPower(HPTestCase):
 			self.assertEqual(URL_BASE + '/resources/images/webapps/npower/' + i[1], imgs[n].get_attribute('src'))
 		
 		back_project = site_cnt.e('h3 a')
-		self.assertEqual('%s/project/15-remember' % URL_BASE, back_project.get_attribute('href'))
+		self.assertEqual('%s/project/15-remember/' % URL_BASE, back_project.get_attribute('href'))
 		self.assertEqual('Back to project'					, back_project.text)
 		
 		self.go('/attach/project/31-remember-timeline/photos/timeline/')

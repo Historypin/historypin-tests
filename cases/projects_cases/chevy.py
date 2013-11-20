@@ -3,7 +3,10 @@
 from base import *
 
 class Project_Chevy(HPTestCase):
-	@url('/project/8-chevy')
+	
+	PROJECT_URL = '/project/8-chevy'
+	
+	@url(PROJECT_URL)
 	def test_index(self):
 		
 		self.assertTitle('Me and My Chevy | Home')

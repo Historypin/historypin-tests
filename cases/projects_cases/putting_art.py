@@ -1,9 +1,16 @@
 # -*- coding: utf-8 -*-
 
 from base import *
+from attach import Attach
 
-class Project_PuttingArt(HPTestCase):
-	@url('/project/41-putting-art-on-the-map')
+class Project_PuttingArt(HPTestCase, Attach):
+	
+	PROJECT_URL = '/project/41-putting-art-on-the-map'
+	
+	test_tab_slideshow = Attach.attach_tab_slideshow
+	
+	
+	@url(PROJECT_URL)
 	def test_index(self):
 		
 		self.assertTitle('Putting Art on the Map | Home')

@@ -3,7 +3,10 @@
 from base import *
 
 class Project_Grandparents(HPTestCase):
-	@url('/project/10-grandparents')
+	
+	PROJECT_URL = '/project/10-grandparents'
+	
+	@url(PROJECT_URL)
 	def test_index(self):
 		
 		self.assertTitle('Amazing Grandparents | Home')
