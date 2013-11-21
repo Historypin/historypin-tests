@@ -2,6 +2,7 @@
 
 from base import *
 
+
 class Attach():
 	
 	def attach_tabs(self):
@@ -114,9 +115,8 @@ class Attach():
 		self.assertIsInstance(self.e('#navigation')		, WebElement)
 	
 	def attach_tab_comments(self):
-		self.go('/attach' + self.PROJECT_URL + '/#|photos/stories/')
-		# TODO fix this not finding the element
-		sleep(10)
+		self.go('/attach' + self.PROJECT_URL + '/photos/stories/')
+		
 		comment = self.e('.stories li:nth-of-type(1)')
 		
 		self.assertIsInstance(comment.e('.user'), WebElement)
@@ -161,4 +161,65 @@ class Attach():
 	def attach_tab_mysteries(self):
 		self.go('/attach' + self.PROJECT_URL + '/mysteries/index/')
 		
-		pass
+		statistics = self.e('.statistics')
+		mods = statistics.es('.mod label')
+		
+		self.assertEqual('Total mysteries'		, mods[0].text)
+		self.assertEqual('Unsolved mysteries'	, mods[1].text)
+		self.assertEqual('Under investigation'	, mods[2].text)
+		self.assertEqual('Mysteries solved'		, mods[3].text)
+		
+		sidebar			= self.e('.sidebar')
+		status			= sidebar.e('#status')
+		mystery_type	= sidebar.e('#bytype')
+		
+		self.assertEqual('Show me'	, status.e('h4').text)
+		self.assertEqual('Only show', mystery_type.e('h4').text)
+		self.assertTrue(status.e('#showme_all').is_selected())
+		
+		status_labels = ['All mysteries', 'Unsolved mysteries', 'Under investigation', 'Solved mysteries']
+		
+		labels = status.es('label')
+		
+		for n in range(len(status_labels)): self.assertEqual(status_labels[n], labels[n].text)
+		
+		mystery_first = self.e('.attach.mysteries > .list section:nth-of-type(1)')
+		self.assertIsInstance(mystery_first.e('h3'), WebElement)
+		self.assertIsInstance(mystery_first.e('header a'), WebElement)
+		self.assertIsInstance(mystery_first.e('.thumb a img'), WebElement)
+		self.assertIsInstance(mystery_first.e('.cnt h4 a'), WebElement)
+		self.assertIsInstance(mystery_first.e('.clues h6'), WebElement)
+		
+		status.e('#showme_incomplete').click()
+		sleep(5)
+		mystery_first = self.e('.attach.mysteries > .list section:nth-of-type(1)')
+		solve_button = mystery_first.e('footer .button')
+		
+		self.assertEqual('Solve', solve_button.text)
+		self.assertIsInstance(solve_button, WebElement)
+		
+		status.e('#showme_investigation').click()
+		sleep(2)
+		mystery_first = self.e('.attach.mysteries > .list section:nth-of-type(1)')
+		solve_button = mystery_first.e('footer .button')
+		
+		self.assertEqual('Solve', solve_button.text)
+		self.assertIsInstance(solve_button, WebElement)
+		
+		status.e('#showme_solved').click()
+		sleep(2)
+		
+		mystery_first = self.e('.attach.mysteries > .list section:nth-of-type(1)')
+		self.assertFalse(mystery_first.exists('footer .button'))
+		
+		self.assertEqual('Solved', mystery_first.e('.thumb span').text)
+		
+		self.assertTrue(mystery_type.e('#bytype_all').is_selected())
+		
+		type_labels = ['All mystery types', 'Title mysteries', 'Date mysteries', 'Location mysteries', 'Street View mysteries', 'Tag mysteries']
+		
+		labels = mystery_type.es('label')
+		
+		for n in range(len(type_labels)): self.assertEqual(type_labels[n], labels[n].text)
+		
+		

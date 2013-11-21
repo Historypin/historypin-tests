@@ -11,10 +11,20 @@ from selenium.webdriver.remote.webelement import WebElement
 
 from conf import *
 
+def web_element_exists(self, selector):
+	try:
+		self.e(selector)
+		return True
+	except NoSuchElementException:
+		return False
+
 WebElement.e	= WebElement.find_element_by_css_selector
 WebElement.es	= WebElement.find_elements_by_css_selector
 WebElement.css	= WebElement.value_of_css_property
+WebElement.exists = web_element_exists
 WebElement.parent_node = lambda self: self.find_element_by_xpath('./parent::node()')
+
+
 
 def url(url):
 	def wrapper(fn):
@@ -41,7 +51,9 @@ class Browser(webdriver.Chrome):
 	
 	def es(self, selector):
 		return self.find_elements_by_css_selector(selector)
-		
+	
+	exists = web_element_exists
+	
 	def e(self, selector):
 		return self.find_element_by_css_selector(selector)
 	

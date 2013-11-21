@@ -7,11 +7,20 @@ class Project_PuttingArt(HPTestCase, Attach):
 	
 	PROJECT_URL = '/project/41-putting-art-on-the-map'
 	
-	test_tab_slideshow = Attach.attach_tab_slideshow
+	ATTACH_TABS = [
+		['%s/attach%s/photos/gallery/' % (URL_BASE, PROJECT_URL), '%s/attach%s/map/index/' % (URL_BASE, PROJECT_URL), '%s/attach%s/tours/all/' % (URL_BASE, PROJECT_URL), '%s/attach%s/collections/all/' % (URL_BASE, PROJECT_URL), '%s/attach%s/slideshow/' % (URL_BASE, PROJECT_URL), '%s/attach%s/mysteries/index/' % (URL_BASE, PROJECT_URL)],
+	]
 	
+	test_attach_tabs		= Attach.attach_tabs
+	test_tab_gallery		= Attach.attach_tab_gallery
+	test_tab_map			= Attach.attach_tab_map
+	test_tab_tours			= Attach.attach_tab_tours
+	test_tab_collections	= Attach.attach_tab_collections
+	test_tab_slideshow		= Attach.attach_tab_slideshow
+	test_tab_mysteries		= Attach.attach_tab_mysteries
 	
-	@url(PROJECT_URL)
 	def test_index(self):
+		self.go(self.PROJECT_URL)
 		
 		self.assertTitle('Putting Art on the Map | Home')
 		
@@ -25,7 +34,7 @@ class Project_PuttingArt(HPTestCase, Attach):
 		self.assertEqual('https://twitter.com/search?q=%23artmap', twitter_link.get_attribute('href'))
 		self.assertEqual('#artmap', twitter_link.text)
 		
-		self.assertEqual('%s/attach/project/41-putting-art-on-the-map/mysteries/index/' % URL_BASE, self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('%s/attach%s/mysteries/index/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 		
 		tout_items = [
 			['Live event in York'	, 'tout1_image', 'Read about our live crowdsourcing session in York'					, '/?p=4021'],

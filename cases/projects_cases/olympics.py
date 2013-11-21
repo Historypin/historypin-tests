@@ -33,7 +33,7 @@ class Project_Olympics(HPTestCase, Attach):
 		
 		touts = [
 			['Pin your Olympic Content'			, '%s/upload/' % olympics_link		, '%smain_pin_img.jpg' % img_link		, 'Add any photos, videos or memories from the Olympics\nthrough the ages to this collection here.'],
-			['Explore our Olympic timeline'		, '%s#' % olympics_link			, '%solympic_timeline.jpg' % img_link	, 'Odd photos, little known facts and a potted history of the Olympic Games from 1896 to 2012'],
+			['Explore our Olympic timeline'		, '%s#' % olympics_link				, '%solympic_timeline.jpg' % img_link	, 'Odd photos, little known facts and a potted history of the Olympic Games from 1896 to 2012'],
 			['Free downloadable activity pack'	, '%sACTIVITY_PACK.zip' % wawwd_link, '%sdownload_img.jpg' % img_link		, 'Perfect for schools and groups, it includes lesson plans, a game and tipsheets for gathering photos'],
 		]
 		

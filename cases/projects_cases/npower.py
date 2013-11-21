@@ -76,7 +76,7 @@ class Project_NPower(HPTestCase, Attach):
 		
 	
 	def test_index(self):
-		self.go(PROJECT_URL)
+		self.go(self.PROJECT_URL)
 		
 		self.assertTitle('Remember how we used to... | Home')
 		
