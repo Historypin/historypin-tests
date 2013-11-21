@@ -6,8 +6,8 @@ class Project_YOTB(HPTestCase):
 	
 	PROJECT_URL = '/project/22-yearofthebay'
 	
-	@url(PROJECT_URL)
 	def test_index(self):
+		self.go(self.PROJECT_URL)
 		
 		self.assertTitle('Year of the Bay | Home')
 		
@@ -16,7 +16,7 @@ class Project_YOTB(HPTestCase):
 		self.assertEqual('Year of the Bay', site_cnt.e('h1').text)
 		
 		button = site_cnt.e('.big')
-		self.assertEqual('%s/project/22-yearofthebay/upload/' % URL_BASE, button.get_attribute('href'))
+		self.assertEqual('%s%s/upload/' % (URL_BASE, self.PROJECT_URL), button.get_attribute('href'))
 		self.assertEqual('Pin your memories', button.e('span').text)
 		
 		touts_items = [
@@ -45,7 +45,7 @@ class Project_YOTB(HPTestCase):
 		self.assertIsInstance(item_feed.e('p')	, WebElement)
 		self.assertIsInstance(item_feed.e('img'), WebElement)
 		
-		self.assertEqual('%s/attach/project/22-yearofthebay/mysteries/index/' % URL_BASE, self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('%s/attach%s/mysteries/index/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 		
 		
 		icon_tout1	= site_cnt.e('#icon-tout-0 a')
@@ -57,7 +57,7 @@ class Project_YOTB(HPTestCase):
 		
 		icon_tout2 = site_cnt.e('#icon-tout-1 a')
 		
-		self.assertEqual('%s/project/22-yearofthebay/behind-the-scenes/' % URL_BASE, icon_tout2.get_attribute('href'))
+		self.assertEqual('%s%s/behind-the-scenes/' % (URL_BASE, self.PROJECT_URL), icon_tout2.get_attribute('href'))
 		self.assertEqual('Read the latest news on our blog'	, icon_tout2.text)
 		self.assertIn('ss-icon'		, icon_tout2.e('span').get_attribute('class'))
 		self.assertIn('ss-newspaper', icon_tout2.e('span').get_attribute('class'))

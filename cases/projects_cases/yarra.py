@@ -23,7 +23,7 @@ class Project_Yarra(HPTestCase, Attach):
 		self.assertEqual('%s/projects/img/dim/1020x360/crop/1/image_id/177' % URL_BASE	, self.e('#banner_images img').get_attribute('src'))
 		self.assertIn('Do you have a photograph of a streetscape, shop or an event'		, self.e('.main_description').text)
 		
-		self.assertEqual('%s/attach/project/49-yarra/map/index/' % URL_BASE, self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('%s/attach%s/map/index/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 		
 		upload_button = self.e('.button.right')
 		self.assertEqual('%s%s/upload/' % (URL_BASE, self.PROJECT_URL), upload_button.get_attribute('href'))
