@@ -75,8 +75,8 @@ class Project_NPower(HPTestCase, Attach):
 			self.assertEqual(URL_BASE + '/resources/images/webapps/npower/' + i[1], imgs[n].get_attribute('src'))
 		
 	
-	@url(PROJECT_URL)
 	def test_index(self):
+		self.go(PROJECT_URL)
 		
 		self.assertTitle('Remember how we used to... | Home')
 		

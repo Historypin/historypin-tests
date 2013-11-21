@@ -6,8 +6,8 @@ class Project_Europeana(HPTestCase):
 	
 	PROJECT_URL = 'http://www.europeana1989.eu'
 	
-	@url(PROJECT_URL + '/cz/')
 	def test_sub_nav_cz(self):
+		self.go(self.PROJECT_URL + '/cz/')
 		
 		europeana_link = 'http://www.europeana1989.eu/cz/'
 		cz_links = [
@@ -24,8 +24,8 @@ class Project_Europeana(HPTestCase):
 			self.assertEqual(i[0], nav_links[n].get_attribute('href'))
 			self.assertEqual(i[1], nav_links[n].text)
 	
-	@url(PROJECT_URL + '/de/')
 	def test_sub_nav_de(self):
+		self.go(self.PROJECT_URL + '/de/')
 		
 		europeana_link = 'http://www.europeana1989.eu/de/'
 		de_links = [
@@ -42,8 +42,8 @@ class Project_Europeana(HPTestCase):
 			self.assertEqual(i[0], nav_links[n].get_attribute('href'))
 			self.assertEqual(i[1], nav_links[n].text)
 	
-	@url(PROJECT_URL + '/es/')
 	def test_sub_nav_es(self):
+		self.go(self.PROJECT_URL + '/es/')
 		
 		europeana_link = 'http://www.europeana1989.eu/es/'
 		
@@ -61,8 +61,8 @@ class Project_Europeana(HPTestCase):
 			self.assertEqual(i[0], nav_links[n].get_attribute('href'))
 			self.assertEqual(i[1], nav_links[n].text)
 	
-	@url(PROJECT_URL + '/hu/')
 	def test_sub_nav_hu(self):
+		self.go(self.PROJECT_URL + '/hu/')
 		
 		europeana_link = 'http://www.europeana1989.eu/hu/'
 		
@@ -80,8 +80,8 @@ class Project_Europeana(HPTestCase):
 			self.assertEqual(i[0], nav_links[n].get_attribute('href'))
 			self.assertEqual(i[1], nav_links[n].text)
 	
-	@url(PROJECT_URL + '/lt/')
 	def test_sub_nav_lt(self):
+		self.go(self.PROJECT_URL + '/lt/')
 		
 		europeana_link = 'http://www.europeana1989.eu/lt/'
 		
@@ -99,8 +99,8 @@ class Project_Europeana(HPTestCase):
 			self.assertEqual(i[0], nav_links[n].get_attribute('href'))
 			self.assertEqual(i[1], nav_links[n].text)
 	
-	@url(PROJECT_URL + '/lv/')
 	def test_sub_nav_lv(self):
+		self.go(self.PROJECT_URL + '/lv/')
 		
 		europeana_link = 'http://www.europeana1989.eu/lv/'
 		
@@ -118,8 +118,8 @@ class Project_Europeana(HPTestCase):
 			self.assertEqual(i[0], nav_links[n].get_attribute('href'))
 			self.assertEqual(i[1], nav_links[n].text)
 		
-	@url(PROJECT_URL + '/pl/')
 	def test_sub_nav_pl(self):
+		self.go(self.PROJECT_URL + '/pl/')
 		
 		europeana_link = 'http://www.europeana1989.eu/pl/'
 		
@@ -139,8 +139,8 @@ class Project_Europeana(HPTestCase):
 	
 	# @url()
 	
-	@url(PROJECT_URL + '/en/')
 	def test_index(self):
+		self.go(self.PROJECT_URL + '/en/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -251,8 +251,8 @@ class Project_Europeana(HPTestCase):
 			self.assertEqual(i[1], footer_links[n].text)
 		
 	
-	@url(PROJECT_URL + '/en/about/')
 	def test_about_en(self):
+		self.go(self.PROJECT_URL + '/en/about/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -263,8 +263,8 @@ class Project_Europeana(HPTestCase):
 		self.assertEqual('Why are we doing this?', site_cnt.e('h2').text)
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
 	
-	@url(PROJECT_URL + '/cz/about/')
 	def test_about_cz(self):
+		self.go(self.PROJECT_URL + '/cz/about/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -276,8 +276,8 @@ class Project_Europeana(HPTestCase):
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
 		
 		
-	@url(PROJECT_URL + '/de/about/')
 	def test_about_de(self):
+		self.go(self.PROJECT_URL + '/de/about/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -289,8 +289,8 @@ class Project_Europeana(HPTestCase):
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
 		
 	
-	@url(PROJECT_URL + '/es/about/')
 	def test_about_es(self):
+		self.go(self.PROJECT_URL + '/es/about/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -302,8 +302,8 @@ class Project_Europeana(HPTestCase):
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
 		
 	
-	@url(PROJECT_URL + '/hu/about/')
 	def test_about_hu(self):
+		self.go(self.PROJECT_URL + '/hu/about/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -315,8 +315,8 @@ class Project_Europeana(HPTestCase):
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
 		
 	
-	@url(PROJECT_URL + '/lt/about/')
 	def test_about_lt(self):
+		self.go(self.PROJECT_URL + '/lt/about/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -328,8 +328,8 @@ class Project_Europeana(HPTestCase):
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
 		
 	
-	@url(PROJECT_URL + '/lv/about/')
 	def test_about_lv(self):
+		self.go(self.PROJECT_URL + '/lv/about/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -341,8 +341,8 @@ class Project_Europeana(HPTestCase):
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
 		
 	
-	@url(PROJECT_URL + '/pl/about/')
 	def test_about_pl(self):
+		self.go(self.PROJECT_URL + '/pl/about/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -353,8 +353,8 @@ class Project_Europeana(HPTestCase):
 		self.assertEqual('Dlaczego to robimy?', site_cnt.e('h2').text)
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
 	
-	@url(PROJECT_URL + '/en/terms/')
 	def test_terms_en(self):
+		self.go(self.PROJECT_URL + '/en/terms/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -365,8 +365,8 @@ class Project_Europeana(HPTestCase):
 		self.assertEqual('Europeana 1989 Terms for User Contributions', site_cnt.e('h2').text)
 		
 	
-	@url(PROJECT_URL + '/cz/terms/')
 	def test_terms_cz(self):
+		self.go(self.PROJECT_URL + '/cz/terms/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -376,8 +376,8 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual(u'Podmínky pro příspěvky uživatelů Europeana 1989', site_cnt.e('h2').text)
 	
-	@url(PROJECT_URL + '/de/terms/')
 	def test_terms_de(self):
+		self.go(self.PROJECT_URL + '/de/terms/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -387,8 +387,8 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual(u'Nutzungsbedingungen für Beiträge zum Projekt Europeana 1989', site_cnt.e('h2').text)
 	
-	@url(PROJECT_URL + '/es/terms/')
 	def test_terms_es(self):
+		self.go(self.PROJECT_URL + '/es/terms/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -398,8 +398,8 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual(u'Europeana 1989 kaastöötingimused', site_cnt.e('h2').text)
 	
-	@url(PROJECT_URL + '/hu/terms/')
 	def test_terms_hu(self):
+		self.go(self.PROJECT_URL + '/hu/terms/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -409,8 +409,8 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual(u'Europeana 1989 feltételek a felhasználói hozzájárulásokhoz', site_cnt.e('h2').text)
 	
-	@url(PROJECT_URL + '/lt/terms/')
 	def test_terms_lt(self):
+		self.go(self.PROJECT_URL + '/lt/terms/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -420,8 +420,8 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual(u'„Europeana 1989“ naudotojų bendradarbiavimo sąlygos', site_cnt.e('h2').text)
 	
-	@url(PROJECT_URL + '/lv/terms/')
 	def test_terms_lv(self):
+		self.go(self.PROJECT_URL + '/lv/terms/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -431,8 +431,8 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual(u'Europeana 1989 Noteikumi lietotāju ieguldījuma sniegšanai', site_cnt.e('h2').text)
 	
-	@url(PROJECT_URL + '/pl/terms/')
 	def test_terms_pl(self):
+		self.go(self.PROJECT_URL + '/pl/terms/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -442,8 +442,8 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual(u'Zasady zwiększania zbiorów Europeana 1989', site_cnt.e('h2').text)
 	
-	@url(PROJECT_URL + '/en/contact/')
 	def test_contact_en(self):
+		self.go(self.PROJECT_URL + '/en/contact/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -453,8 +453,8 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Contact', site_cnt.e('h2').text)
 	
-	@url(PROJECT_URL + '/cz/contact/')
 	def test_contact_cz(self):
+		self.go(self.PROJECT_URL + '/cz/contact/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -464,8 +464,8 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Kontakt', site_cnt.e('h2').text)
 	
-	@url(PROJECT_URL + '/de/contact/')
 	def test_contact_de(self):
+		self.go(self.PROJECT_URL + '/de/contact/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -475,8 +475,8 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Kontakt', site_cnt.e('h2').text)
 	
-	@url(PROJECT_URL + '/es/contact/')
 	def test_contact_es(self):
+		self.go(self.PROJECT_URL + '/es/contact/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -486,8 +486,8 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Kontaktandmed', site_cnt.e('h2').text)
 	
-	@url(PROJECT_URL + '/hu/contact/')
 	def test_contact_hu(self):
+		self.go(self.PROJECT_URL + '/hu/contact/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -497,8 +497,8 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Kapcsolat', site_cnt.e('h2').text)
 	
-	@url(PROJECT_URL + '/lt/contact/')
 	def test_contact_lt(self):
+		self.go(self.PROJECT_URL + '/lt/contact/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -508,8 +508,8 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Kontaktai', site_cnt.e('h2').text)
 		
-	@url(PROJECT_URL + '/lv/contact/')
 	def test_contact_lv(self):
+		self.go(self.PROJECT_URL + '/lv/contact/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -519,8 +519,8 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual(u'Kontaktçðanâs', site_cnt.e('h2').text)
 		
-	@url(PROJECT_URL + '/pl/contact/')
 	def test_contact_pl(self):
+		self.go(self.PROJECT_URL + '/pl/contact/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -530,8 +530,8 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Kontakt', site_cnt.e('h2').text)
 	
-	@url(PROJECT_URL + '/en/privacy-policy/')
 	def test_privacy_policy_en(self):
+		self.go(self.PROJECT_URL + '/en/privacy-policy/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -541,8 +541,8 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
 	
-	@url(PROJECT_URL + '/cz/privacy-policy/')
 	def test_privacy_policy_cz(self):
+		self.go(self.PROJECT_URL + '/cz/privacy-policy/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -552,8 +552,8 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
 	
-	@url(PROJECT_URL + '/de/privacy-policy/')
 	def test_privacy_policy_de(self):
+		self.go(self.PROJECT_URL + '/de/privacy-policy/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -563,8 +563,8 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
 		
-	@url(PROJECT_URL + '/es/privacy-policy/')
 	def test_privacy_policy_es(self):
+		self.go(self.PROJECT_URL + '/es/privacy-policy/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -574,8 +574,8 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
 	
-	@url(PROJECT_URL + '/hu/privacy-policy/')
 	def test_privacy_policy_hu(self):
+		self.go(self.PROJECT_URL + '/hu/privacy-policy/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -585,8 +585,8 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
 	
-	@url(PROJECT_URL + '/lt/privacy-policy/')
 	def test_privacy_policy_lt(self):
+		self.go(self.PROJECT_URL + '/lt/privacy-policy/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -596,8 +596,8 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
 	
-	@url(PROJECT_URL + '/lv/privacy-policy/')
 	def test_privacy_policy_lv(self):
+		self.go(self.PROJECT_URL + '/lv/privacy-policy/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -607,8 +607,8 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
 	
-	@url(PROJECT_URL + '/pl/privacy-policy/')
 	def test_privacy_policy_pl(self):
+		self.go(self.PROJECT_URL + '/pl/privacy-policy/')
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -618,8 +618,8 @@ class Project_Europeana(HPTestCase):
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
 	
-	@url(PROJECT_URL + '/en/baltic-way/')
 	def test_balctic_way_en(self):
+		self.go(self.PROJECT_URL + '/en/baltic-way/')
 		
 		self.assertTitle(u'Europeana 1989 | Relive the Baltic Way – Pin yourself on the map')
 		
@@ -644,8 +644,8 @@ class Project_Europeana(HPTestCase):
 		
 		self.assertIsInstance(self.e('#embed-frame'), WebElement)
 	
-	@url(PROJECT_URL + '/cz/baltic-way/')
 	def test_balctic_way_cz(self):
+		self.go(self.PROJECT_URL + '/cz/baltic-way/')
 		
 		self.assertTitle(u'Europeana 1989 | Baltský řetěz - Připněte své fotografie na mapu')
 		
@@ -654,8 +654,8 @@ class Project_Europeana(HPTestCase):
 		self.assertEqual(u'Baltský řetěz - Připněte své fotografie na mapu', site_cnt.e('h1').text)
 		self.assertIn(u'Oživme baltský řetěz online.', site_cnt.e('h1 + p').text)
 	
-	@url(PROJECT_URL + '/de/baltic-way/')
 	def test_balctic_way_de(self):
+		self.go(self.PROJECT_URL + '/de/baltic-way/')
 		
 		self.assertTitle(u'Europeana 1989 | Der Baltischer Weg - Pinnen Sie Ihr Foto auf die Karte')
 		
@@ -664,8 +664,8 @@ class Project_Europeana(HPTestCase):
 		self.assertEqual(u'Der Baltischer Weg - Pinnen Sie Ihr Foto auf die Karte', site_cnt.e('h1').text)
 		self.assertIn(u'Lasst uns den Baltischen Weg online wieder aufleben.', site_cnt.e('h1 + p').text)
 	
-	@url(PROJECT_URL + '/es/baltic-way/')
 	def test_balctic_way_es(self):
+		self.go(self.PROJECT_URL + '/es/baltic-way/')
 		
 		self.assertTitle(u'Europeana 1989 | Kus olite teie Balti keti ajal? Pange ennast kaardile!')
 		
@@ -674,8 +674,8 @@ class Project_Europeana(HPTestCase):
 		self.assertEqual(u'Kus olite teie Balti keti ajal? Pange ennast kaardile!', site_cnt.e('h1').text)
 		self.assertIn(u'Siin on võimalus Balti kett taas kord läbi teha.', site_cnt.e('h1 + p').text)
 	
-	@url(PROJECT_URL + '/hu/baltic-way/')
 	def test_balctic_way_hu(self):
+		self.go(self.PROJECT_URL + '/hu/baltic-way/')
 		
 		self.assertTitle(u'Europeana 1989 | Élje át újra a Balti utat – Kerüljön fel a térképre')
 		
@@ -684,8 +684,8 @@ class Project_Europeana(HPTestCase):
 		self.assertEqual(u'Élje át újra a Balti utat – Kerüljön fel a térképre', site_cnt.e('h1').text)
 		self.assertIn(u'Online a Balti úton.', site_cnt.e('h1 + p').text)
 	
-	@url(PROJECT_URL + '/lt/baltic-way/')
 	def test_balctic_way_lt(self):
+		self.go(self.PROJECT_URL + '/lt/baltic-way/')
 		
 		self.assertTitle(u'Europeana 1989 | Atkurkime Baltijos kelią internete')
 		
@@ -694,8 +694,8 @@ class Project_Europeana(HPTestCase):
 		self.assertEqual(u'Atkurkime Baltijos kelią internete', site_cnt.e('h1').text)
 		self.assertIn(u'Atkurkime Baltijos kelią internete.', site_cnt.e('h1 + p').text)
 	
-	@url(PROJECT_URL + '/lv/baltic-way/')
 	def test_balctic_way_lv(self):
+		self.go(self.PROJECT_URL + '/lv/baltic-way/')
 		
 		self.assertTitle(u'Europeana 1989 | Atjauno Baltijas ceļu – atzīmē sevi kartē!')
 		
@@ -704,8 +704,8 @@ class Project_Europeana(HPTestCase):
 		self.assertEqual(u'Atjauno Baltijas ceļu – atzīmē sevi kartē!', site_cnt.e('h1').text)
 		self.assertIn(u'Atjauno Baltijas ceļu tiešsaistē!', site_cnt.e('h1 + p').text)
 	
-	@url(PROJECT_URL + '/pl/baltic-way/')
 	def test_balctic_way_pl(self):
+		self.go(self.PROJECT_URL + '/pl/baltic-way/')
 		
 		self.assertTitle(u'Europeana 1989 | Bałtycki Łańcuch - przypnij się do mapy')
 		
