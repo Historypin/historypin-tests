@@ -13,7 +13,7 @@ class Project_Yarra(HPTestCase, Attach):
 	test_attach_tabs	= Attach.attach_tabs
 	test_tab_map		= Attach.attach_tab_map
 	test_tab_gallery	= Attach.attach_tab_gallery
-	# test_tab_list		= Attach.attach_tab_list  should be OK when issue #2788 is fixed
+	test_tab_list		= Attach.attach_tab_list
 	
 	def test_index(self):
 		self.go(self.PROJECT_URL)

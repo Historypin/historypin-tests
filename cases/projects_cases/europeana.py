@@ -1,15 +1,25 @@
 # -*- coding: utf-8 -*-
 
 from base import *
+from attach import Attach
 
-class Project_Europeana(HPTestCase):
+class Project_Europeana(HPTestCase, Attach):
 	
 	PROJECT_URL = 'http://www.europeana1989.eu'
+	ATTACH_TABS = [
+		['%s/en/attach/tours/all/' % PROJECT_URL, '%s/en/attach/photos/index/' % (PROJECT_URL), '%s/en/attach/photos/gallery/' % PROJECT_URL],
+	]
+	
+	# TODO fix this - won't work because we take self.go('/attach' + self.PROJECT_URL + '/map/'), but in Europeana link for the attach is different
+	# test_attach_tabs	= Attach.attach_tabs
+	# test_tab_tours	= Attach.attach_tab_tours
+	# test_tab_map		= Attach.attach_tab_map
+	# test_tab_gallery	= Attach.attach_tab_gallery
 	
 	def test_sub_nav_cz(self):
 		self.go(self.PROJECT_URL + '/cz/')
 		
-		europeana_link = 'http://www.europeana1989.eu/cz/'
+		europeana_link = '%s/cz/' % self.PROJECT_URL
 		cz_links = [
 			[europeana_link	, 'Domov'],
 			['%sexplore/#|map/' % europeana_link, 'Prozkoumat'],
@@ -27,7 +37,7 @@ class Project_Europeana(HPTestCase):
 	def test_sub_nav_de(self):
 		self.go(self.PROJECT_URL + '/de/')
 		
-		europeana_link = 'http://www.europeana1989.eu/de/'
+		europeana_link = '%s/de/' % self.PROJECT_URL
 		de_links = [
 			[europeana_link	, 'Home'],
 			['%sexplore/#|map/' % europeana_link, 'Entdecken'],
@@ -45,7 +55,7 @@ class Project_Europeana(HPTestCase):
 	def test_sub_nav_es(self):
 		self.go(self.PROJECT_URL + '/es/')
 		
-		europeana_link = 'http://www.europeana1989.eu/es/'
+		europeana_link = '%s/es/' % self.PROJECT_URL
 		
 		es_links = [
 			[europeana_link	, 'Kodu'],
@@ -64,7 +74,7 @@ class Project_Europeana(HPTestCase):
 	def test_sub_nav_hu(self):
 		self.go(self.PROJECT_URL + '/hu/')
 		
-		europeana_link = 'http://www.europeana1989.eu/hu/'
+		europeana_link = '%s/hu/' % self.PROJECT_URL
 		
 		hu_links = [
 			[europeana_link	, u'Kezdőlap'],
@@ -83,7 +93,7 @@ class Project_Europeana(HPTestCase):
 	def test_sub_nav_lt(self):
 		self.go(self.PROJECT_URL + '/lt/')
 		
-		europeana_link = 'http://www.europeana1989.eu/lt/'
+		europeana_link = '%s/lt/' % self.PROJECT_URL
 		
 		lt_links = [
 			[europeana_link	, u'Pradinis'],
@@ -102,7 +112,7 @@ class Project_Europeana(HPTestCase):
 	def test_sub_nav_lv(self):
 		self.go(self.PROJECT_URL + '/lv/')
 		
-		europeana_link = 'http://www.europeana1989.eu/lv/'
+		europeana_link = '%s/lv/' % self.PROJECT_URL
 		
 		lv_links = [
 			[europeana_link	, u'Sākums'],
@@ -121,7 +131,7 @@ class Project_Europeana(HPTestCase):
 	def test_sub_nav_pl(self):
 		self.go(self.PROJECT_URL + '/pl/')
 		
-		europeana_link = 'http://www.europeana1989.eu/pl/'
+		europeana_link = '%s/pl/' % self.PROJECT_URL
 		
 		pl_links = [
 			[europeana_link	, u'Strona glówna'],
@@ -144,7 +154,7 @@ class Project_Europeana(HPTestCase):
 		
 		self.assertTitle('Europeana 1989')
 		
-		europeana_link	= 'http://www.europeana1989.eu/en/'
+		europeana_link	= '%s/en/' % self.PROJECT_URL
 		eu_logo			= self.e('.small li a')
 		
 		self.assertEqual(europeana_link, eu_logo.get_attribute('href'))
@@ -198,7 +208,7 @@ class Project_Europeana(HPTestCase):
 			self.assertEqual(i[0], h3s[n].text)
 			self.assertEqual(i[1], h3s_links[n].get_attribute('href'))
 			self.assertEqual(i[1], img_link[n].get_attribute('href'))
-			self.assertEqual('http://www.europeana1989.eu/projects/img/pid/34/dim/280x310/type/' + i[2] + '/crop/1/', imgs[n].get_attribute('src'))
+			self.assertEqual('%s/projects/img/pid/34/dim/280x310/type/' % self.PROJECT_URL + i[2] + '/crop/1/', imgs[n].get_attribute('src'))
 			self.assertIn(i[3], paragraphs[n].text)
 		
 		activity = site_cnt.e('#activity')
@@ -628,7 +638,7 @@ class Project_Europeana(HPTestCase):
 		self.assertEqual(u'Relive the Baltic Way – Pin yourself on the map', site_cnt.e('h1').text)
 		self.assertIn('Relive the Baltic Way online.', site_cnt.e('h1 + p').text)
 		
-		europeana_link	= 'http://www.europeana1989.eu/en/'
+		europeana_link	= '%s/en/' % self.PROJECT_URL
 		
 		links			= site_cnt.es('.page-top > a')
 		
