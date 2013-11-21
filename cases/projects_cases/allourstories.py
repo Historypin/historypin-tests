@@ -62,7 +62,7 @@ class Project_AllOurStories(HPTestCase, Attach):
 		self.assertIsInstance(item_first[1], WebElement)
 		self.assertIsInstance(item_first[2], WebElement)
 		
-		self.assertEqual('%s/attach/project/44-all-our-stories/map/index/' % URL_BASE, self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('%s/attach%s/map/index/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 	
 	def test_projects(self):
 		self.go('%s/channels/' % self.PROJECT_URL)

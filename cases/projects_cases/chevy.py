@@ -15,8 +15,8 @@ class Project_Chevy(HPTestCase, Attach):
 	test_tab_map		= Attach.attach_tab_map
 	test_tab_gallery	= Attach.attach_tab_gallery
 	
-	@url(PROJECT_URL)
 	def test_index(self):
+		self.go(self.PROJECT_URL)
 		
 		self.assertTitle('Me and My Chevy | Home')
 		
@@ -28,12 +28,11 @@ class Project_Chevy(HPTestCase, Attach):
 		chevy_channel = site_cnt.e('.page-top a')
 		self.assertEqual(URL_BASE + '/channels/view/id/28802/'	, chevy_channel.get_attribute('href'))
 		
-		chevy_link	= URL_BASE + '/project/8-chevy'
-		img_link		= URL_BASE + '/resources/images/webapps/chevy/'
+		img_link	= '%s/resources/images/webapps/chevy/' % URL_BASE
 		
 		touts = [
-			['Pin your Chevy memories'			, '%s/upload' % chevy_link		, '%stout1.jpg' % img_link	, 'Add photos, videos and memories for each one of the Chevy models created over the last 100 years.'],
-			['100 Years of Chevy Icons'			, '%s#' % chevy_link			, '%stout2.jpg' % img_link	, 'From the Series C Classic 6 in 1911 to the 2012 Sonic, check out these design icons.'],
+			['Pin your Chevy memories'			, '%s%s/upload' % (URL_BASE, self.PROJECT_URL)	, '%stout1.jpg' % img_link	, 'Add photos, videos and memories for each one of the Chevy models created over the last 100 years.'],
+			['100 Years of Chevy Icons'			, '%s%s#' % (URL_BASE, self.PROJECT_URL)		, '%stout2.jpg' % img_link	, 'From the Series C Classic 6 in 1911 to the 2012 Sonic, check out these design icons.'],
 			['See Louis Chevrolet himself'		, 'http://www.historypin.com/photos/#!/geo:41.416981,-87.365314/zoom:10/date_from:1905-01-01/date_to:1912-12-31/dialog:51753/tab:details/', '%stout3.jpg' % img_link, 'The founder of Chevrolet racing in the Cobe Cup Race in Indiana in 1909.'],
 		]
 		
@@ -54,4 +53,4 @@ class Project_Chevy(HPTestCase, Attach):
 		self.assertIsInstance(self.e('.chevy_dialog'), WebElement)
 		self.e('.ui-dialog-titlebar-close.ui-corner-all').click()
 		
-		self.assertEqual(URL_BASE + '/attach/project/8-chevy/map/index/', self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('%s/attach%s/map/index/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
