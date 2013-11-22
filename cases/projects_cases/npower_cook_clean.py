@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 from base import *
-from attach import Attach
 from npower import Project_NPower
 
 class Project_NPower_Cook_Clean(Project_NPower):

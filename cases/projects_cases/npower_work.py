@@ -3,9 +3,9 @@
 from base import *
 from npower import Project_NPower
 
-class Project_NPower_Watch_Listen(Project_NPower):
+class Project_NPower_Work(Project_NPower):
 	
-	PROJECT_URL = '/project/23-remember-watch-and-listen'
+	PROJECT_URL = '/project/24-remember-work'
 	
 	ATTACH_TABS = [
 		['%s/attach%s/map/index/' % (URL_BASE, PROJECT_URL), '%s/attach%s/photos/gallery/' % (URL_BASE, PROJECT_URL), '%s/attach%s/photos/stories/' % (URL_BASE, PROJECT_URL)],
@@ -14,19 +14,19 @@ class Project_NPower_Watch_Listen(Project_NPower):
 	def test_index(self):
 		self.go(self.PROJECT_URL)
 		
-		self.assertTitle('Watch and Listen | Home')
+		self.assertTitle('Work | Home')
 		
 		site_cnt = self.e('#site-content')
 		desc = site_cnt.e('.right > a')
 		
 		self.assertEqual('%s/project/15-remember/' % URL_BASE						, desc.get_attribute('href'))
-		self.assertEqual('%s/projects/img/pid/23/type/logo/dim/600x120/' % URL_BASE	, desc.e('img').get_attribute('src'))
+		self.assertEqual('%s/projects/img/pid/24/type/logo/dim/600x120/' % URL_BASE	, desc.e('img').get_attribute('src'))
 		
-		self.assertEqual('Bigger and boxier! Enormous tellies, impressive vinyl collections, the original home videos and technological classics.', site_cnt.e('.right p').text)
+		self.assertEqual('Offices, factories, schools or shops or wherever you could make a bob. Massive mobiles, regulation uniforms and that classic Amstrad CPC 464.', site_cnt.e('.right p').text)
 		
 		button_upload = site_cnt.e('.left a')
 		
-		self.assertEqual('%s/project/15-remember/upload/projects/bridge/1/?subproject=23' % URL_BASE, button_upload.get_attribute('href'))
+		self.assertEqual('%s/project/15-remember/upload/projects/bridge/1/?subproject=24' % URL_BASE, button_upload.get_attribute('href'))
 		self.assertEqual('Pin your memories'														, button_upload.e('span').text)
 		
 		projects = [
@@ -34,13 +34,13 @@ class Project_NPower_Watch_Listen(Project_NPower):
 			['Play'				, '18-remember-play/'				, '18'],
 			['Cook and Clean'	, '19-remember-cook-and-clean/'		, '19'],
 			['Celebrate'		, '21-remember-celebrate/'			, '21'],
-			['Work'				, '24-remember-work/'				, '24'],
+			['Watch and Listen'	, '23-remember-watch-and-listen/'	, '23'],
 		]
 		
-		h2s			= self.es('.w5 h2')
-		h2s_links	= self.es('.w5 h2 a')
-		img_links	= self.es('.w5 a:nth-child(2)')
-		imgs		= self.es('.w5 a:nth-child(2) img')
+		h2s = self.es('.w5 h2')
+		h2s_links = self.es('.w5 h2 a')
+		img_links = self.es('.w5 a:nth-child(2)')
+		imgs = self.es('.w5 a:nth-child(2) img')
 		
 		for n in range(len(projects)):
 			i = projects[n]
