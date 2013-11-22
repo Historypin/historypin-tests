@@ -21,6 +21,8 @@ from projects_cases.grandparents import Project_Grandparents
 from projects_cases.hp_japan import Project_HPJapan
 from projects_cases.npower import Project_NPower
 from projects_cases.npower_keep_warm import Project_NPower_KeepWarm
+from projects_cases.npower_play import Project_NPower_Play
+
 from projects_cases.olympics import Project_Olympics
 from projects_cases.ptqh import Project_PTQH
 from projects_cases.putting_art import Project_PuttingArt
