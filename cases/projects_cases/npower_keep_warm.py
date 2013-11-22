@@ -2,8 +2,9 @@
 
 from base import *
 from attach import Attach
+from npower import Project_NPower
 
-class Project_NPower_KeepWarm(HPTestCase, Attach):
+class Project_NPower_KeepWarm(Project_NPower):
 	
 	PROJECT_URL = '/project/16-remember-keep-warm'
 	
@@ -11,12 +12,7 @@ class Project_NPower_KeepWarm(HPTestCase, Attach):
 		['%s/attach%s/map/index/' % (URL_BASE, PROJECT_URL), '%s/attach%s/photos/gallery/' % (URL_BASE, PROJECT_URL), '%s/attach%s/photos/stories/' % (URL_BASE, PROJECT_URL)],
 	]
 	
-	test_attach_tabs	= Attach.attach_tabs
-	test_tab_map		= Attach.attach_tab_map
-	test_tab_gallery	= Attach.attach_tab_gallery
-	test_tab_comments	= Attach.attach_tab_comments
-	
-	def test_keep_warm(self):
+	def test_index(self):
 		self.go(self.PROJECT_URL)
 		
 		self.assertTitle('Keep Warm | Home')

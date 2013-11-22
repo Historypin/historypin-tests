@@ -39,9 +39,8 @@ class Project_NPower(HPTestCase, Attach):
 		site_cnt = self.e('#site-content')
 		bottom_p = site_cnt.e('.bottom-p')
 		
-		
 		self.assertIn('Featured photos shared by', bottom_p.text)
-			
+		
 		channels = [
 			['id/571038/'	, 'Mirrorpix'],
 			['8759065/'		, 'Dawn Parsonage'],
