@@ -194,4 +194,3 @@ class Project_NPower(HPTestCase, Attach):
 		
 		self.assertIsInstance(self.e('.vco-navigation'), WebElement)
 		
-		driver.close()
