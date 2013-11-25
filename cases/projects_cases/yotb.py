@@ -1,10 +1,23 @@
 # -*- coding: utf-8 -*-
 
 from base import *
+from attach import Attach
 
-class Project_YOTB(HPTestCase):
+class Project_YOTB(HPTestCase, Attach):
 	
 	PROJECT_URL = '/project/22-yearofthebay'
+	
+	ATTACH_TABS = [
+		['%s/attach%s/mysteries/index/' % (URL_BASE, PROJECT_URL), '%s/attach%s/map/index/' % (URL_BASE, PROJECT_URL), '%s/attach%s/photos/gallery/' % (URL_BASE, PROJECT_URL), '%s/attach%s/tours/all/' % (URL_BASE, PROJECT_URL), '%s/attach%s/collections/all/' % (URL_BASE, PROJECT_URL), '%s/attach%s/slideshow/' % (URL_BASE, PROJECT_URL)]
+	]
+	
+	test_attach_tabs		= Attach.attach_tabs
+	test_tab_mysteries		= Attach.attach_tab_mysteries
+	test_tab_map			= Attach.attach_tab_map
+	test_tab_gallery		= Attach.attach_tab_gallery
+	test_tab_tours			= Attach.attach_tab_tours
+	test_tab_collections	= Attach.attach_tab_collections
+	test_tab_slideshow		= Attach.attach_tab_slideshow
 	
 	def test_index(self):
 		self.go(self.PROJECT_URL)
