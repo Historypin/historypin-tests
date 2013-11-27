@@ -406,7 +406,7 @@ class Community(HPTestCase):
 		for n in range(len(pinners)):
 			i = pinners[n]
 			self.assertEqual(URL_BASE + '/resources/images/content/community/reading/' + i[0], pinner_images[n].get_attribute('src'))
-			self.assertEqual(URL_BASE + '/channels/view/id/' + i[1], pinner_links[n].get_attribute('href'))
+			self.assertEqual(URL_BASE + '/channels/view/' + i[1], pinner_links[n].get_attribute('href'))
 			self.assertEqual(i[2], pinner_links[n].text)
 		
 		
@@ -495,7 +495,7 @@ class Community(HPTestCase):
 					['Earthquake damage, 25 February 2011'										, '/photos/#/geo:-43.507721,172.729543/zoom:10/sv:24391/heading:-171.09375/pitch:-0.75000/sv_zoom:1.00000/'					, '{0}24391/dim/142x100/crop/1/quality/90'.format(thumbs), 'This photo, overlaid on Street View, shows buildings damaged by the earthquake in Christchurch, New Zealand in February 2011, illustrating the damage done by natural disasters.'],
 					['Damage on Piccadilly, 1940 - 1942'										, '/map/#!/geo:51.509108,-0.136672/zoom:20/dialog:60440/tab:stories_tab_content/'													, '{0}60440/dim/142x100/quality/90'.format(thumbs), 'This video clip illustrates bomb damage to Picadilly, London in the early 1940s.'],
 					[u'JFK’s Inaugural Speech, 20th January 1961'								, '/map/#!/geo:38.891454,-77.01214/zoom:15/dialog:23468/tab:stories_tab_content/'											, '{0}23468/dim/142x100/quality/90'.format(thumbs), u'This audio clip plays an extract from John F Kennedy’s inaugural speech in 1961.'],
-					['Historypin Repeats'														, '/channels/view/id/571038/', '/channels/img/571038/logo/1/dim/142x100/crop/1/', 'This Channel has got some great Historypin Repeats - modern replicas of historical photos on Historypin, taken by people using the smartphone app.'],
+					['Historypin Repeats'														, '/channels/view/571038/', '/channels/img/571038/logo/1/dim/142x100/crop/1/', 'This Channel has got some great Historypin Repeats - modern replicas of historical photos on Historypin, taken by people using the smartphone app.'],
 					['Joe Voss, Jefferson Memorial, 1948 - 1952'								, '/photos/#/geo:38.889263,-77.05008/zoom:15/dialog:33892/tab:more_tab_content/'		, '{0}33892/dim/142x100/crop/1/quality/90'.format(thumbs), 'This photo shows a Historypin Repeat. This Historypinner has pinned a photo of his Dad at Jefferson Memorial, Washington DC in the 1950s and used the Historypin app to take a photo of himself in the same spot in 2011.'],
 				],
 			}
