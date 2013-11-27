@@ -34,7 +34,7 @@ class Project_After_Sandy(Project_Sandy):
 		projects_items = [
 			['Before Sandy'		, '27-before-sandy/', 'What did neighborhoods in the US and the Caribbean look like before Sandy?'			, '27'],
 			['During Sandy'		, '29-during-sandy/', 'Memories and materials from when Sandy passed through communities and neighborhoods.', '29'],
-			['Back to homepage'	, '26-sandy/'		, 'See all the materials shared from before, during and after Sandy.'					, '26'],
+			['Hurricane Sandy'	, '26-sandy/'		, 'How have communities and neighborhoods in the Caribbean'								, '26'],
 		]
 		
 		h2s			= projects.es('h2')
@@ -48,7 +48,7 @@ class Project_After_Sandy(Project_Sandy):
 			self.assertEqual(i[0], h2s[n].text)
 			self.assertEqual(URL_BASE + '/project/' + i[1], h2s_links[n].get_attribute('href'))
 			self.assertEqual(URL_BASE + '/project/' + i[1], img_links[n].get_attribute('href'))
-			self.assertEqual(i[2], texts[n].text)
+			self.assertIn(i[2], texts[n].text)
 			self.assertEqual(URL_BASE + '/projects/img/pid/' + i[3] + '/type/banner,project_image,logo/dim/313x214/crop/1/', imgs[n].get_attribute('src'))
 		
 		self.assertEqual('%s/attach%s/photos/gallery/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
