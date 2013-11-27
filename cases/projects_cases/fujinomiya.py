@@ -4,12 +4,12 @@ from base import *
 
 # TODO - refactor links for japan projects, when they are set live
 
-JAPAN_LINK = 'http://www.v5-japan.historypin-hrd.appspot.com'
-FUJINOMIYA_LINK = '%s/jp/project/47-fujinomiya-project' % JAPAN_LINK
+JAPAN_URL	= 'http://www.v5-japan.historypin-hrd.appspot.com'
+PROJECT_URL	= 'http://www.v5-japan.historypin-hrd.appspot.com/jp/project/47-fujinomiya-project'
 
 class Project_Fujinomiya(HPTestCase):
 	
-	@url(FUJINOMIYA_LINK)
+	@url(PROJECT_URL)
 	def test_index(self):
 		
 		self.assertTitle('Fujinomiya project')
@@ -18,16 +18,16 @@ class Project_Fujinomiya(HPTestCase):
 		site_cnt = self.e('#site')
 		nav_links = site_cnt.es('.primary a')
 		
-		self.assertEqual('%s/resources/images/project-japan/historypin-logo.png' % JAPAN_LINK, nav_links[0].e('img').get_attribute('src'))
+		self.assertEqual('%s/resources/images/project-japan/historypin-logo.png' % JAPAN_URL, nav_links[0].e('img').get_attribute('src'))
 		self.assertEqual('http://www.historypin.jp/jp', nav_links[0].get_attribute('href'))
 		
-		self.assertEqual('%s/' % FUJINOMIYA_LINK, nav_links[1].get_attribute('href'))
+		self.assertEqual('%s/' % PROJECT_URL, nav_links[1].get_attribute('href'))
 		self.assertEqual(u'ホーム', nav_links[1].text)
 		
-		self.assertEqual('%s/explore/#|map/' % FUJINOMIYA_LINK, nav_links[2].get_attribute('href'))
+		self.assertEqual('%s/explore/#|map/' % PROJECT_URL, nav_links[2].get_attribute('href'))
 		self.assertEqual(u'探索', nav_links[2].text)
 		
-		self.assertEqual('%s/upload/' % FUJINOMIYA_LINK, nav_links[3].get_attribute('href'))
+		self.assertEqual('%s/upload/' % PROJECT_URL, nav_links[3].get_attribute('href'))
 		self.assertEqual(u'投稿', nav_links[3].text)
 		
 		self.assertEqual('%s/' % blog_link		, nav_links[4].get_attribute('href'))
@@ -41,15 +41,15 @@ class Project_Fujinomiya(HPTestCase):
 		
 		user_links = site_cnt.es('.secondary a')
 		
-		self.assertEqual('%s/user/' % FUJINOMIYA_LINK, user_links[0].get_attribute('href'))
+		self.assertEqual('%s/user/' % PROJECT_URL, user_links[0].get_attribute('href'))
 		self.assertEqual(u'アカウント作成', user_links[0].text)
 		
-		self.assertEqual('%s/user/' % FUJINOMIYA_LINK, user_links[1].get_attribute('href'))
+		self.assertEqual('%s/user/' % PROJECT_URL, user_links[1].get_attribute('href'))
 		self.assertEqual(u'ログイン', user_links[1].text)
 		
 		self.assertEqual(u'富士宮プロジェクト', self.e('.sec-header h1').text)
 		
-		self.assertEqual('%s/jp/attach/project/47-fujinomiya-project/map/index/' % JAPAN_LINK, self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('%s/jp/attach/project/47-fujinomiya-project/map/index/' % JAPAN_URL, self.e('#embed-frame').get_attribute('src'))
 		
 		touts_items = [
 			['/fujinomiya/about/'						, u'富士宮プロジェクトについて（外部サイト）'	, u'富士宮プロジェクトについて詳しく知る'	, 'tout1_image'],
@@ -67,7 +67,7 @@ class Project_Fujinomiya(HPTestCase):
 			self.assertEqual(blog_link + i[0], imgs_links[n].get_attribute('href'))
 			self.assertEqual(i[1], h3s_links[n].text)
 			self.assertEqual(i[2], paragraphs[n].text)
-			self.assertEqual(JAPAN_LINK + '/projects/img/pid/47/dim/285x290/type/' + i[3] + '/crop/1/', imgs[n].get_attribute('src'))
+			self.assertEqual(JAPAN_URL + '/projects/img/pid/47/dim/285x290/type/' + i[3] + '/crop/1/', imgs[n].get_attribute('src'))
 		
 		activity = self.e('#activity')
 		self.assertIsInstance(activity.e('h1'), WebElement)
