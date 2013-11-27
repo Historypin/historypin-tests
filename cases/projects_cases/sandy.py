@@ -78,7 +78,7 @@ class Project_Sandy(HPTestCase, Attach):
 		self.assertEqual('%s%s/upload/' % (URL_BASE, self.PROJECT_URL), button_upload.get_attribute('href'))
 		self.assertEqual('Contribute'								, button_upload.e('span').text)
 		
-		self.assertEqual('%s/projects/img/pid/26/type/project_image/dim/665x406/crop/1/' % URL_BASE, site_cnt.e('.main-image img').get_attribute('src'))
+		self.assertEqual('%s/projects/img/pid/26/type/project_image/dim/648x406/crop/1/' % URL_BASE, site_cnt.e('.main-image img').get_attribute('src'))
 		
 		activity = site_cnt.e('#activity')
 		self.assertIsInstance(activity.e('h1'), WebElement)
@@ -92,8 +92,8 @@ class Project_Sandy(HPTestCase, Attach):
 		
 		projects_items = [
 			['Before Sandy'	, '27-before-sandy/', 'What did neighborhoods in the US and the Caribbean look like before Sandy?'			, '27'],
-			['After Sandy'	, '28-after-sandy/'	, 'Explore how people are starting to rebuild their homes and communities.'				, '28'],
 			['During Sandy'	, '29-during-sandy/', 'Memories and materials from when Sandy passed through communities and neighborhoods.', '29'],
+			['After Sandy'	, '28-after-sandy/'	, 'Explore how people are starting to rebuild their homes and communities.'				, '28'],
 		]
 		
 		h2s			= projects.es('h2')

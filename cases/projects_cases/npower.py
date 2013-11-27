@@ -42,12 +42,12 @@ class Project_NPower(HPTestCase, Attach):
 		self.assertIn('Featured photos shared by', bottom_p.text)
 		
 		channels = [
-			['id/571038/'	, 'Mirrorpix'],
-			['8759065/'		, 'Dawn Parsonage'],
-			['id/8285366/'	, 'The Benevolent Society'],
-			['id/3036003/'	, 'Science and Society Picture Library'],
-			['id/6900604/'	, 'Reading Post'],
-			['id/14424002/'	, 'npower archive'],
+			['571038/'	, 'Mirrorpix'],
+			['8759065/'	, 'Dawn Parsonage'],
+			['8285366/'	, 'The Benevolent Society'],
+			['3036003/'	, 'Science and Society Picture Library'],
+			['6900604/'	, 'Reading Post'],
+			['14424002/', 'npower archive'],
 		]
 			
 		channels_links = bottom_p.es('a')
