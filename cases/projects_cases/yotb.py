@@ -33,7 +33,7 @@ class Project_YOTB(HPTestCase, Attach):
 		self.assertEqual('Pin your memories', button.e('span').text)
 		
 		touts_items = [
-			['History Mysteries'	, 'Visit 1964 San Francisco AND help out the SF Public Library.'							, 'tout1_image', '09/16/visit-1964-san-francisco-and-help-the-sf-public-library/'],
+			['History Mysteries'	, 'Read about how you can help us solve Bernal Heights-themed mysteries.'					, 'tout1_image', '11/26/mystery-solving-in-with-the-bernal-heights-history-group-san-francisco/'],
 			['Potrero History Night', 'Read about and see photos of Historypin at this great local event on November 2nd, 2013.', 'tout2_image', '11/03/historypin-at-the-potrero-hill-history-night-nov-2nd-2013/'],
 		]
 		

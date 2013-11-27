@@ -37,8 +37,8 @@ class Projects(HPTestCase):
 		
 		for n in range(len(projects)):
 			i = projects[n]
-			self.assertEqual(url + i[0]													, links[n].get_attribute('href'))
-			self.assertEqual(url + i[0] + '/'											, banner_links[n].get_attribute('href'))
-			self.assertEqual(i[1]														, headings[n].text)
-			self.assertEqual(i[2]														, paragraphs[n].text)
+			self.assertEqual(url + i[0] + '/'	, links[n].get_attribute('href'))
+			self.assertEqual(url + i[0] + '/'	, banner_links[n].get_attribute('href'))
+			self.assertEqual(i[1]				, headings[n].text)
+			self.assertEqual(i[2]				, paragraphs[n].text)
 			self.assertEqual(URL_BASE + '/projects/img/pid/' + i[3]	+ '/type/project_image,banner,logo/dim/292x230/crop/1/', images[n].get_attribute('src'))
