@@ -315,11 +315,11 @@ class Channel(HPTestCase):
 			['%d/' % CHANNELS_EXAMPLES[4], 'Biggleswade History Society'],
 		]
 		
-		channels_help = help.es('a[href*=id]')
+		channels_help = help.es('a[href*=channels]')
 		
 		for n in range(len(examples)):
 			i = examples[n]
-			self.assertEqual(URL_BASE + '/channels/view/id/' + i[0]	, channels_help[n].get_attribute('href'))
+			self.assertEqual(URL_BASE + '/channels/view/' + i[0], channels_help[n].get_attribute('href'))
 			self.assertEqual(i[1]								, channels_help[n].text)
 		
 		

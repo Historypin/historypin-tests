@@ -18,7 +18,7 @@ class Homepage(HPTestCase):
 		self.browser.refresh()
 		self.assertRaises(NoSuchElementException, self.e, '.cookies-popup')
 	
-	@unittest.expectedFailure
+	# @unittest.expectedFailure
 	@url('/')
 	def test_navigation(self):
 		
@@ -30,7 +30,7 @@ class Homepage(HPTestCase):
 			[ 'Tours and Collections'	, '%s/curated/' % URL_BASE ],
 			[ 'Get Involved'			, '%s/community/' % URL_BASE ],
 			[ 'Blog'					, 'http://blog.historypin.com/' ],
-			[ 'Login'					, '%s/_ah/login?continue=http%3A//www.localhost.com%3A8080/user/login/' % URL_BASE ],
+			[ 'Login'					, '%s/user/' % URL_BASE ],
 			[ 'Join'					, '%s/user/' % URL_BASE ],
 			[ 'Pin'						, '%s/upload/' % URL_BASE ],
 		]
