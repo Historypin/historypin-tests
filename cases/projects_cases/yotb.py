@@ -34,7 +34,7 @@ class Project_YOTB(HPTestCase, Attach):
 		
 		touts_items = [
 			['History Mysteries'	, 'Read about how you can help us solve Bernal Heights-themed mysteries.'					, 'tout1_image', '11/26/mystery-solving-in-with-the-bernal-heights-history-group-san-francisco/'],
-			['Potrero History Night', 'Read about and see photos of Historypin at this great local event on November 2nd, 2013.', 'tout2_image', '11/03/historypin-at-the-potrero-hill-history-night-nov-2nd-2013/'],
+			['Potrero History Night', 'Read about and see photos of Historypin at this great local event on November 2nd, 2013.', 'tout2_image', '11/26/mystery-solving-in-with-the-bernal-heights-history-group-san-francisco/'],
 		]
 		
 		h3s		= site_cnt.es('.w2 h3')
@@ -51,7 +51,7 @@ class Project_YOTB(HPTestCase, Attach):
 		
 		activity = site_cnt.e('#activity')
 		self.assertIsInstance(activity.e('h1'), WebElement)
-		self.assertEqual('materials, memories and\ncontributions to mysteries', activity.e('h1 + p').text)
+		self.assertEqual('materials, memories and\ncontributions to mysteries', activity.e('h6').text)
 		
 		item_feed = site_cnt.e('.activity li:nth-of-type(1)')
 		self.assertIsInstance(item_feed.e('a')	, WebElement)

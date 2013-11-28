@@ -18,7 +18,6 @@ class Homepage(HPTestCase):
 		self.browser.refresh()
 		self.assertRaises(NoSuchElementException, self.e, '.cookies-popup')
 	
-	# @unittest.expectedFailure
 	@url('/')
 	def test_navigation(self):
 		
