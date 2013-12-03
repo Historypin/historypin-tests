@@ -33,14 +33,21 @@ class Tours(HPTestCase):
 	def test_index(self):
 		self.__test_tour_listing()
 	
-	@url('/tours/all')
+	@url('/tours/all/page/1/')
 	def test_all(self):
 		self.__test_tour_listing()
 		
 		next = self.e('.show-next')
 		self.assertEqual('Next'								, next.text)
 		self.assertEqual('%s/tours/all/page/2/' % URL_BASE	, next.get_attribute('href'))
-		# TODO Issue #2850
+	
+	@url('/tours/all/page/2/')
+	def test_all_next_page(self):
+		self.__test_tour_listing()
+		
+		next = self.e('.show-next')
+		self.assertEqual('Next'								, next.text)
+		self.assertEqual('%s/tours/all/page/3/' % URL_BASE	, next.get_attribute('href'))
 	
 	@logged_in
 	@url('/tours/view/id/%d' % ID_TOUR + '/')
