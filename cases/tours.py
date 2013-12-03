@@ -40,6 +40,7 @@ class Tours(HPTestCase):
 		next = self.e('.show-next')
 		self.assertEqual('Next'								, next.text)
 		self.assertEqual('%s/tours/all/page/2/' % URL_BASE	, next.get_attribute('href'))
+		# TODO Issue #2850
 	
 	@logged_in
 	@url('/tours/view/id/%d' % ID_TOUR + '/')

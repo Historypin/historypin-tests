@@ -179,7 +179,7 @@ class Attach():
 		
 		self.assertEqual('Show me'	, status.e('h4').text)
 		self.assertEqual('Only show', mystery_type.e('h4').text)
-		self.assertTrue(status.e('#showme_all').is_selected())
+		self.assertTrue(status.e('#showme_incomplete').is_selected())
 		
 		status_labels = ['All mysteries', 'Unsolved mysteries', 'Under investigation', 'Solved mysteries']
 		
@@ -194,7 +194,7 @@ class Attach():
 		self.assertIsInstance(mystery_first.e('.cnt h4 a'), WebElement)
 		self.assertIsInstance(mystery_first.e('.clues h6'), WebElement)
 		
-		status.e('#showme_incomplete').click()
+		status.e('#showme_all').click()
 		sleep(5)
 		mystery_first = self.e('.attach.mysteries > .list section:nth-of-type(1)')
 		solve_button = mystery_first.e('footer .button')
