@@ -37,14 +37,22 @@ class Collections(HPTestCase):
 		self.__test_collection_listing()
 	
 	@logged_in
-	@url('/collections/all')
+	@url('/collections/all/page/1/')
 	def test_all(self):
 		self.__test_collection_listing()
 		
 		next = self.e('.show-next')
 		self.assertEqual('Next'									, next.text)
 		self.assertEqual('%s/collections/all/page/2/' % URL_BASE, next.get_attribute('href'))
-		# TODO Issue #2850
+	
+	@logged_in
+	@url('/collections/all/page/2/')
+	def test_all_next_page(self):
+		
+		self.__test_collection_listing()
+		next = self.e('.show-next')
+		self.assertEqual('Next'									, next.text)
+		self.assertEqual('%s/collections/all/page/3/' % URL_BASE, next.get_attribute('href'))
 	
 	@logged_in
 	@url('/collections/view/id/%d' % ID_COLLECTION + '/')
