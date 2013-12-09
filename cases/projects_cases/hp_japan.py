@@ -15,9 +15,9 @@ class Project_HPJapan(HPTestCase, Attach):
 		['%s/photos/gallery/' % PROJECT_URL, '%s/map/index/' % PROJECT_URL],
 	]
 	
-	test_attach_tabs	= Attach.attach_tabs
-	test_tab_gallery	= Attach.attach_tab_gallery
-	test_tab_map		= Attach.attach_tab_map
+	# test_attach_tabs	= Attach.attach_tabs
+	# test_tab_gallery	= Attach.attach_tab_gallery
+	# test_tab_map		= Attach.attach_tab_map
 	
 	
 	def __test_main_touts(self):
@@ -98,13 +98,13 @@ class Project_HPJapan(HPTestCase, Attach):
 		nav_links = site_cnt.es('.primary a')
 		
 		self.assertEqual('%s/resources/images/project-japan/historypin-logo.png' % self.PROJECT_URL, nav_links[0].e('img').get_attribute('src'))
-		self.assertEqual('http://www.historypin.jp/jp', nav_links[0].get_attribute('href'))
+		self.assertEqual('http://www.historypin.com/', nav_links[0].get_attribute('href'))
 		
 		self.assertEqual('%s/jp/' % self.PROJECT_URL, nav_links[1].get_attribute('href'))
 		self.assertEqual(u'ホーム', nav_links[1].text)
 		
 		self.assertEqual('%s/jp/explore/#|map/' % self.PROJECT_URL, nav_links[2].get_attribute('href'))
-		self.assertEqual(u'探索する', nav_links[2].text)
+		self.assertEqual(u'探索', nav_links[2].text)
 		
 		self.assertEqual('%s/jp/upload/' % self.PROJECT_URL, nav_links[3].get_attribute('href'))
 		self.assertEqual(u'投稿', nav_links[3].text)
@@ -130,7 +130,7 @@ class Project_HPJapan(HPTestCase, Attach):
 		
 		button_items = [
 			['/jp/explore/#|map/'	, u'探索する'],
-			['/jp/upload/'			, u'投稿'],
+			['/jp/upload/'			, u'投稿する'],
 		]
 		
 		buttons			= self.e('.buttons')
