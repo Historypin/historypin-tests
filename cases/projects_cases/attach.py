@@ -109,6 +109,20 @@ class Attach():
 		self.assertIsInstance(paragraph.e('a:nth-of-type(1)'), WebElement)
 		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
 	
+	def attach_tab_tours_empty(self):
+		self.go('/attach' + self.PROJECT_URL + '/tours/all/')
+		
+		h3 = self.e('#page-index h3')
+		
+		self.assertEqual(self.project_name + " hasn't yet published any Tours.", h3.text)
+	
+	def attach_tab_collections_empty(self):
+		self.go('/attach' + self.PROJECT_URL + '/collections/all/')
+		
+		h3 = self.e('#page-index h3')
+		
+		self.assertEqual(self.project_name + " hasn't yet published any Collections.", h3.text)
+	
 	def attach_tab_slideshow(self):
 		self.go('/attach' + self.PROJECT_URL + '/photos/slideshow/')
 		
