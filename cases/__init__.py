@@ -27,6 +27,7 @@ from projects_cases.npower_cook_clean import Project_NPower_Cook_Clean
 from projects_cases.npower_celebrate import Project_NPower_Celebrate
 from projects_cases.npower_watch_listen import Project_NPower_Watch_Listen
 from projects_cases.npower_work import Project_NPower_Work
+from projects_cases.queens import Project_Queens
 
 from projects_cases.olympics import Project_Olympics
 from projects_cases.ptqh import Project_PTQH
