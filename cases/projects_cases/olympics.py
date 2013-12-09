@@ -17,8 +17,8 @@ class Project_Olympics(HPTestCase, Attach):
 	test_tab_gallery		= Attach.attach_tab_gallery
 	test_tab_tours			= Attach.attach_tab_tours
 	
-	@url(PROJECT_URL)
 	def test_index(self):
+		self.go(self.PROJECT_URL)
 		
 		self.assertTitle('Olympic memories | Home')
 		
