@@ -16,22 +16,22 @@ class Project_NPower_Cook_Clean(Project_NPower):
 		self.go(self.PROJECT_URL)
 		
 		self.assertTitle('Cook and Clean | Home')
-			
+		
 		site_cnt = self.e('#site-content')
 		desc = site_cnt.e('.right > a')
-			
+		
 		self.assertEqual('%s/project/15-remember/' % URL_BASE						, desc.get_attribute('href'))
 		self.assertEqual('%s/projects/img/pid/19/type/logo/dim/600x120/' % URL_BASE	, desc.e('img').get_attribute('src'))
-			
+		
 		self.assertEqual('Dirty dishes in the days before dishwashers, cooking up a feast with all the family, arduous chores and the legends that did them.', site_cnt.e('.right p').text)
-			
+		
 		button_upload = site_cnt.e('.left a')
-			
+		
 		self.assertEqual('%s/project/15-remember/upload/projects/bridge/1/?subproject=19' % URL_BASE, button_upload.get_attribute('href'))
 		self.assertEqual('Pin your memories'														, button_upload.e('span').text)
-			
+		
 		self.assertEqual('Explore more', site_cnt.e('.cf h3').text)
-			
+		
 		projects = [
 			['Keep Warm'		, '16-remember-keep-warm/'			, '16'],
 			['Play'				, '18-remember-play/'				, '18'],

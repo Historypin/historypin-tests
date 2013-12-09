@@ -152,7 +152,7 @@ class Project_HPJapan(HPTestCase, Attach):
 		
 		self.assertTitle(u'Historypin 日本上陸！')
 		
-		self.assertEqual('%s/jp/attach%s/map/index/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))  # TODO fix this after the project is set live
+		self.assertEqual('%s/jp/attach%s/map/index/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 		
 		self.__test_main_touts()
 		self.__test_icon_touts()
