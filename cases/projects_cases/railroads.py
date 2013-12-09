@@ -2,9 +2,9 @@
 
 from base import *
 
-class Project_Queens(HPTestCase):
+class Project_Railroads(HPTestCase):
 	
-	@url('/project/40-queens/')
+	@url('/project/42-railroads/')
 	def test_index(self):
 		pass
 		
