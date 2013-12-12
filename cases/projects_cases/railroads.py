@@ -24,7 +24,7 @@ class Project_Railroads(HPTestCase, Attach):
 		
 		site_cnt				= self.e('#site-content')
 		tout_items = [
-			['Mysteries'		, 'tout1_image', 'Help solve research questions about photos'	, 'http://www.historypin.com/project/33660015-railroads/explore/#|mysteries/index/'],
+			['Mysteries'		, 'tout1_image', 'Help solve research questions about photos'	, 'http://www.historypin.com%s/explore/#|mysteries/index/' % self.PROJECT_URL],
 			['About the project', 'tout2_image', 'Learn more about the Living with Railroads '	, 'http://blog.historypin.com/?p=3867'],
 		]
 		

@@ -32,7 +32,7 @@ class Project_Queens(HPTestCase, Attach):
 		# TODO fix link to match the new ID - issue #2883 should be fixed
 		
 		tout_items = [
-			['Pin your memories'	, 'tout1_image', 'What makes your neighborhood special?'					, 'http://www.historypin.com/project/25238060-queens/upload/'],
+			['Pin your memories'	, 'tout1_image', 'What makes your neighborhood special?'					, 'http://www.historypin.com%s/upload/' % self.PROJECT_URL],
 			['Get involved'			, 'tout2_image', 'Find out how you can get your neighborhood involved'		, 'http://www.bbc.co.uk/'],
 		]
 		
