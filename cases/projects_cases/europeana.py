@@ -19,9 +19,21 @@ class Project_Europeana(HPTestCase, Attach):
 	def test_tab_tours(self):
 		self.go('/attach' + self.PROJECT_URL + '/tours/all/')
 		
+		sleep(2)
+		filter_by = self.e('.search-filter-pos')
+		self.assertEqual('Sort by  ', filter_by.e('span').text)
+		
+		radio_buttons	= filter_by.es('input')
+		labels			= filter_by.es('label')
+		
+		self.assertIsInstance(radio_buttons[0], WebElement)
+		self.assertTrue(radio_buttons[0].is_selected())
+		self.assertFalse(radio_buttons[1].is_selected())
+		
+		self.assertEqual(' Most Recent'	, labels[0].e('strong').text)
+		self.assertEqual(' Most Popular', labels[1].e('strong').text)
 		
 		item = self.e('#list li:nth-of-type(1) > a')
-		
 		self.assertIsInstance(item, WebElement)
 		self.assertIsInstance(item.e('img'), WebElement)
 		
@@ -32,6 +44,25 @@ class Project_Europeana(HPTestCase, Attach):
 		paragraph = self.e('#list li:nth-of-type(1) p')
 		self.assertIsInstance(paragraph.e('a:nth-of-type(1)'), WebElement)
 		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
+		
+		radio_buttons[1].click()
+		
+		item = self.e('#list li:nth-of-type(1) > a')
+		self.assertIsInstance(item, WebElement)
+		self.assertIsInstance(item.e('img'), WebElement)
+		
+		self.assertIn('tour-icon'	, item.e('span').get_attribute('class'))
+		self.assertIn('ss-icon'		, item.e('span').get_attribute('class'))
+		self.assertIn('ss-openbook'	, item.e('span').get_attribute('class'))
+		
+		paragraph = self.e('#list li:nth-of-type(1) p')
+		self.assertIsInstance(paragraph.e('a:nth-of-type(1)'), WebElement)
+		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
+		
+	def test_tours_search(self):
+		self.go('/attach' + self.PROJECT_URL + '/tours/all/')
+		
+		
 	
 	def test_sub_nav_cz(self):
 		self.go(URL_BASE + '/cz' + self.PROJECT_URL)
