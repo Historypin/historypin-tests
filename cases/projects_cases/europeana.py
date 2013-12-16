@@ -152,7 +152,46 @@ class Project_Europeana(HPTestCase, Attach):
 	def test_search_no_results(self):
 		self.go('/attach' + self.PROJECT_URL + '/tours/all/')
 		
+		site_cnt		= self.e('#photo_list_content')
+		input_search	= site_cnt.e('#stories-search')
+		button_go		= site_cnt.e('#stories-search-submit')
 		
+		self.assertEqual('Go', button_go.e('span').text)
+		
+		input_search.send_keys('test')
+		button_go.click()
+		
+		site_cnt		= self.e('#photo_list_content')
+		filter_by		= site_cnt.e('.search-filter-pos')
+		radio_buttons	= filter_by.es('input')
+		labels			= filter_by.es('label')
+		
+		self.assertIsInstance(radio_buttons[2], WebElement)
+		self.assertTrue(radio_buttons[2].is_selected())
+		self.assertEqual(' Most Relevant', labels[2].e('strong').text)
+		self.assertEqual(u'Search results for ‘test’: (0)', site_cnt.e('.search-result').text)
+		
+		self.assertEqual('No results found.', site_cnt.e('h3').text)
+		
+		self.e('.clear-search').click()
+		
+		site_cnt		= self.e('#photo_list_content')
+		filter_by		= site_cnt.e('.search-filter-pos')
+		radio_buttons	= filter_by.es('input')
+		
+		self.assertTrue(radio_buttons[0].is_selected())
+		
+		item = self.e('#list li:nth-of-type(1) > a')
+		self.assertIsInstance(item, WebElement)
+		self.assertIsInstance(item.e('img'), WebElement)
+		
+		self.assertIn('tour-icon'	, item.e('span').get_attribute('class'))
+		self.assertIn('ss-icon'		, item.e('span').get_attribute('class'))
+		self.assertIn('ss-openbook'	, item.e('span').get_attribute('class'))
+		
+		paragraph = self.e('#list li:nth-of-type(1) p')
+		self.assertIsInstance(paragraph.e('a:nth-of-type(1)'), WebElement)
+		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
 	
 	def test_sub_nav_cz(self):
 		self.go(URL_BASE + '/cz' + self.PROJECT_URL)
