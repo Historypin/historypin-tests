@@ -60,7 +60,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
 		
 	def test_tours_search(self):
-		self.go('/attach' + self.PROJECT_URL + '/tours/all/')
+		self.go('/en/attach' + self.PROJECT_URL + '/tours/all/')
 		
 		site_cnt		= self.e('#photo_list_content')
 		input_search	= site_cnt.e('#stories-search')
@@ -150,7 +150,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
 	
 	def test_search_no_results(self):
-		self.go('/attach' + self.PROJECT_URL + '/tours/all/')
+		self.go('/en/attach' + self.PROJECT_URL + '/tours/all/')
 		
 		site_cnt		= self.e('#photo_list_content')
 		input_search	= site_cnt.e('#stories-search')
