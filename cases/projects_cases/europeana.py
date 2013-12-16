@@ -62,7 +62,6 @@ class Project_Europeana(HPTestCase, Attach):
 	def test_tours_search(self):
 		self.go('/attach' + self.PROJECT_URL + '/tours/all/')
 		
-		sleep(2)
 		site_cnt		= self.e('#photo_list_content')
 		input_search	= site_cnt.e('#stories-search')
 		button_go		= site_cnt.e('#stories-search-submit')
@@ -71,7 +70,6 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual('Go', button_go.e('span').text)
 		
 		input_search.send_keys('Berlin')
-		sleep(3)
 		button_go.click()
 		
 		site_cnt		= self.e('#photo_list_content')
@@ -88,6 +86,23 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		self.assertIn(u'Search results for ‘Berlin’:', site_cnt.e('.search-result').text)
 		
+		item = self.e('#list li:nth-of-type(1) > a')
+		self.assertIsInstance(item, WebElement)
+		self.assertIsInstance(item.e('img'), WebElement)
+		
+		self.assertIn('tour-icon'	, item.e('span').get_attribute('class'))
+		self.assertIn('ss-icon'		, item.e('span').get_attribute('class'))
+		self.assertIn('ss-openbook'	, item.e('span').get_attribute('class'))
+		
+		paragraph = self.e('#list li:nth-of-type(1) p')
+		self.assertIsInstance(paragraph.e('a:nth-of-type(1)'), WebElement)
+		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
+		
+		next_link = site_cnt.e('#list .show-next')
+		self.assertEqual('%s/en/attach%s/tours/all/page/2/order/relevance/?search=Berlin' % (URL_BASE, self.PROJECT_URL), next_link.get_attribute('href'))
+		self.assertEqual('Next', next_link.text)
+		
+		next_link.click()
 		
 		item = self.e('#list li:nth-of-type(1) > a')
 		self.assertIsInstance(item, WebElement)
@@ -101,26 +116,44 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIsInstance(paragraph.e('a:nth-of-type(1)'), WebElement)
 		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
 		
-		# send keys to input
-		# click go
-		# check the most relevant is selected
-		# assert search results text
-		# check the items
-		# check next page link
-		# click next
-		# click prevoius
-		# check if the results are saved
-		# check the input is saving the results
-		# click clear search
-		# verify that it shows no more
-		# check if the items are there and most recent is selected
+		site_cnt = self.e('#photo_list_content')
+		prev_link = site_cnt.e('#list .show-prev')
+		prev_link.click()
+		
+		site_cnt		= self.e('#photo_list_content')
+		filter_by		= site_cnt.e('.search-filter-pos')
+		radio_buttons	= filter_by.es('input')
+		labels			= filter_by.es('label')
+		
+		self.assertIsInstance(radio_buttons[2], WebElement)
+		self.assertTrue(radio_buttons[2].is_selected())
+		self.assertEqual(' Most Relevant', labels[2].e('strong').text)
+		
+		self.e('.clear-search').click()
+		
+		site_cnt		= self.e('#photo_list_content')
+		filter_by		= site_cnt.e('.search-filter-pos')
+		radio_buttons	= filter_by.es('input')
+		
+		self.assertTrue(radio_buttons[0].is_selected())
+		
+		item = self.e('#list li:nth-of-type(1) > a')
+		self.assertIsInstance(item, WebElement)
+		self.assertIsInstance(item.e('img'), WebElement)
+		
+		self.assertIn('tour-icon'	, item.e('span').get_attribute('class'))
+		self.assertIn('ss-icon'		, item.e('span').get_attribute('class'))
+		self.assertIn('ss-openbook'	, item.e('span').get_attribute('class'))
+		
+		paragraph = self.e('#list li:nth-of-type(1) p')
+		self.assertIsInstance(paragraph.e('a:nth-of-type(1)'), WebElement)
+		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
+	
+	def test_search_no_results(self):
+		self.go('/attach' + self.PROJECT_URL + '/tours/all/')
 		
 		
-		
-		# search for word that has no results
-		# check text no results found
-		# click to clear search
-		
+	
 	def test_sub_nav_cz(self):
 		self.go(URL_BASE + '/cz' + self.PROJECT_URL)
 		
