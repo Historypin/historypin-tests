@@ -297,7 +297,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		self.assertEqual('Go', button_go.e('span').text)
 		
-		input_search.send_keys('test')
+		input_search.send_keys('ASDFGHQWERTYUIOPS')
 		button_go.click()
 		
 		site_cnt		= self.e('#photo_list_content')
@@ -308,7 +308,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIsInstance(radio_buttons[2], WebElement)
 		self.assertTrue(radio_buttons[2].is_selected())
 		self.assertEqual(' Most Relevant', labels[2].e('strong').text)
-		self.assertEqual(u'Search results for ‘test’: (0)', site_cnt.e('.search-result').text)
+		self.assertEqual(u'Search results for ‘ASDFGHQWERTYUIOPS’: (0)', site_cnt.e('.search-result').text)
 		
 		self.assertEqual('No results found.', site_cnt.e('h3').text)
 		

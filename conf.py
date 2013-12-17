@@ -1,5 +1,5 @@
 
-PATH_CRHOME_DRIVER	= '/usr/lib64/chromium-browser/chromedriver'
+PATH_CRHOME_DRIVER	= '/Users/koko/.dotfiles/bin/chromedriver'
 GO_TIMEOUT = 1
 
 VERSION = 'v5-europeana-filter'
