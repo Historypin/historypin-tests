@@ -58,7 +58,6 @@ class Project_Europeana(HPTestCase, Attach):
 		paragraph = self.e('#list li:nth-of-type(1) p')
 		self.assertIsInstance(paragraph.e('a:nth-of-type(1)'), WebElement)
 		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
-		
 	
 	def test_search_by_relevance(self):
 		self.go('/en/attach' + self.PROJECT_URL + '/tours/all/')
@@ -252,6 +251,42 @@ class Project_Europeana(HPTestCase, Attach):
 		radio_buttons	= filter_by.es('input')
 		
 		self.assertTrue(radio_buttons[0].is_selected())
+	
+	def test_next_page_recent(self):
+		self.go('/en/attach' + self.PROJECT_URL + '/tours/all/')
+		
+		site_cnt		= self.e('#photo_list_content')
+		input_search	= site_cnt.e('#stories-search')
+		button_go		= site_cnt.e('#stories-search-submit')
+		
+		self.assertEqual('Search', input_search.get_attribute('placeholder'))
+		self.assertEqual('Go', button_go.e('span').text)
+		
+		input_search.send_keys('Berlin')
+		button_go.click()
+		
+		site_cnt		= self.e('#photo_list_content')
+		filter_by		= site_cnt.e('.search-filter-pos')
+		radio_buttons	= filter_by.es('input')
+		
+		radio_buttons[0].click()
+		
+		site_cnt	= self.e('#photo_list_content')
+		next_link	= site_cnt.e('#list .show-next')
+		next_link.click()
+		
+		site_cnt		= self.e('#photo_list_content')
+		filter_by		= site_cnt.e('.search-filter-pos')
+		radio_buttons	= filter_by.es('input')
+		self.assertTrue(radio_buttons[0].is_selected())
+		
+		title_items = ["Border Soldiers on High Alert at Checkpoint Charlie", "Bornholmer Strasse Border Crossing", 'Visitors from the so-called "Valley of the clueless"']
+		
+		list_titles = site_cnt.e('#list')
+		titles = list_titles.es('li>p>a:nth-of-type(1)')
+		
+		for n in range(len(title_items)):
+			self.assertEqual(title_items[n], titles[n].text)
 	
 	def test_search_no_results(self):
 		self.go('/en/attach' + self.PROJECT_URL + '/tours/all/')
