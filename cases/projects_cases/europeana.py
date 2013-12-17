@@ -59,14 +59,15 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIsInstance(paragraph.e('a:nth-of-type(1)'), WebElement)
 		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
 		
-	def test_tours_search(self):
+	
+	def test_search_by_relevance(self):
 		self.go('/en/attach' + self.PROJECT_URL + '/tours/all/')
 		
 		site_cnt		= self.e('#photo_list_content')
 		input_search	= site_cnt.e('#stories-search')
 		button_go		= site_cnt.e('#stories-search-submit')
 		
-		# self.assertEqual('Search', button_go.get_attribute('placeholder')) TODO fix this
+		self.assertEqual('Search', input_search.get_attribute('placeholder'))
 		self.assertEqual('Go', button_go.e('span').text)
 		
 		input_search.send_keys('Berlin')
@@ -75,59 +76,25 @@ class Project_Europeana(HPTestCase, Attach):
 		site_cnt		= self.e('#photo_list_content')
 		filter_by		= site_cnt.e('.search-filter-pos')
 		radio_buttons	= filter_by.es('input')
-		labels			= filter_by.es('label')
 		
 		self.assertIsInstance(radio_buttons[2], WebElement)
 		self.assertTrue(radio_buttons[2].is_selected())
-		self.assertEqual(' Most Relevant', labels[2].e('strong').text)
 		
 		self.assertEqual('%s/en/attach%s/tours/all' % (URL_BASE, self.PROJECT_URL), self.e('.clear-search').get_attribute('href'))
 		self.assertEqual('Clear search', self.e('.clear-search').text)
 		
 		self.assertIn(u'Search results for ‘Berlin’:', site_cnt.e('.search-result').text)
 		
-		item = self.e('#list li:nth-of-type(1) > a')
-		self.assertIsInstance(item, WebElement)
-		self.assertIsInstance(item.e('img'), WebElement)
+		title_items = ["At the Brandenburg Gate", 'Escape from East to West Berlin', "At Long Last! We've been waiting for you"]
 		
-		self.assertIn('tour-icon'	, item.e('span').get_attribute('class'))
-		self.assertIn('ss-icon'		, item.e('span').get_attribute('class'))
-		self.assertIn('ss-openbook'	, item.e('span').get_attribute('class'))
+		list_titles = site_cnt.e('#list')
+		titles = list_titles.es('li>p>a:nth-of-type(1)')
 		
-		paragraph = self.e('#list li:nth-of-type(1) p')
-		self.assertIsInstance(paragraph.e('a:nth-of-type(1)'), WebElement)
-		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
+		for n in range(len(title_items)):
+			self.assertEqual(title_items[n], titles[n].text)
 		
 		next_link = site_cnt.e('#list .show-next')
 		self.assertEqual('%s/en/attach%s/tours/all/page/2/order/relevance/?search=Berlin' % (URL_BASE, self.PROJECT_URL), next_link.get_attribute('href'))
-		self.assertEqual('Next', next_link.text)
-		
-		next_link.click()
-		
-		item = self.e('#list li:nth-of-type(1) > a')
-		self.assertIsInstance(item, WebElement)
-		self.assertIsInstance(item.e('img'), WebElement)
-		
-		self.assertIn('tour-icon'	, item.e('span').get_attribute('class'))
-		self.assertIn('ss-icon'		, item.e('span').get_attribute('class'))
-		self.assertIn('ss-openbook'	, item.e('span').get_attribute('class'))
-		
-		paragraph = self.e('#list li:nth-of-type(1) p')
-		self.assertIsInstance(paragraph.e('a:nth-of-type(1)'), WebElement)
-		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
-		
-		site_cnt = self.e('#photo_list_content')
-		prev_link = site_cnt.e('#list .show-prev')
-		prev_link.click()
-		
-		site_cnt		= self.e('#photo_list_content')
-		filter_by		= site_cnt.e('.search-filter-pos')
-		radio_buttons	= filter_by.es('input')
-		labels			= filter_by.es('label')
-		
-		self.assertIsInstance(radio_buttons[2], WebElement)
-		self.assertTrue(radio_buttons[2].is_selected())
-		self.assertEqual(' Most Relevant', labels[2].e('strong').text)
 		
 		self.e('.clear-search').click()
 		
@@ -136,18 +103,155 @@ class Project_Europeana(HPTestCase, Attach):
 		radio_buttons	= filter_by.es('input')
 		
 		self.assertTrue(radio_buttons[0].is_selected())
+	
+	def test_next_page_relevance(self):
+		self.go('/en/attach' + self.PROJECT_URL + '/tours/all/')
 		
-		item = self.e('#list li:nth-of-type(1) > a')
-		self.assertIsInstance(item, WebElement)
-		self.assertIsInstance(item.e('img'), WebElement)
+		site_cnt		= self.e('#photo_list_content')
+		input_search	= site_cnt.e('#stories-search')
+		button_go		= site_cnt.e('#stories-search-submit')
 		
-		self.assertIn('tour-icon'	, item.e('span').get_attribute('class'))
-		self.assertIn('ss-icon'		, item.e('span').get_attribute('class'))
-		self.assertIn('ss-openbook'	, item.e('span').get_attribute('class'))
+		self.assertEqual('Search', input_search.get_attribute('placeholder'))
+		self.assertEqual('Go', button_go.e('span').text)
 		
-		paragraph = self.e('#list li:nth-of-type(1) p')
-		self.assertIsInstance(paragraph.e('a:nth-of-type(1)'), WebElement)
-		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
+		input_search.send_keys('Berlin')
+		button_go.click()
+		
+		site_cnt		= self.e('#photo_list_content')
+		filter_by		= site_cnt.e('.search-filter-pos')
+		radio_buttons	= filter_by.es('input')
+		
+		radio_buttons[2].click()
+		
+		site_cnt		= self.e('#photo_list_content')
+		next_link = site_cnt.e('#list .show-next')
+		next_link.click()
+		
+		site_cnt		= self.e('#photo_list_content')
+		filter_by		= site_cnt.e('.search-filter-pos')
+		radio_buttons	= filter_by.es('input')
+		
+		self.assertTrue(radio_buttons[2].is_selected())
+		
+		title_items = ["Citizen's action group for German Unity", "Asylum seekers from Romania", "Caravans in Halberstadt"]
+		
+		list_titles = site_cnt.e('#list')
+		titles = list_titles.es('li>p>a:nth-of-type(1)')
+		
+		for n in range(len(title_items)):
+			self.assertEqual(title_items[n], titles[n].text)
+		
+	
+	def test_search_by_popularity(self):
+		self.go('/en/attach' + self.PROJECT_URL + '/tours/all/')
+		
+		site_cnt		= self.e('#photo_list_content')
+		input_search	= site_cnt.e('#stories-search')
+		button_go		= site_cnt.e('#stories-search-submit')
+		
+		input_search.send_keys('Berlin')
+		button_go.click()
+		
+		site_cnt		= self.e('#photo_list_content')
+		filter_by		= site_cnt.e('.search-filter-pos')
+		radio_buttons	= filter_by.es('input')
+		
+		radio_buttons[1].click()
+		
+		site_cnt		= self.e('#photo_list_content')
+		filter_by		= site_cnt.e('.search-filter-pos')
+		radio_buttons	= filter_by.es('input')
+		
+		self.assertTrue(radio_buttons[1].is_selected())
+		
+		title_items = ["Citizen's action group for German Unity", "First meeting place of the new forum in Zeuthen", "The wall is gone"]
+		
+		list_titles = site_cnt.e('#list')
+		titles = list_titles.es('li>p>a:nth-of-type(1)')
+		
+		for n in range(len(title_items)):
+			self.assertEqual(title_items[n], titles[n].text)
+		
+		self.e('.clear-search').click()
+		
+		site_cnt		= self.e('#photo_list_content')
+		filter_by		= site_cnt.e('.search-filter-pos')
+		radio_buttons	= filter_by.es('input')
+		
+		self.assertTrue(radio_buttons[0].is_selected())
+	
+	def test_next_page_popularity(self):
+		self.go('/en/attach' + self.PROJECT_URL + '/tours/all/')
+		
+		site_cnt		= self.e('#photo_list_content')
+		input_search	= site_cnt.e('#stories-search')
+		button_go		= site_cnt.e('#stories-search-submit')
+		
+		self.assertEqual('Search', input_search.get_attribute('placeholder'))
+		self.assertEqual('Go', button_go.e('span').text)
+		
+		input_search.send_keys('Berlin')
+		button_go.click()
+		
+		site_cnt		= self.e('#photo_list_content')
+		filter_by		= site_cnt.e('.search-filter-pos')
+		radio_buttons	= filter_by.es('input')
+		
+		radio_buttons[1].click()
+		site_cnt		= self.e('#photo_list_content')
+		next_link = site_cnt.e('#list .show-next')
+		next_link.click()
+		
+		site_cnt		= self.e('#photo_list_content')
+		filter_by		= site_cnt.e('.search-filter-pos')
+		radio_buttons	= filter_by.es('input')
+		self.assertTrue(radio_buttons[1].is_selected())
+		
+		title_items = ["In memory of the revolution in Romania", "Live History", "The man in the wheelchair on the Berlin Wall"]
+		
+		list_titles = site_cnt.e('#list')
+		titles = list_titles.es('li>p>a:nth-of-type(1)')
+		
+		for n in range(len(title_items)):
+			self.assertEqual(title_items[n], titles[n].text)
+	
+	def test_search_by_most_recent(self):
+		self.go('/en/attach' + self.PROJECT_URL + '/tours/all/')
+		
+		site_cnt		= self.e('#photo_list_content')
+		input_search	= site_cnt.e('#stories-search')
+		button_go		= site_cnt.e('#stories-search-submit')
+		
+		input_search.send_keys('Berlin')
+		button_go.click()
+		
+		site_cnt		= self.e('#photo_list_content')
+		filter_by		= site_cnt.e('.search-filter-pos')
+		radio_buttons	= filter_by.es('input')
+		
+		radio_buttons[0].click()
+		
+		site_cnt		= self.e('#photo_list_content')
+		filter_by		= site_cnt.e('.search-filter-pos')
+		radio_buttons	= filter_by.es('input')
+		
+		self.assertTrue(radio_buttons[0].is_selected())
+		
+		title_items = ["First meeting place of the new forum in Zeuthen", "Citizen's action group for German Unity", "The wall is gone"]
+		
+		list_titles = site_cnt.e('#list')
+		titles = list_titles.es('li>p>a:nth-of-type(1)')
+		
+		for n in range(len(title_items)):
+			self.assertEqual(title_items[n], titles[n].text)
+		
+		self.e('.clear-search').click()
+		
+		site_cnt		= self.e('#photo_list_content')
+		filter_by		= site_cnt.e('.search-filter-pos')
+		radio_buttons	= filter_by.es('input')
+		
+		self.assertTrue(radio_buttons[0].is_selected())
 	
 	def test_search_no_results(self):
 		self.go('/en/attach' + self.PROJECT_URL + '/tours/all/')
