@@ -23,6 +23,7 @@ from projects_cases.japan import Project_Japan
 from projects_cases.npower import Project_NPower
 from projects_cases.npower_keep_warm import Project_NPower_KeepWarm
 from projects_cases.npower_play import Project_NPower_Play
+from projects_cases.npower_timeline import Project_Timeline
 from projects_cases.npower_cook_clean import Project_NPower_Cook_Clean
 from projects_cases.npower_celebrate import Project_NPower_Celebrate
 from projects_cases.npower_watch_listen import Project_NPower_Watch_Listen
