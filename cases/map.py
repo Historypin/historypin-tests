@@ -255,7 +255,7 @@ class Map(HPTestCase):
 		self.assertEqual('%s/channels/img/%d/logo/1/dim/100x100/' % (URL_BASE, ID_USER_VIEW), stories_list.e('img').get_attribute('src'))
 		self.assertEqual('Comment:'													, stories_list.e('.story_text > h6').text)
 		self.assertEqual('This is a photo of National Theatre in Sofia, Bulgaria'	, stories_list.e('.story_cnt').text)
-		self.assertEqual('Gabss (pinner) has made a comment'						, stories_list.e('.activity').text)
+		self.assertEqual('Gabss (Pinner) has made a comment'						, stories_list.e('.activity').text)
 		self.assertEqual('10 May 2013'												, stories_list.e('.photo-date').text)
 		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER_VIEW), stories_list.e('.activity a').get_attribute('href'))
 		

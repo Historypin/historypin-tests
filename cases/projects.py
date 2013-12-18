@@ -21,9 +21,11 @@ class Projects(HPTestCase):
 			['%d-yearofthebay'	% ID_PROJECTS[6], "Year of the Bay"					, "What events, big and small, have shaped the San Francisco Bay? Share your memories."						, '%d' % ID_PROJECTS_IMAGES[6]],
 			['%d-sandy'			% ID_PROJECTS[7], "Hurricane Sandy"					, "Record, Remember, Rebuild: How have communities in the US and Caribbean been affected by Sandy?"			, '%d' % ID_PROJECTS_IMAGES[7]],
 			['%d-1989'			% ID_PROJECTS[8], "Europeana 1989"					, "Share your stories, photographs and videos about the Fall of the Iron Curtain."							, '%d' % ID_PROJECTS_IMAGES[8]],
-			['%d-japan-project'	% ID_PROJECTS[9], u"Historypin 日本上陸！"			, u"日本での展開について詳しく知る"																				, '%d' % ID_PROJECTS_IMAGES[9]],
+			['%d-japan-project'	% ID_PROJECTS[9], u"Historypin 日本上陸！"				, u"日本での展開について詳しく知る"																					, '%d' % ID_PROJECTS_IMAGES[9]],
 			['%d-putting-art-on-the-map' % ID_PROJECTS[10], 'Putting Art on the Map', 'Explore, curate and enrich the Imperial War Museums\' First World War artworks.'							, '%d' % ID_PROJECTS_IMAGES[10]],
-			['%d-all-our-stories' % ID_PROJECTS[11], 'All Our Stories'				, 'Explore an archive of community projects funded by the Heritage Lottery Fund.'							, '%d' % ID_PROJECTS_IMAGES[11]],
+			['%d-railroads' % ID_PROJECTS[11]	, 'Railroads'						, 'Help build a shared collection of life along the railroads.'												, '%d' % ID_PROJECTS_IMAGES[11]],
+			['%d-all-our-stories' % ID_PROJECTS[12], 'All Our Stories'				, 'Explore an archive of community projects funded by the Heritage Lottery Fund.'							, '%d' % ID_PROJECTS_IMAGES[12]],
+			['%d-yarra' % ID_PROJECTS[13], 'Yarra Ranges: Changing Places'			, "Celebrate the history of Yarra Ranges' high streets by sharing your photos and memories."				, '%d' % ID_PROJECTS_IMAGES[13]],
 		]
 		
 		

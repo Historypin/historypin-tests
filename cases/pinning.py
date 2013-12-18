@@ -8,7 +8,7 @@ class Pinning(HPTestCase):
 	@url('/upload/')
 	def test_add_stuff_page(self):
 		
-		steps = ['Choose stuff to add', 'Add something', 'Pin it to the map', 'All done']
+		steps = ['Choose stuff to add', 'Add Something', 'Pin it to the map', 'All done']
 		
 		texts = self.es('.progress-bar li')
 		

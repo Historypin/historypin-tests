@@ -18,7 +18,7 @@ class Attach():
 	def attach_tab_map(self):
 		self.go('/attach' + self.PROJECT_URL + '/map/')
 		
-		sleep(2)
+		sleep(4)
 		
 		# no way to do this in selenium as the counter element is hidden
 		self.browser.execute_script("ms = $('.hp-marker.hp-marker-cluster'); for(i in ms){ m = ms[i]; if($('.hp-marker-count', m).text() < 100 ){ m.click(); break; } }")
@@ -225,7 +225,7 @@ class Attach():
 		self.assertIsInstance(solve_button, WebElement)
 		
 		status.e('#showme_solved').click()
-		sleep(2)
+		sleep(4)
 		
 		mystery_first = self.e('.attach.mysteries > .list section:nth-of-type(1)')
 		self.assertFalse(mystery_first.exists('footer .button'))

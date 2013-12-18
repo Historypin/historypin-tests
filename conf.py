@@ -2,7 +2,7 @@
 PATH_CRHOME_DRIVER	= '/usr/lib64/chromium-browser/chromedriver'
 GO_TIMEOUT = 1
 
-VERSION = 'v5-metadata-4'
+VERSION = 'v5-01-00'
 # VERSION = 'v5-00-18'
 # VERSION = 'http://www.historypin.com'
 LINK_BASE = '%s.historypin-hrd.appspot.com' % (VERSION)
@@ -34,8 +34,8 @@ ID_USER_VIEW	= 33283
 ID_MAP_ITEM		= 149729  # SQl
 ID_EDIT_ITEM	= 160180  # SQl
 
-ID_PROJECTS			= [3, 5, 6, 8, 10, 15, 22, 26, 34, 39, 41, 44]
-ID_PROJECTS_IMAGES	= [3, 5, 6, 8, 10, 15, 22, 26, 34, 39, 41, 44]
+ID_PROJECTS			= [3, 5, 6, 8, 10, 15, 22, 26, 34, 39, 41, 42, 44, 49]
+ID_PROJECTS_IMAGES	= [3, 5, 6, 8, 10, 15, 22, 26, 34, 39, 41, 42, 44, 49]
 
 # TODO change the ids after migration
 CHANNELS_EXAMPLES = [2238022, 8721093, 2662022, 6487189, 1042029]
