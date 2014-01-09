@@ -23,7 +23,7 @@ class Project_Sourdough(HPTestCase, Attach):
 		self.go(self.PROJECT_URL)
 		
 		self.assertTitle('Sourdough and Rye | Home')
-		self.assertEqual('%s/projects/img/dim/1030x250/crop/1/image_id/150' % URL_BASE, self.e('#banner_images img').get_attribute('src'))
+		self.assertEqual('%s/projects/img/dim/1030x250/crop/1/image_id/191' % URL_BASE, self.e('#banner_images img').get_attribute('src'))
 		
 		site_cnt = self.e('#site-content')
 		about_link = site_cnt.e('.w23 a')
@@ -90,7 +90,7 @@ class Project_Sourdough(HPTestCase, Attach):
 			['%s%s/explore'	% (URL_BASE, self.PROJECT_URL), 'Explore'],
 			['%s%s/upload'	% (URL_BASE, self.PROJECT_URL), 'Contribute'],
 			['%s%s/events'	% (URL_BASE, self.PROJECT_URL), 'Events'],
-			['http://blog.historypin.com/category/sourdough-rye/', 'Blog'],
+			['http://sourdoughandryehistory.org/'			, 'Blog'],
 		]
 		
 		site_cnt = self.e('#site-content')
@@ -102,7 +102,7 @@ class Project_Sourdough(HPTestCase, Attach):
 			self.assertEqual(i[0], nav_links[n].get_attribute('href'))
 			self.assertEqual(i[1], nav_links[n].text)
 		
-		self.assertIn('Like the great delis that once populated the Fillmore District, Sourdough & Rye is the place for Bay Area Jews', site_cnt.e('.about-inner p').text)
+		self.assertIn('Like the great delis that once populated the Fillmore District', site_cnt.e('.about-inner p').text)
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/sandr/bread.jpg', site_cnt.e('#about-video').get_attribute('src'))
 	
 	def test_explore(self):

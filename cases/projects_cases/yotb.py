@@ -34,7 +34,7 @@ class Project_YOTB(HPTestCase, Attach):
 		
 		touts_items = [
 			['History Mysteries'	, 'Read about how you can help us solve Bernal Heights-themed mysteries.'					, 'tout1_image', '11/26/mystery-solving-in-with-the-bernal-heights-history-group-san-francisco/'],
-			['Potrero History Night', 'Read about and see photos of Historypin at this great local event on November 2nd, 2013.', 'tout2_image', '11/26/mystery-solving-in-with-the-bernal-heights-history-group-san-francisco/'],
+			['Hercules by the Bay'	, 'Read about and see photos of Historypin at this great local event on November 2nd, 2013.', 'tout2_image', '11/26/mystery-solving-in-with-the-bernal-heights-history-group-san-francisco/'],
 		]
 		
 		h3s		= site_cnt.es('.w2 h3')
