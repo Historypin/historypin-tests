@@ -10,7 +10,7 @@ class Homepage(HPTestCase):
 			self.e('.cookies-popup p').text,
 		)
 		
-		self.assertEqual('%s/pages/cookies/' % URL_BASE, self.e('.cookies-popup p a').get_attribute('href'))
+		self.assertEqual('%s/cookies/' % URL_BASE, self.e('.cookies-popup p a').get_attribute('href'))
 		a = self.e('.cookies-popup a.right')
 		self.assertEqual('Close this message  close', a.text)
 		a.click()

@@ -3,10 +3,10 @@ PATH_CRHOME_DRIVER	= '/usr/lib64/chromium-browser/chromedriver'
 GO_TIMEOUT = 1
 
 # VERSION = 'v5-europeana-ml'
-# VERSION = 'v5-01-02'
+VERSION = 'v5-01-05'
 # VERSION = 'http://www.historypin.com'
-# LINK_BASE = '%s.historypin-hrd.appspot.com' % (VERSION)
-LINK_BASE = 'historypin.vm'
+LINK_BASE = '%s.historypin-hrd.appspot.com' % (VERSION)
+# LINK_BASE = 'historypin.vm'
 
 URL_BASE = 'http://www.%s' % LINK_BASE
 

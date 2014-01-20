@@ -1479,7 +1479,7 @@ class Channel(HPTestCase):
 		date_select = edit_page.e('.section.date-select')
 		self.assertEqual('02'	, date_select.e('#day option:nth-of-type(3)').get_attribute('value'))
 		self.assertEqual('2'	, date_select.e('#month option:nth-of-type(3)').get_attribute('value'))
-		self.assertEqual('2013'	, date_select.e('#year option:nth-of-type(2)').get_attribute('value'))
+		self.assertEqual('2014'	, date_select.e('#year option:nth-of-type(2)').get_attribute('value'))
 		
 		place = edit_page.e('#location_editor')
 		

@@ -37,8 +37,8 @@ class Project_PuttingArt(HPTestCase, Attach):
 		self.assertEqual('%s/attach%s/mysteries/index/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 		
 		tout_items = [
-			['Live event in York'	, 'tout1_image', 'Read about our live crowdsourcing session in York'					, '/?p=4021'],
-			['Curate our artworks'	, 'tout2_image', 'Create your own Collection or Tour with the First World War artworks.', '/?p=3765'],
+			['Ready, set, crowdsource!'	, 'tout1_image', 'Read about our live crowdsourcing session at the Scottish National Portrait Gallery'	, '/2014/01/17/artmap-in-edinburgh/'],
+			['Curate our artworks'		, 'tout2_image', 'Create your own Collection or Tour with the First World War artworks.'				, '/?p=3765'],
 		]
 		
 		h3s			= site_cnt.es('.tout.w2 h3')

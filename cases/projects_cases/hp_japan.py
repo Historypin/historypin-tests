@@ -75,11 +75,11 @@ class Project_HPJapan(HPTestCase, Attach):
 		logo_link	= supported.es('a')
 		logo_img	= supported.es('img')
 		
-		self.assertEqual('%s/jp/project/39-japan-project#' % URL_BASE, logo_link[0].get_attribute('href'))  # TODO change this when link is provided
-		self.assertEqual('%s/resources/images/project-japan/fujitsu-logo.png' % URL_BASE, logo_img[0].get_attribute('src'))
+		self.assertEqual('http://www.britishcouncil.jp/', logo_link[0].get_attribute('href'))  # TODO change this when link is provided
+		self.assertEqual('%s/resources/images/project-japan/british-council-logo.png' % URL_BASE, logo_img[0].get_attribute('src'))
 		
-		self.assertEqual('%s/jp/project/39-japan-project#' % URL_BASE, logo_link[1].get_attribute('href'))  # TODO change this when link is provided
-		self.assertEqual('%s/resources/images/project-japan/glocom-logo.png' % URL_BASE, logo_img[1].get_attribute('src'))
+		# self.assertEqual('%s/jp/project/39-japan-project#' % URL_BASE, logo_link[1].get_attribute('href'))  # TODO change this when link is provided
+		# self.assertEqual('%s/resources/images/project-japan/glocom-logo.png' % URL_BASE, logo_img[1].get_attribute('src'))
 		
 		footer = self.e('.footer-links')
 		footer_links = footer.es('a')

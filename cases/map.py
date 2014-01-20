@@ -62,7 +62,7 @@ class Map(HPTestCase):
 		self.assertIn('ss-location'	, icons[1].get_attribute('class'))
 		
 		self.assertEqual('1840', self.e('#from span').text)
-		self.assertEqual('2013', self.e('#to span').text)
+		self.assertEqual('2014', self.e('#to span').text)
 		
 		labels = [
 			['1840-01-01', '1840'],
@@ -83,7 +83,7 @@ class Map(HPTestCase):
 			['1990-01-01', '1990'],
 			['2000-01-01', '2000'],
 			['2010-01-01', ''],		# 2010 - this is item is display: none
-			['2013-01-01', '2013'],
+			['2014-01-01', '2014'],
 		]
 		
 		link_label = self.es('#date-slider-labels a')
