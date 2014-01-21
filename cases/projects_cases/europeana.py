@@ -350,10 +350,10 @@ class Project_Europeana(HPTestCase, Attach):
 		filter_by		= site_cnt.e('.search-filter-pos')
 		labels			= filter_by.es('label')
 		
-		self.assertEqual(u'Roztřídit podle  ', filter_by.e('span').text)
-		self.assertEqual(u' Nejnovější'		, labels[0].e('strong').text)
-		self.assertEqual(u' Nejpopulárnější', labels[1].e('strong').text)
-		self.assertEqual(u' Most Relevant'	, labels[2].e('strong').text)
+		self.assertEqual(u'Roztřídit podle  '	, filter_by.e('span').text)
+		self.assertEqual(u' Nejnovější'			, labels[0].e('strong').text)
+		self.assertEqual(u' Nejpopulárnější'	, labels[1].e('strong').text)
+		self.assertEqual(u' Most Relevant'		, labels[2].e('strong').text)
 		
 		# TODO fix "Most Relevant" text when there is a translation provided
 		# TODO add verification for "Clear search" text when there is translation
@@ -371,15 +371,81 @@ class Project_Europeana(HPTestCase, Attach):
 		filter_by		= site_cnt.e('.search-filter-pos')
 		labels			= filter_by.es('label')
 		
-		self.assertEqual('Sortieren nach  ', filter_by.e('span').text)
+		self.assertEqual('Sortieren nach  '	, filter_by.e('span').text)
 		self.assertEqual(' Neuestes'		, labels[0].e('strong').text)
-		self.assertEqual(' Beliebtestes', labels[1].e('strong').text)
+		self.assertEqual(' Beliebtestes'	, labels[1].e('strong').text)
 		self.assertEqual(' Most Relevant'	, labels[2].e('strong').text)
 		
 		# TODO fix "Most Relevant" text when there is a translation provided
 		# TODO add verification for "Clear search" text when there is translation
 		
 		self.assertIn(u'Suchergebnisse für', site_cnt.e('.search-result').text)
+		
+	
+	def test_check_search_translation_es(self):
+		self.go(URL_BASE + '/es' + '/attach' + self.PROJECT_URL + '/tours/all?search=Berlin')
+		
+		site_cnt		= self.e('#photo_list_content')
+		button_go		= site_cnt.e('#stories-search-submit')
+		
+		self.assertEqual('Minge:', button_go.e('span').text)
+		
+		filter_by		= site_cnt.e('.search-filter-pos')
+		labels			= filter_by.es('label')
+		
+		self.assertEqual('Sorteerige:  '	, filter_by.e('span').text)
+		self.assertEqual(' Viimased'		, labels[0].e('strong').text)
+		self.assertEqual(' Populaarseimad'	, labels[1].e('strong').text)
+		self.assertEqual(' Most Relevant'	, labels[2].e('strong').text)
+		
+		# TODO fix "Most Relevant" text when there is a translation provided
+		# TODO add verification for "Clear search" text when there is translation
+		
+		self.assertIn(u'otsi tulemusi', site_cnt.e('.search-result').text)
+		
+	
+	def test_check_search_translation_hu(self):
+		self.go(URL_BASE + '/hu' + '/attach' + self.PROJECT_URL + '/tours/all?search=Berlin')
+		
+		site_cnt		= self.e('#photo_list_content')
+		button_go		= site_cnt.e('#stories-search-submit')
+		
+		self.assertEqual('Mehet', button_go.e('span').text)
+		
+		filter_by		= site_cnt.e('.search-filter-pos')
+		labels			= filter_by.es('label')
+		
+		self.assertEqual(u'Rendezési sorrend:  '	, filter_by.e('span').text)
+		self.assertEqual(u' Legutóbbi'		, labels[0].e('strong').text)
+		self.assertEqual(u' Legnépszerűbb'	, labels[1].e('strong').text)
+		self.assertEqual(u' Most Relevant'	, labels[2].e('strong').text)
+		
+		# TODO fix "Most Relevant" text when there is a translation provided
+		# TODO add verification for "Clear search" text when there is translation
+		
+		self.assertIn(u'Találatok a', site_cnt.e('.search-result').text)
+		
+	
+	def test_check_search_translation_lt(self):
+		self.go(URL_BASE + '/lt' + '/attach' + self.PROJECT_URL + '/tours/all?search=Berlin')
+		
+		site_cnt		= self.e('#photo_list_content')
+		button_go		= site_cnt.e('#stories-search-submit')
+		
+		self.assertEqual('Eiti', button_go.e('span').text)
+		
+		filter_by		= site_cnt.e('.search-filter-pos')
+		labels			= filter_by.es('label')
+		
+		self.assertEqual(u'Rūšiuoti  '	, filter_by.e('span').text)
+		self.assertEqual(u' Naujausi'		, labels[0].e('strong').text)
+		self.assertEqual(u' Populiariausi'	, labels[1].e('strong').text)
+		self.assertEqual(u' Most Relevant'	, labels[2].e('strong').text)
+		
+		# TODO fix "Most Relevant" text when there is a translation provided
+		# TODO add verification for "Clear search" text when there is translation
+		
+		self.assertIn(u'Paieškos rezultatai', site_cnt.e('.search-result').text)
 		
 	
 	def test_sub_nav_cz(self):
