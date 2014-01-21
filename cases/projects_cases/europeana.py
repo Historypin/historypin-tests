@@ -16,6 +16,7 @@ class Project_Europeana(HPTestCase, Attach):
 	test_tab_map		= Attach.attach_tab_map
 	test_tab_gallery	= Attach.attach_tab_gallery
 	
+	@unittest.expectedFailure
 	def test_tab_tours(self):
 		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
 		
@@ -59,6 +60,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIsInstance(paragraph.e('a:nth-of-type(1)'), WebElement)
 		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
 	
+	@unittest.expectedFailure
 	def test_search_by_relevance(self):
 		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
 		
@@ -103,6 +105,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		self.assertTrue(radio_buttons[0].is_selected())
 	
+	@unittest.expectedFailure
 	def test_next_page_relevance(self):
 		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
 		
@@ -140,6 +143,8 @@ class Project_Europeana(HPTestCase, Attach):
 		for n in range(len(title_items)):
 			self.assertEqual(title_items[n], titles[n].text)
 		
+	
+	@unittest.expectedFailure
 	def test_search_by_popularity(self):
 		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
 		
@@ -178,6 +183,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		self.assertTrue(radio_buttons[0].is_selected())
 	
+	@unittest.expectedFailure
 	def test_next_page_popularity(self):
 		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
 		
@@ -214,6 +220,7 @@ class Project_Europeana(HPTestCase, Attach):
 			self.assertEqual(title_items[n], titles[n].text)
 		
 	
+	@unittest.expectedFailure
 	def test_search_by_most_recent(self):
 		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
 		
@@ -252,6 +259,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		self.assertTrue(radio_buttons[0].is_selected())
 	
+	@unittest.expectedFailure
 	def test_next_page_recent(self):
 		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
 		
@@ -288,6 +296,7 @@ class Project_Europeana(HPTestCase, Attach):
 		for n in range(len(title_items)):
 			self.assertEqual(title_items[n], titles[n].text)
 	
+	@unittest.expectedFailure
 	def test_search_no_results(self):
 		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
 		
@@ -332,6 +341,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIsInstance(paragraph.e('a:nth-of-type(1)'), WebElement)
 		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
 	
+	@unittest.expectedFailure
 	def test_check_search_translation_cz(self):
 		self.go(URL_BASE + '/cz' + '/attach' + self.PROJECT_URL + '/tours/all?search=Berlin')
 		
@@ -353,6 +363,8 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		self.assertIn(u'Výsledky dotazu pro', site_cnt.e('.search-result').text)
 		
+	
+	@unittest.expectedFailure
 	def test_check_search_translation_de(self):
 		self.go(URL_BASE + '/de' + '/attach' + self.PROJECT_URL + '/tours/all?search=Berlin')
 		
@@ -375,6 +387,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIn(u'Suchergebnisse für', site_cnt.e('.search-result').text)
 		
 	
+	@unittest.expectedFailure
 	def test_check_search_translation_es(self):
 		self.go(URL_BASE + '/es' + '/attach' + self.PROJECT_URL + '/tours/all?search=Berlin')
 		
@@ -397,6 +410,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIn(u'otsi tulemusi', site_cnt.e('.search-result').text)
 		
 	
+	@unittest.expectedFailure
 	def test_check_search_translation_hu(self):
 		self.go(URL_BASE + '/hu' + '/attach' + self.PROJECT_URL + '/tours/all?search=Berlin')
 		
@@ -419,6 +433,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIn(u'Találatok a', site_cnt.e('.search-result').text)
 		
 	
+	@unittest.expectedFailure
 	def test_check_search_translation_lt(self):
 		self.go(URL_BASE + '/lt' + '/attach' + self.PROJECT_URL + '/tours/all?search=Berlin')
 		
@@ -441,6 +456,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIn(u'Paieškos rezultatai', site_cnt.e('.search-result').text)
 		
 	
+	@unittest.expectedFailure
 	def test_check_search_translation_lv(self):
 		self.go(URL_BASE + '/lv' + '/attach' + self.PROJECT_URL + '/tours/all?search=Berlin')
 		
@@ -463,6 +479,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIn(u'meklēšanas rezultāti', site_cnt.e('.search-result').text)
 		
 	
+	@unittest.expectedFailure
 	def test_check_search_translation_pl(self):
 		self.go(URL_BASE + '/pl' + '/attach' + self.PROJECT_URL + '/tours/all?search=Berlin')
 		
@@ -491,7 +508,7 @@ class Project_Europeana(HPTestCase, Attach):
 		europeana_link = URL_BASE + '/cz%s/' % self.PROJECT_URL
 		cz_links = [
 			[europeana_link	, 'Domov'],
-			['%sexplore/#|map/' % europeana_link, 'Prozkoumat'],
+			['%sexplore/#|photos/index/' % europeana_link, 'Prozkoumat'],
 			['%supload/index/' % europeana_link	, u'Přispět'],
 			['http://pro.europeana.eu/web/europeana-1989/'	, 'O'],
 		]
@@ -509,7 +526,7 @@ class Project_Europeana(HPTestCase, Attach):
 		europeana_link = URL_BASE + '/de%s/' % self.PROJECT_URL
 		de_links = [
 			[europeana_link	, 'Home'],
-			['%sexplore/#|map/' % europeana_link, 'Entdecken'],
+			['%sexplore/#|photos/index/' % europeana_link, 'Entdecken'],
 			['%supload/index/' % europeana_link	, u'Beitrag posten'],
 			['http://pro.europeana.eu/web/europeana-1989/'	, u'Über'],
 		]
@@ -528,7 +545,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		es_links = [
 			[europeana_link	, 'Kodu'],
-			['%sexplore/#|map/' % europeana_link, 'Uurige'],
+			['%sexplore/#|photos/index/' % europeana_link, 'Uurige'],
 			['%supload/index/' % europeana_link	, u'Andke oma panus'],
 			['http://pro.europeana.eu/web/europeana-1989/'	, 'Info'],
 		]
@@ -547,7 +564,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		hu_links = [
 			[europeana_link	, u'Kezdőlap'],
-			['%sexplore/#|map/' % europeana_link, u'Fedezze fel'],
+			['%sexplore/#|photos/index/' % europeana_link, u'Fedezze fel'],
 			['%supload/index/' % europeana_link	, u'Töltse fel'],
 			['http://pro.europeana.eu/web/europeana-1989/'	, u'Rólunk'],
 		]
@@ -566,7 +583,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		lt_links = [
 			[europeana_link	, u'Pradinis'],
-			['%sexplore/#|map/' % europeana_link, u'Naršyti'],
+			['%sexplore/#|photos/index/' % europeana_link, u'Naršyti'],
 			['%supload/index/' % europeana_link	, u'Pridėti'],
 			['http://pro.europeana.eu/web/europeana-1989/'	, u'Apie'],
 		]
@@ -585,7 +602,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		lv_links = [
 			[europeana_link	, u'Sākums'],
-			['%sexplore/#|map/' % europeana_link, u'Pārlūkot'],
+			['%sexplore/#|photos/index/' % europeana_link, u'Pārlūkot'],
 			['%supload/index/' % europeana_link	, u'Pievienot saturu'],
 			['http://pro.europeana.eu/web/europeana-1989/'	, u'Par'],
 		]
@@ -604,7 +621,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		pl_links = [
 			[europeana_link	, u'Strona glówna'],
-			['%sexplore/#|map/' % europeana_link, u'Zobacz kolekcję'],
+			['%sexplore/#|photos/index/' % europeana_link, u'Zobacz kolekcję'],
 			['%supload/index/' % europeana_link	, u'Dodaj pamiątkę'],
 			['http://pro.europeana.eu/web/europeana-1989/'	, u'O nas'],
 		]
@@ -633,7 +650,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		nav_items = [
 			[europeana_link	, 'Home'],
-			['%sexplore/#|map/' % europeana_link, 'Explore'],
+			['%sexplore/#|photos/index/' % europeana_link, 'Explore'],
 			['%supload/index/' % europeana_link	, 'Contribute'],
 			['http://pro.europeana.eu/web/europeana-1989/'	, 'About'],
 		]
@@ -648,7 +665,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIn('The way history is recorded', intro_cnt.e('p').text)
 		
 		intro_buttons = [
-			['explore/#|map/', 'Explore'],
+			['explore/#|photos/index/', 'Explore'],
 			['upload/index/', 'Contribute'],
 		]
 		
@@ -666,8 +683,8 @@ class Project_Europeana(HPTestCase, Attach):
 		img_link	= site_cnt.es('.tout p+a')
 		
 		tout_items = [
-			[u'Relive the Baltic Way – Pin yourself on the map'	, 'http://www.europeana1989.eu/en/baltic-way/'	, 'tout1_image', 'On 23 August 1989'],
-			['Join our events!'									, 'http://blog.europeana.eu/1989-calendar/'		, 'tout2_image', 'Come and tell your story about the Velvet '],
+			[u'Relive the Baltic Way – Pin yourself on the map'	, '%s/en%s/baltic-way/' % (URL_BASE, self.PROJECT_URL)	, 'tout1_image', 'On 23 August 1989'],
+			['Join our events!'									, 'http://blog.europeana.eu/1989-calendar/'				, 'tout2_image', 'Come and tell your story about the Velvet '],
 		]
 		
 		for n in range(len(tout_items)):
@@ -680,7 +697,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		activity = site_cnt.e('#activity')
 		self.assertIsInstance(activity.e('h1'), WebElement)
-		self.assertEqual('pieces of content added so far', activity.e('h6').text)
+		self.assertEqual('contributions added so far', activity.e('h1+p').text)
 		
 		item_feed = site_cnt.e('.activity li:nth-of-type(1)')
 		self.assertIsInstance(item_feed.e('a')	, WebElement)
@@ -698,7 +715,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual('http://blog.europeana.eu/category/europeana1989'	, icon_tout2.get_attribute('href'))
 		self.assertEqual('Read the latest news on our blog'					, icon_tout2.text)
 		self.assertIn('ss-icon'		, icon_tout2.e('span').get_attribute('class'))
-		self.assertIn('ss-openbook'	, icon_tout2.e('span').get_attribute('class'))
+		self.assertIn('ss-newspaper', icon_tout2.e('span').get_attribute('class'))
 		
 		featured = self.e('.bottom-p a')
 		self.assertEqual('Find out more about the featured photos', featured.text)
