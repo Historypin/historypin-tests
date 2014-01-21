@@ -470,6 +470,28 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIn(u'meklēšanas rezultāti', site_cnt.e('.search-result').text)
 		
 	
+	def test_check_search_translation_pl(self):
+		self.go(URL_BASE + '/pl' + '/attach' + self.PROJECT_URL + '/tours/all?search=Berlin')
+		
+		site_cnt		= self.e('#photo_list_content')
+		button_go		= site_cnt.e('#stories-search-submit')
+		
+		self.assertEqual(u'Przejdź', button_go.e('span').text)
+		
+		filter_by		= site_cnt.e('.search-filter-pos')
+		labels			= filter_by.es('label')
+		
+		self.assertEqual(u'Sortuj według  '		, filter_by.e('span').text)
+		self.assertEqual(u' Ostatnie'			, labels[0].e('strong').text)
+		self.assertEqual(u' Najpopularniejsze'	, labels[1].e('strong').text)
+		self.assertEqual(u' Most Relevant'		, labels[2].e('strong').text)
+		
+		# TODO fix "Most Relevant" text when there is a translation provided
+		# TODO add verification for "Clear search" text when there is translation
+		
+		self.assertIn(u'Rezultaty dla', site_cnt.e('.search-result').text)
+		
+	
 	def test_sub_nav_cz(self):
 		self.go(URL_BASE + '/cz' + self.PROJECT_URL)
 		
