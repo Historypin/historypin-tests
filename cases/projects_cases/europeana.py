@@ -9,7 +9,7 @@ class Project_Europeana(HPTestCase, Attach):
 	ATTACH_URL = '/en/attach'
 	
 	ATTACH_TABS = [
-		['%s/tours/all/' % PROJECT_URL, '%s/photos/index/' % (PROJECT_URL), '%s/photos/gallery/' % PROJECT_URL],
+		['%s/tours/all/' % PROJECT_URL, '%s/photos/index/' % PROJECT_URL, '%s/photos/gallery/' % PROJECT_URL],
 	]
 	
 	test_attach_tabs	= Attach.attach_tabs
@@ -17,7 +17,7 @@ class Project_Europeana(HPTestCase, Attach):
 	test_tab_gallery	= Attach.attach_tab_gallery
 	
 	def test_tab_tours(self):
-		self.go('/attach' + self.PROJECT_URL + '/tours/all/')
+		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
 		
 		sleep(2)
 		filter_by = self.e('.search-filter-pos')
@@ -59,9 +59,8 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIsInstance(paragraph.e('a:nth-of-type(1)'), WebElement)
 		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
 	
-	@unittest.expectedFailure
 	def test_search_by_relevance(self):
-		self.go('/en/attach' + self.PROJECT_URL + '/tours/all/')
+		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
 		
 		site_cnt		= self.e('#photo_list_content')
 		input_search	= site_cnt.e('#stories-search')
@@ -83,7 +82,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual('%s/en/attach%s/tours/all' % (URL_BASE, self.PROJECT_URL), self.e('.clear-search').get_attribute('href'))
 		self.assertEqual('Clear search', self.e('.clear-search').text)
 		
-		self.assertIn(u'Search results for ‘Berlin’:', site_cnt.e('.search-result').text)
+		self.assertIn(u'Search results for "Berlin":', site_cnt.e('.search-result').text)
 		
 		title_items = ["At the Brandenburg Gate", 'Escape from East to West Berlin', "At Long Last! We've been waiting for you"]
 		
@@ -104,9 +103,8 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		self.assertTrue(radio_buttons[0].is_selected())
 	
-	@unittest.expectedFailure
 	def test_next_page_relevance(self):
-		self.go('/en/attach' + self.PROJECT_URL + '/tours/all/')
+		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
 		
 		site_cnt		= self.e('#photo_list_content')
 		input_search	= site_cnt.e('#stories-search')
@@ -142,9 +140,8 @@ class Project_Europeana(HPTestCase, Attach):
 		for n in range(len(title_items)):
 			self.assertEqual(title_items[n], titles[n].text)
 		
-	@unittest.expectedFailure
 	def test_search_by_popularity(self):
-		self.go('/en/attach' + self.PROJECT_URL + '/tours/all/')
+		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
 		
 		site_cnt		= self.e('#photo_list_content')
 		input_search	= site_cnt.e('#stories-search')
@@ -181,9 +178,8 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		self.assertTrue(radio_buttons[0].is_selected())
 	
-	@unittest.expectedFailure
 	def test_next_page_popularity(self):
-		self.go('/en/attach' + self.PROJECT_URL + '/tours/all/')
+		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
 		
 		site_cnt		= self.e('#photo_list_content')
 		input_search	= site_cnt.e('#stories-search')
@@ -209,7 +205,7 @@ class Project_Europeana(HPTestCase, Attach):
 		radio_buttons	= filter_by.es('input')
 		self.assertTrue(radio_buttons[1].is_selected())
 		
-		title_items = ["In memory of the revolution in Romania", "Live History", "The man in the wheelchair on the Berlin Wall"]
+		title_items = ["Green Trabant at Schlossstrasse subway station", "Live History", "The man in the wheelchair on the Berlin Wall"]
 		
 		list_titles = site_cnt.e('#list')
 		titles = list_titles.es('li>p>a:nth-of-type(1)')
@@ -218,9 +214,8 @@ class Project_Europeana(HPTestCase, Attach):
 			self.assertEqual(title_items[n], titles[n].text)
 		
 	
-	@unittest.expectedFailure
 	def test_search_by_most_recent(self):
-		self.go('/en/attach' + self.PROJECT_URL + '/tours/all/')
+		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
 		
 		site_cnt		= self.e('#photo_list_content')
 		input_search	= site_cnt.e('#stories-search')
@@ -257,9 +252,8 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		self.assertTrue(radio_buttons[0].is_selected())
 	
-	@unittest.expectedFailure
 	def test_next_page_recent(self):
-		self.go('/en/attach' + self.PROJECT_URL + '/tours/all/')
+		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
 		
 		site_cnt		= self.e('#photo_list_content')
 		input_search	= site_cnt.e('#stories-search')
@@ -294,9 +288,8 @@ class Project_Europeana(HPTestCase, Attach):
 		for n in range(len(title_items)):
 			self.assertEqual(title_items[n], titles[n].text)
 	
-	@unittest.expectedFailure
 	def test_search_no_results(self):
-		self.go('/en/attach' + self.PROJECT_URL + '/tours/all/')
+		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
 		
 		site_cnt		= self.e('#photo_list_content')
 		input_search	= site_cnt.e('#stories-search')
@@ -315,7 +308,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIsInstance(radio_buttons[2], WebElement)
 		self.assertTrue(radio_buttons[2].is_selected())
 		self.assertEqual(' Most Relevant', labels[2].e('strong').text)
-		self.assertEqual(u'Search results for ‘ASDFGHQWERTYUIOPS’: (0)', site_cnt.e('.search-result').text)
+		self.assertEqual(u'Search results for "ASDFGHQWERTYUIOPS": (0)', site_cnt.e('.search-result').text)
 		
 		self.assertEqual('No results found.', site_cnt.e('h3').text)
 		
@@ -652,7 +645,7 @@ class Project_Europeana(HPTestCase, Attach):
 			self.assertEqual(i[1], nav_links[n].text)
 		
 		intro_cnt = self.e('.intro .text.cf')
-		self.assertIn('Europeana 1989: We Made History', intro_cnt.e('p').text)
+		self.assertIn('The way history is recorded', intro_cnt.e('p').text)
 		
 		intro_buttons = [
 			['explore/#|map/', 'Explore'],
@@ -670,11 +663,11 @@ class Project_Europeana(HPTestCase, Attach):
 		h3s_links	= site_cnt.es('.tout h3 a')
 		paragraphs	= site_cnt.es('.tout p')
 		imgs		= site_cnt.es('.tout img')
-		img_link	= site_cnt.es('.tout .cover')
+		img_link	= site_cnt.es('.tout p+a')
 		
 		tout_items = [
-			[u'Relive the Baltic Way – Pin yourself on the map'	, '%sbaltic-way/' % europeana_link			, 'tout1_image', 'On 23 August 1989'],
-			['Join our events!'									, 'http://blog.europeana.eu/1989-calendar/'	, 'tout2_image', 'Come and tell your story about the Velvet '],
+			[u'Relive the Baltic Way – Pin yourself on the map'	, 'http://www.europeana1989.eu/en/baltic-way/'	, 'tout1_image', 'On 23 August 1989'],
+			['Join our events!'									, 'http://blog.europeana.eu/1989-calendar/'		, 'tout2_image', 'Come and tell your story about the Velvet '],
 		]
 		
 		for n in range(len(tout_items)):
@@ -687,7 +680,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		activity = site_cnt.e('#activity')
 		self.assertIsInstance(activity.e('h1'), WebElement)
-		self.assertEqual('contributions added so far', activity.e('.counter p').text)
+		self.assertEqual('pieces of content added so far', activity.e('h6').text)
 		
 		item_feed = site_cnt.e('.activity li:nth-of-type(1)')
 		self.assertIsInstance(item_feed.e('a')	, WebElement)
@@ -705,7 +698,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual('http://blog.europeana.eu/category/europeana1989'	, icon_tout2.get_attribute('href'))
 		self.assertEqual('Read the latest news on our blog'					, icon_tout2.text)
 		self.assertIn('ss-icon'		, icon_tout2.e('span').get_attribute('class'))
-		self.assertIn('ss-newspaper', icon_tout2.e('span').get_attribute('class'))
+		self.assertIn('ss-openbook'	, icon_tout2.e('span').get_attribute('class'))
 		
 		featured = self.e('.bottom-p a')
 		self.assertEqual('Find out more about the featured photos', featured.text)
