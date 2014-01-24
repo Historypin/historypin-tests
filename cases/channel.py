@@ -1061,6 +1061,43 @@ class Channel(HPTestCase):
 		self.assertEqual('%s/channels/img/35019/logo/1/dim/200x200/crop/1/cache/0/' % URL_BASE, self.e('.chan_logo > img').get_attribute('src'))
 	
 	@logged_in
+	@url('/channels/view/%d/' % ID_USER)
+	def test_upload_banner(self):
+		
+		editor		= self.e('.channel_editor')
+		
+		settings	= editor.e('.settings')
+		settings.click()
+		
+		settings_menu	= editor.e('.settings_menu')
+		design			= settings_menu.e('a[href="#tab-design"]')
+		design.click()
+		
+		tab_design = editor.e('#tab-design')
+		tab_design.es('.col.w2 input')[0].send_keys(os.getcwd()+"/banner.jpg")
+		
+		button = self.e('.submit.button.left')
+		button.click()
+		self.assertEqual('%s/channels/img/35019/banner/1/dim/980x500/cache/0/' % URL_BASE, self.e('#site-content>img').get_attribute('src'))
+		
+		editor		= self.e('.channel_editor')
+		settings	= editor.e('.settings')
+		
+		settings.click()
+		
+		settings_menu	= editor.e('.settings_menu')
+		design			= settings_menu.e('a[href="#tab-design"]')
+		design.click()
+		
+		tab_design = editor.e('#tab-design')
+		
+		tab_design.e('.clear_img').click()
+		sleep(6)
+		editor		= self.e('.channel_editor')
+		tab_design	= editor.e('#tab-design')
+		
+	
+	@logged_in
 	@unittest.expectedFailure  # Issue #2831 should be fixed
 	@url('/channels/view/%d/' % ID_USER)
 	def test_sharing(self):
