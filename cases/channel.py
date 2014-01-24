@@ -1095,6 +1095,42 @@ class Channel(HPTestCase):
 		sleep(6)
 		editor		= self.e('.channel_editor')
 		tab_design	= editor.e('#tab-design')
+	
+	@logged_in
+	@url('/channels/view/%d/' % ID_USER)
+	def test_upload_background_image(self):
+		
+		editor		= self.e('.channel_editor')
+		
+		settings	= editor.e('.settings')
+		settings.click()
+		
+		settings_menu	= editor.e('.settings_menu')
+		design			= settings_menu.e('a[href="#tab-design"]')
+		design.click()
+		
+		tab_design = editor.e('#tab-design')
+		tab_design.es('.col.w2 input')[1].send_keys(os.getcwd()+"/background.jpg")
+		
+		button = self.e('.submit.button.left')
+		button.click()
+		
+		sleep(3)
+		
+		# TODO assert image
+		
+		editor		= self.e('.channel_editor')
+		settings	= editor.e('.settings')
+		
+		settings.click()
+		
+		settings_menu	= editor.e('.settings_menu')
+		design			= settings_menu.e('a[href="#tab-design"]')
+		design.click()
+		
+		tab_design = editor.e('#tab-design')
+		
+		tab_design.e('.clear_img').click()
 		
 	
 	@logged_in
