@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from base import *
+import os, sys
 
 class Channel(HPTestCase):
 	
@@ -1016,7 +1017,51 @@ class Channel(HPTestCase):
 		# upload a background image
 	
 	@logged_in
-	@unittest.expectedFailure  # Issie #2831 should be fixed
+	@url('/channels/view/%d/' % ID_USER)
+	def test_upload_avatar(self):
+		
+		editor = self.e('.channel_editor')
+		
+		settings = editor.e('.settings')
+		settings.click()
+		
+		settings_menu = editor.e('.settings_menu')
+		design = settings_menu.e('a[href="#tab-design"]')
+		design.click()
+		
+		tab_design = editor.e('#tab-design')
+		# tab_design.es('.col.w2 input[type="file"]')[0].send_keys(os.getcwd()+"/banner.jpg") for banner
+		tab_design.e('h5+input').send_keys(os.getcwd()+"/avatar.jpg")
+		sleep(3)
+		
+		button = self.e('.submit.button.left')
+		button.click()
+		self.assertEqual('%s/channels/img/35019/logo/1/dim/200x200/crop/1/cache/0/' % URL_BASE, self.e('.chan_logo>img').get_attribute('src'))
+		
+		# =============== It is time to remove the avatar in order test to be ready for running again :) =======
+		
+		editor = self.e('.channel_editor')
+		
+		settings = editor.e('.settings')
+		settings.click()
+		
+		settings_menu = editor.e('.settings_menu')
+		design = settings_menu.e('a[href="#tab-design"]')
+		design.click()
+		
+		tab_design = editor.e('#tab-design')
+		self.assertEqual('%s/channels/img/35019/logo/1/dim/75x75/cache/0/' % URL_BASE, tab_design.e('.image-preview img').get_attribute('src'))
+		
+		tab_design.e('.clear_img').click()
+		
+		editor = self.e('.channel_editor')
+		tab_design = editor.e('#tab-design')
+		
+		sleep(3)
+		self.assertEqual('%s/channels/img/35019/logo/1/dim/200x200/crop/1/cache/0/' % URL_BASE, self.e('.chan_logo > img').get_attribute('src'))
+	
+	@logged_in
+	@unittest.expectedFailure  # Issue #2831 should be fixed
 	@url('/channels/view/%d/' % ID_USER)
 	def test_sharing(self):
 		
