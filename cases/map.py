@@ -170,13 +170,13 @@ class Map(HPTestCase):
 		info = self.e('#details_cnt .info')
 		self.assertEqual('National Theatre in Sofia, Bulgaria'				, info.e('h2.photo-title').text)
 		sleep(3)
-		self.assertEqual('ulitsa "Kuzman Shapkarev" 1, 1000 Sofia, Bulgaria', info.e('.photo-address').text)
+		self.assertEqual('ulitsa "Kuzman Shapkarev" 1-3, 1000 Sofia, Bulgaria', info.e('.photo-address').text)
 		self.assertEqual('2 August 2012'							, info.e('.photo-date').text)
 		
-		sleep(4)
-		details_link = dlg.e('.open-tab-dialog')
-		self.assertEqual('%s/map/#write-story_cnt' % URL_BASE	, details_link.get_attribute('href'))
-		self.assertEqual('Suggest more accurate details'		, details_link.text )
+		# sleep(4) this element does not exist in the Details Tab
+		# details_link = dlg.e('.open-tab-dialog')
+		# self.assertEqual('%s/map/#write-story_cnt' % URL_BASE	, details_link.get_attribute('href'))
+		# self.assertEqual('Suggest more accurate details'		, details_link.text )
 		
 		about = dlg.e('.about')
 		self.assertEqual('%s/channels/img/%d/logo/1/dim/46x46/' % (URL_BASE, ID_USER_VIEW), about.e('img').get_attribute('src'))

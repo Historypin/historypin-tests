@@ -255,6 +255,7 @@ class Collections(HPTestCase):
 		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BASE, ID_COLLECTION_IMAGES[0]), item.e('img').get_attribute('src'))
 		# to check icon for adding
 		
+		sleep(3)
 		self.hover(item.e('img'))
 		self.assertEqual('Bulgarian Army Theater'		, item.e('.photo-title').text)
 		self.assertEqual('2 February 2013'				, item.e('.date').text)
