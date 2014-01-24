@@ -49,6 +49,5 @@ class Project_Grandparents(HPTestCase, Attach):
 			self.assertEqual(i[2], images[n].get_attribute('src'))
 			self.assertEqual(i[3], paragraphs[n].text)
 		
-		
 		self.assertEqual('%s/attach%s/photos/gallery/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 	

@@ -20,6 +20,9 @@ class Attach():
 		
 		sleep(4)
 		
+		self.assertIsInstance(self.e('#date-selector'), WebElement)
+		self.assertIsInstance(self.e('#search-filters'), WebElement)
+		
 		# no way to do this in selenium as the counter element is hidden
 		self.browser.execute_script("ms = $('.hp-marker.hp-marker-cluster'); for(i in ms){ m = ms[i]; if($('.hp-marker-count', m).text() < 100 ){ m.click(); break; } }")
 		
@@ -30,6 +33,10 @@ class Attach():
 		self.assertIsInstance(cluster.e('.hp-info-gallery-pin img'), WebElement)
 		self.assertIsInstance(cluster.e('.info h6 a'), WebElement)
 		self.assertIsInstance(cluster.e('.info p'), WebElement)
+		
+		cluster.e('.hp-info-gallery-pin img').click()
+		sleep(2)
+		self.assertIsInstance(self.e('#info-dialog'), WebElement)
 	
 	def attach_tab_gallery(self):
 		self.go('/attach' + self.PROJECT_URL + '/photos/gallery/')

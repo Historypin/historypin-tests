@@ -104,8 +104,9 @@ class Project_Fujinomiya(HPTestCase, Attach):
 		self.assertEqual(u'パートナー', supported.e('span').text)
 		self.assertEqual('http://www.britishcouncil.jp/', supported.e('a').get_attribute('href'))
 		
-		supported_img = supported.es('img')
-		imgs = ['british-council-logo.png', 'fujitsu.png', 'glocom.png']
+		supported_img	= supported.es('img')
+		imgs			= ['british-council-logo.png', 'fujitsu.png', 'glocom.png']
+		
 		for n in range(len(imgs)): self.assertEqual(URL_BASE + '/resources/images/project-japan/' + imgs[n], supported_img[n].get_attribute('src'))
 		
 		self.assertEqual(u'使用写真はA.Daveyさん、University of Tennessee Special Collections さんがシェアしたものです.', self.e('.photos-by span').text)
