@@ -1007,14 +1007,6 @@ class Channel(HPTestCase):
 		headings = ['Choose a colour theme', 'Upload your photo or logo', 'Upload a Banner', 'Upload a Background Image']
 		for n in range(len(headings)): self.assertEqual(headings[n], h5s[n].text)
 		
-		# tab_design.es('.col.w2 input[type="file"]')[0].click()
-		# sleep(3)
-		# tab_design.es('.col.w2 input[type="file"]')[0].send_keys("/home/gabs/Desktop/landscape-photo.jpg")
-		# sleep(4)
-		# TODO LATER
-		# upload a photo
-		# upload a banner
-		# upload a background image
 	
 	@logged_in
 	@url('/channels/view/%d/' % ID_USER)
@@ -1030,8 +1022,7 @@ class Channel(HPTestCase):
 		design.click()
 		
 		tab_design = editor.e('#tab-design')
-		# tab_design.es('.col.w2 input[type="file"]')[0].send_keys(os.getcwd()+"/banner.jpg") for banner
-		tab_design.e('h5+input').send_keys(os.getcwd()+"/avatar.jpg")
+		tab_design.e('h5+input').send_keys(os.getcwd()+'/avatar.jpg')
 		sleep(3)
 		
 		button = self.e('.submit.button.left')
@@ -1129,7 +1120,6 @@ class Channel(HPTestCase):
 		design.click()
 		
 		tab_design = editor.e('#tab-design')
-		
 		tab_design.e('.clear_img').click()
 		
 	
