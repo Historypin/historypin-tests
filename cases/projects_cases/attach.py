@@ -23,10 +23,10 @@ class Attach():
 		self.assertIsInstance(self.e('#date-selector'), WebElement)
 		self.assertIsInstance(self.e('#search-filters'), WebElement)
 		
+		sleep(5)
+		
 		# no way to do this in selenium as the counter element is hidden
 		self.browser.execute_script("ms = $('.hp-marker.hp-marker-cluster'); for(i in ms){ m = ms[i]; if($('.hp-marker-count', m).text() < 100 ){ m.click(); break; } }")
-		
-		sleep(5)
 		
 		cluster = self.e('#galleryInfoWindow_contents li:nth-of-type(1)')
 		

@@ -5,8 +5,8 @@ from attach import Attach
 
 class Project_Balboa(HPTestCase, Attach):
 	
-	PROJECT_URL = '/project/6-balboa'
-	
+	PROJECT_URL		= '/project/6-balboa'
+	project_name	= 'balboa'
 	# cannot check because #embed_tabs in Balboa doesn't exists
 	# ATTACH_TABS = [
 	# 	['http://www.balboapark.org/historypin', '%s/attach%s/map/index/' % (URL_BASE, PROJECT_URL), '%s/attach%s/collections/all/' % (URL_BASE, PROJECT_URL), '%s/attach%s/tours/all/' % (URL_BASE, PROJECT_URL), '%s/attach%s/contribute/' % (URL_BASE, PROJECT_URL)],
@@ -14,6 +14,8 @@ class Project_Balboa(HPTestCase, Attach):
 	# test_attach_tabs		= Attach.attach_tabs
 	
 	test_tab_collections	= Attach.attach_tab_collections
+	test_tab_tours_empty	= Attach.attach_tab_tours_empty
+	
 	
 	def test_tab_map(self):
 		self.go('/attach' + self.PROJECT_URL + '/map/')
@@ -28,6 +30,7 @@ class Project_Balboa(HPTestCase, Attach):
 		# no way to do this in selenium as the counter element is hidden
 		self.browser.execute_script("ms = $('.hp-marker.hp-marker-cluster'); for(i in ms){ m = ms[i]; if($('.hp-marker-count', m).text() < 100 ){ m.click(); break; } }")
 		
+		sleep(3)
 		cluster = self.e('#galleryInfoWindow_contents li:nth-of-type(1)')
 		
 		self.assertIsInstance(cluster.e('.hp-info-gallery-pin img'), WebElement)
@@ -66,42 +69,6 @@ class Project_Balboa(HPTestCase, Attach):
 			i = footer_items[n]
 			self.assertEqual(i[0], footer_links[n].get_attribute('href'))
 			self.assertEqual(i[1], footer_links[n].text)
-		
-	
-	# @url('/attach/project/6-balboa/map/')
-	# def test_tab_map(self):
-		
-	# 	filter_bar = self.e('#filter-bar')
-		
-	# 	self.assertEqual('Search tags', filter_bar.e('label').text)
-	# 	self.assertIsInstance(filter_bar.e('input')	, WebElement)
-	# 	self.assertIsInstance(self.e('#tags_search'), WebElement)
-		
-	# 	date_slider_icons = self.es('#date-slider a')
-	# 	self.assertIn('ss-icon'		, date_slider_icons[0].e('span').get_attribute('class'))
-	# 	self.assertIn('ss-location'	, date_slider_icons[0].e('span').get_attribute('class'))
-		
-	# 	self.assertIn('ss-icon'		, date_slider_icons[1].e('span').get_attribute('class'))
-	# 	self.assertIn('ss-location'	, date_slider_icons[1].e('span').get_attribute('class'))
-		
-	# 	self.e('.hp-marker.hp-marker-cluster').click()
-	# 	sleep(3)
-		
-	# 	cluster = self.e('#galleryInfoWindow_contents li:nth-of-type(1)')
-		
-	# 	self.assertIsInstance(cluster.e('.hp-info-gallery-pin img'), WebElement)
-	# 	self.assertIsInstance(cluster.e('.info h6 a'), WebElement)
-	# 	self.assertIsInstance(cluster.e('.info p'), WebElement)
-		
-	
-	# @url('/attach/project/6-balboa/collections/all/')
-	# def test_tab_collections(self):
-		
-	# 	collections_cnt = self.e('#list')
-		
-	# 	self.assertIsInstance(collections_cnt.e('li:nth-of-type(1) > a')				, WebElement)
-	# 	self.assertIsInstance(collections_cnt.e('li:nth-of-type(1) p a')				, WebElement)
-	# 	self.assertIsInstance(collections_cnt.e('li:nth-of-type(1) p a:nth-of-type(2)')	, WebElement)
 		
 	
 	def test_tab_tours(self):
