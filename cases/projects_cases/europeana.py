@@ -9,7 +9,9 @@ class Project_Europeana(HPTestCase, Attach):
 	ATTACH_URL = '/en/attach'
 	
 	ATTACH_TABS = [
-		['%s/tours/all/' % PROJECT_URL, '%s/photos/index/' % PROJECT_URL, '%s/photos/gallery/' % PROJECT_URL],
+		'%s/tours/all/'			% PROJECT_URL,
+		'%s/photos/index/'		% PROJECT_URL,
+		'%s/photos/gallery/'	% PROJECT_URL,
 	]
 	
 	test_attach_tabs	= Attach.attach_tabs

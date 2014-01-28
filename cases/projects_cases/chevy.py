@@ -8,7 +8,9 @@ class Project_Chevy(HPTestCase, Attach):
 	PROJECT_URL = '/project/8-chevy'
 	
 	ATTACH_TABS = [
-		['%s/attach%s/map/index/' % (URL_BASE, PROJECT_URL), '%s/attach%s/photos/slideshow/' % (URL_BASE, PROJECT_URL), '%s/attach%s/photos/gallery/' % (URL_BASE, PROJECT_URL)],
+		'%s/attach%s/map/index/'		% (URL_BASE, PROJECT_URL),
+		'%s/attach%s/photos/slideshow/'	% (URL_BASE, PROJECT_URL),
+		'%s/attach%s/photos/gallery/'	% (URL_BASE, PROJECT_URL),
 	]
 	
 	test_attach_tabs	= Attach.attach_tabs

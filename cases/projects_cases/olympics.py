@@ -8,7 +8,10 @@ class Project_Olympics(HPTestCase, Attach):
 	PROJECT_URL = '/project/3-hp-olympics'
 	
 	ATTACH_TABS = [
-		['%s/attach%s/map/index/' % (URL_BASE, PROJECT_URL), '%s/attach%s/collections/all/' % (URL_BASE, PROJECT_URL), '%s/attach%s/collections/all/' % (URL_BASE, PROJECT_URL), '%s/attach%s/tours/all/' % (URL_BASE, PROJECT_URL)],
+		'%s/attach%s/map/index/'		% (URL_BASE, PROJECT_URL),
+		'%s/attach%s/collections/all/'	% (URL_BASE, PROJECT_URL),
+		'%s/attach%s/collections/all/'	% (URL_BASE, PROJECT_URL),
+		'%s/attach%s/tours/all/'		% (URL_BASE, PROJECT_URL)
 	]
 	
 	test_attach_tabs		= Attach.attach_tabs

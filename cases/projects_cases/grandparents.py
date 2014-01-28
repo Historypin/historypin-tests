@@ -8,7 +8,8 @@ class Project_Grandparents(HPTestCase, Attach):
 	PROJECT_URL = '/project/10-grandparents'
 	
 	ATTACH_TABS = [
-		['%s/attach%s/map/index/' % (URL_BASE, PROJECT_URL), '%s/attach%s/photos/gallery/' % (URL_BASE, PROJECT_URL)],
+		'%s/attach%s/map/index/'		% (URL_BASE, PROJECT_URL),
+		'%s/attach%s/photos/gallery/'	% (URL_BASE, PROJECT_URL),
 	]
 	
 	test_attach_tabs	= Attach.attach_tabs

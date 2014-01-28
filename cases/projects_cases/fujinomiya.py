@@ -10,7 +10,8 @@ class Project_Fujinomiya(HPTestCase, Attach):
 	blog_link	= 'http://blog.historypin.jp'
 	
 	ATTACH_TABS = [
-		['%s/map/index/' % (PROJECT_URL), '%s/photos/gallery/' % PROJECT_URL],
+		'%s/map/index/'			% PROJECT_URL,
+		'%s/photos/gallery/'	% PROJECT_URL,
 	]
 	
 	test_attach_tabs	= Attach.attach_tabs

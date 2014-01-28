@@ -16,7 +16,6 @@ class Project_Balboa(HPTestCase, Attach):
 	test_tab_collections	= Attach.attach_tab_collections
 	test_tab_tours_empty	= Attach.attach_tab_tours_empty
 	
-	
 	def test_tab_map(self):
 		self.go('/attach' + self.PROJECT_URL + '/map/')
 		

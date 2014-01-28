@@ -8,7 +8,9 @@ class Project_NPower_KeepWarm(Project_NPower):
 	PROJECT_URL = '/project/16-remember-keep-warm'
 	
 	ATTACH_TABS = [
-		['%s/attach%s/map/index/' % (URL_BASE, PROJECT_URL), '%s/attach%s/photos/gallery/' % (URL_BASE, PROJECT_URL), '%s/attach%s/photos/stories/' % (URL_BASE, PROJECT_URL)],
+		'%s/attach%s/map/index/'		% (URL_BASE, PROJECT_URL),
+		'%s/attach%s/photos/gallery/'	% (URL_BASE, PROJECT_URL),
+		'%s/attach%s/photos/stories/'	% (URL_BASE, PROJECT_URL)
 	]
 	
 	def test_index(self):

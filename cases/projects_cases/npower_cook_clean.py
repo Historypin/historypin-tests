@@ -9,7 +9,9 @@ class Project_NPower_Cook_Clean(Project_NPower):
 	PROJECT_URL = '/project/19-remember-cook-and-clean'
 	
 	ATTACH_TABS = [
-		['%s/attach%s/map/index/' % (URL_BASE, PROJECT_URL), '%s/attach%s/photos/gallery/' % (URL_BASE, PROJECT_URL), '%s/attach%s/photos/stories/' % (URL_BASE, PROJECT_URL)],
+		'%s/attach%s/map/index/'		% (URL_BASE, PROJECT_URL),
+		'%s/attach%s/photos/gallery/'	% (URL_BASE, PROJECT_URL),
+		'%s/attach%s/photos/stories/'	% (URL_BASE, PROJECT_URL)
 	]
 	
 	def test_index(self):

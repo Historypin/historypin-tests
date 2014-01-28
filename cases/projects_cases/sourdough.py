@@ -8,7 +8,12 @@ class Project_Sourdough(HPTestCase, Attach):
 	PROJECT_URL = '/project/43-sourdough-and-rye'
 	
 	ATTACH_TABS = [
-		['%s/attach%s/map/index/' % (URL_BASE, PROJECT_URL), '%s/attach%s/photos/gallery/' % (URL_BASE, PROJECT_URL), '%s/attach%s/tours/all/' % (URL_BASE, PROJECT_URL), '%s/attach%s/collections/all/' % (URL_BASE, PROJECT_URL), '%s/attach%s/slideshow/' % (URL_BASE, PROJECT_URL), '%s/attach%s/photos/list/' % (URL_BASE, PROJECT_URL)],
+		'%s/attach%s/map/index/'		% (URL_BASE, PROJECT_URL),
+		'%s/attach%s/photos/gallery/'	% (URL_BASE, PROJECT_URL),
+		'%s/attach%s/tours/all/'		% (URL_BASE, PROJECT_URL),
+		'%s/attach%s/collections/all/'	% (URL_BASE, PROJECT_URL),
+		'%s/attach%s/slideshow/'		% (URL_BASE, PROJECT_URL),
+		'%s/attach%s/photos/list/'		% (URL_BASE, PROJECT_URL)
 	]
 	
 	test_attach_tabs		= Attach.attach_tabs

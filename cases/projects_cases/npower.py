@@ -8,7 +8,9 @@ class Project_NPower(HPTestCase, Attach):
 	PROJECT_URL = '/project/15-remember'
 	
 	ATTACH_TABS = [
-		['%s/attach%s/map/index/' % (URL_BASE, PROJECT_URL), '%s/attach%s/photos/gallery/' % (URL_BASE, PROJECT_URL), '%s/attach%s/photos/stories/' % (URL_BASE, PROJECT_URL)],
+		'%s/attach%s/map/index/'		% (URL_BASE, PROJECT_URL),
+		'%s/attach%s/photos/gallery/'	% (URL_BASE, PROJECT_URL),
+		'%s/attach%s/photos/stories/'	% (URL_BASE, PROJECT_URL)
 	]
 	
 	test_attach_tabs	= Attach.attach_tabs

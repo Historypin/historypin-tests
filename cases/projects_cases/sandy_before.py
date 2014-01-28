@@ -8,7 +8,10 @@ class Project_Before_Sandy(Project_Sandy):
 	PROJECT_URL = '/project/27-before-sandy'
 	
 	ATTACH_TABS = [
-		['%s/attach%s/map/index/' % (URL_BASE, PROJECT_URL), '%s/attach%s/photos/gallery/' % (URL_BASE, PROJECT_URL), '%s/attach%s/photos/stories/' % (URL_BASE, PROJECT_URL), '%s/attach%s/photos/slideshow/' % (URL_BASE, PROJECT_URL)]
+		'%s/attach%s/map/index/'		% (URL_BASE, PROJECT_URL),
+		'%s/attach%s/photos/gallery/'	% (URL_BASE, PROJECT_URL),
+		'%s/attach%s/photos/stories/'	% (URL_BASE, PROJECT_URL),
+		'%s/attach%s/photos/slideshow/'	% (URL_BASE, PROJECT_URL)
 	]
 	
 	def test_index(self):
