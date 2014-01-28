@@ -13,8 +13,30 @@ class Project_Balboa(HPTestCase, Attach):
 	# ]
 	# test_attach_tabs		= Attach.attach_tabs
 	
-	test_tab_map			= Attach.attach_tab_map
 	test_tab_collections	= Attach.attach_tab_collections
+	
+	def test_tab_map(self):
+		self.go('/attach' + self.PROJECT_URL + '/map/')
+		
+		sleep(4)
+		
+		self.assertIsInstance(self.e('#date-slider-wrapper'), WebElement)
+		self.assertIsInstance(self.e('#tags'), WebElement)
+		
+		sleep(5)
+		
+		# no way to do this in selenium as the counter element is hidden
+		self.browser.execute_script("ms = $('.hp-marker.hp-marker-cluster'); for(i in ms){ m = ms[i]; if($('.hp-marker-count', m).text() < 100 ){ m.click(); break; } }")
+		
+		cluster = self.e('#galleryInfoWindow_contents li:nth-of-type(1)')
+		
+		self.assertIsInstance(cluster.e('.hp-info-gallery-pin img'), WebElement)
+		self.assertIsInstance(cluster.e('.info h6 a'), WebElement)
+		self.assertIsInstance(cluster.e('.info p'), WebElement)
+		
+		cluster.e('.hp-info-gallery-pin img').click()
+		sleep(2)
+		self.assertIsInstance(self.e('#info-dialog'), WebElement)
 	
 	def test_index(self):
 		self.go(self.PROJECT_URL)
