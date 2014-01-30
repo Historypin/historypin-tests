@@ -33,11 +33,9 @@ class Project_Queens(HPTestCase, Attach):
 		self.assertEqual('Queens: Neighborhood Stories', site_cnt.e('h1').text)
 		self.assertIn('Queens is the most diverse county in the U.S., made up of many neighborhoods', site_cnt.e('.main_description').text)
 		
-		# TODO fix link to match the new ID - issue #2883 should be fixed
-		
 		tout_items = [
 			['Pin your memories'	, 'tout1_image', 'What makes your neighborhood special?'					, 'http://www.historypin.com%s/upload/' % self.PROJECT_URL],
-			['Get involved'			, 'tout2_image', 'Find out how you can get your neighborhood involved'		, 'http://www.bbc.co.uk/'],
+			['Get involved'			, 'tout2_image', 'Find out how you can get your neighborhood involved'		, 'http://blog.historypin.com/2013/01/29/neighborhood-stories-get-your-community-involved/'],
 		]
 		
 		h3s			= site_cnt.es('.tout.w2 h3')

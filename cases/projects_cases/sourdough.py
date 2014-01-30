@@ -28,7 +28,7 @@ class Project_Sourdough(HPTestCase, Attach):
 		self.go(self.PROJECT_URL)
 		
 		self.assertTitle('Sourdough and Rye | Home')
-		self.assertEqual('%s/projects/img/dim/1030x250/crop/1/image_id/193' % URL_BASE, self.e('#banner_images img').get_attribute('src'))
+		self.assertEqual('%s/projects/img/dim/1030x250/crop/1/image_id/150' % URL_BASE, self.e('#banner_images img').get_attribute('src'))
 		
 		site_cnt = self.e('#site-content')
 		about_link = site_cnt.e('.w23 a')
