@@ -95,7 +95,11 @@ class Homepage(HPTestCase):
 		sleep(.5)
 		
 		# TODO LATER
-		# - favourite
+		# log in
+		# favourite a photo
+		# check if this photo is in the channel
+		# hover the photo
+		# remove the favourite
 	
 	@url('/')
 	def test_activity(self):
