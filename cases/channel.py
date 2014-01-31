@@ -197,7 +197,7 @@ class Channel(HPTestCase):
 		
 		item = self.e('#photo_list_content .list li a')
 		
-		self.assertEqual('%s/attach/uid%d/tours/view/id/%d/title/Test%%20Tour%%20for%%20automated%%20test' % (URL_BASE, ID_USER_VIEW, ID_TOUR_VIEW), item.get_attribute('href'))
+		self.assertEqual('%s/attach/uid%d/tours/view/id/%d/title/Test%%20Tour%%20for%%20Automated%%20test' % (URL_BASE, ID_USER_VIEW, ID_TOUR_VIEW), item.get_attribute('href'))
 		self.assertEqual('%s/services/thumb/phid/706/dim/195x150/crop/1/' % URL_BASE, item.e('img').get_attribute('src'))
 		
 		self.assertIn('tour-icon'	, item.e('span').get_attribute('class'))
@@ -206,8 +206,8 @@ class Channel(HPTestCase):
 		
 		paragraph_link = self.es('#photo_list_content .list li p a')
 		
-		self.assertEqual('%s/attach/uid%d/tours/view/id/%d/title/Test%%20Tour%%20for%%20automated%%20test' % (URL_BASE, ID_USER_VIEW, ID_TOUR_VIEW), paragraph_link[0].get_attribute('href'))
-		self.assertEqual('Test Tour for automated test', paragraph_link[0].text)
+		self.assertEqual('%s/attach/uid%d/tours/view/id/%d/title/Test%%20Tour%%20for%%20Automated%%20test' % (URL_BASE, ID_USER_VIEW, ID_TOUR_VIEW), paragraph_link[0].get_attribute('href'))
+		self.assertEqual('Test Tour for Automated test', paragraph_link[0].text)
 		
 		self.assertEqual('%s/channels/view/%d' % (URL_BASE, ID_USER_VIEW), paragraph_link[1].get_attribute('href'))
 		self.assertEqual('Gabss', paragraph_link[1].text)
@@ -1024,8 +1024,8 @@ class Channel(HPTestCase):
 		editor = self.e('.channel_editor')
 		tab_design = editor.e('#tab-design')
 		
-		sleep(3)
-		self.assertEqual('%s/channels/img/35019/logo/1/dim/200x200/crop/1/cache/0/' % URL_BASE, self.e('.chan_logo > img').get_attribute('src'))
+		self.browser.refresh()
+		self.assertEqual('%s/resources/avatars/200x200/avatar_3.png' % URL_BASE, self.e('.chan_logo > img').get_attribute('src'))
 	
 	@logged_in
 	@url('/channels/view/%d/' % ID_USER)
@@ -1548,7 +1548,7 @@ class Channel(HPTestCase):
 		paragraph	= info.es('p')
 		
 		self.assertEqual('Bulgarian Army Theater', title.get_attribute('value'))
-		self.assertEqual('This is a photo of the famous Bulgarian Army Theater .', desc.get_attribute('value'))
+		# self.assertEqual('This is a photo of the famous Bulgarian Army Theater .', desc.get_attribute('value'))
 		self.assertEqual('theater, theatre, bulgarian army', tags.get_attribute('value'))
 		
 		license			= edit_page.e('.section.license')
