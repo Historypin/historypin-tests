@@ -149,24 +149,24 @@ class Homepage(HPTestCase):
 		self.assertEqual('%s/projects/' % URL_BASE	, browse_all.get_attribute('href'))
 		self.assertEqual('Browse all projects'		, browse_all.text)
 	
-	# @url('/')
-	# def test_icon_touts(self):
+	@url('/')
+	def test_icon_touts(self):
 		
-	# 	features = [
-	# 		['ss-cell', URL_BASE + '/app/', 'Download the latest Historypin\nsmartphone app'],
-	# 		['ss-trophy', 'http://blog.historypin.com/2013/05/31/weve-updated-our-terms-and-conditions', 'We\'ve won a webby award for best charity non-profit website'],
-	# 		['ss-user', URL_BASE + '/team/', 'Meet the team working on Historypin around the world'],
-	# 	]
+		features = [
+			['ss-cell'				, URL_BASE + '/app/'			, 'Download the latest Historypin\nsmartphone app'],
+			['ss-trophy'			, URL_BASE + '/presscentre/'	, 'We\'ve won a webby award for best charity non-profit website'],
+			['ss-exclamationchat'	, 'http://blog.historypin.com/2013/05/31/weve-updated-our-terms-and-conditions', "We've updated our\nTerms and Conditions"],
+		]
 		
-	# 	icons = self.es('.features span')
-	# 	links = self.es('.features a')
-	# 	for n in range(len(features)):
-	# 		i = features[n]
+		icons = self.es('.features span')
+		links = self.es('.features a')
+		for n in range(len(features)):
+			i = features[n]
 			
-	# 		self.assertIn('ss-icon'	, icons[n].get_attribute('class'))
-	# 		# self.assertIn(i[0]	, icons[n].get_attribute('class'))
-	# 		self.assertEqual(i[1]	, links[n].get_attribute('href'))
-	# 		self.assertEqual(i[2]	, links[n].text)
+			self.assertIn('ss-icon'				, icons[n].get_attribute('class'))
+			self.assertIn(i[0]					, icons[n].get_attribute('class'))
+			self.assertEqual(i[1]	, links[n].get_attribute('href'))
+			self.assertEqual(i[2]				, links[n].text)
 	
 	@url('/')
 	def test_sponsors(self):
