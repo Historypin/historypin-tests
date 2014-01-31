@@ -49,10 +49,12 @@ class Homepage(HPTestCase):
 		self.assertEqual('%s/resources/images/hp_logo.png'	% URL_BASE, branding.e('img').get_attribute('src'))
 		self.assertEqual('A global community collaborating around history', self.e('#branding .home-top p').text)
 		
+		circle_icon = 'ss-social-circle'
+		
 		social_icons = [
-			['ss-social-circle', 'https://plus.google.com/116628462065893538180/posts'],
-			['ss-social-circle', 'http://www.facebook.com/pages/Historypin/192291707448024'],
-			['ss-social-circle', 'http://twitter.com/Historypin'],
+			[circle_icon, 'https://plus.google.com/116628462065893538180/posts'],
+			[circle_icon, 'http://www.facebook.com/pages/Historypin/192291707448024'],
+			[circle_icon, 'http://twitter.com/Historypin'],
 		]
 		
 		links	= self.es('.social_links a')
@@ -65,10 +67,11 @@ class Homepage(HPTestCase):
 	
 	@url('/')
 	def test_featured(self):
-		prev	= self.e('#featured .prev')
-		next	= self.e('#featured .next')
-		ul		= self.e('#featured ul')
-		li		= self.e_wait('#featured li:first-of-type')
+		featured = self.e('#featured')
+		prev	= featured.e('.prev')
+		next	= featured.e('.next')
+		ul		= featured.e('ul')
+		li		= featured.e_wait('li:first-of-type')
 		
 		self.assertEqual('0px', ul.css('left'))
 		
@@ -130,21 +133,6 @@ class Homepage(HPTestCase):
 		sleep(.3)
 		self.assertEqual(self.browser.current_url.split('#')[0], '%s/map/' % URL_BASE)
 	
-	# # @unittest.skip("TODO")
-	# @url('/')
-	# def test_explore_go_button(self):
-		
-	# 	self.assertEqual('Explore where you live...', self.e('#search h2').text)
-		
-	# 	self.e('#search-location').send_keys("London")
-		
-		# first_suggestion = self.e_wait('.pac-container .pac-item')
-		# self.assertEqual(first_suggestion.text, 'London, United Kingdom')
-		
-		# first_suggestion.click()
-		# sleep(.3)
-		# self.assertEqual(self.browser.current_url.split('#')[0], URL_BASE + '/map/')
-	
 	@url('/')
 	def test_projects(self):
 	
@@ -185,14 +173,14 @@ class Homepage(HPTestCase):
 		
 		self.assertEqual(self.e('.support h5').text, 'Supported by:')
 		
-		partners = ['http://www.nominettrust.org.uk/', 'http://www.google.co.uk/intl/en/about/']  # '/resources/images/partners/nominet_colored.png', '/resources/images/partners/google_logo.jpg
-		
+		partners = ['http://www.nominettrust.org.uk/', 'http://www.google.co.uk/intl/en/about/']
 		links	= self.es('.partners li a')
-		# images	= self.es('.partners li img')
 		
 		for n in range(len(partners)): self.assertEqual(partners[n], links[n].get_attribute('href'))
-			# i = partners[n]
-			# self.assertEqual(URL_BASE + i[1]	, images[n].get_attribute('src'))
+		
+		self.assertIn('data:image/png;base64,iVBORw0KGgoAAAANS'		, links[0].css('background'))
+		self.assertIn('data:image/jpeg;base64,/9j'					, links[1].css('background'))
+		
 		
 		support = self.es('.support .donate')
 		self.assertEqual('users\nDonate to support Historypin'	, support[0].text)
