@@ -129,7 +129,7 @@ class Channel(HPTestCase):
 		img_holder = self.e('#photo_list_content .list li .image-holder a[class="image"]')
 		# TODO check this url
 		# self.assertEqual('%s/attach/uid%d/map/index/#!/geo:43.325176,24.960938/zoom:20/dialog:361341/tab:details/' % (URL_BASE, ID_USER_VIEW), img_holder.get_attribute('href'))
-		self.assertEqual('%s/services/thumb/phid/%d/dim/170x130/crop/1/' % (URL_BASE, ID_MAP_ITEM), img_holder.e('img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%s/dim/170x130/crop/1/' % (URL_BLOB, ID_TOUR_IMAGES[1]), img_holder.e('img').get_attribute('src'))
 		
 		info = self.e('#photo_list_content .info')
 		self.assertIsInstance(info.e('h5'), WebElement)
@@ -174,7 +174,7 @@ class Channel(HPTestCase):
 		item = self.e('#photo_list_content .list li a')
 		
 		self.assertEqual('%s/attach/uid%d/collections/view/id/%d/title/Test%%20Collection%%20for%%20automated%%20test' % (URL_BASE, ID_USER_VIEW, ID_COLLECTION_VIEW), item.get_attribute('href'))
-		self.assertEqual('%s/services/thumb/phid/%d/dim/195x150/crop/1/' % (URL_BASE, ID_COLLECTION_IMAGES[1]), item.e('img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%s/dim/195x150/crop/1/' % (URL_BLOB, ID_COLLECTION_IMAGES_BLOB[1]), item.e('img').get_attribute('src'))
 		self.assertIn('collection-icon'	, item.e('span').get_attribute('class'))
 		self.assertIn('ss-icon'			, item.e('span').get_attribute('class'))
 		self.assertIn('ss-pictures'		, item.e('span').get_attribute('class'))
@@ -197,8 +197,8 @@ class Channel(HPTestCase):
 		
 		item = self.e('#photo_list_content .list li a')
 		
-		self.assertEqual('%s/attach/uid%d/tours/view/id/%d/title/Test%%20Tour%%20for%%20automated%%20test' % (URL_BASE, ID_USER_VIEW, ID_TOUR_VIEW), item.get_attribute('href'))
-		self.assertEqual('%s/services/thumb/phid/706/dim/195x150/crop/1/' % URL_BASE, item.e('img').get_attribute('src'))
+		self.assertEqual('%s/attach/uid%d/tours/view/id/%d/title/Test%%20Tour%%20for%%20Automated%%20test' % (URL_BASE, ID_USER_VIEW, ID_TOUR_VIEW), item.get_attribute('href'))
+		self.assertEqual('%s/services/thumb/phid/AMIfv96I9_s60vye1nN6kByqJAhUOQ_YE9JOMxMvV296IMqaZwlf4PYFX_75vAVaPEMy5t6uZTvCSiB0MhtoD0TouuPGg5ThZlZvUrEiKpFdA_lfQRFPLcOZU2hRv17iVI2GLQs_2NfSAOUypL2__HCE4kiNbLHRIw/dim/195x150/crop/1/' % URL_BLOB, item.e('img').get_attribute('src'))
 		
 		self.assertIn('tour-icon'	, item.e('span').get_attribute('class'))
 		self.assertIn('ss-icon'		, item.e('span').get_attribute('class'))
@@ -206,8 +206,8 @@ class Channel(HPTestCase):
 		
 		paragraph_link = self.es('#photo_list_content .list li p a')
 		
-		self.assertEqual('%s/attach/uid%d/tours/view/id/%d/title/Test%%20Tour%%20for%%20automated%%20test' % (URL_BASE, ID_USER_VIEW, ID_TOUR_VIEW), paragraph_link[0].get_attribute('href'))
-		self.assertEqual('Test Tour for automated test', paragraph_link[0].text)
+		self.assertEqual('%s/attach/uid%d/tours/view/id/%d/title/Test%%20Tour%%20for%%20Automated%%20test' % (URL_BASE, ID_USER_VIEW, ID_TOUR_VIEW), paragraph_link[0].get_attribute('href'))
+		self.assertEqual('Test Tour for Automated test', paragraph_link[0].text)
 		
 		self.assertEqual('%s/channels/view/%d' % (URL_BASE, ID_USER_VIEW), paragraph_link[1].get_attribute('href'))
 		self.assertEqual('Gabss', paragraph_link[1].text)
@@ -1024,8 +1024,8 @@ class Channel(HPTestCase):
 		editor = self.e('.channel_editor')
 		tab_design = editor.e('#tab-design')
 		
-		sleep(3)
-		self.assertEqual('%s/channels/img/35019/logo/1/dim/200x200/crop/1/cache/0/' % URL_BASE, self.e('.chan_logo > img').get_attribute('src'))
+		self.browser.refresh()
+		self.assertEqual('%s/resources/avatars/200x200/avatar_3.png' % URL_BASE, self.e('.chan_logo > img').get_attribute('src'))
 	
 	@logged_in
 	@url('/channels/view/%d/' % ID_USER)
@@ -1455,7 +1455,7 @@ class Channel(HPTestCase):
 		self.assertEqual('Date required field'		, heading[2].text)
 		self.assertEqual('Place required field'		, heading[3].text)
 		
-		self.assertEqual('%s/services/thumb/phid/%d/dim/260x1000/' % (URL_BASE, ID_EDIT_ITEM), edit_page.e('#photo-preview img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%s/dim/260x1000/' % (URL_BLOB, ID_TOUR_IMAGES_BLOB[0]), edit_page.e('#photo-preview img').get_attribute('src'))
 		
 		info		= edit_page.e('.inner.left')
 		label		= info.es('label')
@@ -1548,7 +1548,7 @@ class Channel(HPTestCase):
 		paragraph	= info.es('p')
 		
 		self.assertEqual('Bulgarian Army Theater', title.get_attribute('value'))
-		self.assertEqual('This is a photo of the famous Bulgarian Army Theater .', desc.get_attribute('value'))
+		# self.assertEqual('This is a photo of the famous Bulgarian Army Theater .', desc.get_attribute('value'))
 		self.assertEqual('theater, theatre, bulgarian army', tags.get_attribute('value'))
 		
 		license			= edit_page.e('.section.license')

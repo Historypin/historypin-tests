@@ -3,12 +3,14 @@ PATH_CRHOME_DRIVER	= '/usr/lib64/chromium-browser/chromedriver'
 GO_TIMEOUT = 1
 
 # VERSION = 'v5-europeana-filter'
-VERSION = 'v5-01-07'
+# VERSION = 'v5-01-07'
 # VERSION = 'http://www.historypin.com'
-LINK_BASE = '%s.historypin-hrd.appspot.com' % (VERSION)
-# LINK_BASE = 'historypin.dev'
+# LINK_BASE = '%s.historypin-hrd.appspot.com' % (VERSION)
+LINK_BASE = 'historypin.dev'
 
 URL_BASE = 'http://www.%s' % LINK_BASE
+
+URL_BLOB = 'http://v5-blob.historypin-hrd.appspot.com'
 
 IS_ON_SDK = not (LINK_BASE.endswith('.appspot.com') or LINK_BASE.endswith('.historypin.com'))
 
@@ -16,11 +18,15 @@ ID_COLLECTION	= 3033
 ID_TOUR			= 1706
 
 ID_COLLECTION_VIEW	= 2967
-ID_TOUR_VIEW		= 1989
+ID_TOUR_VIEW		= 2995
 
-ID_COLLECTION_IMAGES	= [160180, 149729]
+ID_COLLECTION_IMAGES		= [160180, 149729]
+ID_COLLECTION_IMAGES_BLOB	= ['AMIfv97BxDC3KgRVI9L-A9fGaB8xSYMHSHNEozcXaKK6ou2jaoH7YATeoXhvssu7BiJfd1oi_luVHeht-P_-I_v0AIKisr7nVBHRSBfV8TJNDWkI7EttyQ1kJb315oV6yG8jDvA6z0QBif4oIlwW19RrB0Utj7hTkh3aGW4FVibtNAHdgwLz2w0',
+			'AMIfv97wumUW0cEPpZEKoM6-7E1LA3MAqhCicEtBuPmiFKZCgnO2KBsNDvL1qnRgz_5TAe6-hgdPXw8EpLzOYnqDwILvEltSIV-zxpkzj95JMnOBgwdQakl0UoRM4Sa1AFOZJ_m_awrwKi9IlQgZ6_KDHobqSPDTs_hD--sSGhi-6o5OUFFmZIc']
 
-ID_TOUR_IMAGES			= [160180, 149729]
+ID_TOUR_IMAGES		= [160180, 149729]
+ID_TOUR_IMAGES_BLOB	= ['AMIfv97BxDC3KgRVI9L-A9fGaB8xSYMHSHNEozcXaKK6ou2jaoH7YATeoXhvssu7BiJfd1oi_luVHeht-P_-I_v0AIKisr7nVBHRSBfV8TJNDWkI7EttyQ1kJb315oV6yG8jDvA6z0QBif4oIlwW19RrB0Utj7hTkh3aGW4FVibtNAHdgwLz2w0',
+			'AMIfv97wumUW0cEPpZEKoM6-7E1LA3MAqhCicEtBuPmiFKZCgnO2KBsNDvL1qnRgz_5TAe6-hgdPXw8EpLzOYnqDwILvEltSIV-zxpkzj95JMnOBgwdQakl0UoRM4Sa1AFOZJ_m_awrwKi9IlQgZ6_KDHobqSPDTs_hD--sSGhi-6o5OUFFmZIc']
 
 
 FAVOURITE_CHANNELS			= [26288, 14950, 33328]

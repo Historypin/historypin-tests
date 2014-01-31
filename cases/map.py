@@ -165,7 +165,7 @@ class Map(HPTestCase):
 	def test_dialog_details(self):  # this test case fails only in the test suite
 		sleep(15)  # ajax on success
 		dlg = self.e('#info-dialog')
-		self.assertEqual('%s/services/thumb/phid/%d/dim/2000x440/quality/80/' % (URL_BASE, ID_MAP_ITEM), dlg.e('#details_cnt .image .main-img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%s/dim/2000x440/quality/80/' % (URL_BLOB, ID_TOUR_IMAGES_BLOB[1]), dlg.e('#details_cnt .image .main-img').get_attribute('src'))
 		
 		info = self.e('#details_cnt .info')
 		self.assertEqual('National Theatre in Sofia, Bulgaria'				, info.e('h2.photo-title').text)
@@ -209,7 +209,7 @@ class Map(HPTestCase):
 		self.assertIn('ss-icon'		, fullscr.e('span').get_attribute('class'))
 		self.assertIn('ss-scaleup'	, fullscr.e('span').get_attribute('class'))
 		fullscr.click()
-		self.assertEqual('%s/services/thumb/phid/%d/dim/3000x500/quality/80/' % (URL_BASE, ID_MAP_ITEM), self.e('#preview_cnt .image img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%s/dim/3000x500/quality/80/' % (URL_BLOB, ID_TOUR_IMAGES_BLOB[1]), self.e('#preview_cnt .image img').get_attribute('src'))
 		
 		self.assertEqual('Share:', dlg.e('h3').text)
 		social_buttons = dlg.e('.addthis_toolbox span')
@@ -242,9 +242,9 @@ class Map(HPTestCase):
 		self.assertIn('tab:stories'		, '%s/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:stories/' % (URL_BASE, ID_MAP_ITEM))
 		self.assertEqual('Comments and suggestions (1)'	, dlg.e('.selected .tab').text)
 		
-		sidebar						= dlg.e('.info.scrollbarfix')
-		self.assertEqual('%s/services/thumb/phid/%d/dim/294x1000/' 	% (URL_BASE, ID_MAP_ITEM), sidebar.e('.side-img ').get_attribute('src'))
-		self.assertEqual('%s/channels/img/%d/logo/1/dim/46x46/'		% (URL_BASE, ID_USER_VIEW), sidebar.e('.photo-user-avatar.avatar').get_attribute('src'))
+		sidebar = dlg.e('.info.scrollbarfix')
+		self.assertEqual('%s/services/thumb/phid/%s/dim/294x1000/' 	% (URL_BLOB, ID_TOUR_IMAGES_BLOB[1]), sidebar.e('.side-img ').get_attribute('src'))
+		self.assertEqual('%s/channels/img/%s/logo/1/dim/46x46/'		% (URL_BASE, ID_USER_VIEW), sidebar.e('.photo-user-avatar.avatar').get_attribute('src'))
 		self.assertEqual('Pinned by: \nGabss'							, sidebar.e('.pinner p').text)
 		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER_VIEW), sidebar.e('.pinner p a').get_attribute('href'))
 		self.assertEqual('National Theatre in Sofia, Bulgaria'						, sidebar.e('.photo-title').text)
@@ -308,7 +308,7 @@ class Map(HPTestCase):
 		self.assertIn('ss-scaleup'	, fullscr_icon.get_attribute('class'))
 		fullscr.click()
 		
-		self.assertEqual('%s/services/thumb/phid/%d/dim/916x685/quality/80/' % (URL_BASE, ID_MAP_ITEM), dlg.e('.streetview_container.streetview_fs .streetview-img-wrapper .streetview-img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%s/dim/916x685/quality/80/' % (URL_BLOB, ID_TOUR_IMAGES_BLOB[1]), dlg.e('.streetview_container.streetview_fs .streetview-img-wrapper .streetview-img').get_attribute('src'))
 		
 		fullscr_off		= dlg.e('#streetview_fullscreen')
 		fullscr_off_icon = fullscr_off.e('span')
@@ -331,7 +331,7 @@ class Map(HPTestCase):
 		
 		self.assertIn('tab:repeats'		, '%s/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:repeats/' % (URL_BASE, ID_MAP_ITEM))
 		self.assertEqual('Repeats (0)'	, dlg.e('.selected .tab').text)
-		self.assertEqual('%s/services/thumb/phid/%d/dim/2000x440/quality/80/' % (URL_BASE, ID_MAP_ITEM), tab.e('.main img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%s/dim/2000x440/quality/80/' % (URL_BLOB, ID_TOUR_IMAGES_BLOB[1]), tab.e('.main img').get_attribute('src'))
 		
 		about_cnt = tab.e('.about')
 		self.assertEqual('Historypin Repeats'	, about_cnt.e('h2').text)
@@ -356,7 +356,7 @@ class Map(HPTestCase):
 		self.assertEqual('Copyright', dlg.e('.selected .tab').text)
 		
 		sidebar	= dlg.e('.info.scrollbarfix')
-		self.assertEqual('%s/services/thumb/phid/%d/dim/294x1000/' % (URL_BASE, ID_MAP_ITEM), sidebar.e('.side-img ').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%s/dim/294x1000/' % (URL_BLOB, ID_TOUR_IMAGES_BLOB[1]), sidebar.e('.side-img ').get_attribute('src'))
 		self.assertEqual('%s/channels/img/%d/logo/1/dim/46x46/' % (URL_BASE, ID_USER_VIEW), sidebar.e('.photo-user-avatar.avatar').get_attribute('src'))
 		self.assertEqual('Pinned by: \nGabss'										, sidebar.e('.pinner p').text)
 		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER_VIEW), sidebar.e('.pinner p a').get_attribute('href'))

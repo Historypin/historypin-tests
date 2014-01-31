@@ -72,15 +72,15 @@ class Collections(HPTestCase):
 		self.assertEqual('Slide Show'										, button.text)
 		
 		collection_view = [
-			['geo:42.694705,23.329034/zoom:15/dialog:%d'	% ID_COLLECTION_IMAGES[0], '/%d/' % ID_COLLECTION_IMAGES[0], '2 February 2013, from Gabriela Ananieva'	, '/%d' % ID_USER],
-			['geo:42.693738,23.326101/zoom:15/dialog:%d'	% ID_COLLECTION_IMAGES[1], '/%d/' % ID_COLLECTION_IMAGES[1], '2 August 2012, from Gabss'				, '/%d' % ID_USER_VIEW],
+			['geo:42.694705,23.329034/zoom:15/dialog:%d'	% ID_COLLECTION_IMAGES[0], '/%s/' % ID_COLLECTION_IMAGES_BLOB[0], '2 February 2013, from Gabriela Ananieva'	, '/%d' % ID_USER],
+			['geo:42.693738,23.326101/zoom:15/dialog:%d'	% ID_COLLECTION_IMAGES[1], '/%s/' % ID_COLLECTION_IMAGES_BLOB[1], '2 August 2012, from Gabss'				, '/%d' % ID_USER_VIEW],
 		]
 		
 		item = self.es('#list_view .list li')
 		for n in range(len(collection_view)):
 			i = collection_view[n]
 			self.assertEqual(URL_BASE + '/map/#!/' + i[0] + '/tab:details/', item[n].e('a.link-image').get_attribute('href'))
-			self.assertEqual(URL_BASE + '/services/thumb/phid' + i[1] + 'dim/195x150/crop/1/', item[n].e('img').get_attribute('src'))
+			self.assertEqual(URL_BLOB + '/services/thumb/phid' + i[1] + 'dim/195x150/crop/1/', item[n].e('img').get_attribute('src'))
 			self.assertEqual(i[2]			, item[n].e('p').text)
 			self.assertEqual(URL_BASE + '/channels/view' + i[3], item[n].e('.username-wrapper a').get_attribute('href'))
 		
@@ -94,13 +94,13 @@ class Collections(HPTestCase):
 		representing_photo = photos_list.e('li:nth-of-type(2) .info-actions .choose')
 		representing_photo.click()
 		sleep(3)
-		self.assertEqual('%s/services/thumb/phid/%d/dim/451x302/crop/1/' % (URL_BASE, ID_COLLECTION_IMAGES[1]), self.e('img.index').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%s/dim/451x302/crop/1/' % (URL_BLOB, ID_COLLECTION_IMAGES_BLOB[1]), self.e('img.index').get_attribute('src'))
 		
 		representing_photo = photos_list.e('li:nth-of-type(1) .info-actions .choose')
 		representing_photo.click()
 		sleep(3)
 		self.browser.refresh()
-		self.assertEqual('%s/services/thumb/phid/%d/dim/451x302/crop/1/' % (URL_BASE, ID_COLLECTION_IMAGES[0]), self.e('img.index').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%s/dim/451x302/crop/1/' % (URL_BLOB, ID_COLLECTION_IMAGES_BLOB[0]), self.e('img.index').get_attribute('src'))
 	
 	@logged_in
 	@url('/collections/slideshow/id/%d' % ID_COLLECTION + '/')
@@ -124,11 +124,11 @@ class Collections(HPTestCase):
 		sleep(3)
 		pause.click()
 		
-		self.assertEqual('%s/services/thumb/phid/%d/' % (URL_BASE, ID_COLLECTION_IMAGES[1]), prev_thumb.get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%s/' % (URL_BLOB, ID_COLLECTION_IMAGES_BLOB[1]), prev_thumb.get_attribute('src'))
 		self.assertIn('1/2', counter.text)
 		self.assertEqual('"Bulgarian Army Theater"- 2 February 2013 by Gabriela Ananieva', step_text.text)
 		self.assertEqual('%s/map/#!/geo:42.694705,23.329034/zoom:9/dialog:%d/tab:details/' % (URL_BASE, ID_COLLECTION_IMAGES[0]), step_text.get_attribute('href'))
-		self.assertEqual('%s/services/thumb/phid/%d/' % (URL_BASE, ID_COLLECTION_IMAGES[1]), next_thumb.get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%s/' % (URL_BLOB, ID_COLLECTION_IMAGES_BLOB[1]), next_thumb.get_attribute('src'))
 		next_slide.click()
 		sleep(3)
 		
@@ -252,7 +252,7 @@ class Collections(HPTestCase):
 		
 		item = step_cnt.e('.choose-photos.yours li')
 		
-		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BASE, ID_COLLECTION_IMAGES[0]), item.e('img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%s/dim/152x108/crop/1/' % (URL_BLOB, ID_COLLECTION_IMAGES_BLOB[0]), item.e('img').get_attribute('src'))
 		# to check icon for adding
 		
 		sleep(3)
@@ -275,8 +275,8 @@ class Collections(HPTestCase):
 		sleep(5)  # AJAX
 		
 		favs = step_cnt.es('.choose-photos.favourites li')
-		url = '%s/services/thumb/phid' % URL_BASE
-		self.assertEqual('%s/%d/dim/152x108/crop/1/' % (url, ID_COLLECTION_IMAGES[1]), favs[0].e('img').get_attribute('src'))
+		url = '%s/services/thumb/phid' % URL_BLOB
+		self.assertEqual('%s/%s/dim/152x108/crop/1/' % (url, ID_COLLECTION_IMAGES_BLOB[1]), favs[0].e('img').get_attribute('src'))
 		
 		self.assertEqual('', favs[0].e('.photo-title').text)
 		self.hover(favs[0].e('img'))
