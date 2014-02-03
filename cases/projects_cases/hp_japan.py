@@ -41,6 +41,8 @@ class Project_HPJapan(HPTestCase, Attach):
 			self.assertEqual(i[2], paragraphs[n].text)
 			self.assertEqual(URL_BASE + '/projects/img/pid/39/dim/285x290/type/' + i[3] + '/crop/1/', imgs[n].get_attribute('src'))
 		
+		sleep(3)
+		
 		activity = self.e('#activity')
 		self.assertIsInstance(activity.e('h1'), WebElement)
 		self.assertEqual(u'総投稿数', activity.e('h6').text)
@@ -54,14 +56,14 @@ class Project_HPJapan(HPTestCase, Attach):
 		site_cnt	= self.e('#site-content')
 		icon_tout1	= site_cnt.e('#icon-tout-0 a')
 		
-		# self.assertEqual('http://www.historypin.com/', icon_tout1.get_attribute('href')) TODO Fix links for icon touts when live
+		self.assertEqual('http://www.historypin.com/', icon_tout1.get_attribute('href'))
 		self.assertEqual(u'Historypin.com (グローバルサイト）へ移動)'	, icon_tout1.text)
 		self.assertIn('ss-icon'		, icon_tout1.e('span').get_attribute('class'))
 		self.assertIn('ss-desktop'	, icon_tout1.e('span').get_attribute('class'))
 		
 		icon_tout2 = site_cnt.e('#icon-tout-1 a')
 		
-		# self.assertEqual('http://www.historypin.com/channels/'	, icon_tout2.get_attribute('href')) TODO Fix links for icon touts when live
+		self.assertEqual('http://www.historypin.com/channels/'	, icon_tout2.get_attribute('href'))
 		self.assertEqual(u'チャンネルを探索する（英語）'						, icon_tout2.text)
 		self.assertIn('ss-icon'		, icon_tout2.e('span').get_attribute('class'))
 		self.assertIn('ss-search'	, icon_tout2.e('span').get_attribute('class'))
@@ -76,11 +78,8 @@ class Project_HPJapan(HPTestCase, Attach):
 		logo_link	= supported.es('a')
 		logo_img	= supported.es('img')
 		
-		self.assertEqual('http://www.britishcouncil.jp/', logo_link[0].get_attribute('href'))  # TODO change this when link is provided
+		self.assertEqual('http://www.britishcouncil.jp/', logo_link[0].get_attribute('href'))
 		self.assertEqual('%s/resources/images/project-japan/british-council-logo.png' % URL_BASE, logo_img[0].get_attribute('src'))
-		
-		# self.assertEqual('%s/jp/project/39-japan-project#' % URL_BASE, logo_link[1].get_attribute('href'))  # TODO change this when link is provided
-		# self.assertEqual('%s/resources/images/project-japan/glocom-logo.png' % URL_BASE, logo_img[1].get_attribute('src'))
 		
 		footer = self.e('.footer-links')
 		footer_links = footer.es('a')

@@ -1005,7 +1005,7 @@ class Channel(HPTestCase):
 		button.click()
 		self.assertEqual('%s/channels/img/35019/logo/1/dim/200x200/crop/1/cache/0/' % URL_BASE, self.e('.chan_logo>img').get_attribute('src'))
 		
-		# =============== It is time to remove the avatar in order test to be ready for running again :) =======
+		# =============== It is time to remove the avatar in order test ready for running again :) =======
 		
 		editor = self.e('.channel_editor')
 		

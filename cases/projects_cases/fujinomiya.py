@@ -89,14 +89,14 @@ class Project_Fujinomiya(HPTestCase, Attach):
 		
 		icon_tout1 = self.e('#icon-tout-0 a')
 		
-		# self.assertEqual('http://www.historypin.com/project/39-japan/', icon_tout1.get_attribute('href')) TODO Fix links for icon touts when live
+		self.assertEqual('http://www.historypin.jp/jp/', icon_tout1.get_attribute('href'))
 		self.assertEqual(u'Historypin Japan に戻る'							, icon_tout1.text)
 		self.assertIn('ss-icon'		, icon_tout1.e('span').get_attribute('class'))
 		self.assertIn('ss-undo'		, icon_tout1.e('span').get_attribute('class'))
 		
 		icon_tout2 = self.e('#icon-tout-1 a')
 		
-		# self.assertEqual('http://www.historypin.com/'	, icon_tout2.get_attribute('href')) TODO fix link when live
+		self.assertEqual('http://www.historypin.com/'	, icon_tout2.get_attribute('href'))
 		self.assertEqual(u'Historypin.com (グローバルサイト）へ移動)', icon_tout2.text)
 		self.assertIn('ss-icon'		, icon_tout2.e('span').get_attribute('class'))
 		self.assertIn('ss-search'	, icon_tout2.e('span').get_attribute('class'))
