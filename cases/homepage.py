@@ -93,13 +93,6 @@ class Homepage(HPTestCase):
 		fulscr.click()
 		self.assertNotIn('home-fullscreen', body.get_attribute('class'))
 		sleep(.5)
-		
-		# TODO LATER
-		# log in
-		# favourite a photo
-		# check if this photo is in the channel
-		# hover the photo
-		# remove the favourite
 	
 	@url('/')
 	def test_activity(self):

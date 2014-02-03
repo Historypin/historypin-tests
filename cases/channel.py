@@ -1443,6 +1443,30 @@ class Channel(HPTestCase):
 		self.assertEqual("You have no fans yet.", tab_subsrcribers.e('p').text)
 	
 	@logged_in
+	@url('/map/#!/geo:42.697839,23.32167/zoom:12/dialog:%d/tab:details/' % ID_MAP_ITEM)
+	def test_favourite_item(self):
+		
+		favourite = self.e('.favourite')
+		
+		self.assertIn('ss-icon'			, favourite.e('span').get_attribute('class'))
+		self.assertIn('ss-heart'		, favourite.e('span').get_attribute('class'))
+		
+		favourite.click()
+		
+		self.assertIn('ss-icon'			, favourite.e('span').get_attribute('class'))
+		self.assertIn('ss-heart'		, favourite.e('span').get_attribute('class'))
+		self.assertIn('ss-deleteheart'	, favourite.e('span').get_attribute('class'))
+		
+		self.go('/attach/uid%d/photos/list/#/get/recent/show/favourites/' % ID_USER)
+		
+		favourite_item = self.e('.image-holder a[href*="%d"]' % ID_MAP_ITEM)
+		self.assertIsInstance(favourite_item, WebElement)
+		
+		self.hover(favourite_item.e('img'))
+		self.e('#list .favourite.icon').click()
+		
+	
+	@logged_in
 	@url('/upload-item/pin/phid/%d/edit/1/' % ID_EDIT_ITEM)
 	def test_edit_item(self):
 		
