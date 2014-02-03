@@ -1464,7 +1464,6 @@ class Channel(HPTestCase):
 		
 		self.hover(favourite_item.e('img'))
 		self.e('#list .favourite.icon').click()
-		
 	
 	@logged_in
 	@url('/upload-item/pin/phid/%d/edit/1/' % ID_EDIT_ITEM)
