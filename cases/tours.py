@@ -177,7 +177,68 @@ class Tours(HPTestCase):
 			check_step(tour_items[n])
 	
 	@logged_in
-	@url('/tours/add/id/%d/#%d' % (ID_TOUR, ID_TOUR))  # Bug #2381 should be fixed - wrong ordering of itmes on third step
+	@url('/tours/add/')
+	def test_add_tour(self):
+		
+		
+		title = self.e('#tour-title')
+		title.clear()
+		title.send_keys('Beautiful buildings in Bulgaria')
+		
+		desc = self.e('#tour-description')
+		desc.clear()
+		desc.send_keys('Tour about beautiful buildings in Bulgaria')
+		
+		self.assertEqual('Choose content', self.e('.next-button span').text)
+		self.e('.next-button').click()
+		sleep(5)
+		
+		########################   STEP 2 #########################
+		id_tour = self.browser.current_url.split('/')[5]
+		
+		add_photo = self.e('.yours .add-photo')
+		add_photo.click()
+		
+		sleep(4)
+		
+		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_TOUR_IMAGES_BLOB[0] + '/dim/152x108/crop/1/', self.e('.inn .ss-photo img').get_attribute('src'))
+		
+		button = self.es('.inn .next-button')[1]
+		button.click()
+		sleep(1)
+		
+		step_maker = self.e('.step-maker')
+		
+		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_TOUR_IMAGES_BLOB[0] + '/dim/152x108/crop/1/', step_maker.e('.step-img').get_attribute('src'))
+		
+		self.assertEqual('Bulgarian Army Theater - 2 February 2013', step_maker.e('input').get_attribute('value'))
+		self.assertEqual('This is a photo of the famous Bulgarian Army Theater .', step_maker.e('textarea').get_attribute('value'))
+		
+		publish = self.es('.next-button.done')[1]
+		self.assertEqual('Publish', publish.e('span').text)
+		publish.click()
+		
+		self.go('/attach/uid%d/tours/all/' % ID_USER)
+		
+		self.browser.refresh()
+		sleep(3)
+		tour = self.e('#list li:nth-of-type(1)')
+		
+		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_TOUR_IMAGES_BLOB[0] + '/dim/195x150/crop/1/', tour.e('.ss-photo img').get_attribute('src'))
+		
+		tour.e('.delete').click()
+		
+		alert = self.browser.switch_to_alert()
+		sleep(2)
+		alert.accept()
+		sleep(4)
+		
+		self.browser.refresh()
+		self.assertFalse(self.e('#list').exists('.image[href*="%s"]' % id_tour))
+		
+	
+	@logged_in
+	@url('/tours/add/id/%d/#%d' % (ID_TOUR, ID_TOUR))
 	def test_edit_tour(self):
 		sleep(3)
 		site_cnt = self.e('#site-content')

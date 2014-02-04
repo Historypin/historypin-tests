@@ -1529,7 +1529,7 @@ class Channel(HPTestCase):
 		date_select = edit_page.e('.section.date-select')
 		date_select.e('#day option:nth-of-type(3)').click()  # assert for all
 		date_select.e('#month option:nth-of-type(3)').click()  # assert for all
-		date_select.e('#year option:nth-of-type(2)').click()  # assert for all
+		date_select.e('#year option:nth-of-type(3)').click()  # assert for all
 		
 		note = edit_page.e('.notice .inner')
 		self.assertIn('ss-icon'	, note.e('span').get_attribute('class'))
