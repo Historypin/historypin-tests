@@ -129,7 +129,7 @@ class Channel(HPTestCase):
 		img_holder = self.e('#photo_list_content .list li .image-holder a[class="image"]')
 		# TODO check this url
 		# self.assertEqual('%s/attach/uid%d/map/index/#!/geo:43.325176,24.960938/zoom:20/dialog:361341/tab:details/' % (URL_BASE, ID_USER_VIEW), img_holder.get_attribute('href'))
-		self.assertEqual('%s/services/thumb/phid/%s/dim/170x130/crop/1/' % (URL_BLOB, ID_TOUR_IMAGES[1]), img_holder.e('img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%s/dim/170x130/crop/1/' % (URL_BLOB, ID_TOUR_IMAGES_BLOB[1]), img_holder.e('img').get_attribute('src'))
 		
 		info = self.e('#photo_list_content .info')
 		self.assertIsInstance(info.e('h5'), WebElement)
