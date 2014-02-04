@@ -1013,7 +1013,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertTrue(option_menu.e('option:nth-of-type(7)').is_selected())
 		
 		site_cnt = self.e('#site-content')
-		self.assertEqual(u'Kontaktçðanâs', site_cnt.e('h2').text)
+		self.assertEqual(u'Kontakti', site_cnt.e('h2').text)
 		
 	def test_contact_pl(self):
 		self.go(URL_BASE + '/pl' + self.PROJECT_URL + '/contact/')
