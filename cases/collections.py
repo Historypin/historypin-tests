@@ -132,55 +132,65 @@ class Collections(HPTestCase):
 		next_slide.click()
 		sleep(3)
 		
-		# next_thumb	= self.e('#nextthumb img')
-		# prev_thumb	= self.e('#prevthumb img')
+	
+	@logged_in
+	@url('/collections/add/')
+	def test_add_collection(self):
 		
-		# self.assertEqual(URL_BASE + '/services/thumb/phid/%d/' % ID_COLLECTION_IMAGES[2], prev_thumb.get_attribute('src'))
-		# self.assertIn('2/4', counter.text)
-		# self.assertEqual('"Morden College east elevation and chapel"- 2010 by elizabeth', step_text.text)
-		# self.assertEqual(URL_BASE + '/map/#!/geo:51.4691539556,0.0169086456299/zoom:9/dialog:%d/tab:details/' % ID_COLLECTION_IMAGES[0], step_text.get_attribute('href'))
-		# self.assertEqual(URL_BASE + '/services/thumb/phid/%d/'  % ID_COLLECTION_IMAGES[1], next_thumb.get_attribute('src'))
-		# next_slide.click()
+		######################## STEP 1 #########################
 		
-		# sleep(3)
-		# self.assertEqual(URL_BASE + '/services/thumb/phid/%d/' % ID_COLLECTION_IMAGES[0], prev_thumb.get_attribute('src'))
-		# self.assertIn('3/4', counter.text)
-		# self.assertEqual('"Pinner High St from Church"- 1910 - 1920 by ivormt', step_text.text)
-		# self.assertEqual(URL_BASE + '/map/#!/geo:51.594547,-0.379828/zoom:9/dialog:%d/tab:details/' % ID_COLLECTION_IMAGES[1], step_text.get_attribute('href'))
-		# self.assertEqual(URL_BASE + '/services/thumb/phid/%d/' % ID_COLLECTION_IMAGES[3], next_thumb.get_attribute('src'))
-		# next_slide.click()
+		title = self.e('#tour-title')
+		title.send_keys('Theaters in Bulgaria')
 		
-		# sleep(3)
-		# self.assertEqual(URL_BASE + '/services/thumb/phid/%d/' % ID_COLLECTION_IMAGES[1], prev_thumb.get_attribute('src'))
-		# self.assertIn('4/4', counter.text)
-		# self.assertEqual('"Bulgarian Army Theater"- 2 February 2013 by Gabriela Ananieva', step_text.text)
-		# self.assertEqual(URL_BASE + '/map/#!/geo:42.694696,23.329027/zoom:9/dialog:%d/tab:details/' % ID_COLLECTION_IMAGES[3], step_text.get_attribute('href'))
-		# self.assertEqual(URL_BASE + '/services/thumb/phid/%d/' % ID_COLLECTION_IMAGES[2], next_thumb.get_attribute('src'))
-		# prev_slide.click()
+		desc = self.e('#tour-description')
+		desc.send_keys('Collection for famous theaters in Bulgaria')
 		
-		# sleep(3)
-		# self.assertEqual(URL_BASE + '/services/thumb/phid/%d/' % ID_COLLECTION_IMAGES[0], prev_thumb.get_attribute('src'))
-		# self.assertIn('3/4', counter.text)
-		# self.assertEqual('"Pinner High St from Church"- 1910 - 1920 by ivormt', step_text.text)
-		# self.assertEqual(URL_BASE + '/map/#!/geo:51.594547,-0.379828/zoom:9/dialog:%d/tab:details/' % ID_COLLECTION_IMAGES[1], step_text.get_attribute('href'))
-		# self.assertEqual(URL_BASE + '/services/thumb/phid/%d/' % ID_COLLECTION_IMAGES[3], next_thumb.get_attribute('src'))
-		# prev_slide.click()
+		self.e('.next-button').click()
+		sleep(5)
 		
-		# sleep(3)
-		# self.assertEqual(URL_BASE + '/services/thumb/phid/%d/' % ID_COLLECTION_IMAGES[2], prev_thumb.get_attribute('src'))
-		# self.assertIn('2/4', counter.text)
-		# self.assertEqual('"Morden College east elevation and chapel"- 2010 by elizabeth', step_text.text)
-		# self.assertEqual(URL_BASE + '/map/#!/geo:51.4691539556,0.0169086456299/zoom:9/dialog:%d/tab:details/' % ID_COLLECTION_IMAGES[0], step_text.get_attribute('href'))
-		# self.assertEqual(URL_BASE + '/services/thumb/phid/%d/' % ID_COLLECTION_IMAGES[1], next_thumb.get_attribute('src'))
-		# sleep(3)
-		# prev_slide.click()
-		# self.assertEqual(URL_BASE + '/services/thumb/phid/%d/' % ID_COLLECTION_IMAGES[3], prev_thumb.get_attribute('src'))
-		# self.assertIn('1/4', counter.text)
-		# self.assertEqual('"National Theatre in Sofia, Bulgaria"- 2 August 2012 by Gabss', step_text.text)
-		# self.assertEqual(URL_BASE + '/map/#!/geo:42.693737,23.326101/zoom:9/dialog:%d/tab:details/' % ID_COLLECTION_IMAGES[2], step_text.get_attribute('href'))
-		# self.assertEqual(URL_BASE + 'http://www.historypin.com/services/thumb/phid/%d/' % ID_COLLECTION_IMAGES[0], next_thumb.get_attribute('src'))
+		######################## STEP 2 #########################
 		
-		# self.e('#slide-content a').click()
+		id_collection = self.browser.current_url.split('/')[5]
+		
+		add_photo = self.e('.yours .add-photo')
+		add_photo.click()
+		
+		sleep(4)
+		
+		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_COLLECTION_IMAGES_BLOB[0] + '/dim/152x108/crop/1/', self.e('.inn .ss-photo img').get_attribute('src'))
+		
+		button = self.es('.inn .next-button')[1]
+		button.click()
+		sleep(1)
+		
+		######################## STEP 3 #########################
+		
+		step_maker = self.e('#tour-step3')
+		
+		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_COLLECTION_IMAGES_BLOB[0] + '/dim/152x108/crop/1/', step_maker.e('.image-container img').get_attribute('src'))
+		
+		publish = self.es('.next-button.done')[1]
+		self.assertEqual('Publish', publish.e('span').text)
+		publish.click()
+		
+		self.go('/attach/uid%d/collections/all/' % ID_USER)
+		
+		self.browser.refresh()
+		sleep(3)
+		tour = self.e('#list li:nth-of-type(1)')
+		
+		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_COLLECTION_IMAGES_BLOB[0] + '/dim/195x150/crop/1/', tour.e('.ss-photo img').get_attribute('src'))
+		
+		tour.e('.delete').click()
+		
+		alert = self.browser.switch_to_alert()
+		sleep(2)
+		alert.accept()
+		sleep(4)
+		
+		self.browser.refresh()
+		self.assertFalse(self.e('#list').exists('.image[href*="%s"]' % id_collection))
+		
 	
 	@logged_in
 	@url('/collections/add/id/%d/#%d' % (ID_COLLECTION, ID_COLLECTION))

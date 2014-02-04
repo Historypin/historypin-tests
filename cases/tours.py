@@ -180,20 +180,19 @@ class Tours(HPTestCase):
 	@url('/tours/add/')
 	def test_add_tour(self):
 		
+		######################## STEP 1 #########################
 		
 		title = self.e('#tour-title')
-		title.clear()
 		title.send_keys('Beautiful buildings in Bulgaria')
 		
 		desc = self.e('#tour-description')
-		desc.clear()
 		desc.send_keys('Tour about beautiful buildings in Bulgaria')
 		
-		self.assertEqual('Choose content', self.e('.next-button span').text)
 		self.e('.next-button').click()
 		sleep(5)
 		
-		########################   STEP 2 #########################
+		######################## STEP 2 #########################
+		
 		id_tour = self.browser.current_url.split('/')[5]
 		
 		add_photo = self.e('.yours .add-photo')
@@ -206,6 +205,8 @@ class Tours(HPTestCase):
 		button = self.es('.inn .next-button')[1]
 		button.click()
 		sleep(1)
+		
+		######################## STEP 3 #########################
 		
 		step_maker = self.e('.step-maker')
 		
