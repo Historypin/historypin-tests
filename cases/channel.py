@@ -1100,7 +1100,6 @@ class Channel(HPTestCase):
 		
 	
 	@logged_in
-	@unittest.expectedFailure  # Issue #2831 should be fixed
 	@url('/channels/view/%d/' % ID_USER)
 	def test_sharing(self):
 		
@@ -1441,6 +1440,12 @@ class Channel(HPTestCase):
 		self.assertTrue(tab_subsrcribers.is_displayed())
 		self.assertEqual("My fans:"				, tab_subsrcribers.e('h3').text)
 		self.assertEqual("You have no fans yet.", tab_subsrcribers.e('p').text)
+	
+	@logged_in
+	@url()
+	def test_become_fan(self):
+		pass
+	
 	
 	@logged_in
 	@url('/map/index/#!/geo:42.688019,23.320069/zoom:20/dialog:%d/tab:details/' % ID_FAVOURITE_ITEM)
