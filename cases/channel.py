@@ -1443,27 +1443,27 @@ class Channel(HPTestCase):
 		self.assertEqual("You have no fans yet.", tab_subsrcribers.e('p').text)
 	
 	@logged_in
-	@url('/map/#!/geo:42.697839,23.32167/zoom:12/dialog:%d/tab:details/' % ID_MAP_ITEM)
+	@url('/map/index/#!/geo:42.688019,23.320069/zoom:20/dialog:%d/tab:details/' % ID_FAVOURITE_ITEM)
 	def test_favourite_item(self):
 		
 		favourite = self.e('.favourite')
-		
+		sleep(2)
 		self.assertIn('ss-icon'			, favourite.e('span').get_attribute('class'))
 		self.assertIn('ss-heart'		, favourite.e('span').get_attribute('class'))
-		
+		sleep(2)
 		favourite.click()
-		
+		sleep(2)
 		self.assertIn('ss-icon'			, favourite.e('span').get_attribute('class'))
 		self.assertIn('ss-heart'		, favourite.e('span').get_attribute('class'))
-		self.assertIn('ss-deleteheart'	, favourite.e('span').get_attribute('class'))
-		
+		sleep(2)
 		self.go('/attach/uid%d/photos/list/#/get/recent/show/favourites/' % ID_USER)
-		
-		favourite_item = self.e('.image-holder a[href*="%d"]' % ID_MAP_ITEM)
+		sleep(2)
+		favourite_item = self.e('.image-holder a[href*="%d"]' % ID_FAVOURITE_ITEM)
 		self.assertIsInstance(favourite_item, WebElement)
 		
+		sleep(2)
 		self.hover(favourite_item.e('img'))
-		self.e('#list .favourite.icon').click()
+		self.e('li:nth-of-type(2) .holder .icon').click()
 	
 	@logged_in
 	@url('/upload-item/pin/phid/%d/edit/1/' % ID_EDIT_ITEM)

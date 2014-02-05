@@ -284,7 +284,7 @@ class Collections(HPTestCase):
 		tabs.e('li:nth-of-type(2) a').click()
 		sleep(5)  # AJAX
 		
-		favs = step_cnt.es('.choose-photos.favourites li')
+		favs = step_cnt.es('.choose-photos.favourites li:nth-of-type(1)')
 		url = '%s/services/thumb/phid' % URL_BLOB
 		self.assertEqual('%s/%s/dim/152x108/crop/1/' % (url, ID_COLLECTION_IMAGES_BLOB[1]), favs[0].e('img').get_attribute('src'))
 		
