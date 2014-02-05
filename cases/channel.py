@@ -1100,7 +1100,6 @@ class Channel(HPTestCase):
 		
 	
 	@logged_in
-	@unittest.expectedFailure  # Issue #2831 should be fixed
 	@url('/channels/view/%d/' % ID_USER)
 	def test_sharing(self):
 		
@@ -1441,6 +1440,32 @@ class Channel(HPTestCase):
 		self.assertTrue(tab_subsrcribers.is_displayed())
 		self.assertEqual("My fans:"				, tab_subsrcribers.e('h3').text)
 		self.assertEqual("You have no fans yet.", tab_subsrcribers.e('p').text)
+	
+	# @unittest.expectedFailure  # TODO Bug #3121 should be fixed
+	# @logged_in
+	# @url('/channels/view/%d' % ID_USER_VIEW)
+	# def test_become_fan(self):
+		
+	# 	self.e('#subscribe').click()
+	# 	sleep(1)
+	# 	self.assertEqual('Un-Fan', self.e('#subscribe span').text)
+		
+	# 	self.go('/channels/view/%d' % ID_USER_VIEW)
+		
+	# 	editor				= self.e('.channel_editor')
+	# 	channels		= settings_menu.e('li:nth-of-type(9) a')
+		
+	# 	# channels.click()
+	# 	# tab_subscriptions	= editor.e('#tab-subscriptions')
+	# 	# # TODO
+	# 	# # go to user channel
+	# 	# # click Become a fan
+	# 	# # check if the button has changed
+	# 	# # go to my channel
+	# 	# # check if the channel is in stuf i like
+	# 	# # go to user channel again
+	# 	# # click un-fan
+	# 	# pass
 	
 	@logged_in
 	@url('/map/index/#!/geo:42.688019,23.320069/zoom:20/dialog:%d/tab:details/' % ID_FAVOURITE_ITEM)
