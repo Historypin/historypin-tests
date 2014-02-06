@@ -983,6 +983,31 @@ class Channel(HPTestCase):
 		headings = ['Choose a colour theme', 'Upload your photo or logo', 'Upload a Banner', 'Upload a Background Image']
 		for n in range(len(headings)): self.assertEqual(headings[n], h5s[n].text)
 		
+	@logged_in
+	@url('/map/#!/geo:42.697839,23.32167/zoom:13/dialog:%d/tab:stories/' % ID_MAP_ITEM)
+	def test_post_comment(self):
+		
+		stories_tab = self.e('#stories_cnt')
+		
+		stories_tab.e('.text_wrap').click()
+		sleep(3)
+		# stories_tab.e('.write_story_big .write_story').click()
+		self.e('.write_story_big .write_story').send_keys('This is a very nice photo of one of the main buildings in Sofia')
+		
+		self.e('.apply').click()
+		sleep(2)
+		
+		comment = stories_tab.e('.comment:nth-of-type(2)')
+		
+		self.assertEqual('%s/resources/avatars/100x100/avatar_3.png' % URL_BASE, comment.e('img').get_attribute('src'))
+		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER), comment.e('.activity a').get_attribute('href'))
+		self.assertEqual('This is a very nice photo of one of the main buildings in Sofia', comment.e('.story_cnt').text)
+		
+		comment.e('.delete.action').click()
+		
+		alert = self.browser.switch_to_alert()
+		alert.accept()
+		self.assertNotIn('comment:nth-of-type(2)', stories_tab.get_attribute('class'))
 	
 	@logged_in
 	@url('/channels/view/%d/' % ID_USER)
@@ -1441,11 +1466,31 @@ class Channel(HPTestCase):
 		self.assertEqual("My fans:"				, tab_subsrcribers.e('h3').text)
 		self.assertEqual("You have no fans yet.", tab_subsrcribers.e('p').text)
 	
-	@logged_in
-	@url()
-	def test_become_fan(self):
-		pass
-	
+	# @unittest.expectedFailure  # TODO Bug #3121 should be fixed
+	# @logged_in
+	# @url('/channels/view/%d' % ID_USER_VIEW)
+	# def test_become_fan(self):
+		
+	# 	self.e('#subscribe').click()
+	# 	sleep(1)
+	# 	self.assertEqual('Un-Fan', self.e('#subscribe span').text)
+		
+	# 	self.go('/channels/view/%d' % ID_USER_VIEW)
+		
+	# 	editor				= self.e('.channel_editor')
+	# 	channels		= settings_menu.e('li:nth-of-type(9) a')
+		
+	# 	# channels.click()
+	# 	# tab_subscriptions	= editor.e('#tab-subscriptions')
+	# 	# # TODO
+	# 	# # go to user channel
+	# 	# # click Become a fan
+	# 	# # check if the button has changed
+	# 	# # go to my channel
+	# 	# # check if the channel is in stuf i like
+	# 	# # go to user channel again
+	# 	# # click un-fan
+	# 	# pass
 	
 	@logged_in
 	@url('/map/index/#!/geo:42.688019,23.320069/zoom:20/dialog:%d/tab:details/' % ID_FAVOURITE_ITEM)
@@ -1601,6 +1646,34 @@ class Channel(HPTestCase):
 		
 		location = place.e('#location')
 		self.assertEqual('ulitsa "Georgi. S. Rakovski" 98, 1000 Sofia, Bulgaria', location.get_attribute('value'))
+	
+	# @logged_in
+	# @url('/mysteries/create')
+	# def test_create_mystery(self):
+		
+	# 	site_cnt = self.e('#site-content')
+	# 	self.assertEqual('Create a Mystery', site_cnt.e('h1').text)
+		
+	# 	mystery_type = site_cnt.e('#m_type')
+	# 	mystery_type.e('option:nth-of-type(4)').click()
+		
+	# 	site_cnt.e('#m_title').send_keys('Help me find the accurate date this photo was taken')
+		
+	# 	builder	= site_cnt.e('.pinselector.step-wrap')
+	# 	item	= builder.e('.image-container:nth-of-type(1)')
+		
+	# 	self.assertEqual(ID_COLLECTION_IMAGES_BLOB[0], item.e('img').get_attribute('src'))
+		
+	# 	builder.e('.add-photo').click()
+		
+	# 	self.assertIsInstance(builder.e('.inn img'), WebElement)
+		
+	# 	site_cnt.e('#m_clues').send_keys('I think the photo is took in the summmer around 2010')
+		
+	# 	site_cnt.e('#submit').click()
+	# 	# TODO
+		# go to photo url on mystery tab
+		# pass
 	
 	@logged_in
 	@url('/upload/confirm/edit/1')
