@@ -62,6 +62,48 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIsInstance(paragraph.e('a:nth-of-type(1)'), WebElement)
 		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
 	
+	@logged_in
+	def test_create_story(self):
+		self.go(self.PROJECT_URL + '/tours/add/')
+		
+		site_cnt = self.e('#site-content')
+		
+		self.assertEqual('%s/en%s/' % (URL_BASE, self.PROJECT_URL), site_cnt.e('.back'))
+		
+		
+		# TODO
+		# 1 STEP
+		# - assert 1989 link
+		# - check title placeholder
+		# - enter a title
+		# - enter description
+		# - select language
+		# - enter start date and end date
+		# - select country
+		# - select at least 2 keywords
+		# - add additional ones
+		# - select event
+		# - click next to the second step
+		# 2 STEP
+		# on the second step get the Story ID from the url to check if it's not there after deleting
+		# - assert image url
+		# -select it and check if it is added in the sidebar
+		# - click on my favourites tab
+		# - assert image
+		# - add it to the sidebar
+		# - click next
+		# 3 STEP
+		# - assert number 1 image is selected
+		# - assert the texts in the step description
+		# - click on the second image
+		# - assert steps for it as well
+		# - click "Preview"
+		# - to finish TODOs, Issue #2238 should be fixed
+		# - assert everything in the Preview
+		# - click "Publish"
+		pass
+	
+	
 	@unittest.expectedFailure
 	def test_search_by_relevance(self):
 		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
@@ -685,8 +727,8 @@ class Project_Europeana(HPTestCase, Attach):
 		img_link	= site_cnt.es('.tout p+a')
 		
 		tout_items = [
-			[u'Relive the Baltic Way – Pin yourself on the map'	, '%s/en%s/baltic-way/' % (URL_BASE, self.PROJECT_URL)	, 'tout1_image', 'On 23 August 1989'],
-			['Join our events!'									, 'http://blog.europeana.eu/1989-calendar/'				, 'tout2_image', 'Come and tell your story about the Velvet '],
+			[u'Relive the Baltic Way – Pin yourself on the map'	, 'http://www.europeana1989.eu/en/baltic-way/'	, 'tout1_image', 'On 23 August 1989'],
+			['Join our events!'									, 'http://blog.europeana.eu/1989-calendar/'		, 'tout2_image', 'Come and tell your story about the Velvet '],
 		]
 		
 		for n in range(len(tout_items)):

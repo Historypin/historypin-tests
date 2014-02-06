@@ -259,7 +259,7 @@ class Map(HPTestCase):
 		self.assertEqual('10 May 2013'												, stories_list.e('.photo-date').text)
 		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER_VIEW), stories_list.e('.activity a').get_attribute('href'))
 		
-		self.assertEqual('%s/resources/avatars/50x50/avatar_1.png' % URL_BASE, tab.e('.write_story_wrap img ').get_attribute('src'))
+		self.assertEqual('%s/resources/avatars/50x50/avatar_3.png' % URL_BASE, tab.e('.write_story_wrap img ').get_attribute('src'))
 		self.assertIsInstance(tab.e('textarea'), WebElement)
 		
 		# TODO - should fix this because in all tests - logged in
