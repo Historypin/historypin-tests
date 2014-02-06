@@ -18,12 +18,12 @@ class Attach():
 	def attach_tab_map(self):
 		self.go('/attach' + self.PROJECT_URL + '/map/')
 		
-		sleep(4)
+		sleep(3)
 		
 		self.assertIsInstance(self.e('#date-selector'), WebElement)
 		self.assertIsInstance(self.e('#search-filters'), WebElement)
 		
-		sleep(5)
+		sleep(3)
 		
 		# no way to do this in selenium as the counter element is hidden to fix this
 		self.browser.execute_script("ms = $('.hp-marker.hp-marker-cluster'); for(i in ms){ m = ms[i]; if($('.hp-marker-count', m).text() < 100 ){ m.click(); break; } }")
@@ -32,11 +32,11 @@ class Attach():
 		cluster = self.e('#galleryInfoWindow_contents li:nth-of-type(1)')
 		
 		sleep(5)
-		self.assertIsInstance(cluster.e('.hp-info-gallery-pin img'), WebElement)
+		self.assertIsInstance(cluster.e('.hp-info-gallery-pin'), WebElement)
 		self.assertIsInstance(cluster.e('.info h6 a'), WebElement)
 		self.assertIsInstance(cluster.e('.info p'), WebElement)
 		
-		cluster.e('.hp-info-gallery-pin img').click()
+		cluster.e('.hp-info-gallery-pin').click()
 		sleep(2)
 		self.assertIsInstance(self.e('#info-dialog'), WebElement)
 	
