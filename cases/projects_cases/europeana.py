@@ -70,7 +70,6 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		self.assertEqual('%s/en%s/' % (URL_BASE, self.PROJECT_URL), site_cnt.e('.back'))
 		
-		
 		# TODO
 		# 1 STEP
 		# - assert 1989 link
