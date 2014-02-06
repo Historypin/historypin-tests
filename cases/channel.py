@@ -991,7 +991,6 @@ class Channel(HPTestCase):
 		
 		stories_tab.e('.text_wrap').click()
 		sleep(3)
-		# stories_tab.e('.write_story_big .write_story').click()
 		self.e('.write_story_big .write_story').send_keys('This is a very nice photo of one of the main buildings in Sofia')
 		
 		self.e('.apply').click()

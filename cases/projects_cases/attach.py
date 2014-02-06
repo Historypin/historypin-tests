@@ -28,8 +28,10 @@ class Attach():
 		# no way to do this in selenium as the counter element is hidden
 		self.browser.execute_script("ms = $('.hp-marker.hp-marker-cluster'); for(i in ms){ m = ms[i]; if($('.hp-marker-count', m).text() < 100 ){ m.click(); break; } }")
 		
+		sleep(3)
 		cluster = self.e('#galleryInfoWindow_contents li:nth-of-type(1)')
 		
+		sleep(5)
 		self.assertIsInstance(cluster.e('.hp-info-gallery-pin img'), WebElement)
 		self.assertIsInstance(cluster.e('.info h6 a'), WebElement)
 		self.assertIsInstance(cluster.e('.info p'), WebElement)

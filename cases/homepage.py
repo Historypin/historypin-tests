@@ -47,7 +47,7 @@ class Homepage(HPTestCase):
 		branding = self.e('#branding h1')
 		self.assertEqual('%s/'								% URL_BASE, branding.e('a').get_attribute('href'))
 		self.assertEqual('%s/resources/images/hp_logo.png'	% URL_BASE, branding.e('img').get_attribute('src'))
-		self.assertEqual('A global community collaborating around history', self.e('#branding .home-top p').text)
+		self.assertEqual('A global community collaborating around history VM', self.e('#branding .home-top p').text)
 		
 		circle_icon = 'ss-social-circle'
 		
