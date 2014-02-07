@@ -88,6 +88,7 @@ class Attach():
 	def attach_tab_collections(self):
 		self.go('/attach' + self.PROJECT_URL + '/collections/all/')
 		
+		sleep(3)
 		item = self.e('#list li:nth-of-type(1) > a')
 		
 		self.assertIsInstance(item, WebElement)

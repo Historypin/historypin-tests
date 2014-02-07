@@ -32,11 +32,6 @@ class Channel(HPTestCase):
 		self.assertEqual('Channel Details'	, h3[0].text)
 		self.assertEqual('Share:'			, h3[1].text)
 		
-		# paragraph = self.e('.chan.options p')
-		# texts = ['Channel views:', 'Fans:', 'Pins:', 'Tours:', 'Collections:']
-		
-		# for n in range(len(texts)): self.assertIn(texts[n], paragraph.text)
-		
 		sleep(4)  # AJAX
 		button = self.e('.chan.options .channel-button.left')
 		self.assertEqual('Become a Fan'										, button.text)
@@ -1492,7 +1487,7 @@ class Channel(HPTestCase):
 	# 	# pass
 	
 	@logged_in
-	@url('/map/index/#!/geo:42.688019,23.320069/zoom:20/dialog:%d/tab:details/' % ID_FAVOURITE_ITEM)
+	@url('/map/index/#!/geo:42.688019,23.320069/zoom:20/dialog:%d/tab:details/' % ID_FAVOURITE_ITEM)  # TODO - should use another photo, because when I favourited it, then when on edit tour, it is possible not to be favourited
 	def test_favourite_item(self):
 		
 		favourite = self.e('.favourite')

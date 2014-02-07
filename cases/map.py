@@ -163,11 +163,12 @@ class Map(HPTestCase):
 	
 	@url('/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:details/' % ID_MAP_ITEM)
 	def test_dialog_details(self):  # this test case fails only in the test suite
-		sleep(15)  # ajax on success
+		sleep(10)  # ajax on success
 		dlg = self.e('#info-dialog')
 		self.assertEqual('%s/services/thumb/phid/%s/dim/2000x440/quality/80/' % (URL_BLOB, ID_TOUR_IMAGES_BLOB[1]), dlg.e('#details_cnt .image .main-img').get_attribute('src'))
 		
 		info = self.e('#details_cnt .info')
+		sleep(3)
 		self.assertEqual('National Theatre in Sofia, Bulgaria'				, info.e('h2.photo-title').text)
 		sleep(3)
 		self.assertEqual('ulitsa "Kuzman Shapkarev" 1-3, 1000 Sofia, Bulgaria', info.e('.photo-address').text)

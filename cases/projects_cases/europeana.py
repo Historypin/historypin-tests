@@ -1170,7 +1170,8 @@ class Project_Europeana(HPTestCase, Attach):
 	def test_balctic_way_en(self):
 		self.go(URL_BASE + '/en' + self.PROJECT_URL + '/baltic-way/')
 		
-		self.assertTitle(u'Europeana 1989 | Relive the Baltic Way – Pin yourself on the map')
+		title = u'Europeana 1989 | Relive the Baltic Way – Pin yourself on the map'
+		self.assertTitle(title)
 		
 		site_cnt = self.e('#site-content')
 		
@@ -1206,7 +1207,7 @@ class Project_Europeana(HPTestCase, Attach):
 	def test_balctic_way_de(self):
 		self.go(URL_BASE + '/de' + self.PROJECT_URL + '/baltic-way/')
 		
-		self.assertTitle(u'Europeana 1989 | Der Baltischer Weg - Pinnen Sie Ihr Foto auf die Karte')
+		self.assertTitle(u'Europeana 1989 | Der Baltische Weg - Pinnen Sie Ihr Foto auf die Karte')
 		
 		site_cnt = self.e('#site-content')
 		
