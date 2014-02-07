@@ -144,6 +144,7 @@ class Attach():
 	def attach_tab_comments(self):
 		self.go('/attach' + self.PROJECT_URL + '/photos/stories/')
 		
+		sleep(3)
 		comment = self.e('.stories li:nth-of-type(1)')
 		
 		self.assertIsInstance(comment.e('.user'), WebElement)
@@ -165,7 +166,7 @@ class Attach():
 		
 		sleep(3)
 		picture = self.e('.list:nth-of-type(1) li:nth-of-type(1)')
-		self.assertIsInstance(picture.e('a img'), WebElement)
+		self.assertIsInstance(picture.e('a'), WebElement)
 		
 		self.assertIsInstance(picture.e('.info-actions a'), WebElement)
 		self.assertIsInstance(picture.e('.info h5'), WebElement)
@@ -213,7 +214,7 @@ class Attach():
 		mystery_first = self.e('.attach.mysteries > .list section:nth-of-type(1)')
 		self.assertIsInstance(mystery_first.e('h3'), WebElement)
 		self.assertIsInstance(mystery_first.e('header a'), WebElement)
-		self.assertIsInstance(mystery_first.e('.thumb a img'), WebElement)
+		self.assertIsInstance(mystery_first.e('.thumb a'), WebElement)
 		self.assertIsInstance(mystery_first.e('.cnt h4 a'), WebElement)
 		self.assertIsInstance(mystery_first.e('.clues h6'), WebElement)
 		

@@ -71,7 +71,7 @@ class Homepage(HPTestCase):
 		prev	= featured.e('.prev')
 		next	= featured.e('.next')
 		ul		= featured.e('ul')
-		li		= featured.e_wait('li:first-of-type')
+		li		= featured.e('li:first-of-type')
 		
 		self.assertEqual('0px', ul.css('left'))
 		
