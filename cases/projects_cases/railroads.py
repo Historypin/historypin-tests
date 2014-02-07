@@ -23,7 +23,65 @@ class Project_Railroads(HPTestCase, Attach):
 	test_tab_tours_empty		= Attach.attach_tab_tours_empty
 	test_tab_collections_empty	= Attach.attach_tab_collections_empty
 	test_tab_slideshow			= Attach.attach_tab_slideshow
-	test_tab_mysteries			= Attach.attach_tab_mysteries
+	
+	def test_tab_mysteries(self):
+		self.go(self.ATTACH_URL + self.PROJECT_URL + '/mysteries/index/')
+		
+		statistics = self.e('.statistics')
+		mods = statistics.es('.mod label')
+		
+		self.assertEqual('Total mysteries'		, mods[0].text)
+		self.assertEqual('Unsolved mysteries'	, mods[1].text)
+		self.assertEqual('Under investigation'	, mods[2].text)
+		self.assertEqual('Mysteries solved'		, mods[3].text)
+		
+		sidebar			= self.e('.sidebar')
+		status			= sidebar.e('#status')
+		mystery_type	= sidebar.e('#bytype')
+		
+		self.assertEqual('Show me'	, status.e('h4').text)
+		self.assertEqual('Only show', mystery_type.e('h4').text)
+		self.assertTrue(status.e('#showme_incomplete').is_selected())
+		
+		status_labels = ['All mysteries', 'Unsolved mysteries', 'Under investigation', 'Solved mysteries']
+		
+		labels = status.es('label')
+		
+		for n in range(len(status_labels)): self.assertEqual(status_labels[n], labels[n].text)
+		
+		mystery_first = self.e('.attach.mysteries > .list section:nth-of-type(1)')
+		self.assertIsInstance(mystery_first.e('h3'), WebElement)
+		self.assertIsInstance(mystery_first.e('header a'), WebElement)
+		self.assertIsInstance(mystery_first.e('.thumb a'), WebElement)
+		self.assertIsInstance(mystery_first.e('.cnt h4 a'), WebElement)
+		self.assertIsInstance(mystery_first.e('.clues h6'), WebElement)
+		
+		status.e('#showme_all').click()
+		sleep(5)
+		mystery_first = self.e('.attach.mysteries > .list section:nth-of-type(1)')
+		solve_button = mystery_first.e('footer .button')
+		
+		self.assertEqual('Solve', solve_button.text)
+		self.assertIsInstance(solve_button, WebElement)
+		
+		status.e('#showme_investigation').click()
+		sleep(4)
+		empty_type = self.e('.empty')
+		self.assertEqual('Sorry, there are no mysteries under investigation yet...', empty_type.text)
+		
+		status.e('#showme_solved').click()
+		sleep(4)
+		
+		empty_type = self.e('.empty')
+		self.assertEqual('Sorry, there are no mysteries solved yet...', empty_type.text)
+		
+		self.assertTrue(mystery_type.e('#bytype_all').is_selected())
+		
+		type_labels = ['All mystery types', 'Title mysteries', 'Date mysteries', 'Location mysteries', 'Street View mysteries', 'Tag mysteries']
+		
+		labels = mystery_type.es('label')
+		
+		for n in range(len(type_labels)): self.assertEqual(type_labels[n], labels[n].text)
 	
 	def __test_touts(self):
 		
