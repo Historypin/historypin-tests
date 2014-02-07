@@ -144,6 +144,7 @@ class Attach():
 	def attach_tab_comments(self):
 		self.go('/attach' + self.PROJECT_URL + '/photos/stories/')
 		
+		sleep(3)
 		comment = self.e('.stories li:nth-of-type(1)')
 		
 		self.assertIsInstance(comment.e('.user'), WebElement)
