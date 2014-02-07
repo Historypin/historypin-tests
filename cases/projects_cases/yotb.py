@@ -39,8 +39,8 @@ class Project_YOTB(HPTestCase, Attach):
 		self.assertEqual('Pin your memories', button.e('span').text)
 		
 		touts_items = [
-			['Dogpatch Mysteries'	, 'Read about how you can help us solve Dogpatch-themed mysteries from the SFPL.', 'tout1_image', '01/23/solving-dogpatch-mysteries-in-year-of-the-bay/'],
-			['Hercules by the Bay'	, 'Dynamite-history and more in these pins from the Hercules Historical Society.', 'tout2_image', '01/23/solving-dogpatch-mysteries-in-year-of-the-bay/'],
+			['Dogpatch Mysteries'	, 'Read about how you can help us solve Dogpatch-themed mysteries from the SFPL.'	, 'tout1_image', '01/23/solving-dogpatch-mysteries-in-year-of-the-bay/'],
+			['How to Pin a Photo'	, 'Short video of how to pin a photograph to Year of the Bay.'						, 'tout2_image', '01/23/solving-dogpatch-mysteries-in-year-of-the-bay/'],
 		]
 		
 		h3s		= site_cnt.es('.w2 h3')
