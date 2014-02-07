@@ -62,13 +62,25 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIsInstance(paragraph.e('a:nth-of-type(1)'), WebElement)
 		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
 	
-	@logged_in
-	def test_create_story(self):
-		self.go(self.PROJECT_URL + '/tours/add/')
+	# @logged_in
+	# def test_create_story(self):
+	# 	self.go(self.PROJECT_URL + '/tours/add/')
 		
-		site_cnt = self.e('#site-content')
+	# 	site_cnt = self.e('#site-content')
 		
-		self.assertEqual('%s/en%s/' % (URL_BASE, self.PROJECT_URL), site_cnt.e('.back'))
+	# 	self.assertEqual('%s/en%s/' % (URL_BASE, self.PROJECT_URL), site_cnt.e('.back'))
+		
+	# 	tour_title = site_cnt.e('#tour-title')
+		
+	# 	self.assertEqual('Give your story a name. It will appear across all steps in the story', tour_title.get_attribute('placeholder'))
+		
+	# 	tour_title.send_keys('This is a story about famous buildings in Sofia, Bulgaria')
+		
+	# 	site_cnt.e('#tour-description').send_keys('This is a story about famous buildings in Sofia, Bulgaria. They are located in the city centre and are very beautiful.')
+		
+	# 	name_contributor = site_cnt.e('#name-contributor')
+	# 	self.assertEqual('Gabriela Ananieva', name_contributor.get_attribute('value'))
+		
 		
 		# TODO
 		# 1 STEP

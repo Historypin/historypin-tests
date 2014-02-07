@@ -32,11 +32,11 @@ class Attach():
 		cluster = self.e('#galleryInfoWindow_contents li:nth-of-type(1)')
 		
 		sleep(5)
-		self.assertIsInstance(cluster.e('.hp-info-gallery-pin img'), WebElement)
+		self.assertIsInstance(cluster.e('.hp-info-gallery-pin'), WebElement)
 		self.assertIsInstance(cluster.e('.info h6 a'), WebElement)
 		self.assertIsInstance(cluster.e('.info p'), WebElement)
 		
-		cluster.e('.hp-info-gallery-pin img').click()
+		cluster.e('.hp-info-gallery-pin').click()
 		sleep(2)
 		self.assertIsInstance(self.e('#info-dialog'), WebElement)
 	
@@ -135,8 +135,8 @@ class Attach():
 	def attach_tab_slideshow(self):
 		self.go('/attach' + self.PROJECT_URL + '/photos/slideshow/')
 		
-		self.assertIsInstance(self.e('#prevthumb img')	, WebElement)
-		self.assertIsInstance(self.e('#nextthumb img')	, WebElement)
+		self.assertIsInstance(self.e('#prevthumb')	, WebElement)
+		self.assertIsInstance(self.e('#nextthumb')	, WebElement)
 		self.assertIsInstance(self.e('#slidecounter')	, WebElement)
 		self.assertIsInstance(self.e('#slidecaption')	, WebElement)
 		self.assertIsInstance(self.e('#navigation')		, WebElement)
@@ -165,7 +165,7 @@ class Attach():
 		
 		sleep(3)
 		picture = self.e('.list:nth-of-type(1) li:nth-of-type(1)')
-		self.assertIsInstance(picture.e('a img'), WebElement)
+		self.assertIsInstance(picture.e('a'), WebElement)
 		
 		self.assertIsInstance(picture.e('.info-actions a'), WebElement)
 		self.assertIsInstance(picture.e('.info h5'), WebElement)
@@ -179,7 +179,7 @@ class Attach():
 		
 		sleep(3)
 		picture = self.e('.list:nth-of-type(1) li:nth-of-type(1)')
-		self.assertIsInstance(picture.e('a img'), WebElement)
+		self.assertIsInstance(picture.e('a'), WebElement)
 		
 		self.assertIsInstance(picture.e('.info-actions a'), WebElement)
 		self.assertIsInstance(picture.e('.info h5'), WebElement)
@@ -213,7 +213,7 @@ class Attach():
 		mystery_first = self.e('.attach.mysteries > .list section:nth-of-type(1)')
 		self.assertIsInstance(mystery_first.e('h3'), WebElement)
 		self.assertIsInstance(mystery_first.e('header a'), WebElement)
-		self.assertIsInstance(mystery_first.e('.thumb a img'), WebElement)
+		self.assertIsInstance(mystery_first.e('.thumb a'), WebElement)
 		self.assertIsInstance(mystery_first.e('.cnt h4 a'), WebElement)
 		self.assertIsInstance(mystery_first.e('.clues h6'), WebElement)
 		
@@ -226,7 +226,7 @@ class Attach():
 		self.assertIsInstance(solve_button, WebElement)
 		
 		status.e('#showme_investigation').click()
-		sleep(2)
+		sleep(4)
 		mystery_first = self.e('.attach.mysteries > .list section:nth-of-type(1)')
 		solve_button = mystery_first.e('footer .button')
 		
