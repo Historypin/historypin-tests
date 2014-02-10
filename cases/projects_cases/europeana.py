@@ -69,7 +69,7 @@ class Project_Europeana(HPTestCase, Attach):
 		#####################  STEP 1 ######################
 		site_cnt = self.e('#site-content')
 		
-		self.assertEqual('%s/en%s/' % (URL_BASE, self.PROJECT_URL), site_cnt.e('.back'))
+		self.assertEqual('%s/en%s/' % (URL_BASE, self.PROJECT_URL), site_cnt.e('.back').get_attribute('href'))
 		
 		tour_title = site_cnt.e('#tour-title')
 		
@@ -111,43 +111,39 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		#####################  STEP 2 ######################
 		
-		tour_id		= self.browser.current_url.split('/')[6]
+		tour_id		= self.browser.current_url.split('/')[8]
 		
 		site_cnt	= self.e('#site-content')
 		tour_step2	= site_cnt.e('#tour-step2')
-		tabs		= tour_step2.es('li')
-		
-		tabs_cnt = [
-			['yours', 'My items'],
-			['favourites', 'My favourites'],
-			['/en%s/upload/index/from_story/1/t_id/3005' % self.PROJECT_URL, 'Upload items'],
-		]
-		
-		for n in range(len(tab_cnt)):
-			i = tabs_cnt[n]
-			self.assertEqual(i[0], tabs[n].get_attribute('rel'))
-			self.assertEqual(i[1], tabs[n].e('a').text)
+		tabs_nav	= site_cnt.e('.tabs-nav.cf')
+		tabs		= tabs_nav.es('li')
 		
 		my_items = tour_step2.e('.choose-photos.yours.cf')
-		self.assertEqual(ID_TOUR_IMAGES_BLOB[0], my_items.e('img').get_attribute('src'))
+		sleep(3)
+		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_TOUR_IMAGES_BLOB[0] + '/dim/152x108/crop/1/', my_items.e('img').get_attribute('src'))
 		
 		my_items.e('.add-photo').click()
+		sleep(3)
 		sidebar = tour_step2.e('.w4.gallery')
 		
 		item_1 = sidebar.e('li:nth-of-type(2)')
-		self.assertEqual('My story'					, item_1.e('h4').text)
-		self.assertEqual(ID_TOUR_IMAGES_BLOB[0]		, item_1.e('img').get_attribute('src'))
+		sleep(2)
+		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_TOUR_IMAGES_BLOB[0] + '/dim/152x108/crop/1/', item_1.e('img').get_attribute('src'))
 		self.assertEqual('Bulgarian Army Theater'	, item_1.e('.photo-title').text)
 		self.assertEqual('2 February 2013'			, item_1.e('.date').text)
 		
-		tabs.e('li:nth-of-type(2)').click()
+		tabs[1].click()
 		my_favourites = tour_step2.e('.choose-photos.favourites.cf')
 		
-		self.assertEqual(ID_TOUR_IMAGES_BLOB[1], my_favourites.e('img').get_attribute('src'))
-		my_items.e('.add-photo').click()
+		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_TOUR_IMAGES_BLOB[1] + '/dim/152x108/crop/1/', my_favourites.e('img').get_attribute('src'))
+		sleep(3)
+		my_favourites.e('.add-photo').click()
 		
-		item_1 = sidebar.e('li:nth-of-type(3)')
-		self.assertEqual(ID_TOUR_IMAGES_BLOB[1]					, item_2.e('img').get_attribute('src'))
+		sleep(3)
+		
+		item_2 = sidebar.e('li:nth-of-type(3)')
+		sleep(3)
+		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_TOUR_IMAGES_BLOB[1] + '/dim/152x108/crop/1/', item_2.e('img').get_attribute('src'))
 		self.assertEqual('National Theatre in Sofia, Bulgaria'	, item_2.e('.photo-title').text)
 		self.assertEqual('2 August 2012'						, item_2.e('.date').text)
 		
@@ -159,39 +155,54 @@ class Project_Europeana(HPTestCase, Attach):
 		tour_step3	= site_cnt.e('#tour-step3')
 		
 		sidebar = tour_step3.e('#sortable')
-		self.assertIn('selected', sidebar.e('li:nth-of-type(1)').get_attribute('class'))
 		
-		self.assertEqual('Bulgarian Army Theater - 2 February 2013'					, tour_step3.e('#step-title').get_attribute('valie'))
-		self.assertEqual('This is a photo of the famous Bulgarian Army Theater .'	, tour_step3.e('#step-description').get_attribute('valie'))
+		sleep(4)
+		self.assertEqual('Bulgarian Army Theater - 2 February 2013'					, tour_step3.e('#step-title').get_attribute('value'))
+		self.assertEqual('This is a photo of the famous Bulgarian Army Theater .'	, tour_step3.e('#step-description').get_attribute('value'))
 		
-		sidebar.e('li:nth-of-type(2)').click()
-		self.assertIn('selected', sidebar.e('li:nth-of-type(2)').get_attribute('class'))
-		
-		self.assertEqual('National Theatre in Sofia, Bulgaria - 2 August 2012'		, tour_step3.e('#step-title').get_attribute('valie'))
-		self.assertEqual('This is a photo of National Theatre in Sofia, Bulgaria'	, tour_step3.e('#step-description').get_attribute('valie'))
+		# sidebar.e('li:nth-of-type(2) a').click()
+		# sleep(3)
+		# self.assertEqual('National Theatre in Sofia, Bulgaria - 2 August 2012'		, tour_step3.e('#step-title').get_attribute('value'))
+		# self.assertEqual('This is a photo of National Theatre in Sofia, Bulgaria'	, tour_step3.e('#step-description').get_attribute('value'))
 		
 		self.es('.cf .right.preview')[1].click()
 		
-		tour = self.e('#tour')
-		self.assertEqual('This is a story about famous buildings in Sofia, Bulgaria', tour.e('h2').text)
-		self.assertEqual('http://www.historypin.com/channels/view/%d' % ID_USER, tour.e('p>a').get_attribute('href'))
-		self.assertEqual('Gabriela Ananieva', tour.e('p>a').text)
+		sleep(3)
+		site_cnt	= self.e('#site-content')
+		site_cnt.e('.tour-publish.deeplink').click()
 		
-		self.assertEqual('3 March 2012'	, tour.e('p>span:nth-of-type(1)').text)
-		self.assertEqual('8 August 2013', tour.e('p>span:nth-of-type(2)').text)
-		self.assertEqual('Bulgaria'		, tour.e('p>span:nth-of-type(3)').text)
+		sleep(4)
+		site_cnt = self.e('#container')
+		buttons = site_cnt.es('.center')
+		buttons_text = site_cnt.es('span')
 		
-		self.assertEqual('This is a story about famous buildings in Sofia, Bulgaria. They are located in the city centre and are very beautiful.', tour.e('.col.w2.info').text)
-		# TODO assert add keywords
+		buttons_items = [
+				['View my story'		, '/explore/'],
+				['Contribute'			, '/upload/index/'],
+				['Back to 1989 homepage', '/'],
+		]
 		
-		tour.e('.tour-take.button.next-button.right').click()
+		sleep(3)
 		
+		for n in range(len(buttons_items)):
+			i = buttons_items[n]
+			self.assertEqual(i[0], buttons_text[n].text)
+			self.assertIn(URL_BASE + '/en' + self.PROJECT_URL + i[1], buttons[n].get_attribute('href'))
 		
-		# - to finish TODOs, Issue #2238 should be fixed
-		# - assert everything in the Preview
-		# - click "Publish"
-		pass
-	
+		self.go(URL_BASE + self.ATTACH_URL + self.PROJECT_URL + '/tours/all')
+		
+		tour = self.e('#list li:nth-of-type(1)')
+		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_TOUR_IMAGES_BLOB[1] + '/dim/290x210/crop/1/', tour.e('img').get_attribute('src'))
+		
+		tour.e('.delete').click()
+		
+		alert = self.browser.switch_to_alert()
+		sleep(2)
+		alert.accept()
+		sleep(4)
+		
+		self.browser.refresh()
+		self.assertFalse(self.e('#list').exists('.image_container.ss-icon.ss-photo[href*="%s"]' % tour_id))
 	
 	@unittest.expectedFailure
 	def test_search_by_relevance(self):
