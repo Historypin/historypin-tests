@@ -192,7 +192,7 @@ class Channel(HPTestCase):
 		
 		item = self.e('#photo_list_content .list li a')
 		
-		self.assertEqual('%s/attach/uid%d/tours/view/id/%d/title/Test%%20Tour%%20for%%20Automated%%20test' % (URL_BASE, ID_USER_VIEW, ID_TOUR_VIEW), item.get_attribute('href'))
+		self.assertEqual('%s/attach/uid%d/tours/view/id/%d/title/Test%%20Tour%%20for%%20automated%%20test' % (URL_BASE, ID_USER_VIEW, ID_TOUR_VIEW), item.get_attribute('href'))
 		self.assertEqual('%s/services/thumb/phid/AMIfv96I9_s60vye1nN6kByqJAhUOQ_YE9JOMxMvV296IMqaZwlf4PYFX_75vAVaPEMy5t6uZTvCSiB0MhtoD0TouuPGg5ThZlZvUrEiKpFdA_lfQRFPLcOZU2hRv17iVI2GLQs_2NfSAOUypL2__HCE4kiNbLHRIw/dim/195x150/crop/1/' % URL_BLOB, item.e('img').get_attribute('src'))
 		
 		self.assertIn('tour-icon'	, item.e('span').get_attribute('class'))
@@ -201,8 +201,8 @@ class Channel(HPTestCase):
 		
 		paragraph_link = self.es('#photo_list_content .list li p a')
 		
-		self.assertEqual('%s/attach/uid%d/tours/view/id/%d/title/Test%%20Tour%%20for%%20Automated%%20test' % (URL_BASE, ID_USER_VIEW, ID_TOUR_VIEW), paragraph_link[0].get_attribute('href'))
-		self.assertEqual('Test Tour for Automated test', paragraph_link[0].text)
+		self.assertEqual('%s/attach/uid%d/tours/view/id/%d/title/Test%%20Tour%%20for%%20automated%%20test' % (URL_BASE, ID_USER_VIEW, ID_TOUR_VIEW), paragraph_link[0].get_attribute('href'))
+		self.assertEqual('Test Tour for automated test', paragraph_link[0].text)
 		
 		self.assertEqual('%s/channels/view/%d' % (URL_BASE, ID_USER_VIEW), paragraph_link[1].get_attribute('href'))
 		self.assertEqual('Gabss', paragraph_link[1].text)

@@ -62,53 +62,131 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIsInstance(paragraph.e('a:nth-of-type(1)'), WebElement)
 		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
 	
-	# @logged_in
-	# def test_create_story(self):
-	# 	self.go(self.PROJECT_URL + '/tours/add/')
+	@logged_in
+	def test_create_story(self):
+		self.go(self.PROJECT_URL + '/tours/add/')
 		
-	# 	site_cnt = self.e('#site-content')
+		#####################  STEP 1 ######################
+		site_cnt = self.e('#site-content')
 		
-	# 	self.assertEqual('%s/en%s/' % (URL_BASE, self.PROJECT_URL), site_cnt.e('.back'))
+		self.assertEqual('%s/en%s/' % (URL_BASE, self.PROJECT_URL), site_cnt.e('.back'))
 		
-	# 	tour_title = site_cnt.e('#tour-title')
+		tour_title = site_cnt.e('#tour-title')
 		
-	# 	self.assertEqual('Give your story a name. It will appear across all steps in the story', tour_title.get_attribute('placeholder'))
+		self.assertEqual('Give your story a name. It will appear across all steps in the story', tour_title.get_attribute('placeholder'))
 		
-	# 	tour_title.send_keys('This is a story about famous buildings in Sofia, Bulgaria')
+		tour_title.send_keys('This is a story about famous buildings in Sofia, Bulgaria')
 		
-	# 	site_cnt.e('#tour-description').send_keys('This is a story about famous buildings in Sofia, Bulgaria. They are located in the city centre and are very beautiful.')
+		site_cnt.e('#tour-description').send_keys('This is a story about famous buildings in Sofia, Bulgaria. They are located in the city centre and are very beautiful.')
 		
-	# 	name_contributor = site_cnt.e('#name-contributor')
-	# 	self.assertEqual('Gabriela Ananieva', name_contributor.get_attribute('value'))
+		name_contributor = site_cnt.e('#name-contributor')
+		self.assertEqual('Gabriela Ananieva', name_contributor.get_attribute('value'))
+		
+		language_select = site_cnt.e('#which-language')
+		language_select.e('option:nth-of-type(4)').click()
+		
+		date_select_from = site_cnt.e('#select-date')
+		date_select_from.e('#day option:nth-of-type(4)').click()
+		date_select_from.e('#month option:nth-of-type(5)').click()
+		date_select_from.e('#year option:nth-of-type(5)').click()
+		
+		site_cnt.e('.date-precise-wrapper #day_to option:nth-of-type(9)').click()
+		site_cnt.e('.date-precise-wrapper #month_to option:nth-of-type(10)').click()
+		site_cnt.e('.date-precise-wrapper #month_to option:nth-of-type(4)').click()
+		
+		country = site_cnt.e('#country')
+		country.e('option:nth-of-type(3)').click()
+		
+		keywords = site_cnt.e('.inline-list:nth-of-type(1)')
+		keywords.e('li:nth-of-type(1) a').click()
+		keywords.e('li:nth-of-type(6) a').click()
+		keywords.e('li:nth-of-type(24) a').click()
+		
+		site_cnt.e('#additional_keywords').send_keys('#theatres')
+		
+		events = site_cnt.e('.inline-list:nth-of-type(2)')
+		events.e('li:nth-of-type(6) a').click()
+		
+		site_cnt.e('.tour-next').click()
+		
+		#####################  STEP 2 ######################
+		
+		tour_id		= self.browser.current_url.split('/')[6]
+		
+		site_cnt	= self.e('#site-content')
+		tour_step2	= site_cnt.e('#tour-step2')
+		tabs		= tour_step2.es('li')
+		
+		tabs_cnt = [
+			['yours', 'My items'],
+			['favourites', 'My favourites'],
+			['/en%s/upload/index/from_story/1/t_id/3005' % self.PROJECT_URL, 'Upload items'],
+		]
+		
+		for n in range(len(tab_cnt)):
+			i = tabs_cnt[n]
+			self.assertEqual(i[0], tabs[n].get_attribute('rel'))
+			self.assertEqual(i[1], tabs[n].e('a').text)
+		
+		my_items = tour_step2.e('.choose-photos.yours.cf')
+		self.assertEqual(ID_TOUR_IMAGES_BLOB[0], my_items.e('img').get_attribute('src'))
+		
+		my_items.e('.add-photo').click()
+		sidebar = tour_step2.e('.w4.gallery')
+		
+		item_1 = sidebar.e('li:nth-of-type(2)')
+		self.assertEqual('My story'					, item_1.e('h4').text)
+		self.assertEqual(ID_TOUR_IMAGES_BLOB[0]		, item_1.e('img').get_attribute('src'))
+		self.assertEqual('Bulgarian Army Theater'	, item_1.e('.photo-title').text)
+		self.assertEqual('2 February 2013'			, item_1.e('.date').text)
+		
+		tabs.e('li:nth-of-type(2)').click()
+		my_favourites = tour_step2.e('.choose-photos.favourites.cf')
+		
+		self.assertEqual(ID_TOUR_IMAGES_BLOB[1], my_favourites.e('img').get_attribute('src'))
+		my_items.e('.add-photo').click()
+		
+		item_1 = sidebar.e('li:nth-of-type(3)')
+		self.assertEqual(ID_TOUR_IMAGES_BLOB[1]					, item_2.e('img').get_attribute('src'))
+		self.assertEqual('National Theatre in Sofia, Bulgaria'	, item_2.e('.photo-title').text)
+		self.assertEqual('2 August 2012'						, item_2.e('.date').text)
+		
+		site_cnt.e('.tour-next').click()
+		
+		#####################  STEP 3  ######################
+		
+		site_cnt	= self.e('#site-content')
+		tour_step3	= site_cnt.e('#tour-step3')
+		
+		sidebar = tour_step3.e('#sortable')
+		self.assertIn('selected', sidebar.e('li:nth-of-type(1)').get_attribute('class'))
+		
+		self.assertEqual('Bulgarian Army Theater - 2 February 2013'					, tour_step3.e('#step-title').get_attribute('valie'))
+		self.assertEqual('This is a photo of the famous Bulgarian Army Theater .'	, tour_step3.e('#step-description').get_attribute('valie'))
+		
+		sidebar.e('li:nth-of-type(2)').click()
+		self.assertIn('selected', sidebar.e('li:nth-of-type(2)').get_attribute('class'))
+		
+		self.assertEqual('National Theatre in Sofia, Bulgaria - 2 August 2012'		, tour_step3.e('#step-title').get_attribute('valie'))
+		self.assertEqual('This is a photo of National Theatre in Sofia, Bulgaria'	, tour_step3.e('#step-description').get_attribute('valie'))
+		
+		self.es('.cf .right.preview')[1].click()
+		
+		tour = self.e('#tour')
+		self.assertEqual('This is a story about famous buildings in Sofia, Bulgaria', tour.e('h2').text)
+		self.assertEqual('http://www.historypin.com/channels/view/%d' % ID_USER, tour.e('p>a').get_attribute('href'))
+		self.assertEqual('Gabriela Ananieva', tour.e('p>a').text)
+		
+		self.assertEqual('3 March 2012'	, tour.e('p>span:nth-of-type(1)').text)
+		self.assertEqual('8 August 2013', tour.e('p>span:nth-of-type(2)').text)
+		self.assertEqual('Bulgaria'		, tour.e('p>span:nth-of-type(3)').text)
+		
+		self.assertEqual('This is a story about famous buildings in Sofia, Bulgaria. They are located in the city centre and are very beautiful.', tour.e('.col.w2.info').text)
+		# TODO assert add keywords
+		
+		tour.e('.tour-take.button.next-button.right').click()
 		
 		
-		# TODO
-		# 1 STEP
-		# - assert 1989 link
-		# - check title placeholder
-		# - enter a title
-		# - enter description
-		# - select language
-		# - enter start date and end date
-		# - select country
-		# - select at least 2 keywords
-		# - add additional ones
-		# - select event
-		# - click next to the second step
-		# 2 STEP
-		# on the second step get the Story ID from the url to check if it's not there after deleting
-		# - assert image url
-		# -select it and check if it is added in the sidebar
-		# - click on my favourites tab
-		# - assert image
-		# - add it to the sidebar
-		# - click next
-		# 3 STEP
-		# - assert number 1 image is selected
-		# - assert the texts in the step description
-		# - click on the second image
-		# - assert steps for it as well
-		# - click "Preview"
 		# - to finish TODOs, Issue #2238 should be fixed
 		# - assert everything in the Preview
 		# - click "Publish"
