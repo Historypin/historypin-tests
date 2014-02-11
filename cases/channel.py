@@ -10,7 +10,7 @@ class Channel(HPTestCase):
 		self.assertTitle('Gabss | Historypin')
 		
 		info = self.e('.chan.info')
-		self.assertEqual('Gabss'														, info.e('h2').text)
+		self.assertEqual('Gabss', info.e('h2').text)
 		self.assertEqual('%s/channels/img/%d/logo/1/dim/200x200/crop/1/' % (URL_BASE, ID_USER_VIEW), info.e('img').get_attribute('src'))
 		
 		self.assertEqual('Find out more at: avalith.bg'					, self.e('.chan.info br~p').text)
@@ -39,7 +39,7 @@ class Channel(HPTestCase):
 		
 		sleep(4)  # AJAX
 		button = self.e('.chan.options .channel-button.left')
-		self.assertEqual('Become a Fan'										, button.text)
+		self.assertEqual('Become a Fan'													, button.text)
 		self.assertEqual('%s/user/?from=/channels/view/%d/' % (URL_BASE, ID_USER_VIEW)	, button.get_attribute('href'))
 		
 		social_buttons = self.e('.addthis_toolbox span')
@@ -231,10 +231,11 @@ class Channel(HPTestCase):
 		self.assertEqual('What to do now:'					, h4s[0].text)
 		self.assertEqual('Personalise your Channel further:', h4s[1].text)
 		
+		channel_view = '/channels/view/'
 		to_dos = [
-			['/channels/view/%d/#tab-upload' % ID_USER				, "Pin something!"],
-			['/channels/view/%d/#tab-create-collection' % ID_USER	, "Create a Collection"],
-			['/channels/view/%d/#tab-create-tour' % ID_USER			, "Create a Tour"],
+			['%s%d/#tab-upload' % (channel_view, ID_USER)			, "Pin something!"],
+			['%s%d/#tab-create-collection' % (channel_view, ID_USER), "Create a Collection"],
+			['%s%d/#tab-create-tour' % (channel_view, ID_USER)		, "Create a Tour"],
 			['/map/'												, "Explore the map"],
 			['/channels/'											, "See other people's Channels"],
 		]
@@ -1441,30 +1442,48 @@ class Channel(HPTestCase):
 		self.assertEqual("You have no fans yet.", tab_subsrcribers.e('p').text)
 	
 	# @unittest.expectedFailure  # TODO Bug #3121 should be fixed
-	# @logged_in
-	# @url('/channels/view/%d' % ID_USER_VIEW)
-	# def test_become_fan(self):
+	@logged_in
+	@url('/channels/view/%d' % ID_USER_VIEW)
+	def test_become_fan(self):
 		
-	# 	self.e('#subscribe').click()
-	# 	sleep(1)
-	# 	self.assertEqual('Un-Fan', self.e('#subscribe span').text)
+		self.e('#subscribe').click()
+		sleep(1)
+		# self.assertEqual('Un-Fan', self.e('#subscribe span').text)
 		
-	# 	self.go('/channels/view/%d' % ID_USER_VIEW)
+		self.go('/channels/view/%d' % ID_USER)
 		
-	# 	editor				= self.e('.channel_editor')
-	# 	channels		= settings_menu.e('li:nth-of-type(9) a')
+		editor			= self.e('.channel_editor')
+		settings		= editor.e('.settings')
+		channels		= editor.e('li:nth-of-type(9) a')
 		
-	# 	# channels.click()
-	# 	# tab_subscriptions	= editor.e('#tab-subscriptions')
-	# 	# # TODO
-	# 	# # go to user channel
-	# 	# # click Become a fan
-	# 	# # check if the button has changed
-	# 	# # go to my channel
-	# 	# # check if the channel is in stuf i like
-	# 	# # go to user channel again
-	# 	# # click un-fan
-	# 	# pass
+		settings.click()
+		sleep(4)
+		channels.click()
+		
+		sleep(4)
+		
+		tab_subscriptions	= editor.e('#tab-subscriptions')
+		fan_channel			= tab_subscriptions.e('li:nth-of-type(4)')
+		
+		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER_VIEW), fan_channel.e('.logo').get_attribute('href'))
+		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER_VIEW), fan_channel.e('.name').get_attribute('href'))
+		self.assertEqual('%s/channels/img/%d/logo/1/dim/70x70/crop/1/' % (URL_BASE, ID_USER_VIEW), fan_channel.e('.logo img').get_attribute('src'))
+		
+		self.go('/channels/view/%d' % ID_USER_VIEW)
+		
+		sleep(3)
+		self.e('#subscribe').click()
+		sleep(1)
+		
+		self.go('/channels/view/%d' % ID_USER)
+		
+		editor			= self.e('.channel_editor')
+		settings		= editor.e('.settings')
+		channels		= editor.e('li:nth-of-type(9) a')
+		settings.click()
+		channels.click()
+		
+		self.assertFalse(tab_subscriptions.exists(fan_channel))
 	
 	@logged_in
 	@url('/map/index/#!/geo:42.688019,23.320069/zoom:20/dialog:%d/tab:details/' % ID_FAVOURITE_ITEM)
