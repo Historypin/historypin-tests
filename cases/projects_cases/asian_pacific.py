@@ -32,6 +32,7 @@ class Project_AsianPacific(HPTestCase, Attach):
 		self.assertEqual(URL_BASE + '/attach%s/map/index/' % self.PROJECT_URL, self.e('#embed-frame').get_attribute('src'))
 		
 		# TODO Add links when they're provided
+		
 		tout_items = [
 			['How to participate'	, 'Learn how to share information and memories about places that matter.', 'tout1_image'],
 			['Explore API America'	, 'Visit API sites through tours and collections posted by our partners.', 'tout2_image'],
@@ -41,7 +42,7 @@ class Project_AsianPacific(HPTestCase, Attach):
 		paragraphs	= self.es('.w23 .inner p')
 		imgs		= self.es('.w23 .inner img')
 		
-		# TODO test activity when there is one
+		# TODO test activity feed when there is content in the project
 		
 		for n in range(len(tout_items)):
 			i = tout_items[n]
