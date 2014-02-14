@@ -150,8 +150,8 @@ class Homepage(HPTestCase):
 	def test_icon_touts(self):
 		
 		features = [
-			['ss-cell'				, '/app/'			% URL_BASE, 'Download the latest Historypin\nsmartphone app'],
-			['ss-trophy'			, '/presscentre/'	% URL_BASE, 'We\'ve won a webby award for best charity non-profit website'],
+			['ss-cell'				, '%s/app/'			% URL_BASE, 'Download the latest Historypin\nsmartphone app'],
+			['ss-trophy'			, '%s/presscentre/'	% URL_BASE, 'We\'ve won a webby award for best charity non-profit website'],
 			['ss-exclamationchat'	, 'http://blog.historypin.com/2013/05/31/weve-updated-our-terms-and-conditions', "We've updated our\nTerms and Conditions"],
 		]
 		

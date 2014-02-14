@@ -41,33 +41,6 @@ class Project_PuttingArt(HPTestCase, Attach):
 		
 		self.assertEqual('%s/attach%s/mysteries/index/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 		
-		tout_items = [
-			['Ready, set, crowdsource!'	, 'tout1_image', 'Read about our live crowdsourcing session at the Scottish National Portrait Gallery'	, '/2014/01/17/artmap-in-edinburgh/'],
-			['Curate our artworks'		, 'tout2_image', 'Create your own Collection or Tour with the First World War artworks.'				, '/?p=3765'],
-		]
-		
-		h3s			= site_cnt.es('.tout.w2 h3')
-		images		= site_cnt.es('.tout.w2 img')
-		paragraphs	= site_cnt.es('.tout.w2 p')
-		h3s_link	= site_cnt.es('.tout.w2 h3 a')
-		images_link	= site_cnt.es('.tout.w2 p + a')
-		
-		for n in range(len(tout_items)):
-			i = tout_items[n]
-			self.assertEqual(i[0], h3s[n].text)
-			self.assertEqual(URL_BASE + '/projects/img/pid/41/dim/270x310/type/' + i[1] + '/crop/1/', images[n].get_attribute('src'))
-			self.assertEqual(i[2], paragraphs[n].text)
-			self.assertEqual('http://blog.historypin.com' + i[3], h3s_link[n].get_attribute('href'))
-			self.assertEqual('http://blog.historypin.com' + i[3], images_link[n].get_attribute('href'))
-		
-		activity = site_cnt.e('#activity')
-		li_first = activity.e('li:first-of-type')
-		
-		self.assertIsInstance(li_first.e('a')		, WebElement)
-		self.assertIsInstance(li_first.e('a img')	, WebElement)
-		self.assertIsInstance(li_first.e('p')		, WebElement)
-		self.assertIsInstance(li_first.e('p a')		, WebElement)
-		
 		icon_tout1	= site_cnt.e('#icon-tout-0 a')
 		
 		self.assertEqual('http://blog.historypin.com/?p=3750'	, icon_tout1.get_attribute('href'))

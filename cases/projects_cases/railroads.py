@@ -16,7 +16,7 @@ class Project_Railroads(HPTestCase, Attach):
 		'%s/attach%s/slideshow/'		% (URL_BASE, PROJECT_URL),
 		'%s/attach%s/mysteries/index/'	% (URL_BASE, PROJECT_URL),
 	]
-	
+
 	test_attach_tabs			= Attach.attach_tabs
 	test_tab_map				= Attach.attach_tab_map
 	test_tab_gallery			= Attach.attach_tab_gallery
