@@ -28,7 +28,7 @@ class Project_Sourdough(HPTestCase, Attach):
 		self.go(self.PROJECT_URL)
 		
 		self.assertTitle('Sourdough and Rye | Home')
-		self.assertEqual('%s/projects/img/dim/1030x250/crop/1/image_id/150' % URL_BASE, self.e('#banner_images img').get_attribute('src'))
+		self.assertEqual('%s/projects/img/dim/1030x250/crop/1/image_id/193' % URL_BASE, self.e('#banner_images img').get_attribute('src'))
 		
 		site_cnt = self.e('#site-content')
 		about_link = site_cnt.e('.w23 a')
@@ -38,7 +38,7 @@ class Project_Sourdough(HPTestCase, Attach):
 		activity = site_cnt.e('#activity')
 		
 		self.assertIsInstance(activity.e('h1')		, WebElement)
-		self.assertEqual('pieces of content added so far'	, activity.e('p').text)
+		self.assertEqual('materials, memories and comments contributed', activity.e('p').text)
 		
 		item_first = activity.es('.activity li:first-of-type a')
 		
@@ -128,17 +128,17 @@ class Project_Sourdough(HPTestCase, Attach):
 		paragraphs	= touts.es('p')
 		
 		touts_items = [
-			['/#', 'tout1_image', 'Upcoming events'		, 'More information coming soon!'],
-			['/#', 'tout2_image', 'Past events'			, 'More information coming soon!'],
-			['/#', 'tout3_image', 'Run your own event'	, 'More information coming soon!'],
+			['http://www.eventbrite.com/e/sourdough-rye-launch-party-tickets-10339346263', 'tout1_image', 'Sourdough & Rye Launch Party', 'Come out to celebrate the launch of Sourdough & Rye'],
+			['http://sourdoughandryehistory.org/?p=143', 'tout2_image', 'Sharing and Exploring the Life of Seymour Fromer'			, 'Share your photos, stories, and videos related to Seymour Fromer'],
+			[URL_BASE + '/project/43-sourdough-and-rye/events/#', 'tout3_image', 'Run your own event'	, 'More information coming soon!'],
 		]
 		
 		for n in range(len(touts_items)):
 			i = touts_items[n]
-			self.assertEqual(URL_BASE + self.PROJECT_URL + '/events' + i[0], img_links[n].get_attribute('href'))
-			self.assertEqual(URL_BASE + self.PROJECT_URL + '/events' + i[0], h3s_links[n].get_attribute('href'))
+			self.assertEqual(i[0], img_links[n].get_attribute('href'))
+			self.assertEqual(i[0], h3s_links[n].get_attribute('href'))
 			self.assertEqual(URL_BASE + '/projects/img/pid/43/dim/307x265/type/' + i[1] + '/crop/1/', imgs[n].get_attribute('src'))
 			self.assertEqual(i[2], h3s_links[n].text)
-			self.assertEqual(i[3], paragraphs[n].text)
+			self.assertIn(i[3], paragraphs[n].text)
 		
 	

@@ -21,7 +21,7 @@ class Project_Railroads(HPTestCase, Attach):
 	test_tab_map				= Attach.attach_tab_map
 	test_tab_gallery			= Attach.attach_tab_gallery
 	test_tab_tours_empty		= Attach.attach_tab_tours_empty
-	test_tab_collections_empty	= Attach.attach_tab_collections_empty
+	test_tab_collections		= Attach.attach_tab_collections
 	test_tab_slideshow			= Attach.attach_tab_slideshow
 	
 	def test_tab_mysteries(self):

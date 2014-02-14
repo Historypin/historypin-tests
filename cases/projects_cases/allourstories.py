@@ -23,7 +23,7 @@ class Project_AllOurStories(HPTestCase, Attach):
 		
 		self.assertTitle('All Our Stories | Home')
 		
-		self.assertEqual(URL_BASE + '/projects/img/dim/1000x250/crop/1/image_id/180', self.e('#banner_images img').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/projects/img/dim/1000x250/crop/1/image_id/183', self.e('#banner_images img').get_attribute('src'))
 		
 		site_cnt = self.e('#site-content')
 		desc_main = site_cnt.e('.main_description')

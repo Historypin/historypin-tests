@@ -685,8 +685,8 @@ class Project_Europeana(HPTestCase, Attach):
 		img_link	= site_cnt.es('.tout p+a')
 		
 		tout_items = [
-			[u'Relive the Baltic Way – Pin yourself on the map'	, 'http://www.europeana1989.eu/en/baltic-way/'	, 'tout1_image', 'On 23 August 1989'],
-			['Join our events!'									, 'http://blog.europeana.eu/1989-calendar/'		, 'tout2_image', 'Come and tell your story about the Velvet '],
+			[u'Relive the Baltic Way – Pin yourself on the map'	, '%s/en%s/baltic-way/' % (URL_BASE, self.PROJECT_URL)	, 'tout1_image', 'On 23 August 1989'],
+			['Join our events!'									, 'http://blog.europeana.eu/1989-calendar/'				, 'tout2_image', 'Come and tell your story about the Velvet '],
 		]
 		
 		for n in range(len(tout_items)):
