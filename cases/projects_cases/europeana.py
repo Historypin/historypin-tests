@@ -64,7 +64,7 @@ class Project_Europeana(HPTestCase, Attach):
 	
 	@logged_in
 	def test_create_story(self):
-		self.go(self.PROJECT_URL + '/tours/add/')
+		self.go('/en' + self.PROJECT_URL + '/tours/add/')
 		
 		#####################  STEP 1 ######################
 		site_cnt = self.e('#site-content')

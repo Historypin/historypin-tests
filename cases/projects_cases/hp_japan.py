@@ -25,7 +25,7 @@ class Project_HPJapan(HPTestCase, Attach):
 		
 		touts_items = [
 			['%s/' % self.FUJINOMIYA_LINK	, u'富士宮プロジェクト'	, u'富士宮プロジェクトページを見る'	, 'tout1_image'],
-			['%s/' % self.blog_link			, u'ブログ'			, u'Historypin Japan の最新情報', 'tout2_image'],
+			['%s/' % self.blog_link			, u'ブログ'				, u'Historypin Japan の最新情報'	, 'tout2_image'],
 		]
 		
 		h3s_links	= self.es('.w23 .inner h3 a')
