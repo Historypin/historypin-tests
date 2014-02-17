@@ -310,9 +310,10 @@ class Tours(HPTestCase):
 		self.assertEqual('Step Title:'							, step_title.e('label').text)
 		self.assertEqual('Bulgarian Army Theater - 2 February 2013'	, step_title.e('input').get_attribute('value'))
 		
+		sleep(5)
 		step_desc = step.e('li:nth-of-type(3)')
 		self.assertEqual('Step Description:'										, step_desc.e('label').text)
-		# self.assertEqual('This is a photo of the famous Bulgarian Army Theater .'	, step_desc.e('textarea').get_attribute('value'))
+		self.assertEqual('This is a photo of the famous Bulgarian Army Theater .'	, step_desc.e('textarea').text)
 		
 		self.assertFalse(step.e('.show-prev.s3-prev').is_displayed())
 		
@@ -336,7 +337,9 @@ class Tours(HPTestCase):
 		
 		step_desc = step.e('li:nth-of-type(3)')
 		self.assertEqual('Step Description:'										, step_desc.e('label').text)
-		self.assertEqual('This is a photo of National Theatre in Sofia, Bulgaria'	, step_desc.e('textarea').get_attribute('value'))
+		
+		sleep(3)
+		self.assertEqual('This is a photo of National Theatre in Sofia, Bulgaria'	, step_desc.e('textarea').text)
 		
 		prev = step.e('.show-prev.s3-prev')
 		self.assertTrue(prev.is_displayed())
