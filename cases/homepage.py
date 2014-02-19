@@ -113,6 +113,17 @@ class Homepage(HPTestCase):
 		# verify if the activity is expaned to check if element has style property with height= 388 and 700px
 		# verify if projects are collapsed
 	
+	@url('/')
+	def test_activity_items_len(self):
+		
+		activity = self.e('.scrollbarfix')
+		activity_items = activity.es('li')
+		if len(activity_items) == 20:
+			pass
+		else:
+			print "The activity items are less"
+		
+	
 	@unittest.expectedFailure
 	@url('/')
 	def test_explore(self):
