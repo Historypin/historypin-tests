@@ -118,11 +118,7 @@ class Homepage(HPTestCase):
 		
 		activity = self.e('.scrollbarfix')
 		activity_items = activity.es('li')
-		if len(activity_items) == 20:
-			pass
-		else:
-			print "The activity items are less"
-		
+		self.assertEqual(20, len(activity_items))
 	
 	@unittest.expectedFailure
 	@url('/')
