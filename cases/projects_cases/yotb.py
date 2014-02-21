@@ -39,8 +39,8 @@ class Project_YOTB(HPTestCase, Attach):
 		self.assertEqual('Pin your memories', button.e('span').text)
 		
 		touts_items = [
-			['Dogpatch Mysteries', 'Read about how you can help us solve Dogpatch-themed mysteries from the SFPL.', 'tout1_image', '01/23/solving-dogpatch-mysteries-in-year-of-the-bay/'],
-			['How to Pin a Photo', 'Short video of how to pin a photograph to Year of the Bay.', 'tout2_image', '01/23/solving-dogpatch-mysteries-in-year-of-the-bay/'],
+			['The 1939 GGIE', "Read about the 75th anniversary of the Golden Gate Int'l Expo on Treasure Island.", 'tout1_image', 'http://bit.ly/1fzHray'],
+			['How to Pin a Photo', 'Short video of how to pin a photograph to Year of the Bay.', 'tout2_image', 'http://bit.ly/1fzHray'],
 		]
 		
 		h3s		= site_cnt.es('.w2 h3')
@@ -53,7 +53,7 @@ class Project_YOTB(HPTestCase, Attach):
 			self.assertEqual(i[0], h3s[n].text)
 			self.assertEqual(i[1], texts[n].text)
 			self.assertEqual(URL_BASE + '/projects/img/pid/22/dim/271x311/type/' + i[2] + '/crop/1/', images[n].get_attribute('src'))
-			self.assertEqual('http://blog.historypin.com/2014/' + i[3], links[n].get_attribute('href'))
+			self.assertEqual(i[3], links[n].get_attribute('href'))
 		
 		activity = site_cnt.e('#activity')
 		self.assertIsInstance(activity.e('h1'), WebElement)
