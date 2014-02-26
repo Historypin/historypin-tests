@@ -470,7 +470,7 @@ class Channel(HPTestCase):
 			['/%d/title/The%%20March%%20on%%20Washington' % TOUR_EXAMPLES[0], 'The 1963 March on Washington'],  # make a variable to match SQl IDs
 			['/%d/title/A%%20historical%%20guided%%20tour%%20of%%20Kew%%20Gardens' % TOUR_EXAMPLES[1], 'A historical guided tour of Kew Gardens'],
 			['/7764038/title/Road%20Trip'											, 'Road Trip'],
-			['/8748071/title/Dereham%20Circular%20History%20Tour%201'			, 'A Tour around Dereham, Norfolk'],
+			['/8748071/title/Dereham%20Circular%20History%20Tour%201'				, 'A Tour around Dereham, Norfolk'],
 			['/6605903/title/Queen%20Elizabeth%20II'								, "Queen Elizabeth II's life"],
 		]
 		
@@ -517,7 +517,7 @@ class Channel(HPTestCase):
 		
 		fans = tab_cnt.es('.stats_table tr td a')
 		self.assertEqual('%s/channels/view/%d/#tab-subscribers' % (URL_BASE, ID_USER)	, fans[0].get_attribute('href'))
-		self.assertEqual('1 - See list', fans[0].text)
+		self.assertEqual('0 - See list', fans[0].text)
 		self.assertEqual('%s/channels/view/%d/#tab-subscriptions' % (URL_BASE, ID_USER), fans[1].get_attribute('href'))
 		self.assertEqual('3 - See list', fans[1].text)
 	

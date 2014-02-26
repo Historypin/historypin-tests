@@ -13,8 +13,8 @@ class Project_AsianPacific(HPTestCase, Attach):
 	]
 	
 	test_attach_tabs	= Attach.attach_tabs
-	# test_tab_map		= Attach.attach_tab_map - TODO uncomment this when there is cluster and more photos
-	# test_tab_gallery	= Attach.attach_tab_gallery
+	test_tab_map		= Attach.attach_tab_map
+	test_tab_gallery	= Attach.attach_tab_gallery
 	
 	def test_index(self):
 		self.go(self.PROJECT_URL)
@@ -26,8 +26,8 @@ class Project_AsianPacific(HPTestCase, Attach):
 		self.assertEqual('East at Main Street', site_cnt.e('h1').text)
 		self.assertIn('Few sites associated with Asian Pacific Islander (API) American history and culture have been recognized as landmarks', site_cnt.e('.main_description').text)
 		
-		self.assertEqual('Pin your memories', site_cnt.e('.module .right.w3 a').text)
-		self.assertEqual(URL_BASE + self.PROJECT_URL + '/upload/', site_cnt.e('.module .right.w3 a').get_attribute('href'))
+		self.assertEqual('Pin your memories', site_cnt.e('.right.next-button span').text)
+		self.assertEqual(URL_BASE + self.PROJECT_URL + '/upload/', site_cnt.e('.right.next-button').get_attribute('href'))
 		
 		self.assertEqual(URL_BASE + '/attach%s/map/index/' % self.PROJECT_URL, self.e('#embed-frame').get_attribute('src'))
 		
@@ -51,7 +51,7 @@ class Project_AsianPacific(HPTestCase, Attach):
 			self.assertEqual(URL_BASE + '/projects/img/pid/51/dim/287x331/type/' + i[2] + '/crop/1/', imgs[n].get_attribute('src'))
 		
 		icon_tout_items = [
-			['http://www.nps.gov/AAPI/'						, 'Find out more about this project', 'ss-icon ss-users'],
+			['http://www.nps.gov/history/asianpacificheritage/', 'Find out more about this project', 'ss-icon ss-users'],
 			['http://apiahipmappingproject.blogspot.com/'	, 'Read the latest news on our blog', 'ss-icon ss-newspaper'],
 			['http://www.apiahip.org/'						, 'Learn more about APIAHiP'		, 'ss-icon ss-desktop'],
 		]
