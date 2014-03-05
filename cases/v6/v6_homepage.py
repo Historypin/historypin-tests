@@ -33,14 +33,26 @@ class Homepage_V6(HPTestCase):
 	
 	@url('/en/explore/')
 	def test_index(self):
-		self.assertEqual('%s/' % URL_BASE, header.e('h1 a').get_attribute('href'))
-		# assert HP logo and link
-		# assert HP text and i-icon, also text by
-		# assert year slider
-		# assert map
 		
-		pass
-	
+		self.assertTitle('Historypin')
+		
+		header	= self.e('#header')
+		self.assertEqual('%s/' % URL_BASE, header.e('h1 a').get_attribute('href'))
+		
+		self.assertEqual('Historypin', self.e('h3').text)
+		self.assertIsInstance(self.e('.home-anchor'), WebElement)
+		
+		timeline = self.e('#timeline')
+		self.assertEqual('1800', timeline.e('.start').text)
+		self.assertEqual('1800', timeline.e('.ui-slider-handle-left').text)
+		
+		
+		self.assertEqual('2029', timeline.e('.end').text)
+		self.assertEqual('2029', timeline.e('.ui-slider-handle-right').text)
+		
+		self.assertIsInstance(timeline.e('.ui-slider-range'), WebElement)
+		
+		self.assertIsInstance(self.e('#map'), WebElement)
 	
 	@url('/en/explore/')
 	def test_pin(self):
