@@ -10,7 +10,6 @@ class Homepage_V6(HPTestCase):
 		
 		self.assertTitle('Historypin')
 		
-		
 		header	= self.e('#header')
 		links	= header.es('li a')
 		
@@ -22,9 +21,9 @@ class Homepage_V6(HPTestCase):
 			['Tours and Collections', URL_BASE + '/curated/'],
 			['Get Involved'			, URL_BASE + '/community/'],
 			['Blog'					, 'http://blog.historypin.com/'],
-			['Pin'					, URL_BASE + '/upload/'],
-			['Join'					, URL_BASE + '/user/'],
 			['Login'				, URL_BASE + '/user/'],
+			['Join'					, URL_BASE + '/user/'],
+			['Pin'					, URL_BASE + '/upload/'],
 		]
 		
 		for n in range(len(header_items)):

@@ -4,11 +4,11 @@ GO_TIMEOUT = 1
 
 # VERSION = 'v5-europeana-filter'
 # VERSION = 'v5-asian-pacific'
-VERSION = 'v5-japan-channels'
+VERSION = 'v6-alpha'
 # VERSION = 'v5-01-11'
 # VERSION = 'historypin.com'
-# LINK_BASE = '%s.historypin-hrd.appspot.com' % (VERSION)
-LINK_BASE = 'historypin.com'
+LINK_BASE = '%s.historypin-hrd.appspot.com' % (VERSION)
+# LINK_BASE = 'historypin.com'
 
 URL_BASE = 'http://www.%s' % LINK_BASE
 
