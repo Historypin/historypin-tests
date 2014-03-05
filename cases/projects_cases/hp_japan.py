@@ -104,7 +104,7 @@ class Project_HPJapan(HPTestCase, Attach):
 		site_cnt = self.e('#site')
 		nav_links = site_cnt.es('.primary a')
 		
-		self.assertEqual('%s/resources/images/project-japan/historypin-logo.png' % URL_BASE, nav_links[0].e('img').get_attribute('src'))
+		self.assertEqual('http://www.historypin.jp/resources/images/project-japan/historypin-logo.png', nav_links[0].e('img').get_attribute('src'))
 		self.assertEqual('http://www.historypin.com/', nav_links[0].get_attribute('href'))
 		
 		self.assertEqual('%s/jp%s/' % (URL_BASE, self.PROJECT_URL), nav_links[1].get_attribute('href'))
