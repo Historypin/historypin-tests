@@ -54,8 +54,8 @@ class Homepage_V6(HPTestCase):
 		
 		self.assertIsInstance(self.e('#map'), WebElement)
 	
-	@url('/en/explore/')
-	def test_pin(self):
+	@url('/en/explore/geo/46.850422,17.791903,11')
+	def test_map_click(self):
 		# click on the pin on the map
 		# assert title views and link to the channel
 		# assert image
@@ -63,8 +63,39 @@ class Homepage_V6(HPTestCase):
 		# assert the tooltip on the map
 		# assert year slider
 		# close the sidebar
-		# assert that it's closed
-		pass
+		# assert that it's close
+		sleep(5)
+		self.e('#map .gm-style div').click()
+		
+		sleep(10)
+		
+	@url('/en/explore/pin/160345')
+	def test_pin(self):
+		
+		sleep(6)
+		self.assertEqual('1989', self.e('#timeline .tooltip').text)
+		column_header = self.e('#pin .row')
+		
+		self.assertEqual('Outside a tavern at Lake Balaton', self.e('#explore h1').text)
+		self.assertEqual('http://www.historypin.com/channels/img/46399/logo/1/dim/50x50/crop/1/', column_header.e('.author-image img').get_attribute('src'))
+		self.assertEqual('Pinned by\nDeutsche Kinemathek'	, column_header.e('.author').text)
+		self.assertEqual('%s/channels/view/46399' % URL_BASE, column_header.e('.author a').get_attribute('href'))
+		
+		sleep(3)
+		# self.assertEqual('Balaton Uplands National Park, 8237 Tihany, Kossuth Lajos Street 31, Hungary', self.e('.tooltip.arrow-down').text)  # TODO this will fail, because the map is slow and cannot load the tooltip on time
+		
+		column_3b = self.e('.content')
+		self.assertEqual('http://www.historypin.com/services/thumb/phid/160345/dim/600x600/quality/80/', column_3b.e('img').get_attribute('src'))
+		
+		self.assertIsInstance(column_3b.e('.info-anchor'), WebElement)
+		
+		h4s = ['DESCRIPTION', 'TAGS', 'INFORMATION', 'CREATOR']
+		h4s_cnt = column_3b.es('h4')
+		for n in range(len(h4s)): self.assertEqual(h4s[n], h4s_cnt[n].text)
+		
+		column_header.e('.close-anchor').click()
+		self.assertFalse(column_header.is_displayed())
+		self.assertFalse(column_3b.is_displayed())
 	
 	@url('/en/explore/1989')
 	def test_project(self):
