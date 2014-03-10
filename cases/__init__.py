@@ -17,6 +17,7 @@ from projects_cases.asian_pacific import Project_AsianPacific
 from projects_cases.balboa import Project_Balboa
 from projects_cases.chevy import Project_Chevy
 from projects_cases.europeana import Project_Europeana
+from projects_cases.field_recordings import Project_FieldRecordings
 from projects_cases.fujinomiya import Project_Fujinomiya
 from projects_cases.grandparents import Project_Grandparents
 from projects_cases.hp_japan import Project_HPJapan

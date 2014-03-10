@@ -55,7 +55,7 @@ class Homepage_V6(HPTestCase):
 		self.assertIsInstance(self.e('#map'), WebElement)
 	
 	@url('/en/explore/geo/46.850422,17.791903,11')
-	def test_map_click(self):
+	def test_map(self):
 		# click on the pin on the map
 		# assert title views and link to the channel
 		# assert image
@@ -82,7 +82,15 @@ class Homepage_V6(HPTestCase):
 		self.assertEqual('%s/channels/view/46399' % URL_BASE, column_header.e('.author a').get_attribute('href'))
 		
 		sleep(3)
-		# self.assertEqual('Balaton Uplands National Park, 8237 Tihany, Kossuth Lajos Street 31, Hungary', self.e('.tooltip.arrow-down').text)  # TODO this will fail, because the map is slow and cannot load the tooltip on time
+		# self.assertEqual('Balaton Uplands National Park, 8237 Tihany, Kossuth Lajos Street 31, Hungary', self.e('.tooltip.arrow-down').text)  # TODO fix this, because the map is slow and cannot load the tooltip on time
+		
+		share_toolbox = self.e('.addthis_toolbox')
+		self.hover(share_toolbox)
+		share_items = share_toolbox.es('li')
+		self.assertIsInstance(share_items[0], WebElement)
+		self.assertIsInstance(share_items[1], WebElement)
+		self.assertIsInstance(share_items[2], WebElement)
+		self.assertIsInstance(share_items[3], WebElement)
 		
 		column_3b = self.e('.content')
 		self.assertEqual('http://www.historypin.com/services/thumb/phid/160345/dim/600x600/quality/80/', column_3b.e('img').get_attribute('src'))
@@ -99,15 +107,51 @@ class Homepage_V6(HPTestCase):
 	
 	@url('/en/explore/1989')
 	def test_project(self):
-		# TODO
-		# check text
-		# check the exact years
-		# check the text when it is expanded
-		# check explore the map
-		# check share icons on hover the icon
-		# click explore the map
-		# check if it is hidden
-		pass
+		
+		self.assertTitle('Historypin')
+		
+		banner = self.e('#banner')
+		self.assertEqual('Europeana 1989', banner.e('h3').text)
+		
+		timeline = self.e('#timeline')
+		self.assertEqual('1930', timeline.e('.start').text)
+		self.assertEqual('1930', timeline.e('.ui-slider-handle-left').text)
+		
+		self.assertEqual('2013', timeline.e('.end').text)
+		self.assertEqual('2013', timeline.e('.ui-slider-handle-right').text)
+		self.assertIsInstance(timeline.e('.ui-slider-range'), WebElement)
+		
+		if not self.e('.panel.expanded').is_displayed():
+			banner.e('.home-anchor').click()
+		
+		sleep(4)
+		self.assertEqual(URL_BASE + '/projects/img/pid/34/type/project_image,banner,logo/dim/1024x290/crop/1/', banner.e('img').get_attribute('src'))
+		
+		self.assertEqual('Mirrorpix Archives', banner.e('.channel-link span').text)
+		self.assertEqual('Europeana 1989: We Made History', banner.e('.description strong').text)
+		self.assertIn(u'The way history is recorded isn’t just about what museums and institutions think is important', banner.e('.description').text)
+		
+		share_toolbox	= self.e('.social-container')
+		share_items		= share_toolbox.es('li')
+		
+		self.hover(share_toolbox)
+		self.assertIsInstance(share_items[0], WebElement)
+		self.assertIsInstance(share_items[1], WebElement)
+		self.assertIsInstance(share_items[2], WebElement)
+		self.assertIsInstance(share_items[3], WebElement)
+		self.assertIsInstance(share_items[4], WebElement)
+		
+		self.assertEqual('Explore the map', self.e('#btn-explore').text)
+		self.e('#btn-explore').click()
+		
+		self.browser.set_window_size(1680, 900)
+		sleep(5)
+		
+		banner.e('.home-anchor').click()
+		self.assertEqual('Read more...', self.e('.read-more').text)
+		self.e('.read-more').click()
+		
+		self.assertIn(u'The way history is recorded isn’t just about what museums and institutions think is important', banner.e('.description').text)
 	
 	@url('/en/explore/')
 	def test_footer(self):
