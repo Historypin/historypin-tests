@@ -7,7 +7,7 @@ class Project_FieldRecordings(HPTestCase, Attach):
 	
 	PROJECT_URL = '/project/53-can-you-help-us-enrich-these-field-recordings-of-b'
 	ATTACH_TABS = [
-		'%s/attach%s/map/index/'		% (URL_BASE, PROJECT_URL),
+		'%s/attach%s/map/index/'	% (URL_BASE, PROJECT_URL),
 	]
 	
 	test_attach_tabs	= Attach.attach_tabs

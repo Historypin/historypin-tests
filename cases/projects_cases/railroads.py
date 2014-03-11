@@ -5,8 +5,8 @@ from attach import Attach
 
 class Project_Railroads(HPTestCase, Attach):
 	
-	PROJECT_URL = '/project/42-railroads'
-	project_name = 'railroads'
+	PROJECT_URL		= '/project/42-railroads'
+	project_name	= 'railroads'
 	
 	ATTACH_TABS = [
 		'%s/attach%s/map/index/'		% (URL_BASE, PROJECT_URL),
@@ -72,8 +72,7 @@ class Project_Railroads(HPTestCase, Attach):
 		status.e('#showme_solved').click()
 		sleep(4)
 		
-		empty_type = self.e('.empty')
-		self.assertEqual('Sorry, there are no mysteries solved yet...', empty_type.text)
+		mystery_first = self.e('.attach.mysteries > .list section:nth-of-type(1)')
 		
 		self.assertTrue(mystery_type.e('#bytype_all').is_selected())
 		
