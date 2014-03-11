@@ -66,7 +66,6 @@ class Project_YOTB(HPTestCase, Attach):
 		
 		self.assertEqual('%s/attach%s/mysteries/index/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 		
-		
 		icon_tout1	= site_cnt.e('#icon-tout-0 a')
 		
 		self.assertEqual('http://blog.historypin.com/?p=3386'	, icon_tout1.get_attribute('href'))

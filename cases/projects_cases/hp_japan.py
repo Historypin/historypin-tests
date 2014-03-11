@@ -73,12 +73,12 @@ class Project_HPJapan(HPTestCase, Attach):
 	def __test_footer(self):
 		
 		supported = self.e('.footer .supported_by')
-		self.assertEqual(u'パートナー', supported.e('span').text)
+		self.assertEqual(u'パートナー 富士宮プロジェクト実行委員会', supported.e('span').text)
 		
 		logo_link	= supported.es('a')
 		logo_img	= supported.es('img')
 		
-		self.assertEqual('http://www.britishcouncil.jp/', logo_link[0].get_attribute('href'))
+		self.assertEqual('http://www.glocom.ac.jp/project/historypin/fujinomiya', logo_link[0].get_attribute('href'))
 		self.assertEqual('%s/resources/images/project-japan/british-council-logo.png' % URL_BASE, logo_img[0].get_attribute('src'))
 		
 		footer = self.e('.footer-links')
@@ -97,15 +97,15 @@ class Project_HPJapan(HPTestCase, Attach):
 			self.assertEqual(i[1], footer_links[n].text)
 	
 	def test_index(self):
-		self.go(self.PROJECT_URL)
+		self.go('/jp' + self.PROJECT_URL)
 		
 		self.assertTitle(u'Historypin 日本上陸！')
 		
 		site_cnt = self.e('#site')
 		nav_links = site_cnt.es('.primary a')
 		
-		self.assertEqual('http://www.historypin.jp/resources/images/project-japan/historypin-logo.png', nav_links[0].e('img').get_attribute('src'))
-		self.assertEqual('http://www.historypin.com/', nav_links[0].get_attribute('href'))
+		self.assertEqual('%s/resources/images/project-japan/historypin-logo.png' % URL_BASE, nav_links[0].e('img').get_attribute('src'))
+		self.assertEqual('http://www.historypin.jp/', nav_links[0].get_attribute('href'))
 		
 		self.assertEqual('%s/jp%s/' % (URL_BASE, self.PROJECT_URL), nav_links[1].get_attribute('href'))
 		self.assertEqual(u'ホーム', nav_links[1].text)
@@ -155,7 +155,7 @@ class Project_HPJapan(HPTestCase, Attach):
 		self.__test_footer()
 	
 	def test_explore(self):
-		self.go(self.PROJECT_URL)
+		self.go('/jp' + self.PROJECT_URL)
 		
 		self.assertTitle(u'Historypin 日本上陸！')
 		
