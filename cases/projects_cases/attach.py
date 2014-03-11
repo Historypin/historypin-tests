@@ -211,6 +211,7 @@ class Attach():
 		
 		for n in range(len(status_labels)): self.assertEqual(status_labels[n], labels[n].text)
 		
+		sleep(4)
 		mystery_first = self.e('.attach.mysteries > .list section:nth-of-type(1)')
 		self.assertIsInstance(mystery_first.e('h3'), WebElement)
 		self.assertIsInstance(mystery_first.e('header a'), WebElement)
@@ -218,18 +219,21 @@ class Attach():
 		self.assertIsInstance(mystery_first.e('.cnt h4 a'), WebElement)
 		self.assertIsInstance(mystery_first.e('.clues h6'), WebElement)
 		
+		solve_button	= mystery_first.e('footer .button')
 		status.e('#showme_all').click()
 		sleep(5)
-		mystery_first = self.e('.attach.mysteries > .list section:nth-of-type(1)')
-		solve_button = mystery_first.e('footer .button')
+		mystery_first	= self.e('.attach.mysteries > .list section:nth-of-type(1)')
 		
-		self.assertEqual('Solve', solve_button.text)
-		self.assertIsInstance(solve_button, WebElement)
+		self.assertIsInstance(mystery_first.e('h3'), WebElement)
+		self.assertIsInstance(mystery_first.e('header a'), WebElement)
+		self.assertIsInstance(mystery_first.e('.thumb a'), WebElement)
+		self.assertIsInstance(mystery_first.e('.cnt h4 a'), WebElement)
+		self.assertIsInstance(mystery_first.e('.clues h6'), WebElement)
 		
 		status.e('#showme_investigation').click()
 		sleep(2)
-		mystery_first = self.e('.attach.mysteries > .list section:nth-of-type(1)')
-		solve_button = mystery_first.e('footer .button')
+		mystery_first	= self.e('.attach.mysteries > .list section:nth-of-type(1)')
+		solve_button	= mystery_first.e('footer .button')
 		
 		self.assertEqual('Solve', solve_button.text)
 		self.assertIsInstance(solve_button, WebElement)
