@@ -7,7 +7,6 @@ class Project_HPJapan(HPTestCase, Attach):
 	
 	PROJECT_URL				= '/project/39-japan-project'
 	ATTACH_URL				= '/jp/attach'
-	# JAPAN_PROJECT_LINK	= '%s/jp/project/48-japan-project' % PROJECT_URL
 	FUJINOMIYA_LINK			= '%s/project/47-fujinomiya-project' % URL_BASE
 	blog_link				= 'http://blog.historypin.jp'
 	
@@ -74,6 +73,7 @@ class Project_HPJapan(HPTestCase, Attach):
 		
 		supported = self.e('.footer .supported_by')
 		self.assertEqual(u'パートナー 富士宮プロジェクト実行委員会', supported.e('span').text)
+		self.assertEqual('http://www.glocom.ac.jp/project/historypin/fujinomiya', supported.e('a').get_attribute('href'))
 		
 		logo_link	= supported.es('a')
 		logo_img	= supported.es('img')
