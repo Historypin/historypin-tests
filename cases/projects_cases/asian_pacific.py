@@ -50,10 +50,12 @@ class Project_AsianPacific(HPTestCase, Attach):
 			self.assertEqual(i[1], paragraphs[n].text)
 			self.assertEqual(URL_BASE + '/projects/img/pid/51/dim/287x331/type/' + i[2] + '/crop/1/', imgs[n].get_attribute('src'))
 		
+		link = 'http://apiahipmappingproject.blogspot.com'
+		
 		icon_tout_items = [
-			['http://www.nps.gov/history/asianpacificheritage/', 'Find out more about this project', 'ss-icon ss-users'],
-			['http://apiahipmappingproject.blogspot.com/'	, 'Read the latest news on our blog', 'ss-icon ss-newspaper'],
-			['http://www.apiahip.org/'						, 'Learn more about APIAHiP'		, 'ss-icon ss-desktop'],
+			['%s/2014/03/welcome-to-apia-mapping-project.html'	% link, 'Find out more about this project', 'ss-icon ss-users'],
+			['%s/'	% link				, 'Read the latest news on our blog', 'ss-icon ss-newspaper'],
+			['http://www.apiahip.org/'	, 'Learn more about APIAHiP'		, 'ss-icon ss-desktop'],
 		]
 		
 		links = self.es('.w3 .inn a')

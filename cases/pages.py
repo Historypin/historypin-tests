@@ -4,6 +4,8 @@ from base import *
 
 class Pages(HPTestCase):
 	
+	historypin_link = 'http://www.historypin.com'
+	
 	@url('/about-us/')
 	def test_about(self):
 		self.assertTitle('Historypin | A 90 second introduction')
@@ -564,9 +566,9 @@ class Pages(HPTestCase):
 		self.assertEqual('If you get stuck or have any questions, check out our How To page and FAQs and please feel free to contact us at historypin@wearewhatwedo.org', help.e('p').text)
 		
 		links = [
-			['%s/community/howtos/'		% URL_BASE	, 'How To page'],
-			['%s/faq/'					% URL_BASE	, 'FAQs'],
-			['mailto:historypin@wearewhatwedo.org'	, 'historypin@wearewhatwedo.org'],
+			['%s/community/howtos/'		% self.historypin_link	, 'How To page'],
+			['%s/faq/'					% self.historypin_link	, 'FAQs'],
+			['mailto:historypin@wearewhatwedo.org'				, 'historypin@wearewhatwedo.org'],
 		]
 		
 		links_help = help.es('p a')

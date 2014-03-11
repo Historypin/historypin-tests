@@ -13,7 +13,7 @@ class Map(HPTestCase):
 		
 		button		= self.e('a#photo_search_submit')
 		self.assertEqual('%s/map/#'	% URL_BASE, button.get_attribute('href'))
-		self.assertEqual('GO'						, button.text)
+		self.assertEqual('Go'						, button.text)
 		
 		nav			= self.e('.filter-nav')
 		self.assertEqual('Narrow down'				, nav.e('h2').text)
