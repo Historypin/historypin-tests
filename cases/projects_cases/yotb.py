@@ -39,8 +39,8 @@ class Project_YOTB(HPTestCase, Attach):
 		self.assertEqual('Pin your memories', button.e('span').text)
 		
 		touts_items = [
-			['The 1939 GGIE', "Read about the 75th anniversary of the Golden Gate Int'l Expo on Treasure Island.", 'tout1_image', 'http://bit.ly/1fzHray'],
-			['How to Pin a Photo', 'Short video of how to pin a photograph to Year of the Bay.', 'tout2_image', 'http://bit.ly/1fzHray'],
+			['The 1939 GGIE'			, "Read about the 75th anniversary of the Golden Gate Int'l Expo on Treasure Island."	, 'tout1_image', 'http://bit.ly/1fzHray'],
+			['How You Can Contribute'	, 'All the ways you can contribute to our project, from pinning to solving mysteries.'	, 'tout2_image', 'http://bit.ly/1fzHray'],
 		]
 		
 		h3s		= site_cnt.es('.w2 h3')
@@ -83,7 +83,7 @@ class Project_YOTB(HPTestCase, Attach):
 		
 		icon_tout3 = site_cnt.e('#icon-tout-2 a')
 		
-		self.assertEqual('https://groups.google.com/forum/#!forum/year-of-the-bay-community', icon_tout3.get_attribute('href'))
+		self.assertEqual('mailto:yearofthebay.sf@gmail.com', icon_tout3.get_attribute('href'))
 		self.assertEqual('Ask us a question', icon_tout3.text)
 		self.assertIn('ss-icon'		, icon_tout3.e('span').get_attribute('class'))
 		self.assertIn('ss-users'	, icon_tout3.e('span').get_attribute('class'))

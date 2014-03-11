@@ -27,7 +27,7 @@ class Project_Fujinomiya(HPTestCase, Attach):
 		nav_links = site_cnt.es('.primary a')
 		
 		self.assertEqual('%s/resources/images/project-japan/historypin-logo.png' % URL_BASE, nav_links[0].e('img').get_attribute('src'))
-		self.assertEqual('http://www.historypin.com/', nav_links[0].get_attribute('href'))
+		self.assertEqual('http://www.historypin.jp/', nav_links[0].get_attribute('href'))
 		
 		self.assertEqual('%s/jp%s/' % (URL_BASE, self.PROJECT_URL), nav_links[1].get_attribute('href'))
 		self.assertEqual(u'ホーム', nav_links[1].text)
@@ -102,15 +102,15 @@ class Project_Fujinomiya(HPTestCase, Attach):
 		self.assertIn('ss-search'	, icon_tout2.e('span').get_attribute('class'))
 		
 		supported = self.e('.footer .supported_by')
-		self.assertEqual(u'パートナー', supported.e('span').text)
-		self.assertEqual('http://www.britishcouncil.jp/', supported.e('a').get_attribute('href'))
+		self.assertEqual(u'パートナー 富士宮プロジェクト実行委員会'						, supported.e('span').text)
+		self.assertEqual('http://www.glocom.ac.jp/project/historypin/fujinomiya', supported.e('a').get_attribute('href'))
 		
 		supported_img	= supported.es('img')
 		imgs			= ['british-council-logo.png', 'fujitsu.png', 'glocom.png']
 		
 		for n in range(len(imgs)): self.assertEqual(URL_BASE + '/resources/images/project-japan/' + imgs[n], supported_img[n].get_attribute('src'))
 		
-		self.assertEqual(u'使用写真はA.Daveyさん、University of Tennessee Special Collections さんがシェアしたものです.', self.e('.photos-by span').text)
+		self.assertEqual(u'使用写真はhalsan2000さんとtajima.tomocomさんがシェアしたものです。', self.e('.photos-by span').text)
 		
 		footer = self.e('.footer-links')
 		footer_links = footer.es('a')
