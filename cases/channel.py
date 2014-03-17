@@ -24,8 +24,8 @@ class Channel(HPTestCase):
 		self.assertEqual('http://www.facebook.com/gabriela.ananieva.7'	, link[1].get_attribute('href'))
 		self.assertEqual('Follow me on Twitter'							, link[2].text)
 		self.assertEqual('http://twitter.com/@Tristania90'				, link[2].get_attribute('href'))
-		self.assertEqual('Visit my blog'								, link[3].text)
-		self.assertEqual('http://test/'									, link[3].get_attribute('href'))
+		self.assertEqual('Visit my Google+ Page'						, link[3].text)
+		self.assertEqual('http://d/'									, link[3].get_attribute('href'))
 	
 	@url('/channels/view/%d/' % ID_USER_VIEW)
 	def test_channel_details(self):

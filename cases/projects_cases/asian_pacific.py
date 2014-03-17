@@ -12,9 +12,12 @@ class Project_AsianPacific(HPTestCase, Attach):
 		'%s/photos/gallery/'	% PROJECT_URL,
 	]
 	
-	test_attach_tabs	= Attach.attach_tabs
-	test_tab_map		= Attach.attach_tab_map
-	test_tab_gallery	= Attach.attach_tab_gallery
+	test_attach_tabs		= Attach.attach_tabs
+	test_tab_map			= Attach.attach_tab_map
+	test_tab_gallery		= Attach.attach_tab_gallery
+	test_tab_tours			= Attach.attach_tab_tours
+	test_tab_collections	= Attach.attach_tab_collections
+	
 	
 	def test_index(self):
 		self.go(self.PROJECT_URL)
@@ -70,7 +73,7 @@ class Project_AsianPacific(HPTestCase, Attach):
 		self.assertIsInstance(self.e('.addthis_toolbox'), WebElement)
 		self.assertEqual('Images courtesy Asian & Pacific Islander Americans in Historic Preservation', self.e('.image-credits').text)
 		
-		items		= ['http://www.nps.gov/AAPI/', 'http://ncptt.nps.gov/', 'http://www.preservationnation.org/']
+		items		= ['http://www.apiahip.org/', 'http://ncptt.nps.gov/', 'http://www.preservationnation.org/']
 		
 		supporters	= self.e('.sup-by')
 		links		= supporters.es('a')

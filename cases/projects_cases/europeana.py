@@ -527,9 +527,9 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		europeana_link = URL_BASE + '/de%s/' % self.PROJECT_URL
 		de_links = [
-			[europeana_link	, 'Home'],
-			['%sexplore/#|photos/index/' % europeana_link, 'Entdecken'],
-			['%supload/index/' % europeana_link	, u'Beitrag posten'],
+			[europeana_link									, 'Startseite'],
+			['%sexplore/#|photos/index/' % europeana_link	, 'Entdecken'],
+			['%supload/index/'			% europeana_link	, u'Beitrag posten'],
 			['http://pro.europeana.eu/web/europeana-1989/'	, u'Über'],
 		]
 		
