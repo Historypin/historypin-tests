@@ -80,11 +80,13 @@ class Channel(HPTestCase):
 		map_tab = self.e('.list_tabs li a[href$="/attach/uid%d/map/index/"]' % ID_USER_VIEW)
 		self.assertEqual('Map'	, map_tab.text)
 		
-		self.assertIsInstance(self.e('#search-filters input#location')	, WebElement)
-		self.assertIsInstance(self.e('#search-filters input#tags')		, WebElement)
-		self.assertIsInstance(self.e('#photo_search_submit')			, WebElement)
+		search_filters = self.e('#search-filters')
+		self.assertIsInstance(search_filters.e('input#location'), WebElement)
+		self.assertIsInstance(search_filters.e('input#tags')	, WebElement)
 		
-		self.assertEqual('GO', self.e('#photo_search_submit').e('span').text)
+		submit = self.e('#photo_search_submit')
+		self.assertIsInstance(submit, WebElement)
+		self.assertEqual('Go', submit.e('span').text)
 		
 		self.assertIsInstance(self.e('#date-selector #date-slider')	, WebElement)
 		self.assertIsInstance(self.e('#date-slider-labels li')		, WebElement)
