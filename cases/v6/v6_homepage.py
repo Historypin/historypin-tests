@@ -21,8 +21,8 @@ class Homepage_V6(HPTestCase):
 			['Tours and Collections', URL_BASE + '/curated/'],
 			['Get Involved'			, URL_BASE + '/community/'],
 			['Blog'					, 'http://blog.historypin.com/'],
-			['Login'				, URL_BASE + '/user/'],
-			['Join'					, URL_BASE + '/user/'],
+			['Login'				, URL_BASE + '/user/?from=/en/explore/'],
+			['Join'					, URL_BASE + '/user/?from=/en/explore/'],
 			['Pin'					, URL_BASE + '/upload/'],
 		]
 		
@@ -65,9 +65,8 @@ class Homepage_V6(HPTestCase):
 		# close the sidebar
 		# assert that it's close
 		sleep(5)
-		self.e('#map .gm-style div').click()
-		
-		sleep(10)
+		# self.e('#map .gm-style div').click()
+		pass
 		
 	@url('/en/explore/pin/160345')
 	def test_pin(self):
@@ -84,9 +83,12 @@ class Homepage_V6(HPTestCase):
 		sleep(3)
 		# self.assertEqual('Balaton Uplands National Park, 8237 Tihany, Kossuth Lajos Street 31, Hungary', self.e('.tooltip.arrow-down').text)  # TODO fix this, because the map is slow and cannot load the tooltip on time
 		
-		share_toolbox = self.e('.addthis_toolbox')
+		share_toolbox	= self.e('.addthis_toolbox')
 		self.hover(share_toolbox)
-		share_items = share_toolbox.es('li')
+		
+		social_cnt		= self.e('.social-container')
+		share_items		= social_cnt.es('li')
+		
 		self.assertIsInstance(share_items[0], WebElement)
 		self.assertIsInstance(share_items[1], WebElement)
 		self.assertIsInstance(share_items[2], WebElement)
@@ -116,7 +118,7 @@ class Homepage_V6(HPTestCase):
 		
 		column_row = self.e('.c3b')
 		
-		sleep(10)
+		sleep(3)
 		self.assertEqual('Title Text Pin1', column_row.e('h1').text)
 		self.assertEqual('http://www.historypin.com/channels/img/49127/logo/1/dim/50x50/crop/1/', column_row.e('.author-image img').get_attribute('src'))
 		self.assertEqual('Rawr', column_row.e('.author a').text)
