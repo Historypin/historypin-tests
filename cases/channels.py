@@ -40,9 +40,11 @@ class Channels(HPTestCase):
 	
 	@url('/channels/')
 	def test_search(self):
-		self.e('.input-container input').click()
+		
+		input_search = self.e('.input-container input')
+		input_search.click()
 		sleep(1)
-		self.e('.input-container input').send_keys("Gabss")
+		input_search.send_keys("Gabss")
 		sleep(1)
 		self.e('.button.left').click()
 		
@@ -50,9 +52,12 @@ class Channels(HPTestCase):
 	
 	@url('/channels/')
 	def test_search_email(self):
-		self.e('.input-container input').click()
+		
+		input_search = self.e('.input-container input')
+		
+		input_search.click()
 		sleep(1)
-		self.e('.input-container input').send_keys("g.ananieva@avalith.bg")
+		input_search.send_keys("g.ananieva@avalith.bg")
 		sleep(1)
 		self.e('.button.left').click()
 		

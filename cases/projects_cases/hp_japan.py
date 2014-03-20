@@ -73,7 +73,7 @@ class Project_HPJapan(HPTestCase, Attach):
 		
 		supported = self.e('.footer .supported_by')
 		self.assertEqual(u'パートナー 富士宮プロジェクト実行委員会', supported.e('span').text)
-		self.assertEqual('http://www.glocom.ac.jp/project/historypin/fujinomiya', supported.e('a').get_attribute('href'))
+		# self.assertEqual('http://www.glocom.ac.jp/project/historypin/fujinomiya', supported.e('a').get_attribute('href'))
 		
 		logo_link	= supported.es('a')
 		logo_img	= supported.es('img')

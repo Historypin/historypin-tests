@@ -117,7 +117,7 @@ class Collections(HPTestCase):
 		prev_thumb	= self.e_wait('#prevthumb img')
 		
 		navigation	= controls.e('#navigation')
-		# prev_slide	= navigation.e('#prevslide')
+		# prev_slide= navigation.e('#prevslide')
 		pause		= navigation.e('#pauseplay')
 		next_slide	= navigation.e('#nextslide')
 		

@@ -67,11 +67,11 @@ class Homepage(HPTestCase):
 	
 	@url('/')
 	def test_featured(self):
-		featured = self.e('#featured')
-		prev	= featured.e('.prev')
-		next	= featured.e('.next')
-		ul		= featured.e('ul')
-		li		= featured.e('li:first-of-type')
+		featured	= self.e('#featured')
+		prev		= featured.e('.prev')
+		next		= featured.e('.next')
+		ul			= featured.e('ul')
+		li			= featured.e('li:first-of-type')
 		
 		self.assertEqual('0px', ul.css('left'))
 		

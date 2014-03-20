@@ -725,27 +725,27 @@ class Channel(HPTestCase):
 		
 		sleep(10)  # TODO remove this after ajax_wait
 		
-		editor = self.e('.channel_editor')
-		settings = editor.e('.settings')
+		editor			= self.e('.channel_editor')
+		settings		= editor.e('.settings')
 		settings.click()
-		settings_menu = editor.e('.settings_menu')
-		heading = settings_menu.es('li strong')
-		channel_info = settings_menu.e('li:nth-of-type(2) a')
+		settings_menu	= editor.e('.settings_menu')
+		heading			= settings_menu.es('li strong')
+		channel_info	= settings_menu.e('li:nth-of-type(2) a')
 		channel_info.click()
 		
 		tab_settings = editor.e('#tab-settings')
 		# self.assertTrue(tab_settings.is_displayed())
 		info = tab_settings.e('.form')
 		
-		channel_name = info.e('.input-container #channel_name')
-		channel_type = info.e('.input-container #channel_type')
-		desc = info.e('#channel_desc')
-		site_link = info.e('#external_site')
-		twitter_name = info.e('#twitter_link')
-		fb_link = info.e('#facebook_link')
-		google_link = info.e('#google_plus_link')
-		blog_link = info.e('#blog_link')
-		button = tab_settings.e('.save_settings')
+		channel_name	= info.e('.input-container #channel_name')
+		channel_type	= info.e('.input-container #channel_type')
+		desc			= info.e('#channel_desc')
+		site_link		= info.e('#external_site')
+		twitter_name	= info.e('#twitter_link')
+		fb_link			= info.e('#facebook_link')
+		google_link		= info.e('#google_plus_link')
+		blog_link		= info.e('#blog_link')
+		button			= tab_settings.e('.save_settings')
 		
 		self.assertEqual('Gabriela Ananieva'							, channel_name.get_attribute('value'))
 		self.assertEqual('3'											, channel_type.e('option:nth-of-type(3)').get_attribute('value'))
@@ -781,8 +781,8 @@ class Channel(HPTestCase):
 	@url('/channels/view/%d/' % ID_USER)
 	def test_channel_design(self):
 		
-		editor = self.e('.channel_editor')
-		settings = editor.e('.settings')
+		editor		= self.e('.channel_editor')
+		settings	= editor.e('.settings')
 		settings.click()
 		
 		settings_menu = editor.e('.settings_menu')
@@ -802,9 +802,9 @@ class Channel(HPTestCase):
 		button = self.e('.submit.button.left')
 		self.assertEqual('Save Design', button.e('span').text)
 		
-		wrapper = self.e('#container_wrap')
+		wrapper	= self.e('#container_wrap')
 		
-		themes = tab_design.e('.theme-select')
+		themes	= tab_design.e('.theme-select')
 		themes.e('a.charcoal').click()
 		button.click()
 		sleep(10)
@@ -812,17 +812,17 @@ class Channel(HPTestCase):
 		wrapper = self.e('#container_wrap')
 		self.assertIn('charcoal', wrapper.get_attribute('class'))
 		
-		editor = self.e('.channel_editor')
-		settings = editor.e('.settings')
+		editor		= self.e('.channel_editor')
+		settings	= editor.e('.settings')
 		
 		settings.click()
-		settings_menu = editor.e('.settings_menu')
+		settings_menu	= editor.e('.settings_menu')
 		self.assertTrue(settings_menu.is_displayed())
-		design = settings_menu.e('a[href="#tab-design"]')
+		design			= settings_menu.e('a[href="#tab-design"]')
 		design.click()
 		
-		tab_design = editor.e('#tab-design')
-		themes = tab_design.e('.theme-select')
+		tab_design	= editor.e('#tab-design')
+		themes		= tab_design.e('.theme-select')
 		themes.e('a.blue').click()
 		sleep(3)
 		
@@ -832,24 +832,24 @@ class Channel(HPTestCase):
 		wrapper = self.e('#container_wrap')
 		self.assertIn('blue', wrapper.get_attribute('class'))
 											
-		editor = self.e('.channel_editor')
-		settings = editor.e('.settings')
+		editor		= self.e('.channel_editor')
+		settings	= editor.e('.settings')
 		
 		settings.click()
-		settings_menu = editor.e('.settings_menu')
+		settings_menu	= editor.e('.settings_menu')
 		self.assertTrue(settings_menu.is_displayed())
-		design = settings_menu.e('a[href="#tab-design"]')
+		design			= settings_menu.e('a[href="#tab-design"]')
 		design.click()
 		
-		tab_design = editor.e('#tab-design')
-		themes = tab_design.e('.theme-select')
+		tab_design	= editor.e('#tab-design')
+		themes		= tab_design.e('.theme-select')
 		themes.e('a.gray').click()
 		sleep(3)
 		
-		button = self.e('.submit.button.left')
+		button	= self.e('.submit.button.left')
 		button.click()
 		
-		wrapper = self.e('#container_wrap')
+		wrapper	= self.e('#container_wrap')
 		self.assertIn('gray', wrapper.get_attribute('class'))
 										
 		editor = self.e('.channel_editor')
@@ -861,8 +861,8 @@ class Channel(HPTestCase):
 		design = settings_menu.e('a[href="#tab-design"]')
 		design.click()
 		
-		tab_design = editor.e('#tab-design')
-		themes = tab_design.e('.theme-select')
+		tab_design	= editor.e('#tab-design')
+		themes		= tab_design.e('.theme-select')
 		themes.e('a.green').click()
 		sleep(3)
 		
@@ -872,17 +872,17 @@ class Channel(HPTestCase):
 		wrapper = self.e('#container_wrap')
 		self.assertIn('green', wrapper.get_attribute('class'))
 															
-		editor = self.e('.channel_editor')
-		settings = editor.e('.settings')
+		editor		= self.e('.channel_editor')
+		settings	= editor.e('.settings')
 		
 		settings.click()
-		settings_menu = editor.e('.settings_menu')
+		settings_menu	= editor.e('.settings_menu')
 		self.assertTrue(settings_menu.is_displayed())
-		design = settings_menu.e('a[href="#tab-design"]')
+		design			= settings_menu.e('a[href="#tab-design"]')
 		design.click()
 		
-		tab_design = editor.e('#tab-design')
-		themes = tab_design.e('.theme-select')
+		tab_design	= editor.e('#tab-design')
+		themes		= tab_design.e('.theme-select')
 		themes.e('a.navy').click()
 		sleep(3)
 		
@@ -896,13 +896,13 @@ class Channel(HPTestCase):
 		settings = editor.e('.settings')
 		
 		settings.click()
-		settings_menu = editor.e('.settings_menu')
+		settings_menu	= editor.e('.settings_menu')
 		self.assertTrue(settings_menu.is_displayed())
-		design = settings_menu.e('a[href="#tab-design"]')
+		design			= settings_menu.e('a[href="#tab-design"]')
 		design.click()
 		
-		tab_design = editor.e('#tab-design')
-		themes = tab_design.e('.theme-select')
+		tab_design	= editor.e('#tab-design')
+		themes		= tab_design.e('.theme-select')
 		themes.e('a.orange').click()
 		sleep(3)
 		
@@ -912,17 +912,17 @@ class Channel(HPTestCase):
 		wrapper = self.e('#container_wrap')
 		self.assertIn('orange', wrapper.get_attribute('class'))
 														
-		editor = self.e('.channel_editor')
-		settings = editor.e('.settings')
+		editor		= self.e('.channel_editor')
+		settings	= editor.e('.settings')
 		
 		settings.click()
-		settings_menu = editor.e('.settings_menu')
+		settings_menu	= editor.e('.settings_menu')
 		self.assertTrue(settings_menu.is_displayed())
-		design = settings_menu.e('a[href="#tab-design"]')
+		design			= settings_menu.e('a[href="#tab-design"]')
 		design.click()
 		
-		tab_design = editor.e('#tab-design')
-		themes = tab_design.e('.theme-select')
+		tab_design	= editor.e('#tab-design')
+		themes		= tab_design.e('.theme-select')
 		themes.e('a.pink').click()
 		sleep(3)
 		
@@ -932,37 +932,37 @@ class Channel(HPTestCase):
 		wrapper = self.e('#container_wrap')
 		self.assertIn('pink', wrapper.get_attribute('class'))
 											
-		editor = self.e('.channel_editor')
-		settings = editor.e('.settings')
+		editor		= self.e('.channel_editor')
+		settings	= editor.e('.settings')
 		
 		settings.click()
-		settings_menu = editor.e('.settings_menu')
+		settings_menu	= editor.e('.settings_menu')
 		self.assertTrue(settings_menu.is_displayed())
-		design = settings_menu.e('a[href="#tab-design"]')
+		design			= settings_menu.e('a[href="#tab-design"]')
 		design.click()
 		
-		tab_design = editor.e('#tab-design')
-		themes = tab_design.e('.theme-select')
+		tab_design	= editor.e('#tab-design')
+		themes		= tab_design.e('.theme-select')
 		themes.e('a.purple').click()
 		sleep(3)
 		
-		button = self.e('.submit.button.left')
+		button	= self.e('.submit.button.left')
 		button.click()
 		
-		wrapper = self.e('#container_wrap')
+		wrapper	= self.e('#container_wrap')
 		self.assertIn('purple', wrapper.get_attribute('class'))
 										
 		editor = self.e('.channel_editor')
 		settings = editor.e('.settings')
 		
 		settings.click()
-		settings_menu = editor.e('.settings_menu')
+		settings_menu	= editor.e('.settings_menu')
 		self.assertTrue(settings_menu.is_displayed())
-		design = settings_menu.e('a[href="#tab-design"]')
+		design			= settings_menu.e('a[href="#tab-design"]')
 		design.click()
 		
-		tab_design = editor.e('#tab-design')
-		themes = tab_design.e('.theme-select')
+		tab_design	= editor.e('#tab-design')
+		themes		= tab_design.e('.theme-select')
 		themes.e('a.red').click()
 		sleep(3)
 		
@@ -992,13 +992,13 @@ class Channel(HPTestCase):
 	@url('/channels/view/%d/' % ID_USER)
 	def test_upload_avatar(self):
 		
-		editor = self.e('.channel_editor')
+		editor			= self.e('.channel_editor')
 		
-		settings = editor.e('.settings')
+		settings		= editor.e('.settings')
 		settings.click()
 		
-		settings_menu = editor.e('.settings_menu')
-		design = settings_menu.e('a[href="#tab-design"]')
+		settings_menu	= editor.e('.settings_menu')
+		design			= settings_menu.e('a[href="#tab-design"]')
 		design.click()
 		
 		tab_design = editor.e('#tab-design')
@@ -1107,8 +1107,8 @@ class Channel(HPTestCase):
 	@url('/channels/view/%d/' % ID_USER)
 	def test_sharing(self):
 		
-		editor = self.e_wait('.channel_editor')
-		settings = editor.e('.settings')
+		editor		= self.e_wait('.channel_editor')
+		settings	= editor.e('.settings')
 		settings.click()
 		sleep(2)
 		
@@ -1144,10 +1144,10 @@ class Channel(HPTestCase):
 		dialog.parent_node().e('.ui-dialog-titlebar-close').click()
 		self.assertFalse(dialog.is_displayed())
 									
-		editor = self.e('.channel_editor')
-		settings = editor.e('.settings')
+		editor			= self.e('.channel_editor')
+		settings		= editor.e('.settings')
 		settings.click()
-		settings_menu = editor.e('.settings_menu')
+		settings_menu	= editor.e('.settings_menu')
 		
 		link_site = settings_menu.e('li:nth-of-type(6) a')
 		link_site.click()
@@ -1218,14 +1218,14 @@ class Channel(HPTestCase):
 		
 												
 		
-		editor = self.e('.channel_editor')
-		settings = editor.e('.settings')
+		editor		= self.e('.channel_editor')
+		settings	= editor.e('.settings')
 		
 		settings.click()
 		
-		settings_menu = editor.e('.settings_menu')
+		settings_menu	= editor.e('.settings_menu')
+		link_site		= settings_menu.e('li:nth-of-type(6) a')
 		
-		link_site = settings_menu.e('li:nth-of-type(6) a')
 		link_site.click()
 		
 		tab_embed = editor.e('#tab-embed')
@@ -1259,14 +1259,14 @@ class Channel(HPTestCase):
 		self.assertFalse(checkbox[1].is_selected())
 														
 		
-		editor = self.e('.channel_editor')
-		settings = editor.e('.settings')
+		editor		= self.e('.channel_editor')
+		settings	= editor.e('.settings')
 		
 		settings.click()
 		
-		settings_menu = editor.e('.settings_menu')
+		settings_menu	= editor.e('.settings_menu')
+		link_site		= settings_menu.e('li:nth-of-type(6) a')
 		
-		link_site = settings_menu.e('li:nth-of-type(6) a')
 		link_site.click()
 		
 		tab_embed = editor.e('#tab-embed')
@@ -1274,10 +1274,10 @@ class Channel(HPTestCase):
 		
 		embed_cnt = tab_embed.e('.embed-cnt')
 		
-		button = embed_cnt.e('.button.left')
+		button		= embed_cnt.e('.button.left')
 		self.assertEqual('Generate Code', button.e('span').text)
 		
-		checkbox = embed_cnt.es('input')
+		checkbox	= embed_cnt.es('input')
 		self.assertFalse(checkbox[0].is_selected())
 		self.assertFalse(checkbox[1].is_selected())
 		self.assertFalse(checkbox[2].is_selected())
@@ -1301,22 +1301,22 @@ class Channel(HPTestCase):
 		self.assertFalse(checkbox[2].is_selected())
 																
 		
-		editor = self.e('.channel_editor')
-		settings = editor.e('.settings')
+		editor		= self.e('.channel_editor')
+		settings	= editor.e('.settings')
 		
 		settings.click()
 		
-		settings_menu = editor.e('.settings_menu')
+		settings_menu	= editor.e('.settings_menu')
+		link_site		= settings_menu.e('li:nth-of-type(6) a')
 		
-		link_site = settings_menu.e('li:nth-of-type(6) a')
 		link_site.click()
 		
 		tab_embed = editor.e('#tab-embed')
 		self.assertTrue(tab_embed.is_displayed())
 		
-		embed_cnt = tab_embed.e('.embed-cnt')
+		embed_cnt	= tab_embed.e('.embed-cnt')
+		button		= embed_cnt.e('.button.left')
 		
-		button = embed_cnt.e('.button.left')
 		self.assertEqual('Generate Code', button.e('span').text)
 		
 		checkbox = embed_cnt.es('input')
@@ -1342,22 +1342,22 @@ class Channel(HPTestCase):
 		
 		self.assertFalse(checkbox[3].is_selected())
 							
-		editor = self.e('.channel_editor')
-		settings = editor.e('.settings')
+		editor		= self.e('.channel_editor')
+		settings	= editor.e('.settings')
 		
 		settings.click()
 		
-		settings_menu = editor.e('.settings_menu')
+		settings_menu	= editor.e('.settings_menu')
+		link_site		= settings_menu.e('li:nth-of-type(6) a')
 		
-		link_site = settings_menu.e('li:nth-of-type(6) a')
 		link_site.click()
 		
 		tab_embed = editor.e('#tab-embed')
 		self.assertTrue(tab_embed.is_displayed())
 		
-		help = tab_embed.e('.help')
+		help		= tab_embed.e('.help')
+		h3s_help	= help.es('h3')
 		
-		h3s_help = help.es('h3')
 		self.assertEqual("Get Some Inspiration"	, h3s_help[0].text)
 		self.assertEqual("Get help"				, h3s_help[1].text)
 		
@@ -1554,24 +1554,28 @@ class Channel(HPTestCase):
 		option.click()
 		option.e('option:nth-of-type(2)').click()
 		
-		license.e('#photo_info_copyright').click()
-		license.e('#photo_info_copyright').clear()
-		license.e('#photo_info_copyright').send_keys('Test')
+		copyright = license.e('#photo_info_copyright')
+		copyright.click()
+		copyright.clear()
+		copyright.send_keys('Test')
 		sleep(3)
 		
-		license.e('#photo_info_link').click()
-		license.e('#photo_info_link').clear()
-		license.e('#photo_info_link').send_keys('http://novini.bg')
+		photo_link = license.e('#photo_info_link')
+		photo_link.click()
+		photo_link.clear()
+		photo_link.send_keys('http://novini.bg')
 		sleep(3)
 		
-		license.e('#photo_info_author').click()
-		license.e('#photo_info_author').clear()
-		license.e('#photo_info_author').send_keys('Unknown')
+		author = license.e('#photo_info_author')
+		author.click()
+		author.clear()
+		author.send_keys('Unknown')
 		sleep(3)
 		
-		license.e('#photo_info_notes').click()
-		license.e('#photo_info_notes').clear()
-		license.e('#photo_info_notes').send_keys('Test Notes')
+		photo_notes = license.e('#photo_info_notes')
+		photo_notes.click()
+		photo_notes.clear()
+		photo_notes.send_keys('Test Notes')
 		
 		date_select = edit_page.e('.section.date-select')
 		date_select.e('#day option:nth-of-type(3)').click()  # assert for all
@@ -1584,9 +1588,9 @@ class Channel(HPTestCase):
 		self.assertEqual('Note: To make it appear on the map you need to add both the date and the place'							, note.e('h2').text)
 		self.assertEqual('Without these details, your stuff will only appear on your channel. You can always add this info later.'	, note.e('p').text)
 		
-		place = edit_page.e('#location_editor')
+		place		= edit_page.e('#location_editor')
+		checkbox	= place.e('#has_streetview')
 		
-		checkbox = place.e('#has_streetview')
 		checkbox.click()
 		self.assertFalse(place.e('#pin-tab-sv').is_displayed())
 		checkbox.click()

@@ -105,6 +105,44 @@ class Homepage_V6(HPTestCase):
 		self.assertFalse(column_header.is_displayed())
 		self.assertFalse(column_3b.is_displayed())
 	
+	@logged_in
+	@url('/en/explore/oreo/pin/223343/geo/43.24369,23.956892,6')
+	def test_text_pin(self):
+		
+		self.assertEqual('Test Project for QA', self.e('h3').text)
+		self.assertEqual('5 May 2012', self.e('.tooltip.arrow-up').text)
+		
+		self.assertEqual('ulitsa "Okolovrasten pat", 1756 Sofia, Bulgaria', self.e('.tooltip.arrow-down').text)
+		
+		column_row = self.e('.c3b')
+		
+		sleep(10)
+		self.assertEqual('Title Text Pin1', column_row.e('h1').text)
+		self.assertEqual('http://www.historypin.com/channels/img/49127/logo/1/dim/50x50/crop/1/', column_row.e('.author-image img').get_attribute('src'))
+		self.assertEqual('Rawr', column_row.e('.author a').text)
+		self.assertEqual('%s/channels/view/49127' % URL_BASE, column_row.e('.author a').get_attribute('href'))
+		
+		self.assertIn(u'Lorem Ipsum е елементарен примерен текст, използван в печатарската и типографската индустрия.', self.e('.text-pin').text)
+		
+		share_toolbox = self.e('.addthis_toolbox')
+		self.hover(share_toolbox)
+		social_cnt = self.e('.social-container')
+		share_items = social_cnt.es('li')
+		self.assertIsInstance(share_items[0], WebElement)
+		self.assertIsInstance(share_items[1], WebElement)
+		self.assertIsInstance(share_items[2], WebElement)
+		self.assertIsInstance(share_items[3], WebElement)
+		
+		self.e('.info-anchor.ss-icon.ss-info').click()
+		
+		# info_pin = self.e('.description')
+		
+		# h4s = ['DESCRIPTION', 'TAGS', 'INFORMATION', 'CREATOR'] TODO FIX THIS
+		# h4s_cnt = info_pin.es('h4')
+		# for n in range(len(h4s)): self.assertEqual(h4s[n], h4s_cnt[n].text)
+		
+		self.assertEqual("License: Copyright (c) all rights reserved\nAttribution:\nOriginal link:\nRepository:\nNotes:", self.e('.information').text)
+	
 	@url('/en/explore/1989')
 	def test_project(self):
 		
