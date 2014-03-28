@@ -15,7 +15,7 @@ class Project_Fujinomiya(HPTestCase, Attach):
 	]
 	
 	test_attach_tabs	= Attach.attach_tabs
-	# test_tab_map		= Attach.attach_tab_map #the test will fail because there is only one photo on the map we seek for cluster
+	# test_tab_map		= Attach.attach_tab_map  cannot be tested because there is only one photo on the map
 	test_tab_gallery	= Attach.attach_tab_gallery
 	
 	def test_index(self):
@@ -102,8 +102,9 @@ class Project_Fujinomiya(HPTestCase, Attach):
 		self.assertIn('ss-search'	, icon_tout2.e('span').get_attribute('class'))
 		
 		supported = self.e('.footer .supported_by')
-		self.assertEqual(u'パートナー 富士宮プロジェクト実行委員会'						, supported.e('span').text)
-		self.assertEqual('http://www.glocom.ac.jp/project/historypin/fujinomiya', supported.e('a').get_attribute('href'))
+		self.assertEqual(u'パートナー'					, supported.e('span:nth-of-type(1)').text)
+		self.assertEqual(u'富士宮プロジェクト実行委員会'	, supported.e('span:nth-of-type(2) a').text)
+		self.assertEqual('http://www.glocom.ac.jp/project/historypin/fujinomiya', supported.e('span:nth-of-type(2) a').get_attribute('href'))
 		
 		supported_img	= supported.es('img')
 		imgs			= ['british-council-logo.png', 'fujitsu.png', 'glocom.png']

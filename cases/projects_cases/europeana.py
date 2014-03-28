@@ -18,7 +18,7 @@ class Project_Europeana(HPTestCase, Attach):
 	test_tab_map		= Attach.attach_tab_map
 	test_tab_gallery	= Attach.attach_tab_gallery
 	
-	@unittest.expectedFailure
+	# @unittest.expectedFailure
 	def test_tab_tours(self):
 		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
 		
@@ -62,7 +62,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIsInstance(paragraph.e('a:nth-of-type(1)'), WebElement)
 		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
 	
-	@unittest.expectedFailure
+	# @unittest.expectedFailure
 	def test_search_by_relevance(self):
 		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
 		
@@ -107,7 +107,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		self.assertTrue(radio_buttons[0].is_selected())
 	
-	@unittest.expectedFailure
+	# @unittest.expectedFailure
 	def test_next_page_relevance(self):
 		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
 		
@@ -146,7 +146,7 @@ class Project_Europeana(HPTestCase, Attach):
 			self.assertEqual(title_items[n], titles[n].text)
 		
 	
-	@unittest.expectedFailure
+	# @unittest.expectedFailure
 	def test_search_by_popularity(self):
 		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
 		
@@ -185,7 +185,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		self.assertTrue(radio_buttons[0].is_selected())
 	
-	@unittest.expectedFailure
+	# @unittest.expectedFailure
 	def test_next_page_popularity(self):
 		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
 		
@@ -222,7 +222,7 @@ class Project_Europeana(HPTestCase, Attach):
 			self.assertEqual(title_items[n], titles[n].text)
 		
 	
-	@unittest.expectedFailure
+	# @unittest.expectedFailure
 	def test_search_by_most_recent(self):
 		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
 		
@@ -261,7 +261,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		self.assertTrue(radio_buttons[0].is_selected())
 	
-	@unittest.expectedFailure
+	# @unittest.expectedFailure
 	def test_next_page_recent(self):
 		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
 		
@@ -298,7 +298,7 @@ class Project_Europeana(HPTestCase, Attach):
 		for n in range(len(title_items)):
 			self.assertEqual(title_items[n], titles[n].text)
 	
-	@unittest.expectedFailure
+	# @unittest.expectedFailure
 	def test_search_no_results(self):
 		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
 		
@@ -343,7 +343,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIsInstance(paragraph.e('a:nth-of-type(1)'), WebElement)
 		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
 	
-	@unittest.expectedFailure
+	# @unittest.expectedFailure
 	def test_check_search_translation_cz(self):
 		self.go(URL_BASE + '/cz' + '/attach' + self.PROJECT_URL + '/tours/all?search=Berlin')
 		
@@ -366,7 +366,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIn(u'Výsledky dotazu pro', site_cnt.e('.search-result').text)
 		
 	
-	@unittest.expectedFailure
+	# @unittest.expectedFailure
 	def test_check_search_translation_de(self):
 		self.go(URL_BASE + '/de' + '/attach' + self.PROJECT_URL + '/tours/all?search=Berlin')
 		

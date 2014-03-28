@@ -20,6 +20,7 @@ from projects_cases.europeana import Project_Europeana
 from projects_cases.field_recordings import Project_FieldRecordings
 from projects_cases.fujinomiya import Project_Fujinomiya
 from projects_cases.grandparents import Project_Grandparents
+from projects_cases.hertfordshire import Project_Hertfordshire
 from projects_cases.hp_japan import Project_HPJapan
 from projects_cases.japan import Project_Japan
 from projects_cases.npower import Project_NPower

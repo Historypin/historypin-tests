@@ -72,13 +72,13 @@ class Project_HPJapan(HPTestCase, Attach):
 	def __test_footer(self):
 		
 		supported = self.e('.footer .supported_by')
-		self.assertEqual(u'パートナー 富士宮プロジェクト実行委員会', supported.e('span').text)
+		self.assertEqual(u'パートナー', supported.e('span').text)
 		# self.assertEqual('http://www.glocom.ac.jp/project/historypin/fujinomiya', supported.e('a').get_attribute('href'))
 		
 		logo_link	= supported.es('a')
 		logo_img	= supported.es('img')
 		
-		self.assertEqual('http://www.glocom.ac.jp/project/historypin/fujinomiya', logo_link[0].get_attribute('href'))
+		self.assertEqual('http://www.britishcouncil.jp/', logo_link[0].get_attribute('href'))
 		self.assertEqual('%s/resources/images/project-japan/british-council-logo.png' % URL_BASE, logo_img[0].get_attribute('src'))
 		
 		footer = self.e('.footer-links')
