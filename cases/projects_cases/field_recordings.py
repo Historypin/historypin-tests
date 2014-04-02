@@ -38,7 +38,7 @@ class Project_FieldRecordings(HPTestCase, Attach):
 		
 		h3s_links	= site_cnt.es('.w23 .inner h3')
 		paragraphs	= site_cnt.es('.w23 .inner p')
-		# imgs_links	= site_cnt.es('.w23 .inner p + a')
+		# imgs_links= site_cnt.es('.w23 .inner p + a')
 		imgs		= site_cnt.es('.w23 .inner img')
 		
 		for n in range(len(touts_items)):
