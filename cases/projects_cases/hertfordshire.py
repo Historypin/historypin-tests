@@ -85,9 +85,4 @@ class Project_Hertfordshire(HPTestCase, Attach):
 		
 		partners_items	= ['http://heritagehub.herts.ac.uk/', 'http://www.hertsdirect.org/services/leisculture/heritage1/hals/', 'http://www.ahrc.ac.uk/']
 		for n in range(len(partners_items)): self.assertEqual(partners_items[n], partners[n].get_attribute('href'))
-		
-		
-		
-		
-		
-		
+	
