@@ -54,8 +54,9 @@ class Attach():
 		# TODO imcomment
 		# self.assertTrue(input_recent.is_selected())
 		
-		sleep(5)
+		sleep(6)
 		picture = self.e('.gallery:nth-of-type(1) li:nth-of-type(1)')
+		sleep(3)
 		self.assertIsInstance(picture.e('img'), WebElement)
 		self.hover(picture)
 		
@@ -73,7 +74,7 @@ class Attach():
 		# TODO ucomment
 		# self.assertFalse(input_popular.is_selected())
 		
-		sleep(3)
+		sleep(6)
 		picture = self.e('.gallery:nth-of-type(1) li:nth-of-type(1)')
 		self.assertIsInstance(picture.e('img'), WebElement)
 		self.hover(picture)

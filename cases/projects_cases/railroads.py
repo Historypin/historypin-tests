@@ -59,6 +59,7 @@ class Project_Railroads(HPTestCase, Attach):
 		status.e('#showme_all').click()
 		sleep(5)
 		mystery_first = self.e('.attach.mysteries > .list section:nth-of-type(1)')
+		self.assertIsInstance(mystery_first.e('.thumb'), WebElement)
 		solve_button = mystery_first.e('footer .button')
 		
 		self.assertEqual('Solve', solve_button.text)
@@ -66,13 +67,18 @@ class Project_Railroads(HPTestCase, Attach):
 		
 		status.e('#showme_investigation').click()
 		sleep(4)
-		empty_type = self.e('.empty')
-		self.assertEqual('Sorry, there are no mysteries under investigation yet...', empty_type.text)
+		mystery_first = self.e('.attach.mysteries > .list section:nth-of-type(1)')
+		self.assertIsInstance(mystery_first.e('.thumb'), WebElement)
+		solve_button = mystery_first.e('footer .button')
+		
+		self.assertEqual('Solve', solve_button.text)
+		self.assertIsInstance(solve_button, WebElement)
 		
 		status.e('#showme_solved').click()
 		sleep(4)
 		
 		mystery_first = self.e('.attach.mysteries > .list section:nth-of-type(1)')
+		self.assertIsInstance(mystery_first.e('.thumb'), WebElement)
 		
 		self.assertTrue(mystery_type.e('#bytype_all').is_selected())
 		
