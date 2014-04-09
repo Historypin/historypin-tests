@@ -169,7 +169,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		self.assertTrue(radio_buttons[1].is_selected())
 		
-		title_items = ["Citizen's action group for German Unity", "First meeting place of the new forum in Zeuthen", "The wall is gone"]
+		title_items = ["Citizen's action group for German Unity", "First meeting place of the new forum in Zeuthen", '"Wallpeckers" - Berlin Wall Graffiti, Berlin liberates itself!']
 		
 		list_titles = site_cnt.e('#list')
 		titles = list_titles.es('li>p>a:nth-of-type(1)')
@@ -213,7 +213,7 @@ class Project_Europeana(HPTestCase, Attach):
 		radio_buttons	= filter_by.es('input')
 		self.assertTrue(radio_buttons[1].is_selected())
 		
-		title_items = ["Green Trabant at Schlossstrasse subway station", "Live History", "The man in the wheelchair on the Berlin Wall"]
+		title_items = ["Green Trabant at Schlossstrasse subway station", "Live History", 'Visitors from the so-called "Valley of the clueless"']
 		
 		list_titles = site_cnt.e('#list')
 		titles = list_titles.es('li>p>a:nth-of-type(1)')
@@ -546,7 +546,7 @@ class Project_Europeana(HPTestCase, Attach):
 		europeana_link = URL_BASE + '/es%s/' % self.PROJECT_URL
 		
 		es_links = [
-			[europeana_link	, 'Kodu'],
+			[europeana_link, 'Avaleht'],
 			['%sexplore/#|photos/index/' % europeana_link, 'Uurige'],
 			['%supload/index/' % europeana_link	, u'Andke oma panus'],
 			['http://pro.europeana.eu/web/europeana-1989/'	, 'Info'],
@@ -565,7 +565,7 @@ class Project_Europeana(HPTestCase, Attach):
 		europeana_link = URL_BASE + '/hu%s/' % self.PROJECT_URL
 		
 		hu_links = [
-			[europeana_link	, u'Kezdőlap'],
+			[europeana_link	, u'C\xedmlap'],
 			['%sexplore/#|photos/index/' % europeana_link, u'Fedezze fel'],
 			['%supload/index/' % europeana_link	, u'Töltse fel'],
 			['http://pro.europeana.eu/web/europeana-1989/'	, u'Rólunk'],
@@ -584,7 +584,7 @@ class Project_Europeana(HPTestCase, Attach):
 		europeana_link = URL_BASE + '/lt%s/' % self.PROJECT_URL
 		
 		lt_links = [
-			[europeana_link	, u'Pradinis'],
+			[europeana_link	, u'Pirmas'],
 			['%sexplore/#|photos/index/' % europeana_link, u'Naršyti'],
 			['%supload/index/' % europeana_link	, u'Pridėti'],
 			['http://pro.europeana.eu/web/europeana-1989/'	, u'Apie'],
@@ -622,7 +622,7 @@ class Project_Europeana(HPTestCase, Attach):
 		europeana_link = URL_BASE + '/pl%s/' % self.PROJECT_URL
 		
 		pl_links = [
-			[europeana_link	, u'Strona glówna'],
+			[europeana_link	, u'Strona g\u0142\xf3wna'],
 			['%sexplore/#|photos/index/' % europeana_link, u'Zobacz kolekcję'],
 			['%supload/index/' % europeana_link	, u'Dodaj pamiątkę'],
 			['http://pro.europeana.eu/web/europeana-1989/'	, u'O nas'],
