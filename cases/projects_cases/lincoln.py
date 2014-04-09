@@ -15,7 +15,7 @@ class Project_Lincoln(HPTestCase, Attach):
 	test_attach_tabs		= Attach.attach_tabs
 	# test_tab_gallery		= Attach.attach_tab_gallery same as map tab
 	# test_tab_slideshow	= Attach.attach_tab_slideshow same as map tab
-	# test_tab_map			= Attach.attach_tab_map  #TODO fix this - this won't work because there is no content to be clicked on the map
+	# test_tab_map			= Attach.attach_tab_map
 	
 	def test_index(self):
 		self.go(self.PROJECT_URL)
@@ -34,7 +34,7 @@ class Project_Lincoln(HPTestCase, Attach):
 		self.assertEqual('%s%s/upload/' % (URL_BASE, self.PROJECT_URL), button_pin.get_attribute('href'))
 		
 		touts_items = [
-			['How to participate'		, 'http://www.fords.org/remembering-lincoln', u'Learn what kinds of items we’re seeking for the project.', 'tout1_image'],
+			['How to participate'		, 'http://www.fords.org/remembering-lincoln/seeking-contributions', u'Learn what kinds of items we’re seeking for the project.', 'tout1_image'],
 			['About Remembering Lincoln', 'http://www.fords.org/remembering-lincoln', 'Learn more about the project.'							, 'tout2_image'],
 		]
 		
@@ -56,7 +56,7 @@ class Project_Lincoln(HPTestCase, Attach):
 		
 		activity = site_cnt.e('#activity')
 		self.assertIsInstance(activity.e('h1'), WebElement)
-		self.assertEqual('pieces of content added so far', activity.e('h6').text)
+		self.assertEqual('content, comments, and contributions', activity.e('h6').text)
 		
 		self.assertEqual('Share:', self.e('.addthis_toolbox h3').text)
 		self.assertIsInstance(self.e('.addthis_toolbox'), WebElement)
@@ -79,7 +79,7 @@ class Project_Lincoln(HPTestCase, Attach):
 		
 		icon_tout3	= site_cnt.e('#icon-tout-2 a')
 		
-		self.assertEqual('http://blog.fords.org/category/history-museums/remembering-lincoln/', icon_tout3.get_attribute('href'))
+		self.assertEqual('http://www.fords.org/remembering-lincoln/historypin-image-credits', icon_tout3.get_attribute('href'))
 		self.assertEqual("More about the images on this page", icon_tout3.text)
 		self.assertIn('ss-icon'		, icon_tout3.e('span').get_attribute('class'))
 		self.assertIn('ss-picture'	, icon_tout3.e('span').get_attribute('class'))
