@@ -381,7 +381,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual('Sortieren nach  '	, filter_by.e('span').text)
 		self.assertEqual(' Neuestes'		, labels[0].e('strong').text)
 		self.assertEqual(' Beliebtestes'	, labels[1].e('strong').text)
-		self.assertEqual(' Most Relevant'	, labels[2].e('strong').text)
+		self.assertEqual(' der relevanteste', labels[2].e('strong').text)
 		
 		# TODO fix "Most Relevant" text when there is a translation provided
 		# TODO add verification for "Clear search" text when there is translation
@@ -980,7 +980,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertTrue(option_menu.e('option:nth-of-type(4)').is_selected())
 		
 		site_cnt = self.e('#site-content')
-		self.assertEqual('Kontaktandmed', site_cnt.e('h2').text)
+		self.assertEqual('Kontakt', site_cnt.e('h2').text)
 	
 	def test_contact_hu(self):
 		self.go(URL_BASE + '/hu' + self.PROJECT_URL + '/contact/')
@@ -991,7 +991,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertTrue(option_menu.e('option:nth-of-type(5)').is_selected())
 		
 		site_cnt = self.e('#site-content')
-		self.assertEqual('Kapcsolat', site_cnt.e('h2').text)
+		self.assertEqual(u'N\xe9vjegy', site_cnt.e('h2').text)
 	
 	def test_contact_lt(self):
 		self.go(URL_BASE + '/lt' + self.PROJECT_URL + '/contact/')
