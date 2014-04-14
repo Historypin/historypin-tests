@@ -5,6 +5,7 @@ import os, sys
 
 class V6_Cases(HPTestCase):
 	
+	@unittest.expectedFailure  # in the new designs, there is no nav
 	@url('/en/explore/')
 	def test_header(self):
 		
@@ -107,11 +108,11 @@ class V6_Cases(HPTestCase):
 		self.assertIsInstance(bookmarks.e('.info-anchor'), WebElement)
 		
 	
-	@url('/en/explore/oreo/')
+	@url('/en/explore/oreo/pin/228823')
 	def test_soundcloud_audio_pin(self):
-		# TODO
-		# get audio from the URL
-		# check if the audio can be opened and stopped, and could be resized
+		# playButton
+		# self.assertIsInstance(self.e('#widget'), WebElement) TODO
+		sleep(4)
 		pass
 	
 	@url('/en/explore/oreo/pin/225261')
@@ -154,20 +155,24 @@ class V6_Cases(HPTestCase):
 		# delete the comment
 		pass
 	
-	@url('/en/explore/oroe/pin/225259')
+	@url('/en/explore/oreo/pin/225259')
 	def test_image_pin(self):
 		
-		sleep(6)
-		self.assertEqual('1989', self.e('#timeline .tooltip').text)
+		sleep(4)
+		timeline = self.e('#timeline')
+		
+		self.assertEqual('1997', timeline.e('.ui-state-default.ui-corner-all:nth-of-type(1)').text)
+		self.assertEqual('2014', timeline.e('.ui-state-default.ui-corner-all:nth-of-type(2)').text)
+		self.assertEqual('2 January 2013', timeline.e('.tooltip').text)
+		# self.assertEqual('ulitsa "Georgi Benkovski", 1000 Sofia, Bulgaria', self.e('#map .tooltip.arrow-down').text)
+		
 		column_header = self.e('#pin .row')
 		
-		self.assertEqual('Outside a tavern at Lake Balaton', self.e('#explore h1').text)
-		self.assertEqual('http://www.historypin.com/channels/img/46399/logo/1/dim/50x50/crop/1/', column_header.e('.author-image img').get_attribute('src'))
-		self.assertEqual('Pinned by\nDeutsche Kinemathek'	, column_header.e('.author').text)
-		self.assertEqual('%s/channels/view/46399' % URL_BASE, column_header.e('.author a').get_attribute('href'))
+		self.assertEqual('Bulgarian Army Theater', self.e('#explore h1').text)
+		self.assertEqual('%s/channels/img/33283/logo/1/dim/50x50/crop/1/' % URL_BASE, column_header.e('.author-image img').get_attribute('src'))
+		self.assertEqual('Pinned by\nGabss'					, column_header.e('.author').text)
+		self.assertEqual('%s/channels/view/33283' % URL_BASE, column_header.e('.author a').get_attribute('href'))
 		
-		sleep(3)
-		# self.assertEqual('Balaton Uplands National Park, 8237 Tihany, Kossuth Lajos Street 31, Hungary', self.e('.tooltip.arrow-down').text)  # TODO fix this, because the map is slow and cannot load the tooltip on time
 		
 		share_toolbox	= self.e('.addthis_toolbox')
 		self.hover(share_toolbox)
@@ -181,13 +186,21 @@ class V6_Cases(HPTestCase):
 		self.assertIsInstance(share_items[3], WebElement)
 		
 		column_3b = self.e('.content')
-		self.assertEqual('http://www.historypin.com/services/thumb/phid/160345/dim/600x600/quality/80/', column_3b.e('img').get_attribute('src'))
+		self.assertEqual('http://www.historypin.com/services/thumb/phid/225259/dim/600x600/quality/80/', column_3b.e('img').get_attribute('src'))
 		
 		self.assertIsInstance(column_3b.e('.info-anchor'), WebElement)
 		
-		h4s = ['DESCRIPTION', 'TAGS', 'INFORMATION', 'CREATOR']
-		h4s_cnt = column_3b.es('h4')
+		h4s		= ['Description', 'Tags', 'Information', 'Creator', 'Add a comment', 'COMMENTS (1)']
+		h4s_cnt	= column_3b.es('h4')
 		for n in range(len(h4s)): self.assertEqual(h4s[n], h4s_cnt[n].text)
+		
+		self.assertEqual('This is a photo of the famous Bulgarian Army Theater', self.e('#pin .description p:nth-of-type(1)').text)
+		
+		tags		= self.e('#pin .tags')
+		tag_items	= tags.es('a')
+		self.assertEqual('theater'			, tag_items[0].text)
+		self.assertEqual('theatre'			, tag_items[1].text)
+		self.assertEqual('bulgarian army'	, tag_items[2].text)
 		
 		column_header.e('.close-anchor').click()
 		self.assertFalse(column_header.is_displayed())
@@ -230,6 +243,10 @@ class V6_Cases(HPTestCase):
 		# for n in range(len(h4s)): self.assertEqual(h4s[n], h4s_cnt[n].text)
 		
 		self.assertEqual("License: Copyright (c) all rights reserved\nAttribution:\nOriginal link:\nRepository:\nNotes:", self.e('.information').text)
+	
+	@url('/en/explore/oreo')
+	def test_user_project(self):
+		pass
 	
 	@url('/en/explore/1989')
 	def test_project(self):
