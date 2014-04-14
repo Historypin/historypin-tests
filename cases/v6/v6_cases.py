@@ -40,7 +40,15 @@ class V6_Cases(HPTestCase):
 		self.assertEqual('%s/' % URL_BASE, header.e('a').get_attribute('href'))
 		
 		self.assertEqual('Historypin', self.e('h3').text)
-		self.assertIsInstance(self.e('.home-anchor'), WebElement)
+		
+		share_toolbox = self.e('.addthis_toolbox')
+		self.hover(share_toolbox)
+		social_cnt = self.e('.social-container')
+		share_items = social_cnt.es('li')
+		self.assertIsInstance(share_items[0], WebElement)
+		self.assertIsInstance(share_items[1], WebElement)
+		self.assertIsInstance(share_items[2], WebElement)
+		self.assertIsInstance(share_items[3], WebElement)
 		
 		banner		= self.e('#banner')
 		explore_map	= banner.e('#btn-explore')
@@ -49,11 +57,11 @@ class V6_Cases(HPTestCase):
 		
 		timeline = self.e('#timeline')
 		self.assertEqual('1800', timeline.e('.start').text)
-		self.assertEqual('1800', timeline.e('.ui-slider-handle-left').text)
+		self.assertEqual('1800', timeline.e('.ui-state-default.ui-corner-all:nth-of-type(1)').text)
 		
 		
 		self.assertEqual('2029', timeline.e('.end').text)
-		self.assertEqual('2029', timeline.e('.ui-slider-handle-right').text)
+		self.assertEqual('2029', timeline.e('.ui-state-default.ui-corner-all:nth-of-type(2)').text)
 		
 		self.assertIsInstance(timeline.e('.ui-slider-range'), WebElement)
 		
