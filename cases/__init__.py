@@ -47,7 +47,7 @@ from projects_cases.sourdough import Project_Sourdough
 from projects_cases.yotb import Project_YOTB
 from projects_cases.yarra import Project_Yarra
 
-from v6.v6_homepage import Homepage_V6
+from v6.v6_cases import V6_Cases
 
 from channels import Channels
 from channel import Channel
