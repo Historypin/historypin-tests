@@ -246,7 +246,55 @@ class V6_Cases(HPTestCase):
 	
 	@url('/en/explore/oreo')
 	def test_user_project(self):
-		pass
+		
+		banner = self.e('#banner')
+		
+		self.assertEqual('Test Project for Quality Assurance', banner.e('h3').text)
+		
+		share_toolbox	= banner.e('.addthis_toolbox')
+		self.hover(share_toolbox)
+		social_cnt		= self.e('.social-container')
+		share_items		= social_cnt.es('li')
+		self.assertIsInstance(share_items[0], WebElement)
+		self.assertIsInstance(share_items[1], WebElement)
+		self.assertIsInstance(share_items[2], WebElement)
+		self.assertIsInstance(share_items[3], WebElement)
+		
+		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER_VIEW), banner.e('.channel-link').get_attribute('href'))
+		self.assertEqual('Gabss', banner.e('.channel-link span').text)
+		
+		sleep(3)
+		self.assertEqual('%s/projects/img/pid/30/type/project_image,banner,logo/dim/1024x290/crop/1/' % URL_BASE, self.e('.panel > img').get_attribute('src'))
+		self.assertEqual('Short Description2', self.e('.description.inner p').text)
+		
+		project_sidebar = self.e('.sidebar')
+		self.assertEqual('Project created on\n10 January 2014', project_sidebar.e('h4').text)
+		
+		admins_cnt = [
+			['/#', '49127', 'Project Admin'],
+			['/#', '33283', 'Project Admin'],
+			['/#', '867', 'Project Admin'],
+		]
+		
+		admins	= project_sidebar.e('.project-admins')
+		links	= admins.es('a')
+		images	= admins.es('img')
+		role	= admins.es('span')
+		
+		for n in range(len(admins_cnt)):
+			i = admins_cnt[n]
+			self.assertEqual(URL_BASE + '/en/explore/oreo' + i[0], links[n].get_attribute('href'))
+			self.assertEqual(URL_BASE + '/channels/img/' + i[1] + '/logo/1/dim/50x50/crop/1/', images[n].get_attribute('src'))
+			self.assertEqual(i[2], role[n].text)
+			
+		self.assertEqual('Project Administrators', admins.e('h4').text)
+		
+		location = project_sidebar.e('.project-location')
+		self.assertEqual('Project Location', location.e('h4').text)
+		self.assertEqual('53 Duchess Road, Birmingham, West Midlands B16 8JD, UK', location.e('p').text)
+		self.assertIsInstance(location.e('.small-map'), WebElement)
+		
+		banner.e('#btn-explore').click()
 	
 	@url('/en/explore/1989')
 	def test_project(self):
