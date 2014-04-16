@@ -125,20 +125,33 @@ class V6_Cases(HPTestCase):
 	
 	@url('/en/explore/oreo/')
 	def test_edit_item(self):
-		pass
-	
-	@url('/en/explore/oreo/')
-	def test_force_login_comment(self):
 		# TODO
-		# not logged in
-		# click on a pin to make a comment
-		# check if redirects to the login page
-		
+		# logged in
+		# go to pinned item from the URL
+		# click on edit icon for editing
+		# go to an item
+		# click save and continue
+		# check if it redirects to the pin again
 		pass
 	
+	@url('/en/explore/oreo/pin/225259')
+	def test_force_login_comment(self):
+		
+		self.assertEqual('%s/resources/explore/images/default-avatar.jpg' % URL_BASE, self.e('.comment img').get_attribute('src'))
+		
+		text_login = self.e('.login-or-join')
+		
+		self.assertEqual('Log in', text_login.e('a:nth-of-type(1)').text)
+		self.assertEqual('%s/user/?from=/en/explore/oreo/pin/225259/' % URL_BASE, text_login.e('a:nth-of-type(1)').get_attribute('href'))
+		
+		self.assertEqual('join', text_login.e('a:nth-of-type(2)').text)
+		self.assertEqual('%s/user/?from=/en/explore/oreo/pin/225259/' % URL_BASE, text_login.e('a:nth-of-type(2)').get_attribute('href'))
+		
+	@unittest.expectedFailure  # TODO write the test when we have functionality for pinning
 	@url('/en/explore/oreo/')
 	def test_force_login_pinning(self):
 		# TODO
+		# currently there is not such functionality for pinning nor designs
 		# not logged in
 		# click to add a pin
 		# check if redirects to the login page
@@ -152,7 +165,7 @@ class V6_Cases(HPTestCase):
 		# send keys for comment
 		# click add a comment
 		# check if the comment is published
-		# delete the comment
+		# delete the comment (currently, a comment cannot be deleted)
 		pass
 	
 	@url('/en/explore/oreo/pin/225259')
@@ -344,6 +357,7 @@ class V6_Cases(HPTestCase):
 		
 		self.assertIn(u'The way history is recorded isn’t just about what museums and institutions think is important', banner.e('.description').text)
 	
+	@unittest.expectedFailure  # TODO - there is not footer in the designs
 	@url('/en/explore/')
 	def test_footer(self):
 		
