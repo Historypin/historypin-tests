@@ -5,7 +5,7 @@ import os, sys
 
 class V6_Cases(HPTestCase):
 	
-	@unittest.expectedFailure  # in the new designs, there is no nav
+	@unittest.expectedFailure  # in the new designs, there is no navigation
 	@url('/en/explore/')
 	def test_header(self):
 		
@@ -123,16 +123,23 @@ class V6_Cases(HPTestCase):
 	def test_vimeo_video_pin(self):
 		pass
 	
-	@url('/en/explore/oreo/')
+	@logged_in
+	@url('/en/explore/oreo/pin/231065')
 	def test_edit_item(self):
-		# TODO
-		# logged in
-		# go to pinned item from the URL
-		# click on edit icon for editing
-		# go to an item
-		# click save and continue
-		# check if it redirects to the pin again
-		pass
+		
+		edit_icon = self.e('.bookmarks a:nth-of-type(3)')
+		self.assertEqual('%s/upload-item/pin/phid/231065/edit/1/?from=/en/explore/oreo/pin/231065' % URL_BASE, edit_icon.get_attribute('href'))
+		self.assertEqual('Edit', edit_icon.text)
+		
+		edit_icon.click()
+		
+		self.assertEqual('%s/upload-item/pin/phid/231065/edit/1/?from=/en/explore/oreo/pin/231065' % URL_BASE, self.browser.current_url)
+		
+		self.e('#photo_pin').click()
+		
+		self.assertEqual('%s/en/explore/oreo/pin/231065/' % URL_BASE, self.browser.current_url)
+		self.assertEqual('http://www.historypin.com/services/thumb/phid/231065/dim/600x600/quality/80/', self.e('.content.ng-scope img').get_attribute('src'))
+		self.assertIsInstance(self.e('.bookmarks'), WebElement)
 	
 	@url('/en/explore/oreo/pin/225259')
 	def test_force_login_comment(self):
