@@ -157,16 +157,27 @@ class V6_Cases(HPTestCase):
 		# check if redirects to the login page
 		pass
 	
-	@url('/en/explore/oreo/')
+	@logged_in
+	@url('/en/explore/oreo/pin/225259')
 	def test_make_comment(self):
-		# TODO
-		# log in
-		# click in the textarea
-		# send keys for comment
-		# click add a comment
-		# check if the comment is published
+		
+		# TODO add img link when it is added
 		# delete the comment (currently, a comment cannot be deleted)
-		pass
+		
+		comment_section = self.e('.comment')
+		
+		self.assertEqual('%s/resources/avatars/200x200/avatar_3.png' % URL_BASE, comment_section.e('img').get_attribute('src'))
+		self.assertEqual('Enter your comment here', comment_section.e('textarea').get_attribute('placeholder'))
+		
+		comment_section.e('textarea').send_keys('This is one of the famous theaters in Bulgaria.It is located in a nice old building, that is one of the most beautiful in Sofia.')
+		comment_section.e('.comment-submit').click()
+		sleep(4)
+		
+		comment_data = self.e('.comment-data')
+		
+		self.assertEqual('%s/resources/avatars/200x200/avatar_3.png' % URL_BASE, comment_data.e('img').get_attribute('src'))
+		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER), comment_data.e('a').get_attribute('href'))
+		
 	
 	@url('/en/explore/oreo/pin/225259')
 	def test_image_pin(self):
