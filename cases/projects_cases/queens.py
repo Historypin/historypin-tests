@@ -21,7 +21,7 @@ class Project_Queens(HPTestCase, Attach):
 	def test_index(self):
 		self.go(self.PROJECT_URL)
 		
-		self.assertTitle('Queens: Neighborhood tales | Home')
+		self.assertTitle('Queens: Neighborhood Stories | Home')
 		
 		site_cnt = self.e('#site-content')
 		

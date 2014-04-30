@@ -326,6 +326,44 @@ class V6_Cases(HPTestCase):
 		self.assertIsInstance(location.e('.small-map'), WebElement)
 		
 		banner.e('#btn-explore').click()
+		
+		# TODO check links if they're added through project editing
+	
+	@logged_in
+	@url('/en/explore/oreo')
+	def test_edit_project(self):
+		
+		self.assertEqual('Edit project', self.e('.edit-project').text)
+		self.e('.edit-project').click()
+		sleep(2)
+		
+		banner	= self.e('.edit-banner')
+		heading	= banner.e('.edit-heading')
+		
+		self.assertEqual('Test Project for Quality Assurance', heading.get_attribute('value'))
+		
+		heading.clear()
+		heading.send_keys('Test Project for Quality Assurance')
+		
+		file_upload = self.e('#fileupload-input')
+		file_upload.send_keys(os.getcwd()+"/background.jpg")
+		
+		# TODO
+		# click edit project
+		# clear name
+		# send keys again for project name
+		# click on add photo
+		# add a photo
+		# clear and type desc
+		# in the sidbar:
+		# enter org name
+		# add another link and then remove it to the previous state
+		# check current project addmins
+		# click to add another project admin then remove it
+		# assert all h4s
+		# assert project location
+		# assert save project and click it
+		pass
 	
 	@url('/en/explore/1989')
 	def test_project(self):

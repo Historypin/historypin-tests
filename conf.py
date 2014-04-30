@@ -6,8 +6,8 @@ GO_TIMEOUT = 1
 # VERSION = 'v5-asian-pacific'
 VERSION = 'v6-alpha-4'
 # VERSION = 'v5-02-07'
-LINK_BASE = '%s.historypin-hrd.appspot.com' % (VERSION)
-# LINK_BASE = 'historypin.com'
+# LINK_BASE = '%s.historypin-hrd.appspot.com' % (VERSION)
+LINK_BASE = 'historypin.com'
 
 URL_BASE = 'http://www.%s' % LINK_BASE
 
