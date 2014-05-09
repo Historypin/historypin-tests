@@ -340,22 +340,74 @@ class V6_Cases(HPTestCase):
 		banner	= self.e('.edit-banner')
 		heading	= banner.e('.edit-heading')
 		
-		self.assertEqual('Test Project for Quality Assurance', heading.get_attribute('value'))
+		
+		edit_project = self.e('.edit-project')
+		self.assertEqual('Editing project', edit_project.text)
+		
+		edit_project.click()
+		sleep(2)
 		
 		heading.clear()
-		heading.send_keys('Test Project for Quality Assurance')
+		heading.send_keys('Project for Quality Assurance')
+		
+		self.assertEqual('Change photo', self.e('.button.change').text)
+		
+		# test upload an image
 		
 		file_upload = self.e('#fileupload-input')
-		file_upload.send_keys(os.getcwd()+"/background.jpg")
+		file_upload.send_keys(os.getcwd()+"/bulgarian_army_theater_main.jpg")
 		
-		# TODO
-		# click edit project
-		# clear name
-		# send keys again for project name
-		# click on add photo
-		# add a photo
-		# clear and type desc
+		# test the description
+		
+		project_description = self.e('textarea')
+		project_description.clear()
+		project_description.send_keys('Lorem Ipsum is simply dummy text of the printing and typesetting industry.')
+		sleep(3)
+		# self.assertIn('Lorem Ipsum is simply dummy text of the printing and typesetting industry.', project_description.text) assertion should be made when the project is saved
+		
+		# testing sidebar
+		org_name = self.e('#org-name')
+		org_name.clear()
+		org_name.send_keys('Test Organisation')
+		
+		# check google link, add a facebook one, then remove it
+		
+		links_section = self.e('.edit-links')
+		google_option = links_section.e('select option:nth-of-type(4)')
+		self.assertTrue(google_option.is_selected())
+		
+		self.assertEqual('http://www.google.com/', links_section.e('.input-holder input').get_attribute('value'))
+		
+		links_section.e('.add').click()
+		
+		link_type2 = self.e('.link-cnt:nth-of-type(2)')
+		link_type2.e('select option:nth-of-type(2)').click()
+		
+		link_type2.e('.remove').click()
+		sleep(3)
+		
+		# admin test
+		admins_section = self.e('.edit-admins')
+		admin_add = admins_section.e('.add')
+		self.assertEqual('Add another project administrator', admin_add.text)
+		admin_add.click()
+		
+		self.e('.search-user').send_keys('as')
+		sleep(2)
+		self.e('.admin-cnt:last-of-type .remove').click()
+		
+		sleep(2)
+		# self.assertEqual('Are you sure you want to remove as as a project administrator?', self.e('#ui-id-4 .ng-binding').text)
+		self.e('.ui-dialog-buttonset button:nth-of-type(2)').click()
+		
+		sleep(4)
+		self.assertEqual(len(admins_section.es('select')), 5)
+		
+		self.assertEqual('g.k. Nadezhda 1, Sofia, Bulgaria', self.e('#search-location').get_attribute('value'))
+		
+		self.e('#btn-explore').click()
 		# in the sidbar:
+		# instead of removing, on save project, we can assert that class .ss-delete is on the page
 		# enter org name
 		# add another link and then remove it to the previous state
 		# check current project addmins
@@ -363,7 +415,6 @@ class V6_Cases(HPTestCase):
 		# assert all h4s
 		# assert project location
 		# assert save project and click it
-		pass
 	
 	@url('/en/explore/1989')
 	def test_project(self):
@@ -413,7 +464,7 @@ class V6_Cases(HPTestCase):
 		
 		self.assertIn(u'The way history is recorded isn’t just about what museums and institutions think is important', banner.e('.description').text)
 	
-	@unittest.expectedFailure  # TODO - there is not footer in the designs
+	@unittest.expectedFailure  # TODO - there is no footer in the designs
 	@url('/en/explore/')
 	def test_footer(self):
 		
