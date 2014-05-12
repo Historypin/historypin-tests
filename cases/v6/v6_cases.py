@@ -280,7 +280,7 @@ class V6_Cases(HPTestCase):
 		
 		banner = self.e('#banner')
 		
-		self.assertEqual('Test Project for Quality Assurance', banner.e('h3').text)
+		self.assertEqual('Project for Quality Assurance', banner.e('h3').text)
 		
 		share_toolbox	= banner.e('.addthis_toolbox')
 		self.hover(share_toolbox)
@@ -296,38 +296,44 @@ class V6_Cases(HPTestCase):
 		
 		sleep(3)
 		self.assertEqual('%s/projects/img/pid/30/type/project_image,banner,logo/dim/1024x290/crop/1/' % URL_BASE, self.e('.panel > img').get_attribute('src'))
-		self.assertEqual('Short Description2', self.e('.description.inner p').text)
+		self.assertEqual('Lorem Ipsum is simply dummy text of the printing and typesetting industry.', self.e('.description.inner p').text)
 		
-		project_sidebar = self.e('.sidebar')
-		self.assertEqual('Project created on\n10 January 2014', project_sidebar.e('h4').text)
+		project_sidebar	= self.e('.sidebar')
+		h4s				= project_sidebar.es('h4')
+		
+		self.assertEqual('TEST ORGANISATION'		, h4s[0].text)
+		self.assertEqual('PROJECT CREATED ON\n10 JANUARY 2014'		, h4s[1].text)
+		self.assertEqual('PROJECT ADMINISTRATORS'	, h4s[2].text)
+		self.assertEqual('PROJECT LOCATION'			, h4s[3].text)
 		
 		admins_cnt = [
-			['/#', '49127', 'Project Admin'],
-			['/#', '33283', 'Project Admin'],
-			['/#', '867', 'Project Admin'],
+			['/49127/'	, '/channels/img/49127/logo/1/dim/50x50/crop/1/'	, 'Rawr', 'Project Admin'],
+			['/33283/'	, '/channels/img/33283/logo/1/dim/50x50/crop/1/'	, 'Gabss', 'Project Admin'],
+			['/867/'	, '/channels/img/867/logo/1/dim/50x50/crop/1/'		, 'Karamfil', 'Project Admin'],
+			['/47515/'	, '/resources/explore/images/default-avatar.jpg'	, 'n.p.slavov', 'Project Admin'],
+			['/35019/'	, '/resources/explore/images/default-avatar.jpg'	, 'Gabriela Ananieva', 'Project Admin'],
 		]
 		
-		admins	= project_sidebar.e('.project-admins')
-		links	= admins.es('a')
-		images	= admins.es('img')
-		role	= admins.es('span')
+		admins		= project_sidebar.e('.project-admins')
+		links_imgs	= project_sidebar.es('.img-wrapper a')
+		links_name	= admins.es('.usr-name')
+		images		= admins.es('img')
+		role		= admins.es('.usr-type')
 		
 		for n in range(len(admins_cnt)):
 			i = admins_cnt[n]
-			self.assertEqual(URL_BASE + '/en/explore/oreo' + i[0], links[n].get_attribute('href'))
-			self.assertEqual(URL_BASE + '/channels/img/' + i[1] + '/logo/1/dim/50x50/crop/1/', images[n].get_attribute('src'))
-			self.assertEqual(i[2], role[n].text)
+			self.assertEqual(URL_BASE + '/channels/view' + i[0], links_imgs[n].get_attribute('href'))
+			self.assertEqual(URL_BASE + '/channels/view' + i[0], links_name[n].get_attribute('href'))
+			self.assertEqual(URL_BASE + i[1], images[n].get_attribute('src'))
+			self.assertEqual(i[2], links_name[n].text)
+			self.assertEqual(i[3], role[n].text)
 			
-		self.assertEqual('Project Administrators', admins.e('h4').text)
 		
 		location = project_sidebar.e('.project-location')
-		self.assertEqual('Project Location', location.e('h4').text)
-		self.assertEqual('53 Duchess Road, Birmingham, West Midlands B16 8JD, UK', location.e('p').text)
+		self.assertEqual('g.k. Nadezhda 1, Sofia, Bulgaria', location.e('p').text)
 		self.assertIsInstance(location.e('.small-map'), WebElement)
 		
 		banner.e('#btn-explore').click()
-		
-		# TODO check links if they're added through project editing
 	
 	@logged_in
 	@url('/en/explore/oreo')
@@ -406,15 +412,8 @@ class V6_Cases(HPTestCase):
 		self.assertEqual('g.k. Nadezhda 1, Sofia, Bulgaria', self.e('#search-location').get_attribute('value'))
 		
 		self.e('#btn-explore').click()
-		# in the sidbar:
-		# instead of removing, on save project, we can assert that class .ss-delete is on the page
-		# enter org name
-		# add another link and then remove it to the previous state
-		# check current project addmins
-		# click to add another project admin then remove it
-		# assert all h4s
-		# assert project location
-		# assert save project and click it
+		
+		
 	
 	@url('/en/explore/1989')
 	def test_project(self):
