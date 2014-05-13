@@ -238,7 +238,7 @@ class Map(HPTestCase):
 		tab = dlg.e('#stories_cnt')
 		
 		sleep(2)
-		self.e_wait('.list_tabs a[href$=stories_cnt]').click()
+		self.e('.list_tabs a[href$=stories_cnt]').click()
 		self.assertIn('tab:stories'		, '%s/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:stories/' % (URL_BASE, ID_MAP_ITEM))
 		self.assertEqual('Comments and suggestions (1)'	, dlg.e('.selected .tab').text)
 		
@@ -259,7 +259,7 @@ class Map(HPTestCase):
 		self.assertEqual('10 May 2013'												, stories_list.e('.photo-date').text)
 		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER_VIEW), stories_list.e('.activity a').get_attribute('href'))
 		
-		self.assertEqual('%s/resources/avatars/50x50/avatar_3.png' % URL_BASE, tab.e('.write_story_wrap img ').get_attribute('src'))
+		self.assertEqual('%s/resources/avatars/50x50/avatar_1.png' % URL_BASE, tab.e('.write_story_wrap img ').get_attribute('src'))
 		self.assertIsInstance(tab.e('textarea'), WebElement)
 		
 		# TODO - should fix this because in all tests - logged in
