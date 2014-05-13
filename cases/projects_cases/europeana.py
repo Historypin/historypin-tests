@@ -527,7 +527,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		europeana_link = URL_BASE + '/de%s/' % self.PROJECT_URL
 		de_links = [
-			[europeana_link									, 'Startseite'],
+			[europeana_link									, 'Home'],
 			['%sexplore/#|photos/index/' % europeana_link	, 'Entdecken'],
 			['%supload/index/'			% europeana_link	, u'Beitrag posten'],
 			['http://pro.europeana.eu/web/europeana-1989/'	, u'Über'],
@@ -546,7 +546,7 @@ class Project_Europeana(HPTestCase, Attach):
 		europeana_link = URL_BASE + '/es%s/' % self.PROJECT_URL
 		
 		es_links = [
-			[europeana_link, 'Avaleht'],
+			[europeana_link, 'Kodu'],
 			['%sexplore/#|photos/index/' % europeana_link, 'Uurige'],
 			['%supload/index/' % europeana_link	, u'Andke oma panus'],
 			['http://pro.europeana.eu/web/europeana-1989/'	, 'Info'],
@@ -565,7 +565,7 @@ class Project_Europeana(HPTestCase, Attach):
 		europeana_link = URL_BASE + '/hu%s/' % self.PROJECT_URL
 		
 		hu_links = [
-			[europeana_link	, u'C\xedmlap'],
+			[europeana_link	, u'Kezd\u0151lap'],
 			['%sexplore/#|photos/index/' % europeana_link, u'Fedezze fel'],
 			['%supload/index/' % europeana_link	, u'Töltse fel'],
 			['http://pro.europeana.eu/web/europeana-1989/'	, u'Rólunk'],
@@ -584,7 +584,7 @@ class Project_Europeana(HPTestCase, Attach):
 		europeana_link = URL_BASE + '/lt%s/' % self.PROJECT_URL
 		
 		lt_links = [
-			[europeana_link	, u'Pirmas'],
+			[europeana_link	, u'Pradinis'],
 			['%sexplore/#|photos/index/' % europeana_link, u'Naršyti'],
 			['%supload/index/' % europeana_link	, u'Pridėti'],
 			['http://pro.europeana.eu/web/europeana-1989/'	, u'Apie'],
@@ -622,7 +622,7 @@ class Project_Europeana(HPTestCase, Attach):
 		europeana_link = URL_BASE + '/pl%s/' % self.PROJECT_URL
 		
 		pl_links = [
-			[europeana_link	, u'Strona g\u0142\xf3wna'],
+			[europeana_link	, u'Strona gl\xf3wna'],
 			['%sexplore/#|photos/index/' % europeana_link, u'Zobacz kolekcję'],
 			['%supload/index/' % europeana_link	, u'Dodaj pamiątkę'],
 			['http://pro.europeana.eu/web/europeana-1989/'	, u'O nas'],
@@ -980,7 +980,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertTrue(option_menu.e('option:nth-of-type(4)').is_selected())
 		
 		site_cnt = self.e('#site-content')
-		self.assertEqual('Kontakt', site_cnt.e('h2').text)
+		self.assertEqual('Kontaktandmed', site_cnt.e('h2').text)
 	
 	def test_contact_hu(self):
 		self.go(URL_BASE + '/hu' + self.PROJECT_URL + '/contact/')
@@ -991,7 +991,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertTrue(option_menu.e('option:nth-of-type(5)').is_selected())
 		
 		site_cnt = self.e('#site-content')
-		self.assertEqual(u'N\xe9vjegy', site_cnt.e('h2').text)
+		self.assertEqual(u'Kapcsolat', site_cnt.e('h2').text)
 	
 	def test_contact_lt(self):
 		self.go(URL_BASE + '/lt' + self.PROJECT_URL + '/contact/')

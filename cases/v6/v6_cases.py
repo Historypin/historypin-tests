@@ -256,10 +256,12 @@ class V6_Cases(HPTestCase):
 		
 		self.assertIn(u'Lorem Ipsum е елементарен примерен текст, използван в печатарската и типографската индустрия.', self.e('.text-pin').text)
 		
-		share_toolbox = self.e('.addthis_toolbox')
+		share_toolbox	= self.e('.addthis_toolbox')
 		self.hover(share_toolbox)
-		social_cnt = self.e('.social-container')
-		share_items = social_cnt.es('li')
+		
+		social_cnt		= self.e('.social-container')
+		share_items		= social_cnt.es('li')
+		
 		self.assertIsInstance(share_items[0], WebElement)
 		self.assertIsInstance(share_items[1], WebElement)
 		self.assertIsInstance(share_items[2], WebElement)
