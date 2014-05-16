@@ -228,7 +228,7 @@ class Channel(HPTestCase):
 		tab_cnt = self.e('#tab-home .main')
 		
 		h3s = tab_cnt.es('h3')
-		self.assertEqual('Your Historypin Profile'	, h3s[0].text)
+		self.assertEqual('Your Historypin Channel'	, h3s[0].text)
 		self.assertEqual('Share:'					, h3s[1].text)
 		
 		h4s = tab_cnt.es('h4')
