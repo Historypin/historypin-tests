@@ -5,6 +5,7 @@ from time import sleep
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 # from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.remote.webelement import WebElement
 
@@ -75,11 +76,15 @@ class Browser(webdriver.Chrome):
 		# 	raise Exception('Page could not load')
 	
 	def hover(self, elem):
-		webdriver.common.action_chains.ActionChains(self).move_to_element(elem).perform()
+		ActionChains(self).move_to_element(elem).perform()
 		sleep(.5)
 	
 	def double_click(self, elem):
-		webdriver.common.action_chains.ActionChains(self).double_click(elem).perform()
+		ActionChains(self).double_click(elem).perform()
+		sleep(.5)  # TODO is this necessary
+	
+	def click_xy(self, elem, x, y):
+		ActionChains(self).move_to_element_with_offset(elem, x, y).click().perform()
 		sleep(.5)  # TODO is this necessary
 
 

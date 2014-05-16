@@ -464,7 +464,7 @@ class Pages(HPTestCase):
 			['060', '6. Charges'],
 			['070', '7. Registered Users use of Historypin Services'],
 			['080', '8. Age restrictions, parental consent and use by schools'],
-			['090', '9. Password, Profile and Security'],
+			['090', '9. Password, Channel and Security'],
 			['100', '10. Your promises to us'],
 			['110', '11. Termination and Cancellation'],
 			['120', '12. Contributed Content'],

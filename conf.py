@@ -3,9 +3,9 @@ PATH_CRHOME_DRIVER	= '/usr/lib64/chromium-browser/chromedriver'
 GO_TIMEOUT = 1
 
 # VERSION = 'v5-europeana-filter'
-# VERSION = 'v5-asian-pacific'
+VERSION = 'v65-beta'
 # VERSION = 'v6-alpha-4'
-VERSION = 'v5-02-10'
+# VERSION = 'v5-02-10'
 LINK_BASE = '%s.historypin-hrd.appspot.com' % (VERSION)
 # LINK_BASE = 'historypin.com'
 
