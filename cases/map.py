@@ -281,7 +281,7 @@ class Map(HPTestCase):
 		self.e('.apply').click()
 		sleep(2)
 		
-		comment = stories_tab.e('.comment:nth-of-type(2)')
+		comment = stories_tab.e('.comment:nth-of-type(1)')
 		
 		self.assertEqual('%s/resources/avatars/100x100/avatar_3.png' % URL_BASE, comment.e('img').get_attribute('src'))
 		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER), comment.e('.activity a').get_attribute('href'))
@@ -292,6 +292,29 @@ class Map(HPTestCase):
 		alert = self.browser.switch_to_alert()
 		alert.accept()
 		self.assertNotIn('comment:nth-of-type(2)', stories_tab.get_attribute('class'))
+	
+	@logged_in
+	@url('/map/index/#!/geo:42.688019,23.320069/zoom:20/dialog:%d/tab:details/' % ID_FAVOURITE_ITEM)  # TODO - should use another photo, because when I favourited it, then when on edit tour, it is possible not to be favourited
+	def test_favourite_item(self):
+		
+		favourite = self.e('.favourite')
+		sleep(2)
+		self.assertIn('ss-icon'			, favourite.e('span').get_attribute('class'))
+		self.assertIn('ss-heart'		, favourite.e('span').get_attribute('class'))
+		sleep(2)
+		favourite.click()
+		sleep(2)
+		self.assertIn('ss-icon'			, favourite.e('span').get_attribute('class'))
+		self.assertIn('ss-heart'		, favourite.e('span').get_attribute('class'))
+		sleep(2)
+		self.go('/attach/uid%d/photos/list/#/get/recent/show/favourites/' % ID_USER)
+		sleep(2)
+		favourite_item = self.e('.image-holder a[href*="%d"]' % ID_FAVOURITE_ITEM)
+		self.assertIsInstance(favourite_item, WebElement)
+		
+		sleep(2)
+		self.hover(favourite_item.e('img'))
+		self.e('li:nth-of-type(2) .holder .icon').click()
 	
 	@url('/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:details/' % ID_MAP_ITEM)
 	def test_dialog_streetview(self):
