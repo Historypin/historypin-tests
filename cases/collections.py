@@ -133,6 +133,64 @@ class Collections(HPTestCase):
 		sleep(3)
 	
 	@logged_in
+	@url('/collections/add/')
+	def test_add_collection(self):
+		
+		######################## STEP 1 #########################
+		
+		title = self.e('#tour-title')
+		title.send_keys('Theaters in Bulgaria')
+		
+		desc = self.e('#tour-description')
+		desc.send_keys('Collection for famous theaters in Bulgaria')
+		
+		self.e('.next-button').click()
+		sleep(5)
+		
+		######################## STEP 2 #########################
+		
+		id_collection = self.browser.current_url.split('/')[5]
+		
+		add_photo = self.e('.yours .add-photo')
+		add_photo.click()
+		
+		sleep(4)
+		
+		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_COLLECTION_IMAGES[0] + '/dim/152x108/crop/1/', self.e('.inn .ss-photo img').get_attribute('src'))
+		
+		button = self.es('.inn .next-button')[1]
+		button.click()
+		sleep(1)
+		
+		######################## STEP 3 #########################
+		
+		step_maker = self.e('#tour-step3')
+		
+		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_COLLECTION_IMAGES[0] + '/dim/152x108/crop/1/', step_maker.e('.image-container img').get_attribute('src'))
+		
+		publish = self.es('.next-button.done')[1]
+		self.assertEqual('Publish', publish.e('span').text)
+		publish.click()
+		
+		self.go('/attach/uid%d/collections/all/' % ID_USER)
+		
+		self.browser.refresh()
+		sleep(3)
+		tour = self.e('#list li:nth-of-type(1)')
+		
+		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_COLLECTION_IMAGES[0] + '/dim/195x150/crop/1/', tour.e('.ss-photo img').get_attribute('src'))
+		
+		tour.e('.delete').click()
+		
+		alert = self.browser.switch_to_alert()
+		sleep(2)
+		alert.accept()
+		sleep(4)
+		
+		self.browser.refresh()
+		self.assertFalse(self.e('#list').exists('.image[href*="%s"]' % id_collection))
+	
+	@logged_in
 	@url('/collections/add/id/%d/#%d' % (ID_COLLECTION, ID_COLLECTION))
 	def test_edit_collection(self):
 		self.assertTitle('Historypin | Collection')

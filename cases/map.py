@@ -268,6 +268,31 @@ class Map(HPTestCase):
 		
 		# self.go(URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:stories/' % ID_MAP_ITEM)
 		
+	@logged_in
+	@url('/map/#!/geo:42.697839,23.32167/zoom:13/dialog:%d/tab:stories/' % ID_MAP_ITEM)
+	def test_post_comment(self):
+		
+		stories_tab = self.e('#stories_cnt')
+		
+		stories_tab.e('.text_wrap').click()
+		sleep(3)
+		self.e('.write_story_big .write_story').send_keys('This is a very nice photo of one of the main buildings in Sofia')
+		
+		self.e('.apply').click()
+		sleep(2)
+		
+		comment = stories_tab.e('.comment:nth-of-type(2)')
+		
+		self.assertEqual('%s/resources/avatars/100x100/avatar_3.png' % URL_BASE, comment.e('img').get_attribute('src'))
+		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER), comment.e('.activity a').get_attribute('href'))
+		self.assertEqual('This is a very nice photo of one of the main buildings in Sofia', comment.e('.story_cnt').text)
+		
+		comment.e('.delete.action').click()
+		
+		alert = self.browser.switch_to_alert()
+		alert.accept()
+		self.assertNotIn('comment:nth-of-type(2)', stories_tab.get_attribute('class'))
+	
 	@url('/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:details/' % ID_MAP_ITEM)
 	def test_dialog_streetview(self):
 	
