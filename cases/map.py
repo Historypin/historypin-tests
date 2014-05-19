@@ -269,7 +269,7 @@ class Map(HPTestCase):
 		# self.go(URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:stories/' % ID_MAP_ITEM)
 		
 	@logged_in
-	@url('/map/#!/geo:42.697839,23.32167/zoom:13/dialog:%d/tab:stories/' % ID_MAP_ITEM)
+	@url('/map/#!/geo:42.697839,23.32167/zoom:13/dialog:200988/tab:stories/')
 	def test_post_comment(self):
 		
 		stories_tab = self.e('#stories_cnt')
@@ -281,7 +281,9 @@ class Map(HPTestCase):
 		self.e('.apply').click()
 		sleep(2)
 		
-		comment = stories_tab.e('.comment:nth-of-type(1)')
+		self.browser.refresh()
+		sleep(4)
+		comment = self.e('.comment:nth-of-type(1)')
 		
 		self.assertEqual('%s/resources/avatars/100x100/avatar_3.png' % URL_BASE, comment.e('img').get_attribute('src'))
 		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER), comment.e('.activity a').get_attribute('href'))
@@ -291,7 +293,7 @@ class Map(HPTestCase):
 		
 		alert = self.browser.switch_to_alert()
 		alert.accept()
-		self.assertNotIn('comment:nth-of-type(2)', stories_tab.get_attribute('class'))
+		self.assertNotIn('comment:nth-of-type(1)', self.e('#info-dialog').get_attribute('class'))
 	
 	@logged_in
 	@url('/map/index/#!/geo:42.688019,23.320069/zoom:20/dialog:%d/tab:details/' % ID_FAVOURITE_ITEM)  # TODO - should use another photo, because when I favourited it, then when on edit tour, it is possible not to be favourited
