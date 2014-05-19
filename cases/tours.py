@@ -176,7 +176,7 @@ class Tours(HPTestCase):
 			prev_button.click()
 			check_step(tour_items[n])
 	
-		@logged_in
+	@logged_in
 	@url('/tours/add/')
 	def test_add_tour(self):
 		

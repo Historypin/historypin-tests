@@ -1270,7 +1270,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		my_items = tour_step2.e('.choose-photos.yours.cf')
 		sleep(3)
-		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_TOUR_IMAGES[0] + '/dim/152x108/crop/1/', my_items.e('img').get_attribute('src'))
+		self.assertEqual(URL_BLOB + '/services/thumb/phid/%d/dim/152x108/crop/1/' % ID_TOUR_IMAGES[0], my_items.e('img').get_attribute('src'))
 		
 		my_items.e('.add-photo').click()
 		sleep(3)
@@ -1278,14 +1278,14 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		item_1 = sidebar.e('li:nth-of-type(2)')
 		sleep(2)
-		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_TOUR_IMAGES[0] + '/dim/152x108/crop/1/', item_1.e('img').get_attribute('src'))
+		self.assertEqual(URL_BLOB + '/services/thumb/phid/%d/dim/152x108/crop/1/' % ID_TOUR_IMAGES[0], item_1.e('img').get_attribute('src'))
 		self.assertEqual('Bulgarian Army Theater'	, item_1.e('.photo-title').text)
 		self.assertEqual('2 February 2013'			, item_1.e('.date').text)
 		
 		tabs[1].click()
 		my_favourites = tour_step2.e('.choose-photos.favourites.cf')
 		
-		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_TOUR_IMAGES[1] + '/dim/152x108/crop/1/', my_favourites.e('img').get_attribute('src'))
+		self.assertEqual(URL_BLOB + '/services/thumb/phid/%d/dim/152x108/crop/1/' % ID_TOUR_IMAGES[1], my_favourites.e('img').get_attribute('src'))
 		sleep(3)
 		my_favourites.e('.add-photo').click()
 		
@@ -1293,7 +1293,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		item_2 = sidebar.e('li:nth-of-type(3)')
 		sleep(3)
-		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_TOUR_IMAGES[1] + '/dim/152x108/crop/1/', item_2.e('img').get_attribute('src'))
+		self.assertEqual(URL_BLOB + '/services/thumb/phid/%d/dim/152x108/crop/1/' % ID_TOUR_IMAGES[1], item_2.e('img').get_attribute('src'))
 		self.assertEqual('National Theatre in Sofia, Bulgaria'	, item_2.e('.photo-title').text)
 		self.assertEqual('2 August 2012'						, item_2.e('.date').text)
 		
@@ -1342,7 +1342,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.go(URL_BASE + self.ATTACH_URL + self.PROJECT_URL + '/tours/all')
 		
 		tour = self.e('#list li:nth-of-type(1)')
-		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_TOUR_IMAGES[1] + '/dim/290x210/crop/1/', tour.e('img').get_attribute('src'))
+		self.assertEqual(URL_BLOB + '/services/thumb/phid/%d/dim/290x210/crop/1/' % ID_TOUR_IMAGES[1], tour.e('img').get_attribute('src'))
 		
 		tour.e('.delete').click()
 		
