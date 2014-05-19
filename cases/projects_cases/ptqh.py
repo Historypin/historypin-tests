@@ -110,7 +110,7 @@ class Project_PTQH(HPTestCase):
 		
 		self.assertTitle("Pinning The Queen's history")
 		
-		self.assertIsInstance(self.e('param'), WebElement)
+		self.assertIsInstance(self.e('#jubilee'), WebElement)
 		self.assertEqual(u'The Queen\u2019s   State and Commonwealth visits\n1952 \u2013 2012'	, self.e('h2').text)
 		self.assertEqual(u'Click on a visit to see what’s been pinned in each country...'		, self.e('h4').text)
 		

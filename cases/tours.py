@@ -200,7 +200,7 @@ class Tours(HPTestCase):
 		
 		sleep(4)
 		
-		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_TOUR_IMAGES[0] + '/dim/152x108/crop/1/', self.e('.inn .ss-photo img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BLOB, ID_TOUR_IMAGES[0]), self.e('.inn .ss-photo img').get_attribute('src'))
 		
 		button = self.es('.inn .next-button')[1]
 		button.click()
@@ -210,7 +210,7 @@ class Tours(HPTestCase):
 		
 		step_maker = self.e('.step-maker')
 		
-		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_TOUR_IMAGES[0] + '/dim/152x108/crop/1/', step_maker.e('.step-img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BLOB, ID_TOUR_IMAGES[0]), step_maker.e('.step-img').get_attribute('src'))
 		
 		self.assertEqual('Bulgarian Army Theater - 2 February 2013', step_maker.e('input').get_attribute('value'))
 		self.assertEqual('This is a photo of the famous Bulgarian Army Theater .', step_maker.e('textarea').get_attribute('value'))
@@ -225,7 +225,7 @@ class Tours(HPTestCase):
 		sleep(3)
 		tour = self.e('#list li:nth-of-type(1)')
 		
-		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_TOUR_IMAGES[0] + '/dim/195x150/crop/1/', tour.e('.ss-photo img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/195x150/crop/1/' % (URL_BLOB, ID_TOUR_IMAGES[0]), tour.e('.ss-photo img').get_attribute('src'))
 		
 		tour.e('.delete').click()
 		

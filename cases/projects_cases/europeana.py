@@ -90,13 +90,9 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		self.assertIn(u'Search results for "Berlin":', site_cnt.e('.search-result').text)
 		
-		title_items = ["At the Brandenburg Gate", 'Escape from East to West Berlin', "At Long Last! We've been waiting for you"]
+		items = site_cnt.es('#list li')
 		
-		list_titles = site_cnt.e('#list')
-		titles = list_titles.es('li>p>a:nth-of-type(1)')
-		
-		for n in range(len(title_items)):
-			self.assertEqual(title_items[n], titles[n].text)
+		self.assertGreater(len(items), 20)
 		
 		next_link = site_cnt.e('#list .show-next')
 		self.assertEqual('%s/en/attach%s/tours/all/page/2/order/relevance/?search=Berlin' % (URL_BASE, self.PROJECT_URL), next_link.get_attribute('href'))
@@ -139,13 +135,9 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		self.assertTrue(radio_buttons[2].is_selected())
 		
-		title_items = ["Citizen's action group for German Unity", "Asylum seekers from Romania", "Caravans in Halberstadt"]
+		items = site_cnt.es('#list li')
 		
-		list_titles = site_cnt.e('#list')
-		titles = list_titles.es('li>p>a:nth-of-type(1)')
-		
-		for n in range(len(title_items)):
-			self.assertEqual(title_items[n], titles[n].text)
+		self.assertGreater(len(items), 20)
 		
 	
 	# @unittest.expectedFailure
@@ -171,13 +163,9 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		self.assertTrue(radio_buttons[1].is_selected())
 		
-		title_items = ["Citizen's action group for German Unity", "First meeting place of the new forum in Zeuthen", '"Wallpeckers" - Berlin Wall Graffiti, Berlin liberates itself!']
+		items = site_cnt.es('#list li')
 		
-		list_titles = site_cnt.e('#list')
-		titles = list_titles.es('li>p>a:nth-of-type(1)')
-		
-		for n in range(len(title_items)):
-			self.assertEqual(title_items[n], titles[n].text)
+		self.assertGreater(len(items), 20)
 		
 		self.e('.clear-search').click()
 		
@@ -215,13 +203,9 @@ class Project_Europeana(HPTestCase, Attach):
 		radio_buttons	= filter_by.es('input')
 		self.assertTrue(radio_buttons[1].is_selected())
 		
-		title_items = ["Green Trabant at Schlossstrasse subway station", "Live History", 'Visitors from the so-called "Valley of the clueless"']
+		items = site_cnt.es('#list li')
 		
-		list_titles = site_cnt.e('#list')
-		titles = list_titles.es('li>p>a:nth-of-type(1)')
-		
-		for n in range(len(title_items)):
-			self.assertEqual(title_items[n], titles[n].text)
+		self.assertGreater(len(items), 20)
 		
 	
 	# @unittest.expectedFailure
@@ -247,13 +231,9 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		self.assertTrue(radio_buttons[0].is_selected())
 		
-		title_items = ["First meeting place of the new forum in Zeuthen", "Citizen's action group for German Unity", "The wall is gone"]
+		items = site_cnt.es('#list li')
 		
-		list_titles = site_cnt.e('#list')
-		titles = list_titles.es('li>p>a:nth-of-type(1)')
-		
-		for n in range(len(title_items)):
-			self.assertEqual(title_items[n], titles[n].text)
+		self.assertGreater(len(items), 20)
 		
 		self.e('.clear-search').click()
 		
@@ -292,13 +272,9 @@ class Project_Europeana(HPTestCase, Attach):
 		radio_buttons	= filter_by.es('input')
 		self.assertTrue(radio_buttons[0].is_selected())
 		
-		title_items = ["Border Soldiers on High Alert at Checkpoint Charlie", "Bornholmer Strasse Border Crossing", 'Visitors from the so-called "Valley of the clueless"']
+		items = site_cnt.es('#list li')
 		
-		list_titles = site_cnt.e('#list')
-		titles = list_titles.es('li>p>a:nth-of-type(1)')
-		
-		for n in range(len(title_items)):
-			self.assertEqual(title_items[n], titles[n].text)
+		self.assertGreater(len(items), 20)
 	
 	# @unittest.expectedFailure
 	def test_search_no_results(self):

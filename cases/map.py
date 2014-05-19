@@ -240,7 +240,6 @@ class Map(HPTestCase):
 		sleep(2)
 		self.e('.list_tabs a[href$=stories_cnt]').click()
 		self.assertIn('tab:stories'		, '%s/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:stories/' % (URL_BASE, ID_MAP_ITEM))
-		self.assertEqual('Comments and suggestions (1)'	, dlg.e('.selected .tab').text)
 		
 		sidebar						= dlg.e('.info.scrollbarfix')
 		self.assertEqual('%s/services/thumb/phid/%d/dim/294x1000/' 	% (URL_BASE, ID_MAP_ITEM), sidebar.e('.side-img ').get_attribute('src'))
@@ -295,28 +294,28 @@ class Map(HPTestCase):
 		alert.accept()
 		self.assertNotIn('comment:nth-of-type(1)', self.e('#info-dialog').get_attribute('class'))
 	
-	@logged_in
-	@url('/map/index/#!/geo:42.688019,23.320069/zoom:20/dialog:%d/tab:details/' % ID_FAVOURITE_ITEM)  # TODO - should use another photo, because when I favourited it, then when on edit tour, it is possible not to be favourited
-	def test_favourite_item(self):
+	# @logged_in
+	# @url('/map/index/#!/geo:42.688019,23.320069/zoom:20/dialog:%d/tab:details/' % ID_FAVOURITE_ITEM)  # TODO - should use another photo, because when I favourited it, then when on edit tour, it is possible not to be favourited
+	# def test_favourite_item(self):
 		
-		favourite = self.e('.favourite')
-		sleep(2)
-		self.assertIn('ss-icon'			, favourite.e('span').get_attribute('class'))
-		self.assertIn('ss-heart'		, favourite.e('span').get_attribute('class'))
-		sleep(2)
-		favourite.click()
-		sleep(2)
-		self.assertIn('ss-icon'			, favourite.e('span').get_attribute('class'))
-		self.assertIn('ss-heart'		, favourite.e('span').get_attribute('class'))
-		sleep(2)
-		self.go('/attach/uid%d/photos/list/#/get/recent/show/favourites/' % ID_USER)
-		sleep(2)
-		favourite_item = self.e('.image-holder a[href*="%d"]' % ID_FAVOURITE_ITEM)
-		self.assertIsInstance(favourite_item, WebElement)
+	# 	favourite = self.e('.favourite')
+	# 	sleep(2)
+	# 	self.assertIn('ss-icon'			, favourite.e('span').get_attribute('class'))
+	# 	self.assertIn('ss-heart'		, favourite.e('span').get_attribute('class'))
+	# 	sleep(2)
+	# 	favourite.click()
+	# 	sleep(2)
+	# 	self.assertIn('ss-icon'			, favourite.e('span').get_attribute('class'))
+	# 	self.assertIn('ss-heart'		, favourite.e('span').get_attribute('class'))
+	# 	sleep(2)
+	# 	self.go('/attach/uid%d/photos/list/#/get/recent/show/favourites/' % ID_USER)
+	# 	sleep(2)
+	# 	favourite_item = self.e('.image-holder a[href*="%d"]' % ID_FAVOURITE_ITEM)
+	# 	self.assertIsInstance(favourite_item, WebElement)
 		
-		sleep(2)
-		self.hover(favourite_item.e('img'))
-		self.e('li:nth-of-type(2) .holder .icon').click()
+	# 	sleep(2)
+	# 	self.hover(favourite_item.e('img'))
+	# 	self.e('li:nth-of-type(2) .holder .icon').click()
 	
 	@url('/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:details/' % ID_MAP_ITEM)
 	def test_dialog_streetview(self):
