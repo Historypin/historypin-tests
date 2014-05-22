@@ -72,11 +72,12 @@ class Collections(HPTestCase):
 		self.assertEqual('Slide Show'										, button.text)
 		
 		collection_view = [
-			['geo:42.694709,23.329037/zoom:15/dialog:%d'		% ID_COLLECTION_IMAGES[0], '/%d/' % ID_COLLECTION_IMAGES[0], '2 February 2013, from Gabriela Ananieva'	, '/%d' % ID_USER],
+			['geo:42.694709,23.329037/zoom:15/dialog:%d'	% ID_COLLECTION_IMAGES[0], '/%d/' % ID_COLLECTION_IMAGES[0], '2 February 2013, from Gabriela Ananieva'	, '/%d' % ID_USER],
 			['geo:42.693738,23.326101/zoom:15/dialog:%d'	% ID_COLLECTION_IMAGES[1], '/%d/' % ID_COLLECTION_IMAGES[1], '2 August 2012, from Gabss'				, '/%d' % ID_USER_VIEW],
 		]
 		
 		item = self.es('#list_view .list li')
+		
 		for n in range(len(collection_view)):
 			i = collection_view[n]
 			self.assertEqual(URL_BASE + '/map/#!/' + i[0] + '/tab:details/', item[n].e('a.link-image').get_attribute('href'))
@@ -156,7 +157,7 @@ class Collections(HPTestCase):
 		
 		sleep(4)
 		
-		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_COLLECTION_IMAGES[0] + '/dim/152x108/crop/1/', self.e('.inn .ss-photo img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BLOB, ID_COLLECTION_IMAGES[0]), self.e('.inn .ss-photo img').get_attribute('src'))
 		
 		button = self.es('.inn .next-button')[1]
 		button.click()
@@ -166,7 +167,7 @@ class Collections(HPTestCase):
 		
 		step_maker = self.e('#tour-step3')
 		
-		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_COLLECTION_IMAGES[0] + '/dim/152x108/crop/1/', step_maker.e('.image-container img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BLOB, ID_COLLECTION_IMAGES[0]), step_maker.e('.image-container img').get_attribute('src'))
 		
 		publish = self.es('.next-button.done')[1]
 		self.assertEqual('Publish', publish.e('span').text)
@@ -178,7 +179,7 @@ class Collections(HPTestCase):
 		sleep(3)
 		tour = self.e('#list li:nth-of-type(1)')
 		
-		self.assertEqual(URL_BLOB + '/services/thumb/phid/' + ID_COLLECTION_IMAGES[0] + '/dim/195x150/crop/1/', tour.e('.ss-photo img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/195x150/crop/1/' % (URL_BLOB, ID_COLLECTION_IMAGES[0]), tour.e('.ss-photo img').get_attribute('src'))
 		
 		tour.e('.delete').click()
 		

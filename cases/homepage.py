@@ -140,7 +140,7 @@ class Homepage(HPTestCase):
 	@url('/')
 	def test_projects(self):
 	
-		listing		= self.e('.listing .w320')
+		listing = self.e('.listing .w320')
 		self.assertIsInstance(listing.e('h2'), WebElement)
 		self.assertIsInstance(listing.e('p'), WebElement)
 		self.assertIsInstance(listing.e('img'), WebElement)

@@ -1102,7 +1102,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual(u'Relive the Baltic Way – Pin yourself on the map', site_cnt.e('h1').text)
 		self.assertIn('Relive the Baltic Way online.', site_cnt.e('h1 + p').text)
 		
-		europeana_link	= URL_BASE + '/en' + self.PROJECT_URL
+		europeana_link	= '%s/en%s' % (URL_BASE, self.PROJECT_URL)
 		
 		links			= site_cnt.es('.page-top > a')
 		

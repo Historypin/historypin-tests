@@ -30,9 +30,9 @@ class Project_AsianPacific(HPTestCase, Attach):
 		self.assertIn('Few sites associated with Asian Pacific Islander (API) American history and culture have been recognized as landmarks', site_cnt.e('.main_description').text)
 		
 		self.assertEqual('Pin your memories', site_cnt.e('.right.next-button span').text)
-		self.assertEqual(URL_BASE + self.PROJECT_URL + '/upload/', site_cnt.e('.right.next-button').get_attribute('href'))
+		self.assertEqual('%s%s/upload/' % (URL_BASE, self.PROJECT_URL), site_cnt.e('.right.next-button').get_attribute('href'))
 		
-		self.assertEqual(URL_BASE + '/attach%s/map/index/' % self.PROJECT_URL, self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('%s/attach%s/map/index/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 		
 		# TODO Add links when they're provided
 		

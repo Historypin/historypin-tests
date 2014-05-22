@@ -28,7 +28,7 @@ class Project_Chevy(HPTestCase, Attach):
 		self.assertIn(u'Since the first Chevrolet car appeared on our streets in 1911, Chevys have been a massive part of our culture.', site_cnt.e('.main_description').text)
 		
 		chevy_channel = site_cnt.e('.page-top a')
-		self.assertEqual(URL_BASE + '/channels/view/id/28802/'	, chevy_channel.get_attribute('href'))
+		self.assertEqual('%s/channels/view/id/28802/' % URL_BASE, chevy_channel.get_attribute('href'))
 		
 		img_link	= '%s/resources/images/webapps/chevy/' % URL_BASE
 		

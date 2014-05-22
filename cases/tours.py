@@ -135,7 +135,7 @@ class Tours(HPTestCase):
 		next_button		= self.e('.next-button.right')
 		prev_button		= self.e('.next-button.left')
 		thumbs			= self.es('.step-slider li')
-		# marker_img		= self.es('.hp-marker-img')
+		# marker_img	= self.es('.hp-marker-img')
 		
 		self.hover(thumbs[0])
 		tooltip			= self.e('#tips')
@@ -350,12 +350,12 @@ class Tours(HPTestCase):
 		self.assertEqual('Drag and drop the content to reorder them.', step_cnt.e('p').text)
 		
 		item_1 = step_cnt.e('#sortable > li:nth-of-type(1)')
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/152x108/crop/1/' % ID_TOUR_IMAGES[0], item_1.e('a img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BASE, ID_TOUR_IMAGES[0]), item_1.e('a img').get_attribute('src'))
 		self.assertIsInstance(item_1.e('.photo-number')	, WebElement)
 		self.assertIsInstance(item_1.e('.actions')		, WebElement)
 		
 		item_2 = step_cnt.e('#sortable > li:nth-of-type(2)')
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/152x108/crop/1/' % ID_TOUR_IMAGES[1], item_2.e('a img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BASE, ID_TOUR_IMAGES[1]), item_2.e('a img').get_attribute('src'))
 		self.assertIsInstance(item_2.e('.photo-number')	, WebElement)
 		self.assertIsInstance(item_2.e('.actions')		, WebElement)
 		
@@ -363,7 +363,7 @@ class Tours(HPTestCase):
 		self.assertEqual('Describe Step:', step.e('h4').text)
 		
 		image_cnt = step.e('.image-container')
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/152x108/crop/1/' % ID_TOUR_IMAGES[0], image_cnt.e('img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BASE, ID_TOUR_IMAGES[0]), image_cnt.e('img').get_attribute('src'))
 		self.assertIsInstance(image_cnt.e('.step-number'), WebElement)
 		self.assertEqual('1', image_cnt.e('.step-number').text)
 		
@@ -388,7 +388,7 @@ class Tours(HPTestCase):
 		self.assertEqual('Describe Step:', step.e('h4').text)
 		
 		image_cnt = step.e('.image-container')
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/152x108/crop/1/' % ID_TOUR_IMAGES[1], image_cnt.e('img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BASE, ID_TOUR_IMAGES[1]), image_cnt.e('img').get_attribute('src'))
 		self.assertIsInstance(image_cnt.e('.step-number'), WebElement)
 		self.assertEqual('2', image_cnt.e('.step-number').text)
 		
@@ -411,7 +411,7 @@ class Tours(HPTestCase):
 		self.assertEqual('Describe Step:', step.e('h4').text)
 		
 		image_cnt = step.e('.image-container')
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/152x108/crop/1/' % ID_TOUR_IMAGES[1], image_cnt.e('img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BASE, ID_TOUR_IMAGES[1]), image_cnt.e('img').get_attribute('src'))
 		self.assertIsInstance(image_cnt.e('.step-number'), WebElement)
 		self.assertEqual('2', image_cnt.e('.step-number').text)
 		
