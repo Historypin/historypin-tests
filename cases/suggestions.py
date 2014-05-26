@@ -68,6 +68,8 @@ class Suggestions(HPTestCase):
 		self.e('.write_story').send_keys('I think this is the right specific date')
 		self.e('.apply').click()
 		
+		sleep(4)
+		
 		sp_date_suggestion = ('.stories_list .suggestion.date')
 		self.assertEqual(self.e('#photo-side .photo-date').text		, sp_date_suggestion.e('.ba_from .value').text)
 		self.assertEqual('3 September 2012'							, sp_date_suggestion.e('.ba_to .value').text)
@@ -107,6 +109,8 @@ class Suggestions(HPTestCase):
 		self.e('.write_story').send_keys('I think this is the right timeframe')
 		self.e('.apply').click()
 		
+		sleep(4)
+		
 		date_timeframe_suggestion = ('.stories_list .suggestion.date')
 		self.assertEqual(self.e('#photo-side .photo-date').text	, date_timeframe_suggestion.e('.ba_from .value').text)
 		self.assertEqual('2012 - 2013'							, date_timeframe_suggestion.e('.ba_to .value').text)
@@ -125,18 +129,42 @@ class Suggestions(HPTestCase):
 		# TODO refactor this when suggestions are on the map
 		pass
 	
-	@url('/%d' % ID_MAP_ITEM)
+	@url('dialog/%d/tab:write-story/suggest:keywords/' % ID_MAP_ITEM)
 	def test_tags_suggestion(self):
-		# TODO
-		# open link /tab:write-story/suggest:keywords/
-		# check if tags option is selected
-		# clear all tags and type some new ones
-		# click "publish"
-		# agree the alert
-		# enter a description
-		# click publish
-		# assert the comment section in the dialog
-		# delete the suggestion
+		
+		tags_option = self.e('#suggestion_field option:nth-of-type(4)')
+		self.assertTrue(tags_option.is_selected())
+		self.assertEqual('Tags', tags_option.text)
+		
+		tags_suggestion = self.e('#suggestion_keywords textarea')
+		tags_suggestion.clear()
+		
+		tags_suggestion.send_keys('theater, Sofia')
+		
+		self.e('.apply').click()
+		
+		alert = self.browser.switch_to_alert()
+		alert.accept()
+		
+		self.e('.write_story').send_keys('I think these are the correct tags')
+		self.e('.apply').click()
+		
+		sleep(4)
+		
+		tags_suggestion = ('.stories_list .suggestion.date')
+		self.assertEqual('Palace Hotel, Call Building, ruin, destruction,San Francisco Earthquake, 1906 San Francisco earthquake, sanfranciscoearthquake, 1906 earthquake, earthquake, earthquakes', tags_suggestion.e('.ba_from .value').text)
+		self.assertEqual('theater, Sofia'						, tags_suggestion.e('.ba_to .value').text)
+		self.assertEqual('I think these are the correct tags'	, tags_suggestion.e('.story_cnt').text)
+		
+		self.assertTrue(self.e('.suggestion-accept'), WebElement)
+		self.assertTrue(self.e('.icon.delete'), WebElement)
+		
+		self.e('.icon.delete').click()
+		
+		alert = self.browser.switch_to_alert()
+		alert.accept()
+		
+		self.assertFalse(tags_suggestion, WebElement)
 		
 		# TODO refactor this when suggestions are on the map
 		pass
