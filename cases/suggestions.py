@@ -67,7 +67,6 @@ class Suggestions(HPTestCase):
 		
 		self.e('.write_story').send_keys('I think this is the right specific date')
 		self.e('.apply').click()
-		# TODO
 		
 		sp_date_suggestion = ('.stories_list .suggestion.date')
 		self.assertEqual(self.e('#photo-side .photo-date').text		, sp_date_suggestion.e('.ba_from .value').text)  # to compare if the title is equal to photo title
