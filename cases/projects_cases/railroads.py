@@ -174,7 +174,7 @@ class Project_Railroads(HPTestCase, Attach):
 		
 		
 	def test_explore(self):
-		self.go(self.PROJECT_URL + '/explore/#|map/')
+		self.go('%s/explore/#|map/' % self.PROJECT_URL)
 		
 		self.assertTitle('Railroads')
 		

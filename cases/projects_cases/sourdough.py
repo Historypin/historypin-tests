@@ -85,7 +85,7 @@ class Project_Sourdough(HPTestCase, Attach):
 		
 	
 	def test_about(self):
-		self.go(self.PROJECT_URL + '/about/')
+		self.go('%s/about/' % self.PROJECT_URL)
 		
 		self.assertTitle('Sourdough and Rye')
 		
@@ -111,14 +111,14 @@ class Project_Sourdough(HPTestCase, Attach):
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/sandr/bread.jpg', site_cnt.e('#about-video').get_attribute('src'))
 	
 	def test_explore(self):
-		self.go(self.PROJECT_URL + '/explore#|map/')
+		self.go('%s/explore#|map/' % self.PROJECT_URL)
 		
 		self.assertTitle('Sourdough and Rye')
 		self.assertEqual('%s/attach%s/map/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 		
 	
 	def test_events(self):
-		self.go(self.PROJECT_URL + '/events/')
+		self.go('%s/events/' % self.PROJECT_URL)
 		
 		site_cnt	= self.e('#site-content')
 		touts		= site_cnt.e('.image-links')
@@ -130,7 +130,7 @@ class Project_Sourdough(HPTestCase, Attach):
 		touts_items = [
 			['http://www.eventbrite.com/e/sourdough-rye-launch-party-tickets-10339346263', 'tout1_image', 'Sourdough & Rye Launch Party', 'Come out to celebrate the launch of Sourdough & Rye'],
 			['http://sourdoughandryehistory.org/?p=143', 'tout2_image', 'Sharing and Exploring the Life of Seymour Fromer'			, 'Share your photos, stories, and videos related to Seymour Fromer'],
-			[URL_BASE + '/project/43-sourdough-and-rye/events/#', 'tout3_image', 'Run your own event'	, 'More information coming soon!'],
+			['%s/project/43-sourdough-and-rye/events/#' % URL_BASE, 'tout3_image', 'Run your own event'	, 'More information coming soon!'],
 		]
 		
 		for n in range(len(touts_items)):

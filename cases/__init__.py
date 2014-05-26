@@ -12,6 +12,8 @@ from projects import Projects
 
 from projects_cases.attach import Attach
 
+from suggestions import Suggestions
+
 from projects_cases.allourstories import Project_AllOurStories
 from projects_cases.asian_pacific import Project_AsianPacific
 from projects_cases.balboa import Project_Balboa

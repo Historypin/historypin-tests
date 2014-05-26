@@ -18,7 +18,7 @@ class Project_PTQH(HPTestCase):
 			['%s/visits/' % self.PROJECT_URL	, 'Visits'],
 			['%s/map/' % self.PROJECT_URL		, 'Map'],
 			['%s/pin/' % self.PROJECT_URL		, 'Pin'],
-			['%s/about/' % self.PROJECT_URL	, 'About'],
+			['%s/about/' % self.PROJECT_URL		, 'About'],
 		]
 		
 		header = self.e('.map_header')

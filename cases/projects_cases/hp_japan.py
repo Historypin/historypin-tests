@@ -63,7 +63,7 @@ class Project_HPJapan(HPTestCase, Attach):
 		icon_tout2 = site_cnt.e('#icon-tout-1 a')
 		
 		self.assertEqual('http://www.historypin.com/channels/'		, icon_tout2.get_attribute('href'))
-		self.assertEqual(u'チャンネルを探索する（英語）'	, icon_tout2.text)
+		self.assertEqual(u'Explore Historypin Channels in English'	, icon_tout2.text)
 		self.assertIn('ss-icon'		, icon_tout2.e('span').get_attribute('class'))
 		self.assertIn('ss-search'	, icon_tout2.e('span').get_attribute('class'))
 		

@@ -57,7 +57,7 @@ class Community(HPTestCase):
 	@url('/community/schools')
 	def test_sidebar(self):
 		
-		link_community = URL_BASE + '/community'
+		link_community = '%s/community' % URL_BASE
 		
 		sidebar = [
 			['Community Homepage'						, link_community, 'Lots of news, ideas, and info for Historypinners round the world'],
@@ -72,7 +72,7 @@ class Community(HPTestCase):
 			['School Case Studies'						, '%s/schools-case-studies'			% link_community, 'Some examples of schools around the word using Historypin'],
 			['Local Project Case Studies'				, '%s/localprojects-case-studies' 	% link_community, 'Some examples of local projects around the world using Historypin'],
 			['Support Us'								, '%s/donate/'						% URL_BASE		, u'Donate to Friends of Historypin and you’ll be helping support Historypin Community and Education Programmes.\n\nRegistered Charity Number 1134546'],
-			['Blog', 'http://blog.historypin.com/', 'Find out the latest community, site development, partnership and Challenges news'],
+			['Blog'										, 'http://blog.historypin.com/'						, 'Find out the latest community, site development, partnership and Challenges news'],
 			['Contact'									, '%s/contact-us'					% URL_BASE		, 'For more information contact Rebekkah Abraham, Historypin Content Manager on rebekkah.abraham@wearewhatwedo.org.'],
 		]
 		
