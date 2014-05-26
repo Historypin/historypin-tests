@@ -151,7 +151,7 @@ class Suggestions(HPTestCase):
 		
 		sleep(4)
 		
-		tags_suggestion = ('.stories_list .suggestion.date')
+		tags_suggestion = ('.stories_list .suggestion.tags')
 		self.assertEqual('Palace Hotel, Call Building, ruin, destruction,San Francisco Earthquake, 1906 San Francisco earthquake, sanfranciscoearthquake, 1906 earthquake, earthquake, earthquakes', tags_suggestion.e('.ba_from .value').text)
 		self.assertEqual('theater, Sofia'						, tags_suggestion.e('.ba_to .value').text)
 		self.assertEqual('I think these are the correct tags'	, tags_suggestion.e('.story_cnt').text)
@@ -169,22 +169,42 @@ class Suggestions(HPTestCase):
 		# TODO refactor this when suggestions are on the map
 		pass
 	
-	@url('/%d' % ID_MAP_ITEM)
+	@url('dialog/%d/tab:write-story/suggest:location/' % ID_MAP_ITEM)
 	def test_location_suggestion(self):
 		# TODO
-		# open link /tab:suggestion-location/suggest:location/
-		# assert map
-		# assert current address
-		# assert GO, cancel and save
-		# send keys to new address, e.g. bulevard "Knyaginya Maria Luiza" 9-11, 1000 Sofia, Bulgaria
-		# click GO
-		# click Save
-		# assert the new address in the location suggestion section
-		# click publish
-		# accept the allert
-		# enter a description
-		# check the suggestion section
-		# delete the suggestion
+		
+		location_suggestion = self.e('#suggestion-location_cnt')
+		location_suggestion.e('#location').send_keys('bulevard "Knyaginya Maria Luiza" 9-11, 1000 Sofia, Bulgaria')
+		
+		location_suggestion.e('#location_search').click()
+		location_suggestion.e('#location_save').click()
+		
+		self.assertEqual('bulevard "Knyaginya Maria Luiza" 9-11, 1000 Sofia, Bulgaria', self.e('.suggestion-value-geo-tags').text)
+		
+		self.e('.apply').click()
+		
+		alert = self.browser.switch_to_alert()
+		alert.accept()
+		
+		self.e('.write_story').send_keys('I think this is the correct location')
+		self.e('.apply').click()
+		
+		sleep(4)
+		
+		location_suggestion = ('.stories_list .suggestion.location')
+		self.assertEqual(self.e('#photo-side .photo-address').text	, location_suggestion.e('.ba_from .value').text)
+		self.assertEqual('theater, Sofia'							, location_suggestion.e('.ba_to .value').text)
+		self.assertEqual('I think this is the correct location'		, location_suggestion.e('.story_cnt').text)
+		
+		self.assertTrue(self.e('.suggestion-accept'), WebElement)
+		self.assertTrue(self.e('.icon.delete'), WebElement)
+		
+		self.e('.icon.delete').click()
+		
+		alert = self.browser.switch_to_alert()
+		alert.accept()
+		
+		self.assertFalse(location_suggestion, WebElement)
 		
 		# TODO refactor this when suggestions are on the map
 		pass
