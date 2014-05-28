@@ -96,7 +96,7 @@ class Project_HPJapan(HPTestCase, Attach):
 			self.assertEqual(i[0], footer_links[n].get_attribute('href'))
 			self.assertEqual(i[1], footer_links[n].text)
 	
-	@unittest.skipIf('historypin.com' in LINK_BASE, 'test will skip if the link base is historypin')
+	@unittest.skipIf('historypin.com' in LINK_BASE, 'test will skip if LINK_BASE is historypin')
 	def test_index(self):
 		self.go('/jp' + self.PROJECT_URL)
 		
@@ -155,7 +155,7 @@ class Project_HPJapan(HPTestCase, Attach):
 		self.__test_icon_touts()
 		self.__test_footer()
 	
-	@unittest.skipIf('historypin.com' in LINK_BASE, 'test will skip if the link base is historypin')
+	@unittest.skipIf('historypin.com' in LINK_BASE, 'test will skip if the LINK_BASE is historypin')
 	def test_explore(self):
 		self.go('/jp' + self.PROJECT_URL)
 		
