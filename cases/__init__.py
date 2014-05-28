@@ -46,6 +46,8 @@ from projects_cases.sandy_during import Project_During_Sandy
 from projects_cases.sandy_after import Project_After_Sandy
 from projects_cases.sourdough import Project_Sourdough
 
+from projects_cases.victorian_london import Project_VictorianLondon
+
 from projects_cases.yotb import Project_YOTB
 from projects_cases.yarra import Project_Yarra
 

@@ -416,8 +416,6 @@ class V6_Cases(HPTestCase):
 		self.assertEqual('g.k. Nadezhda 1, Sofia, Bulgaria', self.e('#search-location').get_attribute('value'))
 		
 		self.e('#btn-explore').click()
-		
-		
 	
 	@url('/en/explore/1989')
 	def test_project(self):

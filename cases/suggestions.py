@@ -231,14 +231,6 @@ class Suggestions(HPTestCase):
 		self.e('.apply').click()
 		
 		sleep(4)
-		# drag and drop the image with SV
-		# click Record position
-		# assert SV suggestion
-		# click publish
-		# accept the allert
-		# enter a description
-		# check the suggestion section
-		# delete the suggestion
 		
 		# TODO refactor this when suggestions are on the map
 		pass
