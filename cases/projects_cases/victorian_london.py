@@ -5,7 +5,7 @@ import os, sys
 
 class Project_VictorianLondon(HPTestCase):
 	
-	PROJECT_URL = '/en/explore/victorian-london/'
+	PROJECT_URL = '/en/explore/victorian-london'
 	
 	def test_index(self):
 		self.go(self.PROJECT_URL)
@@ -18,13 +18,13 @@ class Project_VictorianLondon(HPTestCase):
 		
 		projects_items = [
 				['Dreadful London'						, '/dreadful-london/'],
-				['London in the light'					, '/dreadful-london/'],
-				['A day in the life of the old London'	, '/dreadful-london/'],
+				['London in the light'					, '/london-in-the-light/'],
+				['A day in the life of the old London'	, '/old-london/'],
 		]
 		
 		project_section	= project_cnt.e('section')
 		h4s				= project_section.es('.item h4')
-		link_pr			= projects_section.es('.item a')
+		link_pr			= project_section.es('.item a')
 		
 		for n in range(len(projects_items)):
 			i = projects_items[n]
@@ -34,14 +34,14 @@ class Project_VictorianLondon(HPTestCase):
 		self.assertEqual('The Andrew W. Mellon Foundation', self.e('.partnership a').text)
 		
 		# TODO refactor this when there is text and links
-		pass
+		
 	
 	def test_about(self):
 		self.go(self.PROJECT_URL)
 		
 		self.e('.desc a').click()
 		
-		self.assertEqual('About', self.e('.about h3').text)
+		self.assertEqual('ABOUT', self.e('.about h3').text)
 		
 		self.e('.about a').click()
 		
