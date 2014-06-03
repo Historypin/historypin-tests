@@ -30,8 +30,8 @@ class Project_Sourdough(HPTestCase, Attach):
 		self.assertTitle('Sourdough and Rye | Home')
 		self.assertEqual('%s/projects/img/dim/1030x250/crop/1/image_id/193' % URL_BASE, self.e('#banner_images img').get_attribute('src'))
 		
-		site_cnt = self.e('#site-content')
-		about_link = site_cnt.e('.w23 a')
+		site_cnt	= self.e('#site-content')
+		about_link	= site_cnt.e('.w23 a')
 		
 		self.assertEqual('%s%s/about' % (URL_BASE, self.PROJECT_URL), about_link.get_attribute('href'))
 		
@@ -128,9 +128,9 @@ class Project_Sourdough(HPTestCase, Attach):
 		paragraphs	= touts.es('p')
 		
 		touts_items = [
-			['http://www.eventbrite.com/e/sourdough-rye-launch-party-tickets-10339346263', 'tout1_image', 'Sourdough & Rye Launch Party', 'Come out to celebrate the launch of Sourdough & Rye'],
+			['https://www.facebook.com/events/1434698473437922/1450493995191703/?notif_t=plan_mall_activity', 'tout1_image', 'Thursday Night at the Jewseum: Rise', 'On Thursday June 5th, we will be at the Contemporary Jewish Museum to host a pinning station booth'],
 			['http://sourdoughandryehistory.org/?p=143', 'tout2_image', 'Sharing and Exploring the Life of Seymour Fromer'			, 'Share your photos, stories, and videos related to Seymour Fromer'],
-			['%s/project/43-sourdough-and-rye/events/#' % URL_BASE, 'tout3_image', 'Run your own event'	, 'More information coming soon!'],
+			['http://www.jewishlearningworks.org/library/adult-events', 'tout3_image', 'Jews, Food, and Family in Twentieth-Century San Francisco'	, 'We will also be at the Jewish Community Library on Thursday'],
 		]
 		
 		for n in range(len(touts_items)):
