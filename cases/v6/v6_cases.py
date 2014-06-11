@@ -126,21 +126,22 @@ class V6_Cases(HPTestCase):
 		pass
 	
 	@logged_in
-	@url('/en/explore/oreo/pin/231065')
+	@url('/en/explore/oreo/pin/225263')
 	def test_edit_item(self):
 		
 		edit_icon = self.e('.bookmarks a:nth-of-type(3)')
-		self.assertEqual('%s/upload-item/pin/phid/231065/edit/1/?from=/en/explore/oreo/pin/231065' % URL_BASE, edit_icon.get_attribute('href'))
+		self.assertEqual('%s/upload-audio/pin/phid/225263/edit/1/?from=/en/explore/oreo/pin/225263' % URL_BASE, edit_icon.get_attribute('href'))
 		self.assertEqual('Edit', edit_icon.text)
 		
 		edit_icon.click()
 		
-		self.assertEqual('%s/upload-item/pin/phid/231065/edit/1/?from=/en/explore/oreo/pin/231065' % URL_BASE, self.browser.current_url)
+		self.assertEqual('%s/upload-audio/pin/phid/225263/edit/1/?from=/en/explore/oreo/pin/225263' % URL_BASE, self.browser.current_url)
 		
 		self.e('#photo_pin').click()
 		
-		self.assertEqual('%s/en/explore/oreo/pin/231065/' % URL_BASE, self.browser.current_url)
-		self.assertEqual('http://www.historypin.com/services/thumb/phid/231065/dim/600x600/quality/80/', self.e('.content.ng-scope img').get_attribute('src'))
+		sleep(5)
+		self.assertEqual('%s/en/explore/oreo/pin/225263/' % URL_BASE, self.browser.current_url)
+		self.assertEqual('http://www.historypin.com/services/thumb/phid/225263/dim/600x600/quality/80/', self.e('.content.ng-scope img').get_attribute('src'))
 		self.assertIsInstance(self.e('.bookmarks'), WebElement)
 	
 	@url('/en/explore/oreo/pin/225259')
@@ -243,7 +244,7 @@ class V6_Cases(HPTestCase):
 	@url('/en/explore/oreo/pin/223343/geo/43.24369,23.956892,6')
 	def test_text_pin(self):
 		
-		self.assertEqual('Test Project for QA', self.e('h3').text)
+		self.assertEqual('Project for Quality Assurance', self.e('h3').text)
 		self.assertEqual('5 May 2012', self.e('.tooltip.arrow-up').text)
 		
 		self.assertEqual('ulitsa "Okolovrasten pat", 1756 Sofia, Bulgaria', self.e('.tooltip.arrow-down').text)
@@ -311,11 +312,11 @@ class V6_Cases(HPTestCase):
 		self.assertEqual('PROJECT LOCATION'			, h4s[3].text)
 		
 		admins_cnt = [
-			['/867/'	, '/channels/img/867/logo/1/dim/50x50/crop/1/'		, 'Karamfil', 'Project Admin'],
-			['/33283/'	, '/channels/img/33283/logo/1/dim/50x50/crop/1/'	, 'Gabss', 'Project Admin'],
-			['/35019/'	, '/resources/explore/images/default-avatar.jpg'	, 'Gabriela Ananieva', 'Project Admin'],
-			['/47515/'	, '/resources/explore/images/default-avatar.jpg'	, 'n.p.slavov', 'Project Admin'],
-			['/49127/'	, '/channels/img/49127/logo/1/dim/50x50/crop/1/'	, 'Rawr', 'Project Admin'],
+			['/867/'	, '/channels/img/867/logo/1/dim/50x50/crop/1/'		, 'Karamfil'			, 'Project Admin'],
+			['/33283/'	, '/channels/img/33283/logo/1/dim/50x50/crop/1/'	, 'Gabss'				, 'Project Admin'],
+			['/35019/'	, '/resources/explore/images/default-avatar.jpg'	, 'Gabriela Ananieva'	, 'Project Admin'],
+			['/47515/'	, '/resources/explore/images/default-avatar.jpg'	, 'n.p.slavov'			, 'Project Admin'],
+			['/49127/'	, '/channels/img/49127/logo/1/dim/50x50/crop/1/'	, 'Rawr'				, 'Project Admin'],
 		]
 		
 		admins		= project_sidebar.e('.project-admins')

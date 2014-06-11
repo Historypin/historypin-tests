@@ -724,6 +724,16 @@ class Project_Europeana(HPTestCase, Attach):
 			self.assertEqual(i[0], footer_links[n].get_attribute('href'))
 			self.assertEqual(i[1], footer_links[n].text)
 		
+	def test_explore_button(self):
+		self.go('http://www.europeana1989.eu/en/')
+		
+		self.e('.w2 .button.big').click()
+		
+		site_cnt	= self.e('#site-content')
+		activity	= site_cnt.e('#activity')
+		self.assertIsInstance(activity, WebElement)
+		
+		self.assertIsInstance(self.e('.right.next-button.button'), WebElement)
 	
 	def test_about_en(self):
 		self.go('%s/en%s/about/' % (URL_BASE, self.PROJECT_URL))
