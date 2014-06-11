@@ -22,12 +22,12 @@ class Projects(HPTestCase):
 			['%d-sandy'			% ID_PROJECTS[7], "Hurricane Sandy"						, "Record, Remember, Rebuild: How have communities in the US and Caribbean been affected by Sandy?"			, '%d' % ID_PROJECTS_IMAGES[7]],
 			['%d-1989'			% ID_PROJECTS[8], "Europeana 1989"						, "Share your stories, photographs and videos about the Fall of the Iron Curtain."							, '%d' % ID_PROJECTS_IMAGES[8]],
 			['%d-japan-project'	% ID_PROJECTS[9], u"Historypin 日本上陸！"					, u"日本での展開について詳しく知る"																					, '%d' % ID_PROJECTS_IMAGES[9]],
-			['%d-queens' % ID_PROJECTS[10]		, 'Queens: Neighborhood Stories'		, 'Share the photos, videos, audio clips and stories that tell the history of your neighborhood.'			, '%d' % ID_PROJECTS_IMAGES[10]],
+			['%d-queens'		% ID_PROJECTS[10], 'Queens: Neighborhood Stories'		, 'Share the photos, videos, audio clips and stories that tell the history of your neighborhood.'			, '%d' % ID_PROJECTS_IMAGES[10]],
 			['%d-putting-art-on-the-map' % ID_PROJECTS[11], 'Putting Art on the Map'	, 'Explore, curate and enrich the Imperial War Museums\' First World War artworks.'							, '%d' % ID_PROJECTS_IMAGES[11]],
-			['%d-railroads' % ID_PROJECTS[12]			, 'Living With The Railroads'	, 'Help build a shared collection of life along the railroads.'												, '%d' % ID_PROJECTS_IMAGES[12]],
-			['%d-sourdough-and-rye' % ID_PROJECTS[13]	, 'Sourdough and Rye'			, 'A place to share Bay Area Jewish history'																, '%d' % ID_PROJECTS_IMAGES[13]],
-			['%d-all-our-stories' % ID_PROJECTS[14]		, 'All Our Stories'				, 'Explore an archive of community projects funded by the Heritage Lottery Fund.'							, '%d' % ID_PROJECTS_IMAGES[14]],
-			['%d-yarra' % ID_PROJECTS[15]				, 'Yarra Ranges: Changing Places', "Celebrate the history of Yarra Ranges' high streets by sharing your photos and memories."				, '%d' % ID_PROJECTS_IMAGES[15]],
+			['%d-railroads'			% ID_PROJECTS[12]	, 'Living With The Railroads'	, 'Help build a shared collection of life along the railroads.'												, '%d' % ID_PROJECTS_IMAGES[12]],
+			['%d-sourdough-and-rye'	% ID_PROJECTS[13]	, 'Sourdough and Rye'			, 'A place to share Bay Area Jewish history'																, '%d' % ID_PROJECTS_IMAGES[13]],
+			['%d-all-our-stories'	% ID_PROJECTS[14]	, 'All Our Stories'				, 'Explore an archive of community projects funded by the Heritage Lottery Fund.'							, '%d' % ID_PROJECTS_IMAGES[14]],
+			['%d-yarra'				% ID_PROJECTS[15]	, 'Yarra Ranges: Changing Places', "Celebrate the history of Yarra Ranges' high streets by sharing your photos and memories."				, '%d' % ID_PROJECTS_IMAGES[15]],
 			['%d-east-at-main-street' % ID_PROJECTS[16]	, 'East at Main Street'			, u"Asian & Pacific Islander Americans mapping their history."												, '%d' % ID_PROJECTS_IMAGES[16]],
 		]
 		

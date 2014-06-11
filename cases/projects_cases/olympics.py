@@ -57,5 +57,5 @@ class Project_Olympics(HPTestCase, Attach):
 		self.assertIsInstance(self.e('.olympics_dialog'), WebElement)
 		self.e('.ui-dialog-titlebar-close.ui-corner-all').click()
 		
-		self.assertEqual(URL_BASE + '/attach/project/3-hp-olympics/map/index/', self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('%s/attach/project/3-hp-olympics/map/index/' % URL_BASE, self.e('#embed-frame').get_attribute('src'))
 	

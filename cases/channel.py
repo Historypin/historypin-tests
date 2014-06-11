@@ -1648,6 +1648,55 @@ class Channel(HPTestCase):
 		location = place.e('#location')
 		self.assertEqual('ulitsa "Georgi. S. Rakovski" 98, 1000 Sofia, Bulgaria', location.get_attribute('value'))
 	
+	@unittest.expectedFailure
+	@logged_in
+	@url('/channels/view/%d/' % ID_USER)
+	def test_create_project_section(self):
+		
+		projects_section	= self.e('#user_projects')
+		projects_list		= projects_section.e('.projects-list')
+		project_first		= projects_list.e('li:nth-of-type(1)')
+		create_proj_button	= projects_section.e('h3+a')
+		
+		self.assertEqual('Projects (1)', projects_section.e('h3').text)
+		self.assertEqual('%s/projects/img/pid/30/type/project_image,banner,logo/dim/150x80/crop/1/' % URL_BASE, project_first.e('img').get_attribute('src'))
+		self.assertEqual('Project for Quality Assurance', project_first.e('h4').text)
+		self.assertEqual('%s/project/54/channels/register_hub_user/' % URL_BASE, create_proj_button.get_attribute('href'))
+		self.assertEqual('Project Admin', project_first.e('h5').text)
+		self.assertEqual('%s/en/explore/oreo/' % URL_BASE, project_first.e('a:nth-of-type(1)').get_attribute('href'))
+		self.assertEqual('%s/project/54/channels/delete_project/30/' % URL_BASE, project_first.e('a:nth-of-type(2)').get_attribute('href'))
+		
+		create_proj_button.click()
+		
+		self.go('/channels/view/%d/' % ID_USER)
+		
+		projects_section	= self.e('#user_projects')
+		projects_list		= projects_section.e('.projects-list')
+		project_second		= projects_list.e('li:nth-of-type(2)')
+		create_proj_button	= projects_section.e('h3+a')
+		
+		self.assertEqual('Projects (2)', projects_section.e('h3').text)
+		self.assertEqual('Project Admin', project_second.e('h5').text)
+		self.assertEqual('%s/en/explore/hub-project/' % URL_BASE, project_second.e('a:nth-of-type(1)').get_attribute('href'))
+		
+		project_second.e('a:nth-of-type(2)').click()
+		
+		alert = self.browser.switch_to_alert()
+		alert.accept()
+		
+		self.browser.refresh()
+		
+		projects_section	= self.e('#user_projects')
+		projects_list		= projects_section.e('.projects-list')
+		project_second		= projects_list.e('li:nth-of-type(2)')
+		
+		self.assertEqual('Projects (1)', projects_section.e('h3').text)
+		self.assertFalse(project_second, WebElement)
+		
+		# TODO - update this test when there are designs
+		# assert that there is no longer 2-nd project (in the future, the counter will change without refresh needed)
+		pass
+	
 	@logged_in
 	@url('/upload/confirm/edit/1')
 	def test_confirm_page(self):

@@ -11,7 +11,7 @@ class Project_FieldRecordings(HPTestCase, Attach):
 	]
 	
 	test_attach_tabs	= Attach.attach_tabs
-	# test_tab_map		= Attach.attach_tab_map  #TODO fix this - this won't work because there is no content to be clicked on the map
+	test_tab_map		= Attach.attach_tab_map  # TODO fix this - this won't work because there is no content to be clicked on the map
 	
 	# TODO add tabs, if there is one and when they are added
 	

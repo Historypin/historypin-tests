@@ -23,7 +23,7 @@ class Project_AllOurStories(HPTestCase, Attach):
 		
 		self.assertTitle('All Our Stories | Home')
 		
-		self.assertEqual(URL_BASE + '/projects/img/dim/1000x250/crop/1/image_id/183', self.e('#banner_images img').get_attribute('src'))
+		self.assertEqual('%s/projects/img/dim/1000x250/crop/1/image_id/183' % URL_BASE, self.e('#banner_images img').get_attribute('src'))
 		
 		site_cnt = self.e('#site-content')
 		desc_main = site_cnt.e('.main_description')
@@ -69,7 +69,7 @@ class Project_AllOurStories(HPTestCase, Attach):
 	def test_projects(self):
 		self.go('%s/channels/' % self.PROJECT_URL)
 		
-		self.assertTitle('All Our Stories | Featured Channels')
+		self.assertTitle('All Our Stories | Featured Channel')
 		
 		button_home = self.e('.button-wrapper a')
 		self.assertEqual('%s%s/' % (URL_BASE, self.PROJECT_URL), button_home.get_attribute('href'))

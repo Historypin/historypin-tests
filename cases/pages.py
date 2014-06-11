@@ -42,11 +42,11 @@ class Pages(HPTestCase):
 		self.assertEqual('Contact', self.e('.section h1.title').text)
 		
 		content = [
-			['General enquiries, technical enquiries, content enquiries', 'historypin@wearewhatwedo.org\n+44 (0)20 7148 7666\n71 St John Street\nLondon\nEC1M 4NJ\nUnited Kingdom', 'mailto:historypin@wearewhatwedo.org'],
+			['General enquiries, technical enquiries, content enquiries', 'historypin@wearewhatwedo.org\n+44 (0)20 7148 7672\n71 St John Street\nLondon\nEC1M 4NJ\nUnited Kingdom', 'mailto:historypin@wearewhatwedo.org'],
 			['Media', 'Rebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@wearewhatwedo.org'],
 			['Schools, local projects and volunteers', 'Rebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@wearewhatwedo.org'],
 			['Library, archive and museum partnerships', 'Rebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@wearewhatwedo.org'],
-			['Web', 'Alex Stanhope\nalex.stanhope@wearewhatwedo.org\n+44 (0)20 7148 7666', 'mailto:alex.stanhope@wearewhatwedo.org'],
+			['Web', 'Rebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@wearewhatwedo.org'],
 			['Corporate Partnerships', 'Nick Stanhope\nnick.stanhope@wearewhatwedo.org\n+44 (0)20 7148 7667', 'mailto:nick.stanhope@wearewhatwedo.org'],
 		]
 		

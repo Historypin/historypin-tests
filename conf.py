@@ -3,13 +3,14 @@ PATH_CRHOME_DRIVER	= '/usr/lib64/chromium-browser/chromedriver'
 GO_TIMEOUT = 1
 
 # VERSION = 'v5-europeana-filter'
-# VERSION = 'v5-asian-pacific'
+# VERSION = 'v65-beta'
 # VERSION = 'v6-alpha-4'
 VERSION = 'v5-channel-profile'
 LINK_BASE = '%s.historypin-hrd.appspot.com' % (VERSION)
 # LINK_BASE = 'historypin.com'
 
 URL_BASE = 'http://www.%s' % LINK_BASE
+URL_BLOB = 'http://www.%s' % LINK_BASE
 
 IS_ON_SDK = not (LINK_BASE.endswith('.appspot.com') or LINK_BASE.endswith('.historypin.com'))
 
@@ -32,7 +33,7 @@ ID_USER_VIEW	= 33283
 
 ID_MAP_ITEM			= 149729
 ID_EDIT_ITEM		= 160180
-ID_FAVOURITE_ITEM	= 210086
+# ID_FAVOURITE_ITEM	= 210086
 
 ID_PROJECTS			= [3, 5, 6, 8, 10, 15, 22, 26, 34, 39, 40, 41, 42, 43, 44, 49, 51]
 ID_PROJECTS_IMAGES	= [3, 5, 6, 8, 10, 15, 22, 26, 34, 39, 40, 41, 42, 43, 44, 49, 51]

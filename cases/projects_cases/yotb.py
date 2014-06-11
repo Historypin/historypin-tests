@@ -39,8 +39,8 @@ class Project_YOTB(HPTestCase, Attach):
 		self.assertEqual('Pin your memories', button.e('span').text)
 		
 		touts_items = [
-			['Western Addition Mysteries'	, "Check out these Western Addition Mysteries from the SF Public Library."				, 'tout1_image', 'http://blog.historypin.com/2014/03/25/year-of-the-bay-the-bold-italic-photo-essay-featuring-sf-public-library-pins/'],
-			['How You Can Contribute'		, 'All the ways you can contribute to our project, from pinning to solving mysteries.'	, 'tout2_image', 'http://blog.historypin.com/2014/03/25/year-of-the-bay-the-bold-italic-photo-essay-featuring-sf-public-library-pins/'],
+			['Mid-Market Mysteries'	, "Help solve these SF Mid-Market Mysteries from the SF Public Library."				, 'tout1_image', 'http://blog.historypin.com/2014/05/15/year-of-the-bay-help-add-information-to-these-mid-market-photographs-from-the-san-francisco-public-library/'],
+			['How You Can Contribute', 'All the ways you can contribute to our project, from pinning to solving mysteries.'	, 'tout2_image', 'http://blog.historypin.com/2014/05/15/year-of-the-bay-help-add-information-to-these-mid-market-photographs-from-the-san-francisco-public-library/'],
 		]
 		
 		h3s		= site_cnt.es('.w2 h3')

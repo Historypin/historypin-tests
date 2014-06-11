@@ -19,7 +19,7 @@ class Project_Fujinomiya(HPTestCase, Attach):
 	test_tab_gallery	= Attach.attach_tab_gallery
 	
 	def test_index(self):
-		self.go('/jp' + self.PROJECT_URL)
+		self.go('/jp%s' % self.PROJECT_URL)
 		
 		self.assertTitle('Fujinomiya project')
 		

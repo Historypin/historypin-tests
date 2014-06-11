@@ -66,152 +66,152 @@ class Pinning(HPTestCase):
 		sleep(2)
 		
 		
-	# @logged_in
-	# @url('/upload-video/index/')
-	# def test_upload_video(self):
+	@logged_in
+	@url('/upload-video/index/')
+	def test_upload_video(self):
 		
-	# 	upload_cnt = self.e('.upload-content')
-	# 	upload_video = upload_cnt.e('#youtube_url')
+		upload_cnt = self.e('.upload-content')
+		upload_video = upload_cnt.e('#youtube_url')
 		
-	# 	upload_video.send_keys('http://www.youtube.com/watch?v=8Qsl9vN4QQk')
+		upload_video.send_keys('http://www.youtube.com/watch?v=8Qsl9vN4QQk')
 		
-	# 	self.e('.form-submit').click()
-	# 	sleep(3)
+		self.e('.form-submit').click()
+		sleep(3)
 		
-	# 	id_video = self.browser.current_url.split('/')[6]
+		id_video = self.browser.current_url.split('/')[6]
 		
-	# 	site_cnt = self.e('#edit_photo_page')
-	# 	self.assertIsInstance(site_cnt.e('#photo-preview'), WebElement)
+		site_cnt = self.e('#edit_photo_page')
+		self.assertIsInstance(site_cnt.e('#photo-preview'), WebElement)
 		
-	# 	info	= site_cnt.e('.inner.left')
-	# 	title	= info.es('input')[0]
-	# 	desc	= info.e('textarea')
-	# 	tags	= info.es('input')[1]
+		info	= site_cnt.e('.inner.left')
+		title	= info.es('input')[0]
+		desc	= info.e('textarea')
+		tags	= info.es('input')[1]
 		
-	# 	title.send_keys('Sofia (Bulgaria) - a modern European city')
-	# 	desc.send_keys('This is a video about Sofia')
-	# 	tags.send_keys('Sofia, video, Bulgaria')
+		title.send_keys('Sofia (Bulgaria) - a modern European city')
+		desc.send_keys('This is a video about Sofia')
+		tags.send_keys('Sofia, video, Bulgaria')
 		
-	# 	license	= site_cnt.e('.section.license')
-	# 	option	= license.e('#photo_info_license_type')
-	# 	option.click()
-	# 	option.e('option:nth-of-type(2)').click()
+		license	= site_cnt.e('.section.license')
+		option	= license.e('#photo_info_license_type')
+		option.click()
+		option.e('option:nth-of-type(2)').click()
 		
-	# 	date_select = site_cnt.e('.section.date-select')
-	# 	date_select.e('#day option:nth-of-type(10)').click()
-	# 	sleep(3)
-	# 	date_select.e('#month option:nth-of-type(9)').click()
-	# 	sleep(3)
-	# 	date_select.e('#year option:nth-of-type(4)').click()
-	# 	sleep(3)
+		date_select = site_cnt.e('.section.date-select')
+		date_select.e('#day option:nth-of-type(10)').click()
+		sleep(3)
+		date_select.e('#month option:nth-of-type(9)').click()
+		sleep(3)
+		date_select.e('#year option:nth-of-type(4)').click()
+		sleep(3)
 		
-	# 	location_search = site_cnt.e('#location-search-ui fieldset')
-	# 	location_search.e('#location').click()
-	# 	location_search.e('#location').clear()
-	# 	location_search.e('#location').send_keys('ulitsa "Georgi. S. Rakovski" 98, 1000 Sofia, Bulgaria')
-	# 	sleep(10)
+		location_search = site_cnt.e('#location-search-ui fieldset')
+		location_search.e('#location').click()
+		location_search.e('#location').clear()
+		location_search.e('#location').send_keys('ulitsa "Georgi. S. Rakovski" 98, 1000 Sofia, Bulgaria')
+		sleep(10)
 		
-	# 	location_search.e('#location_search').click()
+		location_search.e('#location_search').click()
 		
-	# 	site_cnt.e('#has_streetview').click()
-	# 	sleep(3)
-	# 	site_cnt.e('#pin-tab-sv a').click()
+		site_cnt.e('#has_streetview').click()
+		sleep(3)
+		site_cnt.e('#pin-tab-sv a').click()
 		
-	# 	self.assertIsInstance(self.e('#streetview-image-container img'), WebElement)
+		self.assertIsInstance(self.e('#streetview-image-container img'), WebElement)
 		
-	# 	button_save = self.e('#streetview-toolbar .right')
-	# 	self.assertEqual('Record Position', button_save.e('span').text)
-	# 	button_save.click()
+		button_save = self.e('#streetview-toolbar .right')
+		self.assertEqual('Record Position', button_save.e('span').text)
+		button_save.click()
 		
-	# 	site_cnt.e('#agree_terms').click()
+		site_cnt.e('#agree_terms').click()
 		
-	# 	site_cnt.e('#photo_pin').click()
+		site_cnt.e('#photo_pin').click()
 		
-	# 	sleep(3)
-	# 	self.go('/attach/uid%d/photos/list/' % ID_USER)
+		sleep(3)
+		self.go('/attach/uid%d/photos/list/' % ID_USER)
 		
-	# 	img_holder	= self.e('#list li:nth-of-type(1) .image-holder')
-	# 	delete_icon	= img_holder.e('.delete-confirm')
+		img_holder	= self.e('#list li:nth-of-type(1) .image-holder')
+		delete_icon	= img_holder.e('.delete-confirm')
 		
-	# 	self.hover(img_holder)
-	# 	sleep(3)
+		self.hover(img_holder)
+		sleep(3)
 		
-	# 	delete_icon.click()
+		delete_icon.click()
 		
-	# 	alert = self.browser.switch_to_alert()
-	# 	sleep(2)
-	# 	alert.accept()
-	# 	sleep(4)
+		alert = self.browser.switch_to_alert()
+		sleep(2)
+		alert.accept()
+		sleep(4)
 		
-	# 	self.browser.refresh()
-	# 	self.assertFalse(self.e('#list').exists('.image[href*="%s"]' % id_video))
+		self.browser.refresh()
+		self.assertFalse(self.e('#list').exists('.image[href*="%s"]' % id_video))
 	
-	# @logged_in
-	# @url('/upload-audio/index/')
-	# def test_upload_audio(self):
+	@logged_in
+	@url('/upload-audio/index/')
+	def test_upload_audio(self):
 		
-	# 	upload_cnt = self.e('.upload-content')
-	# 	upload_audio = upload_cnt.e('#youtube_url')
+		upload_cnt = self.e('.upload-content')
+		upload_audio = upload_cnt.e('#youtube_url')
 		
-	# 	upload_audio.send_keys('http://www.youtube.com/watch?v=8Qsl9vN4QQk')
+		upload_audio.send_keys('http://www.youtube.com/watch?v=8Qsl9vN4QQk')
 		
-	# 	self.e('.form-submit').click()
-	# 	sleep(3)
+		self.e('.form-submit').click()
+		sleep(3)
 		
-	# 	id_audio = self.browser.current_url.split('/')[6]
+		id_audio = self.browser.current_url.split('/')[6]
 		
-	# 	site_cnt = self.e('#edit_photo_page')
-	# 	self.assertIsInstance(site_cnt.e('#photo-preview'), WebElement)
+		site_cnt = self.e('#edit_photo_page')
+		self.assertIsInstance(site_cnt.e('#photo-preview'), WebElement)
 		
-	# 	info	= site_cnt.e('.inner.left')
-	# 	title	= info.es('input')[0]
-	# 	desc	= info.e('textarea')
-	# 	tags	= info.es('input')[1]
+		info	= site_cnt.e('.inner.left')
+		title	= info.es('input')[0]
+		desc	= info.e('textarea')
+		tags	= info.es('input')[1]
 		
-	# 	title.send_keys('Sofia (Bulgaria) - a modern European city')
-	# 	desc.send_keys('This is an audio about Sofia')
-	# 	tags.send_keys('Sofia, audio, Bulgaria')
+		title.send_keys('Sofia (Bulgaria) - a modern European city')
+		desc.send_keys('This is an audio about Sofia')
+		tags.send_keys('Sofia, audio, Bulgaria')
 		
-	# 	license	= site_cnt.e('.section.license')
-	# 	option	= license.e('#photo_info_license_type')
-	# 	option.click()
-	# 	option.e('option:nth-of-type(2)').click()
+		license	= site_cnt.e('.section.license')
+		option	= license.e('#photo_info_license_type')
+		option.click()
+		option.e('option:nth-of-type(2)').click()
 		
-	# 	date_select = site_cnt.e('.section.date-select')
-	# 	date_select.e('#day option:nth-of-type(15)').click()
-	# 	sleep(3)
-	# 	date_select.e('#month option:nth-of-type(10)').click()
-	# 	sleep(3)
-	# 	date_select.e('#year option:nth-of-type(6)').click()
-	# 	sleep(3)
+		date_select = site_cnt.e('.section.date-select')
+		date_select.e('#day option:nth-of-type(15)').click()
+		sleep(3)
+		date_select.e('#month option:nth-of-type(10)').click()
+		sleep(3)
+		date_select.e('#year option:nth-of-type(6)').click()
+		sleep(3)
 		
-	# 	location_search = site_cnt.e('#location-search-ui fieldset')
-	# 	location_search.e('#location').click()
-	# 	location_search.e('#location').clear()
-	# 	location_search.e('#location').send_keys('ulitsa "Angel Kanchev" 13, 1000 Sofia, Bulgaria')
-	# 	sleep(10)
+		location_search = site_cnt.e('#location-search-ui fieldset')
+		location_search.e('#location').click()
+		location_search.e('#location').clear()
+		location_search.e('#location').send_keys('ulitsa "Angel Kanchev" 13, 1000 Sofia, Bulgaria')
+		sleep(10)
 		
-	# 	location_search.e('#location_search').click()
+		location_search.e('#location_search').click()
 		
-	# 	site_cnt.e('#agree_terms').click()
+		site_cnt.e('#agree_terms').click()
 		
-	# 	site_cnt.e('#photo_pin').click()
+		site_cnt.e('#photo_pin').click()
 		
-	# 	sleep(3)
-	# 	self.go('/attach/uid%d/photos/list/' % ID_USER)
+		sleep(3)
+		self.go('/attach/uid%d/photos/list/' % ID_USER)
 		
-	# 	img_holder	= self.e('#list li:nth-of-type(1) .image-holder')
-	# 	delete_icon	= img_holder.e('.delete-confirm')
+		img_holder	= self.e('#list li:nth-of-type(1) .image-holder')
+		delete_icon	= img_holder.e('.delete-confirm')
 		
-	# 	self.hover(img_holder)
-	# 	sleep(3)
+		self.hover(img_holder)
+		sleep(3)
 		
-	# 	delete_icon.click()
+		delete_icon.click()
 		
-	# 	alert = self.browser.switch_to_alert()
-	# 	sleep(2)
-	# 	alert.accept()
-	# 	sleep(4)
+		alert = self.browser.switch_to_alert()
+		sleep(2)
+		alert.accept()
+		sleep(4)
 		
-	# 	self.browser.refresh()
-	# 	self.assertFalse(self.e('#list').exists('.image[href*="%s"]' % id_audio))
+		self.browser.refresh()
+		self.assertFalse(self.e('#list').exists('.image[href*="%s"]' % id_audio))

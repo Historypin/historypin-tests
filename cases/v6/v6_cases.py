@@ -68,20 +68,22 @@ class V6_Cases(HPTestCase):
 		
 		self.assertIsInstance(self.e('#map'), WebElement)
 	
-	@url('/en/explore/oreo/')
+	@url('/en/explore/oreo/geo/42.681793,23.369018,14')
 	def test_map_pin(self):
 		
-		banner		= self.e('#banner')
-		explore_map	= banner.e('#btn-explore')
+		# banner		= self.e('#banner')
+		# explore_map	= banner.e('#btn-explore')
 		
-		explore_map.click()
-		self.e('.cluster').click()
-		sleep(4)
-		
+		# canvas = self.e('.gm-style div div div div div div div:nth-of-type(13)')
+		# canvas.click()
+		# self.browser.click_xy(self.e('#container'), 100, 67)
+		# self.browser.click_xy(self.e('#container'), 466, 255)
+		# self.browser.click_xy(self.e('#container'), 380, 200)
+		# sleep(10)
 		# TODO
 		# click on a pin on the map
-		pin = self.e('#pin')
-		self.assertIsInstance(pin.e('.cnt-holder'), WebElement)
+		# pin = self.e('#pin')
+		# self.assertIsInstance(pin.e('.cnt-holder'), WebElement)
 		pass
 	
 	@url('/en/explore/oreo/date/2002:2010')
@@ -124,21 +126,22 @@ class V6_Cases(HPTestCase):
 		pass
 	
 	@logged_in
-	@url('/en/explore/oreo/pin/231065')
+	@url('/en/explore/oreo/pin/225263')
 	def test_edit_item(self):
 		
 		edit_icon = self.e('.bookmarks a:nth-of-type(3)')
-		self.assertEqual('%s/upload-item/pin/phid/231065/edit/1/?from=/en/explore/oreo/pin/231065' % URL_BASE, edit_icon.get_attribute('href'))
+		self.assertEqual('%s/upload-audio/pin/phid/225263/edit/1/?from=/en/explore/oreo/pin/225263' % URL_BASE, edit_icon.get_attribute('href'))
 		self.assertEqual('Edit', edit_icon.text)
 		
 		edit_icon.click()
 		
-		self.assertEqual('%s/upload-item/pin/phid/231065/edit/1/?from=/en/explore/oreo/pin/231065' % URL_BASE, self.browser.current_url)
+		self.assertEqual('%s/upload-audio/pin/phid/225263/edit/1/?from=/en/explore/oreo/pin/225263' % URL_BASE, self.browser.current_url)
 		
 		self.e('#photo_pin').click()
 		
-		self.assertEqual('%s/en/explore/oreo/pin/231065/' % URL_BASE, self.browser.current_url)
-		self.assertEqual('http://www.historypin.com/services/thumb/phid/231065/dim/600x600/quality/80/', self.e('.content.ng-scope img').get_attribute('src'))
+		sleep(5)
+		self.assertEqual('%s/en/explore/oreo/pin/225263/' % URL_BASE, self.browser.current_url)
+		self.assertEqual('http://www.historypin.com/services/thumb/phid/225263/dim/600x600/quality/80/', self.e('.content.ng-scope img').get_attribute('src'))
 		self.assertIsInstance(self.e('.bookmarks'), WebElement)
 	
 	@url('/en/explore/oreo/pin/225259')
@@ -241,7 +244,7 @@ class V6_Cases(HPTestCase):
 	@url('/en/explore/oreo/pin/223343/geo/43.24369,23.956892,6')
 	def test_text_pin(self):
 		
-		self.assertEqual('Test Project for QA', self.e('h3').text)
+		self.assertEqual('Project for Quality Assurance', self.e('h3').text)
 		self.assertEqual('5 May 2012', self.e('.tooltip.arrow-up').text)
 		
 		self.assertEqual('ulitsa "Okolovrasten pat", 1756 Sofia, Bulgaria', self.e('.tooltip.arrow-down').text)
@@ -298,7 +301,7 @@ class V6_Cases(HPTestCase):
 		
 		sleep(3)
 		self.assertEqual('%s/projects/img/pid/30/type/project_image,banner,logo/dim/1024x290/crop/1/' % URL_BASE, self.e('.panel > img').get_attribute('src'))
-		self.assertEqual('Lorem Ipsum is simply dummy text of the printing and typesetting industry.', self.e('.description.inner p').text)
+		self.assertIn('Lorem Ipsum is simply dummy text of the printing and typesetting industry.', self.e('.description.inner p').text)
 		
 		project_sidebar	= self.e('.sidebar')
 		h4s				= project_sidebar.es('h4')
@@ -309,11 +312,11 @@ class V6_Cases(HPTestCase):
 		self.assertEqual('PROJECT LOCATION'			, h4s[3].text)
 		
 		admins_cnt = [
-			['/49127/'	, '/channels/img/49127/logo/1/dim/50x50/crop/1/'	, 'Rawr', 'Project Admin'],
-			['/33283/'	, '/channels/img/33283/logo/1/dim/50x50/crop/1/'	, 'Gabss', 'Project Admin'],
-			['/867/'	, '/channels/img/867/logo/1/dim/50x50/crop/1/'		, 'Karamfil', 'Project Admin'],
-			['/47515/'	, '/resources/explore/images/default-avatar.jpg'	, 'n.p.slavov', 'Project Admin'],
-			['/35019/'	, '/resources/explore/images/default-avatar.jpg'	, 'Gabriela Ananieva', 'Project Admin'],
+			['/867/'	, '/channels/img/867/logo/1/dim/50x50/crop/1/'		, 'Karamfil'			, 'Project Admin'],
+			['/33283/'	, '/channels/img/33283/logo/1/dim/50x50/crop/1/'	, 'Gabss'				, 'Project Admin'],
+			['/35019/'	, '/resources/explore/images/default-avatar.jpg'	, 'Gabriela Ananieva'	, 'Project Admin'],
+			['/47515/'	, '/resources/explore/images/default-avatar.jpg'	, 'n.p.slavov'			, 'Project Admin'],
+			['/49127/'	, '/channels/img/49127/logo/1/dim/50x50/crop/1/'	, 'Rawr'				, 'Project Admin'],
 		]
 		
 		admins		= project_sidebar.e('.project-admins')
@@ -414,8 +417,6 @@ class V6_Cases(HPTestCase):
 		self.assertEqual('g.k. Nadezhda 1, Sofia, Bulgaria', self.e('#search-location').get_attribute('value'))
 		
 		self.e('#btn-explore').click()
-		
-		
 	
 	@url('/en/explore/1989')
 	def test_project(self):

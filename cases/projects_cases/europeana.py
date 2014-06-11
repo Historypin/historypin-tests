@@ -22,7 +22,7 @@ class Project_Europeana(HPTestCase, Attach):
 	
 	# @unittest.expectedFailure
 	def test_tab_tours(self):
-		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
+		self.go('%s%s/tours/all/' % (self.ATTACH_URL, self.PROJECT_URL))
 		
 		sleep(2)
 		filter_by = self.e('.search-filter-pos')
@@ -66,7 +66,7 @@ class Project_Europeana(HPTestCase, Attach):
 	
 	# @unittest.expectedFailure
 	def test_search_by_relevance(self):
-		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
+		self.go('%s%s/tours/all/' % (self.ATTACH_URL, self.PROJECT_URL))
 		
 		site_cnt		= self.e('#photo_list_content')
 		input_search	= site_cnt.e('#stories-search')
@@ -90,13 +90,9 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		self.assertIn(u'Search results for "Berlin":', site_cnt.e('.search-result').text)
 		
-		title_items = ["At the Brandenburg Gate", 'Escape from East to West Berlin', "At Long Last! We've been waiting for you"]
+		items = site_cnt.es('#list li')
 		
-		list_titles = site_cnt.e('#list')
-		titles = list_titles.es('li>p>a:nth-of-type(1)')
-		
-		for n in range(len(title_items)):
-			self.assertEqual(title_items[n], titles[n].text)
+		self.assertGreater(len(items), 20)
 		
 		next_link = site_cnt.e('#list .show-next')
 		self.assertEqual('%s/en/attach%s/tours/all/page/2/order/relevance/?search=Berlin' % (URL_BASE, self.PROJECT_URL), next_link.get_attribute('href'))
@@ -111,7 +107,7 @@ class Project_Europeana(HPTestCase, Attach):
 	
 	# @unittest.expectedFailure
 	def test_next_page_relevance(self):
-		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
+		self.go('%s%s/tours/all/' % (self.ATTACH_URL, self.PROJECT_URL))
 		
 		site_cnt		= self.e('#photo_list_content')
 		input_search	= site_cnt.e('#stories-search')
@@ -139,18 +135,14 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		self.assertTrue(radio_buttons[2].is_selected())
 		
-		title_items = ["Citizen's action group for German Unity", "Asylum seekers from Romania", "Caravans in Halberstadt"]
+		items = site_cnt.es('#list li')
 		
-		list_titles = site_cnt.e('#list')
-		titles = list_titles.es('li>p>a:nth-of-type(1)')
-		
-		for n in range(len(title_items)):
-			self.assertEqual(title_items[n], titles[n].text)
+		self.assertGreater(len(items), 20)
 		
 	
 	# @unittest.expectedFailure
 	def test_search_by_popularity(self):
-		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
+		self.go('%s%s/tours/all/' % (self.ATTACH_URL, self.PROJECT_URL))
 		
 		site_cnt		= self.e('#photo_list_content')
 		input_search	= site_cnt.e('#stories-search')
@@ -171,13 +163,9 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		self.assertTrue(radio_buttons[1].is_selected())
 		
-		title_items = ["Citizen's action group for German Unity", "First meeting place of the new forum in Zeuthen", '"Wallpeckers" - Berlin Wall Graffiti, Berlin liberates itself!']
+		items = site_cnt.es('#list li')
 		
-		list_titles = site_cnt.e('#list')
-		titles = list_titles.es('li>p>a:nth-of-type(1)')
-		
-		for n in range(len(title_items)):
-			self.assertEqual(title_items[n], titles[n].text)
+		self.assertGreater(len(items), 20)
 		
 		self.e('.clear-search').click()
 		
@@ -189,7 +177,7 @@ class Project_Europeana(HPTestCase, Attach):
 	
 	# @unittest.expectedFailure
 	def test_next_page_popularity(self):
-		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
+		self.go('%s%s/tours/all/' % (self.ATTACH_URL, self.PROJECT_URL))
 		
 		site_cnt		= self.e('#photo_list_content')
 		input_search	= site_cnt.e('#stories-search')
@@ -215,18 +203,14 @@ class Project_Europeana(HPTestCase, Attach):
 		radio_buttons	= filter_by.es('input')
 		self.assertTrue(radio_buttons[1].is_selected())
 		
-		title_items = ["Green Trabant at Schlossstrasse subway station", "Live History", 'Visitors from the so-called "Valley of the clueless"']
+		items = site_cnt.es('#list li')
 		
-		list_titles = site_cnt.e('#list')
-		titles = list_titles.es('li>p>a:nth-of-type(1)')
-		
-		for n in range(len(title_items)):
-			self.assertEqual(title_items[n], titles[n].text)
+		self.assertGreater(len(items), 20)
 		
 	
 	# @unittest.expectedFailure
 	def test_search_by_most_recent(self):
-		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
+		self.go('%s%s/tours/all/' % (self.ATTACH_URL, self.PROJECT_URL))
 		
 		site_cnt		= self.e('#photo_list_content')
 		input_search	= site_cnt.e('#stories-search')
@@ -247,13 +231,9 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		self.assertTrue(radio_buttons[0].is_selected())
 		
-		title_items = ["First meeting place of the new forum in Zeuthen", "Citizen's action group for German Unity", "The wall is gone"]
+		items = site_cnt.es('#list li')
 		
-		list_titles = site_cnt.e('#list')
-		titles = list_titles.es('li>p>a:nth-of-type(1)')
-		
-		for n in range(len(title_items)):
-			self.assertEqual(title_items[n], titles[n].text)
+		self.assertGreater(len(items), 20)
 		
 		self.e('.clear-search').click()
 		
@@ -265,7 +245,7 @@ class Project_Europeana(HPTestCase, Attach):
 	
 	# @unittest.expectedFailure
 	def test_next_page_recent(self):
-		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
+		self.go('%s%s/tours/all/' % (self.ATTACH_URL, self.PROJECT_URL))
 		
 		site_cnt		= self.e('#photo_list_content')
 		input_search	= site_cnt.e('#stories-search')
@@ -292,17 +272,13 @@ class Project_Europeana(HPTestCase, Attach):
 		radio_buttons	= filter_by.es('input')
 		self.assertTrue(radio_buttons[0].is_selected())
 		
-		title_items = ["Border Soldiers on High Alert at Checkpoint Charlie", "Bornholmer Strasse Border Crossing", 'Visitors from the so-called "Valley of the clueless"']
+		items = site_cnt.es('#list li')
 		
-		list_titles = site_cnt.e('#list')
-		titles = list_titles.es('li>p>a:nth-of-type(1)')
-		
-		for n in range(len(title_items)):
-			self.assertEqual(title_items[n], titles[n].text)
+		self.assertGreater(len(items), 20)
 	
 	# @unittest.expectedFailure
 	def test_search_no_results(self):
-		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
+		self.go('%s%s/tours/all/' % (self.ATTACH_URL, self.PROJECT_URL))
 		
 		site_cnt		= self.e('#photo_list_content')
 		input_search	= site_cnt.e('#stories-search')
@@ -347,7 +323,7 @@ class Project_Europeana(HPTestCase, Attach):
 	
 	# @unittest.expectedFailure
 	def test_check_search_translation_cz(self):
-		self.go(URL_BASE + '/cz' + '/attach' + self.PROJECT_URL + '/tours/all?search=Berlin')
+		self.go('%s/cz/attach%s/tours/all?search=Berlin' % (URL_BASE, self.PROJECT_URL))
 		
 		site_cnt		= self.e('#photo_list_content')
 		button_go		= site_cnt.e('#stories-search-submit')
@@ -370,7 +346,7 @@ class Project_Europeana(HPTestCase, Attach):
 	
 	# @unittest.expectedFailure
 	def test_check_search_translation_de(self):
-		self.go(URL_BASE + '/de' + '/attach' + self.PROJECT_URL + '/tours/all?search=Berlin')
+		self.go('%s/de/attach%s/tours/all?search=Berlin' % (URL_BASE, self.PROJECT_URL))
 		
 		site_cnt		= self.e('#photo_list_content')
 		button_go		= site_cnt.e('#stories-search-submit')
@@ -393,7 +369,7 @@ class Project_Europeana(HPTestCase, Attach):
 	
 	@unittest.expectedFailure
 	def test_check_search_translation_es(self):
-		self.go(URL_BASE + '/es' + '/attach' + self.PROJECT_URL + '/tours/all?search=Berlin')
+		self.go('%s/es/attach%s/tours/all?search=Berlin' % (URL_BASE, self.PROJECT_URL))
 		
 		site_cnt		= self.e('#photo_list_content')
 		button_go		= site_cnt.e('#stories-search-submit')
@@ -416,7 +392,7 @@ class Project_Europeana(HPTestCase, Attach):
 	
 	@unittest.expectedFailure
 	def test_check_search_translation_hu(self):
-		self.go(URL_BASE + '/hu' + '/attach' + self.PROJECT_URL + '/tours/all?search=Berlin')
+		self.go('%s/hu/attach%s/tours/all?search=Berlin' % (URL_BASE, self.PROJECT_URL))
 		
 		site_cnt		= self.e('#photo_list_content')
 		button_go		= site_cnt.e('#stories-search-submit')
@@ -439,7 +415,7 @@ class Project_Europeana(HPTestCase, Attach):
 	
 	@unittest.expectedFailure
 	def test_check_search_translation_lt(self):
-		self.go(URL_BASE + '/lt' + '/attach' + self.PROJECT_URL + '/tours/all?search=Berlin')
+		self.go('%s/lt/attach%s/tours/all?search=Berlin' % (URL_BASE, self.PROJECT_URL))
 		
 		site_cnt		= self.e('#photo_list_content')
 		button_go		= site_cnt.e('#stories-search-submit')
@@ -462,7 +438,7 @@ class Project_Europeana(HPTestCase, Attach):
 	
 	@unittest.expectedFailure
 	def test_check_search_translation_lv(self):
-		self.go(URL_BASE + '/lv' + '/attach' + self.PROJECT_URL + '/tours/all?search=Berlin')
+		self.go('%s/lv/attach%s/tours/all?search=Berlin' % (URL_BASE, self.PROJECT_URL))
 		
 		site_cnt		= self.e('#photo_list_content')
 		button_go		= site_cnt.e('#stories-search-submit')
@@ -485,7 +461,7 @@ class Project_Europeana(HPTestCase, Attach):
 	
 	@unittest.expectedFailure
 	def test_check_search_translation_pl(self):
-		self.go(URL_BASE + '/pl' + '/attach' + self.PROJECT_URL + '/tours/all?search=Berlin')
+		self.go('%s/pl/attach%s/tours/all?search=Berlin' % (URL_BASE, self.PROJECT_URL))
 		
 		site_cnt		= self.e('#photo_list_content')
 		button_go		= site_cnt.e('#stories-search-submit')
@@ -507,7 +483,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 	
 	def test_sub_nav_cz(self):
-		self.go(URL_BASE + '/cz' + self.PROJECT_URL)
+		self.go('%s/cz%s' % (URL_BASE, self.PROJECT_URL))
 		
 		europeana_link = URL_BASE + '/cz%s/' % self.PROJECT_URL
 		cz_links = [
@@ -525,7 +501,7 @@ class Project_Europeana(HPTestCase, Attach):
 			self.assertEqual(i[1], nav_links[n].text)
 	
 	def test_sub_nav_de(self):
-		self.go(URL_BASE + '/de' + self.PROJECT_URL)
+		self.go('%s/de%s' % (URL_BASE, self.PROJECT_URL))
 		
 		europeana_link = URL_BASE + '/de%s/' % self.PROJECT_URL
 		de_links = [
@@ -543,7 +519,7 @@ class Project_Europeana(HPTestCase, Attach):
 			self.assertEqual(i[1], nav_links[n].text)
 	
 	def test_sub_nav_es(self):
-		self.go(URL_BASE + '/es' + self.PROJECT_URL)
+		self.go('%s/es%s' % (URL_BASE, self.PROJECT_URL))
 		
 		europeana_link = URL_BASE + '/es%s/' % self.PROJECT_URL
 		
@@ -562,7 +538,7 @@ class Project_Europeana(HPTestCase, Attach):
 			self.assertEqual(i[1], nav_links[n].text)
 	
 	def test_sub_nav_hu(self):
-		self.go(URL_BASE + '/hu' + self.PROJECT_URL)
+		self.go('%s/hu%s' % (URL_BASE, self.PROJECT_URL))
 		
 		europeana_link = URL_BASE + '/hu%s/' % self.PROJECT_URL
 		
@@ -581,7 +557,7 @@ class Project_Europeana(HPTestCase, Attach):
 			self.assertEqual(i[1], nav_links[n].text)
 	
 	def test_sub_nav_lt(self):
-		self.go(URL_BASE + '/lt' + self.PROJECT_URL)
+		self.go('%s/lt%s' % (URL_BASE, self.PROJECT_URL))
 		
 		europeana_link = URL_BASE + '/lt%s/' % self.PROJECT_URL
 		
@@ -600,7 +576,7 @@ class Project_Europeana(HPTestCase, Attach):
 			self.assertEqual(i[1], nav_links[n].text)
 	
 	def test_sub_nav_lv(self):
-		self.go(URL_BASE + '/lv' + self.PROJECT_URL)
+		self.go('%s/lv%s' % (URL_BASE, self.PROJECT_URL))
 		
 		europeana_link = URL_BASE + '/lv%s/' % self.PROJECT_URL
 		
@@ -619,7 +595,7 @@ class Project_Europeana(HPTestCase, Attach):
 			self.assertEqual(i[1], nav_links[n].text)
 		
 	def test_sub_nav_pl(self):
-		self.go(URL_BASE + '/pl' + self.PROJECT_URL)
+		self.go('%s/pl%s' % (URL_BASE, self.PROJECT_URL))
 		
 		europeana_link = URL_BASE + '/pl%s/' % self.PROJECT_URL
 		
@@ -638,7 +614,7 @@ class Project_Europeana(HPTestCase, Attach):
 			self.assertEqual(i[1], nav_links[n].text)
 	
 	def test_index(self):
-		self.go(URL_BASE + '/en' + self.PROJECT_URL)
+		self.go('%s/en%s' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -748,26 +724,30 @@ class Project_Europeana(HPTestCase, Attach):
 			self.assertEqual(i[0], footer_links[n].get_attribute('href'))
 			self.assertEqual(i[1], footer_links[n].text)
 		
+	def test_explore_button(self):
+		self.go('http://www.europeana1989.eu/en/')
+		
+		self.e('.w2 .button.big').click()
+		
+		site_cnt	= self.e('#site-content')
+		activity	= site_cnt.e('#activity')
+		self.assertIsInstance(activity, WebElement)
+		
+		self.assertIsInstance(self.e('.right.next-button.button'), WebElement)
 	
 	def test_about_en(self):
-		self.go(URL_BASE + '/en' + self.PROJECT_URL + '/about/')
+		self.go('%s/en%s/about/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
-		
-		option_menu = self.e('#language_select')
-		self.assertTrue(option_menu.e('option:nth-of-type(3)').is_selected())
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Why are we doing this?', site_cnt.e('h2').text)
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
 	
 	def test_about_cz(self):
-		self.go(URL_BASE + '/cz' + self.PROJECT_URL + '/about/')
+		self.go('%s/cz%s/about/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
-		
-		option_menu = self.e('#language_select')
-		self.assertTrue(option_menu.e('option:nth-of-type(1)').is_selected())
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual(u'Proč to děláme?', site_cnt.e('h2').text)
@@ -775,12 +755,9 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		
 	def test_about_de(self):
-		self.go(URL_BASE + '/de' + self.PROJECT_URL + '/about/')
+		self.go('%s/de%s/about/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
-		
-		option_menu = self.e('#language_select')
-		self.assertTrue(option_menu.e('option:nth-of-type(2)').is_selected())
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Warum gibt es Europeana 1989?', site_cnt.e('h2').text)
@@ -788,12 +765,9 @@ class Project_Europeana(HPTestCase, Attach):
 		
 	
 	def test_about_es(self):
-		self.go(URL_BASE + '/es' + self.PROJECT_URL + '/about/')
+		self.go('%s/es%s/about/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
-		
-		option_menu = self.e('#language_select')
-		self.assertTrue(option_menu.e('option:nth-of-type(4)').is_selected())
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Miks me seda teeme?', site_cnt.e('h2').text)
@@ -801,12 +775,9 @@ class Project_Europeana(HPTestCase, Attach):
 		
 	
 	def test_about_hu(self):
-		self.go(URL_BASE + '/hu' + self.PROJECT_URL + '/about/')
+		self.go('%s/hu%s/about/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
-		
-		option_menu = self.e('#language_select')
-		self.assertTrue(option_menu.e('option:nth-of-type(5)').is_selected())
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual(u'Miért csináljuk?', site_cnt.e('h2').text)
@@ -814,12 +785,9 @@ class Project_Europeana(HPTestCase, Attach):
 		
 	
 	def test_about_lt(self):
-		self.go(URL_BASE + '/lt' + self.PROJECT_URL + '/about/')
+		self.go('%s/lt%s/about/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
-		
-		option_menu = self.e('#language_select')
-		self.assertTrue(option_menu.e('option:nth-of-type(6)').is_selected())
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual(u'Kodėl mes tai darome?', site_cnt.e('h2').text)
@@ -827,12 +795,9 @@ class Project_Europeana(HPTestCase, Attach):
 		
 	
 	def test_about_lv(self):
-		self.go(URL_BASE + '/lv' + self.PROJECT_URL + '/about/')
+		self.go('%s/lv%s/about/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
-		
-		option_menu = self.e('#language_select')
-		self.assertTrue(option_menu.e('option:nth-of-type(7)').is_selected())
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual(u'Kāpēc mēs to darām?', site_cnt.e('h2').text)
@@ -840,19 +805,16 @@ class Project_Europeana(HPTestCase, Attach):
 		
 	
 	def test_about_pl(self):
-		self.go(URL_BASE + '/pl' + self.PROJECT_URL + '/about/')
+		self.go('%s/pl%s/about/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
-		
-		option_menu = self.e('#language_select')
-		self.assertTrue(option_menu.e('option:nth-of-type(8)').is_selected())
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Dlaczego to robimy?', site_cnt.e('h2').text)
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
 	
 	def test_terms_en(self):
-		self.go(URL_BASE + '/en' + self.PROJECT_URL + '/terms/')
+		self.go('%s/en%s/terms/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -864,7 +826,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 	
 	def test_terms_cz(self):
-		self.go(URL_BASE + '/cz' + self.PROJECT_URL + '/terms/')
+		self.go('%s/cz%s/terms/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -875,7 +837,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual(u'Podmínky pro příspěvky uživatelů Europeana 1989', site_cnt.e('h2').text)
 	
 	def test_terms_de(self):
-		self.go(URL_BASE + '/de' + self.PROJECT_URL + '/terms/')
+		self.go('%s/de%s/terms/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -886,7 +848,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual(u'Nutzungsbedingungen für Beiträge zum Projekt Europeana 1989', site_cnt.e('h2').text)
 	
 	def test_terms_es(self):
-		self.go(URL_BASE + '/es' + self.PROJECT_URL + '/terms/')
+		self.go('%s/es%s/terms/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -897,7 +859,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual(u'Europeana 1989 kaastöötingimused', site_cnt.e('h2').text)
 	
 	def test_terms_hu(self):
-		self.go(URL_BASE + '/hu' + self.PROJECT_URL + '/terms/')
+		self.go('%s/hu%s/terms/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -908,7 +870,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual(u'Europeana 1989 feltételek a felhasználói hozzájárulásokhoz', site_cnt.e('h2').text)
 	
 	def test_terms_lt(self):
-		self.go(URL_BASE + '/lt' + self.PROJECT_URL + '/terms/')
+		self.go('%s/lt%s/terms/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -919,7 +881,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual(u'„Europeana 1989“ naudotojų bendradarbiavimo sąlygos', site_cnt.e('h2').text)
 	
 	def test_terms_lv(self):
-		self.go(URL_BASE + '/lv' + self.PROJECT_URL + '/terms/')
+		self.go('%s/lv%s/terms/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -930,7 +892,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual(u'Europeana 1989 Noteikumi lietotāju ieguldījuma sniegšanai', site_cnt.e('h2').text)
 	
 	def test_terms_pl(self):
-		self.go(URL_BASE + '/pl' + self.PROJECT_URL + '/terms/')
+		self.go('%s/pl%s/terms/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -941,7 +903,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual(u'Zasady zwiększania zbiorów Europeana 1989', site_cnt.e('h2').text)
 	
 	def test_contact_en(self):
-		self.go(URL_BASE + '/en' + self.PROJECT_URL + '/contact/')
+		self.go('%s/en%s/contact/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -952,7 +914,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual('Contact', site_cnt.e('h2').text)
 	
 	def test_contact_cz(self):
-		self.go(URL_BASE + '/cz' + self.PROJECT_URL + '/contact/')
+		self.go('%s/cz%s/contact/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -963,7 +925,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual('Kontakt', site_cnt.e('h2').text)
 	
 	def test_contact_de(self):
-		self.go(URL_BASE + '/de' + self.PROJECT_URL + '/contact/')
+		self.go('%s/de%s/contact/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -974,7 +936,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual('Kontakt', site_cnt.e('h2').text)
 	
 	def test_contact_es(self):
-		self.go(URL_BASE + '/es' + self.PROJECT_URL + '/contact/')
+		self.go('%s/es%s/contact/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -985,7 +947,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual('Kontaktandmed', site_cnt.e('h2').text)
 	
 	def test_contact_hu(self):
-		self.go(URL_BASE + '/hu' + self.PROJECT_URL + '/contact/')
+		self.go('%s/hu%s/contact/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -996,7 +958,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual(u'Kapcsolat', site_cnt.e('h2').text)
 	
 	def test_contact_lt(self):
-		self.go(URL_BASE + '/lt' + self.PROJECT_URL + '/contact/')
+		self.go('%s/lt%s/contact/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -1007,7 +969,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual('Kontaktai', site_cnt.e('h2').text)
 		
 	def test_contact_lv(self):
-		self.go(URL_BASE + '/lv' + self.PROJECT_URL + '/contact/')
+		self.go('%s/lv%s/contact/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -1018,7 +980,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual(u'Kontakti', site_cnt.e('h2').text)
 		
 	def test_contact_pl(self):
-		self.go(URL_BASE + '/pl' + self.PROJECT_URL + '/contact/')
+		self.go('%s/pl%s/contact/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -1029,7 +991,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual('Kontakt', site_cnt.e('h2').text)
 	
 	def test_privacy_policy_en(self):
-		self.go(URL_BASE + '/en' + self.PROJECT_URL + '/privacy-policy/')
+		self.go('%s/en%s/privacy-policy/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -1040,7 +1002,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
 	
 	def test_privacy_policy_cz(self):
-		self.go(URL_BASE + '/cz' + self.PROJECT_URL + '/privacy-policy/')
+		self.go('%s/cz%s/privacy-policy/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -1051,7 +1013,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
 	
 	def test_privacy_policy_de(self):
-		self.go(URL_BASE + '/de' + self.PROJECT_URL + '/privacy-policy/')
+		self.go('%s/de%s/privacy-policy/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -1062,7 +1024,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
 		
 	def test_privacy_policy_es(self):
-		self.go(URL_BASE + '/es' + self.PROJECT_URL + '/privacy-policy/')
+		self.go('%s/es%s/privacy-policy/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -1073,7 +1035,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
 	
 	def test_privacy_policy_hu(self):
-		self.go(URL_BASE + '/hu' + self.PROJECT_URL + '/privacy-policy/')
+		self.go('%s/hu%s/privacy-policy/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -1084,7 +1046,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
 	
 	def test_privacy_policy_lt(self):
-		self.go(URL_BASE + '/lt' + self.PROJECT_URL + '/privacy-policy/')
+		self.go('%s/lt%s/privacy-policy/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -1095,7 +1057,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
 	
 	def test_privacy_policy_lv(self):
-		self.go(URL_BASE + '/lv' + self.PROJECT_URL + '/privacy-policy/')
+		self.go('%s/lv%s/privacy-policy/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -1106,7 +1068,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
 	
 	def test_privacy_policy_pl(self):
-		self.go(URL_BASE + '/pl' + self.PROJECT_URL + '/privacy-policy/')
+		self.go('%s/pl%s/privacy-policy/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('Europeana 1989')
 		
@@ -1117,7 +1079,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual('Privacy Policy', site_cnt.e('h1').text)
 	
 	def test_balctic_way_en(self):
-		self.go(URL_BASE + '/en' + self.PROJECT_URL + '/baltic-way/')
+		self.go('%s/en%s/baltic-way/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle(u'Europeana 1989 | Relive the Baltic Way – Pin yourself on the map')
 		
@@ -1126,7 +1088,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual(u'Relive the Baltic Way – Pin yourself on the map', site_cnt.e('h1').text)
 		self.assertIn('Relive the Baltic Way online.', site_cnt.e('h1 + p').text)
 		
-		europeana_link	= URL_BASE + '/en' + self.PROJECT_URL
+		europeana_link	= '%s/en%s' % (URL_BASE, self.PROJECT_URL)
 		
 		links			= site_cnt.es('.page-top > a')
 		
@@ -1143,7 +1105,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIsInstance(self.e('#embed-frame'), WebElement)
 	
 	def test_balctic_way_cz(self):
-		self.go(URL_BASE + '/cz' + self.PROJECT_URL + '/baltic-way/')
+		self.go('%s/cz%s/baltic-way/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle(u'Europeana 1989 | Baltský řetěz - Připněte své fotografie na mapu')
 		
@@ -1153,7 +1115,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIn(u'Oživme baltský řetěz online.', site_cnt.e('h1 + p').text)
 	
 	def test_balctic_way_de(self):
-		self.go(URL_BASE + '/de' + self.PROJECT_URL + '/baltic-way/')
+		self.go('%s/de%s/baltic-way/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle(u'Europeana 1989 | Der Baltischer Weg - Pinnen Sie Ihr Foto auf die Karte')
 		
@@ -1163,7 +1125,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIn(u'Lasst uns den Baltischen Weg online wieder aufleben.', site_cnt.e('h1 + p').text)
 	
 	def test_balctic_way_es(self):
-		self.go(URL_BASE + '/es' + self.PROJECT_URL + '/baltic-way/')
+		self.go('%s/es%s/baltic-way/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle(u'Europeana 1989 | Kus olite teie Balti keti ajal? Pange ennast kaardile!')
 		
@@ -1173,7 +1135,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIn(u'Siin on võimalus Balti kett taas kord läbi teha.', site_cnt.e('h1 + p').text)
 	
 	def test_balctic_way_hu(self):
-		self.go(URL_BASE + '/hu' + self.PROJECT_URL + '/baltic-way/')
+		self.go('%s/hu%s/baltic-way/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle(u'Europeana 1989 | Élje át újra a Balti utat – Kerüljön fel a térképre')
 		
@@ -1183,7 +1145,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIn(u'Online a Balti úton.', site_cnt.e('h1 + p').text)
 	
 	def test_balctic_way_lt(self):
-		self.go(URL_BASE + '/lt' + self.PROJECT_URL + '/baltic-way/')
+		self.go('%s/lt%s/baltic-way/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle(u'Europeana 1989 | Atkurkime Baltijos kelią internete')
 		
@@ -1193,7 +1155,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIn(u'Atkurkime Baltijos kelią internete.', site_cnt.e('h1 + p').text)
 	
 	def test_balctic_way_lv(self):
-		self.go(URL_BASE + '/lv' + self.PROJECT_URL + '/baltic-way/')
+		self.go('%s/lv%s/baltic-way/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle(u'Europeana 1989 | Atjauno Baltijas ceļu – atzīmē sevi kartē!')
 		
@@ -1203,7 +1165,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIn(u'Atjauno Baltijas ceļu tiešsaistē!', site_cnt.e('h1 + p').text)
 	
 	def test_balctic_way_pl(self):
-		self.go(URL_BASE + '/pl' + self.PROJECT_URL + '/baltic-way/')
+		self.go('%s/pl%s/baltic-way/' % (URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle(u'Europeana 1989 | Bałtycki Łańcuch - przypnij się do mapy')
 		
@@ -1212,3 +1174,144 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual(u'Bałtycki Łańcuch - przypnij się do mapy', site_cnt.e('h1').text)
 		self.assertIn(u'Niech Łańcuch Bałtycki odżyje jeszcze raz online.', site_cnt.e('h1 + p').text)
 	
+	@logged_in
+	def test_create_story(self):
+		self.go('/en%s/tours/add/' % self.PROJECT_URL)
+		
+		#####################  STEP 1 ######################
+		site_cnt = self.e('#site-content')
+		
+		self.assertEqual('%s/en%s/' % (URL_BASE, self.PROJECT_URL), site_cnt.e('.back').get_attribute('href'))
+		
+		tour_title = site_cnt.e('#tour-title')
+		
+		self.assertEqual('Give your story a name. It will appear across all steps in the story', tour_title.get_attribute('placeholder'))
+		
+		tour_title.send_keys('This is a story about famous buildings in Sofia, Bulgaria')
+		
+		site_cnt.e('#tour-description').send_keys('This is a story about famous buildings in Sofia, Bulgaria. They are located in the city centre and are very beautiful.')
+		
+		name_contributor = site_cnt.e('#name-contributor')
+		self.assertEqual('Gabriela Ananieva', name_contributor.get_attribute('value'))
+		
+		language_select = site_cnt.e('#which-language')
+		language_select.e('option:nth-of-type(4)').click()
+		
+		date_select_from = site_cnt.e('#select-date')
+		date_select_from.e('#day option:nth-of-type(4)').click()
+		date_select_from.e('#month option:nth-of-type(5)').click()
+		date_select_from.e('#year option:nth-of-type(5)').click()
+		
+		site_cnt.e('.date-precise-wrapper #day_to option:nth-of-type(9)').click()
+		site_cnt.e('.date-precise-wrapper #month_to option:nth-of-type(10)').click()
+		site_cnt.e('.date-precise-wrapper #month_to option:nth-of-type(4)').click()
+		
+		country = site_cnt.e('#country')
+		country.e('option:nth-of-type(3)').click()
+		
+		keywords = site_cnt.e('.inline-list:nth-of-type(1)')
+		keywords.e('li:nth-of-type(1) a').click()
+		keywords.e('li:nth-of-type(6) a').click()
+		keywords.e('li:nth-of-type(24) a').click()
+		
+		site_cnt.e('#additional_keywords').send_keys('#theatres')
+		
+		events = site_cnt.e('.inline-list:nth-of-type(2)')
+		events.e('li:nth-of-type(6) a').click()
+		
+		site_cnt.e('.tour-next').click()
+		
+		#####################  STEP 2 ######################
+		
+		tour_id		= self.browser.current_url.split('/')[8]
+		
+		site_cnt	= self.e('#site-content')
+		tour_step2	= site_cnt.e('#tour-step2')
+		tabs_nav	= site_cnt.e('.tabs-nav.cf')
+		tabs		= tabs_nav.es('li')
+		
+		my_items = tour_step2.e('.choose-photos.yours.cf')
+		sleep(3)
+		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BLOB, ID_TOUR_IMAGES[0]), my_items.e('img').get_attribute('src'))
+		
+		my_items.e('.add-photo').click()
+		sleep(3)
+		sidebar = tour_step2.e('.w4.gallery')
+		
+		item_1 = sidebar.e('li:nth-of-type(2)')
+		sleep(2)
+		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BLOB, ID_TOUR_IMAGES[0]), item_1.e('img').get_attribute('src'))
+		self.assertEqual('Bulgarian Army Theater'	, item_1.e('.photo-title').text)
+		self.assertEqual('2 February 2013'			, item_1.e('.date').text)
+		
+		tabs[1].click()
+		my_favourites = tour_step2.e('.choose-photos.favourites.cf')
+		
+		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BLOB, ID_TOUR_IMAGES[1]), my_favourites.e('img').get_attribute('src'))
+		sleep(3)
+		my_favourites.e('.add-photo').click()
+		
+		sleep(3)
+		
+		item_2 = sidebar.e('li:nth-of-type(3)')
+		sleep(3)
+		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BLOB, ID_TOUR_IMAGES[1]), item_2.e('img').get_attribute('src'))
+		self.assertEqual('National Theatre in Sofia, Bulgaria'	, item_2.e('.photo-title').text)
+		self.assertEqual('2 August 2012'						, item_2.e('.date').text)
+		
+		site_cnt.e('.tour-next').click()
+		
+		#####################  STEP 3  ######################
+		
+		site_cnt	= self.e('#site-content')
+		tour_step3	= site_cnt.e('#tour-step3')
+		
+		sidebar = tour_step3.e('#sortable')
+		
+		sleep(4)
+		self.assertEqual('Bulgarian Army Theater - 2 February 2013'					, tour_step3.e('#step-title').get_attribute('value'))
+		self.assertEqual('This is a photo of the famous Bulgarian Army Theater .'	, tour_step3.e('#step-description').get_attribute('value'))
+		
+		# sidebar.e('li:nth-of-type(2) a').click()
+		# sleep(3)
+		# self.assertEqual('National Theatre in Sofia, Bulgaria - 2 August 2012'		, tour_step3.e('#step-title').get_attribute('value'))
+		# self.assertEqual('This is a photo of National Theatre in Sofia, Bulgaria'	, tour_step3.e('#step-description').get_attribute('value'))
+		
+		self.es('.cf .right.preview')[1].click()
+		
+		sleep(3)
+		site_cnt	= self.e('#site-content')
+		site_cnt.e('.tour-publish.deeplink').click()
+		
+		sleep(4)
+		site_cnt = self.e('#container')
+		buttons = site_cnt.es('.center')
+		buttons_text = site_cnt.es('span')
+		
+		buttons_items = [
+				['View my story'		, '/explore/'],
+				['Contribute'			, '/upload/index/'],
+				['Back to 1989 homepage', '/'],
+		]
+		
+		sleep(3)
+		
+		for n in range(len(buttons_items)):
+			i = buttons_items[n]
+			self.assertEqual(i[0], buttons_text[n].text)
+			self.assertIn(URL_BASE + '/en' + self.PROJECT_URL + i[1], buttons[n].get_attribute('href'))
+		
+		self.go(URL_BASE + self.ATTACH_URL + self.PROJECT_URL + '/tours/all')
+		
+		tour = self.e('#list li:nth-of-type(1)')
+		self.assertEqual('%s/services/thumb/phid/%d/dim/290x210/crop/1/' % (URL_BLOB, ID_TOUR_IMAGES[1]), tour.e('img').get_attribute('src'))
+		
+		tour.e('.delete').click()
+		
+		alert = self.browser.switch_to_alert()
+		sleep(2)
+		alert.accept()
+		sleep(4)
+		
+		self.browser.refresh()
+		self.assertFalse(self.e('#list').exists('.image_container.ss-icon.ss-photo[href*="%s"]' % tour_id))

@@ -72,11 +72,12 @@ class Collections(HPTestCase):
 		self.assertEqual('Slide Show'										, button.text)
 		
 		collection_view = [
-			['geo:42.694709,23.329037/zoom:15/dialog:%d'		% ID_COLLECTION_IMAGES[0], '/%d/' % ID_COLLECTION_IMAGES[0], '2 February 2013, from Gabriela Ananieva'	, '/%d' % ID_USER],
+			['geo:42.694709,23.329037/zoom:15/dialog:%d'	% ID_COLLECTION_IMAGES[0], '/%d/' % ID_COLLECTION_IMAGES[0], '2 February 2013, from Gabriela Ananieva'	, '/%d' % ID_USER],
 			['geo:42.693738,23.326101/zoom:15/dialog:%d'	% ID_COLLECTION_IMAGES[1], '/%d/' % ID_COLLECTION_IMAGES[1], '2 August 2012, from Gabss'				, '/%d' % ID_USER_VIEW],
 		]
 		
 		item = self.es('#list_view .list li')
+		
 		for n in range(len(collection_view)):
 			i = collection_view[n]
 			self.assertEqual(URL_BASE + '/map/#!/' + i[0] + '/tab:details/', item[n].e('a.link-image').get_attribute('href'))
@@ -131,6 +132,64 @@ class Collections(HPTestCase):
 		self.assertEqual('%s/services/thumb/phid/%d/' % (URL_BASE, ID_COLLECTION_IMAGES[1]), next_thumb.get_attribute('src'))
 		next_slide.click()
 		sleep(3)
+	
+	@logged_in
+	@url('/collections/add/')
+	def test_add_collection(self):
+		
+		######################## STEP 1 #########################
+		
+		title = self.e('#tour-title')
+		title.send_keys('Theaters in Bulgaria')
+		
+		desc = self.e('#tour-description')
+		desc.send_keys('Collection for famous theaters in Bulgaria')
+		
+		self.e('.next-button').click()
+		sleep(5)
+		
+		######################## STEP 2 #########################
+		
+		id_collection = self.browser.current_url.split('/')[5]
+		
+		add_photo = self.e('.yours .add-photo')
+		add_photo.click()
+		
+		sleep(4)
+		
+		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BLOB, ID_COLLECTION_IMAGES[0]), self.e('.inn .ss-photo img').get_attribute('src'))
+		
+		button = self.es('.inn .next-button')[1]
+		button.click()
+		sleep(1)
+		
+		######################## STEP 3 #########################
+		
+		step_maker = self.e('#tour-step3')
+		
+		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BLOB, ID_COLLECTION_IMAGES[0]), step_maker.e('.image-container img').get_attribute('src'))
+		
+		publish = self.es('.next-button.done')[1]
+		self.assertEqual('Publish', publish.e('span').text)
+		publish.click()
+		
+		self.go('/attach/uid%d/collections/all/' % ID_USER)
+		
+		self.browser.refresh()
+		sleep(3)
+		tour = self.e('#list li:nth-of-type(1)')
+		
+		self.assertEqual('%s/services/thumb/phid/%d/dim/195x150/crop/1/' % (URL_BLOB, ID_COLLECTION_IMAGES[0]), tour.e('.ss-photo img').get_attribute('src'))
+		
+		tour.e('.delete').click()
+		
+		alert = self.browser.switch_to_alert()
+		sleep(2)
+		alert.accept()
+		sleep(4)
+		
+		self.browser.refresh()
+		self.assertFalse(self.e('#list').exists('.image[href*="%s"]' % id_collection))
 	
 	@logged_in
 	@url('/collections/add/id/%d/#%d' % (ID_COLLECTION, ID_COLLECTION))

@@ -135,7 +135,7 @@ class Tours(HPTestCase):
 		next_button		= self.e('.next-button.right')
 		prev_button		= self.e('.next-button.left')
 		thumbs			= self.es('.step-slider li')
-		# marker_img		= self.es('.hp-marker-img')
+		# marker_img	= self.es('.hp-marker-img')
 		
 		self.hover(thumbs[0])
 		tooltip			= self.e('#tips')
@@ -175,6 +175,67 @@ class Tours(HPTestCase):
 		for n in range(len(tour_items)-1)[::-1]:
 			prev_button.click()
 			check_step(tour_items[n])
+	
+	@logged_in
+	@url('/tours/add/')
+	def test_add_tour(self):
+		
+		######################## STEP 1 #########################
+		
+		title = self.e('#tour-title')
+		title.send_keys('Beautiful buildings in Bulgaria')
+		
+		desc = self.e('#tour-description')
+		desc.send_keys('Tour about beautiful buildings in Bulgaria')
+		
+		self.e('.next-button').click()
+		sleep(5)
+		
+		######################## STEP 2 #########################
+		
+		id_tour = self.browser.current_url.split('/')[5]
+		
+		add_photo = self.e('.yours .add-photo')
+		add_photo.click()
+		
+		sleep(4)
+		
+		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BLOB, ID_TOUR_IMAGES[0]), self.e('.inn .ss-photo img').get_attribute('src'))
+		
+		button = self.es('.inn .next-button')[1]
+		button.click()
+		sleep(1)
+		
+		######################## STEP 3 #########################
+		
+		step_maker = self.e('.step-maker')
+		
+		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BLOB, ID_TOUR_IMAGES[0]), step_maker.e('.step-img').get_attribute('src'))
+		
+		self.assertEqual('Bulgarian Army Theater - 2 February 2013', step_maker.e('input').get_attribute('value'))
+		self.assertEqual('This is a photo of the famous Bulgarian Army Theater .', step_maker.e('textarea').get_attribute('value'))
+		
+		publish = self.es('.next-button.done')[1]
+		self.assertEqual('Publish', publish.e('span').text)
+		publish.click()
+		
+		self.go('/attach/uid%d/tours/all/' % ID_USER)
+		
+		self.browser.refresh()
+		sleep(3)
+		tour = self.e('#list li:nth-of-type(1)')
+		
+		self.assertEqual('%s/services/thumb/phid/%d/dim/195x150/crop/1/' % (URL_BLOB, ID_TOUR_IMAGES[0]), tour.e('.ss-photo img').get_attribute('src'))
+		
+		tour.e('.delete').click()
+		
+		alert = self.browser.switch_to_alert()
+		sleep(2)
+		alert.accept()
+		sleep(4)
+		
+		self.browser.refresh()
+		self.assertFalse(self.e('#list').exists('.image[href*="%s"]' % id_tour))
 	
 	@logged_in
 	@url('/tours/add/id/%d/#%d' % (ID_TOUR, ID_TOUR))  # Bug #2381 should be fixed - wrong ordering of itmes on third step
@@ -289,12 +350,12 @@ class Tours(HPTestCase):
 		self.assertEqual('Drag and drop the content to reorder them.', step_cnt.e('p').text)
 		
 		item_1 = step_cnt.e('#sortable > li:nth-of-type(1)')
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/152x108/crop/1/' % ID_TOUR_IMAGES[0], item_1.e('a img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BASE, ID_TOUR_IMAGES[0]), item_1.e('a img').get_attribute('src'))
 		self.assertIsInstance(item_1.e('.photo-number')	, WebElement)
 		self.assertIsInstance(item_1.e('.actions')		, WebElement)
 		
 		item_2 = step_cnt.e('#sortable > li:nth-of-type(2)')
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/152x108/crop/1/' % ID_TOUR_IMAGES[1], item_2.e('a img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BASE, ID_TOUR_IMAGES[1]), item_2.e('a img').get_attribute('src'))
 		self.assertIsInstance(item_2.e('.photo-number')	, WebElement)
 		self.assertIsInstance(item_2.e('.actions')		, WebElement)
 		
@@ -302,7 +363,7 @@ class Tours(HPTestCase):
 		self.assertEqual('Describe Step:', step.e('h4').text)
 		
 		image_cnt = step.e('.image-container')
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/152x108/crop/1/' % ID_TOUR_IMAGES[0], image_cnt.e('img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BASE, ID_TOUR_IMAGES[0]), image_cnt.e('img').get_attribute('src'))
 		self.assertIsInstance(image_cnt.e('.step-number'), WebElement)
 		self.assertEqual('1', image_cnt.e('.step-number').text)
 		
@@ -327,7 +388,7 @@ class Tours(HPTestCase):
 		self.assertEqual('Describe Step:', step.e('h4').text)
 		
 		image_cnt = step.e('.image-container')
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/152x108/crop/1/' % ID_TOUR_IMAGES[1], image_cnt.e('img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BASE, ID_TOUR_IMAGES[1]), image_cnt.e('img').get_attribute('src'))
 		self.assertIsInstance(image_cnt.e('.step-number'), WebElement)
 		self.assertEqual('2', image_cnt.e('.step-number').text)
 		
@@ -350,7 +411,7 @@ class Tours(HPTestCase):
 		self.assertEqual('Describe Step:', step.e('h4').text)
 		
 		image_cnt = step.e('.image-container')
-		self.assertEqual(URL_BASE + '/services/thumb/phid/%d/dim/152x108/crop/1/' % ID_TOUR_IMAGES[1], image_cnt.e('img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BASE, ID_TOUR_IMAGES[1]), image_cnt.e('img').get_attribute('src'))
 		self.assertIsInstance(image_cnt.e('.step-number'), WebElement)
 		self.assertEqual('2', image_cnt.e('.step-number').text)
 		

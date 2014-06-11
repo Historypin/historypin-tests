@@ -12,10 +12,10 @@ class Project_Lincoln(HPTestCase, Attach):
 		'%s/attach%s/slideshow/'		% (URL_BASE, PROJECT_URL),
 	]
 	
-	test_attach_tabs		= Attach.attach_tabs
-	# test_tab_gallery		= Attach.attach_tab_gallery same as map tab
-	# test_tab_slideshow	= Attach.attach_tab_slideshow same as map tab
-	# test_tab_map			= Attach.attach_tab_map
+	test_attach_tabs	= Attach.attach_tabs
+	test_tab_gallery	= Attach.attach_tab_gallery
+	test_tab_slideshow	= Attach.attach_tab_slideshow
+	test_tab_map		= Attach.attach_tab_map
 	
 	def test_index(self):
 		self.go(self.PROJECT_URL)
