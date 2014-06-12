@@ -18,7 +18,7 @@ class Channels(HPTestCase):
 		self.assertEqual("Profiles hold everything someone has added to Historypin, including any Tours and Collections they've created, stories other people have added to their content and any Historypin Repeats of their images.", paragraph[0].text)
 		self.assertEqual("Remember: Profiles are personalisable so can be re-designed to look just how you want them!", paragraph[1].text)
 		
-		self.assertEqual("Search Profile Names"		, self.e('.search-channels h2').text)
+		self.assertEqual("Search Profiles"		, self.e('.search-channels h2').text)
 		self.assertEqual("Some Featured Profiles"	, self.e('.search h2').text)
 		
 		channel = self.e('.channels-list li')

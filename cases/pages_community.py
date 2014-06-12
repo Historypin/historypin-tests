@@ -225,7 +225,7 @@ class Community(HPTestCase):
 			{
 				'heading': 'Adding',
 				'items': [
-					['{0}HP_GUIDE_2012_Your%20Channel.pdf'.format(link_resources), 'Your Channel'],
+					['{0}HP_GUIDE_2012_Your%20Channel.pdf'.format(link_resources), 'Your Profile'],
 					['{0}HP_GUIDE_2012_Pinning.pdf'.format(link_resources), 'How to pin a photo'],
 					['{0}watch?v=7RWb7nw2q6w'.format(youtube_link), 'Video: How to pin a photo'],
 					['{0}watch?v=v6THvhAERfo'.format(youtube_link), 'Video: How to pin a photo to Street View'],
@@ -495,7 +495,7 @@ class Community(HPTestCase):
 					['Earthquake damage, 25 February 2011'										, '/photos/#/geo:-43.507721,172.729543/zoom:10/sv:24391/heading:-171.09375/pitch:-0.75000/sv_zoom:1.00000/'					, '{0}24391/dim/142x100/crop/1/quality/90'.format(thumbs), 'This photo, overlaid on Street View, shows buildings damaged by the earthquake in Christchurch, New Zealand in February 2011, illustrating the damage done by natural disasters.'],
 					['Damage on Piccadilly, 1940 - 1942'										, '/map/#!/geo:51.509108,-0.136672/zoom:20/dialog:60440/tab:stories_tab_content/'													, '{0}60440/dim/142x100/quality/90'.format(thumbs), 'This video clip illustrates bomb damage to Picadilly, London in the early 1940s.'],
 					[u'JFK’s Inaugural Speech, 20th January 1961'								, '/map/#!/geo:38.891454,-77.01214/zoom:15/dialog:23468/tab:stories_tab_content/'											, '{0}23468/dim/142x100/quality/90'.format(thumbs), u'This audio clip plays an extract from John F Kennedy’s inaugural speech in 1961.'],
-					['Historypin Repeats'														, '/channels/view/571038/', '/channels/img/571038/logo/1/dim/142x100/crop/1/', 'This Channel has got some great Historypin Repeats - modern replicas of historical photos on Historypin, taken by people using the smartphone app.'],
+					['Historypin Repeats'														, '/channels/view/571038/', '/channels/img/571038/logo/1/dim/142x100/crop/1/', 'This Profile has got some great Historypin Repeats - modern replicas of historical photos on Historypin, taken by people using the smartphone app.'],
 					['Joe Voss, Jefferson Memorial, 1948 - 1952'								, '/photos/#/geo:38.889263,-77.05008/zoom:15/dialog:33892/tab:more_tab_content/'		, '{0}33892/dim/142x100/crop/1/quality/90'.format(thumbs), 'This photo shows a Historypin Repeat. This Historypinner has pinned a photo of his Dad at Jefferson Memorial, Washington DC in the 1950s and used the Historypin app to take a photo of himself in the same spot in 2011.'],
 				],
 			}
@@ -581,7 +581,7 @@ class Community(HPTestCase):
 		self.assertEqual('Nelson Rural School, New Brunswick, Canada', self.e('h1.title').text)
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6c_main.jpg', self.e('.section img').get_attribute('src'))
 		self.assertEqual('%s/channels/view/8817007/name/nelsonrural7k/' % URL_BASE, self.e('.section p:nth-of-type(8) a').get_attribute('href'))
-		self.assertEqual(u'Nelson School’s Historypin Channel', self.e('.section p:nth-of-type(8) a').text)
+		self.assertEqual(u'Nelson School’s Historypin Pro', self.e('.section p:nth-of-type(8) a').text)
 		
 	@url('/community/schools-newport/')
 	def test_schools_studies_newport(self):

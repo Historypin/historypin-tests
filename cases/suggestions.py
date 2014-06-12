@@ -212,6 +212,7 @@ class Suggestions(HPTestCase):
 		# TODO refactor this when suggestions are on the map
 		pass
 	
+	@unittest.expectedFailure
 	@url('dialog/%d/tab:suggestion-streetview/suggest:streetview/' % ID_MAP_ITEM)
 	def test_streetview_suggestion(self):
 		# TODO
@@ -233,5 +234,4 @@ class Suggestions(HPTestCase):
 		sleep(4)
 		
 		# TODO refactor this when suggestions are on the map
-		pass
 	

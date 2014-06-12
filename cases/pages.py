@@ -77,15 +77,15 @@ class Pages(HPTestCase):
 			{
 				'heading': 'Managing your Account',
 				'items': [
-					['title91', 'How do I connect my Twitter Account with my existing Historypin Channel?'],
-					['title92', 'How do I connect my Facebook Account with my existing Historypin Channel?'],
-					['title93', 'How do I connect my Google Account with my existing Historypin Channel?'],
-					['title94', 'How do I disconnect my Google / Facebook / Twitter account from my Historypin Channel?'],
-					['title95', 'I am having problems connecting my Google / Facebook / Twitter Account to my Historypin Channel.'],
-					['title96', 'Can I have one Facebook, Twitter or Google Account connected to more than one Historypin Channel?'],
-					['title97', 'Can I have one Historypin Channel connected to multiple Facebook or Google or Twitter accounts?'],
-					['title98', 'Can I change the Google Account associated with my Historypin Channel?'],
-					['title99', 'Can I delete my Historypin Channel?'],
+					['title91', 'How do I connect my Twitter Account with my existing Historypin Profile?'],
+					['title92', 'How do I connect my Facebook Account with my existing Historypin Profile?'],
+					['title93', 'How do I connect my Google Account with my existing Historypin Profile?'],
+					['title94', 'How do I disconnect my Google / Facebook / Twitter account from my Historypin Profile?'],
+					['title95', 'I am having problems connecting my Google / Facebook / Twitter Account to my Historypin Profile.'],
+					['title96', 'Can I have one Facebook, Twitter or Google Account connected to more than one Historypin Profile?'],
+					['title97', 'Can I have one Historypin Profile connected to multiple Facebook or Google or Twitter accounts?'],
+					['title98', 'Can I change the Google Account associated with my Historypin Profile?'],
+					['title99', 'Can I delete my Historypin Profile?'],
 				],
 			},
 			{
@@ -134,7 +134,7 @@ class Pages(HPTestCase):
 					['title108', 'Why haven\'t the fields on my bulk upload populated with meta-data?'],
 					['title109', 'Why am I getting \'Bad Request\'?'],
 					['title110', 'Why am I getting \'Internal server error\'?'],
-					['title111', 'I used the Bulk Uploader, but the content on my Channel is \'unpinned\''],
+					['title111', 'I used the Bulk Uploader, but the content on my Profile is \'unpinned\''],
 				],
 			},
 			{
