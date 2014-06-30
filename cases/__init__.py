@@ -36,7 +36,6 @@ from projects_cases.npower_watch_listen import Project_NPower_Watch_Listen
 from projects_cases.npower_work import Project_NPower_Work
 from projects_cases.queens import Project_Queens
 from projects_cases.railroads import Project_Railroads
-
 from projects_cases.olympics import Project_Olympics
 from projects_cases.ptqh import Project_PTQH
 from projects_cases.putting_art import Project_PuttingArt
@@ -45,6 +44,7 @@ from projects_cases.sandy_before import Project_Before_Sandy
 from projects_cases.sandy_during import Project_During_Sandy
 from projects_cases.sandy_after import Project_After_Sandy
 from projects_cases.sourdough import Project_Sourdough
+from projects_cases.this_place_matters import Project_This_Place_Matters
 
 from projects_cases.victorian_london import Project_VictorianLondon
 
