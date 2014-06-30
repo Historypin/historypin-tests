@@ -18,7 +18,7 @@ class Project_Europeana(HPTestCase, Attach):
 	test_tab_map		= Attach.attach_tab_map
 	test_tab_gallery	= Attach.attach_tab_gallery
 	
-	# ALL CONTACT AND PRIVACY POLICY TESTS WILL FAIL WHEN ARE RUNNED IN THE TEST SUITE, BECAUSE THERE IS NO ENOUGH TIME BETWEEN THE SEPERATE EXECUTON OF EACH CASE
+	# ALL CONTACT AND PRIVACY POLICY TESTS WILL FAIL WHEN ARE RUNNED IN THE TEST SUITE, BECAUSE THERE IS NO ENOUGH TIME BETWEEN THE Test EXECUTION OF EACH CASE
 	
 	# @unittest.expectedFailure
 	def test_tab_tours(self):
