@@ -69,7 +69,7 @@ class Project_AllOurStories(HPTestCase, Attach):
 	def test_projects(self):
 		self.go('%s/channels/' % self.PROJECT_URL)
 		
-		self.assertTitle('All Our Stories | Featured Channel')
+		self.assertTitle('All Our Stories | Featured Profiles')
 		
 		button_home = self.e('.button-wrapper a')
 		self.assertEqual('%s%s/' % (URL_BASE, self.PROJECT_URL), button_home.get_attribute('href'))

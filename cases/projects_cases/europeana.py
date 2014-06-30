@@ -461,6 +461,7 @@ class Project_Europeana(HPTestCase, Attach):
 	
 	@unittest.expectedFailure
 	def test_check_search_translation_pl(self):
+		
 		self.go('%s/pl/attach%s/tours/all?search=Berlin' % (URL_BASE, self.PROJECT_URL))
 		
 		site_cnt		= self.e('#photo_list_content')

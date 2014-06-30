@@ -25,7 +25,7 @@ class Homepage(HPTestCase):
 			[ 'Home'					, '%s/' % URL_BASE ],
 			[ 'Map'						, '%s/map/' % URL_BASE ],
 			[ 'Projects'				, '%s/projects/' % URL_BASE ],
-			[ 'Channels'				, '%s/channels/' % URL_BASE ],
+			[ 'Profiles'				, '%s/channels/' % URL_BASE ],
 			[ 'Tours and Collections'	, '%s/curated/' % URL_BASE ],
 			[ 'Get Involved'			, '%s/community/' % URL_BASE ],
 			[ 'Blog'					, 'http://blog.historypin.com/' ],
@@ -205,7 +205,7 @@ class Homepage(HPTestCase):
 			[ 'Map'								, '%s/map/' % URL_BASE],
 			[ 'Projects'						, '%s/projects/' % URL_BASE],
 			[ 'Tours and Collections'			, '%s/curated/' % URL_BASE],
-			[ 'Channels'						, '%s/channels/' % URL_BASE],
+			[ 'Profiles'						, '%s/channels/' % URL_BASE],
 			[ 'Pin'								, '%s/upload/' % URL_BASE],
 			[ 'Mobile App'						, '%s/app/' % URL_BASE],
 			

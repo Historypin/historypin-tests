@@ -31,11 +31,11 @@ class Channel(HPTestCase):
 	def test_channel_details(self):
 		
 		h3 = self.es('.chan.options h3')
-		self.assertEqual('Channel Details'	, h3[0].text)
+		self.assertEqual('Profile Details'	, h3[0].text)
 		self.assertEqual('Share:'			, h3[1].text)
 		
 		# paragraph = self.e('.chan.options p')
-		# texts = ['Channel views:', 'Fans:', 'Pins:', 'Tours:', 'Collections:']
+		# texts = ['Profile views:', 'Fans:', 'Pins:', 'Tours:', 'Collections:']
 		
 		# for n in range(len(texts)): self.assertIn(texts[n], paragraph.text)
 		
@@ -228,12 +228,12 @@ class Channel(HPTestCase):
 		tab_cnt = self.e('#tab-home .main')
 		
 		h3s = tab_cnt.es('h3')
-		self.assertEqual('Your Historypin Channel'	, h3s[0].text)
+		self.assertEqual('Your Historypin Profile'	, h3s[0].text)
 		self.assertEqual('Share:'					, h3s[1].text)
 		
 		h4s = tab_cnt.es('h4')
 		self.assertEqual('What to do now:'					, h4s[0].text)
-		self.assertEqual('Personalise your Channel further:', h4s[1].text)
+		self.assertEqual('Personalise your Profile further:', h4s[1].text)
 		
 		channel_view = '/channels/view/'
 		to_dos = [
@@ -241,7 +241,7 @@ class Channel(HPTestCase):
 			['%s%d/#tab-create-collection' % (channel_view, ID_USER), "Create a Collection"],
 			['%s%d/#tab-create-tour' % (channel_view, ID_USER)		, "Create a Tour"],
 			['/map/'												, "Explore the map"],
-			['/channels/'											, "See other people's Channels"],
+			['/channels/'											, "See other people's Profiles"],
 		]
 		
 		to_do_main = tab_cnt.es('.inner.left:nth-of-type(1) li a')
@@ -252,13 +252,13 @@ class Channel(HPTestCase):
 			self.assertEqual(i[1]			, to_do_main[n].e('span').text)
 		
 		paragraph = tab_cnt.es('p')
-		self.assertEqual("You can edit your channel at any time."					, paragraph[0].text)
-		self.assertEqual("Share your Channel so others can see what you've created"	, paragraph[1].text)
+		self.assertEqual("You can edit your profile at any time."					, paragraph[0].text)
+		self.assertEqual("Share your Profile so others can see what you've created"	, paragraph[1].text)
 		
 		links = [
-			['/#tab-settings'	, 'Edit Channel Info'],
-			['/#tab-design'		, 'Edit Channel Design'],
-			['/#tab-embed'		, 'Link to your Channel from your own website'],
+			['/#tab-settings'	, 'Edit Profile Info'],
+			['/#tab-design'		, 'Edit Profile Design'],
+			['/#tab-embed'		, 'Link to your Profile from your own website'],
 		]
 		
 		edit_main = tab_cnt.es('.inner.left:nth-of-type(2) li a')
@@ -282,7 +282,7 @@ class Channel(HPTestCase):
 		self.assertEqual("Get some inspiration"	, h3s_help[0].text)
 		self.assertEqual("Get help"				, h3s_help[1].text)
 		
-		self.assertEqual('Check out these examples to see what other people have done with their channels', help.e('p:nth-of-type(1)').text)
+		self.assertEqual('Check out these examples to see what other people have done with their profiles', help.e('p:nth-of-type(1)').text)
 		
 		examples = [
 			['%d/' % CHANNELS_EXAMPLES[0], 'Photos of the Past'],
@@ -513,7 +513,7 @@ class Channel(HPTestCase):
 		tab_cnt = self.e('#tab-reports .main')
 		self.assertEqual('Statistics', tab_cnt.e('h3').text)
 		
-		cnt = ['Views', 'Total Pin views:', 'Total Tours Views:', 'Total Collections Views:', 'Fans', 'My Fans:', "Channels I'm a fan of:", 'Activity', 'Pins:', 'Unpinned Items:', 'Tours made:', 'Collections made:', 'Comments added:', 'Favs:']
+		cnt = ['Views', 'Total Pin views:', 'Total Tours Views:', 'Total Collections Views:', 'Fans', 'My Fans:', "Profiles I'm a fan of:", 'Activity', 'Pins:', 'Unpinned Items:', 'Tours made:', 'Collections made:', 'Comments added:', 'Favs:']
 		
 		statistics = tab_cnt.es('.stats_table tr td:first-of-type')
 		
@@ -589,7 +589,7 @@ class Channel(HPTestCase):
 		checkbox[1].click()
 		button.click()
 		
-		self.assertEqual('Just so you know, you can change these settings from your channel at any time', tab_cnt.e('p').text)
+		self.assertEqual('Just so you know, you can change these settings from your profile at any time', tab_cnt.e('p').text)
 		
 		email = tab_cnt.e('#new_mail')
 		
@@ -636,7 +636,7 @@ class Channel(HPTestCase):
 		editor = self.e('.channel_editor')
 		
 		settings = editor.e('.settings')
-		self.assertEqual('Channel & Account Settings', settings.text)
+		self.assertEqual('Profile & Account Settings', settings.text)
 		self.assertIn('ss-icon'		, settings.e('span').get_attribute('class'))
 		self.assertIn('ss-settings'	, settings.e('span').get_attribute('class'))
 		
@@ -646,12 +646,12 @@ class Channel(HPTestCase):
 		self.assertTrue(settings_menu.is_displayed())
 		
 		heading = settings_menu.es('li strong')
-		self.assertEqual('Channel Settings'	, heading[0].text)
+		self.assertEqual('Profile Settings'	, heading[0].text)
 		self.assertEqual('Sharing & Embeds'	, heading[1].text)
 		self.assertEqual('Stuff I like'		, heading[2].text)
 		
 		channel_info = settings_menu.e('li:nth-of-type(2) a')
-		self.assertEqual('Channel Info'											, channel_info.text)
+		self.assertEqual('Profile Info'											, channel_info.text)
 		self.assertEqual('%s/channels/view/%d/#tab-settings' % (URL_BASE, ID_USER), channel_info.get_attribute('href'))
 		
 		channel_info.click()
@@ -659,7 +659,7 @@ class Channel(HPTestCase):
 		tab_settings = editor.e('#tab-settings')
 		self.assertTrue(tab_settings.is_displayed())
 		
-		self.assertEqual('Channel Info', tab_settings.e('h3').text)
+		self.assertEqual('Profile Info', tab_settings.e('h3').text)
 		
 		help = self.e('#tab-settings .help')
 		self.assertEqual('Get help', help.e('h3').text)
@@ -681,7 +681,7 @@ class Channel(HPTestCase):
 		
 		info = tab_settings.e('.form')
 		
-		form_texts = ['Channel Name', 'Channel Type', 'About', 'External site link', 'Twitter username', 'Facebook link', 'Google Plus link', 'Blog link']
+		form_texts = ['Profile Name', 'Profile Type', 'About', 'External site link', 'Twitter username', 'Facebook link', 'Google Plus link', 'Blog link']
 		
 		label = info.es('label')
 		for n in range(len(form_texts)): self.assertEqual(form_texts[n], label[n].text)
@@ -790,14 +790,14 @@ class Channel(HPTestCase):
 		
 		design = settings_menu.e('a[href="#tab-design"]')
 		self.assertEqual('%s/channels/view/%d/#tab-design' % (URL_BASE, ID_USER), design.get_attribute('href'))
-		self.assertEqual('Channel Design', design.text)
+		self.assertEqual('Profile Design', design.text)
 		
 		design.click()
 		sleep(3)
 		tab_design = editor.e('#tab-design')
 		self.assertTrue(tab_design.is_displayed())
 		
-		self.assertEqual('Channel Design'		, tab_design.e('h3').text)
+		self.assertEqual('Profile Design'		, tab_design.e('h3').text)
 		
 		button = self.e('.submit.button.left')
 		self.assertEqual('Save Design', button.e('span').text)
@@ -1126,7 +1126,7 @@ class Channel(HPTestCase):
 		
 		self.assertEqual('Link with my site', tab_embed.e('.main h3').text)
 		
-		headings = ['Link to my channel', 'Badge Get Badge Code', 'Social Media Icon Get Icon Code', 'Embed my content on my site']
+		headings = ['Link to my profile', 'Badge Get Badge Code', 'Social Media Icon Get Icon Code', 'Embed my content on my site']
 		
 		h4s = tab_embed.es('h4')
 		
@@ -1181,7 +1181,7 @@ class Channel(HPTestCase):
 		
 		embed_cnt = tab_embed.e('.embed-cnt')
 		self.assertEqual('Embed my content on my site', embed_cnt.e('h4').text)
-		self.assertEqual("You can now embed your Channel on Historypin into your site. Note, only Tours and Collections made from stuff you've uploaded will appear, not those containing other people's stuff you've favourited.", embed_cnt.e('p').text)
+		self.assertEqual("You can now embed your Profile on Historypin into your site. Note, only Tours and Collections made from stuff you've uploaded will appear, not those containing other people's stuff you've favourited.", embed_cnt.e('p').text)
 		self.assertEqual('%s/resources/images/embed_on_site.png' % URL_BASE, embed_cnt.e('img').get_attribute('src'))
 		
 		button = embed_cnt.e('.button.left')
@@ -1411,7 +1411,7 @@ class Channel(HPTestCase):
 		tab_subscriptions = editor.e('#tab-subscriptions')
 		self.assertTrue(tab_subscriptions.is_displayed())
 		
-		self.assertEqual("Channels I'm a fan of:", tab_subscriptions.e('h3').text)
+		self.assertEqual("Profiles I'm a fan of:", tab_subscriptions.e('h3').text)
 		
 		channels = [
 			['%d/' % FAVOURITE_CHANNELS[0], '/%d/' % FAVOURITE_CHANNELS_IMAGES[0], 'City of Richmond Archives'],
@@ -1419,10 +1419,10 @@ class Channel(HPTestCase):
 			['%d/' % FAVOURITE_CHANNELS[2], '/%d/' % FAVOURITE_CHANNELS_IMAGES[2], 'Stanford University Archives'],
 		]
 		
-		channels_list = tab_subscriptions.e('.channels-list')
-		logo_link = channels_list.es('.logo')
-		img = channels_list.es('img')
-		channel = channels_list.es('.name')
+		channels_list	= tab_subscriptions.e('.channels-list')
+		logo_link		= channels_list.es('.logo')
+		img				= channels_list.es('img')
+		channel			= channels_list.es('.name')
 		
 		for n in range(len(channels)):
 			i = channels[n]
@@ -1586,7 +1586,7 @@ class Channel(HPTestCase):
 		self.assertIn('ss-icon'	, note.e('span').get_attribute('class'))
 		self.assertIn('ss-alert', note.e('span').get_attribute('class'))
 		self.assertEqual('Note: To make it appear on the map you need to add both the date and the place'							, note.e('h2').text)
-		self.assertEqual('Without these details, your stuff will only appear on your channel. You can always add this info later.'	, note.e('p').text)
+		self.assertEqual('Without these details, your stuff will only appear on your profile. You can always add this info later.'	, note.e('p').text)
 		
 		place		= edit_page.e('#location_editor')
 		checkbox	= place.e('#has_streetview')
