@@ -14,16 +14,41 @@ class V6_Cases(HPTestCase):
 		
 		header			= self.e('#header')
 		user_options	= header.e('.user-options')
-		# assert sign in and join
-		# click Sign in - check all elements in the dialog
-		# click Join - assert all elemements in the dialog
+		sign_in			= user_options.e('.sign-in')
+		sign_up			= user_options.e('.sign-up')
 		
+		self.assertEqual('Sign in'	, sign_in.text)
+		self.assertEqual('Join'		, sign_up.text)
 		
+		sign_in.click()
+		
+		sign_in_dialog	= self.e('#ui-id-1')
+		email_login		= sign_in_dialog.e('#user_login')
+		social_buttons	= sign_in_dialog.e('.social-buttons')
+		social_li		= social_buttons.es('li a')
+		
+		self.assertEqual('Sign in to Historypin', sign_in_dialog.e('h2').text)
+		
+		social_items = [
+			['Sign in with Facebook', '/en/explore/oreo/#'					, 'ss-facebook'],
+			['Sign in with Twitter'	, '/user/twitter-login/?from={PATH}}'	, 'ss-twitter'],
+			['Sign in with Google'	, '/user/login/?from=/en/explore/oreo'	, 'ss-googleplus'],
+		]
+		
+		for n in range(len(social_items)):
+			i = social_items[n]
+			self.assertEqual(i[0], social_li[n].text)
+			self.assertEqual(URL_BASE + i[1], social_li[n].get_attribute('href'))
+			self.assertEqual(i[2], social_li[n].e('span').get_attribute('class'))
+		
+		self.assertIsInstance(email_login.e('#email')		, WebElement)
+		self.assertIsInstance(email_login.e('#password')	, WebElement)
+		self.assertIsInstance(email_login.e('.login-submit'), WebElement)
 	
-	# TODO - fix breadcrumbs when there is functionality
 	@url('/en/explore/oreo')
 	def test_breadcrumb_nav(self):
 		
+		# TODO - fix breadcrumbs when there is functionality
 		header				= self.e('#header')
 		breadcrumbs			= header.e('.breadcrumbs')
 		breadcrumbs_li		= breadcrumbs.es('li a')
