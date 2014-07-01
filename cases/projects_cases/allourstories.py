@@ -25,8 +25,8 @@ class Project_AllOurStories(HPTestCase, Attach):
 		
 		self.assertEqual('%s/projects/img/dim/1000x250/crop/1/image_id/183' % URL_BASE, self.e('#banner_images img').get_attribute('src'))
 		
-		site_cnt = self.e('#site-content')
-		desc_main = site_cnt.e('.main_description')
+		site_cnt	= self.e('#site-content')
+		desc_main	= site_cnt.e('.main_description')
 		
 		self.assertIn('During 2013 over 500 organisations were awarded grants for dynamic', desc_main.text)
 		

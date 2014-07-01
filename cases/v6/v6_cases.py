@@ -5,32 +5,45 @@ import os, sys
 
 class V6_Cases(HPTestCase):
 	
-	@unittest.expectedFailure  # in the new designs, there is no navigation
-	@url('/en/explore/')
-	def test_header(self):
+	PROJECT_URL = '/en/explore/oreo'
+	
+	@url('/en/explore/oreo')
+	def test_header_not_logged_in(self):
 		
 		self.assertTitle('Historypin')
 		
-		header	= self.e('#header')
-		links	= header.es('li a')
+		header			= self.e('#header')
+		user_options	= header.e('.user-options')
+		# assert sign in and join
+		# click Sign in - check all elements in the dialog
+		# click Join - assert all elemements in the dialog
 		
-		header_items = [
-			['Home'					, URL_BASE + '/'],
-			['Map'					, URL_BASE + '/map/'],
-			['Projects'				, URL_BASE + '/projects/'],
-			['Channels'				, URL_BASE + '/channels/'],
-			['Tours and Collections', URL_BASE + '/curated/'],
-			['Get Involved'			, URL_BASE + '/community/'],
-			['Blog'					, 'http://blog.historypin.com/'],
-			['Login'				, URL_BASE + '/user/?from=/en/explore/'],
-			['Join'					, URL_BASE + '/user/?from=/en/explore/'],
-			['Pin'					, URL_BASE + '/upload/'],
+		
+	
+	# TODO - fix breadcrumbs when there is functionality
+	@url('/en/explore/oreo')
+	def test_breadcrumb_nav(self):
+		
+		header				= self.e('#header')
+		breadcrumbs			= header.e('.breadcrumbs')
+		breadcrumbs_li		= breadcrumbs.es('li a')
+		
+		breadcrumbs_items 	= [
+			['/#', 'First World War Centenary'],
+			['/#', 'Queensland'],
+			['/#', 'A centenary hub project'],
 		]
 		
-		for n in range(len(header_items)):
-			i = header_items[n]
-			self.assertEqual(i[0], links[n].text)
-			self.assertEqual(i[1], links[n].get_attribute('href'))
+		for n in range(len(breadcrumbs_items)):
+			i = breadcrumbs_items[n]
+			self.assertEqual(URL_BASE + self.PROJECT_URL + i[0], breadcrumbs_li[n].get_attribute('href'))
+			self.assertEqual(i[1], breadcrumbs_li[n].text)
+	
+	@logged_in
+	def test_header_logged_in(self):
+		self.go('/en/explore/oreo')
+		
+		pass
 	
 	@url('/en/explore/')
 	def test_index(self):

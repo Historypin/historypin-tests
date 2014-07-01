@@ -7,7 +7,7 @@ class Project_Balboa(HPTestCase, Attach):
 	
 	PROJECT_URL		= '/project/6-balboa'
 	project_name	= 'balboa'
-	# cannot check because #embed_tabs in Balboa doesn't exists
+	# cannot check because #embed_tabs in Balboa doesn't exist
 	# ATTACH_TABS = [
 	# 	['http://www.balboapark.org/historypin', '%s/attach%s/map/index/' % (URL_BASE, PROJECT_URL), '%s/attach%s/collections/all/' % (URL_BASE, PROJECT_URL), '%s/attach%s/tours/all/' % (URL_BASE, PROJECT_URL), '%s/attach%s/contribute/' % (URL_BASE, PROJECT_URL)],
 	# ]
