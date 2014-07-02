@@ -44,7 +44,10 @@ class V6_Cases(HPTestCase):
 		self.assertIsInstance(email_login.e('#email')		, WebElement)
 		self.assertIsInstance(email_login.e('#password')	, WebElement)
 		self.assertIsInstance(email_login.e('.login-submit'), WebElement)
-	
+		
+		sign_in_dialog.e('.close-btn-wrapp').click()
+		self.assertNotIsInstance(sign_in_dialog, WebElement)
+		
 	@url('/en/explore/oreo')
 	def test_breadcrumb_nav(self):
 		

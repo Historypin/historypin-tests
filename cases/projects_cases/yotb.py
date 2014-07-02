@@ -64,7 +64,7 @@ class Project_YOTB(HPTestCase, Attach):
 		self.assertIsInstance(item_feed.e('p')	, WebElement)
 		self.assertIsInstance(item_feed.e('img'), WebElement)
 		
-		self.assertEqual('%s/attach%s/mysteries/index/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('%s/attach%s/map/index/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 		
 		icon_tout1	= site_cnt.e('#icon-tout-0 a')
 		
@@ -82,10 +82,10 @@ class Project_YOTB(HPTestCase, Attach):
 		
 		icon_tout3 = site_cnt.e('#icon-tout-2 a')
 		
-		self.assertEqual('mailto:yearofthebay.sf@gmail.com', icon_tout3.get_attribute('href'))
-		self.assertEqual('Ask us a question', icon_tout3.text)
+		self.assertEqual('http://blog.historypin.com/2014/01/01/how-you-can-participate-in-year-of-the-bay/', icon_tout3.get_attribute('href'))
+		self.assertEqual('How-to\'s', icon_tout3.text)
 		self.assertIn('ss-icon'		, icon_tout3.e('span').get_attribute('class'))
-		self.assertIn('ss-users'	, icon_tout3.e('span').get_attribute('class'))
+		self.assertIn('ss-newspaper', icon_tout3.e('span').get_attribute('class'))
 		
 		self.assertIsInstance(self.e('.addthis_toolbox'), WebElement)
 		
