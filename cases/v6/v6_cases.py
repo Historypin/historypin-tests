@@ -47,7 +47,32 @@ class V6_Cases(HPTestCase):
 		
 		sign_in_dialog.e('.close-btn-wrapp').click()
 		self.assertNotIsInstance(sign_in_dialog, WebElement)
+	
+	@logged_in
+	def test_header_logged_in(self):
+		self.go('%s/' % self.PROJECT_URL)
 		
+		user_options	= self.e('.user-options')
+		options_list	= user_options.e('.actions-list')
+		option_items	= options_list.es('a')
+		pin_button		= user_options.e('.pin-btn')
+		
+		self.assertEqual('%s/resources/avatars/200x200/avatar_3.png' % URL_BASE, user_options.e('img').get_attribute('src'))
+		
+		self.hover(self.e('.user-actions-triger'))
+		
+		
+		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER), option_items[0].get_attribute('href'))
+		self.assertEqual('My Profile', option_items[0].text)
+		
+		self.assertEqual('%s/user/logout/' % URL_BASE, option_items[1].get_attribute('href'))
+		self.assertEqual('Logout', option_items[1].text)
+		
+		# assert pin something link and text
+		
+		self.assertEqual('%s/en/project/30-oreo/upload/?from=%s/' % (URL_BASE, self.PROJECT_URL), pin_button.get_attribute('href'))
+		self.assertEqual('Pin something\n+', pin_button.text)
+	
 	@logged_in
 	@url('/en/explore/oreo')
 	def test_breadcrumb_nav(self):
@@ -59,17 +84,17 @@ class V6_Cases(HPTestCase):
 		project_heading	= banner.e('h3')
 		
 		self.assertEqual('%s%s/' % (URL_BASE, self.PROJECT_URL), breadcrumbs_li[0].get_attribute('href'))
-		self.assertEqual(breadcrumbs_li[0].text, project_heading.text)
+		self.assertEqual(breadcrumbs_li[0].text, project_heading.text)  # check if the breadcrumb is equal to project heading
 		
 		banner.e('.edit-project').click()
 		sleep(4)
 		self.e('#banner-form .edit-heading').clear()
-		self.e('#banner-form .edit-heading').send_keys('Quality Assurance')
+		self.e('#banner-form .edit-heading').send_keys('Quality Assurance')  # send keys with different title
 		
-		banner.e('.save-project').click()
+		banner.e('.save-project').click()  # save the change title
 		
 		sleep(2)
-		self.browser.refresh()
+		self.browser.refresh()  # refresh the page with the new title
 		
 		header			= self.e('#header')
 		breadcrumbs		= header.e('.breadcrumbs')
@@ -77,7 +102,7 @@ class V6_Cases(HPTestCase):
 		banner			= self.e('#banner')
 		project_heading	= banner.e('h3')
 		
-		self.assertEqual(breadcrumbs_li[0].text, project_heading.text)
+		self.assertEqual(breadcrumbs_li[0].text, project_heading.text)  # check if the new title matches the breadcrumb after refresh
 		
 		banner.e('.edit-project').click()
 		sleep(4)
@@ -85,19 +110,6 @@ class V6_Cases(HPTestCase):
 		banner.e('.edit-heading').send_keys('Project for Quality Assurance')
 		
 		banner.e('.save-project').click()
-		
-		# TODO
-		# log in
-		# click edit project
-		# change title
-		# refresh the page
-		# see if the breadcrumb maches the title
-	
-	@logged_in
-	def test_header_logged_in(self):
-		self.go('/en/explore/oreo')
-		
-		pass
 	
 	@url('/en/explore/')
 	def test_index(self):
