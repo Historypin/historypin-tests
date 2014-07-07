@@ -4,8 +4,8 @@ GO_TIMEOUT = 1
 
 # VERSION = 'v5-europeana-filter'
 # VERSION = 'v6-alpha-4'
-VERSION = 'v65-beta-4'
-# VERSION = 'v65-beta-3'
+# VERSION = 'v65-beta-4'
+VERSION = 'v68-beta'
 LINK_BASE = '%s.historypin-hrd.appspot.com' % (VERSION)
 # LINK_BASE = 'historypin.com'
 

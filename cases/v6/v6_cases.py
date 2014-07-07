@@ -48,24 +48,50 @@ class V6_Cases(HPTestCase):
 		sign_in_dialog.e('.close-btn-wrapp').click()
 		self.assertNotIsInstance(sign_in_dialog, WebElement)
 		
+	@logged_in
 	@url('/en/explore/oreo')
 	def test_breadcrumb_nav(self):
 		
-		# TODO - fix breadcrumbs when there is functionality
-		header				= self.e('#header')
-		breadcrumbs			= header.e('.breadcrumbs')
-		breadcrumbs_li		= breadcrumbs.es('li a')
+		header			= self.e('#header')
+		breadcrumbs		= header.e('.breadcrumbs')
+		breadcrumbs_li	= breadcrumbs.es('li a')
+		banner			= self.e('#banner')
+		project_heading	= banner.e('h3')
 		
-		breadcrumbs_items 	= [
-			['/#', 'First World War Centenary'],
-			['/#', 'Queensland'],
-			['/#', 'A centenary hub project'],
-		]
+		self.assertEqual('%s%s/' % (URL_BASE, self.PROJECT_URL), breadcrumbs_li[0].get_attribute('href'))
+		self.assertEqual(breadcrumbs_li[0].text, project_heading.text)
 		
-		for n in range(len(breadcrumbs_items)):
-			i = breadcrumbs_items[n]
-			self.assertEqual(URL_BASE + self.PROJECT_URL + i[0], breadcrumbs_li[n].get_attribute('href'))
-			self.assertEqual(i[1], breadcrumbs_li[n].text)
+		banner.e('.edit-project').click()
+		sleep(4)
+		self.e('#banner-form .edit-heading').clear()
+		self.e('#banner-form .edit-heading').send_keys('Quality Assurance')
+		
+		banner.e('.save-project').click()
+		
+		sleep(2)
+		self.browser.refresh()
+		
+		header			= self.e('#header')
+		breadcrumbs		= header.e('.breadcrumbs')
+		breadcrumbs_li	= breadcrumbs.es('li a')
+		banner			= self.e('#banner')
+		project_heading	= banner.e('h3')
+		
+		self.assertEqual(breadcrumbs_li[0].text, project_heading.text)
+		
+		banner.e('.edit-project').click()
+		sleep(4)
+		banner.e('.edit-heading').clear()
+		banner.e('.edit-heading').send_keys('Project for Quality Assurance')
+		
+		banner.e('.save-project').click()
+		
+		# TODO
+		# log in
+		# click edit project
+		# change title
+		# refresh the page
+		# see if the breadcrumb maches the title
 	
 	@logged_in
 	def test_header_logged_in(self):
