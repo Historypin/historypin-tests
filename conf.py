@@ -10,7 +10,7 @@ LINK_BASE = '%s.historypin-hrd.appspot.com' % (VERSION)
 # LINK_BASE = 'historypin.com'
 
 URL_BASE = 'http://www.%s' % LINK_BASE
-# URL_BLOB = 'http://www.%s' % LINK_BASE
+URL_BLOB = 'http://www.%s' % LINK_BASE
 
 IS_ON_SDK = not (LINK_BASE.endswith('.appspot.com') or LINK_BASE.endswith('.historypin.com'))
 

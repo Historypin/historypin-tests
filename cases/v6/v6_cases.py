@@ -111,7 +111,7 @@ class V6_Cases(HPTestCase):
 		
 		banner.e('.save-project').click()
 	
-	@url('/en/explore/')
+	@url('/en/explore/oreo')
 	def test_index(self):
 		
 		self.assertTitle('Historypin')
@@ -507,14 +507,12 @@ class V6_Cases(HPTestCase):
 		
 		timeline = self.e('#timeline')
 		self.assertEqual('1930', timeline.e('.start').text)
-		self.assertEqual('1930', timeline.e('.ui-slider-handle-left').text)
 		
 		self.assertEqual('2013', timeline.e('.end').text)
-		self.assertEqual('2013', timeline.e('.ui-slider-handle-right').text)
 		self.assertIsInstance(timeline.e('.ui-slider-range'), WebElement)
 		
-		if not self.e('.panel.expanded').is_displayed():
-			banner.e('.home-anchor').click()
+		# if not self.e('.panel.expanded').is_displayed():
+		# 	banner.e('.home-anchor').click()
 		
 		sleep(4)
 		self.assertEqual(URL_BASE + '/projects/img/pid/34/type/project_image,banner,logo/dim/1024x290/crop/1/', banner.e('img').get_attribute('src'))
@@ -535,15 +533,6 @@ class V6_Cases(HPTestCase):
 		
 		self.assertEqual('Explore the map', self.e('#btn-explore').text)
 		self.e('#btn-explore').click()
-		
-		self.browser.set_window_size(1680, 900)
-		sleep(5)
-		
-		banner.e('.home-anchor').click()
-		self.assertEqual('Read more...', self.e('.read-more').text)
-		self.e('.read-more').click()
-		
-		self.assertIn(u'The way history is recorded isn’t just about what museums and institutions think is important', banner.e('.description').text)
 	
 	@unittest.expectedFailure  # TODO - there is no footer in the designs
 	@url('/en/explore/')
