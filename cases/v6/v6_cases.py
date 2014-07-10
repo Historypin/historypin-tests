@@ -136,12 +136,12 @@ class V6_Cases(HPTestCase):
 		explore_map.click()
 		
 		timeline = self.e('#timeline')
-		self.assertEqual('1800', timeline.e('.start').text)
-		self.assertEqual('1800', timeline.e('.ui-state-default.ui-corner-all:nth-of-type(1)').text)
+		self.assertEqual('2002', timeline.e('.start').text)
+		self.assertEqual('2002', timeline.e('.ui-state-default.ui-corner-all:nth-of-type(1)').text)
 		
 		
-		self.assertEqual('2029', timeline.e('.end').text)
-		self.assertEqual('2029', timeline.e('.ui-state-default.ui-corner-all:nth-of-type(2)').text)
+		self.assertEqual('2014', timeline.e('.end').text)
+		self.assertEqual('2014', timeline.e('.ui-state-default.ui-corner-all:nth-of-type(2)').text)
 		
 		self.assertIsInstance(timeline.e('.ui-slider-range'), WebElement)
 		
