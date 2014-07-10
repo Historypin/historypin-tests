@@ -119,7 +119,7 @@ class V6_Cases(HPTestCase):
 		header	= self.e('#header')
 		self.assertEqual('%s/' % URL_BASE, header.e('a').get_attribute('href'))
 		
-		self.assertEqual('Historypin', self.e('h3').text)
+		self.assertEqual('Project for Quality Assurance', self.e('h3').text)
 		
 		share_toolbox = self.e('.addthis_toolbox')
 		self.hover(share_toolbox)
@@ -379,23 +379,22 @@ class V6_Cases(HPTestCase):
 		self.assertEqual('Gabss', banner.e('.channel-link span').text)
 		
 		sleep(3)
-		self.assertEqual('%s/projects/img/pid/30/type/project_image,banner,logo/dim/1024x290/crop/1/' % URL_BASE, self.e('.panel > img').get_attribute('src'))
+		self.assertEqual('%s/projects/img/pid/30/type/project_image,banner,logo/dim/1920x450/crop/1/' % URL_BASE, self.e('.panel > img').get_attribute('src'))
 		self.assertIn('Lorem Ipsum is simply dummy text of the printing and typesetting industry.', self.e('.description.inner p').text)
 		
 		project_sidebar	= self.e('.sidebar')
 		h4s				= project_sidebar.es('h4')
 		
-		self.assertEqual('TEST ORGANISATION'		, h4s[0].text)
-		self.assertEqual('PROJECT CREATED ON\n10 JANUARY 2014'		, h4s[1].text)
-		self.assertEqual('PROJECT ADMINISTRATORS'	, h4s[2].text)
-		self.assertEqual('PROJECT LOCATION'			, h4s[3].text)
+		self.assertEqual('LEADERS'		, h4s[0].text)
+		self.assertEqual('RELATED LINKS', h4s[1].text)
+		self.assertEqual('MAIN LOCATION', h4s[2].text)
 		
 		admins_cnt = [
-			['/867/'	, '/channels/img/867/logo/1/dim/50x50/crop/1/'		, 'Karamfil'			, 'Project Admin'],
-			['/33283/'	, '/channels/img/33283/logo/1/dim/50x50/crop/1/'	, 'Gabss'				, 'Project Admin'],
-			['/35019/'	, '/resources/explore/images/default-avatar.jpg'	, 'Gabriela Ananieva'	, 'Project Admin'],
-			['/47515/'	, '/resources/explore/images/default-avatar.jpg'	, 'n.p.slavov'			, 'Project Admin'],
 			['/49127/'	, '/channels/img/49127/logo/1/dim/50x50/crop/1/'	, 'Rawr'				, 'Project Admin'],
+			['/33283/'	, '/channels/img/33283/logo/1/dim/50x50/crop/1/'	, 'Gabss'				, 'Project Admin'],
+			['/867/'	, '/channels/img/867/logo/1/dim/50x50/crop/1/'		, 'Karamfil'			, 'Project Admin'],
+			['/47515/'	, '/resources/explore/images/default-avatar.jpg'	, 'n.p.slavov'			, 'Project Admin'],
+			['/35019/'	, '/resources/explore/images/default-avatar.jpg'	, 'Gabriela Ananieva'	, 'Project Admin'],
 		]
 		
 		admins		= project_sidebar.e('.project-admins')
