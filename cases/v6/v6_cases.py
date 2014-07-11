@@ -30,9 +30,9 @@ class V6_Cases(HPTestCase):
 		self.assertEqual('Sign in to Historypin', sign_in_dialog.e('h2').text)
 		
 		social_items = [
-			['Sign in with Facebook', '/en/explore/oreo/#'					, 'ss-facebook'],
-			['Sign in with Twitter'	, '/user/twitter-login/?from={PATH}}'	, 'ss-twitter'],
-			['Sign in with Google'	, '/user/login/?from=/en/explore/oreo'	, 'ss-googleplus'],
+			['Sign in with Facebook', '%s/#' % self.PROJECT_URL, 'ss-facebook'],
+			['Sign in with Twitter'	, '/user/twitter-login/?from=%s/' % self.PROJECT_URL, 'ss-twitter'],
+			['Sign in with Google'	, '/user/login/?from=%s/' % self.PROJECT_URL, 'ss-googleplus'],
 		]
 		
 		for n in range(len(social_items)):
@@ -45,8 +45,7 @@ class V6_Cases(HPTestCase):
 		self.assertIsInstance(email_login.e('#password')	, WebElement)
 		self.assertIsInstance(email_login.e('.login-submit'), WebElement)
 		
-		sign_in_dialog.e('.close-btn-wrapp').click()
-		self.assertNotIsInstance(sign_in_dialog, WebElement)
+		sign_in_dialog.e('.close-btn-wrapp a').click()
 	
 	@logged_in
 	def test_header_logged_in(self):
