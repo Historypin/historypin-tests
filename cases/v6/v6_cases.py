@@ -225,7 +225,7 @@ class V6_Cases(HPTestCase):
 	@url('/en/explore/oreo/pin/225259')
 	def test_force_login_comment(self):
 		
-		self.assertEqual('%s/resources/explore/images/default-avatar.jpg' % URL_BASE, self.e('.comment img').get_attribute('src'))
+		self.assertEqual('%s/resources/explore/images/default-avatar.jpg' % URL_BASE, self.e('.comment h4+img').get_attribute('src'))
 		
 		text_login = self.e('.login-or-join')
 		
@@ -239,7 +239,7 @@ class V6_Cases(HPTestCase):
 	@url('/en/explore/oreo/')
 	def test_force_login_pinning(self):
 		# TODO
-		# currently there is not such functionality for pinning nor designs
+		# currently there is not such functionality for pinning or designs
 		# not logged in
 		# click to add a pin
 		# check if redirects to the login page
@@ -389,11 +389,11 @@ class V6_Cases(HPTestCase):
 		self.assertEqual('MAIN LOCATION', h4s[2].text)
 		
 		admins_cnt = [
-			['/49127/'	, '/channels/img/49127/logo/1/dim/50x50/crop/1/'	, 'Rawr'				, 'Project Admin'],
-			['/33283/'	, '/channels/img/33283/logo/1/dim/50x50/crop/1/'	, 'Gabss'				, 'Project Admin'],
-			['/867/'	, '/channels/img/867/logo/1/dim/50x50/crop/1/'		, 'Karamfil'			, 'Project Admin'],
-			['/47515/'	, '/resources/explore/images/default-avatar.jpg'	, 'n.p.slavov'			, 'Project Admin'],
-			['/35019/'	, '/resources/explore/images/default-avatar.jpg'	, 'Gabriela Ananieva'	, 'Project Admin'],
+			['/49127/'	, '/channels/img/49127/logo/1/dim/50x50/crop/1/', 'Rawr'				, 'Project Admin'],
+			['/33283/'	, '/channels/img/33283/logo/1/dim/50x50/crop/1/', 'Gabss'				, 'Project Admin'],
+			['/867/'	, '/channels/img/867/logo/1/dim/50x50/crop/1/'	, 'Karamfil'			, 'Project Admin'],
+			['/47515/'	, '/resources/explore/images/default-avatar.jpg', 'n.p.slavov'			, 'Project Admin'],
+			['/35019/'	, '/resources/explore/images/default-avatar.jpg', 'Gabriela Ananieva'	, 'Project Admin'],
 		]
 		
 		admins		= project_sidebar.e('.project-admins')
