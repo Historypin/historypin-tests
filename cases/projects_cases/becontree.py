@@ -5,7 +5,7 @@ from attach import Attach
 
 class Project_Becontree(HPTestCase, Attach):
 	
-	PROJECT_URL = '/project/58-barking-and-dagenham'
+	PROJECT_URL = '/project/58-this-used-to-be-fields'
 	ATTACH_URL = '/en/attach'
 	
 	ATTACH_TABS = [
@@ -52,7 +52,7 @@ class Project_Becontree(HPTestCase, Attach):
 		self.go('%s%s/' % (URL_BASE, self.PROJECT_URL))
 		
 		tout_items = [
-			['Local events'	, 'tout1_image', 'Come to one of our local events and share your story'		, '/2013/06/25/get-involbed/'],
+			['Local events'	, 'tout1_image', 'Come to one of our local events and share your story'		, '/2013/06/25/local-events/'],
 			['Get involved'	, 'tout2_image', 'Find out how you can get involved with the project'		, '/2013/06/25/this-used-to-be-fields-get-involved/'],
 		]
 		

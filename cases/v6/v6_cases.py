@@ -443,7 +443,7 @@ class V6_Cases(HPTestCase):
 		# test upload an image
 		
 		file_upload = self.e('#fileupload-input')
-		file_upload.send_keys(os.getcwd()+"/bulgarian_army_theater_main.jpg")
+		file_upload.send_keys(os.getcwd()+"/mountain_ridge.jpg")
 		
 		# test the description
 		
@@ -461,7 +461,7 @@ class V6_Cases(HPTestCase):
 		# check google link, add a facebook one, then remove it
 		
 		links_section = self.e('.edit-links')
-		google_option = links_section.e('select option:nth-of-type(4)')
+		google_option = links_section.e('select option:nth-of-type(5)')
 		self.assertTrue(google_option.is_selected())
 		
 		self.assertEqual('http://www.google.com/', links_section.e('.input-holder input').get_attribute('value'))
@@ -477,7 +477,7 @@ class V6_Cases(HPTestCase):
 		# admin test
 		admins_section = self.e('.edit-admins')
 		admin_add = admins_section.e('.add')
-		self.assertEqual('Add another project administrator', admin_add.text)
+		self.assertEqual('Add another project leader', admin_add.text)
 		admin_add.click()
 		
 		self.e('.search-user').send_keys('as')
@@ -489,7 +489,7 @@ class V6_Cases(HPTestCase):
 		self.e('.ui-dialog-buttonset button:nth-of-type(2)').click()
 		
 		sleep(4)
-		self.assertEqual(len(admins_section.es('select')), 5)
+		self.assertEqual(len(admins_section.es('select')), 6)
 		
 		self.assertEqual('g.k. Nadezhda 1, Sofia, Bulgaria', self.e('#search-location').get_attribute('value'))
 		

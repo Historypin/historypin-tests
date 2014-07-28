@@ -41,7 +41,7 @@ class Project_VictorianLondon(HPTestCase):
 		
 		self.e('.desc a').click()
 		
-		self.assertEqual('ABOUT', self.e('.about h3').text)
+		self.assertEqual('About', self.e('.about h3').text)
 		
 		self.e('.about a').click()
 		
