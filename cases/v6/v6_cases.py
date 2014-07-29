@@ -532,28 +532,13 @@ class V6_Cases(HPTestCase):
 		self.assertEqual('Explore the map', self.e('#btn-explore').text)
 		self.e('#btn-explore').click()
 	
-	@unittest.expectedFailure  # TODO - there is no footer in the designs
-	@url('/en/explore/')
-	def test_footer(self):
+	@url('/en/explore/oreo')
+	def test_expand_collapse_banner(self):
 		
-		self.assertTitle('Historypin')
+		self.assertIsInstance(self.e('.description.inner'), WebElement)
 		
-		footer	= self.e('#footer')
-		links	= footer.es('li a')
+		banner_wrapper = self.e('.banner-top-wrapper')
+		banner_wrapper.click()
+		sleep(3)
+		self.assertIsInstance(self.e('.description.inner'), WebElement)
 		
-		footer_items = [
-			['Terms and Conditions'	, URL_BASE + '/terms-and-conditions/'],
-			['Privacy Policy'		, URL_BASE + '/privacy-policy/'],
-			['Cookies'				, URL_BASE + '/cookies/'],
-			['Facebook'				, 'http://www.facebook.com/pages/Historypin/192291707448024/'],
-			['Twitter'				, 'http://twitter.com/Historypin/'],
-			['Google +'				, 'https://plus.google.com/116628462065893538180/posts/'],
-			['Blog'					, 'http://blog.historypin.com/'],
-			[u'© We Are What We Do'	, 'http://wearewhatwedo.org/'],
-		]
-		
-		for n in range(len(footer_items)):
-			i = footer_items[n]
-			self.assertEqual(i[0], links[n].text)
-			self.assertEqual(i[1], links[n].get_attribute('href'))
-	
