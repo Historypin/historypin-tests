@@ -535,10 +535,23 @@ class V6_Cases(HPTestCase):
 	@url('/en/explore/oreo')
 	def test_expand_collapse_banner(self):
 		
-		self.assertIsInstance(self.e('.description.inner'), WebElement)
+		self.assertTrue(self.e('.project-admins').is_displayed())
 		
 		banner_wrapper = self.e('.banner-top-wrapper')
 		banner_wrapper.click()
+		
+		sleep(4)
+		self.assertFalse(self.e('.project-admins').is_displayed())
+	
+	@url('/en/explore/oreo')
+	def test_hidden_header_on_smaller_screens(self):
+		
+		self.assertIsInstance(self.e('#header'), WebElement)
+		
+		self.browser.set_window_size(1024, 750)
 		sleep(3)
+		
 		self.assertIsInstance(self.e('.description.inner'), WebElement)
 		
+		# width 1024px, height 750px
+	
