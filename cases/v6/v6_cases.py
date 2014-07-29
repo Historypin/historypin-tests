@@ -213,13 +213,13 @@ class V6_Cases(HPTestCase):
 		
 		edit_icon.click()
 		
-		self.assertEqual('%s/upload-audio/pin/phid/225263/edit/1/?from=/en/explore/oreo/pin/225263' % URL_BASE, self.browser.current_url)
+		sleep(3)
 		
 		self.e('#photo_pin').click()
 		
 		sleep(5)
-		self.assertEqual('%s/en/explore/oreo/pin/225263/' % URL_BASE, self.browser.current_url)
-		self.assertEqual('http://www.historypin.com/services/thumb/phid/225263/dim/600x600/quality/80/', self.e('.content.ng-scope img').get_attribute('src'))
+		self.assertEqual('%s/en/explore/oreo/pin/225263' % URL_BASE, self.browser.current_url)
+		self.assertEqual('%s/resources/avatars/200x200/avatar_3.png' % URL_BASE, self.e('.content.ng-scope img').get_attribute('src'))
 		self.assertIsInstance(self.e('.bookmarks'), WebElement)
 	
 	@url('/en/explore/oreo/pin/225259')
@@ -581,10 +581,8 @@ class V6_Cases(HPTestCase):
 		self.browser.set_window_size(1024, 750)
 		
 		self.assertFalse(self.e('.panel img').is_displayed())
-		
 	
 	@url('/en/explore/oreo')
 	def test_map_credits(self):
 		pass
-		# pannel img
 
