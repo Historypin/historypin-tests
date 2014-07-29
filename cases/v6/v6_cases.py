@@ -572,8 +572,19 @@ class V6_Cases(HPTestCase):
 		self.browser.set_window_size(1024, 750)
 		
 		self.assertFalse(self.e('#timeline').is_displayed())
+	
+	@url('/en/explore/oreo/')
+	def test_hidden_project_image_on_smaller_screens(self):
 		
-	@url('/')
+		self.assertTrue(self.e('.panel img').is_displayed())
+		
+		self.browser.set_window_size(1024, 750)
+		
+		self.assertFalse(self.e('.panel img').is_displayed())
+		
+	
+	@url('/en/explore/oreo')
 	def test_map_credits(self):
 		pass
+		# pannel img
 
