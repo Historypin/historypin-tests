@@ -553,5 +553,15 @@ class V6_Cases(HPTestCase):
 		
 		self.assertFalse(self.e('#header').is_displayed())
 		
-		# width 1024px, height 750px
+	@url('/en/explore/oreo/pin/225260')
+	def test_hidden_views_on_smaller_screens(self):
+		
+		self.assertEqual('Sofia at night', self.e('.row h1').text)
+		self.assertTrue(self.e('.views').is_displayed())
+		
+		self.browser.set_window_size(1024, 750)
+		
+		self.assertFalse(self.e('.views').is_displayed())
+		
+		
 	
