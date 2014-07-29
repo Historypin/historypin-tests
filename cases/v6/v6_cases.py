@@ -562,6 +562,18 @@ class V6_Cases(HPTestCase):
 		self.browser.set_window_size(1024, 750)
 		
 		self.assertFalse(self.e('.views').is_displayed())
-		
-		
 	
+	@url('/en/explore/oreo/pin/225260')
+	def test_hidden_timeline_on_smaller_screens(self):
+		
+		self.assertTrue(self.e('#timeline').is_displayed())
+		self.assertEqual('18 September 2006', self.e('.tooltip.arrow-down').text)
+		
+		self.browser.set_window_size(1024, 750)
+		
+		self.assertFalse(self.e('#timeline').is_displayed())
+		
+	@url('/')
+	def test_map_credits(self):
+		pass
+
