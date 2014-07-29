@@ -546,12 +546,12 @@ class V6_Cases(HPTestCase):
 	@url('/en/explore/oreo')
 	def test_hidden_header_on_smaller_screens(self):
 		
-		self.assertIsInstance(self.e('#header'), WebElement)
+		self.assertTrue(self.e('#header').is_displayed())
 		
 		self.browser.set_window_size(1024, 750)
 		sleep(3)
 		
-		self.assertIsInstance(self.e('.description.inner'), WebElement)
+		self.assertFalse(self.e('#header').is_displayed())
 		
 		# width 1024px, height 750px
 	
