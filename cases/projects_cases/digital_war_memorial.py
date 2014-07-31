@@ -3,7 +3,7 @@
 from base import *
 import os, sys
 
-class Project_FirstWorldWar(HPTestCase):
+class Project_DigitalWarMemorial(HPTestCase):
 	
 	PROJECT_URL = '/en/explore/the-digital-war-memorial'
 	
