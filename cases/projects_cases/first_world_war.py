@@ -67,10 +67,17 @@ class Project_FirstWorldWar(HPTestCase):
 		add_proj_button.click()
 		
 		self.assertIsInstance(self.e('#ui-id-1'), WebElement)
-		
 	
 	@logged_in
 	def test_project_button_logged_in(self):
 		self.go(self.PROJECT_URL)
-		pass
+		
+		banner			= self.e('#banner')
+		add_proj_button	= banner.e('.add-project-btn')
+		
+		add_proj_button.click()
+		
+		self.assertEqual('%s%s/project/create/' % (URL_BASE, self.PROJECT_URL), self.browser.current_url)
+		
+		self.assertIsInstance(self.e('#banner-form'), WebElement)
 	
