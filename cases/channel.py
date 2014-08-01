@@ -199,7 +199,7 @@ class Channel(HPTestCase):
 		tours_tab.click()
 		sleep(2)
 		
-		item = self.e('#photo_list_content .list li a')
+		item = self.e('#photo_list_content .list li>a')
 		
 		self.assertEqual('%s/attach/uid%d/tours/view/id/%d/title/Test%%20Tour%%20for%%20automated%%20test' % (URL_BASE, ID_USER_VIEW, ID_TOUR_VIEW), item.get_attribute('href'))
 		self.assertEqual('%s/services/thumb/phid/706/dim/195x150/crop/1/' % URL_BASE, item.e('img').get_attribute('src'))

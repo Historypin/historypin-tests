@@ -583,6 +583,13 @@ class V6_Cases(HPTestCase):
 		self.assertFalse(self.e('.panel img').is_displayed())
 	
 	@url('/en/explore/oreo')
+	def test_hidden_comments_info_on_smaller_screens(self):
+		# TODO
+		
+		pass
+	
+	
+	@url('/en/explore/oreo')
 	def test_map_credits(self):
 		pass
 

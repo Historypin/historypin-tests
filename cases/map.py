@@ -227,8 +227,7 @@ class Map(HPTestCase):
 		fullscr_off.click()
 		
 		self.e('.action.photo-view-on-streetview.sv-marker[href$=streetview_cnt]').click()
-		self.go('.list_tabs a[href$=details_cnt]')
-		
+		self.e('.list_tabs a[href$=details_cnt]').click()
 		
 	
 	@url('/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:details/' % ID_MAP_ITEM)
