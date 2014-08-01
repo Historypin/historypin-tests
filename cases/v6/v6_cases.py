@@ -582,12 +582,19 @@ class V6_Cases(HPTestCase):
 		
 		self.assertFalse(self.e('.panel img').is_displayed())
 	
-	@url('/en/explore/oreo')
+	@url('/en/explore/oreo/pin/225260')
 	def test_hidden_comments_info_on_smaller_screens(self):
-		# TODO
 		
-		pass
-	
+		info_bookmarks = self.e('.bookmarks')
+		self.assertIsInstance(info_bookmarks, WebElement)
+		
+		comment_section = self.e('.comment.add-comment')
+		self.assertIsInstance(comment_section, WebElement)
+		
+		self.browser.set_window_size(1024, 750)
+		
+		self.assertFalse(info_bookmarks.is_displayed())
+		self.assertFalse(comment_section.is_displayed())
 	
 	@url('/en/explore/oreo')
 	def test_map_credits(self):
