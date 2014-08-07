@@ -41,9 +41,9 @@ class Project_FirstWorldWar(HPTestCase):
 		self.assertFalse(banner.e('#about').is_displayed())
 		self.assertIn('Mae canolbwynt Canmlwyddiannol y Rhyfel Byd Cyntaf', banner.e('#cymraeg').text)
 		
-		sub_proj_h3s			= banner.es('.sub-projects-highlights .sub-project-item h3')
-		sub_proj_desc			= banner.es('.sub-projects-highlights .sub-project-item p')
-		sub_proj_links			= banner.es('.sub-projects-highlights .sub-project-item a')
+		sub_proj_h3s	= banner.es('.sub-projects-highlights .sub-project-item h3')
+		sub_proj_desc	= banner.es('.sub-projects-highlights .sub-project-item p')
+		sub_proj_links	= banner.es('.sub-projects-highlights .sub-project-item a')
 		
 		self.assertEqual('DIGITAL WAR MEMORIAL', sub_proj_h3s[0].text)
 		self.assertEqual('Explore unique creative responses to the First World War made by local communities collaborating with artists.', sub_proj_desc[0].text)
@@ -53,7 +53,7 @@ class Project_FirstWorldWar(HPTestCase):
 		self.assertEqual('ADD YOUR OWN PROJECT'									, banner.e('.add-project-btn').text)
 		
 		self.assertEqual('HLF PROJECTS', sub_proj_h3s[1].text)
-		self.assertEqual('Explore local projects supported by the Heritage Lottery Fund.', sub_proj_desc[1].text)
+		self.assertEqual('Explore projects supported by the Heritage Lottery Fund.', sub_proj_desc[1].text)
 		self.assertEqual('%s/en/explore/hlf/' % URL_BASE, sub_proj_links[2].get_attribute('href'))
 		
 		self.assertIsInstance(self.e('.partnership'), WebElement)
@@ -80,4 +80,4 @@ class Project_FirstWorldWar(HPTestCase):
 		self.assertEqual('%s%s/project/create/' % (URL_BASE, self.PROJECT_URL), self.browser.current_url)
 		
 		self.assertIsInstance(self.e('#banner-form'), WebElement)
-	
+		

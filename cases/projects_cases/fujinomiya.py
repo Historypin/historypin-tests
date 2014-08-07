@@ -15,7 +15,7 @@ class Project_Fujinomiya(HPTestCase, Attach):
 	]
 	
 	test_attach_tabs	= Attach.attach_tabs
-	# test_tab_map		= Attach.attach_tab_map  cannot be tested because there is only one photo on the map
+	test_tab_map		= Attach.attach_tab_map
 	test_tab_gallery	= Attach.attach_tab_gallery
 	
 	def test_index(self):

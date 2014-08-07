@@ -246,7 +246,7 @@ class V6_Cases(HPTestCase):
 		pass
 	
 	@logged_in
-	@url('/en/explore/oreo/pin/225259')
+	@url('/en/explore/oreo/pin/225260')
 	def test_make_comment(self):
 		
 		# TODO add img link when it is added
@@ -532,6 +532,7 @@ class V6_Cases(HPTestCase):
 		self.assertEqual('Explore the map', self.e('#btn-explore').text)
 		self.e('#btn-explore').click()
 	
+	@unittest.skipIf('v68-beta' in URL_BASE, "this is made on v69-beta")
 	@url('/en/explore/oreo')
 	def test_expand_collapse_banner(self):
 		
@@ -543,6 +544,7 @@ class V6_Cases(HPTestCase):
 		sleep(4)
 		self.assertFalse(self.e('.project-admins').is_displayed())
 	
+	@unittest.skipIf('v68' in URL_BASE, "this is made on v69-beta")
 	@url('/en/explore/oreo')
 	def test_hidden_header_on_smaller_screens(self):
 		
@@ -553,6 +555,7 @@ class V6_Cases(HPTestCase):
 		
 		self.assertFalse(self.e('#header').is_displayed())
 		
+	@unittest.skipIf('v68' in URL_BASE, "this is made on v69-beta")
 	@url('/en/explore/oreo/pin/225260')
 	def test_hidden_views_on_smaller_screens(self):
 		
@@ -563,6 +566,7 @@ class V6_Cases(HPTestCase):
 		
 		self.assertFalse(self.e('.views').is_displayed())
 	
+	@unittest.skipIf('v68' in URL_BASE, "this is made on v69-beta")
 	@url('/en/explore/oreo/pin/225260')
 	def test_hidden_timeline_on_smaller_screens(self):
 		
@@ -573,6 +577,7 @@ class V6_Cases(HPTestCase):
 		
 		self.assertFalse(self.e('#timeline').is_displayed())
 	
+	@unittest.skipIf('v68' in URL_BASE, "this is made on v69-beta")
 	@url('/en/explore/oreo/')
 	def test_hidden_project_image_on_smaller_screens(self):
 		
@@ -582,6 +587,7 @@ class V6_Cases(HPTestCase):
 		
 		self.assertFalse(self.e('.panel img').is_displayed())
 	
+	@unittest.skipIf('v68' in URL_BASE, "this is made on v69-beta")
 	@url('/en/explore/oreo/pin/225260')
 	def test_hidden_comments_info_on_smaller_screens(self):
 		
@@ -598,5 +604,6 @@ class V6_Cases(HPTestCase):
 	
 	@url('/en/explore/oreo')
 	def test_map_credits(self):
+		# TODO to be tested
 		pass
 
