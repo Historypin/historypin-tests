@@ -36,8 +36,8 @@ class Project_This_Place_Matters(HPTestCase, Attach):
 		
 		
 		tout_items = [
-			['How to pin'			, 'http://blog.historypin.com/?p=4954'						, 'tout1_image', 'Find out how to upload'],
-			['Mysterious Matters'	, '%s%s/#!mysteries/index/' % (URL_BASE, self.PROJECT_URL)	, 'tout2_image', 'Help us solve the mystery'],
+			['How to pin'			, 'http://blog.historypin.com/?p=4954'									, 'tout1_image', 'Find out how to upload'],
+			['Mysterious Matters'	, 'http://www.historypin.com%s/#!mysteries/index/' % self.PROJECT_URL	, 'tout2_image', 'Help us solve the mystery'],
 		]
 		
 		h3s			= site_cnt.es('.tout.w2 h3')

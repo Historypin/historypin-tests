@@ -72,7 +72,7 @@ class Collections(HPTestCase):
 		self.assertEqual('Slide Show'										, button.text)
 		
 		collection_view = [
-			['geo:42.694701,23.329031/zoom:15/dialog:%d'	% ID_COLLECTION_IMAGES[0], '/%d/' % ID_COLLECTION_IMAGES[0], '2 February 2013, from Gabriela Ananieva'	, '/%d' % ID_USER],
+			['geo:42.694709,23.329037/zoom:15/dialog:%d'	% ID_COLLECTION_IMAGES[0], '/%d/' % ID_COLLECTION_IMAGES[0], '2 February 2013, from Gabriela Ananieva'	, '/%d' % ID_USER],
 			['geo:42.693738,23.326101/zoom:15/dialog:%d'	% ID_COLLECTION_IMAGES[1], '/%d/' % ID_COLLECTION_IMAGES[1], '2 August 2012, from Gabss'				, '/%d' % ID_USER_VIEW],
 		]
 		
@@ -128,7 +128,7 @@ class Collections(HPTestCase):
 		self.assertEqual('%s/services/thumb/phid/%d/' % (URL_BASE, ID_COLLECTION_IMAGES[1]), prev_thumb.get_attribute('src'))
 		self.assertIn('1/2', counter.text)
 		self.assertEqual('"Bulgarian Army Theater"- 2 February 2013 by Gabriela Ananieva', step_text.text)
-		self.assertEqual('%s/map/#!/geo:42.694701,23.329031/zoom:9/dialog:%d/tab:details/' % (URL_BASE, ID_COLLECTION_IMAGES[0]), step_text.get_attribute('href'))
+		self.assertEqual('%s/map/#!/geo:42.694709,23.329037/zoom:9/dialog:%d/tab:details/' % (URL_BASE, ID_COLLECTION_IMAGES[0]), step_text.get_attribute('href'))
 		self.assertEqual('%s/services/thumb/phid/%d/' % (URL_BASE, ID_COLLECTION_IMAGES[1]), next_thumb.get_attribute('src'))
 		next_slide.click()
 		sleep(3)

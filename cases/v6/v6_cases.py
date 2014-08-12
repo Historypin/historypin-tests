@@ -273,9 +273,9 @@ class V6_Cases(HPTestCase):
 		sleep(4)
 		timeline = self.e('#timeline')
 		
-		self.assertEqual('1997', timeline.e('.ui-state-default.ui-corner-all:nth-of-type(1)').text)
+		self.assertEqual('2002', timeline.e('.ui-state-default.ui-corner-all:nth-of-type(1)').text)
 		self.assertEqual('2014', timeline.e('.ui-state-default.ui-corner-all:nth-of-type(2)').text)
-		self.assertEqual('2 January 2013', timeline.e('.tooltip').text)
+		self.assertEqual('2 January 2006', timeline.e('.tooltip').text)
 		# self.assertEqual('ulitsa "Georgi Benkovski", 1000 Sofia, Bulgaria', self.e('#map .tooltip.arrow-down').text)
 		
 		column_header = self.e('#pin .row')
@@ -298,11 +298,11 @@ class V6_Cases(HPTestCase):
 		self.assertIsInstance(share_items[3], WebElement)
 		
 		column_3b = self.e('.content')
-		self.assertEqual('http://www.historypin.com/services/thumb/phid/225259/dim/600x600/quality/80/', column_3b.e('img').get_attribute('src'))
+		self.assertEqual('%s/services/thumb/phid/225259/dim/600x600/quality/80/' % URL_BASE, column_3b.e('img').get_attribute('src'))
 		
 		self.assertIsInstance(column_3b.e('.info-anchor'), WebElement)
 		
-		h4s		= ['Description', 'Tags', 'Information', 'Creator', 'Add a comment', 'COMMENTS (1)']
+		h4s		= ['DESCRIPTION', 'TAGS', 'INFORMATION', 'CREATOR', 'ADD A COMMENT', 'COMMENTS (3)']
 		h4s_cnt	= column_3b.es('h4')
 		for n in range(len(h4s)): self.assertEqual(h4s[n], h4s_cnt[n].text)
 		
@@ -314,24 +314,23 @@ class V6_Cases(HPTestCase):
 		self.assertEqual('theatre'			, tag_items[1].text)
 		self.assertEqual('bulgarian army'	, tag_items[2].text)
 		
-		column_header.e('.close-anchor').click()
-		self.assertFalse(column_header.is_displayed())
-		self.assertFalse(column_3b.is_displayed())
+		# column_header.e('.close-anchor').click()
+		# self.assertFalse(column_header.is_displayed())
+		# self.assertFalse(column_3b.is_displayed())
 	
 	@logged_in
 	@url('/en/explore/oreo/pin/223343/geo/43.24369,23.956892,6')
 	def test_text_pin(self):
 		
+		sleep(3)
 		self.assertEqual('Project for Quality Assurance', self.e('h3').text)
-		self.assertEqual('5 May 2012', self.e('.tooltip.arrow-up').text)
-		
-		self.assertEqual('ulitsa "Okolovrasten pat", 1756 Sofia, Bulgaria', self.e('.tooltip.arrow-down').text)
+		# self.assertEqual('5 May 2012', self.e('.tooltip.arrow-up').text)
 		
 		column_row = self.e('.c3b')
 		
 		sleep(3)
 		self.assertEqual('Title Text Pin1', column_row.e('h1').text)
-		self.assertEqual('http://www.historypin.com/channels/img/49127/logo/1/dim/50x50/crop/1/', column_row.e('.author-image img').get_attribute('src'))
+		self.assertEqual('%s/channels/img/49127/logo/1/dim/50x50/crop/1/' % URL_BASE, column_row.e('.author-image img').get_attribute('src'))
 		self.assertEqual('Rawr', column_row.e('.author a').text)
 		self.assertEqual('%s/channels/view/49127' % URL_BASE, column_row.e('.author a').get_attribute('href'))
 		
@@ -356,7 +355,7 @@ class V6_Cases(HPTestCase):
 		# h4s_cnt = info_pin.es('h4')
 		# for n in range(len(h4s)): self.assertEqual(h4s[n], h4s_cnt[n].text)
 		
-		self.assertEqual("License: Copyright (c) all rights reserved\nAttribution:\nOriginal link:\nRepository:\nNotes:", self.e('.information').text)
+		self.assertEqual("Licence: Copyright (c) all rights reserved\nAttribution:\nOriginal link:\nRepository:\nNotes:", self.e('.information').text)
 	
 	@url('/en/explore/oreo')
 	def test_user_project(self):
@@ -513,7 +512,7 @@ class V6_Cases(HPTestCase):
 		# 	banner.e('.home-anchor').click()
 		
 		sleep(4)
-		self.assertEqual(URL_BASE + '/projects/img/pid/34/type/project_image,banner,logo/dim/1024x290/crop/1/', banner.e('img').get_attribute('src'))
+		self.assertEqual(URL_BASE + '/projects/img/pid/34/type/project_image,banner,logo/dim/1920x450/crop/1/', banner.e('img').get_attribute('src'))
 		
 		self.assertEqual('Mirrorpix Archives', banner.e('.channel-link span').text)
 		self.assertEqual('Europeana 1989: We Made History', banner.e('.description strong').text)
