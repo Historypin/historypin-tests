@@ -16,12 +16,12 @@ class Project_Railroads(HPTestCase, Attach):
 		'%s/attach%s/slideshow/'		% (URL_BASE, PROJECT_URL),
 		'%s/attach%s/mysteries/index/'	% (URL_BASE, PROJECT_URL),
 	]
-
+	
 	test_attach_tabs			= Attach.attach_tabs
 	test_tab_map				= Attach.attach_tab_map
 	test_tab_gallery			= Attach.attach_tab_gallery
-	test_tab_tours_empty		= Attach.attach_tab_tours_empty
-	test_tab_collections_empty	= Attach.attach_tab_collections_empty
+	test_tab_tours				= Attach.attach_tab_tours
+	test_tab_collections		= Attach.attach_tab_collections
 	test_tab_slideshow			= Attach.attach_tab_slideshow
 	
 	def test_tab_mysteries(self):

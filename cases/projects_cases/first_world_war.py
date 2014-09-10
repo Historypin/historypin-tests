@@ -61,7 +61,8 @@ class Project_FirstWorldWar(HPTestCase):
 	def test_project_button_not_logged_in(self):
 		self.go(self.PROJECT_URL)
 		
-		banner			= self.e('#banner')
+		sleep(4)
+		banner			= self.e('.panel')
 		add_proj_button	= banner.e('.add-project-btn')
 		
 		add_proj_button.click()
@@ -79,5 +80,5 @@ class Project_FirstWorldWar(HPTestCase):
 		
 		self.assertEqual('%s%s/project/create/' % (URL_BASE, self.PROJECT_URL), self.browser.current_url)
 		
-		self.assertIsInstance(self.e('#banner-form'), WebElement)
+		self.assertIsInstance(self.e('.panel'), WebElement)
 		

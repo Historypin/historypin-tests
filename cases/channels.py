@@ -63,7 +63,7 @@ class Channels(HPTestCase):
 		
 		self.assertEqual('Search Results for "g.ananieva@avalith.bg":', self.e('.search > h2').text)
 		
-		channel = self.e('.channels-list li:nth-of-type(2)')
+		channel = self.e('.channels-list li:nth-of-type(1)')
 		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER_VIEW)							, channel.e('a.logo').get_attribute('href'))
 		self.assertEqual('%s/channels/img/%d/logo/1/dim/70x70/crop/1/' % (URL_BASE, ID_USER_VIEW)	, channel.e('a.logo img').get_attribute('src'))
 		self.assertEqual('Gabss'																	, channel.e('a.name').text)

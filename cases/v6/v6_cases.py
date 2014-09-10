@@ -12,6 +12,8 @@ class V6_Cases(HPTestCase):
 		
 		self.assertTitle('Historypin')
 		
+		sleep(3)  #sleep is 
+		
 		header			= self.e('#header')
 		user_options	= header.e('.user-options')
 		sign_in			= user_options.e('.sign-in')
@@ -32,7 +34,7 @@ class V6_Cases(HPTestCase):
 		social_items = [
 			['Sign in with Facebook', '%s/#' % self.PROJECT_URL, 'ss-facebook'],
 			['Sign in with Twitter'	, '/user/twitter-login/?from=%s/' % self.PROJECT_URL, 'ss-twitter'],
-			['Sign in with Google'	, '/user/login/?from=%s/' % self.PROJECT_URL, 'ss-googleplus'],
+			['Sign in with Google'	, '/user/google_login/?from=%s/' % self.PROJECT_URL, 'ss-googleplus'],
 		]
 		
 		for n in range(len(social_items)):
@@ -95,6 +97,7 @@ class V6_Cases(HPTestCase):
 		sleep(2)
 		self.browser.refresh()  # refresh the page with the new title
 		
+		sleep(4)
 		header			= self.e('#header')
 		breadcrumbs		= header.e('.breadcrumbs')
 		breadcrumbs_li	= breadcrumbs.es('li a')
@@ -167,6 +170,7 @@ class V6_Cases(HPTestCase):
 	@url('/en/explore/oreo/date/2002:2010')
 	def test_date_slider(self):
 		
+		sleep(2)
 		timeline = self.e('#timeline')
 		self.assertEqual('2002', timeline.e('.ui-state-default.ui-corner-all:nth-of-type(1)').text)
 		self.assertEqual('2010', timeline.e('.ui-state-default.ui-corner-all:nth-of-type(2)').text)
@@ -181,7 +185,7 @@ class V6_Cases(HPTestCase):
 		timeline = self.e('#timeline')
 		self.assertEqual('2 January 2012', timeline.e('.tooltip.arrow-down').text)
 		
-		self.assertEqual('Sound in Sofia', self.e('#pin h1').text)
+		self.assertEqual(u'\u23ea \u23e9 Sound in Sofia', self.e('#pin h1').text)
 		# TODO cannot assert the youtube embed
 		
 		bookmarks = self.e('.bookmarks')
@@ -329,7 +333,7 @@ class V6_Cases(HPTestCase):
 		column_row = self.e('.c3b')
 		
 		sleep(3)
-		self.assertEqual('Title Text Pin1', column_row.e('h1').text)
+		self.assertEqual(u'\u23ea \u23e9 Title Text Pin1', column_row.e('h1').text)
 		self.assertEqual('%s/channels/img/49127/logo/1/dim/50x50/crop/1/' % URL_BASE, column_row.e('.author-image img').get_attribute('src'))
 		self.assertEqual('Rawr', column_row.e('.author a').text)
 		self.assertEqual('%s/channels/view/49127' % URL_BASE, column_row.e('.author a').get_attribute('href'))
@@ -366,6 +370,7 @@ class V6_Cases(HPTestCase):
 		
 		share_toolbox	= banner.e('.addthis_toolbox')
 		self.hover(share_toolbox)
+		
 		social_cnt		= self.e('.social-container')
 		share_items		= social_cnt.es('li')
 		self.assertIsInstance(share_items[0], WebElement)
@@ -373,11 +378,10 @@ class V6_Cases(HPTestCase):
 		self.assertIsInstance(share_items[2], WebElement)
 		self.assertIsInstance(share_items[3], WebElement)
 		
-		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER_VIEW), banner.e('.channel-link').get_attribute('href'))
 		self.assertEqual('Gabss', banner.e('.channel-link span').text)
 		
 		sleep(3)
-		self.assertEqual('%s/projects/img/pid/30/type/project_image,banner,logo/dim/1920x450/crop/1/' % URL_BASE, self.e('.panel > img').get_attribute('src'))
+		self.assertEqual('%s/projects/img/pid/30/type/project_image,banner,logo/dim/1920x450/crop/1/off/0x1/zoom/400' % URL_BASE, self.e('.panel > img').get_attribute('src'))
 		self.assertIn('Lorem Ipsum is simply dummy text of the printing and typesetting industry.', self.e('.description.inner p').text)
 		
 		project_sidebar	= self.e('.sidebar')
@@ -388,11 +392,11 @@ class V6_Cases(HPTestCase):
 		self.assertEqual('MAIN LOCATION', h4s[2].text)
 		
 		admins_cnt = [
-			['/49127/'	, '/channels/img/49127/logo/1/dim/50x50/crop/1/', 'Rawr'				, 'Project Admin'],
-			['/33283/'	, '/channels/img/33283/logo/1/dim/50x50/crop/1/', 'Gabss'				, 'Project Admin'],
-			['/867/'	, '/channels/img/867/logo/1/dim/50x50/crop/1/'	, 'Karamfil'			, 'Project Admin'],
-			['/47515/'	, '/resources/explore/images/default-avatar.jpg', 'n.p.slavov'			, 'Project Admin'],
-			['/35019/'	, '/resources/explore/images/default-avatar.jpg', 'Gabriela Ananieva'	, 'Project Admin'],
+			['/49127/'	, '/channels/img/49127/logo/1/dim/50x50/crop/1/cache/0/', 'Rawr'				, 'Project Leader'],
+			['/33283/'	, '/channels/img/33283/logo/1/dim/50x50/crop/1/cache/0/', 'Gabss'				, 'Project Leader'],
+			['/867/'	, '/channels/img/867/logo/1/dim/50x50/crop/1/cache/0/'	, 'Karamfil'			, 'Project Leader'],
+			['/47515/'	, '/resources/explore/images/default-avatar.jpg', 'n.p.slavov'			, 'Project Leader'],
+			['/35019/'	, '/resources/explore/images/default-avatar.jpg', 'Gabriela Ananieva'	, 'Project Leader'],
 		]
 		
 		admins		= project_sidebar.e('.project-admins')
@@ -411,7 +415,7 @@ class V6_Cases(HPTestCase):
 			
 		
 		location = project_sidebar.e('.project-location')
-		self.assertEqual('g.k. Nadezhda 1, Sofia, Bulgaria', location.e('p').text)
+		self.assertEqual('Malaysia', location.e('p').text)
 		self.assertIsInstance(location.e('.small-map'), WebElement)
 		
 		banner.e('#btn-explore').click()
@@ -531,7 +535,6 @@ class V6_Cases(HPTestCase):
 		self.assertEqual('Explore the map', self.e('#btn-explore').text)
 		self.e('#btn-explore').click()
 	
-	@unittest.skipIf('v68-beta' in URL_BASE, "this is made on v69-beta")
 	@url('/en/explore/oreo')
 	def test_expand_collapse_banner(self):
 		
@@ -543,9 +546,10 @@ class V6_Cases(HPTestCase):
 		sleep(4)
 		self.assertFalse(self.e('.project-admins').is_displayed())
 	
-	@unittest.skipIf('v68' in URL_BASE, "this is made on v69-beta")
 	@url('/en/explore/oreo')
 	def test_hidden_header_on_smaller_screens(self):
+		
+		sleep(3)  # the header element cannot be found without the sleep
 		
 		self.assertTrue(self.e('#header').is_displayed())
 		
@@ -554,21 +558,20 @@ class V6_Cases(HPTestCase):
 		
 		self.assertFalse(self.e('#header').is_displayed())
 		
-	@unittest.skipIf('v68' in URL_BASE, "this is made on v69-beta")
 	@url('/en/explore/oreo/pin/225260')
 	def test_hidden_views_on_smaller_screens(self):
 		
-		self.assertEqual('Sofia at night', self.e('.row h1').text)
+		self.assertEqual(u'\u23ea \u23e9 Sofia at night', self.e('.row h1').text)
 		self.assertTrue(self.e('.views').is_displayed())
 		
 		self.browser.set_window_size(1024, 750)
 		
 		self.assertFalse(self.e('.views').is_displayed())
 	
-	@unittest.skipIf('v68' in URL_BASE, "this is made on v69-beta")
 	@url('/en/explore/oreo/pin/225260')
 	def test_hidden_timeline_on_smaller_screens(self):
 		
+		sleep(3)  # the timeline element cannot be found without the sleep
 		self.assertTrue(self.e('#timeline').is_displayed())
 		self.assertEqual('18 September 2006', self.e('.tooltip.arrow-down').text)
 		
@@ -576,7 +579,6 @@ class V6_Cases(HPTestCase):
 		
 		self.assertFalse(self.e('#timeline').is_displayed())
 	
-	@unittest.skipIf('v68' in URL_BASE, "this is made on v69-beta")
 	@url('/en/explore/oreo/')
 	def test_hidden_project_image_on_smaller_screens(self):
 		
@@ -586,7 +588,6 @@ class V6_Cases(HPTestCase):
 		
 		self.assertFalse(self.e('.panel img').is_displayed())
 	
-	@unittest.skipIf('v68' in URL_BASE, "this is made on v69-beta")
 	@url('/en/explore/oreo/pin/225260')
 	def test_hidden_comments_info_on_smaller_screens(self):
 		

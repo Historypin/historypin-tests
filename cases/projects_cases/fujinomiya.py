@@ -52,7 +52,7 @@ class Project_Fujinomiya(HPTestCase, Attach):
 		self.assertEqual('%s/jp%s/user/' % (URL_BASE, self.PROJECT_URL), user_links[0].get_attribute('href'))
 		self.assertEqual(u'アカウント作成', user_links[0].text)
 		
-		self.assertEqual('%s/jp%s/user/' % (URL_BASE, self.PROJECT_URL), user_links[1].get_attribute('href'))
+		self.assertEqual('%s/jp%s/user/logout/' % (URL_BASE, self.PROJECT_URL), user_links[1].get_attribute('href'))
 		self.assertEqual(u'ログイン', user_links[1].text)
 		
 		self.assertEqual(u'富士宮プロジェクト', self.e('.sec-header h1').text)

@@ -65,7 +65,7 @@ class Community(HPTestCase):
 			['Local Projects Homepage'					, '%s/localprojects'				% link_community, 'Want to run a Historypin session or event with your group?'],
 			['Libraries, Archives and Museums Homepage'	, '%s/lams'							% link_community, 'Want to get your institution involved?'],
 			['Libraries, Archives and Museums Involved'	, '%s/lams-involved'				% link_community, 'Find out the institutions that are already sharing their history on Historypin.'],
-			['How To Guides'							, '%s/howtos'						% link_community, 'Downloadable pdfs and videos to explain how to do everything'],
+			['How To Guides'							, '%s/how-to'						% URL_BASE, 'Downloadable pdfs and videos to explain how to do everything'],
 			['Activities & Downloadables for schools'	, '%s/schools-resources'			% link_community, 'Resources to make running sessions and events easier.'],
 			['Activities & Downloadables for projects'	, '%s/localprojects-resources'		% link_community, 'Resources to make running sessions and events easier.'],
 			['Topics to Explore'						, '%s/topics-to-explore'			% link_community, 'Some of the most interesting photos, Tours and Collections to explore in sessions.'],
@@ -96,7 +96,7 @@ class Community(HPTestCase):
 		
 		questions = [
 			['Why use Historypin in schools?', '', ''],
-			['How can I use it?', '/community/howtos', 'Have a look at our How to Guides for more help'],
+			['How can I use it?', '/how-to', 'Have a look at our How to Guides for more help'],
 			['How are other schools using it?', '/community/schools-case-studies', 'Have a look at our Case Studies for some ideas'],
 			['What are the best things to look at in the classroom?', '/community/topics-to-explore', 'Have a look at our Topics to Explore for some ideas'],
 			['What activity ideas and resources do you have?', '/community/schools-resources', 'See our Activities and Downloadables'],
@@ -123,7 +123,7 @@ class Community(HPTestCase):
 		
 		questions = [
 			['Why use Historypin in local projects?', '', ''],
-			['How can I use it?', '/community/howtos', 'Have a look at our How to Guides for more help'],
+			['How can I use it?', '/how-to', 'Have a look at our How to Guides for more help'],
 			['How are other local projects using it?', '/community/localprojects-case-studies', 'Have a look at our Local Projects Case Studies for some ideas'],
 			['What are the best things to look at?', '/community/topics-to-explore', 'Have a look at our Topics to Explore for some ideas'],
 			['What activity ideas and resources do you have?', '/community/localprojects-resources', 'See our Activites and Downloadables for Local Projects'],
