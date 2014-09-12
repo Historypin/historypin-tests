@@ -603,7 +603,24 @@ class V6_Cases(HPTestCase):
 		self.assertFalse(comment_section.is_displayed())
 	
 	@url('/en/explore/oreo')
-	def test_map_credits(self):
-		# TODO to be tested
-		pass
-
+	def test_location_search(self):
+		
+		self.e('#btn-explore').click()
+		
+		search_input = self.e('#search-location')
+		
+		search_input.send_keys('So')
+		sleep(4)
+		search_input.send_keys(u'\ue007')  # clicking enter in selenium
+		sleep(3)
+		
+		location_coordinates_first = self.browser.current_url.split('/')[7].split(',')[0]
+		location_coordinates_second = self.browser.current_url.split('/')[7].split(',')[1]
+		
+		self.assertEqual('Sofia, Bulgaria', search_input.get_attribute('value'))
+		
+		self.assertIn('42.695501', location_coordinates_first)  # asserting the correct location
+		self.assertIn('23.323947', location_coordinates_second)  # asserting the correct location
+		
+		
+	
