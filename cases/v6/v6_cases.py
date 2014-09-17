@@ -170,7 +170,7 @@ class V6_Cases(HPTestCase):
 	@url('/en/explore/oreo/date/2002:2010')
 	def test_date_slider(self):
 		
-		sleep(2)
+		sleep(2)  # without sleep the test fails
 		timeline = self.e('#timeline')
 		self.assertEqual('2002', timeline.e('.ui-state-default.ui-corner-all:nth-of-type(1)').text)
 		self.assertEqual('2010', timeline.e('.ui-state-default.ui-corner-all:nth-of-type(2)').text)
@@ -182,6 +182,7 @@ class V6_Cases(HPTestCase):
 	@url('/en/explore/oreo/pin/225263')
 	def test_youtube_audio_pin(self):
 		
+		sleep(3)
 		timeline = self.e('#timeline')
 		self.assertEqual('2 January 2012', timeline.e('.tooltip.arrow-down').text)
 		
@@ -220,6 +221,11 @@ class V6_Cases(HPTestCase):
 		sleep(3)
 		
 		self.e('#photo_pin').click()
+		
+		# project = self.e('#select_projects li a')
+		# self.assertEqual('Project for Quality Assurance', project.text)
+		
+		# self.e('.submit').click()
 		
 		sleep(5)
 		self.assertEqual('%s/en/explore/oreo/pin/225263' % URL_BASE, self.browser.current_url)
@@ -284,7 +290,7 @@ class V6_Cases(HPTestCase):
 		
 		column_header = self.e('#pin .row')
 		
-		self.assertEqual('Bulgarian Army Theater', self.e('#explore h1').text)
+		self.assertEqual(u'\u23ea \u23e9 Bulgarian Army Theater', self.e('#explore h1').text)
 		self.assertEqual('%s/channels/img/33283/logo/1/dim/50x50/crop/1/' % URL_BASE, column_header.e('.author-image img').get_attribute('src'))
 		self.assertEqual('Pinned by\nGabss'					, column_header.e('.author').text)
 		self.assertEqual('%s/channels/view/33283' % URL_BASE, column_header.e('.author a').get_attribute('href'))
@@ -306,11 +312,11 @@ class V6_Cases(HPTestCase):
 		
 		self.assertIsInstance(column_3b.e('.info-anchor'), WebElement)
 		
-		h4s		= ['DESCRIPTION', 'TAGS', 'INFORMATION', 'CREATOR', 'ADD A COMMENT', 'COMMENTS (3)']
+		h4s		= ['DATE TAKEN', 'DESCRIPTION', 'TAGS', 'INFORMATION', 'CREATOR', 'ADD A COMMENT', 'COMMENTS (3)']
 		h4s_cnt	= column_3b.es('h4')
 		for n in range(len(h4s)): self.assertEqual(h4s[n], h4s_cnt[n].text)
 		
-		self.assertEqual('This is a photo of the famous Bulgarian Army Theater', self.e('#pin .description p:nth-of-type(1)').text)
+		self.assertEqual('This is a photo of the famous Bulgarian Army Theater', self.e('#pin .description p:nth-of-type(2)').text)
 		
 		tags		= self.e('#pin .tags')
 		tag_items	= tags.es('a')
@@ -364,6 +370,7 @@ class V6_Cases(HPTestCase):
 	@url('/en/explore/oreo')
 	def test_user_project(self):
 		
+		sleep(3)
 		banner = self.e('#banner')
 		
 		self.assertEqual('Project for Quality Assurance', banner.e('h3').text)
@@ -392,11 +399,11 @@ class V6_Cases(HPTestCase):
 		self.assertEqual('MAIN LOCATION', h4s[2].text)
 		
 		admins_cnt = [
-			['/49127/'	, '/channels/img/49127/logo/1/dim/50x50/crop/1/cache/0/', 'Rawr'				, 'Project Leader'],
-			['/33283/'	, '/channels/img/33283/logo/1/dim/50x50/crop/1/cache/0/', 'Gabss'				, 'Project Leader'],
 			['/867/'	, '/channels/img/867/logo/1/dim/50x50/crop/1/cache/0/'	, 'Karamfil'			, 'Project Leader'],
-			['/47515/'	, '/resources/explore/images/default-avatar.jpg', 'n.p.slavov'			, 'Project Leader'],
+			['/33283/'	, '/channels/img/33283/logo/1/dim/50x50/crop/1/cache/0/', 'Gabss'				, 'Project Leader'],
 			['/35019/'	, '/resources/explore/images/default-avatar.jpg', 'Gabriela Ananieva'	, 'Project Leader'],
+			['/47515/'	, '/resources/explore/images/default-avatar.jpg', 'n.p.slavov'			, 'Project Leader'],
+			['/49127/'	, '/channels/img/49127/logo/1/dim/50x50/crop/1/cache/0/', 'Rawr'				, 'Project Leader'],
 		]
 		
 		admins		= project_sidebar.e('.project-admins')
@@ -424,6 +431,7 @@ class V6_Cases(HPTestCase):
 	@url('/en/explore/oreo')
 	def test_edit_project(self):
 		
+		sleep(4)
 		self.assertEqual('Edit project', self.e('.edit-project').text)
 		self.e('.edit-project').click()
 		sleep(2)
@@ -492,9 +500,9 @@ class V6_Cases(HPTestCase):
 		self.e('.ui-dialog-buttonset button:nth-of-type(2)').click()
 		
 		sleep(4)
-		self.assertEqual(len(admins_section.es('select')), 6)
+		self.assertEqual(len(admins_section.es('select')), 7)
 		
-		self.assertEqual('g.k. Nadezhda 1, Sofia, Bulgaria', self.e('#search-location').get_attribute('value'))
+		self.assertEqual('Malaysia', self.e('#search-location').get_attribute('value'))
 		
 		self.e('#btn-explore').click()
 	
@@ -502,6 +510,8 @@ class V6_Cases(HPTestCase):
 	def test_project(self):
 		
 		self.assertTitle('Historypin')
+		
+		sleep(3)
 		
 		banner = self.e('#banner')
 		self.assertEqual('Europeana 1989', banner.e('h3').text)
@@ -614,13 +624,25 @@ class V6_Cases(HPTestCase):
 		search_input.send_keys(u'\ue007')  # clicking enter in selenium
 		sleep(3)
 		
-		location_coordinates_first = self.browser.current_url.split('/')[7].split(',')[0]
-		location_coordinates_second = self.browser.current_url.split('/')[7].split(',')[1]
+		location_coordinates = self.browser.current_url.split('/')[7].split(',')
 		
 		self.assertEqual('Sofia, Bulgaria', search_input.get_attribute('value'))
 		
-		self.assertIn('42.695501', location_coordinates_first)  # asserting the correct location
-		self.assertIn('23.323947', location_coordinates_second)  # asserting the correct location
-		
+		self.assertIn('42.695501', location_coordinates[0])  # asserting the correct location
+		self.assertIn('23.323947', location_coordinates[1])
 		
 	
+	@url('/en/explore/oreo')
+	def test_find_location(self):
+		
+		sleep(3)
+		self.e('#btn-explore').click()
+		
+		sleep(4)
+		search_location_button = self.e('.find-my-location')
+		
+		search_location_button.click()
+		
+		
+		# TODO make this test
+		

@@ -6,10 +6,11 @@ GO_TIMEOUT = 1
 # VERSION = 'explore-independance'
 # VERSION = 'v610-beta-1'
 # LINK_BASE = '%s.historypin-hrd.appspot.com' % (VERSION)
-LINK_BASE = 'historypin.com'
+LINK_BASE = 'historypin.org'
 
-URL_BASE = 'http://www.%s' % LINK_BASE
-URL_BLOB = 'http://www.%s' % LINK_BASE
+URL_BASE = 'https://www.%s' % LINK_BASE
+URL_BLOB = 'https://www.%s' % LINK_BASE
+PROTOCOL = URL_BASE.split('://')[0]
 
 IS_ON_SDK = not (LINK_BASE.endswith('.appspot.com') or LINK_BASE.endswith('.historypin.com'))
 

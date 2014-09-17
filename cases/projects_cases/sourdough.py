@@ -60,7 +60,7 @@ class Project_Sourdough(HPTestCase, Attach):
 		for n in range(len(items)):
 			i = items[n]
 			self.assertEqual(URL_BASE + self.PROJECT_URL + i[0], links[n].get_attribute('href'))
-			self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/sandr/' + i[1], images[n].get_attribute('src'))
+			self.assertEqual(PROTOCOL + '://wawwd-resources.s3.amazonaws.com/historypin/projects/sandr/' + i[1], images[n].get_attribute('src'))
 		
 		self.assertIsInstance(self.e('.addthis_toolbox'), WebElement)
 		
@@ -81,7 +81,7 @@ class Project_Sourdough(HPTestCase, Attach):
 		for n in range(len(supported_items)):
 			i = supported_items[n]
 			self.assertEqual(i[0], supported_links[n].get_attribute('href'))
-			self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/sandr/' + i[1], supported_imgs[n].get_attribute('src'))
+			self.assertEqual(PROTOCOL + '://wawwd-resources.s3.amazonaws.com/historypin/projects/sandr/' + i[1], supported_imgs[n].get_attribute('src'))
 		
 	
 	def test_about(self):
@@ -108,7 +108,7 @@ class Project_Sourdough(HPTestCase, Attach):
 			self.assertEqual(i[1], nav_links[n].text)
 		
 		self.assertIn('Like the great delis that once populated the Fillmore District', site_cnt.e('.about-inner p').text)
-		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/sandr/bread.jpg', site_cnt.e('#about-video').get_attribute('src'))
+		self.assertEqual(PROTOCOL + '://wawwd-resources.s3.amazonaws.com/historypin/projects/sandr/bread.jpg', site_cnt.e('#about-video').get_attribute('src'))
 	
 	def test_explore(self):
 		self.go('%s/explore#|map/' % self.PROJECT_URL)

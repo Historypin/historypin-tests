@@ -145,6 +145,8 @@ class Project_Railroads(HPTestCase, Attach):
 		self.assertEqual('In partnership with:', partner_logo.e('span').text)
 		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/yotb/partners.png', partner_logo.e('img').get_attribute('src'))
 		
+		# TODO all links with wawwd-resources should become with https://
+		
 	
 	def test_index(self):
 		self.go(self.PROJECT_URL)
