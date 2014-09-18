@@ -743,7 +743,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Why are we doing this?', site_cnt.e('h2').text)
-		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
+		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg' % PROTOCOL, site_cnt.e('.inner img').get_attribute('src'))
 	
 	def test_about_cz(self):
 		self.go('%s/cz%s/about/' % (URL_BASE, self.PROJECT_URL))
@@ -752,7 +752,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual(u'Proč to děláme?', site_cnt.e('h2').text)
-		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
+		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg' % PROTOCOL, site_cnt.e('.inner img').get_attribute('src'))
 		
 		
 	def test_about_de(self):

@@ -78,6 +78,7 @@ class V6_Cases(HPTestCase):
 	@url('/en/explore/oreo')
 	def test_breadcrumb_nav(self):
 		
+		sleep(3)  # the test fails without the sleep
 		header			= self.e('#header')
 		breadcrumbs		= header.e('.breadcrumbs')
 		breadcrumbs_li	= breadcrumbs.es('li a')

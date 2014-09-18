@@ -311,8 +311,8 @@ class Pages(HPTestCase):
 			['http://www.npr.org/blogs/pictureshow/2010/08/05/129007283/historypin?ft=1&f=1047', '"A Worldwide Photo Project Needs You (And Your Grandparents)"', 'The Picture Show Blog, NPR, August 5th 2010'],
 			['http://www.iol.co.za/scitech/news/net-album-sorts-old-photos-1.911557', '"Net album sorts old photos"', 'IOL Scitech, 23rd July 2010'],
 			['http://www.thesun.co.uk/sol/homepage/features/3063808/Photos-show-sporting-triumph-pics-pinned-on-recent-snaps.html', '"If you\'re looking for double ... you came to the right place"', 'The Sun, 22nd July 2010'],
-			['http://wawwd-resources.s3.amazonaws.com/southwalesecho.png', '"History Bridges generation gap"', 'South Wales Echo, 20th July 2010'],
-			['http://wawwd-resources.s3.amazonaws.com/sundaytimes180710.jpg', '"Our Ghosts in the Machine"', 'Sunday Times, 18th July 2010'],
+			['%s://wawwd-resources.s3.amazonaws.com/southwalesecho.png' % PROTOCOL, '"History Bridges generation gap"', 'South Wales Echo, 20th July 2010'],
+			['%s://wawwd-resources.s3.amazonaws.com/sundaytimes180710.jpg' % PROTOCOL, '"Our Ghosts in the Machine"', 'Sunday Times, 18th July 2010'],
 			['http://www.telegraph.co.uk/technology/google/7854922/Historypin-turns-Google-Street-View-into-a-window-on-the-past.html', '"Historypin turns Google Street View into a window on the past"', 'The Telegraph, 26th June 2010'],
 			['http://www.geenstijl.nl/mt/archieven/2010/06/nostalgie_fotos_van_vroeger_in.html', '"Nostalgie! Foto\'s van vroeger in Streetview"', 'Geenstijl, 9th June 2010'],
 			['http://www.historytoday.com/blog/news-blog/charlotte-crow/historypin-patchwork-history', '"Historypin: Patchwork History"', 'History Today, 7th June 2010'],
@@ -366,7 +366,7 @@ class Pages(HPTestCase):
 		
 		cnt = self.e('.sidebar .inner:nth-of-type(8)')
 		self.assertEqual('Press Pack', cnt.e('h3').text)
-		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/presspacks/Historypin.zip', cnt.e('a').get_attribute('href'))
+		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/presspacks/Historypin.zip' % PROTOCOL, cnt.e('a').get_attribute('href'))
 		self.assertEqual(u'Download press releases, pictures and all the info you\u2019ll need to write a fabulously complimentary article about us.', cnt.e('p').text)
 	
 	@url('/privacy-policy/')
@@ -539,7 +539,7 @@ class Pages(HPTestCase):
 		csv = self.e('ol li:nth-of-type(1)')
 		self.assertEqual('Download our CSV template and the Instructions on how to complete it.', csv.text)
 		
-		link = 'http://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/'
+		link = '%s://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/' % PROTOCOL
 		self.assertEqual('%sHistorypin_Bulk_Upload_Template.csv'									% link, csv.es('a')[0].get_attribute('href'))
 		self.assertEqual('%sHistorypin_Instructions_for_Completing_a_CSV_template_March_2012.xls'	% link, csv.es('a')[1].get_attribute('href'))
 		
@@ -558,7 +558,7 @@ class Pages(HPTestCase):
 		for n in range(len(tpl)):
 			i = tpl[n]
 			self.assertEqual(i[0], anchors[n].text)
-			self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/' + i[1], anchors[n].get_attribute('href'))
+			self.assertEqual(PROTOCOL + '://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/' + i[1], anchors[n].get_attribute('href'))
 		
 		help = sidebar.e('.help')
 		self.assertEqual('Get help', help.e('h3').text)
@@ -566,9 +566,9 @@ class Pages(HPTestCase):
 		self.assertEqual('If you get stuck or have any questions, check out our How To page and FAQs and please feel free to contact us at historypin@wearewhatwedo.org', help.e('p').text)
 		
 		links = [
-			['%s/community/howtos/'		% self.historypin_link	, 'How To page'],
-			['%s/faq/'					% self.historypin_link	, 'FAQs'],
-			['mailto:historypin@wearewhatwedo.org'				, 'historypin@wearewhatwedo.org'],
+			['%s/community/howtos/'		% URL_BASE, 'How To page'],
+			['%s/faq/'					% URL_BASE, 'FAQs'],
+			['mailto:historypin@wearewhatwedo.org', 'historypin@wearewhatwedo.org'],
 		]
 		
 		links_help = help.es('p a')

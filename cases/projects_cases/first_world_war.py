@@ -22,7 +22,7 @@ class Project_FirstWorldWar(HPTestCase):
 		nav_items = [
 			['%s%s/#about' % (URL_BASE, self.PROJECT_URL)	, 'ABOUT'],
 			['%s%s/#cymraeg' % (URL_BASE, self.PROJECT_URL)	, 'CYMRAEG'],
-			['https://s3-eu-west-1.amazonaws.com/wawwd-resources/First+World+War+Centenary_Get+Started+Guide.pdf', 'GET STARTED GUIDE'],
+			['%s://s3-eu-west-1.amazonaws.com/wawwd-resources/First+World+War+Centenary_Get+Started+Guide.pdf' % PROTOCOL, 'GET STARTED GUIDE'],
 		]
 		
 		for n in range(len(nav_items)):
@@ -73,6 +73,7 @@ class Project_FirstWorldWar(HPTestCase):
 	def test_project_button_logged_in(self):
 		self.go(self.PROJECT_URL)
 		
+		sleep(3)
 		banner			= self.e('#banner')
 		add_proj_button	= banner.e('.add-project-btn')
 		

@@ -49,6 +49,7 @@ class Browser(webdriver.Chrome):
 	def go(self, url):
 		self.get(('' if url.startswith('http') else URL_BASE) + url)
 		self.pageload_wait()
+		sleep(2)
 	
 	def es(self, selector):
 		return self.find_elements_by_css_selector(selector)

@@ -85,7 +85,7 @@ class Project_Balboa(HPTestCase, Attach):
 		
 		paragraph_links = [
 			['Pin your photos to Balboa Park using Historypin'			, '%s/user/?from=%s/%%23%%7Cupload/' % (URL_BASE, self.PROJECT_URL)],
-			['Find out more about the not-for-profit project Historypin', 'http://www.historypin.com/'],
+			['Find out more about the not-for-profit project Historypin', '%s/' % URL_BASE],
 		]
 		
 		links = contribute_cnt.es('p a')
