@@ -762,7 +762,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Warum gibt es Europeana 1989?', site_cnt.e('h2').text)
-		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
+		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg' % PROTOCOL, site_cnt.e('.inner img').get_attribute('src'))
 		
 	
 	def test_about_es(self):
@@ -772,7 +772,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Miks me seda teeme?', site_cnt.e('h2').text)
-		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
+		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg' % PROTOCOL, site_cnt.e('.inner img').get_attribute('src'))
 		
 	
 	def test_about_hu(self):
@@ -782,7 +782,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual(u'Miért csináljuk?', site_cnt.e('h2').text)
-		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
+		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg' % PROTOCOL, site_cnt.e('.inner img').get_attribute('src'))
 		
 	
 	def test_about_lt(self):
@@ -792,7 +792,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual(u'Kodėl mes tai darome?', site_cnt.e('h2').text)
-		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
+		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg' % PROTOCOL, site_cnt.e('.inner img').get_attribute('src'))
 		
 	
 	def test_about_lv(self):
@@ -802,7 +802,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual(u'Kāpēc mēs to darām?', site_cnt.e('h2').text)
-		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
+		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg' % PROTOCOL, site_cnt.e('.inner img').get_attribute('src'))
 		
 	
 	def test_about_pl(self):
@@ -812,7 +812,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Dlaczego to robimy?', site_cnt.e('h2').text)
-		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
+		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg' % PROTOCOL, site_cnt.e('.inner img').get_attribute('src'))
 	
 	def test_terms_en(self):
 		self.go('%s/en%s/terms/' % (URL_BASE, self.PROJECT_URL))
@@ -1175,6 +1175,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual(u'Bałtycki Łańcuch - przypnij się do mapy', site_cnt.e('h1').text)
 		self.assertIn(u'Niech Łańcuch Bałtycki odżyje jeszcze raz online.', site_cnt.e('h1 + p').text)
 	
+	@unittest.skipIf(IS_LIVE, 'Do not run on live')
 	@logged_in
 	def test_create_story(self):
 		self.go('/en%s/tours/add/' % self.PROJECT_URL)

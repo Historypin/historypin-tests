@@ -133,6 +133,7 @@ class Collections(HPTestCase):
 		next_slide.click()
 		sleep(3)
 	
+	@unittest.skipIf(IS_LIVE, 'Do not run on live')
 	@logged_in
 	@url('/collections/add/')
 	def test_add_collection(self):

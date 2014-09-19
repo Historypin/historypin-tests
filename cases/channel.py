@@ -338,8 +338,8 @@ class Channel(HPTestCase):
 		self.assertEqual('Pin Something'		, button.text)
 		
 		links = [
-			['%s/community/howtos/'	% self.historypin_link, 'How To page'],
-			['%s/faq/'				% self.historypin_link, 'FAQs'],
+			['%s/community/howtos/'	% URL_BASE, 'How To page'],
+			['%s/faq'				% URL_BASE, 'FAQs'],
 			['mailto:historypin@wearewhatwedo.org'		, 'historypin@wearewhatwedo.org'],
 		]
 		
@@ -523,7 +523,7 @@ class Channel(HPTestCase):
 		self.assertEqual('%s/channels/view/%d/#tab-subscribers' % (URL_BASE, ID_USER)	, fans[0].get_attribute('href'))
 		self.assertEqual('0 - See list', fans[0].text)
 		self.assertEqual('%s/channels/view/%d/#tab-subscriptions' % (URL_BASE, ID_USER), fans[1].get_attribute('href'))
-		self.assertEqual('3 - See list', fans[1].text)
+		self.assertEqual('4 - See list', fans[1].text)
 	
 	@logged_in
 	@url('/channels/view/%d/' % ID_USER)

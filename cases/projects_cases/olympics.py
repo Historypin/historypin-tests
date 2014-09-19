@@ -31,7 +31,7 @@ class Project_Olympics(HPTestCase, Attach):
 		self.assertIn('There have been world record numbers of world records, jetpacks at opening ceremonies, boycotts from sparring nations, and all those British medals at the 2012 extravaganza in London. ', site_cnt.e('.main_description').text)
 		
 		olympics_link	= '%s/project/3-hp-olympics' % URL_BASE
-		wawwd_link		= 'http://wawwd-resources.s3.amazonaws.com/historypin/projects/olympics/'
+		wawwd_link		= '%s://wawwd-resources.s3.amazonaws.com/historypin/projects/olympics/' % PROTOCOL
 		img_link		= '%s/resources/images/webapps/hp-olympics/' % URL_BASE
 		
 		touts = [

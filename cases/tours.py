@@ -176,6 +176,7 @@ class Tours(HPTestCase):
 			prev_button.click()
 			check_step(tour_items[n])
 	
+	@unittest.skipIf(IS_LIVE, 'Do not run on live')
 	@logged_in
 	@url('/tours/add/')
 	def test_add_tour(self):

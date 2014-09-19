@@ -55,6 +55,7 @@ class Pinning(HPTestCase):
 		self.assertEqual('Are you an archive and want to upload large amounts of content? Try our Bulk Uploader for Firefox and Chrome.', self.e('.bottom-p').text)
 		self.assertEqual('%s/bulkbridge/' % URL_BASE, self.e('.bottom-p a').get_attribute('href'))
 	
+	
 	@unittest.expectedFailure
 	@logged_in
 	@url('/upload-item/index/')
@@ -65,7 +66,7 @@ class Pinning(HPTestCase):
 		upload_photo.send_keys(os.getcwd()+'/national-palace-of-culture.jpg')
 		sleep(2)
 		
-		
+	@unittest.skipIf(IS_LIVE, 'Do not run on live')
 	@logged_in
 	@url('/upload-video/index/')
 	def test_upload_video(self):
@@ -146,6 +147,7 @@ class Pinning(HPTestCase):
 		self.browser.refresh()
 		self.assertFalse(self.e('#list').exists('.image[href*="%s"]' % id_video))
 	
+	@unittest.skipIf(IS_LIVE, 'Do not run on live')
 	@logged_in
 	@url('/upload-audio/index/')
 	def test_upload_audio(self):

@@ -89,4 +89,4 @@ class Project_YOTB(HPTestCase, Attach):
 		
 		self.assertIsInstance(self.e('.addthis_toolbox'), WebElement)
 		
-		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/yotb/partners.png', self.e('.partner-logos img').get_attribute('src'))
+		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/projects/yotb/partners.png' % PROTOCOL, self.e('.partner-logos img').get_attribute('src'))
