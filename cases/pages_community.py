@@ -30,7 +30,7 @@ class Community(HPTestCase):
 		link_images	= '%s://wawwd-resources.s3.amazonaws.com/historypin/images/community/' % PROTOCOL
 		
 		groups = [
-			['Pinning The Queen\'s History', 'What pics and stories do you have of the Queen\'s visits and Jubilee celebrations?'					, 'http://wearewhatwedo.org/queen.jpg', u'View The Queen’s Collection'		, '%s/DiamondJubilee/' % URL_BASE],
+			['Pinning The Queen\'s History', 'What pics and stories do you have of the Queen\'s visits and Jubilee celebrations?'					, '%s://wearewhatwedo.org/queen.jpg' % PROTOCOL, u'View The Queen’s Collection'		, '%s/DiamondJubilee/' % URL_BASE],
 			['The Chevy Centenary', u'We’re looking for pics and stories of each of the Chevy models created over the last 100 years.'				, '%schevy_img.png'					% link_images, 'View Chevy Collection'	, '%s/chevy/' % URL_BASE],
 			['Life Story Challenge', 'Create a Life Story about someone you know with photos and memories telling the story of their life.'			, '%sicon_life_stories.png'			% link_images, 'View Life Stories Challenge', 'http://www.11492009-gats.historypin.com/en/page/life-stories/'],
 			['Google Groups', u'Talk to other users, learn from each other’s experience, plus give us feedback as we experiment with new features.'	, '%sicon_google_groups.png'		% link_images, 'Visit the Group', 'https://groups.google.com/forum/?fromgroups#!forum/historypin'],

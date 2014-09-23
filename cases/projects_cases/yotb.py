@@ -39,8 +39,8 @@ class Project_YOTB(HPTestCase, Attach):
 		self.assertEqual('Pin your memories', button.e('span').text)
 		
 		touts_items = [
-			["Tour North Beach in the 70's and 80's"	, "From the SFPL."							, 'tout1_image', 'http://www.historypin.com/project/22-yearofthebay/#!map/index/#!/geo:37.774609,-122.422424/zoom:16/tags:hayes valley microhood/'],
-			['New Tour: 1906 Earthquake in SF'			, "Hear a song recorded at the band's last live concert in 1966."	, 'tout2_image', 'http://www.historypin.com/project/22-yearofthebay/#!map/index/#!/geo:37.774609,-122.422424/zoom:16/tags:hayes valley microhood/'],
+			["Tour North Beach in the 70's and 80's", "From the SFPL."						, 'tout1_image', 'https://www.historypin.org/project/22-yearofthebay/#!tours/view/id/3959/title/A%20Tour%20of%20North%20Beach%20in%20the%2070%27s%20and%2080%27s'],
+			['Tour the 1906 Earthquake in SF'		, "Before and after the big 1906 quake.", 'tout2_image', 'https://www.historypin.org/project/22-yearofthebay/#!tours/view/id/3871/title/1906%20San%20Francisco%20Earthquake%20and%20Fire'],
 		]
 		
 		h3s		= site_cnt.es('.w2 h3')

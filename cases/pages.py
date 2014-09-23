@@ -4,13 +4,13 @@ from base import *
 
 class Pages(HPTestCase):
 	
-	historypin_link = 'http://www.historypin.com'
+	# historypin_link = 'http://www.historypin.com'
 	
 	@url('/about-us/')
 	def test_about(self):
 		self.assertTitle('Historypin | A 90 second introduction')
-		self.assertEqual('A 90 second introduction'							, self.e('h1.title').text)
-		self.assertEqual('http://www.youtube.com/embed/FdT3eKdto4w?rel=0'	, self.e('iframe').get_attribute('src'))
+		self.assertEqual('A 90 second introduction'									, self.e('h1.title').text)
+		self.assertEqual('%s://www.youtube.com/embed/FdT3eKdto4w?rel=0' % PROTOCOL	, self.e('iframe').get_attribute('src'))
 	
 	@url('/app/')
 	def test_app(self):
@@ -567,7 +567,7 @@ class Pages(HPTestCase):
 		
 		links = [
 			['%s/community/howtos/'		% URL_BASE, 'How To page'],
-			['%s/faq/'					% URL_BASE, 'FAQs'],
+			['%s/faq'					% URL_BASE, 'FAQs'],
 			['mailto:historypin@wearewhatwedo.org', 'historypin@wearewhatwedo.org'],
 		]
 		
