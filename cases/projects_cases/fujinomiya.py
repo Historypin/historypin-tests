@@ -19,23 +19,23 @@ class Project_Fujinomiya(HPTestCase, Attach):
 	test_tab_gallery	= Attach.attach_tab_gallery
 	
 	def test_index(self):
-		self.go('/jp%s' % self.PROJECT_URL)
+		self.go(URL_BASE_JP + self.PROJECT_URL)
 		
 		self.assertTitle('Fujinomiya project')
 		
 		site_cnt = self.e('#site')
 		nav_links = site_cnt.es('.primary a')
 		
-		self.assertEqual('%s/resources/images/project-japan/historypin-logo.png' % URL_BASE, nav_links[0].e('img').get_attribute('src'))
+		self.assertEqual('%s/resources/images/project-japan/historypin-logo.png' % URL_ROOT_JP, nav_links[0].e('img').get_attribute('src'))
 		self.assertEqual('http://www.historypin.jp/', nav_links[0].get_attribute('href'))
 		
-		self.assertEqual('%s/jp%s/' % (URL_BASE, self.PROJECT_URL), nav_links[1].get_attribute('href'))
+		self.assertEqual('%s%s/' % (URL_BASE_JP, self.PROJECT_URL), nav_links[1].get_attribute('href'))
 		self.assertEqual(u'ホーム', nav_links[1].text)
 		
-		self.assertEqual('%s/jp%s/explore/#|map/' % (URL_BASE, self.PROJECT_URL), nav_links[2].get_attribute('href'))
+		self.assertEqual('%s%s/explore/#|map/' % (URL_BASE_JP, self.PROJECT_URL), nav_links[2].get_attribute('href'))
 		self.assertEqual(u'探索', nav_links[2].text)
 		
-		self.assertEqual('%s/jp%s/upload/' % (URL_BASE, self.PROJECT_URL), nav_links[3].get_attribute('href'))
+		self.assertEqual('%s%s/upload/' % (URL_BASE_JP, self.PROJECT_URL), nav_links[3].get_attribute('href'))
 		self.assertEqual(u'投稿', nav_links[3].text)
 		
 		self.assertEqual('%s/category/historypin-japan/fujinomiya/' % self.blog_link, nav_links[4].get_attribute('href'))
@@ -49,15 +49,15 @@ class Project_Fujinomiya(HPTestCase, Attach):
 		
 		user_links = site_cnt.es('.secondary a')
 		
-		self.assertEqual('%s/jp%s/user/' % (URL_BASE, self.PROJECT_URL), user_links[0].get_attribute('href'))
+		self.assertEqual('%s%s/user/' % (URL_BASE_JP, self.PROJECT_URL), user_links[0].get_attribute('href'))
 		self.assertEqual(u'アカウント作成', user_links[0].text)
 		
-		self.assertEqual('%s/jp%s/user/logout/' % (URL_BASE, self.PROJECT_URL), user_links[1].get_attribute('href'))
+		self.assertEqual('%s%s/user/' % (URL_BASE_JP, self.PROJECT_URL), user_links[1].get_attribute('href'))
 		self.assertEqual(u'ログイン', user_links[1].text)
 		
 		self.assertEqual(u'富士宮プロジェクト', self.e('.sec-header h1').text)
 		
-		self.assertEqual('%s/jp/attach%s/map/index/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('%s/attach%s/map/index/' % (URL_BASE_JP, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 		
 		touts_items = [
 			['http://www.glocom.ac.jp/project/historypin/fujinomiya/'	, u'富士宮プロジェクトについて（外部サイト）'	, u'富士宮プロジェクトについて詳しく知る'	, 'tout1_image'],
@@ -75,7 +75,7 @@ class Project_Fujinomiya(HPTestCase, Attach):
 			self.assertEqual(i[0], imgs_links[n].get_attribute('href'))
 			self.assertEqual(i[1], h3s_links[n].text)
 			self.assertEqual(i[2], paragraphs[n].text)
-			self.assertEqual(URL_BASE + '/projects/img/pid/47/dim/285x290/type/' + i[3] + '/crop/1/', imgs[n].get_attribute('src'))
+			self.assertEqual(URL_ROOT_JP + '/projects/img/pid/47/dim/285x290/type/' + i[3] + '/crop/1/', imgs[n].get_attribute('src'))
 		
 		activity = self.e('#activity')
 		self.assertIsInstance(activity.e('h1'), WebElement)
@@ -109,7 +109,7 @@ class Project_Fujinomiya(HPTestCase, Attach):
 		supported_img	= supported.es('img')
 		imgs			= ['british-council-logo.png', 'fujitsu.png', 'glocom.png']
 		
-		for n in range(len(imgs)): self.assertEqual(URL_BASE + '/resources/images/project-japan/' + imgs[n], supported_img[n].get_attribute('src'))
+		for n in range(len(imgs)): self.assertEqual(URL_ROOT_JP + '/resources/images/project-japan/' + imgs[n], supported_img[n].get_attribute('src'))
 		
 		self.assertEqual(u'使用写真はhalsan2000さんとtajima.tomocomさんがシェアしたものです。', self.e('.photos-by span').text)
 		
