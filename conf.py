@@ -17,7 +17,9 @@ IS_ON_SDK	= not (LINK_BASE.endswith('.appspot.com') or LINK_BASE.endswith('histo
 IS_LIVE		= LINK_BASE.endswith('historypin.com') or LINK_BASE.endswith('historypin.org')
 
 
-URL_BASE_JP		= 'http://www.historypin.jp' if IS_LIVE else URL_BASE
+URL_ROOT_JP		= 'http://www.historypin.jp' if IS_LIVE else URL_BASE
+
+URL_BASE_JP		= 'http://www.historypin.jp/jp' if IS_LIVE else URL_BASE + '/jp/project/39-japan-project'
 URL_BASE_1989	= 'http://www.europeana1989.eu' if IS_LIVE else URL_BASE
 
 

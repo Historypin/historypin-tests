@@ -5,8 +5,6 @@ import os, sys
 
 class Channel(HPTestCase):
 	
-	historypin_link = 'http://www.historypin.com'
-	
 	@url('/channels/view/%d/' % ID_USER_VIEW)
 	def test_channel_description(self):
 		self.assertTitle('Gabss | Historypin')
@@ -651,8 +649,8 @@ class Channel(HPTestCase):
 		self.assertEqual('Stuff I like'		, heading[2].text)
 		
 		channel_info = settings_menu.e('li:nth-of-type(2) a')
-		self.assertEqual('Profile Info'											, channel_info.text)
-		self.assertEqual('%s/channels/view/%d/#tab-settings' % (URL_BASE, ID_USER), channel_info.get_attribute('href'))
+		self.assertEqual('Profile Info'												, channel_info.text)
+		self.assertEqual('%s/channels/view/%d/#tab-settings' % (URL_BASE, ID_USER)	, channel_info.get_attribute('href'))
 		
 		channel_info.click()
 		
@@ -667,9 +665,9 @@ class Channel(HPTestCase):
 		self.assertEqual('If you get stuck or have any questions, check out our How To page and FAQs and please feel free to contact us at historypin@wearewhatwedo.org', help.e('p:last-of-type').text)
 		
 		links = [
-			['%s/community/howtos/'	% self.historypin_link	, 'How To page'],
-			['%s/faq/'				% self.historypin_link	, 'FAQs'],
-			['mailto:historypin@wearewhatwedo.org'			, 'historypin@wearewhatwedo.org'],
+			['%s/community/howtos/'	% URL_BASE		, 'How To page'],
+			['%s/faq'				% URL_BASE		, 'FAQs'],
+			['mailto:historypin@wearewhatwedo.org'	, 'historypin@wearewhatwedo.org'],
 		]
 		
 		links_help = help.es('p:last-of-type a')

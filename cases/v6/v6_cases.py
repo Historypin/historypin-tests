@@ -12,7 +12,7 @@ class V6_Cases(HPTestCase):
 		
 		self.assertTitle('Historypin')
 		
-		sleep(3)  #sleep is 
+		sleep(3)
 		
 		header			= self.e('#header')
 		user_options	= header.e('.user-options')
@@ -86,17 +86,17 @@ class V6_Cases(HPTestCase):
 		project_heading	= banner.e('h3')
 		
 		self.assertEqual('%s%s/' % (URL_BASE, self.PROJECT_URL), breadcrumbs_li[0].get_attribute('href'))
-		self.assertEqual(breadcrumbs_li[0].text, project_heading.text)  # check if the breadcrumb is equal to project heading
+		self.assertEqual(breadcrumbs_li[0].text, project_heading.text)  # checkes if the breadcrumb is equal to project heading
 		
 		banner.e('.edit-project').click()
 		sleep(4)
 		self.e('#banner-form .edit-heading').clear()
-		self.e('#banner-form .edit-heading').send_keys('Quality Assurance')  # send keys with different title
+		self.e('#banner-form .edit-heading').send_keys('Quality Assurance')  # sends keys with different title
 		
-		banner.e('.save-project').click()  # save the change title
+		banner.e('.save-project').click()  # saves the change title
 		
 		sleep(2)
-		self.browser.refresh()  # refresh the page with the new title
+		self.browser.refresh()  # refreshes the page with the new title
 		
 		sleep(4)
 		header			= self.e('#header')
@@ -400,11 +400,13 @@ class V6_Cases(HPTestCase):
 		self.assertEqual('MAIN LOCATION', h4s[2].text)
 		
 		admins_cnt = [
-			['/867/'	, '/channels/img/867/logo/1/dim/50x50/crop/1/cache/0/'	, 'Karamfil'			, 'Project Leader'],
-			['/33283/'	, '/channels/img/33283/logo/1/dim/50x50/crop/1/cache/0/', 'Gabss'				, 'Project Leader'],
-			['/35019/'	, '/resources/explore/images/default-avatar.jpg', 'Gabriela Ananieva'	, 'Project Leader'],
+			['/49127/'	, '/channels/img/49127/logo/1/dim/50x50/crop/1/cache/0/', 'Rawr'		, 'Project Leader'],
+			['/33283/'	, '/channels/img/33283/logo/1/dim/50x50/crop/1/cache/0/', 'Gabss'		, 'Project Leader'],
+			['/867/'	, '/channels/img/867/logo/1/dim/50x50/crop/1/cache/0/'	, 'Karamfil'	, 'Project Leader'],
 			['/47515/'	, '/resources/explore/images/default-avatar.jpg', 'n.p.slavov'			, 'Project Leader'],
-			['/49127/'	, '/channels/img/49127/logo/1/dim/50x50/crop/1/cache/0/', 'Rawr'				, 'Project Leader'],
+			['/35019/'	, '/resources/explore/images/default-avatar.jpg', 'Gabriela Ananieva'	, 'Project Leader'],
+			['/55376/'	, '/resources/explore/images/default-avatar.jpg', 'b.gaganelov'			, 'Project Leader'],
+			['/50570/'	, '/resources/explore/images/default-avatar.jpg', 'frozkata'			, 'Project Leader'],
 		]
 		
 		admins		= project_sidebar.e('.project-admins')
@@ -520,7 +522,7 @@ class V6_Cases(HPTestCase):
 		timeline = self.e('#timeline')
 		self.assertEqual('1930', timeline.e('.start').text)
 		
-		self.assertEqual('2013', timeline.e('.end').text)
+		self.assertEqual('2014', timeline.e('.end').text)
 		self.assertIsInstance(timeline.e('.ui-slider-range'), WebElement)
 		
 		# if not self.e('.panel.expanded').is_displayed():
