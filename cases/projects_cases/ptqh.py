@@ -150,7 +150,7 @@ class Project_PTQH(HPTestCase):
 		
 		self.assertTitle("Pinning The Queen's history")
 		
-		img_link = URL_BASE + '/resources/images/webapps/buckingham/'
+		img_link = '%s/resources/images/webapps/buckingham/' % URL_BASE
 		
 		items_about = [
 			['About the project', '%squeen_elizabeth.jpg'	% img_link],

@@ -78,7 +78,7 @@ class Project_Hertfordshire(HPTestCase, Attach):
 		self.assertIn('ss-desktop'	, icon_tout3.e('span').get_attribute('class'))
 		
 		self.assertIsInstance(self.e('.addthis_toolbox'), WebElement)
-		self.assertEqual('Image credit: Hertfordshire Studies and Local Studies', site_cnt.e('.image-credits').text)
+		self.assertEqual('Image credit: Hertfordshire Archives and Local Studies', site_cnt.e('.image-credits').text)
 		
 		partnership		= self.e('.partnership')
 		partners		= partnership.es('a')

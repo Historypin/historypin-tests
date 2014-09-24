@@ -13,8 +13,8 @@ URL_BLOB = 'https://www.%s' % LINK_BASE
 PROTOCOL = URL_BASE.split('://')[0]
 
 
-IS_ON_SDK = not (LINK_BASE.endswith('.appspot.com') or LINK_BASE.endswith('historypin.com'))
-IS_LIVE = LINK_BASE.endswith('historypin.com') or LINK_BASE.endswith('historypin.org')
+IS_ON_SDK	= not (LINK_BASE.endswith('.appspot.com') or LINK_BASE.endswith('historypin.com'))
+IS_LIVE		= LINK_BASE.endswith('historypin.com') or LINK_BASE.endswith('historypin.org')
 
 
 URL_BASE_JP		= 'http://www.historypin.jp' if IS_LIVE else URL_BASE

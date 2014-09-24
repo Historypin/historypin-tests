@@ -214,7 +214,7 @@ class V6_Cases(HPTestCase):
 	def test_edit_item(self):
 		
 		edit_icon = self.e('.bookmarks a:nth-of-type(3)')
-		self.assertEqual('%s/upload-audio/pin/phid/225263/edit/1/?from=/en/explore/oreo/pin/225263' % URL_BASE, edit_icon.get_attribute('href'))
+		self.assertEqual('%s/project/30-test-QA-project/upload-audio/pin/phid/225263/edit/1/?from=/en/explore/oreo/pin/225263' % URL_BASE, edit_icon.get_attribute('href'))
 		self.assertEqual('Edit', edit_icon.text)
 		
 		edit_icon.click()

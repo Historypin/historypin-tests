@@ -409,7 +409,7 @@ class Channel(HPTestCase):
 		for n in range(len(collections)):
 			i = collections[n]
 			self.assertEqual(URL_BASE + '/collections/view/id' + i[0]	, channels_help[n].get_attribute('href'))
-			self.assertEqual(i[1]								, channels_help[n].text)
+			self.assertEqual(i[1]										, channels_help[n].text)
 		
 		
 		self.assertEqual('If you get stuck or have any questions, check out our How To page and FAQs and please feel free to contact us at historypin@wearewhatwedo.org', help.e('p:last-of-type').text)
@@ -473,9 +473,9 @@ class Channel(HPTestCase):
 		tours = [
 			['/%d/title/The%%20March%%20on%%20Washington' % TOUR_EXAMPLES[0], 'The 1963 March on Washington'],  # make a variable to match SQl IDs
 			['/%d/title/A%%20historical%%20guided%%20tour%%20of%%20Kew%%20Gardens' % TOUR_EXAMPLES[1], 'A historical guided tour of Kew Gardens'],
-			['/7764038/title/Road%20Trip'											, 'Road Trip'],
-			['/8748071/title/Dereham%20Circular%20History%20Tour%201'				, 'A Tour around Dereham, Norfolk'],
-			['/6605903/title/Queen%20Elizabeth%20II'								, "Queen Elizabeth II's life"],
+			['/%d/title/Road%%20Trip' % TOUR_EXAMPLES[2], 'Road Trip'],
+			['/%d/title/Dereham%%20Circular%%20History%%20Tour%%201' % TOUR_EXAMPLES[3], 'A Tour around Dereham, Norfolk'],
+			['/%d/title/Queen%%20Elizabeth%%20II' % TOUR_EXAMPLES[4], "Queen Elizabeth II's life"],
 		]
 		
 		channels_help = help.es('a[href*=id]')
@@ -523,7 +523,7 @@ class Channel(HPTestCase):
 		self.assertEqual('%s/channels/view/%d/#tab-subscribers' % (URL_BASE, ID_USER)	, fans[0].get_attribute('href'))
 		self.assertEqual('0 - See list', fans[0].text)
 		self.assertEqual('%s/channels/view/%d/#tab-subscriptions' % (URL_BASE, ID_USER), fans[1].get_attribute('href'))
-		self.assertEqual('4 - See list', fans[1].text)
+		self.assertEqual('3 - See list', fans[1].text)
 	
 	@logged_in
 	@url('/channels/view/%d/' % ID_USER)
@@ -537,9 +537,9 @@ class Channel(HPTestCase):
 		self.assertEqual('Authentication', tab_cnt.e('h3').text)
 		
 		cnt = [
-			['Google'	, 'Status:', 'Connected'		, 'Disconnect'	, '/user/login/connect/-1'],
-			['Twitter'	, 'Status:', 'Not Connected'	, 'Connect'		, '/user/twitter_login/connect/1'],
-			['Facebook'	, 'Status:', 'Not Connected'	, 'Connect'		, '/channels/view/%d/#' % ID_USER],
+			['Google'	, 'Status:', 'Not Connected', 'Connect', '/user/login/connect/1'],
+			['Twitter'	, 'Status:', 'Not Connected', 'Connect', '/user/twitter_login/connect/1'],
+			['Facebook'	, 'Status:', 'Not Connected', 'Connect', '/channels/view/%d/#' % ID_USER],
 		]
 		
 		h4s = tab_cnt.es('tr td h4')

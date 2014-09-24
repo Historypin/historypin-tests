@@ -29,7 +29,7 @@ class Project_Queens(HPTestCase, Attach):
 		self.assertIn('Queens is the most diverse county in the U.S., made up of many neighborhoods', site_cnt.e('.main_description').text)
 		
 		tout_items = [
-			['Pin your memories'	, 'tout1_image', 'What makes your neighborhood special?'					, 'http://www.historypin.com%s/upload/' % self.PROJECT_URL],
+			['Pin your memories'	, 'tout1_image', 'What makes your neighborhood special?'					, '%s%s/upload/' % (URL_BASE, self.PROJECT_URL)],
 			['Get involved'			, 'tout2_image', 'Find out how you can get your neighborhood involved'		, 'http://blog.historypin.com/2013/01/29/neighborhood-stories-get-your-community-involved/'],
 		]
 		
