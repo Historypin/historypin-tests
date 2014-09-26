@@ -19,17 +19,17 @@ class Project_Fujinomiya(HPTestCase, Attach):
 	test_tab_gallery	= Attach.attach_tab_gallery
 	
 	def test_index(self):
-		self.go(URL_BASE_JP + self.PROJECT_URL)
+		self.go(URL_BASE_FUJI)
 		
 		self.assertTitle('Fujinomiya project')
 		
-		site_cnt = self.e('#site')
-		nav_links = site_cnt.es('.primary a')
+		site_cnt	= self.e('#site')
+		nav_links	= site_cnt.es('.primary a')
 		
 		self.assertEqual('%s/resources/images/project-japan/historypin-logo.png' % URL_ROOT_JP, nav_links[0].e('img').get_attribute('src'))
 		self.assertEqual('http://www.historypin.jp/', nav_links[0].get_attribute('href'))
 		
-		self.assertEqual('%s%s/' % (URL_BASE_JP, self.PROJECT_URL), nav_links[1].get_attribute('href'))
+		self.assertEqual('%s/' % URL_BASE_FUJI, nav_links[1].get_attribute('href'))
 		self.assertEqual(u'ホーム', nav_links[1].text)
 		
 		self.assertEqual('%s%s/explore/#|map/' % (URL_BASE_JP, self.PROJECT_URL), nav_links[2].get_attribute('href'))

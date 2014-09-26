@@ -4,7 +4,7 @@ GO_TIMEOUT = 1
 
 # VERSION = 'v5-europeana-filter'
 # VERSION = 'explore-independance'
-# VERSION = 'v610-beta-2'
+VERSION = 'v610-beta-2'
 # LINK_BASE = '%s.historypin-hrd.appspot.com' % (VERSION)
 LINK_BASE = 'historypin.org'
 
@@ -16,12 +16,21 @@ PROTOCOL = URL_BASE.split('://')[0]
 IS_ON_SDK	= not (LINK_BASE.endswith('.appspot.com') or LINK_BASE.endswith('historypin.com'))
 IS_LIVE		= LINK_BASE.endswith('historypin.com') or LINK_BASE.endswith('historypin.org')
 
-
-URL_ROOT_JP		= 'http://www.historypin.jp' if IS_LIVE else URL_BASE
-
-URL_BASE_JP		= 'http://www.historypin.jp/jp' if IS_LIVE else URL_BASE + '/jp/project/39-japan-project'
-URL_BASE_1989	= 'http://www.europeana1989.eu' if IS_LIVE else URL_BASE
-
+if IS_LIVE:
+	URL_ROOT_JP		= 'http://www.historypin.jp'
+	URL_BASE_JP		= 'http://www.historypin.jp/jp'
+	URL_BASE_1989	= 'http://www.europeana1989.eu'
+	URL_BASE_FUJI	= '%s/project/47-fujinomiya-project' % URL_BASE_JP
+else:
+	URL_ROOT_JP		= URL_BASE
+	URL_BASE_1989	= URL_BASE
+	URL_BASE_JP		= '%s/jp/project/39-japan-project' % URL_BASE
+	URL_BASE_FUJI	= '%s/jp/project/47-fujinomiya-project' % URL_BASE
+	
+# URL_ROOT_JP		= 'http://www.historypin.jp' if IS_LIVE else URL_BASE
+# URL_BASE_JP		= 'http://www.historypin.jp/jp' if IS_LIVE else URL_BASE + '/jp/project/39-japan-project'
+# URL_BASE_1989	= 'http://www.europeana1989.eu' if IS_LIVE else URL_BASE
+# URL_BASE_FUJINOMIYA = '%s/project/47-fujinomiya-project' % URL_BASE_JP if IS_LIVE else URL_BASE + '/jp/project/47-fujinomiya-project'
 
 ID_COLLECTION	= 3033
 ID_TOUR			= 1706

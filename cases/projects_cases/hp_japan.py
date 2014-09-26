@@ -5,8 +5,8 @@ from attach import Attach
 
 class Project_HPJapan(HPTestCase, Attach):
 	
-	PROJECT_URL				= '/project/39-japan-project'
-	ATTACH_URL				= '/jp/attach'
+	PROJECT_URL				= ''
+	ATTACH_URL				= URL_ROOT_JP + '/jp/attach'
 	FUJINOMIYA_LINK			= '%s/project/47-fujinomiya-project' % URL_ROOT_JP
 	blog_link				= 'http://blog.historypin.jp'
 	
