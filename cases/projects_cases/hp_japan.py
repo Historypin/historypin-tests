@@ -5,8 +5,10 @@ from attach import Attach
 
 class Project_HPJapan(HPTestCase, Attach):
 	
-	PROJECT_URL				= ''
-	ATTACH_URL				= URL_ROOT_JP + '/jp/attach'
+	if IS_LIVE: PROJECT_URL = ''
+	else: PROJECT_URL = '/project/39-japan-project'
+	
+	ATTACH_URL				= '%s/jp/attach' % URL_ROOT_JP
 	FUJINOMIYA_LINK			= '%s/project/47-fujinomiya-project' % URL_ROOT_JP
 	blog_link				= 'http://blog.historypin.jp'
 	
@@ -106,7 +108,7 @@ class Project_HPJapan(HPTestCase, Attach):
 		nav_links = site_cnt.es('.primary a')
 		
 		self.assertEqual('%s/resources/images/project-japan/historypin-logo.png' % URL_ROOT_JP, nav_links[0].e('img').get_attribute('src'))
-		self.assertEqual('%s/' % URL_ROOT_JP, nav_links[0].get_attribute('href'))
+		# self.assertEqual('%s/' % URL_ROOT_JP, nav_links[0].get_attribute('href')) redirects to live
 		
 		self.assertEqual('%s/' % URL_BASE_JP, nav_links[1].get_attribute('href'))
 		self.assertEqual(u'ホーム', nav_links[1].text)
@@ -157,11 +159,11 @@ class Project_HPJapan(HPTestCase, Attach):
 	
 	# @unittest.skipIf(IS_LIVE, 'Do not run on live')
 	def test_explore(self):
-		self.go('%s/' % URL_BASE_JP)
+		self.go('%s/explore/' % URL_BASE_JP)
 		
 		self.assertTitle(u'Historypin 日本上陸！')
 		
-		self.assertEqual('%s/attach/map/index/' % URL_BASE_JP, self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('%s/jp/attach%s/map/index/' % (URL_ROOT_JP, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 		
 		self.__test_main_touts()
 		self.__test_icon_touts()

@@ -6,7 +6,7 @@ from attach import Attach
 class Project_Fujinomiya(HPTestCase, Attach):
 	
 	PROJECT_URL	= '/project/47-fujinomiya-project'
-	ATTACH_URL	= '/jp/attach'
+	ATTACH_URL	= '%s/jp/attach' % URL_ROOT_JP
 	blog_link	= 'http://blog.historypin.jp'
 	
 	ATTACH_TABS = [
@@ -17,6 +17,8 @@ class Project_Fujinomiya(HPTestCase, Attach):
 	test_attach_tabs	= Attach.attach_tabs
 	test_tab_map		= Attach.attach_tab_map
 	test_tab_gallery	= Attach.attach_tab_gallery
+	
+	# TODO location.url to set the location in the attach for map tab
 	
 	def test_index(self):
 		self.go(URL_BASE_FUJI)
@@ -32,10 +34,10 @@ class Project_Fujinomiya(HPTestCase, Attach):
 		self.assertEqual('%s/' % URL_BASE_FUJI, nav_links[1].get_attribute('href'))
 		self.assertEqual(u'ホーム', nav_links[1].text)
 		
-		self.assertEqual('%s%s/explore/#|map/' % (URL_BASE_JP, self.PROJECT_URL), nav_links[2].get_attribute('href'))
+		self.assertEqual('%s/explore/#|map/' % URL_BASE_FUJI, nav_links[2].get_attribute('href'))
 		self.assertEqual(u'探索', nav_links[2].text)
 		
-		self.assertEqual('%s%s/upload/' % (URL_BASE_JP, self.PROJECT_URL), nav_links[3].get_attribute('href'))
+		self.assertEqual('%s/upload/' % URL_BASE_FUJI, nav_links[3].get_attribute('href'))
 		self.assertEqual(u'投稿', nav_links[3].text)
 		
 		self.assertEqual('%s/category/historypin-japan/fujinomiya/' % self.blog_link, nav_links[4].get_attribute('href'))
@@ -49,15 +51,15 @@ class Project_Fujinomiya(HPTestCase, Attach):
 		
 		user_links = site_cnt.es('.secondary a')
 		
-		self.assertEqual('%s%s/user/' % (URL_BASE_JP, self.PROJECT_URL), user_links[0].get_attribute('href'))
+		self.assertEqual('%s/user/' % URL_BASE_FUJI, user_links[0].get_attribute('href'))
 		self.assertEqual(u'アカウント作成', user_links[0].text)
 		
-		self.assertEqual('%s%s/user/' % (URL_BASE_JP, self.PROJECT_URL), user_links[1].get_attribute('href'))
+		self.assertEqual('%s/user/' % URL_BASE_FUJI, user_links[1].get_attribute('href'))
 		self.assertEqual(u'ログイン', user_links[1].text)
 		
 		self.assertEqual(u'富士宮プロジェクト', self.e('.sec-header h1').text)
 		
-		self.assertEqual('%s/attach%s/map/index/' % (URL_BASE_JP, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('%s/jp/attach%s/map/index/' % (URL_ROOT_JP, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 		
 		touts_items = [
 			['http://www.glocom.ac.jp/project/historypin/fujinomiya/'	, u'富士宮プロジェクトについて（外部サイト）'	, u'富士宮プロジェクトについて詳しく知る'	, 'tout1_image'],
