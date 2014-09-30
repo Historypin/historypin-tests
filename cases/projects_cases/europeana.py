@@ -107,7 +107,6 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		self.assertTrue(radio_buttons[0].is_selected())
 	
-	# @unittest.expectedFailure
 	def test_next_page_relevance(self):
 		self.go('%s%s/tours/all/' % (self.ATTACH_URL, self.PROJECT_URL))
 		
@@ -278,7 +277,6 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		self.assertGreater(len(items), 20)
 	
-	# @unittest.expectedFailure
 	def test_search_no_results(self):
 		self.go('%s%s/tours/all/' % (self.ATTACH_URL, self.PROJECT_URL))
 		
@@ -323,7 +321,6 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIsInstance(paragraph.e('a:nth-of-type(1)'), WebElement)
 		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
 	
-	# @unittest.expectedFailure
 	def test_check_search_translation_cz(self):
 		self.go('%s/cz/attach%s/tours/all?search=Berlin' % (URL_ROOT_1989, self.PROJECT_URL))
 		
@@ -346,7 +343,6 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIn(u'Výsledky dotazu pro', site_cnt.e('.search-result').text)
 		
 	
-	# @unittest.expectedFailure
 	def test_check_search_translation_de(self):
 		self.go('%s/de/attach%s/tours/all?search=Berlin' % (URL_ROOT_1989, self.PROJECT_URL))
 		
@@ -388,11 +384,9 @@ class Project_Europeana(HPTestCase, Attach):
 		# TODO add verification for "Clear search" text when there is translation
 		
 		self.assertIn(u'otsi tulemusi', site_cnt.e('.search-result').text)
-		
 	
-	@unittest.expectedFailure
 	def test_check_search_translation_hu(self):
-		self.go('%s/hu/attach%s/tours/all?search=Berlin' % (URL_BASE, self.PROJECT_URL))
+		self.go('%s/hu/attach%s/tours/all?search=Berlin' % (URL_ROOT_1989, self.PROJECT_URL))
 		
 		site_cnt		= self.e('#photo_list_content')
 		button_go		= site_cnt.e('#stories-search-submit')
@@ -405,7 +399,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual(u'Rendezési sorrend:  '	, filter_by.e('span').text)
 		self.assertEqual(u' Legutóbbi'		, labels[0].e('strong').text)
 		self.assertEqual(u' Legnépszerűbb'	, labels[1].e('strong').text)
-		self.assertEqual(u' Most Relevant'	, labels[2].e('strong').text)
+		self.assertEqual(u' Legrelevansabb', labels[2].e('strong').text)
 		
 		# TODO fix "Most Relevant" text when there is a translation provided
 		# TODO add verification for "Clear search" text when there is translation
@@ -413,9 +407,8 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertIn(u'Találatok a', site_cnt.e('.search-result').text)
 		
 	
-	@unittest.expectedFailure
 	def test_check_search_translation_lt(self):
-		self.go('%s/lt/attach%s/tours/all?search=Berlin' % (URL_BASE, self.PROJECT_URL))
+		self.go('%s/lt/attach%s/tours/all?search=Berlin' % (URL_ROOT_1989, self.PROJECT_URL))
 		
 		site_cnt		= self.e('#photo_list_content')
 		button_go		= site_cnt.e('#stories-search-submit')
@@ -425,20 +418,18 @@ class Project_Europeana(HPTestCase, Attach):
 		filter_by		= site_cnt.e('.search-filter-pos')
 		labels			= filter_by.es('label')
 		
-		self.assertEqual(u'Rūšiuoti  '	, filter_by.e('span').text)
+		self.assertEqual(u'Rūšiuoti  '		, filter_by.e('span').text)
 		self.assertEqual(u' Naujausi'		, labels[0].e('strong').text)
 		self.assertEqual(u' Populiariausi'	, labels[1].e('strong').text)
-		self.assertEqual(u' Most Relevant'	, labels[2].e('strong').text)
+		self.assertEqual(u' Svarbiausi'		, labels[2].e('strong').text)
 		
-		# TODO fix "Most Relevant" text when there is a translation provided
 		# TODO add verification for "Clear search" text when there is translation
 		
 		self.assertIn(u'Paieškos rezultatai', site_cnt.e('.search-result').text)
 		
 	
-	@unittest.expectedFailure
 	def test_check_search_translation_lv(self):
-		self.go('%s/lv/attach%s/tours/all?search=Berlin' % (URL_BASE, self.PROJECT_URL))
+		self.go('%s/lv/attach%s/tours/all?search=Berlin' % (URL_ROOT_1989, self.PROJECT_URL))
 		
 		site_cnt		= self.e('#photo_list_content')
 		button_go		= site_cnt.e('#stories-search-submit')
@@ -448,21 +439,18 @@ class Project_Europeana(HPTestCase, Attach):
 		filter_by		= site_cnt.e('.search-filter-pos')
 		labels			= filter_by.es('label')
 		
-		self.assertEqual(u'Ðíirot pçc  '	, filter_by.e('span').text)
-		self.assertEqual(u' Visjaunâkais'	, labels[0].e('strong').text)
-		self.assertEqual(u' Vispopulârâkais', labels[1].e('strong').text)
-		self.assertEqual(u' Most Relevant'	, labels[2].e('strong').text)
+		self.assertEqual(u'Ðíirot pçc  '				, filter_by.e('span').text)
+		self.assertEqual(u' Visjaunâkais'				, labels[0].e('strong').text)
+		self.assertEqual(u' Vispopulârâkais'			, labels[1].e('strong').text)
+		self.assertEqual(u' Atbilsto\u0161\u0101kais'	, labels[2].e('strong').text)
 		
-		# TODO fix "Most Relevant" text when there is a translation provided
 		# TODO add verification for "Clear search" text when there is translation
 		
 		self.assertIn(u'meklēšanas rezultāti', site_cnt.e('.search-result').text)
 		
 	
-	@unittest.expectedFailure
 	def test_check_search_translation_pl(self):
-		
-		self.go('%s/pl/attach%s/tours/all?search=Berlin' % (URL_BASE, self.PROJECT_URL))
+		self.go('%s/pl/attach%s/tours/all?search=Berlin' % (URL_ROOT_1989, self.PROJECT_URL))
 		
 		site_cnt		= self.e('#photo_list_content')
 		button_go		= site_cnt.e('#stories-search-submit')
@@ -475,13 +463,12 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual(u'Sortuj według  '		, filter_by.e('span').text)
 		self.assertEqual(u' Ostatnie'			, labels[0].e('strong').text)
 		self.assertEqual(u' Najpopularniejsze'	, labels[1].e('strong').text)
-		self.assertEqual(u' Most Relevant'		, labels[2].e('strong').text)
+		self.assertEqual(u' najtrafniejsze wyniki', labels[2].e('strong').text)
 		
 		# TODO fix "Most Relevant" text when there is a translation provided
 		# TODO add verification for "Clear search" text when there is translation
 		
 		self.assertIn(u'Rezultaty dla', site_cnt.e('.search-result').text)
-		
 	
 	def test_sub_nav_cz(self):
 		self.go('%s/cz%s' % (URL_ROOT_1989, self.PROJECT_URL))
@@ -690,7 +677,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		# this will fail on develop, because of the copying the database
 		
-		self.assertEqual('%sabout/' % URL_BASE_1989		, icon_tout1.get_attribute('href'))
+		self.assertEqual('%s/about/' % URL_BASE_1989		, icon_tout1.get_attribute('href'))
 		self.assertEqual('Find out more about the project'	, icon_tout1.text)
 		self.assertIn('ss-icon'		, icon_tout1.e('span').get_attribute('class'))
 		self.assertIn('ss-users'	, icon_tout1.e('span').get_attribute('class'))
@@ -700,11 +687,11 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual('http://blog.europeana.eu/category/europeana1989'	, icon_tout2.get_attribute('href'))
 		self.assertEqual('Read the latest news on our blog'					, icon_tout2.text)
 		self.assertIn('ss-icon'		, icon_tout2.e('span').get_attribute('class'))
-		self.assertIn('ss-newspaper', icon_tout2.e('span').get_attribute('class'))
+		self.assertIn('ss-openbook', icon_tout2.e('span').get_attribute('class'))
 		
 		featured = self.e('.bottom-p a')
 		self.assertEqual('Find out more about the featured photos', featured.text)
-		self.assertEqual('%sabout/' % URL_BASE_1989, featured.get_attribute('href'))
+		self.assertEqual('%s/about/' % URL_BASE_1989, featured.get_attribute('href'))
 		
 		self.assertIsInstance(self.e('.addthis_toolbox'), WebElement)
 		self.assertEqual('Share:', self.e('.addthis_toolbox h3').text)
@@ -747,7 +734,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Why are we doing this?', site_cnt.e('h2').text)
-		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg' % PROTOCOL, site_cnt.e('.inner img').get_attribute('src'))
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
 	
 	def test_about_cz(self):
 		self.go('%s/cz%s/about/' % (URL_ROOT_1989, self.PROJECT_URL))
@@ -756,7 +743,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual(u'Proč to děláme?', site_cnt.e('h2').text)
-		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg' % PROTOCOL, site_cnt.e('.inner img').get_attribute('src'))
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
 		
 		
 	def test_about_de(self):
@@ -766,7 +753,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Warum gibt es Europeana 1989?', site_cnt.e('h2').text)
-		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg' % PROTOCOL, site_cnt.e('.inner img').get_attribute('src'))
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
 		
 	
 	def test_about_es(self):
@@ -776,7 +763,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Miks me seda teeme?', site_cnt.e('h2').text)
-		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg' % PROTOCOL, site_cnt.e('.inner img').get_attribute('src'))
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
 		
 	
 	def test_about_hu(self):
@@ -786,7 +773,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual(u'Miért csináljuk?', site_cnt.e('h2').text)
-		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg' % PROTOCOL, site_cnt.e('.inner img').get_attribute('src'))
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
 		
 	
 	def test_about_lt(self):
@@ -796,7 +783,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual(u'Kodėl mes tai darome?', site_cnt.e('h2').text)
-		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg' % PROTOCOL, site_cnt.e('.inner img').get_attribute('src'))
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
 		
 	
 	def test_about_lv(self):
@@ -806,7 +793,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual(u'Kāpēc mēs to darām?', site_cnt.e('h2').text)
-		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg' % PROTOCOL, site_cnt.e('.inner img').get_attribute('src'))
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
 		
 	
 	def test_about_pl(self):
@@ -816,7 +803,7 @@ class Project_Europeana(HPTestCase, Attach):
 		
 		site_cnt = self.e('#site-content')
 		self.assertEqual('Dlaczego to robimy?', site_cnt.e('h2').text)
-		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg' % PROTOCOL, site_cnt.e('.inner img').get_attribute('src'))
+		self.assertEqual('http://wawwd-resources.s3.amazonaws.com/historypin/projects/1989/about_images.jpg', site_cnt.e('.inner img').get_attribute('src'))
 	
 	def test_terms_en(self):
 		self.go('%s/en%s/terms/' % (URL_ROOT_1989, self.PROJECT_URL))

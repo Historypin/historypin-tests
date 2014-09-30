@@ -4,12 +4,12 @@ GO_TIMEOUT = 1
 
 # VERSION = 'v5-europeana-filter'
 # VERSION = 'explore-independance'
-# VERSION = 'v610-beta-2'
+# VERSION = 'v610-beta-4'
 # LINK_BASE = '%s.historypin-hrd.appspot.com' % (VERSION)
 LINK_BASE = 'historypin.org'
 
-URL_BASE = 'http://www.%s' % LINK_BASE
-URL_BLOB = 'http://www.%s' % LINK_BASE
+URL_BASE = 'https://www.%s' % LINK_BASE
+URL_BLOB = 'https://www.%s' % LINK_BASE
 PROTOCOL = URL_BASE.split('://')[0]
 
 
@@ -29,10 +29,10 @@ else:
 	URL_BASE_1989	= '%s/en/project/34-1989' % URL_BASE
 	URL_BASE_FUJI	= '%s/jp/project/47-fujinomiya-project' % URL_BASE
 	
-# URL_ROOT_JP		= 'http://www.historypin.jp' if IS_LIVE else URL_BASE
-# URL_BASE_JP		= 'http://www.historypin.jp/jp' if IS_LIVE else URL_BASE + '/jp/project/39-japan-project'
-# URL_BASE_1989	= 'http://www.europeana1989.eu' if IS_LIVE else URL_BASE
-# URL_BASE_FUJINOMIYA = '%s/project/47-fujinomiya-project' % URL_BASE_JP if IS_LIVE else URL_BASE + '/jp/project/47-fujinomiya-project'
+# URL_ROOT_JP			= 'http://www.historypin.jp' if IS_LIVE else URL_BASE
+# URL_BASE_JP			= 'http://www.historypin.jp/jp' if IS_LIVE else URL_BASE + '/jp/project/39-japan-project'
+# URL_BASE_1989			= 'http://www.europeana1989.eu' if IS_LIVE else URL_BASE
+# URL_BASE_FUJINOMIYA	= '%s/project/47-fujinomiya-project' % URL_BASE_JP if IS_LIVE else URL_BASE + '/jp/project/47-fujinomiya-project'
 
 ID_COLLECTION	= 3033
 ID_TOUR			= 1706
