@@ -20,7 +20,7 @@ if IS_LIVE:
 	URL_ROOT_JP		= 'http://www.historypin.jp'
 	URL_BASE_JP		= 'http://www.historypin.jp/jp'
 	URL_ROOT_1989	= 'http://www.europeana1989.eu'
-	URL_BASE_1989	= 'http://www.europeana1989.eu/en/'
+	URL_BASE_1989	= 'http://www.europeana1989.eu/en'
 	URL_BASE_FUJI	= '%s/project/47-fujinomiya-project' % URL_BASE_JP
 else:
 	URL_ROOT_JP		= URL_BASE

@@ -101,13 +101,13 @@ class Homepage(HPTestCase):
 		more = self.e('#activity .more')
 		
 		more.click()
-		sleep(.5)
+		sleep(2)
 		# activity_height = self.e('.scrollbarfix').height()
 		# self.assertEqual('613.484375px', activity_height)
 		
 		less = self.e('#activity .less')
 		less.click()
-		sleep(.5)
+		sleep(2)
 		
 		# TODO
 		# verify if the activity is expaned to check if element has style property with height= 388 and 700px

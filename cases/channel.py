@@ -535,9 +535,9 @@ class Channel(HPTestCase):
 		self.assertEqual('Authentication', tab_cnt.e('h3').text)
 		
 		cnt = [
-			['Google'	, 'Status:', 'Not Connected', 'Connect', '/user/login/connect/1'],
-			['Twitter'	, 'Status:', 'Not Connected', 'Connect', '/user/twitter_login/connect/1'],
-			['Facebook'	, 'Status:', 'Not Connected', 'Connect', '/channels/view/%d/#' % ID_USER],
+			['Google'	, 'Status:', 'Connected'	, 'Disconnect'	, '/user/google_login/connect/-1'],
+			['Twitter'	, 'Status:', 'Not Connected', 'Connect'		, '/user/twitter_login/connect/1'],
+			['Facebook'	, 'Status:', 'Not Connected', 'Connect'		, '/channels/view/%d/#' % ID_USER],
 		]
 		
 		h4s = tab_cnt.es('tr td h4')

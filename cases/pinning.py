@@ -15,24 +15,31 @@ class Pinning(HPTestCase):
 		
 		for n in range(len(steps)): self.assertEqual(steps[n], texts[n].text)
 		
+		container = self.e('#container')
+		self.assertEqual('Choose at least one project', container.e('h2').text)
+		self.assertIsInstance(container.e('.project'), WebElement)
+		
+		container.e('.submit').click()
+		sleep(3)
+		
 		cnt_upload = self.e('.upload-content')
 		self.assertEqual('I want to add', cnt_upload.e('h2').text)
 		
 		photo_type = self.e('.upload-type li .photos')
 		self.assertEqual('Photos', photo_type.text)
-		self.assertEqual('%s/upload-item/index/' % URL_BASE, photo_type.get_attribute('href'))
+		self.assertEqual('%s/upload-item/index/selected_projects/1/' % URL_BASE, photo_type.get_attribute('href'))
 		self.assertIn('ss-icon'		, photo_type.e('span').get_attribute('class'))
 		self.assertIn('ss-picture'	, photo_type.e('span').get_attribute('class'))
 		
 		video_type = self.e('.upload-type li .videos')
 		self.assertEqual('Video', video_type.text)
-		self.assertEqual('%s/upload-video/index/' % URL_BASE, video_type.get_attribute('href'))
+		self.assertEqual('%s/upload-video/index/selected_projects/1/' % URL_BASE, video_type.get_attribute('href'))
 		self.assertIn('ss-icon'		, video_type.e('span').get_attribute('class'))
 		self.assertIn('ss-video'	, video_type.e('span').get_attribute('class'))
 		
 		audio_type = self.e('.upload-type li .audio')
 		self.assertEqual('Audio', audio_type.text)
-		self.assertEqual('%s/upload-audio/index/' % URL_BASE, audio_type.get_attribute('href'))
+		self.assertEqual('%s/upload-audio/index/selected_projects/1/' % URL_BASE, audio_type.get_attribute('href'))
 		self.assertIn('ss-icon'			, audio_type.e('span').get_attribute('class'))
 		self.assertIn('ss-headphones'	, audio_type.e('span').get_attribute('class'))
 		

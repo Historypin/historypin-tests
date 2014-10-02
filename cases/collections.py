@@ -72,7 +72,7 @@ class Collections(HPTestCase):
 		self.assertEqual('Slide Show'										, button.text)
 		
 		collection_view = [
-			['geo:42.694701,23.329031/zoom:15/dialog:%d'	% ID_COLLECTION_IMAGES[0], '/%d/' % ID_COLLECTION_IMAGES[0], '2 February 2013, from Gabriela Ananieva'	, '/%d' % ID_USER],
+			['geo:42.694663,23.329004/zoom:15/dialog:%d'	% ID_COLLECTION_IMAGES[0], '/%d/' % ID_COLLECTION_IMAGES[0], '2 February 2013, from Gabriela Ananieva'	, '/%d' % ID_USER],
 			['geo:42.693738,23.326101/zoom:15/dialog:%d'	% ID_COLLECTION_IMAGES[1], '/%d/' % ID_COLLECTION_IMAGES[1], '2 August 2012, from Gabss'				, '/%d' % ID_USER_VIEW],
 		]
 		

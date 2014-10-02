@@ -39,14 +39,14 @@ class Project_YOTB(HPTestCase, Attach):
 		self.assertEqual('Pin your memories', button.e('span').text)
 		
 		touts_items = [
-			["Tour North Beach in the 70's and 80's", "From the SFPL."						, 'tout1_image', 'https://www.historypin.org/project/22-yearofthebay/#!tours/view/id/3959/title/A%20Tour%20of%20North%20Beach%20in%20the%2070%27s%20and%2080%27s'],
-			['Tour the 1906 Earthquake in SF'		, "Before and after the big 1906 quake.", 'tout2_image', 'https://www.historypin.org/project/22-yearofthebay/#!tours/view/id/3871/title/1906%20San%20Francisco%20Earthquake%20and%20Fire'],
+			["Tour North Beach in the 70's and 80's", "From the SFPL."						, 'tout1_image', '{0}/project/22-yearofthebay/#!tours/view/id/3959/title/A%20Tour%20of%20North%20Beach%20in%20the%2070%27s%20and%2080%27s'.format(URL_BASE)],
+			['Tour the 1906 Earthquake in SF'		, "Before and after the big 1906 quake.", 'tout2_image', '{0}/project/22-yearofthebay/#!tours/view/id/3871/title/1906%20San%20Francisco%20Earthquake%20and%20Fire'.format(URL_BASE)],
 		]
 		
 		h3s		= site_cnt.es('.w2 h3')
 		texts	= site_cnt.es('.w2 p')
 		images	= site_cnt.es('.w2 img')
-		links	= site_cnt.es('.w2 a')
+		links	= site_cnt.es('.w2 h3 a')
 		
 		for n in range(len(touts_items)):
 			i = touts_items[n]

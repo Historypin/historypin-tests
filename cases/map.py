@@ -265,10 +265,13 @@ class Map(HPTestCase):
 		# self.assertIn('/user/?from=/map/', URL_BASE + '/user/?from=/map/%23%21/geo%3A42.697839%2C23.32167/zoom%3A10/dialog%3A22363018/tab%3Awrite-story/')
 		
 		# self.go(URL_BASE + '/map/#!/geo:42.697839,23.32167/zoom:10/dialog:%d/tab:stories/' % ID_MAP_ITEM)
-		
+	
+	@unittest.skipIf(IS_LIVE, 'Do not run on live')
 	@logged_in
 	@url('/map/#!/geo:42.697839,23.32167/zoom:13/dialog:200988/tab:stories/')
 	def test_post_comment(self):
+		
+		# TODO discuss this test if should be runned at all
 		
 		stories_tab = self.e('#stories_cnt')
 		
@@ -463,7 +466,7 @@ class Map(HPTestCase):
 		
 		sleep(2)
 		self.e_wait('#map-canvas .hp-marker').click()
-		sleep(2)
+		sleep(4)
 		self.assertIsInstance(dlg, WebElement)
 		
 		icon_arrow_right = dlg.e('.next-photo')
