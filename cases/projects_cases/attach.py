@@ -4,13 +4,12 @@ from base import *
 
 class Attach():
 	ATTACH_URL = '/attach'
+	LOCATION_URL = ''
 	
 	def attach_tabs(self):
 		self.go(self.ATTACH_URL + self.PROJECT_URL + '/map/')
-		print 'self.PROJECT_URL', self.PROJECT_URL
 		
-		
-		# sleep(3)
+		sleep(3)
 		
 		embed_tabs = self.e('#embed_tabs')
 		tabs_links = embed_tabs.es('li a')
@@ -19,7 +18,7 @@ class Attach():
 			self.assertIsInstance(tabs_links[t], WebElement)
 	
 	def attach_tab_map(self):
-		self.go(self.ATTACH_URL + self.PROJECT_URL + '/map/')
+		self.go(self.ATTACH_URL + self.PROJECT_URL + '/map/index/#!' + self.LOCATION_URL)
 		
 		sleep(3)
 		
@@ -29,7 +28,7 @@ class Attach():
 		sleep(3)
 		
 		# no way to do this in selenium as the counter element is hidden to fix this
-		self.browser.execute_script("ms = $('.hp-marker.hp-marker-cluster'); for(i in ms){ m = ms[i]; if($('.hp-marker-count', m).text() < 100 ){ m.click(); break; } }")
+		self.browser.execute_script("ms = $('.hp-marker.hp-marker-cluster'); for(i in ms){ m = ms[i]; if($('.hp-marker-count', m).text() < 100 || $.address.current_path.zoom >= 21){ m.click(); break; } }")
 		
 		sleep(3)
 		cluster = self.e('#galleryInfoWindow_contents li:nth-of-type(1)')

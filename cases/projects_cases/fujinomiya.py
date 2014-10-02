@@ -5,9 +5,10 @@ from attach import Attach
 
 class Project_Fujinomiya(HPTestCase, Attach):
 	
-	PROJECT_URL	= '/project/47-fujinomiya-project'
-	ATTACH_URL	= '%s/jp/attach' % URL_ROOT_JP
-	blog_link	= 'http://blog.historypin.jp'
+	PROJECT_URL		= '/project/47-fujinomiya-project'
+	ATTACH_URL		= '%s/jp/attach' % URL_ROOT_JP
+	LOCATION_URL	= '/geo:35.224715,138.612945/zoom:21/'
+	blog_link		= 'http://blog.historypin.jp'
 	
 	ATTACH_TABS = [
 		'%s/map/index/'			% PROJECT_URL,
