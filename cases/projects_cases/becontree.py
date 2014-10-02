@@ -52,8 +52,8 @@ class Project_Becontree(HPTestCase, Attach):
 		self.go('%s%s/' % (URL_BASE, self.PROJECT_URL))
 		
 		tout_items = [
-			['Local events'	, 'tout1_image', 'Come to one of our local events and share your story'		, '/2013/06/25/local-events/'],
-			['Get involved'	, 'tout2_image', 'Find out how you can get involved with the project'		, '/2013/06/25/this-used-to-be-fields-get-involved/'],
+			['Launch of the mural!'	, 'tout1_image', 'Join us to celebrate the new mural in Becontree'		, '/2014/08/31/becontree-mural/'],
+			['Get involved'			, 'tout2_image', 'Find out how you can get involved with the project'	, '/2013/06/25/this-used-to-be-fields-get-involved/'],
 		]
 		
 		site_cnt	= self.e('#site-content')
@@ -68,7 +68,7 @@ class Project_Becontree(HPTestCase, Attach):
 			i = tout_items[n]
 			self.assertEqual(i[0], h3s[n].text)
 			self.assertEqual(URL_BASE + '/projects/img/pid/58/dim/290x315/type/' + i[1] + '/crop/1/', images[n].get_attribute('src'))
-			self.assertEqual(i[2], paragraphs[n].text)
+			self.assertIn(i[2], paragraphs[n].text)
 			self.assertEqual(blog_link + i[3], h3s_link[n].get_attribute('href'))
 			self.assertEqual(blog_link + i[3], images_link[n].get_attribute('href'))
 		
