@@ -3,7 +3,7 @@
 from base import *
 from attach import Attach
 
-class Project_HPJapan(HPTestCase, Attach):
+class Project_Japan(HPTestCase, Attach):
 	
 	if IS_LIVE: PROJECT_URL = ''
 	else: PROJECT_URL = '/project/39-japan-project'
@@ -20,7 +20,6 @@ class Project_HPJapan(HPTestCase, Attach):
 	test_attach_tabs	= Attach.attach_tabs
 	test_tab_gallery	= Attach.attach_tab_gallery
 	test_tab_map		= Attach.attach_tab_map
-	
 	
 	def __test_main_touts(self):
 		

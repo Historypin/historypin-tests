@@ -7,8 +7,11 @@ class Attach():
 	
 	def attach_tabs(self):
 		self.go(self.ATTACH_URL + self.PROJECT_URL + '/map/')
+		print 'self.PROJECT_URL', self.PROJECT_URL
 		
-		sleep(3)
+		
+		# sleep(3)
+		
 		embed_tabs = self.e('#embed_tabs')
 		tabs_links = embed_tabs.es('li a')
 		

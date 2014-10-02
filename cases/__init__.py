@@ -26,7 +26,6 @@ from projects_cases.first_world_war import Project_FirstWorldWar
 from projects_cases.fujinomiya import Project_Fujinomiya
 from projects_cases.grandparents import Project_Grandparents
 from projects_cases.hertfordshire import Project_Hertfordshire
-from projects_cases.hp_japan import Project_HPJapan
 from projects_cases.japan import Project_Japan
 from projects_cases.lincoln import Project_Lincoln
 from projects_cases.npower import Project_NPower
