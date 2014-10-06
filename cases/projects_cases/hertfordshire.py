@@ -8,7 +8,7 @@ class Project_Hertfordshire(HPTestCase, Attach):
 	
 	PROJECT_URL = '/project/55-hertfordshire-on-the-map'
 	ATTACH_TABS = [
-		'%s/attach%s/map/index/'	% (URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/map/index/'.format(URL_BASE, PROJECT_URL),
 	]
 	
 	test_attach_tabs	= Attach.attach_tabs
@@ -27,15 +27,15 @@ class Project_Hertfordshire(HPTestCase, Attach):
 		self.assertEqual('Hertfordshire on the Map', site_cnt.e('h1').text)
 		self.assertIn(u'Hertfordshire’s past is one of farms, market gardens and small towns.', site_cnt.e('.main_description').text)
 		
-		self.assertEqual('%s/attach%s/map/index/' % (URL_BASE, self.PROJECT_URL), site_cnt.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('{0}/attach{1}/map/index/'.format(URL_BASE, self.PROJECT_URL), site_cnt.e('#embed-frame').get_attribute('src'))
 		
 		upload_button = site_cnt.e('.contribute_wrap a')
-		self.assertEqual('%s%s/upload/' % (URL_BASE, self.PROJECT_URL)	, upload_button.get_attribute('href'))
+		self.assertEqual('{0}{1}/upload/'.format(URL_BASE, self.PROJECT_URL)	, upload_button.get_attribute('href'))
 		self.assertEqual('Pin your memories'							, upload_button.e('span').text)
 		
 		touts_items = [
-			[u"Explore Herts' landscapes"	, "%s#!map/index/#!/geo:51.809782,-0.237674/zoom:10/map-type:hybrid/"	% self.PROJECT_URL, 'Use satellite view to locate your histories'	, 'tout1_image'],
-			['Can you help?'				, '%s/upload/' % self.PROJECT_URL, 'What was it like to live, work or play here?', 'tout2_image'],
+			[u"Explore Herts' landscapes"	, "{0}#!map/index/#!/geo:51.809782,-0.237674/zoom:10/map-type:hybrid/".format(self.PROJECT_URL), 'Use satellite view to locate your histories'	, 'tout1_image'],
+			['Can you help?'				, '{0}/upload/'.format(self.PROJECT_URL), 'What was it like to live, work or play here?', 'tout2_image'],
 		]
 		
 		h3s_links	= site_cnt.es('.w23 .inner h3 a')
@@ -46,10 +46,10 @@ class Project_Hertfordshire(HPTestCase, Attach):
 		for n in range(len(touts_items)):
 			i = touts_items[n]
 			self.assertEqual(i[0], h3s_links[n].text)
-			self.assertEqual('http://www.historypin.com' + i[1], h3s_links[n].get_attribute('href'))
-			self.assertEqual('http://www.historypin.com' + i[1], imgs_links[n].get_attribute('href'))
+			self.assertEqual('http://www.historypin.com{0}'.format(i[1]), h3s_links[n].get_attribute('href'))
+			self.assertEqual('http://www.historypin.com{0}'.format(i[1]), imgs_links[n].get_attribute('href'))
 			self.assertIn(i[2], paragraphs[n].text)
-			self.assertEqual(URL_BASE + '/projects/img/pid/55/dim/270x270/type/' + i[3] + '/crop/1/', imgs[n].get_attribute('src'))
+			self.assertEqual('{0}/projects/img/pid/55/dim/270x270/type/{1}/crop/1/'.format(URL_BASE, i[3]), imgs[n].get_attribute('src'))
 		
 		activity = site_cnt.e('#activity')
 		self.assertIsInstance(activity.e('h1'), WebElement)

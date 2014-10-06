@@ -3,11 +3,11 @@
 from base import *
 
 class Attach():
-	ATTACH_URL = '/attach'
-	LOCATION_URL = ''
+	ATTACH_URL		= '/attach'
+	LOCATION_URL	= ''
 	
 	def attach_tabs(self):
-		self.go(self.ATTACH_URL + self.PROJECT_URL + '/map/')
+		self.go('{0}{1}/map/'.format(self.ATTACH_URL, self.PROJECT_URL))
 		
 		sleep(3)
 		
@@ -18,7 +18,7 @@ class Attach():
 			self.assertIsInstance(tabs_links[t], WebElement)
 	
 	def attach_tab_map(self):
-		self.go(self.ATTACH_URL + self.PROJECT_URL + '/map/index/#!' + self.LOCATION_URL)
+		self.go('{0}{1}/map/index/#!{2}'.format(self.ATTACH_URL, self.PROJECT_URL, self.LOCATION_URL))
 		
 		sleep(3)
 		
@@ -43,7 +43,7 @@ class Attach():
 		self.assertIsInstance(self.e('#info-dialog'), WebElement)
 	
 	def attach_tab_gallery(self):
-		self.go(self.ATTACH_URL + self.PROJECT_URL + '/photos/gallery/')
+		self.go('{0}{1}/photos/gallery/'.format(self.ATTACH_URL, self.PROJECT_URL))
 		
 		filter_bar = self.e('.list-filter')
 		
@@ -89,7 +89,7 @@ class Attach():
 		self.assertIsInstance(overlay.e('p span'), WebElement)
 		
 	def attach_tab_collections(self):
-		self.go(self.ATTACH_URL + self.PROJECT_URL + '/collections/all/')
+		self.go('{0}{1}/collections/all/'.format(self.ATTACH_URL, self.PROJECT_URL))
 		
 		item = self.e('#list li:nth-of-type(1) > a')
 		
@@ -105,7 +105,7 @@ class Attach():
 		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
 	
 	def attach_tab_tours(self):
-		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
+		self.go('{0}{1}/tours/all/'.format(self.ATTACH_URL, self.PROJECT_URL))
 		
 		
 		item = self.e('#list li:nth-of-type(1) > a')
@@ -122,21 +122,21 @@ class Attach():
 		self.assertIsInstance(paragraph.e('a:nth-of-type(2)'), WebElement)
 	
 	def attach_tab_tours_empty(self):
-		self.go(self.ATTACH_URL + self.PROJECT_URL + '/tours/all/')
+		self.go('{0}{1}/tours/all/'.format(self.ATTACH_URL, self.PROJECT_URL))
 		
 		h3 = self.e('#page-index h3')
 		
 		self.assertEqual(self.project_name + " hasn't yet published any Tours.", h3.text)
 	
 	def attach_tab_collections_empty(self):
-		self.go(self.ATTACH_URL + self.PROJECT_URL + '/collections/all/')
+		self.go('{0}{1}/collections/all/'.format(self.ATTACH_URL, self.PROJECT_URL))
 		
 		h3 = self.e('#page-index h3')
 		
-		self.assertEqual(self.project_name + " hasn't yet published any Collections.", h3.text)
+		self.assertEqual("{0} hasn't yet published any Collections.".format(self.project_name), h3.text)
 	
 	def attach_tab_slideshow(self):
-		self.go(self.ATTACH_URL + self.PROJECT_URL + '/photos/slideshow/')
+		self.go('{0}{1}/photos/slideshow/'.format(self.ATTACH_URL, self.PROJECT_URL))
 		
 		self.assertIsInstance(self.e('#prevthumb img')	, WebElement)
 		self.assertIsInstance(self.e('#nextthumb img')	, WebElement)
@@ -145,7 +145,7 @@ class Attach():
 		self.assertIsInstance(self.e('#navigation')		, WebElement)
 	
 	def attach_tab_comments(self):
-		self.go(self.ATTACH_URL + self.PROJECT_URL + '/photos/stories/')
+		self.go('{0}{1}/photos/stories/'.format(self.ATTACH_URL, self.PROJECT_URL))
 		
 		sleep(3)
 		comment = self.e('.stories li:nth-of-type(1)')
@@ -156,7 +156,7 @@ class Attach():
 		self.assertIsInstance(comment.e('.story .details a'), WebElement)
 	
 	def attach_tab_list(self):
-		self.go(self.ATTACH_URL + self.PROJECT_URL + '/photos/list/')
+		self.go('{0}{1}/photos/list/'.format(self.ATTACH_URL, self.PROJECT_URL))
 		
 		filter_bar = self.e('.list-filter')
 		
@@ -190,7 +190,7 @@ class Attach():
 		self.assertIsInstance(picture.e('.info p'), WebElement)
 	
 	def attach_tab_mysteries(self):
-		self.go(self.ATTACH_URL + self.PROJECT_URL + '/mysteries/index/')
+		self.go('{0}{1}/mysteries/index/'.format(self.ATTACH_URL, self.PROJECT_URL))
 		
 		statistics = self.e('.statistics')
 		mods = statistics.es('.mod label')

@@ -7,27 +7,25 @@ class Project_FieldRecordings(HPTestCase, Attach):
 	
 	PROJECT_URL = '/project/53-can-you-help-us-enrich-these-field-recordings-of-b'
 	ATTACH_TABS = [
-		'%s/attach%s/map/index/'	% (URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/map/index/'.format(URL_BASE, PROJECT_URL),
 	]
 	
 	test_attach_tabs	= Attach.attach_tabs
-	test_tab_map		= Attach.attach_tab_map  # TODO fix this - this won't work because there is no content to be clicked on the map
-	
-	# TODO add tabs, if there is one and when they are added
+	test_tab_map		= Attach.attach_tab_map
 	
 	def test_index(self):
 		self.go(self.PROJECT_URL)
 		
 		self.assertTitle('Can you help add information to these birdlife recordings? | Home')
 		
-		self.assertEqual('%s/projects/img/dim/1000x250/crop/1/image_id/203' % URL_BASE, self.e('#banner_images li img').get_attribute('src'))
+		self.assertEqual('{0}/projects/img/dim/1000x250/crop/1/image_id/203'.format(URL_BASE), self.e('#banner_images li img').get_attribute('src'))
 		
 		site_cnt = self.e('#site-content')
 		
 		self.assertEqual('Can you help add information to these birdlife recordings?', site_cnt.e('h1').text)
 		self.assertIn('The Netherlands Institute for Sound and Vision has many recordings of bird sounds from across the Netherlands.', site_cnt.e('.main_description').text)
 		
-		self.assertEqual('%s/attach%s/map/index/' % (URL_BASE, self.PROJECT_URL), site_cnt.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('{0}/attach{1}/map/index/'.format(URL_BASE, self.PROJECT_URL), site_cnt.e('#embed-frame').get_attribute('src'))
 		
 		# TODO fix this items when links are provided
 		
@@ -47,7 +45,7 @@ class Project_FieldRecordings(HPTestCase, Attach):
 			# self.assertEqual(i[0], imgs_links[n].get_attribute('href'))
 			self.assertEqual(i[0], h3s_links[n].text)
 			self.assertIn(i[1], paragraphs[n].text)
-			self.assertEqual(URL_BASE + '/projects/img/pid/53/dim/270x310/type/' + i[2] + '/crop/1/', imgs[n].get_attribute('src'))
+			self.assertEqual('{0}/projects/img/pid/53/dim/270x310/type/{1}/crop/1/'.format(URL_BASE, i[2]), imgs[n].get_attribute('src'))
 		
 		activity = site_cnt.e('#activity')
 		self.assertIsInstance(activity.e('h1'), WebElement)

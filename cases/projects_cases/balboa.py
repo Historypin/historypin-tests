@@ -17,7 +17,7 @@ class Project_Balboa(HPTestCase, Attach):
 	test_tab_tours_empty	= Attach.attach_tab_tours_empty
 	
 	def test_tab_map(self):
-		self.go('/attach' + self.PROJECT_URL + '/map/')
+		self.go('/attach{0}/map/'.format(self.PROJECT_URL))
 		
 		sleep(4)
 		
@@ -48,17 +48,17 @@ class Project_Balboa(HPTestCase, Attach):
 		logo_link = self.e('#logo-title a')
 		
 		self.assertEqual('http://balboapark.org/', logo_link.get_attribute('href'))
-		self.assertEqual('%s/resources/images/webapps/balboa/logo.png' % URL_BASE, logo_link.e('img').get_attribute('src'))
+		self.assertEqual('{0}/resources/images/webapps/balboa/logo.png'.format(URL_BASE), logo_link.e('img').get_attribute('src'))
 		
-		self.assertEqual('%s/attach%s/map/index/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('{0}/attach{1}/map/index/'.format(URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 		
 		balboa_link = 'http://www.balboapark.org'
 		
 		footer_items = [
-			['%s/info/' % balboa_link				, 'About'],
-			['%s/faq' % URL_BASE					, 'FAQs'],
-			['%s/terms-and-conditions' % URL_BASE	, 'Terms & Conditions'],
-			['%s/contact/' % balboa_link			, 'Contact'],
+			['{0}/info/'.format(balboa_link), 'About'],
+			['{0}/faq'.format(URL_BASE)		, 'FAQs'],
+			['{0}/terms-and-conditions'.format(URL_BASE), 'Terms & Conditions'],
+			['{0}/contact/'.format(balboa_link)			, 'Contact'],
 		]
 		
 		footer = self.e('#supp')
@@ -71,21 +71,21 @@ class Project_Balboa(HPTestCase, Attach):
 		
 	
 	def test_tab_tours(self):
-		self.go('/attach%s/tours/all/' % self.PROJECT_URL)
+		self.go('/attach{0}/tours/all/'.format(self.PROJECT_URL))
 		
 		self.assertEqual("balboa hasn't yet published any Tours.", self.e('#page-index h3').text)
 	
 	def test_tab_contribute(self):
-		self.go('/attach%s/contribute/' % self.PROJECT_URL)
+		self.go('/attach{0}/contribute/'.format(self.PROJECT_URL))
 		
 		contribute_cnt = self.e('#tab-contribute')
 		self.assertEqual('Pin your photos using', contribute_cnt.e('h1').text)
 		
-		self.assertEqual('%s/user/?from=%s/%%23%%7Cupload/' % (URL_BASE, self.PROJECT_URL), contribute_cnt.e('.pin_bridge').get_attribute('href'))
+		self.assertEqual('{0}/user/?from={1}/%23%7Cupload/'.format(URL_BASE, self.PROJECT_URL), contribute_cnt.e('.pin_bridge').get_attribute('href'))
 		
 		paragraph_links = [
-			['Pin your photos to Balboa Park using Historypin'			, '%s/user/?from=%s/%%23%%7Cupload/' % (URL_BASE, self.PROJECT_URL)],
-			['Find out more about the not-for-profit project Historypin', '%s/' % URL_BASE],
+			['Pin your photos to Balboa Park using Historypin'			, '{0}/user/?from={1}/%23%7Cupload/'.format(URL_BASE, self.PROJECT_URL)],
+			['Find out more about the not-for-profit project Historypin', '{0}/'.format(URL_BASE)],
 		]
 		
 		links = contribute_cnt.es('p a')

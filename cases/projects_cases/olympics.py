@@ -8,10 +8,10 @@ class Project_Olympics(HPTestCase, Attach):
 	PROJECT_URL = '/project/3-hp-olympics'
 	
 	ATTACH_TABS = [
-		'%s/attach%s/map/index/'		% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/collections/all/'	% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/collections/all/'	% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/tours/all/'		% (URL_BASE, PROJECT_URL)
+		'{0}/attach{1}/map/index/'		.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/collections/all/'	.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/collections/all/'	.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/tours/all/'		.format(URL_BASE, PROJECT_URL),
 	]
 	
 	test_attach_tabs		= Attach.attach_tabs
@@ -30,14 +30,14 @@ class Project_Olympics(HPTestCase, Attach):
 		
 		self.assertIn('There have been world record numbers of world records, jetpacks at opening ceremonies, boycotts from sparring nations, and all those British medals at the 2012 extravaganza in London. ', site_cnt.e('.main_description').text)
 		
-		olympics_link	= '%s/project/3-hp-olympics' % URL_BASE
-		wawwd_link		= '%s://wawwd-resources.s3.amazonaws.com/historypin/projects/olympics/' % PROTOCOL
-		img_link		= '%s/resources/images/webapps/hp-olympics/' % URL_BASE
+		olympics_link	= '{0}/project/3-hp-olympics'.format(URL_BASE)
+		wawwd_link		= '{0}://wawwd-resources.s3.amazonaws.com/historypin/projects/olympics/'.format(PROTOCOL)
+		img_link		= '{0}/resources/images/webapps/hp-olympics/'.format(URL_BASE)
 		
 		touts = [
-			['Pin your Olympic Content'			, '%s/upload/' % olympics_link		, '%smain_pin_img.jpg' % img_link		, 'Add any photos, videos or memories from the Olympics\nthrough the ages to this collection here.'],
-			['Explore our Olympic timeline'		, '%s#' % olympics_link				, '%solympic_timeline.jpg' % img_link	, 'Odd photos, little known facts and a potted history of the Olympic Games from 1896 to 2012'],
-			['Free downloadable activity pack'	, '%sACTIVITY_PACK.zip' % wawwd_link, '%sdownload_img.jpg' % img_link		, 'Perfect for schools and groups, it includes lesson plans, a game and tipsheets for gathering photos'],
+			['Pin your Olympic Content'			, '{0}/upload/'.format(olympics_link)		, '{0}main_pin_img.jpg'.format(img_link)		, 'Add any photos, videos or memories from the Olympics\nthrough the ages to this collection here.'],
+			['Explore our Olympic timeline'		, '{0}#'.format(olympics_link)				, '{0}olympic_timeline.jpg'.format(img_link)	, 'Odd photos, little known facts and a potted history of the Olympic Games from 1896 to 2012'],
+			['Free downloadable activity pack'	, '{0}ACTIVITY_PACK.zip'.format(wawwd_link)	, '{0}download_img.jpg'.format(img_link)		, 'Perfect for schools and groups, it includes lesson plans, a game and tipsheets for gathering photos'],
 		]
 		
 		touts_cnt	= self.e('.highlights')
@@ -57,5 +57,5 @@ class Project_Olympics(HPTestCase, Attach):
 		self.assertIsInstance(self.e('.olympics_dialog'), WebElement)
 		self.e('.ui-dialog-titlebar-close.ui-corner-all').click()
 		
-		self.assertEqual('%s/attach/project/3-hp-olympics/map/index/' % URL_BASE, self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('{0}/attach/project/3-hp-olympics/map/index/'.format(URL_BASE), self.e('#embed-frame').get_attribute('src'))
 	

@@ -8,12 +8,12 @@ class Project_Sourdough(HPTestCase, Attach):
 	PROJECT_URL = '/project/43-sourdough-and-rye'
 	
 	ATTACH_TABS = [
-		'%s/attach%s/map/index/'		% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/photos/gallery/'	% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/tours/all/'		% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/collections/all/'	% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/slideshow/'		% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/photos/list/'		% (URL_BASE, PROJECT_URL)
+		'{0}/attach{1}/map/index/'		.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/photos/gallery/'	.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/tours/all/'		.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/collections/all/'.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/slideshow/'		.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/photos/list/'	.format(URL_BASE, PROJECT_URL)
 	]
 	
 	test_attach_tabs		= Attach.attach_tabs
@@ -28,12 +28,12 @@ class Project_Sourdough(HPTestCase, Attach):
 		self.go(self.PROJECT_URL)
 		
 		self.assertTitle('Sourdough and Rye | Home')
-		self.assertEqual('%s/projects/img/dim/1030x250/crop/1/image_id/193' % URL_BASE, self.e('#banner_images img').get_attribute('src'))
+		self.assertEqual('{0}/projects/img/dim/1030x250/crop/1/image_id/193'.format(URL_BASE), self.e('#banner_images img').get_attribute('src'))
 		
 		site_cnt	= self.e('#site-content')
 		about_link	= site_cnt.e('.w23 a')
 		
-		self.assertEqual('%s%s/about' % (URL_BASE, self.PROJECT_URL), about_link.get_attribute('href'))
+		self.assertEqual('{0}{1}/about'.format(URL_BASE, self.PROJECT_URL), about_link.get_attribute('href'))
 		
 		activity = site_cnt.e('#activity')
 		
@@ -60,7 +60,7 @@ class Project_Sourdough(HPTestCase, Attach):
 		for n in range(len(items)):
 			i = items[n]
 			self.assertEqual(URL_BASE + self.PROJECT_URL + i[0], links[n].get_attribute('href'))
-			self.assertEqual(PROTOCOL + '://wawwd-resources.s3.amazonaws.com/historypin/projects/sandr/' + i[1], images[n].get_attribute('src'))
+			self.assertEqual('{0}://wawwd-resources.s3.amazonaws.com/historypin/projects/sandr/{1}'.format(PROTOCOL, i[1]), images[n].get_attribute('src'))
 		
 		self.assertIsInstance(self.e('.addthis_toolbox'), WebElement)
 		
@@ -81,21 +81,21 @@ class Project_Sourdough(HPTestCase, Attach):
 		for n in range(len(supported_items)):
 			i = supported_items[n]
 			self.assertEqual(i[0], supported_links[n].get_attribute('href'))
-			self.assertEqual(PROTOCOL + '://wawwd-resources.s3.amazonaws.com/historypin/projects/sandr/' + i[1], supported_imgs[n].get_attribute('src'))
+			self.assertEqual('{0}://wawwd-resources.s3.amazonaws.com/historypin/projects/sandr/{1}'.format(PROTOCOL, i[1]), supported_imgs[n].get_attribute('src'))
 		
 	
 	def test_about(self):
-		self.go('%s/about/' % self.PROJECT_URL)
+		self.go('{0}/about/'.format(self.PROJECT_URL))
 		
 		self.assertTitle('Sourdough and Rye')
 		
 		nav_items = [
-			['%s%s/'		% (URL_BASE, self.PROJECT_URL), 'Home'],
-			['%s%s/about'	% (URL_BASE, self.PROJECT_URL), 'About'],
-			['%s%s/explore'	% (URL_BASE, self.PROJECT_URL), 'Explore'],
-			['%s%s/upload'	% (URL_BASE, self.PROJECT_URL), 'Contribute'],
-			['%s%s/events'	% (URL_BASE, self.PROJECT_URL), 'Events'],
-			['http://sourdoughandryehistory.org/'			, 'Blog'],
+			['{0}{1}/'			.format(URL_BASE, self.PROJECT_URL), 'Home'],
+			['{0}{1}/about'		.format(URL_BASE, self.PROJECT_URL), 'About'],
+			['{0}{1}/explore'	.format(URL_BASE, self.PROJECT_URL), 'Explore'],
+			['{0}{1}/upload'	.format(URL_BASE, self.PROJECT_URL), 'Contribute'],
+			['{0}{1}/events'	.format(URL_BASE, self.PROJECT_URL), 'Events'],
+			['http://sourdoughandryehistory.org/', 'Blog'],
 		]
 		
 		site_cnt = self.e('#site-content')
@@ -108,17 +108,17 @@ class Project_Sourdough(HPTestCase, Attach):
 			self.assertEqual(i[1], nav_links[n].text)
 		
 		self.assertIn('Like the great delis that once populated the Fillmore District', site_cnt.e('.about-inner p').text)
-		self.assertEqual(PROTOCOL + '://wawwd-resources.s3.amazonaws.com/historypin/projects/sandr/bread.jpg', site_cnt.e('#about-video').get_attribute('src'))
+		self.assertEqual('{0}://wawwd-resources.s3.amazonaws.com/historypin/projects/sandr/bread.jpg'.format(PROTOCOL), site_cnt.e('#about-video').get_attribute('src'))
 	
 	def test_explore(self):
-		self.go('%s/explore#|map/' % self.PROJECT_URL)
+		self.go('{0}/explore#|map/'.format(self.PROJECT_URL))
 		
 		self.assertTitle('Sourdough and Rye')
-		self.assertEqual('%s/attach%s/map/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('{0}/attach{1}/map/'.format(URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 		
 	
 	def test_events(self):
-		self.go('%s/events/' % self.PROJECT_URL)
+		self.go('{0}/events/'.format(self.PROJECT_URL))
 		
 		site_cnt	= self.e('#site-content')
 		touts		= site_cnt.e('.image-links')
@@ -137,7 +137,7 @@ class Project_Sourdough(HPTestCase, Attach):
 			i = touts_items[n]
 			self.assertEqual(i[0], img_links[n].get_attribute('href'))
 			self.assertEqual(i[0], h3s_links[n].get_attribute('href'))
-			self.assertEqual(URL_BASE + '/projects/img/pid/43/dim/307x265/type/' + i[1] + '/crop/1/', imgs[n].get_attribute('src'))
+			self.assertEqual('{0}/projects/img/pid/43/dim/307x265/type/{1}/crop/1/'.format(URL_BASE, i[1]), imgs[n].get_attribute('src'))
 			self.assertEqual(i[2], h3s_links[n].text)
 			self.assertIn(i[3], paragraphs[n].text)
 		

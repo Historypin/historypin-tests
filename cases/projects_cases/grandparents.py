@@ -8,8 +8,8 @@ class Project_Grandparents(HPTestCase, Attach):
 	PROJECT_URL = '/project/10-grandparents'
 	
 	ATTACH_TABS = [
-		'%s/attach%s/map/index/'		% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/photos/gallery/'	% (URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/map/index/'		.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/photos/gallery/'	.format(URL_BASE, PROJECT_URL),
 	]
 	
 	test_attach_tabs	= Attach.attach_tabs
@@ -26,13 +26,13 @@ class Project_Grandparents(HPTestCase, Attach):
 		
 		self.assertIn('Is your Gran, Grandad, Nan or Pops awesome?', site_cnt.e('.page-top p').text)
 		
-		img_link = '%s/resources/images/webapps/grandparents/' % URL_BASE
-		wawwd_link = '%s://wawwd-resources.s3.amazonaws.com/historypin/images/community/' % PROTOCOL
+		img_link = '{0}/resources/images/webapps/grandparents/'.format(URL_BASE)
+		wawwd_link = '{0}://wawwd-resources.s3.amazonaws.com/historypin/images/community/'.format(PROTOCOL)
 		
 		touts = [
-			['Scan your Gran, tag your Grandad!'	, '%s%s/upload/' % (URL_BASE, self.PROJECT_URL)	, '%smain_pin_img.jpg' % img_link	, 'Was your Gran once a hipster? Your Grandad a legend? Raid your attic and share your photos here.'],
-			["Prince William's photo of his Gran"	, '%s/project/5-DiamondJubilee/map/#!/geo:51.339732,-0.767807/zoom:18/dialog:83545/tab:details/' % URL_BASE	, '%squeen.jpg' % img_link			, 'Have a look at the photo and story that Prince William added of his Gran.'],
-			['Useful free resources'				, '%s/community/schools-resources' % URL_BASE																, '%sschools_main.jpg' % wawwd_link	, 'Download useful resources helping you record stories, run sessions and use Historypin in your school or community.'],
+			['Scan your Gran, tag your Grandad!'	, '{0}{1}/upload/'.format(URL_BASE, self.PROJECT_URL)	, '{0}main_pin_img.jpg'.format(img_link), 'Was your Gran once a hipster? Your Grandad a legend? Raid your attic and share your photos here.'],
+			["Prince William's photo of his Gran"	, '{0}/project/5-DiamondJubilee/map/#!/geo:51.339732,-0.767807/zoom:18/dialog:83545/tab:details/'.format(URL_BASE), '{0}queen.jpg'		.format(img_link)	, 'Have a look at the photo and story that Prince William added of his Gran.'],
+			['Useful free resources'				, '{0}/community/schools-resources'.format(URL_BASE)																, '{0}schools_main.jpg'	.format(wawwd_link)	, 'Download useful resources helping you record stories, run sessions and use Historypin in your school or community.'],
 		]
 		
 		touts_cnt	= self.e('.highlights')
@@ -48,5 +48,5 @@ class Project_Grandparents(HPTestCase, Attach):
 			self.assertEqual(i[2], images[n].get_attribute('src'))
 			self.assertEqual(i[3], paragraphs[n].text)
 		
-		self.assertEqual('%s/attach%s/photos/gallery/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('{0}/attach{1}/photos/gallery/'.format(URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 	

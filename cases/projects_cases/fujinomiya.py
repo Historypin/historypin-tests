@@ -6,13 +6,13 @@ from attach import Attach
 class Project_Fujinomiya(HPTestCase, Attach):
 	
 	PROJECT_URL		= '/project/47-fujinomiya-project'
-	ATTACH_URL		= '%s/jp/attach' % URL_ROOT_JP
+	ATTACH_URL		= '{0}/jp/attach'.format(URL_ROOT_JP)
 	LOCATION_URL	= '/geo:35.224715,138.612945/zoom:21/'
 	blog_link		= 'http://blog.historypin.jp'
 	
 	ATTACH_TABS = [
-		'%s/map/index/'			% PROJECT_URL,
-		'%s/photos/gallery/'	% PROJECT_URL,
+		'{0}/map/index/'		.format(PROJECT_URL),
+		'{0}/photos/gallery/'	.format(PROJECT_URL),
 	]
 	
 	test_attach_tabs	= Attach.attach_tabs
@@ -29,42 +29,42 @@ class Project_Fujinomiya(HPTestCase, Attach):
 		site_cnt	= self.e('#site')
 		nav_links	= site_cnt.es('.primary a')
 		
-		self.assertEqual('%s/resources/images/project-japan/historypin-logo.png' % URL_ROOT_JP, nav_links[0].e('img').get_attribute('src'))
+		self.assertEqual('{0}/resources/images/project-japan/historypin-logo.png'.format(URL_ROOT_JP), nav_links[0].e('img').get_attribute('src'))
 		self.assertEqual('http://www.historypin.jp/', nav_links[0].get_attribute('href'))
 		
-		self.assertEqual('%s/' % URL_BASE_FUJI, nav_links[1].get_attribute('href'))
+		self.assertEqual('{0}/'.format(URL_BASE_FUJI), nav_links[1].get_attribute('href'))
 		self.assertEqual(u'ホーム', nav_links[1].text)
 		
-		self.assertEqual('%s/explore/#|map/' % URL_BASE_FUJI, nav_links[2].get_attribute('href'))
+		self.assertEqual('{0}/explore/#|map/'.format(URL_BASE_FUJI), nav_links[2].get_attribute('href'))
 		self.assertEqual(u'探索', nav_links[2].text)
 		
-		self.assertEqual('%s/upload/' % URL_BASE_FUJI, nav_links[3].get_attribute('href'))
+		self.assertEqual('{0}/upload/'.format(URL_BASE_FUJI), nav_links[3].get_attribute('href'))
 		self.assertEqual(u'投稿', nav_links[3].text)
 		
-		self.assertEqual('%s/category/historypin-japan/fujinomiya/' % self.blog_link, nav_links[4].get_attribute('href'))
+		self.assertEqual('{0}/category/historypin-japan/fujinomiya/'.format(self.blog_link), nav_links[4].get_attribute('href'))
 		self.assertEqual(u'ブログ', nav_links[4].text)
 		
 		self.assertEqual('http://www.glocom.ac.jp/project/historypin/fujinomiya/', nav_links[5].get_attribute('href'))
 		self.assertEqual(u'富士宮プロジェクトについて', nav_links[5].text)
 		
-		self.assertEqual('%s/faq/' % self.blog_link		, nav_links[6].get_attribute('href'))
+		self.assertEqual('{0}/faq/'.format(self.blog_link)		, nav_links[6].get_attribute('href'))
 		self.assertEqual(u'よくある質問', nav_links[6].text)
 		
 		user_links = site_cnt.es('.secondary a')
 		
-		self.assertEqual('%s/user/' % URL_BASE_FUJI, user_links[0].get_attribute('href'))
+		self.assertEqual('{0}/user/'.format(URL_BASE_FUJI), user_links[0].get_attribute('href'))
 		self.assertEqual(u'アカウント作成', user_links[0].text)
 		
-		self.assertEqual('%s/user/' % URL_BASE_FUJI, user_links[1].get_attribute('href'))
+		self.assertEqual('{0}/user/'.format(URL_BASE_FUJI), user_links[1].get_attribute('href'))
 		self.assertEqual(u'ログイン', user_links[1].text)
 		
 		self.assertEqual(u'富士宮プロジェクト', self.e('.sec-header h1').text)
 		
-		self.assertEqual('%s/jp/attach%s/map/index/' % (URL_ROOT_JP, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('{0}/jp/attach{1}/map/index/'.format(URL_ROOT_JP, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 		
 		touts_items = [
-			['http://www.glocom.ac.jp/project/historypin/fujinomiya/'	, u'富士宮プロジェクトについて（外部サイト）'	, u'富士宮プロジェクトについて詳しく知る'	, 'tout1_image'],
-			['%s/category/historypin-japan/fujinomiya/' % self.blog_link, u'富士宮プロジェクトブログ'				, u'富士宮プロジェクトの最新情報'			, 'tout2_image'],
+			['http://www.glocom.ac.jp/project/historypin/fujinomiya/'			, u'富士宮プロジェクトについて（外部サイト）'	, u'富士宮プロジェクトについて詳しく知る'	, 'tout1_image'],
+			['{0}/category/historypin-japan/fujinomiya/'.format(self.blog_link)	, u'富士宮プロジェクトブログ'				, u'富士宮プロジェクトの最新情報'			, 'tout2_image'],
 		]
 		
 		h3s_links	= self.es('.w23 .inner h3 a')
@@ -78,7 +78,7 @@ class Project_Fujinomiya(HPTestCase, Attach):
 			self.assertEqual(i[0], imgs_links[n].get_attribute('href'))
 			self.assertEqual(i[1], h3s_links[n].text)
 			self.assertEqual(i[2], paragraphs[n].text)
-			self.assertEqual(URL_ROOT_JP + '/projects/img/pid/47/dim/285x290/type/' + i[3] + '/crop/1/', imgs[n].get_attribute('src'))
+			self.assertEqual('{0}/projects/img/pid/47/dim/285x290/type/{1}/crop/1/'.format(URL_ROOT_JP, i[3]), imgs[n].get_attribute('src'))
 		
 		activity = self.e('#activity')
 		self.assertIsInstance(activity.e('h1'), WebElement)
@@ -112,7 +112,7 @@ class Project_Fujinomiya(HPTestCase, Attach):
 		supported_img	= supported.es('img')
 		imgs			= ['british-council-logo.png', 'fujitsu.png', 'glocom.png']
 		
-		for n in range(len(imgs)): self.assertEqual(URL_ROOT_JP + '/resources/images/project-japan/' + imgs[n], supported_img[n].get_attribute('src'))
+		for n in range(len(imgs)): self.assertEqual('{0}/resources/images/project-japan/{1}'.format(URL_ROOT_JP, imgs[n]), supported_img[n].get_attribute('src'))
 		
 		self.assertEqual(u'使用写真はhalsan2000さんとtajima.tomocomさんがシェアしたものです。', self.e('.photos-by span').text)
 		
@@ -120,10 +120,10 @@ class Project_Fujinomiya(HPTestCase, Attach):
 		footer_links = footer.es('a')
 		
 		footer_items = [
-			['%s/terms-and-conditions/'	% self.blog_link	, 'Terms and conditions'],
-			['%s/privacy-policy/'		% self.blog_link	, 'Privacy policy'],
-			['%s/cookies/'				% self.blog_link	, 'Cookies'],
-			['http://wearewhatwedo.org/'			, u'© We Are What We Do'],
+			['{0}/terms-and-conditions/'.format(self.blog_link), 'Terms and conditions'],
+			['{0}/privacy-policy/'		.format(self.blog_link), 'Privacy policy'],
+			['{0}/cookies/'				.format(self.blog_link), 'Cookies'],
+			['http://wearewhatwedo.org/'				, u'© We Are What We Do'],
 		]
 		
 		for n in range(len(footer_items)):

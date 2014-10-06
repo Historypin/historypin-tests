@@ -8,9 +8,9 @@ class Project_NPower(HPTestCase, Attach):
 	PROJECT_URL = '/project/15-remember'
 	
 	ATTACH_TABS = [
-		'%s/attach%s/map/index/'		% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/photos/gallery/'	% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/photos/stories/'	% (URL_BASE, PROJECT_URL)
+		'{0}/attach{1}/map/index/'		.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/photos/gallery/'	.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/photos/stories/'	.format(URL_BASE, PROJECT_URL)
 	]
 	
 	test_attach_tabs	= Attach.attach_tabs
@@ -24,7 +24,7 @@ class Project_NPower(HPTestCase, Attach):
 		
 		icon_tout1 = site_cnt.e('#icon-tout-0 a')
 		
-		self.assertEqual('%s/project/31-remember-timeline/' % URL_BASE, icon_tout1.get_attribute('href'))
+		self.assertEqual('{0}/project/31-remember-timeline/'.format(URL_BASE), icon_tout1.get_attribute('href'))
 		self.assertEqual('Explore our timeline of inventions\nover the last century', icon_tout1.text)
 		self.assertIn('ss-icon'		, icon_tout1.e('span').get_attribute('class'))
 		self.assertIn('ss-activity'	, icon_tout1.e('span').get_attribute('class'))
@@ -56,7 +56,7 @@ class Project_NPower(HPTestCase, Attach):
 		
 		for n in range(len(channels)):
 			i = channels[n]
-			self.assertEqual(URL_BASE + '/channels/view/' + i[0], channels_links[n].get_attribute('href'))
+			self.assertEqual('{0}/channels/view/{1}'.format(URL_BASE, i[0]), channels_links[n].get_attribute('href'))
 			self.assertEqual(i[1], channels_links[n].text)
 		
 		last_paragraph = self.e('.bottom-p + p')
@@ -74,7 +74,7 @@ class Project_NPower(HPTestCase, Attach):
 		for n in range(len(partners)):
 			i = partners[n]
 			self.assertEqual(i[0], links[n].get_attribute('href'))
-			self.assertEqual(URL_BASE + '/resources/images/webapps/npower/' + i[1], imgs[n].get_attribute('src'))
+			self.assertEqual('{0}/resources/images/webapps/npower/{1}'.format(URL_BASE, i[1]), imgs[n].get_attribute('src'))
 		
 	
 	def test_index(self):
@@ -86,22 +86,22 @@ class Project_NPower(HPTestCase, Attach):
 		site_cnt = self.e('#site-content')
 		desc = site_cnt.e('.right > a')
 		
-		self.assertEqual('%s%s/' % (URL_BASE, self.PROJECT_URL)						, desc.get_attribute('href'))
-		self.assertEqual('%s/projects/img/pid/15/type/logo/dim/600x120/' % URL_BASE	, desc.e('img').get_attribute('src'))
+		self.assertEqual('{0}{1}/'.format(URL_BASE, self.PROJECT_URL)						, desc.get_attribute('href'))
+		self.assertEqual('{0}/projects/img/pid/15/type/logo/dim/600x120/'.format(URL_BASE)	, desc.e('img').get_attribute('src'))
 		
 		links = site_cnt.es('.right p a')
 		
-		self.assertEqual('%s/channels/view/id/39451/' % URL_BASE, links[0].get_attribute('href'))
+		self.assertEqual('{0}/channels/view/id/39451/'.format(URL_BASE), links[0].get_attribute('href'))
 		self.assertEqual('npower'	, links[0].text)
-		self.assertEqual('%s/channels/view/id/19/'	% URL_BASE	, links[1].get_attribute('href'))
+		self.assertEqual('{0}/channels/view/id/19/'.format(URL_BASE), links[1].get_attribute('href'))
 		self.assertEqual('Mirrorpix', links[1].text)
 		
 		self.assertIn('Work, play, watch and listen, cook and clean, keep warm and celebrate. How did you and your family used to do things?', site_cnt.e('.right p').text)
 		
 		button_upload = site_cnt.e('.left a')
 		
-		self.assertEqual('%s%s/upload/' % (URL_BASE, self.PROJECT_URL), button_upload.get_attribute('href'))
-		self.assertEqual('Pin your memories'						, button_upload.e('span').text)
+		self.assertEqual('{0}{1}/upload/'.format(URL_BASE, self.PROJECT_URL), button_upload.get_attribute('href'))
+		self.assertEqual('Pin your memories'								, button_upload.e('span').text)
 		
 		
 		projects = [
@@ -123,14 +123,14 @@ class Project_NPower(HPTestCase, Attach):
 		for n in range(len(projects)):
 			i = projects[n]
 			self.assertEqual(i[0], h2s[n].text)
-			self.assertEqual(URL_BASE + '/project/' + i[1], h2s_links[n].get_attribute('href'))
-			self.assertEqual(URL_BASE + '/project/' + i[1], img_links[n].get_attribute('href'))
-			self.assertEqual(URL_BASE + '/project/' + i[1], paragraph_links[n].get_attribute('href'))
-			self.assertEqual(URL_BASE + '/projects/img/pid/' + i[2] + '/type/project_image,banner_image/dim/320x144/crop/1/', imgs[n].get_attribute('src'))
+			self.assertEqual('{0}/project/{1}'.format(URL_BASE, i[1]), h2s_links[n].get_attribute('href'))
+			self.assertEqual('{0}/project/{1}'.format(URL_BASE, i[1]), img_links[n].get_attribute('href'))
+			self.assertEqual('{0}/project/{1}'.format(URL_BASE, i[1]), paragraph_links[n].get_attribute('href'))
+			self.assertEqual('{0}/projects/img/pid/{1}/type/project_image,banner_image/dim/320x144/crop/1/'.format(URL_BASE, i[2]), imgs[n].get_attribute('src'))
 			self.assertIn(i[3], texts[n].text)
 		
 		self.__test_touts()
 		self.__test_channels()
 		
-		self.assertEqual('%s/attach%s/photos/gallery/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('{0}/attach{1}/photos/gallery/'.format(URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 	

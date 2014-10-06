@@ -8,12 +8,12 @@ class Project_PuttingArt(HPTestCase, Attach):
 	PROJECT_URL = '/project/41-putting-art-on-the-map'
 	
 	ATTACH_TABS = [
-		'%s/attach%s/photos/gallery/'	% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/map/index/'		% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/tours/all/'		% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/collections/all/'	% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/slideshow/'		% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/mysteries/index/'	% (URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/photos/gallery/'	.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/map/index/'		.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/tours/all/'		.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/collections/all/'.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/slideshow/'		.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/mysteries/index/'.format(URL_BASE, PROJECT_URL),
 	]
 	
 	test_attach_tabs		= Attach.attach_tabs
@@ -29,7 +29,7 @@ class Project_PuttingArt(HPTestCase, Attach):
 		
 		self.assertTitle('Putting Art on the Map | Home')
 		
-		self.assertEqual('%s/projects/img/dim/1020x250/crop/1/image_id/133' % URL_BASE, self.e('#banner_images img').get_attribute('src'))
+		self.assertEqual('{0}/projects/img/dim/1020x250/crop/1/image_id/133'.format(URL_BASE), self.e('#banner_images img').get_attribute('src'))
 		
 		site_cnt = self.e('#site-content')
 		self.assertIn('From John Singer Sargent to Paul Nash, some amazing artists captured scenes of the First World War.', site_cnt.e('.page-top p:nth-of-type(1)').text)
@@ -39,7 +39,7 @@ class Project_PuttingArt(HPTestCase, Attach):
 		self.assertEqual('https://twitter.com/search?q=%23artmap', twitter_link.get_attribute('href'))
 		self.assertEqual('#artmap', twitter_link.text)
 		
-		self.assertEqual('%s/attach%s/mysteries/index/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('{0}/attach{1}/mysteries/index/'.format(URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 		
 		icon_tout1	= site_cnt.e('#icon-tout-0 a')
 		
@@ -53,7 +53,7 @@ class Project_PuttingArt(HPTestCase, Attach):
 		self.assertEqual('http://blog.historypin.com/category/putting-art-on-the-map/'	, icon_tout2.get_attribute('href'))
 		self.assertEqual('Read the latest news on our blog'								, icon_tout2.text)
 		self.assertIn('ss-icon'		, icon_tout2.e('span').get_attribute('class'))
-		self.assertIn('ss-newspaper'	, icon_tout2.e('span').get_attribute('class'))
+		self.assertIn('ss-newspaper', icon_tout2.e('span').get_attribute('class'))
 		
 		self.assertIsInstance(self.e('.addthis_toolbox'), WebElement)
 		
@@ -74,5 +74,5 @@ class Project_PuttingArt(HPTestCase, Attach):
 		for n in range(len(partners_items)):
 			i = partners_items[n]
 			self.assertEqual(i[0], links[n].get_attribute('href'))
-			self.assertEqual(URL_BASE + '/resources/images/project-putting-art/' + i[1], images[n].get_attribute('src'))
+			self.assertEqual('{0}/resources/images/project-putting-art/{1}'.format(URL_BASE, i[1]), images[n].get_attribute('src'))
 		

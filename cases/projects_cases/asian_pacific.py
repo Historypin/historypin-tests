@@ -8,8 +8,8 @@ class Project_AsianPacific(HPTestCase, Attach):
 	PROJECT_URL = '/project/51-east-at-main-street'
 	
 	ATTACH_TABS = [
-		'%s/photos/index/'		% PROJECT_URL,
-		'%s/photos/gallery/'	% PROJECT_URL,
+		'{0}/photos/index/'.format(PROJECT_URL)	,
+		'{0}/photos/gallery/'.format(PROJECT_URL),
 	]
 	
 	test_attach_tabs		= Attach.attach_tabs
@@ -30,9 +30,9 @@ class Project_AsianPacific(HPTestCase, Attach):
 		self.assertIn('Few sites associated with Asian Pacific Islander (API) American history and culture have been recognized as landmarks', site_cnt.e('.main_description').text)
 		
 		self.assertEqual('Pin your memories', site_cnt.e('.right.next-button span').text)
-		self.assertEqual('%s%s/upload/' % (URL_BASE, self.PROJECT_URL), site_cnt.e('.right.next-button').get_attribute('href'))
+		self.assertEqual('{0}{1}/upload/'.format(URL_BASE, self.PROJECT_URL), site_cnt.e('.right.next-button').get_attribute('href'))
 		
-		self.assertEqual('%s/attach%s/map/index/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('{0}/attach{1}/map/index/'.format(URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 		
 		# TODO Add links when they're provided
 		
@@ -56,9 +56,9 @@ class Project_AsianPacific(HPTestCase, Attach):
 		link = 'http://apiahipmappingproject.blogspot.com'
 		
 		icon_tout_items = [
-			['%s/2014/03/welcome-to-apia-mapping-project.html'	% link, 'Find out more about this project', 'ss-icon ss-users'],
-			['%s/'	% link				, 'Read the latest news on our blog', 'ss-icon ss-newspaper'],
-			['http://www.apiahip.org/'	, 'Learn more about APIAHiP'		, 'ss-icon ss-desktop'],
+			['{0}/2014/03/welcome-to-apia-mapping-project.html'.format(link), 'Find out more about this project', 'ss-icon ss-users'],
+			['{0}/'.format(link)											, 'Read the latest news on our blog', 'ss-icon ss-newspaper'],
+			['http://www.apiahip.org/'										, 'Learn more about APIAHiP'		, 'ss-icon ss-desktop'],
 		]
 		
 		links = self.es('.w3 .inn a')

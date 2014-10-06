@@ -9,12 +9,12 @@ class Project_Railroads(HPTestCase, Attach):
 	project_name	= 'railroads'
 	
 	ATTACH_TABS = [
-		'%s/attach%s/map/index/'		% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/photos/gallery/'	% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/tours/all/'		% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/collections/all/'	% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/slideshow/'		% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/mysteries/index/'	% (URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/map/index/'		.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/photos/gallery/'	.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/tours/all/'		.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/collections/all/'.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/slideshow/'		.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/mysteries/index/'.format(URL_BASE, PROJECT_URL),
 	]
 	
 	test_attach_tabs			= Attach.attach_tabs
@@ -25,7 +25,7 @@ class Project_Railroads(HPTestCase, Attach):
 	test_tab_slideshow			= Attach.attach_tab_slideshow
 	
 	def test_tab_mysteries(self):
-		self.go(self.ATTACH_URL + self.PROJECT_URL + '/mysteries/index/')
+		self.go('{0}{1}/mysteries/index/'.format(self.ATTACH_URL, self.PROJECT_URL))
 		
 		statistics = self.e('.statistics')
 		mods = statistics.es('.mod label')
@@ -92,7 +92,7 @@ class Project_Railroads(HPTestCase, Attach):
 		
 		site_cnt				= self.e('#site-content')
 		tout_items = [
-			['Mysteries'		, 'tout1_image', 'Help solve research questions about photos'	, 'http://www.historypin.com%s/explore/#|mysteries/index/' % self.PROJECT_URL],
+			['Mysteries'		, 'tout1_image', 'Help solve research questions about photos'	, 'http://www.historypin.com{0}/explore/#|mysteries/index/'.format(self.PROJECT_URL)],
 			['About the project', 'tout2_image', 'Learn more about the Living with Railroads '	, 'http://blog.historypin.com/?p=3867'],
 		]
 		
@@ -105,7 +105,7 @@ class Project_Railroads(HPTestCase, Attach):
 		for n in range(len(tout_items)):
 			i = tout_items[n]
 			self.assertEqual(i[0], h3s[n].text)
-			self.assertEqual(URL_BASE + '/projects/img/pid/42/dim/285x275/type/' + i[1] + '/crop/1/', images[n].get_attribute('src'))
+			self.assertEqual('{0}/projects/img/pid/42/dim/285x275/type/{1}/crop/1/'.format(URL_BASE, i[1]), images[n].get_attribute('src'))
 			self.assertIn(i[2], paragraphs[n].text)
 			self.assertEqual(i[3], h3s_link[n].get_attribute('href'))
 			self.assertEqual(i[3], images_link[n].get_attribute('href'))
@@ -143,7 +143,7 @@ class Project_Railroads(HPTestCase, Attach):
 		
 		partner_logo = self.e('.partner-logos')
 		self.assertEqual('In partnership with:', partner_logo.e('span').text)
-		self.assertEqual(PROTOCOL + '://wawwd-resources.s3.amazonaws.com/historypin/projects/yotb/partners.png', partner_logo.e('img').get_attribute('src'))
+		self.assertEqual('{0}://wawwd-resources.s3.amazonaws.com/historypin/projects/yotb/partners.png'.format(PROTOCOL), partner_logo.e('img').get_attribute('src'))
 		
 		# TODO all links with wawwd-resources should become with https://
 		
@@ -152,7 +152,7 @@ class Project_Railroads(HPTestCase, Attach):
 		self.go(self.PROJECT_URL)
 		
 		self.assertTitle('Railroads | Home')
-		self.assertEqual('%s/projects/img/dim/1000x250/crop/1/image_id/142' % URL_BASE, self.e('#banner_images img').get_attribute('src'))
+		self.assertEqual('{0}/projects/img/dim/1000x250/crop/1/image_id/142'.format(URL_BASE), self.e('#banner_images img').get_attribute('src'))
 		
 		site_cnt = self.e('#site-content')
 		self.assertIn('Forged from sweat, steam, and steel, the transcontinental railroads of the 19th century transfixed the American imagination.', site_cnt.e('.main_description').text)
@@ -176,11 +176,11 @@ class Project_Railroads(HPTestCase, Attach):
 		
 		
 	def test_explore(self):
-		self.go('%s/explore/#|map/' % self.PROJECT_URL)
+		self.go('{0}/explore/#|map/'.format(self.PROJECT_URL))
 		
 		self.assertTitle('Railroads')
 		
-		self.assertEqual('%s/attach%s/map/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('{0}/attach{1}/map/'.format(URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 		self.__test_touts()
 		self.__test_icon_touts()
 		

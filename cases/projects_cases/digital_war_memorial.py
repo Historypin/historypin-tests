@@ -17,10 +17,10 @@ class Project_DigitalWarMemorial(HPTestCase):
 		breadcrumbs_items = self.es('.breadcrumbs li a')
 		
 		self.assertEqual('First World War Centenary', breadcrumbs_items[0].text)
-		self.assertEqual('%s%s/' % (URL_BASE, self.PROJECT_FWW), breadcrumbs_items[0].get_attribute('href'))
+		self.assertEqual('{0}{1}/'.format(URL_BASE, self.PROJECT_FWW), breadcrumbs_items[0].get_attribute('href'))
 		
 		self.assertEqual('The Digital War Memorial', breadcrumbs_items[1].text)
-		self.assertEqual('%s%s/the-digital-war-memorial/' % (URL_BASE, self.PROJECT_FWW), breadcrumbs_items[1].get_attribute('href'))
+		self.assertEqual('{0}{1}/the-digital-war-memorial/'.format(URL_BASE, self.PROJECT_FWW), breadcrumbs_items[1].get_attribute('href'))
 		
 		banner = self.e('#banner')
 		self.assertIsInstance(self.e('.addthis_toolbox'), WebElement)

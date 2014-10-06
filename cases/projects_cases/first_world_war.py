@@ -12,17 +12,17 @@ class Project_FirstWorldWar(HPTestCase):
 		
 		header = self.e('#header')
 		
-		self.assertEqual('%s%s/' % (URL_BASE, self.PROJECT_URL), header.e('.breadcrumbs a').get_attribute('href'))
+		self.assertEqual('{0}{1}/'.format(URL_BASE, self.PROJECT_URL), header.e('.breadcrumbs a').get_attribute('href'))
 		self.assertEqual('First World War Centenary', header.e('.breadcrumbs a').text)
 		
-		banner		= self.e('#banner')
-		project_nav	= banner.e('#project-nav')
-		project_items = project_nav.es('li a')
+		banner			= self.e('#banner')
+		project_nav		= banner.e('#project-nav')
+		project_items	= project_nav.es('li a')
 		
 		nav_items = [
-			['%s%s/#about' % (URL_BASE, self.PROJECT_URL)	, 'ABOUT'],
-			['%s%s/#cymraeg' % (URL_BASE, self.PROJECT_URL)	, 'CYMRAEG'],
-			['%s://s3-eu-west-1.amazonaws.com/wawwd-resources/First+World+War+Centenary_Get+Started+Guide.pdf' % PROTOCOL, 'GET STARTED GUIDE'],
+			['{0}{1}/#about'.format(URL_BASE, self.PROJECT_URL)		, 'ABOUT'],
+			['{0}{1}/#cymraeg'.format(URL_BASE, self.PROJECT_URL)	, 'CYMRAEG'],
+			['{0}://s3-eu-west-1.amazonaws.com/wawwd-resources/First+World+War+Centenary_Get+Started+Guide.pdf'.format(PROTOCOL), 'GET STARTED GUIDE'],
 		]
 		
 		for n in range(len(nav_items)):
@@ -47,14 +47,14 @@ class Project_FirstWorldWar(HPTestCase):
 		
 		self.assertEqual('DIGITAL WAR MEMORIAL', sub_proj_h3s[0].text)
 		self.assertEqual('Explore unique creative responses to the First World War made by local communities collaborating with artists.', sub_proj_desc[0].text)
-		self.assertEqual('%s/en/explore/the-digital-war-memorial/' % URL_BASE, sub_proj_links[0].get_attribute('href'))
+		self.assertEqual('{0}/en/explore/the-digital-war-memorial/'.format(URL_BASE), sub_proj_links[0].get_attribute('href'))
 		
-		self.assertEqual('%s%s/project/create/' % (URL_BASE, self.PROJECT_URL)	, banner.e('.add-project-btn').get_attribute('href'))
-		self.assertEqual('ADD YOUR OWN PROJECT'									, banner.e('.add-project-btn').text)
+		self.assertEqual('{0}{1}/project/create/'.format(URL_BASE, self.PROJECT_URL)	, banner.e('.add-project-btn').get_attribute('href'))
+		self.assertEqual('ADD YOUR OWN PROJECT'											, banner.e('.add-project-btn').text)
 		
 		self.assertEqual('HLF PROJECTS', sub_proj_h3s[1].text)
 		self.assertEqual('Explore projects supported by the Heritage Lottery Fund.', sub_proj_desc[1].text)
-		self.assertEqual('%s/en/explore/hlf/' % URL_BASE, sub_proj_links[2].get_attribute('href'))
+		self.assertEqual('{0}/en/explore/hlf/'.format(URL_BASE), sub_proj_links[2].get_attribute('href'))
 		
 		self.assertIsInstance(self.e('.partnership'), WebElement)
 	
@@ -79,7 +79,7 @@ class Project_FirstWorldWar(HPTestCase):
 		
 		add_proj_button.click()
 		
-		self.assertEqual('%s%s/project/create/' % (URL_BASE, self.PROJECT_URL), self.browser.current_url)
+		self.assertEqual('{0}{1}/project/create/'.format(URL_BASE, self.PROJECT_URL), self.browser.current_url)
 		
 		self.assertIsInstance(self.e('.panel'), WebElement)
 		

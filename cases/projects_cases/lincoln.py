@@ -7,9 +7,9 @@ class Project_Lincoln(HPTestCase, Attach):
 	
 	PROJECT_URL = '/project/57-remembering-lincoln'
 	ATTACH_TABS = [
-		'%s/attach%s/map/index/'		% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/photos/gallery/'	% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/slideshow/'		% (URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/map/index/'		.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/photos/gallery/'	.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/slideshow/'		.format(URL_BASE, PROJECT_URL),
 	]
 	
 	test_attach_tabs	= Attach.attach_tabs
@@ -27,11 +27,11 @@ class Project_Lincoln(HPTestCase, Attach):
 		self.assertEqual('Remembering Lincoln', site_cnt.e('h1').text)
 		self.assertIn(u'Remembering Lincoln is a digital project to commemorate the 150th anniversary of Abraham Lincoln’s assassination.', site_cnt.e('.main_description').text)
 		
-		self.assertEqual('%s/attach%s/map/index/' % (URL_BASE, self.PROJECT_URL), site_cnt.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('{0}/attach{1}/map/index/'.format(URL_BASE, self.PROJECT_URL), site_cnt.e('#embed-frame').get_attribute('src'))
 		
 		button_pin = site_cnt.e('.button.pin')
 		self.assertEqual('Pin your items here', button_pin.e('span').text)
-		self.assertEqual('%s%s/upload/' % (URL_BASE, self.PROJECT_URL), button_pin.get_attribute('href'))
+		self.assertEqual('{0}{1}/upload/'.format(URL_BASE, self.PROJECT_URL), button_pin.get_attribute('href'))
 		
 		touts_items = [
 			['How to participate'		, 'http://www.fords.org/remembering-lincoln/seeking-contributions', u'Learn what kinds of items we’re seeking for the project.', 'tout1_image'],
@@ -50,7 +50,7 @@ class Project_Lincoln(HPTestCase, Attach):
 			self.assertEqual(i[1], h3s_link[n].get_attribute('href'))
 			self.assertEqual(i[1], images_link[n].get_attribute('href'))
 			self.assertEqual(i[2], paragraphs[n].text)
-			self.assertEqual(URL_BASE + '/projects/img/pid/57/dim/270x309/type/' + i[3] + '/crop/1/', images[n].get_attribute('src'))
+			self.assertEqual('{0}/projects/img/pid/57/dim/270x309/type/{1}/crop/1/'.format(URL_BASE, i[3]), images[n].get_attribute('src'))
 		
 		# TODO add assertion for the activity feed's first item
 		

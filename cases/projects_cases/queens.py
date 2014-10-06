@@ -8,9 +8,9 @@ class Project_Queens(HPTestCase, Attach):
 	PROJECT_URL		= '/project/40-queens'
 	project_name	= 'queens'
 	ATTACH_TABS = [
-		'%s/attach%s/photos/gallery/'	% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/map/index/'		% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/slideshow/'		% (URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/photos/gallery/'	.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/map/index/'		.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/slideshow/'		.format(URL_BASE, PROJECT_URL),
 	]
 	
 	test_attach_tabs			= Attach.attach_tabs
@@ -29,7 +29,7 @@ class Project_Queens(HPTestCase, Attach):
 		self.assertIn('Queens is the most diverse county in the U.S., made up of many neighborhoods', site_cnt.e('.main_description').text)
 		
 		tout_items = [
-			['Pin your memories'	, 'tout1_image', 'What makes your neighborhood special?'					, '%s%s/upload/' % (URL_BASE, self.PROJECT_URL)],
+			['Pin your memories'	, 'tout1_image', 'What makes your neighborhood special?'					, '{0}{1}/upload/'.format(URL_BASE, self.PROJECT_URL)],
 			['Get involved'			, 'tout2_image', 'Find out how you can get your neighborhood involved'		, 'http://blog.historypin.com/2013/01/29/neighborhood-stories-get-your-community-involved/'],
 		]
 		
@@ -42,7 +42,7 @@ class Project_Queens(HPTestCase, Attach):
 		for n in range(len(tout_items)):
 			i = tout_items[n]
 			self.assertEqual(i[0], h3s[n].text)
-			self.assertEqual(URL_BASE + '/projects/img/pid/40/dim/276x280/type/' + i[1] + '/crop/1/', images[n].get_attribute('src'))
+			self.assertEqual('{0}/projects/img/pid/40/dim/276x280/type/{1}/crop/1/'.format(URL_BASE, i[1]), images[n].get_attribute('src'))
 			self.assertIn(i[2], paragraphs[n].text)
 			self.assertEqual(i[3], h3s_link[n].get_attribute('href'))
 			self.assertEqual(i[3], images_link[n].get_attribute('href'))

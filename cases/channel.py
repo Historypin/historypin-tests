@@ -5,13 +5,13 @@ import os, sys
 
 class Channel(HPTestCase):
 	
-	@url('/channels/view/%d/' % ID_USER_VIEW)
+	@url('/channels/view/{0}/'.format(ID_USER_VIEW))
 	def test_channel_description(self):
 		self.assertTitle('Gabss | Historypin')
 		
 		info = self.e('.chan.info')
 		self.assertEqual('Gabss', info.e('h2').text)
-		self.assertEqual('%s/channels/img/%d/logo/1/dim/200x200/crop/1/' % (URL_BASE, ID_USER_VIEW), info.e('img').get_attribute('src'))
+		self.assertEqual('{0}/channels/img/{1}/logo/1/dim/200x200/crop/1/'.format(URL_BASE, ID_USER_VIEW), info.e('img').get_attribute('src'))
 		
 		self.assertEqual('Find out more at: avalith.bg'					, self.e('.chan.info br~p').text)
 		
@@ -25,7 +25,7 @@ class Channel(HPTestCase):
 		self.assertEqual('Visit my Google+ Page'						, link[3].text)
 		self.assertEqual('http://d/'									, link[3].get_attribute('href'))
 	
-	@url('/channels/view/%d/' % ID_USER_VIEW)
+	@url('/channels/view/{0}/'.format(ID_USER_VIEW))
 	def test_channel_details(self):
 		
 		h3 = self.es('.chan.options h3')
@@ -39,8 +39,8 @@ class Channel(HPTestCase):
 		
 		sleep(4)  # AJAX
 		button = self.e('.chan.options .channel-button.left')
-		self.assertEqual('Become a Fan'													, button.text)
-		self.assertEqual('%s/user/?from=/channels/view/%d/' % (URL_BASE, ID_USER_VIEW)	, button.get_attribute('href'))
+		self.assertEqual('Become a Fan'															, button.text)
+		self.assertEqual('{0}/user/?from=/channels/view/{1}/'.format(URL_BASE, ID_USER_VIEW)	, button.get_attribute('href'))
 		
 		social_buttons = self.e('.addthis_toolbox span')
 		self.assertIn('ss-icon', social_buttons.get_attribute('class'))
@@ -49,20 +49,20 @@ class Channel(HPTestCase):
 		
 		for n in range(len(social_icons)-1): self.assertIn(social_icons[n], social_buttons.get_attribute('class'))
 	
-	@url('/attach/uid%d/photos/activity_feed/' % ID_USER_VIEW)
+	@url('/attach/uid{0}/photos/activity_feed/'.format(ID_USER_VIEW))
 	def test_activity_tab(self):
 		
 		sleep(3)
-		activity_tab = self.e('#embed_tabs li a[href$="/attach/uid%d/photos/activity_feed/"]' % ID_USER_VIEW)
+		activity_tab = self.e('#embed_tabs li a[href$="/attach/uid{0}/photos/activity_feed/"]'.format(ID_USER_VIEW))
 		self.assertEqual('Activity Feed', activity_tab.text)
 		
 		meta = self.e('.meta')
 		self.assertIsInstance(meta.e('.photo-date'), WebElement)
 		
-		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER_VIEW), meta.e('.photo-user').get_attribute('href'))
+		self.assertEqual('{0}/channels/view/{1}/'.format(URL_BASE, ID_USER_VIEW), meta.e('.photo-user').get_attribute('href'))
 		self.assertEqual('Gabss', meta.e('.photo-user').text)
 		
-		self.assertEqual('%s/channels/img/%d/logo/1/dim/100x100/' % (URL_BASE, ID_USER_VIEW), self.e('.avatar.fluid').get_attribute('src'))
+		self.assertEqual('{0}/channels/img/{1}/logo/1/dim/100x100/'.format(URL_BASE, ID_USER_VIEW), self.e('.avatar.fluid').get_attribute('src'))
 		
 		pin = self.e('.pin')
 		self.assertIsInstance(pin.e('a:nth-of-type(1)'), WebElement)

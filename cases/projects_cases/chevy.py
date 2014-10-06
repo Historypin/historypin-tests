@@ -8,9 +8,9 @@ class Project_Chevy(HPTestCase, Attach):
 	PROJECT_URL = '/project/8-chevy'
 	
 	ATTACH_TABS = [
-		'%s/attach%s/map/index/'		% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/photos/slideshow/'	% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/photos/gallery/'	% (URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/map/index/'			.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/photos/slideshow/'	.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/photos/gallery/'		.format(URL_BASE, PROJECT_URL),
 	]
 	
 	test_attach_tabs	= Attach.attach_tabs
@@ -28,14 +28,14 @@ class Project_Chevy(HPTestCase, Attach):
 		self.assertIn(u'Since the first Chevrolet car appeared on our streets in 1911, Chevys have been a massive part of our culture.', site_cnt.e('.main_description').text)
 		
 		chevy_channel = site_cnt.e('.page-top a')
-		self.assertEqual('%s/channels/view/id/28802/' % URL_BASE, chevy_channel.get_attribute('href'))
+		self.assertEqual('{0}/channels/view/id/28802/'.format(URL_BASE), chevy_channel.get_attribute('href'))
 		
-		img_link	= '%s/resources/images/webapps/chevy/' % URL_BASE
+		img_link	= '{0}/resources/images/webapps/chevy/'.format(URL_BASE)
 		
 		touts = [
-			['Pin your Chevy memories'			, '%s%s/upload' % (URL_BASE, self.PROJECT_URL)	, '%stout1.jpg' % img_link	, 'Add photos, videos and memories for each one of the Chevy models created over the last 100 years.'],
-			['100 Years of Chevy Icons'			, '%s%s#' % (URL_BASE, self.PROJECT_URL)		, '%stout2.jpg' % img_link	, 'From the Series C Classic 6 in 1911 to the 2012 Sonic, check out these design icons.'],
-			['See Louis Chevrolet himself'		, '%s/photos/#!/geo:41.416981,-87.365314/zoom:10/date_from:1905-01-01/date_to:1912-12-31/dialog:51753/tab:details/' % URL_BASE, '%stout3.jpg' % img_link, 'The founder of Chevrolet racing in the Cobe Cup Race in Indiana in 1909.'],
+			['Pin your Chevy memories'			, '{0}{1}/upload'	.format(URL_BASE, self.PROJECT_URL)	, '{0}tout1.jpg'.format(img_link), 'Add photos, videos and memories for each one of the Chevy models created over the last 100 years.'],
+			['100 Years of Chevy Icons'			, '{0}{1}#'			.format(URL_BASE, self.PROJECT_URL)	, '{0}tout2.jpg'.format(img_link), 'From the Series C Classic 6 in 1911 to the 2012 Sonic, check out these design icons.'],
+			['See Louis Chevrolet himself'		, '{0}/photos/#!/geo:41.416981,-87.365314/zoom:10/date_from:1905-01-01/date_to:1912-12-31/dialog:51753/tab:details/'.format(URL_BASE), '%stout3.jpg' % img_link, 'The founder of Chevrolet racing in the Cobe Cup Race in Indiana in 1909.'],
 		]
 		
 		touts_cnt	= self.e('.highlights')
@@ -55,4 +55,4 @@ class Project_Chevy(HPTestCase, Attach):
 		self.assertIsInstance(self.e('.chevy_dialog'), WebElement)
 		self.e('.ui-dialog-titlebar-close.ui-corner-all').click()
 		
-		self.assertEqual('%s/attach%s/map/index/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('{0}/attach{1}/map/index/'.format(URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))

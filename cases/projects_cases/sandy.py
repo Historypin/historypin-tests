@@ -7,10 +7,10 @@ class Project_Sandy(HPTestCase, Attach):
 	
 	PROJECT_URL = '/project/26-sandy'
 	ATTACH_TABS = [
-		'%s/attach%s/map/index/'		% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/photos/gallery/'	% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/photos/stories/'	% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/photos/slideshow/'	% (URL_BASE, PROJECT_URL)
+		'{0}/attach{1}/map/index/'			.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/photos/gallery/'		.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/photos/stories/'		.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/photos/slideshow/'	.format (URL_BASE, PROJECT_URL),
 	]
 	
 	test_attach_tabs	= Attach.attach_tabs
@@ -25,8 +25,8 @@ class Project_Sandy(HPTestCase, Attach):
 		
 		icon_tout1				= site_cnt.e('#icon-tout-0 a')
 		
-		self.assertEqual('%s/project/26-sandy/pages/donate/' % URL_BASE				, icon_tout1.get_attribute('href'))
-		self.assertEqual('Donate to support the rebuild'							, icon_tout1.text)
+		self.assertEqual('{0}/project/26-sandy/pages/donate/'.format(URL_BASE)	, icon_tout1.get_attribute('href'))
+		self.assertEqual('Donate to support the rebuild'						, icon_tout1.text)
 		self.assertIn('ss-icon'		, icon_tout1.e('span').get_attribute('class'))
 		self.assertIn('ss-users'	, icon_tout1.e('span').get_attribute('class'))
 		
@@ -60,7 +60,7 @@ class Project_Sandy(HPTestCase, Attach):
 		for n in range(len(partners)):
 			i = partners[n]
 			self.assertEqual(i[0], links[n].get_attribute('href'))
-			self.assertEqual(URL_BASE + '/resources/images/partners/' + i[1], imgs[n].get_attribute('src'))
+			self.assertEqual('{0}/resources/images/partners/{1}'.format(URL_BASE, i[1]), imgs[n].get_attribute('src'))
 			
 	
 	def test_index(self):
@@ -70,7 +70,7 @@ class Project_Sandy(HPTestCase, Attach):
 		
 		site_cnt = self.e('#site-content')
 		h1_link = site_cnt.e('h1 a')
-		self.assertEqual('%s%s/' % (URL_BASE, self.PROJECT_URL), h1_link.get_attribute('href'))
+		self.assertEqual('{0}{1}/'.format(URL_BASE, self.PROJECT_URL), h1_link.get_attribute('href'))
 		self.assertEqual('Hurricane Sandy:\nRecord, Remember, Rebuild'	, h1_link.text)
 		
 		tout = site_cnt.e('.text-tout')
@@ -78,10 +78,10 @@ class Project_Sandy(HPTestCase, Attach):
 		self.assertIn('How have communities and neighborhoods in the Caribbean and United States been affected by Sandy?', tout.e('p').text)
 		
 		button_upload = tout.e('a')
-		self.assertEqual('%s%s/upload/' % (URL_BASE, self.PROJECT_URL), button_upload.get_attribute('href'))
-		self.assertEqual('Contribute'								, button_upload.e('span').text)
+		self.assertEqual('{0}{1}/upload/'.format(URL_BASE, self.PROJECT_URL), button_upload.get_attribute('href'))
+		self.assertEqual('Contribute'										, button_upload.e('span').text)
 		
-		self.assertEqual('%s/projects/img/pid/26/type/project_image/dim/648x406/crop/1/' % URL_BASE, site_cnt.e('.main-image img').get_attribute('src'))
+		self.assertEqual('{0}/projects/img/pid/26/type/project_image/dim/648x406/crop/1/'.format(URL_BASE), site_cnt.e('.main-image img').get_attribute('src'))
 		
 		activity = site_cnt.e('#activity')
 		self.assertIsInstance(activity.e('h1'), WebElement)
@@ -108,12 +108,12 @@ class Project_Sandy(HPTestCase, Attach):
 		for n in range(len(projects_items)):
 			i = projects_items[n]
 			self.assertEqual(i[0], h2s[n].text)
-			self.assertEqual(URL_BASE + '/project/' + i[1], h2s_links[n].get_attribute('href'))
-			self.assertEqual(URL_BASE + '/project/' + i[1], img_links[n].get_attribute('href'))
+			self.assertEqual('{0}/project/{1}'.format(URL_BASE, i[1]), h2s_links[n].get_attribute('href'))
+			self.assertEqual('{0}/project/{1}'.format(URL_BASE, i[1]), img_links[n].get_attribute('href'))
 			self.assertEqual(i[2], texts[n].text)
-			self.assertEqual(URL_BASE + '/projects/img/pid/' + i[3] + '/type/banner,project_image,logo/dim/313x214/crop/1/', imgs[n].get_attribute('src'))
+			self.assertEqual('{0}/projects/img/pid/{1}/type/banner,project_image,logo/dim/313x214/crop/1/'.format(URL_BASE, i[3]), imgs[n].get_attribute('src'))
 		
-		self.assertEqual('%s/attach%s/map/index/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('{0}/attach{1}/map/index/'.format(URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 		
 		self.__test_icon_touts()
 		self.__test_support()
@@ -125,7 +125,7 @@ class Project_Sandy(HPTestCase, Attach):
 		
 		site_cnt = self.e('#site-content')
 		h1_link = site_cnt.e('h1 a')
-		self.assertEqual('%s/project/26-sandy/' % URL_BASE				, h1_link.get_attribute('href'))
+		self.assertEqual('{0}/project/26-sandy/'.format(URL_BASE)		, h1_link.get_attribute('href'))
 		self.assertEqual('Hurricane Sandy:\nRecord, Remember, Rebuild'	, h1_link.text)
 		
 		donation_cnt = site_cnt.e('.cf')
@@ -137,7 +137,7 @@ class Project_Sandy(HPTestCase, Attach):
 		self.assertEqual('https://npo.networkforgood.org/Donate/Donate.aspx?npoSubscriptionId=1005594&skinid=107989', button_donate.get_attribute('href'))
 		self.assertEqual('Donate to help the rebuild', button_donate.e('span').text)
 		
-		self.assertEqual('%s/resources/images/sandy_donate_img.jpg' % URL_BASE, donation_cnt.e('img').get_attribute('src'))
+		self.assertEqual('{0}/resources/images/sandy_donate_img.jpg'.format(URL_BASE), donation_cnt.e('img').get_attribute('src'))
 		
 		self.__test_support()
 		

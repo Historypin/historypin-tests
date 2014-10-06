@@ -8,12 +8,12 @@ class Project_YOTB(HPTestCase, Attach):
 	PROJECT_URL = '/project/22-yearofthebay'
 	
 	ATTACH_TABS = [
-		'%s/attach%s/mysteries/index/'	% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/map/index/'		% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/photos/gallery/'	% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/tours/all/'		% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/collections/all/'	% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/slideshow/'		% (URL_BASE, PROJECT_URL)
+		'{0}/attach{1}/mysteries/index/'.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/map/index/'		.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/photos/gallery/'	.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/tours/all/'		.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/collections/all/'.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/slideshow/'		.format(URL_BASE, PROJECT_URL),
 		
 	]
 	
@@ -35,7 +35,7 @@ class Project_YOTB(HPTestCase, Attach):
 		self.assertEqual('Year of the Bay', site_cnt.e('h1').text)
 		
 		button = site_cnt.e('.big')
-		self.assertEqual('%s%s/upload/' % (URL_BASE, self.PROJECT_URL), button.get_attribute('href'))
+		self.assertEqual('{0}{1}/upload/'.format(URL_BASE, self.PROJECT_URL), button.get_attribute('href'))
 		self.assertEqual('Pin your memories', button.e('span').text)
 		
 		touts_items = [
@@ -52,7 +52,7 @@ class Project_YOTB(HPTestCase, Attach):
 			i = touts_items[n]
 			self.assertEqual(i[0], h3s[n].text)
 			self.assertEqual(i[1], texts[n].text)
-			self.assertEqual(URL_BASE + '/projects/img/pid/22/dim/271x311/type/' + i[2] + '/crop/1/', images[n].get_attribute('src'))
+			self.assertEqual('{0}/projects/img/pid/22/dim/271x311/type/{1}/crop/1/'.format(URL_BASE, i[2]), images[n].get_attribute('src'))
 			self.assertEqual(i[3], links[n].get_attribute('href'))
 		
 		activity = site_cnt.e('#activity')
@@ -64,7 +64,7 @@ class Project_YOTB(HPTestCase, Attach):
 		self.assertIsInstance(item_feed.e('p')	, WebElement)
 		self.assertIsInstance(item_feed.e('img'), WebElement)
 		
-		self.assertEqual('%s/attach%s/map/index/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('{0}/attach{1}/map/index/'.format(URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 		
 		icon_tout1	= site_cnt.e('#icon-tout-0 a')
 		
@@ -75,7 +75,7 @@ class Project_YOTB(HPTestCase, Attach):
 		
 		icon_tout2 = site_cnt.e('#icon-tout-1 a')
 		
-		self.assertEqual('%s%s/behind-the-scenes/' % (URL_BASE, self.PROJECT_URL), icon_tout2.get_attribute('href'))
+		self.assertEqual('{0}{1}/behind-the-scenes/'.format(URL_BASE, self.PROJECT_URL), icon_tout2.get_attribute('href'))
 		self.assertEqual('Read the latest news on our blog'	, icon_tout2.text)
 		self.assertIn('ss-icon'		, icon_tout2.e('span').get_attribute('class'))
 		self.assertIn('ss-newspaper', icon_tout2.e('span').get_attribute('class'))
@@ -89,4 +89,4 @@ class Project_YOTB(HPTestCase, Attach):
 		
 		self.assertIsInstance(self.e('.addthis_toolbox'), WebElement)
 		
-		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/projects/yotb/partners.png' % PROTOCOL, self.e('.partner-logos img').get_attribute('src'))
+		self.assertEqual('{0}://wawwd-resources.s3.amazonaws.com/historypin/projects/yotb/partners.png'.format(PROTOCOL), self.e('.partner-logos img').get_attribute('src'))

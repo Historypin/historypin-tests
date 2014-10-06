@@ -8,9 +8,9 @@ class Project_This_Place_Matters(HPTestCase, Attach):
 	PROJECT_URL = '/project/61-this-place-matters'
 	
 	ATTACH_TABS = [
-		'%s/attach%s/photos/gallery/'	% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/map/index/'		% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/mysteries/index/'	% (URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/photos/gallery/'	.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/map/index/'		.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/mysteries/index/'.format(URL_BASE, PROJECT_URL),
 	]
 	
 	test_attach_tabs	= Attach.attach_tabs
@@ -32,12 +32,12 @@ class Project_This_Place_Matters(HPTestCase, Attach):
 		
 		pin_button = site_cnt.e('.right.next-button')
 		self.assertEqual('Pin your places', pin_button.e('span').text)
-		self.assertEqual('%s%s/upload/' % (URL_BASE, self.PROJECT_URL), pin_button.get_attribute('href'))
+		self.assertEqual('{0}{1}/upload/'.format(URL_BASE, self.PROJECT_URL), pin_button.get_attribute('href'))
 		
 		
 		tout_items = [
-			['How to pin'			, 'http://blog.historypin.com/?p=4954'									, 'tout1_image', 'Find out how to upload'],
-			['Mysterious Matters'	, 'http://www.historypin.com%s/#!mysteries/index/' % self.PROJECT_URL	, 'tout2_image', 'Help us solve the mystery'],
+			['How to pin'			, 'http://blog.historypin.com/?p=4954'										, 'tout1_image', 'Find out how to upload'],
+			['Mysterious Matters'	, 'http://www.historypin.com{0}/#!mysteries/index/'.format(self.PROJECT_URL), 'tout2_image', 'Help us solve the mystery'],
 		]
 		
 		h3s			= site_cnt.es('.tout.w2 h3')
@@ -51,7 +51,7 @@ class Project_This_Place_Matters(HPTestCase, Attach):
 			self.assertEqual(i[0], h3s[n].text)
 			self.assertEqual(i[1], h3s_link[n].get_attribute('href'))
 			self.assertEqual(i[1], images_link[n].get_attribute('href'))
-			self.assertEqual(URL_BASE + '/projects/img/pid/61/dim/270x309/type/' + i[2] + '/crop/1/', images[n].get_attribute('src'))
+			self.assertEqual('{0}/projects/img/pid/61/dim/270x309/type/{1}/crop/1/'.format(URL_BASE, i[2]), images[n].get_attribute('src'))
 			self.assertIn(i[3], paragraphs[n].text)
 		
 		activity = site_cnt.e('#activity')
@@ -96,7 +96,7 @@ class Project_This_Place_Matters(HPTestCase, Attach):
 		
 		partners_items = [
 			['Brought to you by', 'http://www.nationaltrust.org.au/', 'Australian Government'],
-			['Supported by'	, 'http://www.environment.gov.au/', 'National trust'],
+			['Supported by'		, 'http://www.environment.gov.au/', 'National trust'],
 		]
 		
 		for n in range(len(partners_items)):

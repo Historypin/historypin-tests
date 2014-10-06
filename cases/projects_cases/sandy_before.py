@@ -8,10 +8,10 @@ class Project_Before_Sandy(Project_Sandy):
 	PROJECT_URL = '/project/27-before-sandy'
 	
 	ATTACH_TABS = [
-		'%s/attach%s/map/index/'		% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/photos/gallery/'	% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/photos/stories/'	% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/photos/slideshow/'	% (URL_BASE, PROJECT_URL)
+		'{0}/attach{1}/map/index/'			.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/photos/gallery/'		.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/photos/stories/'		.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/photos/slideshow/'	.format(URL_BASE, PROJECT_URL),
 	]
 	
 	def test_index(self):
@@ -21,7 +21,7 @@ class Project_Before_Sandy(Project_Sandy):
 		
 		site_cnt = self.e('#site-content')
 		h1_link = site_cnt.e('h1 a')
-		self.assertEqual('%s/project/26-sandy/' % URL_BASE				, h1_link.get_attribute('href'))
+		self.assertEqual('{0}/project/26-sandy/'.format(URL_BASE)				, h1_link.get_attribute('href'))
 		self.assertEqual('Hurricane Sandy:\nRecord, Remember, Rebuild'	, h1_link.text)
 		
 		tout = site_cnt.e('.text-tout')
@@ -29,10 +29,10 @@ class Project_Before_Sandy(Project_Sandy):
 		self.assertIn('What did neighborhoods look like before Sandy?'	, tout.e('p').text)
 		
 		button_upload = tout.e('a')
-		self.assertEqual('%s/project/26-sandy/upload/projects/?subproject=27' % URL_BASE	, button_upload.get_attribute('href'))
+		self.assertEqual('{0}/project/26-sandy/upload/projects/?subproject=27'.format(URL_BASE), button_upload.get_attribute('href'))
 		self.assertEqual('Contribute'								, button_upload.e('span').text)
 		
-		self.assertEqual('%s/projects/img/pid/27/type/project_image/dim/980x411/crop/1/' % URL_BASE, site_cnt.e('.main-image img').get_attribute('src'))
+		self.assertEqual('{0}/projects/img/pid/27/type/project_image/dim/980x411/crop/1/'.format(URL_BASE), site_cnt.e('.main-image img').get_attribute('src'))
 		
 		projects = site_cnt.e('.highlights.cf')
 		
@@ -51,10 +51,10 @@ class Project_Before_Sandy(Project_Sandy):
 		for n in range(len(projects_items)):
 			i = projects_items[n]
 			self.assertEqual(i[0], h2s[n].text)
-			self.assertEqual(URL_BASE + '/project/' + i[1], h2s_links[n].get_attribute('href'))
-			self.assertEqual(URL_BASE + '/project/' + i[1], img_links[n].get_attribute('href'))
+			self.assertEqual('{0}/project/{1}'.format(URL_BASE, i[1]), h2s_links[n].get_attribute('href'))
+			self.assertEqual('{0}/project/{1}'.format(URL_BASE, i[1]), img_links[n].get_attribute('href'))
 			self.assertIn(i[2], texts[n].text)
-			self.assertEqual(URL_BASE + '/projects/img/pid/' + i[3] + '/type/banner,project_image,logo/dim/313x214/crop/1/', imgs[n].get_attribute('src'))
+			self.assertEqual('{0}/projects/img/pid/{1}/type/banner,project_image,logo/dim/313x214/crop/1/'.format(URL_BASE, i[3]), imgs[n].get_attribute('src'))
 		
-		self.assertEqual('%s/attach%s/photos/gallery/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('{0}/attach{1}/photos/gallery/'.format(URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 		

@@ -9,8 +9,8 @@ class Project_Becontree(HPTestCase, Attach):
 	ATTACH_URL = '/en/attach'
 	
 	ATTACH_TABS = [
-		'%s/photos/gallery/' % PROJECT_URL,
-		'%s/map/index/'		 % PROJECT_URL,
+		'{0}/photos/gallery/'.format(PROJECT_URL),
+		'{0}/map/index/'		.format(PROJECT_URL),
 	]
 	
 	test_attach_tabs	= Attach.attach_tabs
@@ -18,7 +18,7 @@ class Project_Becontree(HPTestCase, Attach):
 	test_tab_map		= Attach.attach_tab_map
 	
 	def test_landing_page(self):
-		self.go('%s%s/' % (URL_BASE, self.PROJECT_URL))
+		self.go('{0}{1}/'.format(URL_BASE, self.PROJECT_URL))
 		
 		self.assertTitle('This Used to be Fields')
 		
@@ -30,13 +30,13 @@ class Project_Becontree(HPTestCase, Attach):
 		buttons_landing_page = site_cnt.e('.buttons')
 		
 		self.assertEqual('Explore', buttons_landing_page.e('a:nth-of-type(1)').text)
-		self.assertEqual('%s%s/explore/' % (URL_BASE, self.PROJECT_URL), buttons_landing_page.e('a:nth-of-type(1)').get_attribute('href'))
+		self.assertEqual('{0}{1}/explore/'.format(URL_BASE, self.PROJECT_URL), buttons_landing_page.e('a:nth-of-type(1)').get_attribute('href'))
 		
 		self.assertEqual('Contribute', buttons_landing_page.e('a:nth-of-type(2)').text)
-		self.assertEqual('%s%s/upload/index/' % (URL_BASE, self.PROJECT_URL), buttons_landing_page.e('a:nth-of-type(2)').get_attribute('href'))
+		self.assertEqual('{0}{1}/upload/index/'.format(URL_BASE, self.PROJECT_URL), buttons_landing_page.e('a:nth-of-type(2)').get_attribute('href'))
 	
 	def test_explore_button(self):
-		self.go('%s%s/' % (URL_BASE, self.PROJECT_URL))
+		self.go('{0}{1}/'.format(URL_BASE, self.PROJECT_URL))
 		
 		site_cnt				= self.e('.intro')
 		buttons_landing_page	= site_cnt.e('.buttons')
@@ -45,11 +45,11 @@ class Project_Becontree(HPTestCase, Attach):
 		
 		explore_title_wrap = self.e('h1.container')
 		
-		self.assertEqual('%s%s/' % (URL_BASE, self.PROJECT_URL), explore_title_wrap.e('a').get_attribute('href'))
-		self.assertEqual('%s/resources/images/project-barking-and-dagenham/project-title.png' % URL_BASE, explore_title_wrap.e('a img').get_attribute('src'))
+		self.assertEqual('{0}{1}/'.format(URL_BASE, self.PROJECT_URL), explore_title_wrap.e('a').get_attribute('href'))
+		self.assertEqual('{0}/resources/images/project-barking-and-dagenham/project-title.png'.format(URL_BASE), explore_title_wrap.e('a img').get_attribute('src'))
 	
 	def test_index(self):
-		self.go('%s%s/' % (URL_BASE, self.PROJECT_URL))
+		self.go('{0}{1}/'.format(URL_BASE, self.PROJECT_URL))
 		
 		tout_items = [
 			['Launch of the mural!'	, 'tout1_image', 'Join us to celebrate the new mural in Becontree'		, '/2014/08/31/becontree-mural/'],
@@ -67,7 +67,7 @@ class Project_Becontree(HPTestCase, Attach):
 		for n in range(len(tout_items)):
 			i = tout_items[n]
 			self.assertEqual(i[0], h3s[n].text)
-			self.assertEqual(URL_BASE + '/projects/img/pid/58/dim/290x315/type/' + i[1] + '/crop/1/', images[n].get_attribute('src'))
+			self.assertEqual('{0}/projects/img/pid/58/dim/290x315/type/{1}/crop/1/'.format(URL_BASE, i[1]), images[n].get_attribute('src'))
 			self.assertIn(i[2], paragraphs[n].text)
 			self.assertEqual(blog_link + i[3], h3s_link[n].get_attribute('href'))
 			self.assertEqual(blog_link + i[3], images_link[n].get_attribute('href'))
@@ -82,7 +82,7 @@ class Project_Becontree(HPTestCase, Attach):
 		
 		icon_tout1 = site_cnt.e('#icon-tout-0 a')
 		
-		self.assertEqual('%s/2013/06/25/this-used-to-be-fields/' % blog_link, icon_tout1.get_attribute('href'))
+		self.assertEqual('{0}/2013/06/25/this-used-to-be-fields/'.format(blog_link), icon_tout1.get_attribute('href'))
 		self.assertEqual('About this project', icon_tout1.text)
 		self.assertIn('ss-icon'		, icon_tout1.e('span').get_attribute('class'))
 		self.assertIn('ss-openbook'	, icon_tout1.e('span').get_attribute('class'))
@@ -106,9 +106,9 @@ class Project_Becontree(HPTestCase, Attach):
 		self.assertEqual('Photo credit: Becontree Station, 1955 courtesy of LBBD Archive', self.e('.photo-credits').text)
 		
 		footer_items = [
-			['%s/terms-and-conditions/' % URL_BASE, 'Terms and Conditions'],
-			['%s/privacy-policy/'		% URL_BASE, 'Privacy policy'],
-			['%s/cookies/'				% URL_BASE, 'Cookies'],
+			['{0}/terms-and-conditions/'.format(URL_BASE), 'Terms and Conditions'],
+			['{0}/privacy-policy/'		.format(URL_BASE), 'Privacy policy'],
+			['{0}/cookies/'				.format(URL_BASE), 'Cookies'],
 			['http://www.wearewhatwedo.org/'	, u'© We Are What We Do'],
 		]
 	

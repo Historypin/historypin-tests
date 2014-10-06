@@ -7,9 +7,9 @@ class Project_Yarra(HPTestCase, Attach):
 	
 	PROJECT_URL = '/project/49-yarra'
 	ATTACH_TABS = [
-		'%s/attach%s/map/index/'		% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/photos/gallery/'	% (URL_BASE, PROJECT_URL),
-		'%s/attach%s/photos/list/'		% (URL_BASE, PROJECT_URL)
+		'{0}/attach{1}/map/index/'		.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/photos/gallery/'	.format(URL_BASE, PROJECT_URL),
+		'{0}/attach{1}/photos/list/'	.format(URL_BASE, PROJECT_URL),
 	]
 	
 	test_attach_tabs	= Attach.attach_tabs
@@ -22,13 +22,13 @@ class Project_Yarra(HPTestCase, Attach):
 		
 		self.assertTitle('Yarra Ranges: Changing Places | Home')
 		
-		self.assertEqual('%s/projects/img/dim/1020x360/crop/1/image_id/177' % URL_BASE	, self.e('#banner_images img').get_attribute('src'))
+		self.assertEqual('{0}/projects/img/dim/1020x360/crop/1/image_id/177'.format(URL_BASE)	, self.e('#banner_images img').get_attribute('src'))
 		self.assertIn('Do you have a photograph of a streetscape, shop or an event'		, self.e('.main_description').text)
 		
-		self.assertEqual('%s/attach%s/map/index/' % (URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
+		self.assertEqual('{0}/attach{1}/map/index/'.format(URL_BASE, self.PROJECT_URL), self.e('#embed-frame').get_attribute('src'))
 		
 		upload_button = self.e('.button.right')
-		self.assertEqual('%s%s/upload/' % (URL_BASE, self.PROJECT_URL), upload_button.get_attribute('href'))
+		self.assertEqual('{0}{1}/upload/'.format(URL_BASE, self.PROJECT_URL), upload_button.get_attribute('href'))
 		self.assertEqual('Pin your memories', upload_button.e('span').text)
 		
 		tout_yarra_link = 'http://www.yarraranges.vic.gov.au/ach'
@@ -49,7 +49,7 @@ class Project_Yarra(HPTestCase, Attach):
 			self.assertEqual(tout_yarra_link + i[0], imgs_links[n].get_attribute('href'))
 			self.assertEqual(i[1], h3s_links[n].text)
 			self.assertIn(i[2], paragraphs[n].text)
-			self.assertEqual(URL_BASE + '/projects/img/pid/49/dim/287x300/type/' + i[3] + '/crop/1/', imgs[n].get_attribute('src'))
+			self.assertEqual('{0}/projects/img/pid/49/dim/287x300/type/{1}/crop/1/'.format(URL_BASE, i[3]), imgs[n].get_attribute('src'))
 		
 		activity = self.e('#activity')
 		self.assertIsInstance(activity.e('h1'), WebElement)
