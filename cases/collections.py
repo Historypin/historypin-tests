@@ -9,19 +9,19 @@ class Collections(HPTestCase):
 		
 		main_cnt	= self.e('.col.w34')
 		self.assertEqual('What are Collections?'									, main_cnt.e('h1').text)
-		self.assertEqual('%s/collections/'									% URL_BASE, main_cnt.e('a.main-image.no-shadow').get_attribute('href'))
-		self.assertEqual('%s/resources/images/collections_page_image.jpg'	% URL_BASE, main_cnt.e('img').get_attribute('src'))
+		self.assertEqual('{0}/collections/'									.format(URL_BASE), main_cnt.e('a.main-image.no-shadow').get_attribute('href'))
+		self.assertEqual('{0}/resources/images/collections_page_image.jpg'	.format(URL_BASE), main_cnt.e('img').get_attribute('src'))
 		self.assertEqual('Collections bring together content around a particular topic or theme. You can explore the Collections or create a Collection of your own.', main_cnt.e('p').text)
 		
 		button		= self.e('.col.w34 a.next-button.left')
-		self.assertEqual('%s/collections/add'	% URL_BASE	, button.get_attribute('href'))
-		self.assertEqual('Make your own collection'		, button.e('span').text)
+		self.assertEqual('{0}/collections/add'.format(URL_BASE)	, button.get_attribute('href'))
+		self.assertEqual('Make your own collection'				, button.e('span').text)
 		
 		self.assertEqual('All Collections'				, self.e('h3:last-of-type').text)
 		
 		h3 = self.e('h3.right a')
 		self.assertEqual('Return to Tours & Collections', h3.text)
-		self.assertEqual('%s/curated'	% URL_BASE, h3.get_attribute('href'))
+		self.assertEqual('{0}/curated'.format(URL_BASE)	, h3.get_attribute('href'))
 		
 		cnt	= self.es('#photo_list_content .list li:nth-of-type(1)')
 		self.assertIsInstance(cnt[0].e('a')	, WebElement)
@@ -42,8 +42,8 @@ class Collections(HPTestCase):
 		self.__test_collection_listing()
 		
 		next = self.e('.show-next')
-		self.assertEqual('Next'									, next.text)
-		self.assertEqual('%s/collections/all/page/2/' % URL_BASE, next.get_attribute('href'))
+		self.assertEqual('Next'											, next.text)
+		self.assertEqual('{0}/collections/all/page/2/'.format(URL_BASE)	, next.get_attribute('href'))
 	
 	@logged_in
 	@url('/collections/all/page/2/')
@@ -51,11 +51,11 @@ class Collections(HPTestCase):
 		
 		self.__test_collection_listing()
 		next = self.e('.show-next')
-		self.assertEqual('Next'									, next.text)
-		self.assertEqual('%s/collections/all/page/3/' % URL_BASE, next.get_attribute('href'))
+		self.assertEqual('Next'											, next.text)
+		self.assertEqual('{0}/collections/all/page/3/'.format(URL_BASE)	, next.get_attribute('href'))
 	
 	@logged_in
-	@url('/collections/view/id/%d' % ID_COLLECTION + '/')
+	@url('/collections/view/id/{0}/'.format(ID_COLLECTION))
 	def test_view(self):
 		self.assertTitle('Historypin | Collection | Theaters in Bulgaria')
 		
@@ -65,25 +65,25 @@ class Collections(HPTestCase):
 		paragraphs = self.es('.info p')
 		self.assertEqual('Collection for famous theaters in Bulgaria'	, paragraphs[0].text)
 		self.assertEqual('Created by Gabriela Ananieva'					, paragraphs[1].text)
-		self.assertEqual('%s/channels/view/%d' % (URL_BASE, ID_USER)	, paragraphs[1].e('a').get_attribute('href'))
+		self.assertEqual('{0}/channels/view/{1}'.format(URL_BASE, ID_USER), paragraphs[1].e('a').get_attribute('href'))
 		
 		button = self.e('.info ~ a')
-		self.assertEqual('%s/collections/slideshow/id/%d/' % (URL_BASE, ID_COLLECTION), button.get_attribute('href'))
+		self.assertEqual('{0}/collections/slideshow/id/{1}/'.format(URL_BASE, ID_COLLECTION), button.get_attribute('href'))
 		self.assertEqual('Slide Show'										, button.text)
 		
 		collection_view = [
-			['geo:42.694663,23.329004/zoom:15/dialog:%d'	% ID_COLLECTION_IMAGES[0], '/%d/' % ID_COLLECTION_IMAGES[0], '2 February 2013, from Gabriela Ananieva'	, '/%d' % ID_USER],
-			['geo:42.693738,23.326101/zoom:15/dialog:%d'	% ID_COLLECTION_IMAGES[1], '/%d/' % ID_COLLECTION_IMAGES[1], '2 August 2012, from Gabss'				, '/%d' % ID_USER_VIEW],
+			['geo:42.694663,23.329004/zoom:15/dialog:{0}'.format(ID_COLLECTION_IMAGES[0]), '/{0}/'.format(ID_COLLECTION_IMAGES[0]), '2 February 2013, from Gabriela Ananieva'	, '/{0}'.format(ID_USER)],
+			['geo:42.693738,23.326101/zoom:15/dialog:{0}'.format(ID_COLLECTION_IMAGES[1]), '/{0}/'.format(ID_COLLECTION_IMAGES[1]), '2 August 2012, from Gabss'					, '/{0}'.format(ID_USER_VIEW)],
 		]
 		
 		item = self.es('#list_view .list li')
 		
 		for n in range(len(collection_view)):
 			i = collection_view[n]
-			self.assertEqual(URL_BASE + '/map/#!/' + i[0] + '/tab:details/', item[n].e('a.link-image').get_attribute('href'))
-			self.assertEqual(URL_BASE + '/services/thumb/phid' + i[1] + 'dim/195x150/crop/1/', item[n].e('img').get_attribute('src'))
-			self.assertEqual(i[2]			, item[n].e('p').text)
-			self.assertEqual(URL_BASE + '/channels/view' + i[3], item[n].e('.username-wrapper a').get_attribute('href'))
+			self.assertEqual('{0}/map/#!/{1}/tab:details/'					.format(URL_BASE, i[0]), item[n].e('a.link-image').get_attribute('href'))
+			self.assertEqual('{0}/services/thumb/phid{1}dim/195x150/crop/1/'.format(URL_BASE, i[1]), item[n].e('img').get_attribute('src'))
+			self.assertEqual(i[2]											, item[n].e('p').text)
+			self.assertEqual('{0}/channels/view{1}'.format(URL_BASE, i[3])	, item[n].e('.username-wrapper a').get_attribute('href'))
 		
 		photos_list	= self.e('#list_view .list')
 		actions		= self.e('li:nth-of-type(2) .info-actions')
@@ -95,27 +95,27 @@ class Collections(HPTestCase):
 		representing_photo = photos_list.e('li:nth-of-type(2) .info-actions .choose')
 		representing_photo.click()
 		sleep(3)
-		self.assertEqual('%s/services/thumb/phid/%d/dim/451x302/crop/1/' % (URL_BASE, ID_COLLECTION_IMAGES[1]), self.e('img.index').get_attribute('src'))
+		self.assertEqual('{0}/services/thumb/phid/{1}/dim/451x302/crop/1/'.format(URL_BASE, ID_COLLECTION_IMAGES[1]), self.e('img.index').get_attribute('src'))
 		
 		representing_photo = photos_list.e('li:nth-of-type(1) .info-actions .choose')
 		representing_photo.click()
 		sleep(3)
 		self.browser.refresh()
-		self.assertEqual('%s/services/thumb/phid/%d/dim/451x302/crop/1/' % (URL_BASE, ID_COLLECTION_IMAGES[0]), self.e('img.index').get_attribute('src'))
+		self.assertEqual('{0}/services/thumb/phid/{1}/dim/451x302/crop/1/'.format(URL_BASE, ID_COLLECTION_IMAGES[0]), self.e('img.index').get_attribute('src'))
 	
 	@logged_in
-	@url('/collections/slideshow/id/%d' % ID_COLLECTION + '/')
+	@url('/collections/slideshow/id/{0}/'.format(ID_COLLECTION))
 	def test_slideshow(self):
 		
 		self.assertTitle('Historypin | Collection | Theaters in Bulgaria')
 		self.assertEqual('Theaters in Bulgaria\nExit Slideshow'										, self.e('#slide-content p').text)
-		self.assertEqual('%s/collections/view/id/%d/title/Theaters%%20in%%20Bulgaria' % (URL_BASE, ID_COLLECTION), self.e('#slide-content a').get_attribute('href'))
+		self.assertEqual('{0}/collections/view/id/{1}/title/Theaters%20in%20Bulgaria'.format(URL_BASE, ID_COLLECTION), self.e('#slide-content a').get_attribute('href'))
 		
 		controls	= self.e('#controls')
 		counter		= controls.e('#slidecounter')
 		step_text	= controls.e('#slidecaption a')
-		next_thumb	= self.e_wait('#nextthumb img')
-		prev_thumb	= self.e_wait('#prevthumb img')
+		next_thumb	= self.e_wait('#nextthumb > img')
+		prev_thumb	= self.e_wait('#prevthumb > img')
 		
 		navigation	= controls.e('#navigation')
 		# prev_slide= navigation.e('#prevslide')
@@ -125,11 +125,11 @@ class Collections(HPTestCase):
 		sleep(3)
 		pause.click()
 		
-		self.assertEqual('%s/services/thumb/phid/%d/' % (URL_BASE, ID_COLLECTION_IMAGES[1]), prev_thumb.get_attribute('src'))
+		self.assertEqual('{0}/services/thumb/phid/{1}/'.format(URL_BASE, ID_COLLECTION_IMAGES[1]), prev_thumb.get_attribute('src'))
 		self.assertIn('1/2', counter.text)
 		self.assertEqual('"Bulgarian Army Theater"- 2 February 2013 by Gabriela Ananieva', step_text.text)
-		self.assertEqual('%s/map/#!/geo:42.694701,23.329031/zoom:9/dialog:%d/tab:details/' % (URL_BASE, ID_COLLECTION_IMAGES[0]), step_text.get_attribute('href'))
-		self.assertEqual('%s/services/thumb/phid/%d/' % (URL_BASE, ID_COLLECTION_IMAGES[1]), next_thumb.get_attribute('src'))
+		self.assertEqual('{0}/map/#!/geo:42.694701,23.329031/zoom:9/dialog:{1}/tab:details/'.format(URL_BASE, ID_COLLECTION_IMAGES[0]), step_text.get_attribute('href'))
+		self.assertEqual('{0}/services/thumb/phid/{1}/'.format(URL_BASE, ID_COLLECTION_IMAGES[1]), next_thumb.get_attribute('src'))
 		next_slide.click()
 		sleep(3)
 	
@@ -158,7 +158,7 @@ class Collections(HPTestCase):
 		
 		sleep(4)
 		
-		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BLOB, ID_COLLECTION_IMAGES[0]), self.e('.inn .ss-photo img').get_attribute('src'))
+		self.assertEqual('{0}/services/thumb/phid/{1}/dim/152x108/crop/1/'.format(URL_BLOB, ID_COLLECTION_IMAGES[0]), self.e('.inn .ss-photo img').get_attribute('src'))
 		
 		button = self.es('.inn .next-button')[1]
 		button.click()
@@ -168,19 +168,19 @@ class Collections(HPTestCase):
 		
 		step_maker = self.e('#tour-step3')
 		
-		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BLOB, ID_COLLECTION_IMAGES[0]), step_maker.e('.image-container img').get_attribute('src'))
+		self.assertEqual('{0}/services/thumb/phid/{1}/dim/152x108/crop/1/'.format(URL_BLOB, ID_COLLECTION_IMAGES[0]), step_maker.e('.image-container img').get_attribute('src'))
 		
 		publish = self.es('.next-button.done')[1]
 		self.assertEqual('Publish', publish.e('span').text)
 		publish.click()
 		
-		self.go('/attach/uid%d/collections/all/' % ID_USER)
+		self.go('/attach/uid{0}/collections/all/'.format(ID_USER))
 		
 		self.browser.refresh()
 		sleep(3)
 		tour = self.e('#list li:nth-of-type(1)')
 		
-		self.assertEqual('%s/services/thumb/phid/%d/dim/195x150/crop/1/' % (URL_BLOB, ID_COLLECTION_IMAGES[0]), tour.e('.ss-photo img').get_attribute('src'))
+		self.assertEqual('{0}/services/thumb/phid/{1}/dim/195x150/crop/1/'.format(URL_BLOB, ID_COLLECTION_IMAGES[0]), tour.e('.ss-photo img').get_attribute('src'))
 		
 		tour.e('.delete').click()
 		
@@ -190,10 +190,10 @@ class Collections(HPTestCase):
 		sleep(4)
 		
 		self.browser.refresh()
-		self.assertFalse(self.e('#list').exists('.image[href*="%s"]' % id_collection))
+		self.assertFalse(self.e('#list').exists('.image[href*="{0}"]'.format(id_collection)))
 	
 	@logged_in
-	@url('/collections/add/id/%d/#%d' % (ID_COLLECTION, ID_COLLECTION))
+	@url('/collections/add/id/{0}/#{1}'.format(ID_COLLECTION, ID_COLLECTION))
 	def test_edit_collection(self):
 		self.assertTitle('Historypin | Collection')
 		
@@ -262,7 +262,7 @@ class Collections(HPTestCase):
 		
 		item = step_cnt.e('.choose-photos.yours li')
 		
-		self.assertEqual('%s/services/thumb/phid/%d/dim/152x108/crop/1/' % (URL_BASE, ID_COLLECTION_IMAGES[0]), item.e('img').get_attribute('src'))
+		self.assertEqual('{0}/services/thumb/phid/{1}/dim/152x108/crop/1/'.format(URL_BASE, ID_COLLECTION_IMAGES[0]), item.e('img').get_attribute('src'))
 		# to check icon for adding
 		
 		sleep(3)
@@ -285,8 +285,8 @@ class Collections(HPTestCase):
 		sleep(5)  # AJAX
 		
 		favs = step_cnt.es('.choose-photos.favourites li:nth-of-type(1)')
-		url = '%s/services/thumb/phid' % URL_BASE
-		self.assertEqual('%s/%d/dim/152x108/crop/1/' % (url, ID_COLLECTION_IMAGES[1]), favs[0].e('img').get_attribute('src'))
+		url = '{0}/services/thumb/phid'.format(URL_BASE)
+		self.assertEqual('{0}/{1}/dim/152x108/crop/1/'.format(url, ID_COLLECTION_IMAGES[1]), favs[0].e('img').get_attribute('src'))
 		
 		self.assertEqual('', favs[0].e('.photo-title').text)
 		self.hover(favs[0].e('img'))
@@ -318,7 +318,7 @@ class Collections(HPTestCase):
 		sleep(3)
 		
 		# TODO drag and drop for one item
-		self.go('/collections/add/id/%d/#%d' % (ID_COLLECTION, ID_COLLECTION))
+		self.go('/collections/add/id/{0}/#{1}'.format(ID_COLLECTION, ID_COLLECTION))
 		sleep(3)
 		title = self.e('#tour-title')
 		self.assertEqual('Theaters in Bulgaria', title.get_attribute('value'))

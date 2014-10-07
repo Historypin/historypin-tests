@@ -9,8 +9,8 @@ class Channels(HPTestCase):
 		self.assertTitle('Historypin | Featured Profiles')
 		
 		main_img = self.e('.main-image')
-		self.assertEqual('%s/channels/#'							 % URL_BASE, main_img.get_attribute('href'))
-		self.assertEqual('%s/resources/images/channels/channels.jpg' % URL_BASE, main_img.e('img').get_attribute('src'))
+		self.assertEqual('{0}/channels/#'								.format(URL_BASE), main_img.get_attribute('href'))
+		self.assertEqual('{0}/resources/images/channels/channels.jpg'	.format(URL_BASE), main_img.e('img').get_attribute('src'))
 		
 		self.assertEqual('Historypin Profiles', self.e('.info h1').text)
 		
@@ -29,14 +29,14 @@ class Channels(HPTestCase):
 	def __test_channel_assertion(self):
 		self.assertEqual('Search Results for "Gabss":', self.e('.search > h2').text)
 		channel = self.e('.channels-list li')
-		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER_VIEW)							, channel.e('a.logo').get_attribute('href'))
-		self.assertEqual('%s/channels/img/%d/logo/1/dim/70x70/crop/1/' % (URL_BASE, ID_USER_VIEW)	, channel.e('a.logo img').get_attribute('src'))
+		self.assertEqual('{0}/channels/view/{1}/'						.format(URL_BASE, ID_USER_VIEW), channel.e('a.logo').get_attribute('href'))
+		self.assertEqual('{0}/channels/img/{1}/logo/1/dim/70x70/crop/1/'.format(URL_BASE, ID_USER_VIEW), channel.e('a.logo img').get_attribute('src'))
 		self.assertEqual('Gabss'																	, channel.e('a.name').text)
-		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER_VIEW)							, channel.e('a.name').get_attribute('href'))
+		self.assertEqual('{0}/channels/view/{1}/'						.format(URL_BASE, ID_USER_VIEW), channel.e('a.name').get_attribute('href'))
 		
 		h2 = self.e('.search-channels .right a')
-		self.assertEqual('Return to Featured Profiles'	, h2.text)
-		self.assertEqual('%s/channels/'	% URL_BASE		, h2.get_attribute('href'))
+		self.assertEqual('Return to Featured Profiles'		, h2.text)
+		self.assertEqual('{0}/channels/'.format(URL_BASE)	, h2.get_attribute('href'))
 	
 	@url('/channels/')
 	def test_search(self):
@@ -64,12 +64,12 @@ class Channels(HPTestCase):
 		self.assertEqual('Search Results for "g.ananieva@avalith.bg":', self.e('.search > h2').text)
 		
 		channel = self.e('.channels-list li:nth-of-type(1)')
-		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER_VIEW)							, channel.e('a.logo').get_attribute('href'))
-		self.assertEqual('%s/channels/img/%d/logo/1/dim/70x70/crop/1/' % (URL_BASE, ID_USER_VIEW)	, channel.e('a.logo img').get_attribute('src'))
-		self.assertEqual('Gabss'																	, channel.e('a.name').text)
-		self.assertEqual('%s/channels/view/%d/' % (URL_BASE, ID_USER_VIEW)							, channel.e('a.name').get_attribute('href'))
+		self.assertEqual('{0}/channels/view/{1}/'						.format(URL_BASE, ID_USER_VIEW), channel.e('a.logo').get_attribute('href'))
+		self.assertEqual('{0}/channels/img/{1}/logo/1/dim/70x70/crop/1/'.format(URL_BASE, ID_USER_VIEW), channel.e('a.logo img').get_attribute('src'))
+		self.assertEqual('Gabss'																		, channel.e('a.name').text)
+		self.assertEqual('{0}/channels/view/{1}/'						.format(URL_BASE, ID_USER_VIEW), channel.e('a.name').get_attribute('href'))
 		
 		h2 = self.e('.search-channels .right a')
 		self.assertEqual('Return to Featured Profiles'	, h2.text)
-		self.assertEqual('%s/channels/'	% URL_BASE, h2.get_attribute('href'))
+		self.assertEqual('{0}/channels/'.format(URL_BASE), h2.get_attribute('href'))
 
