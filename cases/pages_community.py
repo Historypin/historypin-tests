@@ -7,7 +7,7 @@ class Community(HPTestCase):
 	def test_home(self):
 		self.assertTitle('Historypin | Community Homepage')
 		self.assertEqual('Get Involved', self.e('.info h1').text)
-		self.assertEqual('%s/resources/images/channels/channels_home_promo_image.jpg' % URL_BASE, self.e('.main-image').get_attribute('src'))
+		self.assertEqual('{0}/resources/images/channels/channels_home_promo_image.jpg'.format(URL_BASE), self.e('.main-image').get_attribute('src'))
 		self.assertEqual('Welcome to the Historypin community, made up of people, groups and organisations working together to unearth and pin as much history as possible from all over the world - from within archives, in attics, and saved up in wise old heads.', self.e('.info p').text)
 		
 		mods = [
@@ -27,15 +27,15 @@ class Community(HPTestCase):
 		for n in range(len(headings)):
 			self.assertEqual(headings[n], h2s[n].text)
 		
-		link_images	= '%s://wawwd-resources.s3.amazonaws.com/historypin/images/community/' % PROTOCOL
+		link_images	= '{0}://wawwd-resources.s3.amazonaws.com/historypin/images/community/'.format(PROTOCOL)
 		
 		groups = [
-			['Pinning The Queen\'s History', 'What pics and stories do you have of the Queen\'s visits and Jubilee celebrations?'					, '%s://wearewhatwedo.org/queen.jpg' % PROTOCOL, u'View The Queen’s Collection'		, '%s/DiamondJubilee/' % URL_BASE],
-			['The Chevy Centenary', u'We’re looking for pics and stories of each of the Chevy models created over the last 100 years.'				, '%schevy_img.png'					% link_images, 'View Chevy Collection'	, '%s/chevy/' % URL_BASE],
-			['Life Story Challenge', 'Create a Life Story about someone you know with photos and memories telling the story of their life.'			, '%sicon_life_stories.png'			% link_images, 'View Life Stories Challenge', 'http://www.11492009-gats.historypin.com/en/page/life-stories/'],
-			['Google Groups', u'Talk to other users, learn from each other’s experience, plus give us feedback as we experiment with new features.'	, '%sicon_google_groups.png'		% link_images, 'Visit the Group', 'https://groups.google.com/forum/?fromgroups#!forum/historypin'],
-			['Meet the team', 'Check out the people working away to bring you Historypin.'															, '%stheteam.jpg'					% link_images, 'Meet the team'			, '%s/team' % URL_BASE],
-			['The Foundation', 'Find out about our Charitable Foundation which works on the ground in local communities and education.'				, '%sfriends_of_historypin.jpg'		% link_images, 'Read more'				, '%s/Friends-Of-Historypin/' % URL_BASE],
+			['Pinning The Queen\'s History', 'What pics and stories do you have of the Queen\'s visits and Jubilee celebrations?'					, '{0}://wearewhatwedo.org/queen.jpg'.format(PROTOCOL), u'View The Queen’s Collection'	, '{0}/DiamondJubilee/'.format(URL_BASE)],
+			['The Chevy Centenary', u'We’re looking for pics and stories of each of the Chevy models created over the last 100 years.'				, '{0}chevy_img.png'			.format(link_images), 'View Chevy Collection'			, '{0}/chevy/'.format(URL_BASE)],
+			['Life Story Challenge', 'Create a Life Story about someone you know with photos and memories telling the story of their life.'			, '{0}icon_life_stories.png'	.format(link_images), 'View Life Stories Challenge'		, 'http://www.11492009-gats.historypin.com/en/page/life-stories/'],
+			['Google Groups', u'Talk to other users, learn from each other’s experience, plus give us feedback as we experiment with new features.'	, '{0}icon_google_groups.png'	.format(link_images), 'Visit the Group'					, 'https://groups.google.com/forum/?fromgroups#!forum/historypin'],
+			['Meet the team', 'Check out the people working away to bring you Historypin.'															, '{0}theteam.jpg'				.format(link_images), 'Meet the team'					, '{0}/team'.format(URL_BASE)],
+			['The Foundation', 'Find out about our Charitable Foundation which works on the ground in local communities and education.'				, '{0}friends_of_historypin.jpg'.format(link_images), 'Read more'						, '{0}/Friends-Of-Historypin/'.format(URL_BASE)],
 		]
 		
 		headings	= self.es('.group ~ .group .col h3')
@@ -57,23 +57,23 @@ class Community(HPTestCase):
 	@url('/community/schools')
 	def test_sidebar(self):
 		
-		link_community = '%s/community' % URL_BASE
+		link_community = '{0}/community'.format(URL_BASE)
 		
 		sidebar = [
 			['Community Homepage'						, link_community, 'Lots of news, ideas, and info for Historypinners round the world'],
-			['Schools Homepage'							, '%s/schools'						% link_community, 'Want to run a Historypin session or event in your school?'],
-			['Local Projects Homepage'					, '%s/localprojects'				% link_community, 'Want to run a Historypin session or event with your group?'],
-			['Libraries, Archives and Museums Homepage'	, '%s/lams'							% link_community, 'Want to get your institution involved?'],
-			['Libraries, Archives and Museums Involved'	, '%s/lams-involved'				% link_community, 'Find out the institutions that are already sharing their history on Historypin.'],
-			['How To Guides'							, '%s/how-to'						% URL_BASE, 'Downloadable pdfs and videos to explain how to do everything'],
-			['Activities & Downloadables for schools'	, '%s/schools-resources'			% link_community, 'Resources to make running sessions and events easier.'],
-			['Activities & Downloadables for projects'	, '%s/localprojects-resources'		% link_community, 'Resources to make running sessions and events easier.'],
-			['Topics to Explore'						, '%s/topics-to-explore'			% link_community, 'Some of the most interesting photos, Tours and Collections to explore in sessions.'],
-			['School Case Studies'						, '%s/schools-case-studies'			% link_community, 'Some examples of schools around the word using Historypin'],
-			['Local Project Case Studies'				, '%s/localprojects-case-studies' 	% link_community, 'Some examples of local projects around the world using Historypin'],
-			['Support Us'								, '%s/donate/'						% URL_BASE		, u'Donate to Friends of Historypin and you’ll be helping support Historypin Community and Education Programmes.\n\nRegistered Charity Number 1134546'],
-			['Blog'										, 'http://blog.historypin.com/'						, 'Find out the latest community, site development, partnership and Challenges news'],
-			['Contact'									, '%s/contact-us'					% URL_BASE		, 'For more information contact Rebekkah Abraham, Historypin Content Manager on rebekkah.abraham@wearewhatwedo.org.'],
+			['Schools Homepage'							, '{0}/schools'						.format(link_community), 'Want to run a Historypin session or event in your school?'],
+			['Local Projects Homepage'					, '{0}/localprojects'				.format(link_community), 'Want to run a Historypin session or event with your group?'],
+			['Libraries, Archives and Museums Homepage'	, '{0}/lams'						.format(link_community), 'Want to get your institution involved?'],
+			['Libraries, Archives and Museums Involved'	, '{0}/lams-involved'				.format(link_community), 'Find out the institutions that are already sharing their history on Historypin.'],
+			['How To Guides'							, '{0}/how-to'						.format(URL_BASE)	, 'Downloadable pdfs and videos to explain how to do everything'],
+			['Activities & Downloadables for schools'	, '{0}/schools-resources'			.format(link_community), 'Resources to make running sessions and events easier.'],
+			['Activities & Downloadables for projects'	, '{0}/localprojects-resources'		.format(link_community), 'Resources to make running sessions and events easier.'],
+			['Topics to Explore'						, '{0}/topics-to-explore'			.format(link_community), 'Some of the most interesting photos, Tours and Collections to explore in sessions.'],
+			['School Case Studies'						, '{0}/schools-case-studies'		.format(link_community), 'Some examples of schools around the word using Historypin'],
+			['Local Project Case Studies'				, '{0}/localprojects-case-studies' 	.format(link_community), 'Some examples of local projects around the world using Historypin'],
+			['Support Us'								, '{0}/donate/'						.format(URL_BASE)	, u'Donate to Friends of Historypin and you’ll be helping support Historypin Community and Education Programmes.\n\nRegistered Charity Number 1134546'],
+			['Blog'										, 'http://blog.historypin.com/'							, 'Find out the latest community, site development, partnership and Challenges news'],
+			['Contact'									, '{0}/contact-us'					.format(URL_BASE)	, 'For more information contact Rebekkah Abraham, Historypin Content Manager on rebekkah.abraham@wearewhatwedo.org.'],
 		]
 		
 		headings	= self.es('.sidebar .inner h4')
@@ -92,7 +92,7 @@ class Community(HPTestCase):
 	def test_home_schools(self):
 		self.assertTitle('Historypin | Community | Schools')
 		self.assertEqual('Schools', self.e('h1.title').text)
-		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/images/community/schools_main.jpg' % PROTOCOL, self.e('.section img').get_attribute('src'))
+		self.assertEqual('{0}://wawwd-resources.s3.amazonaws.com/historypin/images/community/schools_main.jpg'.format(PROTOCOL), self.e('.section img').get_attribute('src'))
 		
 		questions = [
 			['Why use Historypin in schools?', '', ''],
@@ -119,7 +119,7 @@ class Community(HPTestCase):
 	def test_home_projects(self):
 		self.assertTitle('Historypin | Community | Local Projects')
 		self.assertEqual('Local Projects', self.e('h1.title').text)
-		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/images/community/localprojects_main.jpg' % PROTOCOL, self.e('.section img').get_attribute('src'))
+		self.assertEqual('{0}://wawwd-resources.s3.amazonaws.com/historypin/images/community/localprojects_main.jpg'.format(PROTOCOL), self.e('.section img').get_attribute('src'))
 		
 		questions = [
 			['Why use Historypin in local projects?', '', ''],
@@ -146,16 +146,16 @@ class Community(HPTestCase):
 	def test_home_lams(self):
 		self.assertTitle('Historypin | Community | Libraries, Archives & Museums')
 		self.assertEqual('Libraries, Archives and Museums homepage', self.e('.right h1').text)
-		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/images/community/lams_main.jpg' % PROTOCOL, self.e('.right img').get_attribute('src'))
+		self.assertEqual('{0}://wawwd-resources.s3.amazonaws.com/historypin/images/community/lams_main.jpg'.format(PROTOCOL), self.e('.right img').get_attribute('src'))
 		
 		headings = self.es('.inner.right h3')
 		links	 = self.es('.inner.right h3+p a')
 		
 		h3s = [
-			['Get Started'					, '%s://wawwd-resources.s3.amazonaws.com/Getting%%20Started%%20on%%20Historypin.pdf' % PROTOCOL, 'Getting Started Guide'],
-			['Institutions Involved'		, '%s/community/lams-involved' % URL_BASE, u'See what other institutions are already involved and what they’re saying about Historypin.'],
+			['Get Started'					, '{0}://wawwd-resources.s3.amazonaws.com/Getting%20Started%20on%20Historypin.pdf'.format(PROTOCOL), 'Getting Started Guide'],
+			['Institutions Involved'		, '{0}/community/lams-involved'.format(URL_BASE), u'See what other institutions are already involved and what they’re saying about Historypin.'],
 			['10 reasons to get Involved'	, '', ''],
-			['Frequently Asked Questions'	, '%s/faq/' % URL_BASE, 'FAQ section'],  # fix link to be with the current version
+			['Frequently Asked Questions'	, '{0}/faq/'.format(URL_BASE), 'FAQ section'],  # fix link to be with the current version
 		]
 		
 		k = 0
@@ -203,7 +203,7 @@ class Community(HPTestCase):
 	def test_how_tos(self):
 		self.assertTitle('Historypin | Community | Schools | Historypin in the Classroom')
 		
-		link_resources	= '%s://wawwd-resources.s3.amazonaws.com/historypin/' % PROTOCOL
+		link_resources	= '{0}://wawwd-resources.s3.amazonaws.com/historypin/'.format(PROTOCOL)
 		youtube_link	= 'https://www.youtube.com/'
 		
 		how_tos = [
@@ -349,30 +349,30 @@ class Community(HPTestCase):
 		self.assertTitle('Historypin | Community | Local Projects | Magic Me, Tower Hamlets, London, UK')
 		self.assertEqual('Magic Me, Tower Hamlets, London, UK', self.e('h1.title').text)
 		
-		link_imgs = '%s://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/' % PROTOCOL
+		link_imgs = '{0}://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/'.format(PROTOCOL)
 		imgs = self.es('.section img')
 		
 		self.assertEqual('{0}4c_main.jpg'.format(link_imgs)	, imgs[0].get_attribute('src'))
 		self.assertEqual('{0}4c_sec.jpg'.format(link_imgs)	, imgs[1].get_attribute('src'))
-		self.assertEqual('%s/channels/view/6932562/name/magicme/' % URL_BASE, self.e('.section a').get_attribute('href'))
+		self.assertEqual('{0}/channels/view/6932562/name/magicme/'.format(URL_BASE), self.e('.section a').get_attribute('href'))
 	
 	@url('/community/localprojects-case-study-reading')
 	def test_projects_studies_reading(self):
 		self.assertTitle('Historypin | Community | Local Projects | Reading, Berkshire, UK')
 		self.assertEqual('Reading, Berkshire, UK', self.e('h1.title').text)
 		
-		link_imgs = '%s://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/' % PROTOCOL
+		link_imgs = '{0}://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/'.format(PROTOCOL)
 		imgs = self.es('.section img')
 		headings = self.es('.section h3')
 		
 		self.assertEqual('{0}4a_main.jpg'.format(link_imgs)	, imgs[0].get_attribute('src'))
 		self.assertEqual('{0}4a_sec.jpg'.format(link_imgs)	, imgs[1].get_attribute('src'))
-		self.assertEqual('%s/community/localprojects-reading/' % URL_BASE, self.e('.section p:nth-of-type(8) a').get_attribute('href'))
+		self.assertEqual('{0}/community/localprojects-reading/'.format(URL_BASE), self.e('.section p:nth-of-type(8) a').get_attribute('href'))
 		self.assertEqual('What people had to say about it'	, headings[0].text)
 		self.assertEqual('What was the impact?'				, headings[1].text)
-		self.assertEqual('%s/resources/images/reading_evaluation_infographic.jpg' % URL_BASE			, self.e('.section h3~a').get_attribute('href'))
-		self.assertEqual('%s/resources/images/reading_evaluation_infographic_thumb.jpg' % URL_BASE		, self.e('.section a img').get_attribute('src'))
-		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/Reading_Evaluation%%20Report_Small.pdf' % PROTOCOL, self.e('.section h3~p a:nth-of-type(1)').get_attribute('href'))
+		self.assertEqual('{0}/resources/images/reading_evaluation_infographic.jpg'.format(URL_BASE)			, self.e('.section h3~a').get_attribute('href'))
+		self.assertEqual('{0}/resources/images/reading_evaluation_infographic_thumb.jpg'.format(URL_BASE)	, self.e('.section a img').get_attribute('src'))
+		self.assertEqual('{0}://wawwd-resources.s3.amazonaws.com/Reading_Evaluation%20Report_Small.pdf'.format(PROTOCOL), self.e('.section h3~p a:nth-of-type(1)').get_attribute('href'))
 
 	@url('/community/localprojects-reading/')
 	def test_community_localprojects_reading(self):
@@ -405,8 +405,8 @@ class Community(HPTestCase):
 		pinner_links	= self.es('.col.w2:nth-of-type(1) ul a')
 		for n in range(len(pinners)):
 			i = pinners[n]
-			self.assertEqual(URL_BASE + '/resources/images/content/community/reading/' + i[0], pinner_images[n].get_attribute('src'))
-			self.assertEqual(URL_BASE + '/channels/view/' + i[1], pinner_links[n].get_attribute('href'))
+			self.assertEqual('{0}/resources/images/content/community/reading/{1}'.format(URL_BASE, i[0]), pinner_images[n].get_attribute('src'))
+			self.assertEqual('{0}/channels/view/{1}'.format(URL_BASE, i[1]), pinner_links[n].get_attribute('href'))
 			self.assertEqual(i[2], pinner_links[n].text)
 		
 		
@@ -430,11 +430,11 @@ class Community(HPTestCase):
 		pin_links	= self.es('.cf a')
 		for n in range(len(pins)):
 			i = pins[n]
-			self.assertEqual(URL_BASE + '/resources/images/content/community/reading/' + i[0], pin_images[n].get_attribute('src'))
-			self.assertEqual(URL_BASE + '/map/#/' + i[1], pin_links[n].get_attribute('href'))
+			self.assertEqual('{0}/resources/images/content/community/reading/{1}'.format(URL_BASE, i[0]), pin_images[n].get_attribute('src'))
+			self.assertEqual('{0}/map/#/{1}'.format(URL_BASE, i[1]), pin_links[n].get_attribute('href'))
 			self.assertEqual(i[2], pin_links[n].text)
 		
-		link_imgs = URL_BASE + '/resources/images/'
+		link_imgs = '{0}/resources/images/'.format(URL_BASE)
 		images = self.es('h2:last-of-type ~ img')
 		self.assertEqual('{0}content/community/reading/pined_on_a_map.jpg'.format(link_imgs), images[0].get_attribute('src'))
 		self.assertEqual('{0}hlf_web.jpg'.format(link_imgs), images[1].get_attribute('src'))
@@ -444,7 +444,7 @@ class Community(HPTestCase):
 	def test_projects_studies_sanfrancisco(self):
 		self.assertTitle('Historypin | Community | Local Projects | San Francisco, USA')
 		self.assertEqual('San Francisco, USA', self.e('h1.title').text)
-		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4d_main.jpg' % PROTOCOL, self.e('.section img').get_attribute('src'))
+		self.assertEqual('{0}://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4d_main.jpg'.format(PROTOCOL), self.e('.section img').get_attribute('src'))
 		self.assertEqual('{0}/sfmta'.format(URL_BASE), self.e('.section p:nth-of-type(6) a').get_attribute('href'))
 		self.assertEqual('SFMTA collection on Historypin', self.e('.section p:nth-of-type(6) a').text)
 	
@@ -452,7 +452,7 @@ class Community(HPTestCase):
 	def test_projects_studies_lighthouse(self):
 		self.assertTitle('Historypin | Community | Local Projects | Lighthouse, Brighton, UK')
 		self.assertEqual('Lighthouse, Brighton, UK', self.e('h1.title').text)
-		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4b_main.jpg' % PROTOCOL, self.e('.section p img').get_attribute('src'))
+		self.assertEqual('{0}://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4b_main.jpg'.format(PROTOCOL), self.e('.section p img').get_attribute('src'))
 	
 	@url('/community/topics-to-explore')
 	def test_topics_to_explore(self):
@@ -545,50 +545,50 @@ class Community(HPTestCase):
 		for n in range(len(studies)):
 			i = studies[n]
 			self.assertEqual(i[0], headings[n].text)
-			self.assertEqual(URL_BASE + '/community/' + i[1], headings[n].get_attribute('href'))
-			self.assertEqual(URL_BASE + '/community/' + i[1], image_links[n].get_attribute('href'))
-			self.assertEqual(PROTOCOL + '://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/' + i[2], images[n].get_attribute('src'))
+			self.assertEqual('{0}/community/{1}'.format(URL_BASE, i[1]), headings[n].get_attribute('href'))
+			self.assertEqual('{0}/community/{1}'.format(URL_BASE, i[1]), image_links[n].get_attribute('href'))
+			self.assertEqual('{0}://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/{1}'.format(PROTOCOL, i[2]), images[n].get_attribute('src'))
 			self.assertEqual(i[3], paragraphs[n].text)
 		
 	@url('/community/schools-eic/')
 	def test_schools_studies_eic(self):
 		self.assertTitle('Historypin | Community | Schools | English International College, Marbella, Spain')
 		self.assertEqual('English International College, Marbella, Spain', self.e('h1.title').text)
-		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6b_main.jpg' % PROTOCOL, self.e('.section p img').get_attribute('src'))
+		self.assertEqual('{0}://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6b_main.jpg'.format(PROTOCOL), self.e('.section p img').get_attribute('src'))
 		self.assertEqual('Amy, Year 9', self.e('h2:nth-of-type(1)').text)
-		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6b_fav1.jpg' % PROTOCOL, self.e('.section p:nth-of-type(10) img').get_attribute('src'))
+		self.assertEqual('{0}://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6b_fav1.jpg'.format(PROTOCOL), self.e('.section p:nth-of-type(10) img').get_attribute('src'))
 		
 	@url('/community/schools-billericay/')
 	def test_schools_studies_bill(self):
 		self.assertTitle('Historypin | Community | Schools | Billericay School, Essex, UK')
 		self.assertEqual('Billericay School, Essex, UK', self.e('h1.title').text)
-		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6d_main.jpg' % PROTOCOL, self.e('.section p:nth-of-type(1) img').get_attribute('src'))
+		self.assertEqual('{0}://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6d_main.jpg'.format(PROTOCOL), self.e('.section p:nth-of-type(1) img').get_attribute('src'))
 		self.assertEqual('http://billericayschool.net/speakup/2011/06/pinning-down-history/', self.e('.section p:nth-of-type(12) a').get_attribute('href'))
 		self.assertEqual('Read more about the project on their blog.', self.e('.section p:nth-of-type(12) a').text)
 		self.assertEqual('Video made by Billericay School for the day', self.e('h3:nth-of-type(1)').text)
 		self.assertEqual('Feature on Radio Essex about the Billericay Historypin project', self.e('h3:nth-of-type(2)').text)
-		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6d_sec.jpg' % PROTOCOL, self.e('.section p:nth-of-type(14) img').get_attribute('src'))
+		self.assertEqual('{0}://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6d_sec.jpg'.format(PROTOCOL), self.e('.section p:nth-of-type(14) img').get_attribute('src'))
 	
 	@url('/community/schools-cromer/')
 	def test_schools_studies_cromer(self):
 		self.assertTitle('Historypin | Community | Schools | Cromer, Norfolk, UK')
 		self.assertEqual('Cromer, Norfolk, UK', self.e('h1.title').text)
-		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6e_main.jpg' % PROTOCOL, self.e('.section p:nth-of-type(1) img').get_attribute('src'))
+		self.assertEqual('{0}://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6e_main.jpg'.format(PROTOCOL), self.e('.section p:nth-of-type(1) img').get_attribute('src'))
 	
 	@url('/community/schools-nelson/')
 	def test_schools_studies_nelson(self):
 		self.assertTitle('Historypin | Community | Schools | Nelson Rural School, New Brunswick, Canada')
 		self.assertEqual('Nelson Rural School, New Brunswick, Canada', self.e('h1.title').text)
-		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6c_main.jpg' % PROTOCOL, self.e('.section img').get_attribute('src'))
-		self.assertEqual('%s/channels/view/8817007/name/nelsonrural7k/' % URL_BASE, self.e('.section p:nth-of-type(8) a').get_attribute('href'))
+		self.assertEqual('{0}://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6c_main.jpg'.format(PROTOCOL), self.e('.section img').get_attribute('src'))
+		self.assertEqual('{0}/channels/view/8817007/name/nelsonrural7k/'.format(URL_BASE), self.e('.section p:nth-of-type(8) a').get_attribute('href'))
 		self.assertEqual(u'Nelson School’s Historypin Profile', self.e('.section p:nth-of-type(8) a').text)
 		
 	@url('/community/schools-newport/')
 	def test_schools_studies_newport(self):
 		self.assertTitle('Historypin | Community | Schools | Newport Primary School, Essex, UK')
 		self.assertEqual('Newport Primary School, Essex, UK', self.e('h1.title').text)
-		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6f_main.jpg' % PROTOCOL	, self.e('.section p:nth-of-type(1) img').get_attribute('src'))
-		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4f_sec.jpg' % PROTOCOL	, self.e('.section p:nth-of-type(7) img').get_attribute('src'))
+		self.assertEqual('{0}://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/6f_main.jpg'.format(PROTOCOL)	, self.e('.section p:nth-of-type(1) img').get_attribute('src'))
+		self.assertEqual('{0}://wawwd-resources.s3.amazonaws.com/historypin/images/community/casestudies/4f_sec.jpg'.format(PROTOCOL)	, self.e('.section p:nth-of-type(7) img').get_attribute('src'))
 		
 	@url('/community/schools-resources/')
 	def test_schools_resources(self):
@@ -603,28 +603,28 @@ class Community(HPTestCase):
 				'heading': 'Activity Sheets',
 				'items': [
 					['Activity Sheet 1: Recording the story behind a photo'	, 'Worksheet_story%20collections.pdf', 'Blank template for recording info gathered in a interview or session'],
-					['Activity Sheet 2: Recording the story behind a photo'	, '%sActivity_Sheet_2_Recording_the_story_behind_a_photo.pdf' % link, 'Worksheet with a series of questions guiding you through interview or session'],
-					['Activity Sheet 3: Exploring Historypin'				, '%sActivity_Sheet_3_Exploring_Historypin.pdf' % link, 'Worksheet with series of activities of things to find and do on Historypin'],
+					['Activity Sheet 2: Recording the story behind a photo'	, '{0}Activity_Sheet_2_Recording_the_story_behind_a_photo.pdf'.format(link), 'Worksheet with a series of questions guiding you through interview or session'],
+					['Activity Sheet 3: Exploring Historypin'				, '{0}Activity_Sheet_3_Exploring_Historypin.pdf'.format(link), 'Worksheet with series of activities of things to find and do on Historypin'],
 				],
 			},
 			{
 				'heading': 'Tip Sheets',
 				'items': [
-					['Tip Sheet 1: Taking a Photo of a Photo'								, '%sTip_Sheet_1_Taking_a_Photo_of_a_Photo.pdf' % link, 'All you need to know about taking the perfect photo of a photo - the easy way to digitise old photographs'],
-					['Tip Sheet 2: Ideas for local projects'								, '%sTip_Sheet_2_Ideas_for_local_projects.pdf' % link, 'Ideas and examples of the types of local projects you can run (both online and offline events)'],
-					['Tip Sheet 3: Tips on Planning your Historypin Local Project'			, '%sTip_Sheet_3_Tips_on_Planning_your_Historypin_Local_Project.pdf' % link, 'Tips on how to set up and plan your local project (both online and offline events)'],
-					['Tip Sheet 4: Tips on the techie parts of running a session or event'	, '%sTip_Sheet_4_Tips_on_the_techie_parts_of_running_a_session_or_event.pdf' % link, 'Practical advice if you are running online sessions'],
-					['Tip Sheet 5: Tip on Interviewing someone'								, '%sTip_Sheet_5_Tip_on_Interviewing_someone.pdf' % link, 'Things to think about before and during your conversation, plus ideas for questions'],
-					['Historypin Presentation template'										, '%sHistorypin_Presentation.ppt' % link, 'Powerpoint presentation to introduce Historypin to your school, group or organisation (includes spare slides for adding info about your session or event)'],
+					['Tip Sheet 1: Taking a Photo of a Photo'								, '{0}Tip_Sheet_1_Taking_a_Photo_of_a_Photo.pdf'.format(link), 'All you need to know about taking the perfect photo of a photo - the easy way to digitise old photographs'],
+					['Tip Sheet 2: Ideas for local projects'								, '{0}Tip_Sheet_2_Ideas_for_local_projects.pdf'.format(link), 'Ideas and examples of the types of local projects you can run (both online and offline events)'],
+					['Tip Sheet 3: Tips on Planning your Historypin Local Project'			, '{0}Tip_Sheet_3_Tips_on_Planning_your_Historypin_Local_Project.pdf'.format(link), 'Tips on how to set up and plan your local project (both online and offline events)'],
+					['Tip Sheet 4: Tips on the techie parts of running a session or event'	, '{0}Tip_Sheet_4_Tips_on_the_techie_parts_of_running_a_session_or_event.pdf'.format(link), 'Practical advice if you are running online sessions'],
+					['Tip Sheet 5: Tip on Interviewing someone'								, '{0}Tip_Sheet_5_Tip_on_Interviewing_someone.pdf'.format(link), 'Things to think about before and during your conversation, plus ideas for questions'],
+					['Historypin Presentation template'										, '{0}Historypin_Presentation.ppt'.format(link), 'Powerpoint presentation to introduce Historypin to your school, group or organisation (includes spare slides for adding info about your session or event)'],
 				],
 			},
 			{
 				'heading': 'Posters, flyers and certificates',
 				'items': [
-					['Poster advertising your event or session'								, '%sPoster_advertising_your_event_or_session.pdf' % link, 'With fillable inable gaps for your details'],
-					['Flyer advertising your event or session'								, '%sFlyer_advertising_your_event_or_session.pdf' % link, 'With fillable inable gaps for your details'],
-					['Invite announcing your event'											, '%sInvite_announcing_your_event.pdf' % link, 'With fillable inable gaps for your details'],
-					['Certificate for participants'											, '%sCertificate_for_participants.pdf' % link, 'For awarding to people for their work discovering and sharing history with fillable inable gaps for your details'],
+					['Poster advertising your event or session'								, '{0}Poster_advertising_your_event_or_session.pdf'.format(link), 'With fillable inable gaps for your details'],
+					['Flyer advertising your event or session'								, '{0}Flyer_advertising_your_event_or_session.pdf'.format(link), 'With fillable inable gaps for your details'],
+					['Invite announcing your event'											, '{0}Invite_announcing_your_event.pdf'.format(link), 'With fillable inable gaps for your details'],
+					['Certificate for participants'											, '{0}Certificate_for_participants.pdf'.format(link), 'For awarding to people for their work discovering and sharing history with fillable inable gaps for your details'],
 				],
 			},
 		]
@@ -641,7 +641,7 @@ class Community(HPTestCase):
 			
 			for item in i['items']:
 				self.assertEqual(item[0] + '\n' + item[2], list_items[k].text)
-				self.assertEqual(PROTOCOL + '://wawwd-resources.s3.amazonaws.com/' + item[1], links[k].get_attribute('href'))
+				self.assertEqual('{0}://wawwd-resources.s3.amazonaws.com/{1}'.format(PROTOCOL, item[1]), links[k].get_attribute('href'))
 				
 				k += 1
 		

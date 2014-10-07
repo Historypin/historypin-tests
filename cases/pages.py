@@ -9,8 +9,8 @@ class Pages(HPTestCase):
 	@url('/about-us/')
 	def test_about(self):
 		self.assertTitle('Historypin | A 90 second introduction')
-		self.assertEqual('A 90 second introduction'									, self.e('h1.title').text)
-		self.assertEqual('%s://www.youtube.com/embed/FdT3eKdto4w?rel=0' % PROTOCOL	, self.e('iframe').get_attribute('src'))
+		self.assertEqual('A 90 second introduction'										, self.e('h1.title').text)
+		self.assertEqual('{0}://www.youtube.com/embed/FdT3eKdto4w?rel=0'.format(PROTOCOL), self.e('iframe').get_attribute('src'))
 	
 	@url('/app/')
 	def test_app(self):
@@ -32,7 +32,7 @@ class Pages(HPTestCase):
 		for n in range(len(items)):
 			i = items[n]
 			self.assertEqual(i[0]				, headings[n].text)
-			self.assertEqual(URL_BASE + '/resources/images/content/app/' + i[1]	, images[n].get_attribute('src'))
+			self.assertEqual('{0}/resources/images/content/app/{1}'.format(URL_BASE, i[1]), images[n].get_attribute('src'))
 			self.assertEqual(i[2]				, texts[n].text)
 			self.assertEqual(i[3]				, links[n].get_attribute('href'))
 	
@@ -239,7 +239,7 @@ class Pages(HPTestCase):
 			self.assertEqual(i['heading'], questions_h[n].text)
 			
 			for item in i['items']:
-				self.assertEqual(URL_BASE + '/faq/#' + item[0]	, answers[k].get_attribute('href'))
+				self.assertEqual('{0}/faq/#{1}'.format(URL_BASE, item[0]), answers[k].get_attribute('href'))
 				self.assertEqual(item[1]						, answers[k].text)
 				self.assertEqual(item[0]						, answers_h[k].get_attribute('id'))
 				self.assertEqual(item[1]						, answers_h[k].text)
@@ -311,8 +311,8 @@ class Pages(HPTestCase):
 			['http://www.npr.org/blogs/pictureshow/2010/08/05/129007283/historypin?ft=1&f=1047', '"A Worldwide Photo Project Needs You (And Your Grandparents)"', 'The Picture Show Blog, NPR, August 5th 2010'],
 			['http://www.iol.co.za/scitech/news/net-album-sorts-old-photos-1.911557', '"Net album sorts old photos"', 'IOL Scitech, 23rd July 2010'],
 			['http://www.thesun.co.uk/sol/homepage/features/3063808/Photos-show-sporting-triumph-pics-pinned-on-recent-snaps.html', '"If you\'re looking for double ... you came to the right place"', 'The Sun, 22nd July 2010'],
-			['%s://wawwd-resources.s3.amazonaws.com/southwalesecho.png' % PROTOCOL, '"History Bridges generation gap"', 'South Wales Echo, 20th July 2010'],
-			['%s://wawwd-resources.s3.amazonaws.com/sundaytimes180710.jpg' % PROTOCOL, '"Our Ghosts in the Machine"', 'Sunday Times, 18th July 2010'],
+			['{0}://wawwd-resources.s3.amazonaws.com/southwalesecho.png'.format(PROTOCOL), '"History Bridges generation gap"', 'South Wales Echo, 20th July 2010'],
+			['{0}://wawwd-resources.s3.amazonaws.com/sundaytimes180710.jpg'.format(PROTOCOL), '"Our Ghosts in the Machine"', 'Sunday Times, 18th July 2010'],
 			['http://www.telegraph.co.uk/technology/google/7854922/Historypin-turns-Google-Street-View-into-a-window-on-the-past.html', '"Historypin turns Google Street View into a window on the past"', 'The Telegraph, 26th June 2010'],
 			['http://www.geenstijl.nl/mt/archieven/2010/06/nostalgie_fotos_van_vroeger_in.html', '"Nostalgie! Foto\'s van vroeger in Streetview"', 'Geenstijl, 9th June 2010'],
 			['http://www.historytoday.com/blog/news-blog/charlotte-crow/historypin-patchwork-history', '"Historypin: Patchwork History"', 'History Today, 7th June 2010'],
@@ -366,7 +366,7 @@ class Pages(HPTestCase):
 		
 		cnt = self.e('.sidebar .inner:nth-of-type(8)')
 		self.assertEqual('Press Pack', cnt.e('h3').text)
-		self.assertEqual('%s://wawwd-resources.s3.amazonaws.com/presspacks/Historypin.zip' % PROTOCOL, cnt.e('a').get_attribute('href'))
+		self.assertEqual('{0}://wawwd-resources.s3.amazonaws.com/presspacks/Historypin.zip'.format(PROTOCOL), cnt.e('a').get_attribute('href'))
 		self.assertEqual(u'Download press releases, pictures and all the info you\u2019ll need to write a fabulously complimentary article about us.', cnt.e('p').text)
 	
 	@url('/privacy-policy/')
@@ -404,7 +404,7 @@ class Pages(HPTestCase):
 		
 		imgs = self.es('.section img')
 		for n in range(len(images)):
-			self.assertEqual(URL_BASE + '/resources/images/home/' + images[n], imgs[n].get_attribute('src'))
+			self.assertEqual('{0}/resources/images/home/{1}'.format(URL_BASE, images[n]), imgs[n].get_attribute('src'))
 		
 		sidebar = [
 			{
@@ -485,7 +485,7 @@ class Pages(HPTestCase):
 			i = links[n]
 			
 			self.assertEqual(i[1]											, anchors[n].text)
-			self.assertEqual(URL_BASE + '/terms-and-conditions/#' + i[0]	, anchors[n].get_attribute('href'))
+			self.assertEqual('{0}/terms-and-conditions/#{1}'.format(URL_BASE, i[0]), anchors[n].get_attribute('href'))
 			self.assertEqual(i[0]											, headings[n].get_attribute('id'))
 			self.assertEqual(i[1]											, headings[n].text)
 	
@@ -530,18 +530,18 @@ class Pages(HPTestCase):
 		for n in range(len(titles)):
 			i = titles[n]
 			self.assertEqual(i[0], list[n].text)
-			self.assertEqual(URL_BASE + '/bulkbridge/#' + i[1], list[n].get_attribute('href'))
+			self.assertEqual('{0}/bulkbridge/#{1}'.format(URL_BASE, i[1]), list[n].get_attribute('href'))
 		
 		button = site_cnt.e('.button.left')
 		self.assertEqual("I'm ready to do a Bulk Upload", button.e('span').text)
-		self.assertEqual('%s/upload-bulk/' % URL_BASE, button.get_attribute('href'))
+		self.assertEqual('{0}/upload-bulk/'.format(URL_BASE), button.get_attribute('href'))
 		
 		csv = self.e('ol li:nth-of-type(1)')
 		self.assertEqual('Download our CSV template and the Instructions on how to complete it.', csv.text)
 		
-		link = '%s://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/' % PROTOCOL
-		self.assertEqual('%sHistorypin_Bulk_Upload_Template.csv'									% link, csv.es('a')[0].get_attribute('href'))
-		self.assertEqual('%sHistorypin_Instructions_for_Completing_a_CSV_template_March_2012.xls'	% link, csv.es('a')[1].get_attribute('href'))
+		link = '{0}://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/'.format(PROTOCOL)
+		self.assertEqual('{0}Historypin_Bulk_Upload_Template.csv'									.format(link), csv.es('a')[0].get_attribute('href'))
+		self.assertEqual('{0}Historypin_Instructions_for_Completing_a_CSV_template_March_2012.xls'	.format(link), csv.es('a')[1].get_attribute('href'))
 		
 		sidebar		= self.e('.sidebar')
 		downloads	= sidebar.e('.inner:nth-of-type(1)')
@@ -558,7 +558,7 @@ class Pages(HPTestCase):
 		for n in range(len(tpl)):
 			i = tpl[n]
 			self.assertEqual(i[0], anchors[n].text)
-			self.assertEqual(PROTOCOL + '://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/' + i[1], anchors[n].get_attribute('href'))
+			self.assertEqual('{0}://wawwd-resources.s3.amazonaws.com/historypin/bulk_upload/{1}'.format(PROTOCOL, i[1]), anchors[n].get_attribute('href'))
 		
 		help = sidebar.e('.help')
 		self.assertEqual('Get help', help.e('h3').text)
@@ -566,8 +566,8 @@ class Pages(HPTestCase):
 		self.assertEqual('If you get stuck or have any questions, check out our How To page and FAQs and please feel free to contact us at historypin@wearewhatwedo.org', help.e('p').text)
 		
 		links = [
-			['%s/community/howtos/'		% URL_BASE, 'How To page'],
-			['%s/faq'					% URL_BASE, 'FAQs'],
+			['{0}/community/howtos/'.format(URL_BASE), 'How To page'],
+			['{0}/faq'				.format(URL_BASE), 'FAQs'],
 			['mailto:historypin@wearewhatwedo.org', 'historypin@wearewhatwedo.org'],
 		]
 		
