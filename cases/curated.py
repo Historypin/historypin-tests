@@ -54,8 +54,8 @@ class Curated(HPTestCase):
 		self.assertEqual('See all Tours'			, button_text[3].text)
 		
 		button_links = self.es('.inner a.button.left')
-		self.assertEqual('%s/collections/add'	% URL_BASE, button_links[0].get_attribute('href'))
-		self.assertEqual('%s/collections/all/'	% URL_BASE, button_links[1].get_attribute('href'))
-		self.assertEqual('%s/tours/add'			% URL_BASE, button_links[2].get_attribute('href'))
-		self.assertEqual('%s/tours/all/'		% URL_BASE, button_links[3].get_attribute('href'))
+		self.assertEqual('{0}/collections/add'	.format(URL_BASE), button_links[0].get_attribute('href'))
+		self.assertEqual('{0}/collections/all/'	.format(URL_BASE), button_links[1].get_attribute('href'))
+		self.assertEqual('{0}/tours/add'		.format(URL_BASE), button_links[2].get_attribute('href'))
+		self.assertEqual('{0}/tours/all/'		.format(URL_BASE), button_links[3].get_attribute('href'))
 		
