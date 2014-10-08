@@ -30,7 +30,7 @@ class Attach():
 		# no way to do this in selenium as the counter element is hidden to fix this
 		self.browser.execute_script("ms = $('.hp-marker.hp-marker-cluster'); for(i in ms){ m = ms[i]; if($('.hp-marker-count', m).text() < 100 || $.address.current_path.zoom >= 21){ m.click(); break; } }")
 		
-		sleep(3)
+		sleep(5)
 		cluster = self.e('#galleryInfoWindow_contents li:nth-of-type(1)')
 		
 		sleep(5)

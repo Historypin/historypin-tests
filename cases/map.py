@@ -64,34 +64,11 @@ class Map(HPTestCase):
 		self.assertEqual('1840', self.e('#from span').text)
 		self.assertEqual('2014', self.e('#to span').text)
 		
-		labels = [
-			['1840-01-01', '1840'],
-			['1850-01-01', '1850'],
-			['1860-01-01', '1860'],
-			['1870-01-01', '1870'],
-			['1880-01-01', '1880'],
-			['1890-01-01', '1890'],
-			['1900-01-01', '1900'],
-			['1910-01-01', '1910'],
-			['1920-01-01', '1920'],
-			['1930-01-01', '1930'],
-			['1940-01-01', '1940'],
-			['1950-01-01', '1950'],
-			['1960-01-01', '1960'],
-			['1970-01-01', '1970'],
-			['1980-01-01', '1980'],
-			['1990-01-01', '1990'],
-			['2000-01-01', '2000'],
-			['2010-01-01', ''],		# 2010 - this is item is display: none
-			['2014-01-01', '2014'],
-		]
+		labels = ['1840', '1850', '1860', '1870', '1880', '1890', '1900', '1910', '1920', '1930', '1940', '1950', '1960', '1970', '1980', '1990', '2000']
 		
 		link_label = self.es('#date-slider-labels a')
 		
-		for n in range(len(labels)):
-			i = labels[n]
-			self.assertEqual('{0}/photos/search/date_from/{1}'.format(URL_BASE, i[0]), link_label[n].get_attribute('href'))
-			self.assertEqual(i[1]													, link_label[n].text)
+		for n in range(len(labels)): self.assertEqual(labels[n], link_label[n].text)
 		
 		date_from	= self.e_wait('#date-slider-labels li:nth-of-type(3) a')
 		# date_to		= self.e_wait('#date-slider-labels li:nth-of-type(7) a')
@@ -201,7 +178,7 @@ class Map(HPTestCase):
 		self.assertIn('ss-alert', report.e('span').get_attribute('class'))
 		
 		streetview = actions.e('.action.photo-view-on-streetview.sv-marker')
-		self.assertEqual('{0}/map/#streetview_cnt' % URL_BASE, streetview.get_attribute('href'))
+		self.assertEqual('{0}/map/#streetview_cnt'.format(URL_BASE), streetview.get_attribute('href'))
 		self.assertEqual('Street View'						, streetview.text)
 		
 		fullscr = actions.e('.action.fullscr.right')

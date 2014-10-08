@@ -5,7 +5,8 @@ from npower import Project_NPower
 
 class Project_NPower_Celebrate(Project_NPower):
 	
-	PROJECT_URL = '/project/21-remember-celebrate'
+	PROJECT_URL		= '/project/21-remember-celebrate'
+	LOCATION_URL	= '/geo:52.103536,-1.08362/zoom:8/'
 	
 	ATTACH_TABS = [
 		'{0}/attach{1}/map/index/'		.format(URL_BASE, PROJECT_URL),

@@ -5,7 +5,7 @@ from base import *
 class Suggestions(HPTestCase):
 	
 	@unittest.expectedFailure  # to test with test photo, suggestions should be allowed on the map
-	@url('dialog:/%d/tab:write-story/suggest:title/' % ID_MAP_ITEM)
+	@url('dialog:/{0}/tab:write-story/suggest:title/'.format(ID_MAP_ITEM))
 	def test_title_suggestion(self):
 		# TODO
 		title_option = self.e('#suggestion_field option:nth-of-type(2)')
@@ -45,7 +45,7 @@ class Suggestions(HPTestCase):
 		pass
 	
 	@unittest.expectedFailure
-	@url('dialog/%d/tab:write-story/suggest:date/' % ID_MAP_ITEM)
+	@url('dialog/{0}/tab:write-story/suggest:date/'.format(ID_MAP_ITEM))
 	def test_specific_date_suggestion(self):
 		
 		sp_date_option = self.e('#suggestion_field option:nth-of-type(3)')
@@ -88,7 +88,7 @@ class Suggestions(HPTestCase):
 		pass
 	
 	@unittest.expectedFailure
-	@url('dialog/%d/tab:write-story/suggest:date/' % ID_MAP_ITEM)
+	@url('dialog/{0}/tab:write-story/suggest:date/'.format(ID_MAP_ITEM))
 	def test_timeframe_date_suggestion(self):
 		
 		date_option = self.e('#suggestion_field option:nth-of-type(3)')
@@ -131,7 +131,7 @@ class Suggestions(HPTestCase):
 		pass
 	
 	@unittest.expectedFailure
-	@url('dialog/%d/tab:write-story/suggest:keywords/' % ID_MAP_ITEM)
+	@url('dialog/{0}/tab:write-story/suggest:keywords/'.format(ID_MAP_ITEM))
 	def test_tags_suggestion(self):
 		
 		tags_option = self.e('#suggestion_field option:nth-of-type(4)')
@@ -172,7 +172,7 @@ class Suggestions(HPTestCase):
 		pass
 	
 	@unittest.expectedFailure
-	@url('dialog/%d/tab:write-story/suggest:location/' % ID_MAP_ITEM)
+	@url('dialog/{0}/tab:write-story/suggest:location/'.format(ID_MAP_ITEM))
 	def test_location_suggestion(self):
 		# TODO
 		
@@ -213,7 +213,7 @@ class Suggestions(HPTestCase):
 		pass
 	
 	@unittest.expectedFailure
-	@url('dialog/%d/tab:suggestion-streetview/suggest:streetview/' % ID_MAP_ITEM)
+	@url('dialog/{0}/tab:suggestion-streetview/suggest:streetview/'.format(ID_MAP_ITEM))
 	def test_streetview_suggestion(self):
 		# TODO
 		

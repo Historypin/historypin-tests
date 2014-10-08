@@ -6,7 +6,8 @@ from npower import Project_NPower
 
 class Project_NPower_Cook_Clean(Project_NPower):
 	
-	PROJECT_URL = '/project/19-remember-cook-and-clean'
+	PROJECT_URL		= '/project/19-remember-cook-and-clean'
+	LOCATION_URL	= '/geo:52.841025,-1.251244/zoom:9/'
 	
 	ATTACH_TABS = [
 		'{0}/attach{1}/map/index/'		.format(URL_BASE, PROJECT_URL),

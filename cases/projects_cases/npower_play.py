@@ -5,7 +5,8 @@ from npower import Project_NPower
 
 class Project_NPower_Play(Project_NPower):
 	
-	PROJECT_URL = '/project/18-remember-play'
+	PROJECT_URL		= '/project/18-remember-play'
+	LOCATION_URL	= '/geo:51.484664,-0.637162/zoom:9/'
 	
 	ATTACH_TABS = [
 		'{0}/attach{1}/map/index/'		.format(URL_BASE, PROJECT_URL),

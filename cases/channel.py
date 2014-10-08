@@ -1137,7 +1137,7 @@ class Channel(HPTestCase):
 		dialog = self.e('.embed-profile')
 		self.assertTrue(dialog.is_displayed())
 		self.assertEqual('Copy and paste this HTML to insert the Historypin Badge into your website.', dialog.e('h4').text)
-		self.assertIn("http://www.historypin.com/channels/view/{0}/".format(ID_USER), dialog.e('textarea').text)
+		self.assertIn("http://www.historypin.org/channels/view/{0}/".format(ID_USER), dialog.e('textarea').text)
 		
 		dialog.parent_node().e('.ui-dialog-titlebar-close').click()
 		self.assertFalse(dialog.is_displayed())
@@ -1159,7 +1159,7 @@ class Channel(HPTestCase):
 		
 		dialog = self.e('.embed-social-media')
 		self.assertEqual('Copy and paste this HTML to insert the Historypin Social Media icon into your website.', dialog.e('h4').text)
-		self.assertIn("http://www.historypin.com/channels/view/{0}/".format(ID_USER), dialog.e('textarea').text)
+		self.assertIn("http://www.historypin.org/channels/view/{0}/".format(ID_USER), dialog.e('textarea').text)
 		
 		dialog.parent_node().e('.ui-dialog-titlebar-close').click()
 		self.assertFalse(dialog.is_displayed())
