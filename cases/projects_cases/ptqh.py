@@ -63,7 +63,7 @@ class Project_PTQH(HPTestCase):
 		self.assertIsInstance(recent_photo.e('img')	, WebElement)
 		
 		upload_photo = self.e('.upload-photo a')
-		self.assertEqual('%s/pin/' % self.PROJECT_URL	, upload_photo.get_attribute('href'))
+		self.assertEqual('{0}/pin/'.format(self.PROJECT_URL), upload_photo.get_attribute('href'))
 		self.assertEqual('Pin your own'			, upload_photo.text)
 		
 		

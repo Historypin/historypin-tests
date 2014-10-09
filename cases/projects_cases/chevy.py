@@ -35,7 +35,7 @@ class Project_Chevy(HPTestCase, Attach):
 		touts = [
 			['Pin your Chevy memories'			, '{0}{1}/upload'	.format(URL_BASE, self.PROJECT_URL)	, '{0}tout1.jpg'.format(img_link), 'Add photos, videos and memories for each one of the Chevy models created over the last 100 years.'],
 			['100 Years of Chevy Icons'			, '{0}{1}#'			.format(URL_BASE, self.PROJECT_URL)	, '{0}tout2.jpg'.format(img_link), 'From the Series C Classic 6 in 1911 to the 2012 Sonic, check out these design icons.'],
-			['See Louis Chevrolet himself'		, '{0}/photos/#!/geo:41.416981,-87.365314/zoom:10/date_from:1905-01-01/date_to:1912-12-31/dialog:51753/tab:details/'.format(URL_BASE), '%stout3.jpg' % img_link, 'The founder of Chevrolet racing in the Cobe Cup Race in Indiana in 1909.'],
+			['See Louis Chevrolet himself'		, '{0}/photos/#!/geo:41.416981,-87.365314/zoom:10/date_from:1905-01-01/date_to:1912-12-31/dialog:51753/tab:details/'.format(URL_BASE), '{0}tout3.jpg'.format(img_link), 'The founder of Chevrolet racing in the Cobe Cup Race in Indiana in 1909.'],
 		]
 		
 		touts_cnt	= self.e('.highlights')

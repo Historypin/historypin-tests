@@ -27,24 +27,24 @@ class Pinning(HPTestCase):
 		
 		photo_type = self.e('.upload-type li .photos')
 		self.assertEqual('Photos', photo_type.text)
-		self.assertEqual('%s/upload-item/index/selected_projects/1/' % URL_BASE, photo_type.get_attribute('href'))
+		self.assertEqual('{0}/upload-item/index/selected_projects/1/'.format(URL_BASE), photo_type.get_attribute('href'))
 		self.assertIn('ss-icon'		, photo_type.e('span').get_attribute('class'))
 		self.assertIn('ss-picture'	, photo_type.e('span').get_attribute('class'))
 		
 		video_type = self.e('.upload-type li .videos')
 		self.assertEqual('Video', video_type.text)
-		self.assertEqual('%s/upload-video/index/selected_projects/1/' % URL_BASE, video_type.get_attribute('href'))
+		self.assertEqual('{0}/upload-video/index/selected_projects/1/'.format(URL_BASE), video_type.get_attribute('href'))
 		self.assertIn('ss-icon'		, video_type.e('span').get_attribute('class'))
 		self.assertIn('ss-video'	, video_type.e('span').get_attribute('class'))
 		
 		audio_type = self.e('.upload-type li .audio')
 		self.assertEqual('Audio', audio_type.text)
-		self.assertEqual('%s/upload-audio/index/selected_projects/1/' % URL_BASE, audio_type.get_attribute('href'))
+		self.assertEqual('{0}/upload-audio/index/selected_projects/1/'.format(URL_BASE), audio_type.get_attribute('href'))
 		self.assertIn('ss-icon'			, audio_type.e('span').get_attribute('class'))
 		self.assertIn('ss-headphones'	, audio_type.e('span').get_attribute('class'))
 		
 		self.assertEqual('Want to upload large amounts of content? Read about our Bulk Uploader', self.e('.bottom-p').text)
-		self.assertEqual('%s/bulkbridge/' % URL_BASE, self.e('.bottom-p a').get_attribute('href'))
+		self.assertEqual('{0}/bulkbridge/'.format(URL_BASE), self.e('.bottom-p a').get_attribute('href'))
 	
 	@logged_in
 	@url('/upload-item/index/')
@@ -60,7 +60,7 @@ class Pinning(HPTestCase):
 		self.assertEqual('Pssst. JPG and PNG files up to 5 megabytes only please.', cnt.e('h5').text)
 		
 		self.assertEqual('Are you an archive and want to upload large amounts of content? Try our Bulk Uploader for Firefox and Chrome.', self.e('.bottom-p').text)
-		self.assertEqual('%s/bulkbridge/' % URL_BASE, self.e('.bottom-p a').get_attribute('href'))
+		self.assertEqual('{0}/bulkbridge/'.format(URL_BASE), self.e('.bottom-p a').get_attribute('href'))
 	
 	
 	@unittest.expectedFailure
@@ -136,7 +136,7 @@ class Pinning(HPTestCase):
 		site_cnt.e('#photo_pin').click()
 		
 		sleep(3)
-		self.go('/attach/uid%d/photos/list/' % ID_USER)
+		self.go('/attach/uid{0}/photos/list/'.format(ID_USER))
 		
 		img_holder	= self.e('#list li:nth-of-type(1) .image-holder')
 		delete_icon	= img_holder.e('.delete-confirm')
@@ -152,7 +152,7 @@ class Pinning(HPTestCase):
 		sleep(4)
 		
 		self.browser.refresh()
-		self.assertFalse(self.e('#list').exists('.image[href*="%s"]' % id_video))
+		self.assertFalse(self.e('#list').exists('.image[href*="%{0}]' .format(id_video)))
 	
 	@unittest.skipIf(IS_LIVE, 'Do not run on live')
 	@logged_in
@@ -207,7 +207,7 @@ class Pinning(HPTestCase):
 		site_cnt.e('#photo_pin').click()
 		
 		sleep(3)
-		self.go('/attach/uid%d/photos/list/' % ID_USER)
+		self.go('/attach/uid{0}/photos/list/'.format(ID_USER))
 		
 		img_holder	= self.e('#list li:nth-of-type(1) .image-holder')
 		delete_icon	= img_holder.e('.delete-confirm')
@@ -223,4 +223,4 @@ class Pinning(HPTestCase):
 		sleep(4)
 		
 		self.browser.refresh()
-		self.assertFalse(self.e('#list').exists('.image[href*="%s"]' % id_audio))
+		self.assertFalse(self.e('#list').exists('.image[href*="{0}"]'.format(id_audio)))
