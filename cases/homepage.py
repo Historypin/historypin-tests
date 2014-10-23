@@ -224,7 +224,7 @@ class Homepage(HPTestCase):
 			[ 'Privacy policy'					, '{0}/privacy-policy/'.format(URL_BASE)],
 			[ 'Cookies'							, '{0}/cookies/'.format(URL_BASE)],
 			[ 'Terms and Conditions'			, '{0}/terms-and-conditions/'.format(URL_BASE)],
-			[ u'\xa9 We Are What We Do'			, 'http://www.wearewhatwedo.org/' ],
+			[ u'\xa9 Shift'						, 'http://www.shiftdesign.org.uk/' ],
 		]
 		
 		elements = self.es('.footer ul a')

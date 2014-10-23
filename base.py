@@ -144,7 +144,7 @@ class HPTestCase(TestCase):
 	def login(cls):
 		cls.go('/user/')
 		
-		login = cls.e('#site-content .login .buttons li:nth-of-type(1) a')
+		login = cls.e('#site-content #login-google')
 		login.click()
 		sleep(3)
 		
