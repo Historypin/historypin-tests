@@ -201,7 +201,7 @@ class Channel_Logged(HPTestCase):
 			self.assertEqual(i[1]												, channels_help[n].text)
 		
 		
-		self.assertEqual('If you get stuck or have any questions, check out our How To page and FAQs and please feel free to contact us at historypin@wearewhatwedo.org', help.e('p:last-of-type').text)
+		self.assertEqual('If you get stuck or have any questions, check out our How To page and FAQs and please feel free to contact us at hello@historypin.org', help.e('p:last-of-type').text)
 		
 		links = [
 			['{0}/community/howtos/'.format(URL_BASE), 'How To page'],
@@ -275,7 +275,7 @@ class Channel_Logged(HPTestCase):
 			self.assertEqual(i[1]											, channels_help[n].text)
 		
 		
-		self.assertEqual('If you get stuck or have any questions, check out our How To page and FAQs and please feel free to contact us at historypin@wearewhatwedo.org', help.e('p:last-of-type').text)
+		self.assertEqual('If you get stuck or have any questions, check out our How To page and FAQs and please feel free to contact us at hello@historypin.org', help.e('p:last-of-type').text)
 		
 		links = [
 			['{0}/community/howtos/'.format(URL_BASE), 'How To page'],
@@ -326,6 +326,7 @@ class Channel_Logged(HPTestCase):
 		self.assertEqual('Authentication', tab_cnt.e('h3').text)
 		
 		cnt = [
+			['Historypin', 'Status:', 'Not Connected', 'Connect'	, '/user/hp_login/connect/1'],
 			['Google'	, 'Status:', 'Connected'	, 'Disconnect'	, '/user/google_login/connect/-1'],
 			['Twitter'	, 'Status:', 'Not Connected', 'Connect'		, '/user/twitter_login/connect/1'],
 			['Facebook'	, 'Status:', 'Not Connected', 'Connect'		, '/channels/view/{0}/#'.format(ID_USER)],
