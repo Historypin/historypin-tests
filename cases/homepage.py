@@ -30,7 +30,7 @@ class Homepage(HPTestCase):
 			[ 'Get Involved'			, '{0}/community/'	.format(URL_BASE) ],
 			[ 'Blog'					, 'http://blog.historypin.com/' ],
 			[ 'Login'					, '{0}/user/'		.format(URL_BASE) ],
-			[ 'Join'					, '{0}/user/'		.format(URL_BASE) ],
+			[ 'Join'					, '{0}/user/join/'	.format(URL_BASE) ],
 			[ 'Pin'						, '{0}/upload/'		.format(URL_BASE) ],
 		]
 		
@@ -197,7 +197,7 @@ class Homepage(HPTestCase):
 			[ 'About'							, '{0}/about-us/'.format(URL_BASE)],
 			[ 'FAQ'								, '{0}/faq/'.format(URL_BASE)],
 			[ 'How To Guides'					, '{0}/how-to/'.format(URL_BASE)],
-			[ 'We Are What We Do'				, '{0}/wearewhatwedo/'.format(URL_BASE)],
+			[ 'Shift'							, '{0}/wearewhatwedo/'.format(URL_BASE)],
 			[ 'Team'							, '{0}/team/'.format(URL_BASE)],
 			[ 'Press Centre'					, '{0}/presscentre/'.format(URL_BASE)],
 			[ 'Contact'							, '{0}/contact/'.format(URL_BASE)],
