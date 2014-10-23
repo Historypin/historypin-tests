@@ -57,6 +57,7 @@ from v6.v6_cases import V6_Cases
 
 from channels import Channels
 from channel import Channel
+from channel_logged import Channel_Logged
 
 from pinning import Pinning
 
