@@ -89,7 +89,7 @@ class Project_Becontree(HPTestCase, Attach):
 		
 		icon_tout2 = site_cnt.e('#icon-tout-1 a')
 		
-		self.assertEqual('mailto:steve.rolling@wearewhatwedo.org', icon_tout2.get_attribute('href'))
+		self.assertEqual('mailto:steve.rolling@historypin.org', icon_tout2.get_attribute('href'))
 		self.assertEqual('Contact us', icon_tout2.text)
 		self.assertIn('ss-icon'		, icon_tout2.e('span').get_attribute('class'))
 		self.assertIn('ss-phone'	, icon_tout2.e('span').get_attribute('class'))
@@ -109,7 +109,7 @@ class Project_Becontree(HPTestCase, Attach):
 			['{0}/terms-and-conditions/'.format(URL_BASE), 'Terms and Conditions'],
 			['{0}/privacy-policy/'		.format(URL_BASE), 'Privacy policy'],
 			['{0}/cookies/'				.format(URL_BASE), 'Cookies'],
-			['http://www.wearewhatwedo.org/'	, u'© We Are What We Do'],
+			['http://www.shiftdesign.org.uk/'	, u'© We Are What We Do'],
 		]
 	
 		footer			= self.e('.footer-shadow')

@@ -73,7 +73,7 @@ class Community(HPTestCase):
 			['Local Project Case Studies'				, '{0}/localprojects-case-studies' 	.format(link_community), 'Some examples of local projects around the world using Historypin'],
 			['Support Us'								, '{0}/donate/'						.format(URL_BASE)	, u'Donate to Friends of Historypin and you’ll be helping support Historypin Community and Education Programmes.\n\nRegistered Charity Number 1134546'],
 			['Blog'										, 'http://blog.historypin.com/'							, 'Find out the latest community, site development, partnership and Challenges news'],
-			['Contact'									, '{0}/contact-us'					.format(URL_BASE)	, 'For more information contact Rebekkah Abraham, Historypin Content Manager on rebekkah.abraham@wearewhatwedo.org.'],
+			['Contact'									, '{0}/contact-us'					.format(URL_BASE)	, 'For more information contact Rebekkah Abraham, Historypin Content Manager on rebekkah.abraham@historypin.org.'],
 		]
 		
 		headings	= self.es('.sidebar .inner h4')
@@ -86,7 +86,7 @@ class Community(HPTestCase):
 			self.assertEqual(i[1], links[n].get_attribute('href'))
 			self.assertEqual(i[2], paragraphs[n].text)
 			
-		self.assertEqual('mailto:rebekkah.abraham@wearewhatwedo.org', self.e('.sidebar .inner p:last-of-type a').get_attribute('href'))
+		self.assertEqual('mailto:rebekkah.abraham@historypin.org', self.e('.sidebar .inner p:last-of-type a').get_attribute('href'))
 	
 	@url('/community/schools')
 	def test_home_schools(self):

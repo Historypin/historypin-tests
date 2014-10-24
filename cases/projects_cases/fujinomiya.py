@@ -123,7 +123,7 @@ class Project_Fujinomiya(HPTestCase, Attach):
 			['{0}/terms-and-conditions/'.format(self.blog_link), 'Terms and conditions'],
 			['{0}/privacy-policy/'		.format(self.blog_link), 'Privacy policy'],
 			['{0}/cookies/'				.format(self.blog_link), 'Cookies'],
-			['http://wearewhatwedo.org/'				, u'© We Are What We Do'],
+			['http://www.shiftdesign.org.uk/'					, u'© Shift'],
 		]
 		
 		for n in range(len(footer_items)):

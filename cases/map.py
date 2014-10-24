@@ -476,7 +476,7 @@ class Map(HPTestCase):
 			['{0}/privacy-policy'		.format(URL_BASE), 'Privacy Policy'],
 			['{0}/cookies'				.format(URL_BASE), 'Cookies'],
 			['{0}/contact'				.format(URL_BASE), 'Contact'],
-			['http://wearewhatwedo.org/'		, u'© 2012 We Are What We Do'],
+			['http://shiftdesign.org.uk/'				, u'© 2012 Shift'],
 		]
 		
 		lists = self.es('.nav.cf li a')

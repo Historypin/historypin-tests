@@ -42,12 +42,12 @@ class Pages(HPTestCase):
 		self.assertEqual('Contact', self.e('.section h1.title').text)
 		
 		content = [
-			['General enquiries, technical enquiries, content enquiries', 'historypin@wearewhatwedo.org\n+44 (0)20 7148 7672\n71 St John Street\nLondon\nEC1M 4NJ\nUnited Kingdom', 'mailto:historypin@wearewhatwedo.org'],
-			['Media', 'Rebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@wearewhatwedo.org'],
-			['Schools, local projects and volunteers', 'Rebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@wearewhatwedo.org'],
-			['Library, archive and museum partnerships', 'Rebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@wearewhatwedo.org'],
-			['Web', 'Rebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@wearewhatwedo.org'],
-			['Corporate Partnerships', 'Nick Stanhope\nnick.stanhope@wearewhatwedo.org\n+44 (0)20 7148 7667', 'mailto:nick.stanhope@wearewhatwedo.org'],
+			['General enquiries, technical enquiries, content enquiries', 'hello@historypin.org\n+44 (0)20 7148 7672\n71 St John Street\nLondon\nEC1M 4NJ\nUnited Kingdom', 'mailto:hello@historypin.org'],
+			['Media', 'Rebekkah Abraham\nrebekkah.abraham@historypin.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@historypin.org'],
+			['Schools, local projects and volunteers', 'Rebekkah Abraham\nrebekkah.abraham@historypin.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@historypin.org'],
+			['Library, archive and museum partnerships', 'Rebekkah Abraham\nrebekkah.abraham@historypin.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@historypin.org'],
+			['Web', 'Rebekkah Abraham\nrebekkah.abraham@historypin.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@historypin.org'],
+			['Corporate Partnerships', 'Nick Stanhope\nnick.stanhope@historypin.org\n+44 (0)20 7148 7667', 'mailto:nick.stanhope@historypin.org'],
 		]
 		
 		cnt			= self.e('.section')
@@ -212,7 +212,7 @@ class Pages(HPTestCase):
 				'heading': 'Future Plans',
 				'items': [
 					['title59', 'What\'s next for Historypin?'],
-					['title60', 'What\'s next for We Are What We Do?'],
+					['title60', 'What\'s next for Shift?'],
 				],
 			},
 			{
@@ -257,7 +257,7 @@ class Pages(HPTestCase):
 		
 		links = [
 			# link, link text, additional text
-			['http://wearewhatwedo.org/press-cuttings/bringing-social-capital-back-to-life/', 'Bringing social capital back to life', 'The Times, 31st March 2012'],
+			['http://shiftdesign.org.uk/press-cuttings/bringing-social-capital-back-to-life/', 'Bringing social capital back to life', 'The Times, 31st March 2012'],
 			['http://googleblog.blogspot.com/2012/03/google-and-historypin-launch-online.html', u'Google and Historypin launch online gallery to celebrate The Queen\u2019s Diamond Jubilee', 'Google Blog, 12th March 2012'],
 			['http://www.getreading.co.uk/community/s/2100048_mapping_readings_past_with_historypin', 'Mapping Reading\'s past with Historypin', 'Get Reading, 21st September 2012'],
 			['http://lens.blogs.nytimes.com/2011/07/22/using-new-tools-mapping-old-brooklyn/', '"Using New Tools, Mapping Old Brooklyn"', 'New York Times Lens, 22nd July 2011'],
@@ -266,7 +266,7 @@ class Pages(HPTestCase):
 			['http://mashable.com/2011/07/12/historypin-collective-memory/', 'Historypin Launches, Shows Your World As It Was"', 'Mashable, 13th July 2011'],
 			['http://techland.time.com/2011/07/11/old-meets-new-historypin-is-a-time-capsule-for-vintage-photos/', '"Old Meets New: \'Historypin\' Is a Map-Based Time Capsule for Vintage Photos"', 'Time Techland, 11th July 2011'],
 			['http://www.guardian.co.uk/artanddesign/2010/jul/04/historypin-photography-sam-leith', '"With Historypin, photography has entered the fourth dimension, and I\'m going with it"', 'The Guardian, 4th July 2010'],
-			['http://wearewhatwedo.org/press-cuttings/national-portrait-gallery-share-pics-of-queen/', 'National Portrait Gallery share pics of Queen', 'The Sun, 11th March 2012'],
+			['http://shiftdesign.org.uk/press-cuttings/national-portrait-gallery-share-pics-of-queen/', 'National Portrait Gallery share pics of Queen', 'The Sun, 11th March 2012'],
 			['http://www.northumberlandtoday.com/ArticleDisplay.aspx?e=3464879', u'Archives ‘pinning\u2019 local history', 'Northumberland Today, March 2012'],
 			['http://www.huffingtonpost.com/2012/02/22/muni-celebrates-its-past-while-service-cuts-loom_n_1294386.html', 'Muni Celebrates Its Past, But Sees Service Cuts In Its Future', 'Huffington Post, 22nd February 2012'],
 			['http://www.guardian.co.uk/theobserver/2012/feb/18/50-new-radicals-schemes-thinkers?newsfeed=true', 'Britain\'s 50 New Radicals', 'The Guardian, 18th February 2012'],
@@ -276,10 +276,10 @@ class Pages(HPTestCase):
 			['http://blogs.archives.gov/online-public-access/?p=6768', 'Put a Pin in It! National Archives Joins Historypin', 'NARAtions: The Blog of the US National Archives, November 30th 2011'],
 			['http://www.birminghammail.net/news/top-stories/2011/11/08/historypin-site-unlocks-the-secrets-of-birmingham-s-past-97319-29736748/?utm_source=dlvr.it&utm_medium=twitter', 'Historypin site unlocks the secrets of Birmingham\'s past', 'Birmingham Mail, 8th November 2011'],
 			['http://www.dailymail.co.uk/news/article-2058223/Website-Historypin-shows-streets-looked-170-years-ago.html', u'It\u2019s a Google Streetmap of history: How our famous landmarks looked up to 170 years ago', 'Daily Mail, 7th November 2011'],
-			['http://wearewhatwedo.org/press-cuttings/a-history-in-pin-ups-3/', 'A history in pin-ups', u'Reader\u2019s Digest, Asia, November 2011'],
+			['http://shiftdesign.org.uk/press-cuttings/a-history-in-pin-ups-3/', 'A history in pin-ups', u'Reader\u2019s Digest, Asia, November 2011'],
 			['{0}/presscentre/Reader%E2%80%99s%20Digest,%20Asia,%20November%202011'.format(URL_BASE), 'Post Your Pictures, Then Take A Walk Through History', 'NPR, 23rd October 2011'],
 			['http://blogs.abc.net.au/victoria/2011/10/sunday-16-october-.html?site=melbourne&program=melbourne_sundays', 'Interview with Nick Stanhope by Alan Brough', '774 ABC Melbourne (Radio), 16th October 2011'],
-			['http://wearewhatwedo.org/press-cuttings/app-of-the-week-historypin/', 'App of the Week', 'Sunday Times, 2nd October 2011'],
+			['http://shiftdesign.org.uk/press-cuttings/app-of-the-week-historypin/', 'App of the Week', 'Sunday Times, 2nd October 2011'],
 			['http://www.reuters.com/article/2011/09/12/us-app-historypin-idUSTRE78B1MW20110912?feedType=RSS&feedName=internetNews', 'Historypin app lets people create a "time machine"', 'Reuters, 12th September 2011'],
 			['http://www.getreading.co.uk/community/s/2098887_reading_pins_down_new_online_history', 'Reading pins down new online history', 'Get Reading, 31st August 2011'],
 			['http://journalstar.com/mobile/article_b8444738-528a-5a1f-9528-4cec8e780ca7.html', 'Time travelers: Websites of vintage photos capture moments in moments', 'Washington Post, 19th August 2011'],
@@ -320,7 +320,7 @@ class Pages(HPTestCase):
 			['http://googlemapsmania.blogspot.com/2010/06/largest-archive-of-photos-on-google.html#links', '"Largest Archive of Photos on Google Maps"', 'Google Maps Mania, 3rd June 2010'],
 			['http://www.dailymail.co.uk/sciencetech/article-1283635/HistoryPin-website-lets-pin-historic-photos-Google-Streetview.html', '"A snapshot through time: The website that lets you \'pin\' historic photos onto Street View"', 'The Daily Mail, 3rd June 2010'],
 			['http://rivertonhistory.com/2011/01/whoa-this-is-heavy-2/', '"Whoa, this is heavy!"', 'Historical Society of Riverton, 30th January 2010'],
-			['http://wearewhatwedo.org/press-cuttings/give-us-your-jubilee-memories-says-google/', 'Give us your jubilee memories, says Google', 'The Telegraph, 12th March 2012'],
+			['http://shiftdesign.org.uk/press-cuttings/give-us-your-jubilee-memories-says-google/', 'Give us your jubilee memories, says Google', 'The Telegraph, 12th March 2012'],
 		]
 		
 		paragraphs	= self.es('#site-content .right p')
@@ -334,10 +334,10 @@ class Pages(HPTestCase):
 		self.assertEqual('Contact Details', cnt.e('h3').text)
 		
 		p, a = cnt.es('p'), cnt.es('p a')
-		self.assertEqual('UK & Global\nRebekkah Abraham\nrebekkah.abraham@wearewhatwedo.org\n+44 (0)20 7148 7666'	, p[0].text)
-		self.assertEqual('mailto:rebekkah.abraham@wearewhatwedo.org'												, a[0].get_attribute('href'))
-		self.assertEqual('US\nJon Voss\njon.voss@wearewhatwedo.org\n+1 415 935 4701'								, p[1].text)
-		self.assertEqual('mailto:jon.voss@wearewhatwedo.org'														, a[1].get_attribute('href'))
+		self.assertEqual('UK & Global\nRebekkah Abraham\nrebekkah.abraham@historypin.org\n+44 (0)20 7148 7666'	, p[0].text)
+		self.assertEqual('mailto:rebekkah.abraham@historypin.org'												, a[0].get_attribute('href'))
+		self.assertEqual('US\nJon Voss\njon.voss@historypin.org\n+1 415 935 4701'								, p[1].text)
+		self.assertEqual('mailto:jon.voss@historypin.org'														, a[1].get_attribute('href'))
 		
 		self.assertEqual('Awards', self.e('.sidebar .inner:nth-of-type(2) h3').text)
 		
@@ -377,8 +377,8 @@ class Pages(HPTestCase):
 		items = [
 			'1. What do we mean by "Your Data"?',
 			'2. When do We collect Your data?',
-			'3. How does We Are What We Do use Your Data?',
-			'4.  Will We Are What We Do pass Your Data to third parties?',
+			'3. How does Shift use Your Data?',
+			'4.  Will Shift pass Your Data to third parties?',
 			'5. Data Security',
 			'6. Cookies',
 			'7. Third party information',
@@ -409,7 +409,7 @@ class Pages(HPTestCase):
 		sidebar = [
 			{
 				'heading': 'Support Us',
-				'paragraphs': ['Your donation to the We Are What We Do Charitable Foundation will go a long way in helping support Historypin Community and Education Programmes.', 'Registered Charity Number\n1134546'],
+				'paragraphs': ['Your donation to the Shift Charitable Foundation will go a long way in helping support Historypin Community and Education Programmes.', 'Registered Charity Number\n1134546'],
 				'link': ['Donate', 'http://www.charitygiving.co.uk/donate/donate_b.asp?charityid=5366'],
 			},
 			{
@@ -419,8 +419,8 @@ class Pages(HPTestCase):
 			},
 			{
 				'heading': 'Contact us',
-				'paragraphs': ['To find out more, please contact ella.wiggans@wearewhatwedo.org'],
-				'link': ['ella.wiggans@wearewhatwedo.org', 'mailto:ella.wiggans@wearewhatwedo.org'],
+				'paragraphs': ['To find out more, please contact ella.wiggans@historypin.org'],
+				'link': ['ella.wiggans@historypin.org', 'mailto:ella.wiggans@historypin.org'],
 			},
 		]
 		
@@ -503,12 +503,12 @@ class Pages(HPTestCase):
 	
 	@url('/wearewhatwedo/')
 	def test_wawwd(self):
-		self.assertTitle('Historypin | We Are What We Do')
-		self.assertEqual('We Are What We Do', self.e('.title').text)
+		self.assertTitle('Historypin | Shift')
+		self.assertEqual('Shift', self.e('.title').text)
 		
 		a = self.e('.rte p:nth-child(5) a')
-		self.assertEqual('http://wearewhatwedo.org/'	, a.get_attribute('href'))
-		self.assertEqual('wearewhatwedo.org'			, a.text)
+		self.assertEqual('http://shiftdesign.org.uk/'	, a.get_attribute('href'))
+		self.assertEqual('shiftdesign.org.uk'			, a.text)
 	
 	@url('/bulkbridge/')
 	def test_bulkbridge_page(self):
@@ -563,12 +563,12 @@ class Pages(HPTestCase):
 		help = sidebar.e('.help')
 		self.assertEqual('Get help', help.e('h3').text)
 		
-		self.assertEqual('If you get stuck or have any questions, check out our How To page and FAQs and please feel free to contact us at historypin@wearewhatwedo.org', help.e('p').text)
+		self.assertEqual('If you get stuck or have any questions, check out our How To page and FAQs and please feel free to contact us at hello@historypin.org', help.e('p').text)
 		
 		links = [
 			['{0}/community/howtos/'.format(URL_BASE), 'How To page'],
 			['{0}/faq'				.format(URL_BASE), 'FAQs'],
-			['mailto:historypin@wearewhatwedo.org', 'historypin@wearewhatwedo.org'],
+			['mailto:hello@historypin.org', 'hello@historypin.org'],
 		]
 		
 		links_help = help.es('p a')

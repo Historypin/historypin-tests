@@ -705,7 +705,7 @@ class Project_Europeana(HPTestCase, Attach):
 			['{0}contact/'			.format(europeana_link)	, 'Contact'],
 			['{0}privacy-policy/'	.format(europeana_link)	, 'Privacy Policy'],
 			['http://www.historypin.com/cookies/'			, 'Cookies'],
-			['http://wearewhatwedo.org/'					, u'© We Are What We Do'],
+			['http://www.shiftdesign.org.uk/'				, u'© Shift'],
 		]
 		
 		footer			= self.e('#supp')

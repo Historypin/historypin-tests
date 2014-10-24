@@ -169,9 +169,9 @@ class Project_PTQH(HPTestCase):
 		
 		links = site_cnt.es('.section a')
 		
-		self.assertEqual('http://wearewhatwedo.org/', links[0].get_attribute('href'))
+		self.assertEqual('http://www.shiftdesign.org.uk/', links[0].get_attribute('href'))
 		self.assertEqual('{0}/'.format(URL_BASE)		, links[1].get_attribute('href'))
-		self.assertEqual('http://google.com/'		, links[2].get_attribute('href'))
+		self.assertEqual('http://google.com/'			, links[2].get_attribute('href'))
 	
 	@url('/project/5-DiamondJubilee/contact/')
 	def test_contact(self):
