@@ -548,6 +548,24 @@ class Explore(HPTestCase):
 		self.assertEqual('Explore the map', self.e('#btn-explore').text)
 		self.e('#btn-explore').click()
 	
+	@logged_in
+	@url('/en/explore/oreo/')
+	def test_project_name_length(self):
+		# this test will pass only on v614-beta-1!!!!
+		
+		self.e('.add-project').click()
+		sleep(2)
+		
+		project_title = self.e('h3 .project-title')
+		project_title.send_keys('oreo')
+		
+		self.e('#button_save').click()
+		
+		error_message = self.e('.error.error-title')
+		self.assertIsInstance(error_message, WebElement)
+		sleep(2)
+		self.assertEqual('Title must be atleast 6 characters long.', error_message.text)
+	
 	# @url('/en/explore/oreo')
 	# def test_expand_collapse_banner(self):
 		

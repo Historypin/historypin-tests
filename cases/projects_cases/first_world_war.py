@@ -37,6 +37,29 @@ class Project_FirstWorldWar(HPTestCase):
 			self.assertEqual(i[0], logos_links[n].get_attribute('href'))
 			self.assertEqual('{0}/resources/explore/images{1}'.format(URL_BASE, i[1]), logos_imgs[n].get_attribute('src'))
 		
+	
+	def test_explore_interface_not_logged_in(self):
+		self.go(self.PROJECT_URL)
+		
+		explore = self.e('#explore')
+		
+		self.assertIsInstance(explore.e('#map'), WebElement)
+		self.assertIsInstance(explore.e('#timeline'), WebElement)
+		self.assertEqual('First World War Centenary', explore.e('h3').text)
+		self.assertEqual('About the Project', explore.e('.about a').text)
+		
+		# search_section	= explore.e('#search')
+		
+		
+		project_card	= explore.e('.panel:nth-of-type(3)')
+		
+		self.assertIsInstance(project_card.e('.img-wrapper'), WebElement)
+		self.assertIsInstance(project_card.e('.users'), WebElement)
+		self.assertIsInstance(project_card.e('.images-wrapper'), WebElement)
+		
+		self.assertEqual('FIRST WORLD WAR CENTENARY', project_card.e('.desc-wrapper h4').text)
+		
+		
 		# self.assertIn('You can use the Historypin First World War Centenary hub to explore and contribute to these projects and add your own.', banner.e('.tab-cnt p').text)
 		
 		# project_items[0].click()
@@ -102,5 +125,5 @@ class Project_FirstWorldWar(HPTestCase):
 		# 4. search project keyword
 		# 5. search for two seperate words
 		# 6. make test for load button - if there is no button, stop the test
-		# 7. assert about section
+		# 7. assert about section - click about
 		# 8. assert banner

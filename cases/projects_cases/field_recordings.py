@@ -16,13 +16,13 @@ class Project_FieldRecordings(HPTestCase, Attach):
 	def test_index(self):
 		self.go(self.PROJECT_URL)
 		
-		self.assertTitle('Can you help add information to these birdlife recordings? | Home')
+		self.assertTitle('Birdlife | Home')
 		
 		self.assertEqual('{0}/projects/img/dim/1000x250/crop/1/image_id/203'.format(URL_BASE), self.e('#banner_images li img').get_attribute('src'))
 		
 		site_cnt = self.e('#site-content')
 		
-		self.assertEqual('Can you help add information to these birdlife recordings?', site_cnt.e('h1').text)
+		self.assertEqual('Birdlife', site_cnt.e('h1').text)
 		self.assertIn('The Netherlands Institute for Sound and Vision has many recordings of bird sounds from across the Netherlands.', site_cnt.e('.main_description').text)
 		
 		self.assertEqual('{0}/attach{1}/map/index/'.format(URL_BASE, self.PROJECT_URL), site_cnt.e('#embed-frame').get_attribute('src'))

@@ -89,7 +89,7 @@ class Project_Japan(HPTestCase, Attach):
 			['{0}/terms-and-conditions/'.format(self.blog_link), 'Terms and conditions'],
 			['{0}/privacy-policy/'		.format(self.blog_link), 'Privacy policy'],
 			['{0}/cookies/'				.format(self.blog_link), 'Cookies'],
-			['http://www.shiftdesign.org.uk/'					, u'© Shift'],
+			['http://shift.org.uk/'							, u'© Shift'],
 		]
 		
 		for n in range(len(footer_items)):
@@ -132,7 +132,7 @@ class Project_Japan(HPTestCase, Attach):
 		self.assertEqual('{0}/user/'.format(URL_BASE_JP), user_links[0].get_attribute('href'))
 		self.assertEqual(u'アカウント作成', user_links[0].text)
 	
-		self.assertEqual('{0}/user/'.format(URL_BASE_JP), user_links[1].get_attribute('href'))
+		self.assertEqual('{0}/user'.format(URL_BASE_JP), user_links[1].get_attribute('href'))
 		self.assertEqual(u'ログイン', user_links[1].text)
 		
 		self.assertIn(u'Historypinは、世界中の人々が自分たちのコミュ', self.e('.intro p').text)

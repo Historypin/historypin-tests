@@ -280,7 +280,7 @@ class Channel_Logged(HPTestCase):
 		links = [
 			['{0}/community/howtos/'.format(URL_BASE), 'How To page'],
 			['{0}/faq/'				.format(URL_BASE), 'FAQs'],
-			['mailto:hhello@historypin.org'	, 'hhello@historypin.org'],
+			['mailto:hello@historypin.org'	, 'hello@historypin.org'],
 		]
 		
 		links_help = help.es('p:last-of-type a')
@@ -442,7 +442,7 @@ class Channel_Logged(HPTestCase):
 		
 		channel_info = settings_menu.e('li:nth-of-type(2) a')
 		self.assertEqual('Profile Info'														, channel_info.text)
-		self.assertEqual('{0}/channels/view/{1}/#tab-settings'.format(URL_BASE, ID_USER)	, channel_info.get_attribute('href'))
+		self.assertEqual('{0}/channels/view/{1}#tab-settings'.format(URL_BASE, ID_USER)	, channel_info.get_attribute('href'))
 		
 		channel_info.click()
 		
