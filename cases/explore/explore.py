@@ -524,6 +524,16 @@ class Explore(HPTestCase):
 	
 	@logged_in
 	@url('/en/explore/oreo/')
+	def test_add_project_card_logged_in(self):
+		
+		add_project_card = self.e('.add-project')
+		add_project_card.click()
+		
+		self.assertEqual('{0}{1}/project/create/'.format(URL_BASE, self.PROJECT_URL), self.browser.current_url)
+		self.assertIsInstance(self.e('#button_save'), WebElement)
+	
+	@logged_in
+	@url('/en/explore/oreo/')
 	def test_project_name_length(self):
 		# this test will pass only on v614-beta-1!!!!
 		
