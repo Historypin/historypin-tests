@@ -509,44 +509,18 @@ class Explore(HPTestCase):
 		
 		self.e('#btn-explore').click()
 	
-	@url('/en/explore/1989')
-	def test_project(self):
+	@url('/en/explore/oreo/')
+	def test_add_project_card_not_logged_in(self):
 		
-		self.assertTitle('Historypin')
+		add_project_card = self.e('.add-project')
+		add_project_card.click()
 		
-		sleep(3)
+		login_dialog = self.e('.login-dialog')
+		self.assertTrue(login_dialog.is_displayed())
+		self.e('.close-btn-wrapp a').click()
+		sleep(2)
+		self.assertFalse(login_dialog.is_displayed(), WebElement)
 		
-		banner = self.e('#banner')
-		self.assertEqual('Europeana 1989', banner.e('h3').text)
-		
-		timeline = self.e('#timeline')
-		self.assertEqual('1930', timeline.e('.start').text)
-		
-		self.assertEqual('2014', timeline.e('.end').text)
-		self.assertIsInstance(timeline.e('.ui-slider-range'), WebElement)
-		
-		# if not self.e('.panel.expanded').is_displayed():
-		# 	banner.e('.home-anchor').click()
-		
-		sleep(4)
-		self.assertEqual(URL_BASE + '/projects/img/pid/34/type/project_image,banner,logo/dim/1920x450/crop/1/', banner.e('img').get_attribute('src'))
-		
-		self.assertEqual('Mirrorpix Archives', banner.e('.channel-link span').text)
-		self.assertEqual('Europeana 1989: We Made History', banner.e('.description strong').text)
-		self.assertIn(u'The way history is recorded isn’t just about what museums and institutions think is important', banner.e('.description').text)
-		
-		share_toolbox	= self.e('.social-container')
-		share_items		= share_toolbox.es('li')
-		
-		self.hover(share_toolbox)
-		self.assertIsInstance(share_items[0], WebElement)
-		self.assertIsInstance(share_items[1], WebElement)
-		self.assertIsInstance(share_items[2], WebElement)
-		self.assertIsInstance(share_items[3], WebElement)
-		self.assertIsInstance(share_items[4], WebElement)
-		
-		self.assertEqual('Explore the map', self.e('#btn-explore').text)
-		self.e('#btn-explore').click()
 	
 	@logged_in
 	@url('/en/explore/oreo/')
@@ -569,8 +543,7 @@ class Explore(HPTestCase):
 	@unittest.skipIf(IS_LIVE, 'Do not run on live')
 	@logged_in
 	@url('/en/explore/oreo/')
-	def test_project_name_reserved_words(self):
-		
+	def _project_name_reserved_words(self):
 		
 		reserved_words = [
 				'about', 'access', 'account', 'accounts', 'add', 'address', 'adm', 'admin', 'administration', 'adult', 'advertising', 'affiliate', 'affiliates', 'ajax', 'analytics', 'android', 'anon', 'anonymous', 'api', 'app', 'apps', 'archive', 'atom', 'auth', 'authentication', 'avatar',
@@ -613,7 +586,8 @@ class Explore(HPTestCase):
 			error_message = self.e('.error.error-title')
 			self.assertIsInstance(error_message, WebElement)
 			project_title.clear()
-		
+		# DO NOT DELETE THIS TEST!!!
+	
 	#@url('/en/explore/oreo')
 	#, def test_expand_collapse_banner(self):
 		
