@@ -513,9 +513,10 @@ class Explore(HPTestCase):
 	def test_add_project_card_not_logged_in(self):
 		
 		add_project_card = self.e('.add-project')
+		login_dialog = self.e('.login-dialog')
+		
 		add_project_card.click()
 		
-		login_dialog = self.e('.login-dialog')
 		self.assertTrue(login_dialog.is_displayed())
 		self.e('.close-btn-wrapp a').click()
 		sleep(2)
@@ -531,6 +532,25 @@ class Explore(HPTestCase):
 		
 		self.assertEqual('{0}{1}/project/create/'.format(URL_BASE, self.PROJECT_URL), self.browser.current_url)
 		self.assertIsInstance(self.e('#button_save'), WebElement)
+	
+	@url('/en/explore/oreo/')
+	def test_add_pin_not_logged_in(self):
+		
+		add_pin_card = self.e('.add-first-pin')
+		login_dialog = self.e('.login-dialog')
+		
+		add_pin_card.click()
+		
+		self.assertTrue(login_dialog.is_displayed())
+		self.e('.close-btn-wrapp a').click()
+		sleep(2)
+		self.assertFalse(login_dialog.is_displayed(), WebElement)
+		
+	
+	@logged_in
+	@url('/en/explore/oreo/')
+	def test_add_pin_card_logged_in(self):
+		pass
 	
 	@logged_in
 	@url('/en/explore/oreo/')
