@@ -547,10 +547,16 @@ class Explore(HPTestCase):
 		self.assertFalse(login_dialog.is_displayed(), WebElement)
 		
 	
+	@unittest.expectedFailure
 	@logged_in
 	@url('/en/explore/oreo/')
 	def test_add_pin_card_logged_in(self):
-		pass
+		
+		add_pin_card = self.e('.add-first-pin')
+		add_pin_card.click()
+		
+		self.assertEqual('{0}/project/30-test-QA-project/upload/projects/'.format(URL_BASE), self.browser.current_url)
+		self.assertEqual('Choose at least one project', self.e('h2').text)
 	
 	@logged_in
 	@url('/en/explore/oreo/')
