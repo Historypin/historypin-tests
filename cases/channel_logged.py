@@ -383,7 +383,7 @@ class Channel_Logged(HPTestCase):
 		
 		email = tab_cnt.e('#new_mail')
 		
-		self.assertEqual('gabriela.ananieva@wearewhatwedo.org', email.get_attribute('value'))
+		self.assertEqual('gabriela.ananieva@historypin.org', email.get_attribute('value'))
 		email.clear()
 		email.send_keys('g.ananieva@avalith.bg')
 		button.click()
@@ -400,9 +400,9 @@ class Channel_Logged(HPTestCase):
 		email = tab_cnt.e('#new_mail')
 		email.clear()
 		
-		email.send_keys('gabriela.ananieva@wearewhatwedo.org')
+		email.send_keys('gabriela.ananieva@historypin.org')
 		button.click()
-		self.assertEqual('gabriela.ananieva@wearewhatwedo.org', email.get_attribute('value'))
+		self.assertEqual('gabriela.ananieva@historypin.org', email.get_attribute('value'))
 	
 	@logged_in
 	@url('/channels/view/{0}/'.format(ID_USER))

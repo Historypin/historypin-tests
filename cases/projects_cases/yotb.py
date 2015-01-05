@@ -39,8 +39,8 @@ class Project_YOTB(HPTestCase, Attach):
 		self.assertEqual('Pin your memories', button.e('span').text)
 		
 		touts_items = [
-			["Tour North Beach in the 70's and 80's", "From the SFPL."						, 'tout1_image', '{0}/project/22-yearofthebay/#!tours/view/id/3959/title/A%20Tour%20of%20North%20Beach%20in%20the%2070%27s%20and%2080%27s'.format(URL_BASE)],
-			['Tour the 1906 Earthquake in SF'		, "Before and after the big 1906 quake.", 'tout2_image', '{0}/project/22-yearofthebay/#!tours/view/id/3871/title/1906%20San%20Francisco%20Earthquake%20and%20Fire'.format(URL_BASE)],
+			["Take a Tour of Bernal Heights", "Walk through Bernal Heights in San Francisco, with photos spanning the 1920's to 70's."						, 'tout1_image', 'https://www.historypin.org/project/22-yearofthebay/#!tours/view/id/4220/title/A%20selection%20of%20Bernal%20Heights%20photos'],
+			['LGBTQ History', "A new Collection of SF LGBTQ historic sites from Shayne Watson.", 'tout2_image', 'http://bit.ly/1zkpet6'],
 		]
 		
 		h3s		= site_cnt.es('.w2 h3')

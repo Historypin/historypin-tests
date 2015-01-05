@@ -521,7 +521,6 @@ class Explore(HPTestCase):
 		self.e('.close-btn-wrapp a').click()
 		sleep(2)
 		self.assertFalse(login_dialog.is_displayed(), WebElement)
-		
 	
 	@logged_in
 	@url('/en/explore/oreo/')
@@ -545,7 +544,6 @@ class Explore(HPTestCase):
 		self.e('.close-btn-wrapp a').click()
 		sleep(2)
 		self.assertFalse(login_dialog.is_displayed(), WebElement)
-		
 	
 	@unittest.expectedFailure
 	@logged_in
