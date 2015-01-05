@@ -182,10 +182,6 @@ class Homepage(HPTestCase):
 		
 		for n in range(len(partners)): self.assertEqual(partners[n], links[n].get_attribute('href'))
 		
-		self.assertIn('data:image/png;base64,iVBORw0KGgoAAAANS'		, links[0].css('background'))
-		self.assertIn('data:image/jpeg;base64,/9j'					, links[1].css('background'))
-		
-		
 		support = self.es('.support .donate')
 		self.assertEqual('users\nDonate to support Historypin'	, support[0].text)
 		self.assertEqual('{0}/friends-of-Historypin'.format(URL_BASE), support[0].get_attribute('href'))

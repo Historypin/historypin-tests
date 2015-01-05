@@ -43,7 +43,7 @@ class Pinning(HPTestCase):
 		self.assertIn('ss-icon'			, audio_type.e('span').get_attribute('class'))
 		self.assertIn('ss-headphones'	, audio_type.e('span').get_attribute('class'))
 		
-		self.assertEqual('Want to upload large amounts of content? Read about our Bulk Uploader', self.e('.bottom-p').text)
+		self.assertEqual('Want to upload large amounts of content? Read about our Bulk Uploader.', self.e('.bottom-p').text)
 		self.assertEqual('{0}/bulkbridge/'.format(URL_BASE), self.e('.bottom-p a').get_attribute('href'))
 	
 	@logged_in

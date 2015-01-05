@@ -109,7 +109,7 @@ class Project_Becontree(HPTestCase, Attach):
 			['{0}/terms-and-conditions/'.format(URL_BASE), 'Terms and Conditions'],
 			['{0}/privacy-policy/'		.format(URL_BASE), 'Privacy policy'],
 			['{0}/cookies/'				.format(URL_BASE), 'Cookies'],
-			['http://www.shiftdesign.org.uk/'	, u'© We Are What We Do'],
+			['http://www.shiftdesign.org.uk/'	, u'\xa9 Shift'],
 		]
 	
 		footer			= self.e('.footer-shadow')
