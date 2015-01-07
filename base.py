@@ -44,8 +44,8 @@ def logged_in(fn):
 	return wrapped
 
 
-class Browser(webdriver.Firefox):
-# class Browser(webdriver.Chrome):
+# class Browser(webdriver.Firefox):
+class Browser(webdriver.Chrome):
 	def go(self, url):
 		self.get(('' if url.startswith('http') else URL_BASE) + url)
 		self.pageload_wait()
@@ -132,8 +132,8 @@ def run(*tests):
 	else:
 		suite.addTests(unittest.TestLoader().loadTestsFromModule(cases))
 	
-	TestCase.browser_start(Browser())
-	# TestCase.browser_start(Browser(PATH_CRHOME_DRIVER))
+	# TestCase.browser_start(Browser())
+	TestCase.browser_start(Browser(PATH_CRHOME_DRIVER))
 	# HPTestCase.login()
 	
 	unittest.TextTestRunner(verbosity = 1).run(suite)
