@@ -378,7 +378,7 @@ class Project_Europeana(HPTestCase, Attach):
 		self.assertEqual('Sorteerige:  '	, filter_by.e('span').text)
 		self.assertEqual(' Viimased'		, labels[0].e('strong').text)
 		self.assertEqual(' Populaarseimad'	, labels[1].e('strong').text)
-		self.assertEqual(u' k\xf5ige olulisem'	, labels[2].e('strong').text)
+		self.assertEqual(u' Most Relevant'	, labels[2].e('strong').text)
 		
 		# TODO fix "Most Relevant" text when there is a translation provided
 		# TODO add verification for "Clear search" text when there is translation

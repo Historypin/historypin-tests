@@ -501,8 +501,8 @@ class Pages(HPTestCase):
 		self.assertEqual(link_privacy, cnt.e('a:first-of-type').get_attribute('href'))
 		self.assertEqual(link_privacy, cnt.e('a:first-of-type').text)
 	
-	@url('/wearewhatwedo/')
-	def test_wawwd(self):
+	@url('/shift/')
+	def test_shift(self):
 		self.assertTitle('Historypin | Shift')
 		self.assertEqual('Shift', self.e('.title').text)
 		

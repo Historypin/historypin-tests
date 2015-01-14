@@ -58,7 +58,7 @@ class Attach():
 		
 		sleep(6)
 		picture = self.e('.gallery:nth-of-type(1) li:nth-of-type(1)')
-		sleep(3)
+		sleep(6)
 		self.assertIsInstance(picture.e('img'), WebElement)
 		self.hover(picture)
 		
