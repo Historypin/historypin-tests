@@ -53,7 +53,7 @@ from projects_cases.victorian_london import Project_VictorianLondon
 from projects_cases.yotb import Project_YOTB
 from projects_cases.yarra import Project_Yarra
 
-from explore.explore import Explore
+from explore.project_view import Project_View
 
 from channels import Channels
 from channel import Channel
