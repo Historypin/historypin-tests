@@ -23,11 +23,17 @@ class Project_View(HPTestCase):
 	@logged_in
 	@url('{0}/'.format(PROJECT_URL))
 	def test_navigation_logged_in(self):
-		# TODO
-		# log in
-		# check user options on hover
-		# check the 2 buttons
-		pass
+		
+		self.e('.user-actions-triger').click()
+		sleep(3)
+		
+		user_actions = self.e('.actions-list')
+		
+		self.assertEqual('{0}/channels/view/{1}/'.format(URL_BASE, ID_USER), user_actions.e('.my_profile').get_attribute('href'))
+		self.assertEqual('{0}/user/logout/'.format(URL_BASE), user_actions.e('.logout').get_attribute('href'))
+		
+		self.assertIsInstance(self.e('#button_edit'), WebElement)
+		
 	
 	@logged_in
 	@url('{0}/'.format(PROJECT_URL))
