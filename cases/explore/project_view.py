@@ -33,15 +33,16 @@ class Project_View(HPTestCase):
 		self.assertEqual('{0}/user/logout/'.format(URL_BASE), user_actions.e('.logout').get_attribute('href'))
 		
 		self.assertIsInstance(self.e('#button_edit'), WebElement)
-		
 	
-	@logged_in
 	@url('{0}/'.format(PROJECT_URL))
 	def test_map(self):
-		# TODO
-		# check project meta info
-		# check if map is visible
-		pass
+		
+		project_info = self.e('.project-meta')
+		self.assertEqual('Project for Quality Assurance', project_info.e('h3').text)
+		self.assertEqual('About the Project', project_info.e('.about a').text)
+		
+		self.assertIsInstance(self.e('#map'), WebElement)
+		self.assertIsInstance(self.e('#timeline'), WebElement)
 	
 	@url('{0}/'.format(PROJECT_URL))
 	def test_main_project_section(self):
