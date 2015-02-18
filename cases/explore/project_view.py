@@ -46,14 +46,20 @@ class Project_View(HPTestCase):
 	
 	@url('{0}/'.format(PROJECT_URL))
 	def test_main_project_section(self):
-		# TODO
-		# check add a project card link
-		# check add a pin card
-		# check about card
-		# check child project
-		# check pin card
-		# check if there is 3 cards per row
-		pass
+		
+		gallery_section	= self.e('.gallery-listing')
+		project_about	= gallery_section.e('.project-about-item')
+		
+		self.assertEqual('/en/explore/hlf/oreo/project/create/', gallery_section.e('.add-project').get_attribute('url'))
+		self.assertEqual('/en/project/30-oreo/upload/?from=/en/explore/hlf/oreo', gallery_section.e('.add-pin-item').get_attribute('url'))
+		
+		self.assertEqual('About the project', project_about.e('h3').text)
+		self.assertEqual('+ Read more', project_about.e('.read-more').text)
+		self.assertIsInstance(project_about.e('.users'), WebElement)
+		
+		self.assertEqual('/en/explore/hlf/oreo/new-project-qa/', gallery_section.e('.project-item').get_attribute('url'))
+		
+		self.assertIsInstance(gallery_section.e('.pin-item'), WebElement)
 	
 	@logged_in
 	@url('{0}/'.format(PROJECT_URL))
