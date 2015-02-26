@@ -502,11 +502,11 @@ class Pages(HPTestCase):
 		self.assertEqual(link_privacy, cnt.e('a:first-of-type').text)
 	
 	@url('/shift/')
-	def test_shift(self):
+	def test_shift_page(self):
 		self.assertTitle('Historypin | Shift')
 		self.assertEqual('Shift', self.e('.title').text)
 		
-		a = self.e('.rte p:nth-child(5) a')
+		a = self.e('.rte p:nth-of-type(2) a')
 		self.assertEqual('http://shiftdesign.org.uk/'	, a.get_attribute('href'))
 		self.assertEqual('shiftdesign.org.uk'			, a.text)
 	

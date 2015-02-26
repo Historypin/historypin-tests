@@ -145,9 +145,9 @@ class Homepage(HPTestCase):
 		self.assertIsInstance(listing.e('p'), WebElement)
 		self.assertIsInstance(listing.e('img'), WebElement)
 		self.assertIsInstance(listing.e('a.banner-holder'), WebElement)
-		pages = self.es('.slider-paging .page')
-		pages[0].click()
-		pages[1].click()
+		# pages = self.es('.slider-paging .page')
+		# pages[0].click()
+		# pages[1].click()
 		
 		browse_all = self.e('#featured-projects .bar a.right')
 		self.assertEqual('{0}/projects/'.format(URL_BASE), browse_all.get_attribute('href'))
@@ -182,10 +182,10 @@ class Homepage(HPTestCase):
 		
 		for n in range(len(partners)): self.assertEqual(partners[n], links[n].get_attribute('href'))
 		
-		support = self.es('.support .donate')
-		self.assertEqual('users\nDonate to support Historypin'	, support[0].text)
-		self.assertEqual('{0}/friends-of-Historypin'.format(URL_BASE), support[0].get_attribute('href'))
-		self.assertIn('ss-icon', self.e('.support .donate .ss-icon').get_attribute('class'))
+		# support = self.es('.support .donate')
+		# self.assertEqual('users\nDonate to support Historypin'	, support[0].text)
+		# self.assertEqual('{0}/friends-of-Historypin'.format(URL_BASE), support[0].get_attribute('href'))
+		# self.assertIn('ss-icon', self.e('.support .donate .ss-icon').get_attribute('class'))
 		
 	@url('/')
 	def test_footer(self):
