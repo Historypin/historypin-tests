@@ -35,7 +35,6 @@ class Community(HPTestCase):
 			['Life Story Challenge', 'Create a Life Story about someone you know with photos and memories telling the story of their life.'			, '{0}icon_life_stories.png'	.format(link_images), 'View Life Stories Challenge'		, 'http://www.11492009-gats.historypin.com/en/page/life-stories/'],
 			['Google Groups', u'Talk to other users, learn from each other’s experience, plus give us feedback as we experiment with new features.'	, '{0}icon_google_groups.png'	.format(link_images), 'Visit the Group'					, 'https://groups.google.com/forum/?fromgroups#!forum/historypin'],
 			['Meet the team', 'Check out the people working away to bring you Historypin.'															, '{0}theteam.jpg'				.format(link_images), 'Meet the team'					, '{0}/team'.format(URL_BASE)],
-			['The Foundation', 'Find out about our Charitable Foundation which works on the ground in local communities and education.'				, '{0}friends_of_historypin.jpg'.format(link_images), 'Read more'						, '{0}/Friends-Of-Historypin/'.format(URL_BASE)],
 		]
 		
 		headings	= self.es('.group ~ .group .col h3')
@@ -71,7 +70,6 @@ class Community(HPTestCase):
 			['Topics to Explore'						, '{0}/topics-to-explore'			.format(link_community), 'Some of the most interesting photos, Tours and Collections to explore in sessions.'],
 			['School Case Studies'						, '{0}/schools-case-studies'		.format(link_community), 'Some examples of schools around the word using Historypin'],
 			['Local Project Case Studies'				, '{0}/localprojects-case-studies' 	.format(link_community), 'Some examples of local projects around the world using Historypin'],
-			['Support Us'								, '{0}/donate/'						.format(URL_BASE)	, u'Donate to Friends of Historypin and you’ll be helping support Historypin Community and Education Programmes.\n\nRegistered Charity Number 1134546'],
 			['Blog'										, 'http://blog.historypin.com/'							, 'Find out the latest community, site development, partnership and Challenges news'],
 			['Contact'									, '{0}/contact-us'					.format(URL_BASE)	, 'For more information contact Rebekkah Abraham, Historypin Content Manager on rebekkah.abraham@historypin.org.'],
 		]

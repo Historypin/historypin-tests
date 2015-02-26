@@ -4,7 +4,8 @@ GO_TIMEOUT = 1
 
 # VERSION = 'v5-europeana-filter'
 # VERSION = 'explore-independance'
-VERSION = 'v617-beta-2'
+# VERSION = 'v617-beta-1'
+# VERSION = 'v618-refac-format'
 LINK_BASE = 'historypin.org'
 # LINK_BASE = '{0}.historypin-hrd.appspot.com'.format(VERSION)
 
