@@ -39,7 +39,7 @@ class Project_YOTB(HPTestCase, Attach):
 		self.assertEqual('Pin your memories', button.e('span').text)
 		
 		touts_items = [
-			["Take a Tour of Bernal Heights", "Walk through Bernal Heights in San Francisco, with photos spanning the 1920's to 70's."						, 'tout1_image', 'https://www.historypin.org/project/22-yearofthebay/#!tours/view/id/4220/title/A%20selection%20of%20Bernal%20Heights%20photos'],
+			['"Is this your house?"', "Location SF mysteries from the Stanford Libraries."						, 'tout1_image', '{0}/project/bit.ly/1EHvi4T'.format(URL_BASE)],
 			['LGBTQ History', "A new Collection of SF LGBTQ historic sites from Shayne Watson.", 'tout2_image', 'http://bit.ly/1zkpet6'],
 		]
 		
