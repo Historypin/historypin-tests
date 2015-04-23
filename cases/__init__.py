@@ -54,6 +54,10 @@ from projects_cases.yotb import Project_YOTB
 from projects_cases.yarra import Project_Yarra
 
 from explore.project_view import Project_View
+from explore.people import People
+from explore.places import Places
+from explore.projects import Projects
+
 
 from channels import Channels
 from channel import Channel

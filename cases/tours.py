@@ -78,8 +78,8 @@ class Tours(HPTestCase):
 		self.assertEqual('Tour view'	, tabs[2].e('span').text)
 		
 		photo_list_cnt = [
-				['1', '{0}'.format(ID_TOUR_IMAGES[0]), 'Bulgarian Army Theater - 2 February 2013'],
-				['2', '{0}'.format(ID_TOUR_IMAGES[1]), 'National Theatre in Sofia, Bulgaria - 2 August 2012'],
+				['1', '{0}'.format(ID_TOUR_IMAGES[0]), 'Bulgarian Army Theater - 2 February 2014'],
+				['2', '{0}'.format(ID_TOUR_IMAGES[1]), 'National Theatre in Sofia, Bulgaria - 2 August 2013'],
 		]
 		
 		photos_list	= self.e('#list_view .list')

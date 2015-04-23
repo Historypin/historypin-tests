@@ -7,6 +7,7 @@ class Project_View(HPTestCase):
 	
 	PROJECT_URL = '/en/explore/oreo'
 	
+	@unittest.skipIf(VERSION == 'v617-beta-11', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
 	def test_navigation_not_logged_in(self):
 		
@@ -20,6 +21,7 @@ class Project_View(HPTestCase):
 		self.e('#ui-id-1 .close-btn-wrapp a').click()
 		self.assertFalse(self.e('#ui-id-1').is_displayed())
 	
+	@unittest.skipIf(VERSION == 'v617-beta-11', 'Do not run on 6.17')
 	@logged_in
 	@url('{0}/'.format(PROJECT_URL))
 	def test_navigation_logged_in(self):
@@ -34,6 +36,7 @@ class Project_View(HPTestCase):
 		
 		self.assertIsInstance(self.e('#button_edit'), WebElement)
 	
+	@unittest.skipIf(VERSION == 'v617-beta-11', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
 	def test_map(self):
 		
@@ -44,6 +47,7 @@ class Project_View(HPTestCase):
 		self.assertIsInstance(self.e('#map'), WebElement)
 		self.assertIsInstance(self.e('#timeline'), WebElement)
 	
+	@unittest.skipIf(VERSION == 'v617-beta-11', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
 	def test_main_project_section(self):
 		
@@ -61,6 +65,8 @@ class Project_View(HPTestCase):
 		
 		self.assertIsInstance(gallery_section.e('.pin-item'), WebElement)
 	
+	
+	@unittest.skipIf(VERSION == 'v617-beta-11', 'Do not run on 6.17')
 	@logged_in
 	@url('{0}/'.format(PROJECT_URL))
 	def test_add_project_card_logged_in(self):
@@ -69,6 +75,7 @@ class Project_View(HPTestCase):
 		# check if the login dialog opens
 		pass
 	
+	@unittest.skipIf(VERSION == 'v617-beta-11', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
 	def test_add_project_card_not_logged_in(self):
 		# TODO
@@ -77,6 +84,8 @@ class Project_View(HPTestCase):
 		# go back to oreo project
 		pass
 	
+	
+	@unittest.skipIf(VERSION == 'v617-beta-11', 'Do not run on 6.17')
 	@logged_in
 	@url('{0}/'.format(PROJECT_URL))
 	def test_add_pin_card_logged_in(self):
@@ -86,6 +95,7 @@ class Project_View(HPTestCase):
 		# go back to the projedt
 		pass
 	
+	@unittest.skipIf(VERSION == 'v617-beta-11', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
 	def test_add_pin_card_not_logged_in(self):
 		# TODO
@@ -93,11 +103,13 @@ class Project_View(HPTestCase):
 		# check if the login dialog opens
 		pass
 	
+	@unittest.skipIf(VERSION == 'v617-beta-11', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
 	def test_favourite_from_card(self):
 		
 		pass
 	
+	@unittest.skipIf(VERSION == 'v617-beta-11', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
 	def test_paging(self):
 		
