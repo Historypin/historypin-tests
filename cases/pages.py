@@ -391,7 +391,7 @@ class Pages(HPTestCase):
 	
 	@url('/Friends-of-Historypin/')
 	def test_support(self):
-		self.assertTitle('Historypin | Friends of Historypin')
+		self.assertTitle('Historypin - Shift')
 		self.assertEqual('What does the Foundation do?', self.e('h2').text)
 		
 		images = [

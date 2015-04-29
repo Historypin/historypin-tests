@@ -42,7 +42,7 @@ class Project_AllOurStories(HPTestCase, Attach):
 		links = link_section.es('a')
 		
 		hrefs = [
-			['{0}://s3-eu-west-1.amazonaws.com/wawwd-resources/HLF_AOS_Historypin+Guide_Final.pdf'.format(PROTOCOL), 'Read the Get Started Guide'],
+			['{0}://blog.historypin.org/2014/03/17/how-to-upload-your-digital-all-our-stories-record/'.format(PROTOCOL), 'Read the Get Started Guide'],
 			['{0}{1}/user/?from={2}/channels/set_type/'.format(URL_BASE, self.PROJECT_URL, self.PROJECT_URL), 'Register'],
 			['{0}{1}/upload/'.format(URL_BASE, self.PROJECT_URL), 'Upload your digital records'],
 		]

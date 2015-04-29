@@ -2,12 +2,12 @@
 PATH_CRHOME_DRIVER	= '/usr/lib64/chromium-browser/chromedriver'
 GO_TIMEOUT = 1
 
-# VERSION = 'v5-europeana-filter'
+VERSION = ''
 # VERSION = 'explore-independance'
-VERSION = 'v617-beta-11'
+# VERSION = 'v617-beta-12'
 # VERSION = 'v618-refac-format'
-# LINK_BASE = 'historypin.org'
-LINK_BASE = '{0}.historypin-hrd.appspot.com'.format(VERSION)
+LINK_BASE = 'historypin.org'
+# LINK_BASE = '{0}.historypin-hrd.appspot.com'.format(VERSION)
 
 URL_BASE = 'http://www.{0}'.format(LINK_BASE)
 URL_BLOB = 'http://www.{0}'.format(LINK_BASE)

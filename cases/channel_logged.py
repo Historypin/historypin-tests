@@ -383,7 +383,7 @@ class Channel_Logged(HPTestCase):
 		
 		email = tab_cnt.e('#new_mail')
 		
-		self.assertEqual('gabriela.ananieva@wearewhatwedo.org', email.get_attribute('value'))
+		self.assertEqual('gabriela.ananieva@historypin.org', email.get_attribute('value'))
 		email.clear()
 		email.send_keys('g.ananieva@avalith.bg')
 		button.click()
@@ -1204,8 +1204,8 @@ class Channel_Logged(HPTestCase):
 		self.assertEqual("Profiles I'm a fan of:", tab_subscriptions.e('h3').text)
 		
 		channels = [
-			['{0}/'.format(FAVOURITE_CHANNELS[0]), '/{0}/'.format(FAVOURITE_CHANNELS_IMAGES[0]), 'City of Richmond Archives'],
 			['{0}/'.format(FAVOURITE_CHANNELS[1]), '/{0}/'.format(FAVOURITE_CHANNELS_IMAGES[1]), 'uf history hunt'],
+			['{0}/'.format(FAVOURITE_CHANNELS[0]), '/{0}/'.format(FAVOURITE_CHANNELS_IMAGES[0]), 'City of Richmond Archives'],
 			['{0}/'.format(FAVOURITE_CHANNELS[2]), '/{0}/'.format(FAVOURITE_CHANNELS_IMAGES[2]), 'Stanford University Archives'],
 		]
 		
@@ -1337,7 +1337,7 @@ class Channel_Logged(HPTestCase):
 		
 		tags.clear()
 		tags.send_keys('theater, theatre, bulgarian army')
-		self.assertEqual('Remaining characters: 468', paragraph[1].text)
+		self.assertEqual('Remaining characters: 968', paragraph[1].text)
 		
 		license	= edit_page.e('.section.license')
 		option	= license.e('#photo_info_license_type')

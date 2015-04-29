@@ -94,24 +94,26 @@ class Homepage(HPTestCase):
 		self.assertNotIn('home-fullscreen', body.get_attribute('class'))
 		sleep(.5)
 	
-	@url('/')
-	def test_activity(self):
+	# TODO
+	# This test will fail, because the expand/collapse functionality was removed
+	# @url('/')
+	# def test_activity(self):
 		
-		self.assertGreater(int(self.e('.counter').text.replace(',', '')), 0)
-		more = self.e('#activity .more')
+	# 	self.assertGreater(int(self.e('.counter').text.replace(',', '')), 0)
+	# 	more = self.e('#activity .more')
 		
-		more.click()
-		sleep(2)
-		# activity_height = self.e('.scrollbarfix').height()
-		# self.assertEqual('613.484375px', activity_height)
+	# 	more.click()
+	# 	sleep(2)
+	# 	# activity_height = self.e('.scrollbarfix').height()
+	# 	# self.assertEqual('613.484375px', activity_height)
 		
-		less = self.e('#activity .less')
-		less.click()
-		sleep(2)
+	# 	less = self.e('#activity .less')
+	# 	less.click()
+	# 	sleep(2)
 		
-		# TODO
-		# verify if the activity is expaned to check if element has style property with height= 388 and 700px
-		# verify if projects are collapsed
+	# 	# TODO
+	# 	# verify if the activity is expaned to check if element has style property with height= 388 and 700px
+	# 	# verify if projects are collapsed
 	
 	@url('/')
 	def test_activity_items_len(self):

@@ -62,7 +62,7 @@ class Map(HPTestCase):
 		self.assertIn('ss-location'	, icons[1].get_attribute('class'))
 		
 		self.assertEqual('1840', self.e('#from span').text)
-		self.assertEqual('2014', self.e('#to span').text)
+		self.assertEqual('2015', self.e('#to span').text)
 		
 		labels		= ['1840', '1850', '1860', '1870', '1880', '1890', '1900', '1910', '1920', '1930', '1940', '1950', '1960', '1970', '1980', '1990', '2000']
 		
