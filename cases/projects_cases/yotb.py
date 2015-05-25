@@ -39,8 +39,8 @@ class Project_YOTB(HPTestCase, Attach):
 		self.assertEqual('Pin your memories', button.e('span').text)
 		
 		touts_items = [
-			['"Is this your house?"', "Location SF mysteries from the Stanford Libraries."						, 'tout1_image', '{0}/project/bit.ly/1EHvi4T'.format(URL_BASE)],
-			['LGBTQ History', "A new Collection of SF LGBTQ historic sites from Shayne Watson.", 'tout2_image', 'http://bit.ly/1zkpet6'],
+			['"Is this your house?"', "Location SF mysteries from the Stanford Libraries."		, 'tout1_image', 'https://www.historypin.org{0}#!mysteries/index/'.format(self.PROJECT_URL)],
+			['LGBTQ History', "A new Collection of SF LGBTQ historic sites from Shayne Watson."	, 'tout2_image', 'http://bit.ly/1zkpet6'],
 		]
 		
 		h3s		= site_cnt.es('.w2 h3')

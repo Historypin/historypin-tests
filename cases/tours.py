@@ -129,7 +129,7 @@ class Tours(HPTestCase):
 		self.assertIn('right'		, link_exit.e('span').get_attribute('class'))
 		
 		tour_items = [
-			["Bulgarian Army Theater - 2 February 2013"				, '2 February 2014'	, '/map/#!/geo:42.694653,23.328998/zoom:20/dialog:{0}/tab:details/'.format(ID_TOUR_IMAGES[0]), '{0}'.format(ID_TOUR_IMAGES[0]), "This is a photo of the famous Bulgarian Army Theater ."],
+			["Bulgarian Army Theater - 2 February 2014"				, '2 February 2014'	, '/map/#!/geo:42.694653,23.328998/zoom:20/dialog:{0}/tab:details/'.format(ID_TOUR_IMAGES[0]), '{0}'.format(ID_TOUR_IMAGES[0]), "This is a photo of the famous Bulgarian Army Theater ."],
 			["National Theatre in Sofia, Bulgaria - 2 August 2012"	, '2 August 2012'	, '/map/#!/geo:42.693691,23.326052/zoom:20/dialog:{0}/tab:details/'.format(ID_TOUR_IMAGES[1]), '{0}'.format(ID_TOUR_IMAGES[1]), "This is a photo of National Theatre in Sofia, Bulgaria"],
 		]
 		

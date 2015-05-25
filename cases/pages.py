@@ -12,52 +12,51 @@ class Pages(HPTestCase):
 		self.assertEqual('A 90 second introduction'										, self.e('h1.title').text)
 		self.assertEqual('{0}://www.youtube.com/embed/FdT3eKdto4w?rel=0'.format(PROTOCOL), self.e('iframe').get_attribute('src'))
 	
-	@url('/app/')
-	def test_app(self):
-		self.assertTitle('Historypin | App')
-		self.assertEqual('What can you do on the Historypin app?', self.e('h2').text)
+	#  there is no such page anymore
+	# @url('/app/')
+	# def test_app(self):
+	# 	self.assertTitle('Historypin | App')
+	# 	self.assertEqual('What can you do on the Historypin app?', self.e('h2').text)
 		
-		items = [
-			['Android'			, 'app_android.png'	, 'Google Play Store'			]
-			['iOS'				, 'app_iphone.png'	, 'iOS App Store'				]
-			['Windows Phone 7'	, 'app_wp7.png'		, 'Windows Phone Marketplace'	]
-		]
+	# 	items = [
+	# 		['Android'			, 'app_android.png'	],
+	# 		['iOS'				, 'app_iphone.png'	],
+	# 		['Windows Phone 7'	, 'app_wp7.png'		],
+	# 	]
 		
-		cnt			= self.e('.appstores')
-		headings	= cnt.es('.col h1')
-		images		= cnt.es('.col img')
-		texts		= cnt.es('.col a span')
+	# 	cnt			= self.e('.appstores')
+	# 	headings	= cnt.es('.col h1')
+	# 	images		= cnt.es('.col img')
 		
-		for n in range(len(items)):
-			i = items[n]
-			self.assertEqual(i[0]				, headings[n].text)
-			self.assertEqual('{0}/resources/images/content/app/{1}'.format(URL_BASE, i[1]), images[n].get_attribute('src'))
-			self.assertEqual(i[2]				, texts[n].text)
+	# 	for n in range(len(items)):
+	# 		i = items[n]
+	# 		self.assertEqual(i[0]				, headings[n].text)
+	# 		self.assertEqual('{0}/resources/images/content/app/{1}'.format(URL_BASE, i[1]), images[n].get_attribute('src'))
 	
-	@url('/contact/')
-	def test_contact(self):
-		self.assertTitle('Historypin | Contact')
-		self.assertEqual('Contact', self.e('.section h1.title').text)
+	# @url('/contact/')
+	# def test_contact(self):
+	# 	self.assertTitle('Historypin | Contact')
+	# 	self.assertEqual('Contact', self.e('.section h1.title').text)
 		
-		content = [
-			['General enquiries, technical enquiries, content enquiries', 'hello@historypin.org\n+44 (0)20 7148 7672\n71 St John Street\nLondon\nEC1M 4NJ\nUnited Kingdom', 'mailto:hello@historypin.org'],
-			['Media', 'Rebekkah Abraham\nrebekkah.abraham@historypin.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@historypin.org'],
-			['Schools, local projects and volunteers', 'Rebekkah Abraham\nrebekkah.abraham@historypin.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@historypin.org'],
-			['Library, archive and museum partnerships', 'Rebekkah Abraham\nrebekkah.abraham@historypin.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@historypin.org'],
-			['Web', 'Rebekkah Abraham\nrebekkah.abraham@historypin.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@historypin.org'],
-			['Corporate Partnerships', 'Nick Stanhope\nnick.stanhope@historypin.org\n+44 (0)20 7148 7667', 'mailto:nick.stanhope@historypin.org'],
-		]
+	# 	content = [
+	# 		['General enquiries, technical enquiries, content enquiries', 'hello@historypin.org\n+44 (0)20 7148 7672\n71 St John Street\nLondon\nEC1M 4NJ\nUnited Kingdom', 'mailto:hello@historypin.org'],
+	# 		['Media', 'Rebekkah Abraham\nrebekkah.abraham@historypin.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@historypin.org'],
+	# 		['Schools, local projects and volunteers', 'Rebekkah Abraham\nrebekkah.abraham@historypin.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@historypin.org'],
+	# 		['Library, archive and museum partnerships', 'Rebekkah Abraham\nrebekkah.abraham@historypin.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@historypin.org'],
+	# 		['Web', 'Rebekkah Abraham\nrebekkah.abraham@historypin.org\n+44 (0)20 7148 7670', 'mailto:rebekkah.abraham@historypin.org'],
+	# 		['Corporate Partnerships', 'Nick Stanhope\nnick.stanhope@historypin.org\n+44 (0)20 7148 7667', 'mailto:nick.stanhope@historypin.org'],
+	# 	]
 		
-		cnt			= self.e('.section')
-		headings	= cnt.es('h2')
-		paragraphs	= cnt.es('p')
-		links		= cnt.es('p a')
+	# 	cnt			= self.e('.section')
+	# 	headings	= cnt.es('h2')
+	# 	paragraphs	= cnt.es('p')
+	# 	links		= cnt.es('p a')
 		
-		for n in range(len(content)):
-			i = content[n]
-			self.assertEqual(i[0], headings[n].text)
-			self.assertEqual(i[1], paragraphs[n].text)
-			self.assertEqual(i[2], links[n].get_attribute('href'))
+	# 	for n in range(len(content)):
+	# 		i = content[n]
+	# 		self.assertEqual(i[0], headings[n].text)
+	# 		self.assertEqual(i[1], paragraphs[n].text)
+	# 		self.assertEqual(i[2], links[n].get_attribute('href'))
 	
 	@url('/faq/')
 	def test_faq(self):

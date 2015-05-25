@@ -95,7 +95,7 @@ class Homepage(HPTestCase):
 		sleep(.5)
 	
 	# TODO
-	# This test will fail, because the expand/collapse functionality was removed
+	# This test will fail, because the expand/collapse functionality
 	# @url('/')
 	# def test_activity(self):
 		

@@ -4,10 +4,11 @@ GO_TIMEOUT = 1
 
 VERSION = ''
 # VERSION = 'explore-independance'
-# VERSION = 'v617-beta-12'
+# VERSION = 'v617-beta-18'
+VERSION = 'v622-beta-1'
 # VERSION = 'v618-refac-format'
-LINK_BASE = 'historypin.org'
-# LINK_BASE = '{0}.historypin-hrd.appspot.com'.format(VERSION)
+# LINK_BASE = 'historypin.org'
+LINK_BASE = '{0}.historypin-hrd.appspot.com'.format(VERSION)
 
 URL_BASE = 'http://www.{0}'.format(LINK_BASE)
 URL_BLOB = 'http://www.{0}'.format(LINK_BASE)

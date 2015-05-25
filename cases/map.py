@@ -470,8 +470,6 @@ class Map(HPTestCase):
 			['{0}/about-us'				.format(URL_BASE), 'About'],
 			['{0}/faq'					.format(URL_BASE), 'FAQs'],
 			['{0}/presscentre'			.format(URL_BASE), 'Press Centre'],
-			['{0}/donate'				.format(URL_BASE), 'Support us'],
-			['{0}/app'					.format(URL_BASE), 'Mobile App'],
 			['{0}/terms-and-conditions'	.format(URL_BASE), 'Terms and Conditions'],
 			['{0}/privacy-policy'		.format(URL_BASE), 'Privacy Policy'],
 			['{0}/cookies'				.format(URL_BASE), 'Cookies'],
