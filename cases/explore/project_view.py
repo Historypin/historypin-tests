@@ -106,6 +106,8 @@ class Project_View(HPTestCase):
 		self.go(self.PROJECT_URL)
 		
 		self.assertEqual('New project for QA', self.e('#banner h3').text)
+		
+		#TODO should start the test after the google login is fixed
 	
 	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
@@ -119,8 +121,10 @@ class Project_View(HPTestCase):
 	@logged_in
 	@url('{0}/'.format(PROJECT_URL))
 	def test_add_pin_card_logged_in(self):
-		# TODO
-		# click add a pin card
+		
+		add_pin_card = self.e('.add-pin-item')
+		add_pin_card.click()
+		# TODO complete the test when path for pinning is fixed
 		# check if the user is sent to the pinning process
 		# go back to the projedt
 		pass
@@ -128,10 +132,10 @@ class Project_View(HPTestCase):
 	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
 	def test_add_pin_card_not_logged_in(self):
-		# TODO
-		# click add a pin card
-		# check if the login dialog opens
-		pass
+		
+		add_pin_card = self.e('.add-pin-item')
+		add_pin_card.click()
+		self.assertEqual('Sign in to Historypin', self.e('#ui-id-1 h2').text)
 	
 	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
