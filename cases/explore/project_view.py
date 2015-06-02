@@ -5,17 +5,18 @@ import os, sys
 
 class Project_View(HPTestCase):
 	
-	PROJECT_URL = '/en/explore/oreo'
+	PROJECT_URL = '/en/hlf/oreo/new-project-qa'
 	
 	def __test_breadcrumbs(self):
 		
 		breadcrumbs_items = [
-			['/explore/hlf/oreo/'	, 'Explore'],
-			['/people'				, 'People'],
-			['/projects'			, 'Projects'],
-			['/places'				, 'Places'],
-			['/explore/hlf/'		, 'Heritage Lottery Funded Projects'],
-			['/explore/hlf%2Foreo/'	, 'Project for Quality Assurance'],
+			['/hlf%2Foreo/'						, 'Explore'],
+			['/people'							, 'People'],
+			['/projects'						, 'Projects'],
+			['/places'							, 'Places'],
+			['/hlf/'							, 'Heritage Lottery Funded Projects'],
+			['/hlf%2Foreo/'						, 'Project for Quality Assurance'],
+			['/hlf%2Foreo%2Fnew-project-qa/'	, 'New project for QA'],
 		]
 		
 		site_header = self.e('#site-header')
@@ -27,12 +28,13 @@ class Project_View(HPTestCase):
 			self.assertEqual(i[1], breadcrumbs[n].text)
 		
 	
-	@unittest.skipUnless(VERSION == 'v622-beta-1', 'Do not run on 6.17')
+	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
 	def test_navigation_not_logged_in(self):
 		
 		self.__test_breadcrumbs()
-		self.assertTitle('Historypin | Project for Quality Assurance')
+		self.assertTitle('Historypin | New project for QA')
+		
 		self.assertTrue(self.e('.breadcrumbs').is_displayed())
 		
 		self.e('.sign-in').click()
@@ -42,7 +44,7 @@ class Project_View(HPTestCase):
 		self.e('#ui-id-1 .close-btn-wrapp a').click()
 		self.assertFalse(self.e('#ui-id-1').is_displayed())
 	
-	@unittest.skipUnless(VERSION == 'v622-beta-1', 'Do not run on 6.17')
+	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
 	@logged_in
 	@url('{0}/'.format(PROJECT_URL))
 	def test_navigation_logged_in(self):
@@ -59,20 +61,24 @@ class Project_View(HPTestCase):
 		
 		self.assertIsInstance(self.e('#button_edit'), WebElement)
 	
-	@unittest.skipUnless(VERSION == 'v622-beta-1', 'Do not run on 6.17')
+	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
 	def test_map(self):
 		
 		project_info = self.e('.project-meta')
-		self.assertEqual('Project for Quality Assurance', project_info.e('h3').text)
+		self.assertIsInstance(self.e('#timeline'), WebElement)
+		
+		self.assertEqual('PROJECT FOR QUALITY ASSURANCE', self.e('h2 a').text)
+		
 		self.assertEqual('About the Project', project_info.e('.about a').text)
 		
 		self.assertIsInstance(self.e('#map'), WebElement)
-		self.assertIsInstance(self.e('#timeline'), WebElement)
 	
-	@unittest.skipUnless(VERSION == 'v622-beta-1', 'Do not run on 6.17')
+	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
 	def test_gallery_view(self):
+		
+		self.assertIsInstance(self.e('#search'), WebElement)
 		
 		gallery_section	= self.e('.gallery-listing')
 		project_about	= gallery_section.e('.project-about-item')
@@ -81,11 +87,14 @@ class Project_View(HPTestCase):
 		self.assertEqual('+ Read more', project_about.e('.read-more').text)
 		self.assertIsInstance(project_about.e('.users'), WebElement)
 		
-		self.assertIsInstance(gallery_section.es('.project-item')[0], WebElement)
-		
+		# self.assertIsInstance(gallery_section.es('.project-item')[0], WebElement) there is no child project
 		self.assertIsInstance(gallery_section.es('.pin-item')[0], WebElement)
+		
+		user_card = gallery_section.e('.user-item')
+		self.assertEqual('TOP PINNER', user_card.e('h4').text)
+		
 	
-	@unittest.skipUnless(VERSION == 'v622-beta-1', 'Do not run on 6.17')
+	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
 	@logged_in
 	@url('{0}/'.format(PROJECT_URL))
 	def test_add_project_card_logged_in(self):
@@ -94,7 +103,7 @@ class Project_View(HPTestCase):
 		# check if the login dialog opens
 		pass
 	
-	@unittest.skipUnless(VERSION == 'v622-beta-1', 'Do not run on 6.17')
+	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
 	def test_add_project_card_not_logged_in(self):
 		# TODO
@@ -104,7 +113,7 @@ class Project_View(HPTestCase):
 		pass
 	
 	
-	@unittest.skipUnless(VERSION == 'v622-beta-1', 'Do not run on 6.17')
+	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
 	@logged_in
 	@url('{0}/'.format(PROJECT_URL))
 	def test_add_pin_card_logged_in(self):
@@ -114,7 +123,7 @@ class Project_View(HPTestCase):
 		# go back to the projedt
 		pass
 	
-	@unittest.skipUnless(VERSION == 'v622-beta-1', 'Do not run on 6.17')
+	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
 	def test_add_pin_card_not_logged_in(self):
 		# TODO
@@ -122,13 +131,13 @@ class Project_View(HPTestCase):
 		# check if the login dialog opens
 		pass
 	
-	@unittest.skipUnless(VERSION == 'v622-beta-1', 'Do not run on 6.17')
+	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
 	def test_favourite_from_card(self):
 		
 		pass
 	
-	@unittest.skipUnless(VERSION == 'v622-beta-1', 'Do not run on 6.17')
+	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
 	def test_paging(self):
 		

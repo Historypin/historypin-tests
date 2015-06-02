@@ -5,7 +5,7 @@ GO_TIMEOUT = 1
 VERSION = ''
 # VERSION = 'explore-independance'
 # VERSION = 'v617-beta-18'
-VERSION = 'v622-beta-1'
+VERSION = 'v623-beta-1'
 # VERSION = 'v618-refac-format'
 # LINK_BASE = 'historypin.org'
 LINK_BASE = '{0}.historypin-hrd.appspot.com'.format(VERSION)
@@ -52,6 +52,7 @@ FAVOURITE_CHANNELS_IMAGES	= [26288, 14950, 33328]
 
 ID_USER			= 35019
 ID_USER_VIEW	= 33283
+ID_USER_EXPLORE	= 62442
 
 ID_MAP_ITEM			= 149729
 ID_EDIT_ITEM		= 160180
