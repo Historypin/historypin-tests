@@ -105,7 +105,7 @@ class Project_View(HPTestCase):
 		self.assertEqual('{0}{1}/project/create'.format(URL_BASE, self.PROJECT_URL), self.browser.current_url)
 		self.go(self.PROJECT_URL)
 		
-		self.assertEqual()
+		self.assertEqual('New project for QA', self.e('#banner h3').text)
 	
 	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
@@ -113,8 +113,7 @@ class Project_View(HPTestCase):
 		
 		add_project_card = self.e('.add-project')
 		add_project_card.click()
-		
-		self.assertEqual('New project for QA', self.e('#banner h3').text)
+		self.assertEqual('Sign in to Historypin', self.e('#ui-id-1 h2').text)
 	
 	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
 	@logged_in
