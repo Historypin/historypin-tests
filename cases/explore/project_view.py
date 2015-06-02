@@ -98,20 +98,23 @@ class Project_View(HPTestCase):
 	@logged_in
 	@url('{0}/'.format(PROJECT_URL))
 	def test_add_project_card_logged_in(self):
-		# TODO
-		# click add project card
-		# check if the login dialog opens
-		pass
+		
+		add_project_card = self.e('.add-project')
+		add_project_card.click()
+		
+		self.assertEqual('{0}{1}/project/create'.format(URL_BASE, self.PROJECT_URL), self.browser.current_url)
+		self.go(self.PROJECT_URL)
+		
+		self.assertEqual()
 	
 	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
 	def test_add_project_card_not_logged_in(self):
-		# TODO
-		# click add project card
-		# check if the user is sent on the correct url for adding a project
-		# go back to oreo project
-		pass
-	
+		
+		add_project_card = self.e('.add-project')
+		add_project_card.click()
+		
+		self.assertEqual('New project for QA', self.e('#banner h3').text)
 	
 	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
 	@logged_in
