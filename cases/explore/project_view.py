@@ -139,14 +139,10 @@ class Project_View(HPTestCase):
 	
 	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
-	def test_favourite_from_card(self):
+	def test_about_section(self):
 		
-		pass
-	
-	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
-	@url('{0}/'.format(PROJECT_URL))
-	def test_paging(self):
+		about_card = self.e('.project-about-item')
+		about_card.click()
 		
-		pass
-	
-	
+		self.assertTrue(self.e('.about.pane').is_displayed())
+		
