@@ -8,60 +8,9 @@ from curated import Curated
 from tours import Tours
 from collections import Collections
 
-from projects import Projects
-
-from projects_cases.attach import Attach
-
-from suggestions import Suggestions
-
-from projects_cases.allourstories import Project_AllOurStories
-from projects_cases.asian_pacific import Project_AsianPacific
-from projects_cases.balboa import Project_Balboa
-from projects_cases.becontree import Project_Becontree
-from projects_cases.chevy import Project_Chevy
-from projects_cases.digital_war_memorial import Project_DigitalWarMemorial
-from projects_cases.europeana import Project_Europeana
-from projects_cases.field_recordings import Project_FieldRecordings
-from projects_cases.first_world_war import Project_FirstWorldWar
-from projects_cases.fujinomiya import Project_Fujinomiya
-from projects_cases.grandparents import Project_Grandparents
-from projects_cases.hertfordshire import Project_Hertfordshire
-from projects_cases.japan import Project_Japan
-from projects_cases.lincoln import Project_Lincoln
-from projects_cases.npower import Project_NPower
-from projects_cases.npower_keep_warm import Project_NPower_KeepWarm
-from projects_cases.npower_play import Project_NPower_Play
-from projects_cases.npower_timeline import Project_Timeline
-from projects_cases.npower_cook_clean import Project_NPower_Cook_Clean
-from projects_cases.npower_celebrate import Project_NPower_Celebrate
-from projects_cases.npower_watch_listen import Project_NPower_Watch_Listen
-from projects_cases.npower_work import Project_NPower_Work
-from projects_cases.queens import Project_Queens
-from projects_cases.railroads import Project_Railroads
-from projects_cases.olympics import Project_Olympics
-from projects_cases.ptqh import Project_PTQH
-from projects_cases.putting_art import Project_PuttingArt
-from projects_cases.sandy import Project_Sandy
-from projects_cases.sandy_before import Project_Before_Sandy
-from projects_cases.sandy_during import Project_During_Sandy
-from projects_cases.sandy_after import Project_After_Sandy
-from projects_cases.sourdough import Project_Sourdough
-from projects_cases.this_place_matters import Project_This_Place_Matters
-
-from projects_cases.victorian_london import Project_VictorianLondon
-
-from projects_cases.yotb import Project_YOTB
-from projects_cases.yarra import Project_Yarra
-
 from explore.project_view import Project_View
+from explore.project_edit import Project_Edit
 from explore.people import People
 from explore.places import Places
 from explore.projects import Projects
-
-
-from channels import Channels
-from channel import Channel
-from channel_logged import Channel_Logged
-
-from pinning import Pinning
 

@@ -31,6 +31,9 @@ def url(url):
 	def wrapper(fn):
 		def wrapped(*args, **kwargs):
 			args[0].go(url)
+			
+			sleep(1)
+			
 			fn(*args, **kwargs)
 		return wrapped
 	return wrapper
