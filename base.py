@@ -187,4 +187,10 @@ class HPTestCase(TestCase):
 	# 	self.go(URL_BASE + '/user/logout/')
 	# 	self.pageload_wait()
 
-
+# from base import *; self = playground()
+def playground():
+	self = HPTestCase
+	self.browser_start(Browser(PATH_CRHOME_DRIVER))
+	self.go('/')
+	
+	return self

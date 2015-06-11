@@ -16,12 +16,10 @@ class Project_Edit(HPTestCase):
 		# discuss with Sasho how we're going to assert the image
 		pass
 	
-	@unittest.expectedFailure
+	# @unittest.expectedFailure
 	@logged_in
 	@url('{0}/'.format(PROJECT_URL))
 	def test_change_title(self):
-		
-		# TODO fix this when there are user controls (edit and save project)
 		
 		sleep(1)
 		
@@ -30,19 +28,34 @@ class Project_Edit(HPTestCase):
 		
 		self.assertEqual('New project for QA', project_title)
 		
-		self.go('{0}{1}/project/edit'.format(URL_BASE, self.PROJECT_URL))
+		user_controls	= self.e('#main-header .temp')
+		editing_project	= user_controls.es('li a')[0]
+		saving_project	= user_controls.es('li a')[1]
+		
+		editing_project.click()
 		sleep(1)
 		
-		# project_title	= banner.e('h3')
-		project_edit = self.e('#project-form')
+		project_edit_title = self.e('#project-form h3 textarea')
 		
-		self.assertEqual(project_title, project_edit.e('h3 textarea').get_attribute('value'))
+		self.assertEqual(project_title, project_edit_title.get_attribute('value'))
 		
-		# edit the title
-		# save the project
-		# check if the edited title is equal to the new one
-		# click edit again
-		# set back the previous value
+		project_edit_title.send_keys(' was being edited')
+		
+		saving_project.click()
+		sleep(1)
+		
+		editing_project	= user_controls.es('li a')[0]
+		editing_project.click()
+		sleep(1)
+		
+		project_edit_title = self.e('#project-form h3 textarea')
+		project_edit_title.clear()
+		
+		project_edit_title.send_keys('New project for QA')
+		saving_project.click()
+		sleep(1)
+		
+		self.assertEqual('New project for QA', project_title)
 	
 	@unittest.expectedFailure
 	@logged_in
@@ -69,4 +82,30 @@ class Project_Edit(HPTestCase):
 		# check if the edited desc is equal to the new one
 		# click edit again
 		# set back the previous value
+	
+	@unittest.expectedFailure
+	@logged_in
+	@url('{0}/'.format(PROJECT_URL))
+	def test_add_admin(self):
+		
+		# TODO fix this when there are user controls (edit and save project)
+		
+		sleep(1)
+		banner			= self.e('#banner')
+		
+		# TODO
+		# assert admin
+		# click edit project
+		# remove existing admin
+		# assert that it's not in the list anymore
+		# add him again
+		# check if it is added
+		# save project
+		# 
+		# 
+		# 
+		# 
+		
+		pass
+		
 	
