@@ -57,12 +57,9 @@ class Project_Edit(HPTestCase):
 		
 		self.assertEqual('New project for QA', project_title)
 	
-	@unittest.expectedFailure
 	@logged_in
 	@url('{0}/'.format(PROJECT_URL))
 	def test_change_description(self):
-		
-		# TODO fix this when there are user controls (edit and save project)
 		
 		sleep(1)
 		banner			= self.e('#banner')
@@ -70,18 +67,34 @@ class Project_Edit(HPTestCase):
 		
 		self.assertEqual('DO NOT PIN!!!', project_desc)
 		
-		self.go('{0}{1}/project/edit'.format(URL_BASE, self.PROJECT_URL))
+		user_controls	= self.e('#main-header .temp')
+		editing_project	= user_controls.es('li a')[0]
+		saving_project	= user_controls.es('li a')[1]
+		
+		editing_project.click()
 		sleep(1)
 		
-		project_edit = self.e('#project-form')
+		project_edit_desc = self.e('#project-form .short-desc-wrap textarea')
 		
-		self.assertEqual(project_desc, project_edit.e('p textarea').get_attribute('value'))
+		self.assertEqual(project_desc, project_edit_desc.get_attribute('value'))
 		
-		# edit the desc
-		# save the project
-		# check if the edited desc is equal to the new one
-		# click edit again
-		# set back the previous value
+		project_edit_desc.send_keys(' The description was being edited')
+		
+		saving_project.click()
+		sleep(1)
+		
+		editing_project	= user_controls.es('li a')[0]
+		editing_project.click()
+		sleep(1)
+		
+		project_edit_desc = self.e('#project-form .short-desc-wrap textarea')
+		project_edit_desc.clear()
+		
+		project_edit_desc.send_keys('DO NOT PIN!!!')
+		saving_project.click()
+		sleep(1)
+		
+		self.assertEqual('DO NOT PIN!!!', project_desc)
 	
 	@unittest.expectedFailure
 	@logged_in
@@ -101,11 +114,7 @@ class Project_Edit(HPTestCase):
 		# add him again
 		# check if it is added
 		# save project
-		# 
-		# 
-		# 
-		# 
-		
+		#
 		pass
 		
 	
