@@ -145,12 +145,4 @@ class Project_View(HPTestCase):
 		about_card.click()
 		
 		self.assertTrue(self.e('.about.pane').is_displayed())
-	
-	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
-	@url('{0}/'.format(PROJECT_URL))
-	def test_top_pinner_card(self):
 		
-		# TODO
-		# complete the test when it's clear if you click the pinner card what will happen
-		pass
-	

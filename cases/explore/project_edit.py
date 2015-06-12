@@ -96,25 +96,54 @@ class Project_Edit(HPTestCase):
 		
 		self.assertEqual('DO NOT PIN!!!', project_desc)
 	
-	@unittest.expectedFailure
 	@logged_in
 	@url('{0}/'.format(PROJECT_URL))
 	def test_add_admin(self):
 		
 		# TODO fix this when there are user controls (edit and save project)
 		
+		banner			= self.e('#banner')
+		sleep(3)
+		project_admin	= banner.es('.user-img')[2]
+		
+		self.assertEqual('/en/person/{0}'.format(ID_USER_EXPLORE), project_admin.get_attribute('href'))
+		
+		user_controls	= self.e('#main-header .temp')
+		editing_project	= user_controls.es('li a')[0]
+		saving_project	= user_controls.es('li a')[1]
+		
+		editing_project.click()
 		sleep(1)
+		
 		banner			= self.e('#banner')
 		
-		# TODO
-		# assert admin
-		# click edit project
-		# remove existing admin
-		# assert that it's not in the list anymore
-		# add him again
-		# check if it is added
-		# save project
-		#
-		pass
+		project_edit_admin_delete = banner.e('.user-img:nth-of-type(3) .user-remove .ss-delete')
+		project_edit_admin_delete.click()
 		
+		saving_project.click()
+		sleep(3)
+		
+		
+		# self.assertIsNotInstance(banner.es('.user-img')[2], WebElement)
+		self.assertFalse(self.e('#banner').exists('.user-img:nth-of-type(3)'))
+		
+		editing_project	= user_controls.es('li a')[0]
+		saving_project	= user_controls.es('li a')[1]
+		
+		editing_project.click()
+		sleep(2)
+		
+		self.e('#banner .ui-autocomplete-input').send_keys('gabriela1')
+		sleep(2)
+		self.e('.ui-autocomplete li').click()
+		sleep(2)
+		self.assertTrue(self.e('#banner').exists('.user-img:nth-of-type(3) .user-remove .ss-delete'))
+		
+		saving_project.click()
+		sleep(3)
+		
+		banner			= self.e('#banner')
+		project_admin	= banner.es('.user-img')[2]
+		
+		self.assertEqual('/en/person/{0}'.format(ID_USER_EXPLORE), project_admin.get_attribute('href'))
 	
