@@ -150,6 +150,9 @@ class HPTestCase(TestCase):
 		sleep(3)
 		
 		cls.e('#Email').send_keys('gabriela.ananieva@historypin.org')
+		cls.e('#next').click()
+		sleep(.5)
+		
 		cls.e('#Passwd').send_keys('tristania1010')
 		cls.e('#signIn').click()
 		sleep(3)
@@ -184,4 +187,11 @@ class HPTestCase(TestCase):
 	# 	self.go(URL_BASE + '/user/logout/')
 	# 	self.pageload_wait()
 
+# from base import playground; self = playground()
+def playground():
+	self = HPTestCase
+	self.browser_start(Browser(PATH_CRHOME_DRIVER))
+	self.go('/')
+	
+	return self
 
