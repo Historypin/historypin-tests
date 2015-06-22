@@ -19,7 +19,6 @@ from projects_cases.asian_pacific import Project_AsianPacific
 from projects_cases.balboa import Project_Balboa
 from projects_cases.becontree import Project_Becontree
 from projects_cases.chevy import Project_Chevy
-from projects_cases.digital_war_memorial import Project_DigitalWarMemorial
 from projects_cases.europeana import Project_Europeana
 from projects_cases.field_recordings import Project_FieldRecordings
 from projects_cases.first_world_war import Project_FirstWorldWar
@@ -31,7 +30,6 @@ from projects_cases.lincoln import Project_Lincoln
 from projects_cases.npower import Project_NPower
 from projects_cases.npower_keep_warm import Project_NPower_KeepWarm
 from projects_cases.npower_play import Project_NPower_Play
-from projects_cases.npower_timeline import Project_Timeline
 from projects_cases.npower_cook_clean import Project_NPower_Cook_Clean
 from projects_cases.npower_celebrate import Project_NPower_Celebrate
 from projects_cases.npower_watch_listen import Project_NPower_Watch_Listen
