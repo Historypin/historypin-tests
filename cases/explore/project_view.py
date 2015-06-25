@@ -28,7 +28,7 @@ class Project_View(HPTestCase):
 			self.assertEqual(i[1], breadcrumbs[n].text)
 		
 	
-	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
+	# @unittest.skipUnless(VERSION == 'v622-beta-1', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
 	def test_navigation_not_logged_in(self):
 		
@@ -44,7 +44,7 @@ class Project_View(HPTestCase):
 		self.e('#ui-id-1 .close-btn-wrapp a').click()
 		self.assertFalse(self.e('#ui-id-1').is_displayed())
 	
-	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
+	# @unittest.skipUnless(VERSION == 'v622-beta-1', 'Do not run on 6.17')
 	@logged_in
 	@url('{0}/'.format(PROJECT_URL))
 	def test_navigation_logged_in(self):
@@ -61,7 +61,7 @@ class Project_View(HPTestCase):
 		
 		self.assertIsInstance(self.e('#button_edit'), WebElement)
 	
-	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
+	# @unittest.skipUnless(VERSION == 'v622-beta-1', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
 	def test_map(self):
 		
@@ -74,7 +74,7 @@ class Project_View(HPTestCase):
 		
 		self.assertIsInstance(self.e('#map'), WebElement)
 	
-	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
+	# @unittest.skipUnless(VERSION == 'v622-beta-1', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
 	def test_gallery_view(self):
 		
@@ -94,7 +94,7 @@ class Project_View(HPTestCase):
 		self.assertEqual('TOP PINNER', user_card.e('h4').text)
 		
 	
-	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
+	# @unittest.skipUnless(VERSION == 'v622-beta-1', 'Do not run on 6.17')
 	@logged_in
 	@url('{0}/'.format(PROJECT_URL))
 	def test_add_project_card_logged_in(self):
@@ -109,7 +109,7 @@ class Project_View(HPTestCase):
 		
 		#TODO should start the test after the google login is fixed
 	
-	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
+	# @unittest.skipUnless(VERSION == 'v622-beta-1', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
 	def test_add_project_card_not_logged_in(self):
 		
@@ -117,7 +117,7 @@ class Project_View(HPTestCase):
 		add_project_card.click()
 		self.assertEqual('Sign in to Historypin', self.e('#ui-id-1 h2').text)
 	
-	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
+	# @unittest.skipUnless(VERSION == 'v622-beta-1', 'Do not run on 6.17')
 	@logged_in
 	@url('{0}/'.format(PROJECT_URL))
 	def test_add_pin_card_logged_in(self):
@@ -129,7 +129,7 @@ class Project_View(HPTestCase):
 		# go back to the projedt
 		pass
 	
-	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
+	# @unittest.skipUnless(VERSION == 'v622-beta-1', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
 	def test_add_pin_card_not_logged_in(self):
 		
@@ -137,7 +137,7 @@ class Project_View(HPTestCase):
 		add_pin_card.click()
 		self.assertEqual('Sign in to Historypin', self.e('#ui-id-1 h2').text)
 	
-	@unittest.skipUnless(VERSION == 'v623-beta-1', 'Do not run on 6.17')
+	# @unittest.skipUnless(VERSION == 'v622-beta-1', 'Do not run on 6.17')
 	@url('{0}/'.format(PROJECT_URL))
 	def test_about_section(self):
 		
