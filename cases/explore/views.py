@@ -107,4 +107,12 @@ class Pages_View(HPTestCase):
 		self.assertIsInstance(self.e('.projects-all'), WebElement)
 		self.assertEqual('Pins', self.e('.projects-all h1').text)
 	
+	@url('{0}/en/places/'.format(URL_BASE))
+	def test_places_view(self):
+		
+		self.assertTitle('Historypin | Places')
+		
+		self.assertIsInstance(self.e('#main-header'), WebElement)
+		self.assertIsInstance(self.e('.listing'), WebElement)
+	
 	
