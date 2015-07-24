@@ -45,9 +45,6 @@ class Pages_View(HPTestCase):
 		
 		self.assertIsInstance(self.e('#explore'), WebElement)
 		self.assertEqual('EDIT THE COLLECTION', self.e('.about h1').text)
-		
-		# self.assertIsInstance(self.e('#main-header'), WebElement)
-		# self.assertIsInstance(self.e('#start_t'), WebElement)
 	
 	@url('{0}/en/test-tour-for-automated-test/collection/edit'.format(URL_BASE))
 	def test_tour_edit_view(self):
@@ -86,4 +83,9 @@ class Pages_View(HPTestCase):
 		
 		self.assertEqual('Gabriela Ananieva', self.e('h2').text)
 	
+	@url('{0}/en/person/{1}/edit'.format(URL_BASE, ID_USER))
+	def test_person_edit_view(self):
+		
+		self.assertIsInstance(self.e('#main-header'), WebElement)
+		self.assertIsInstance(self.e('#person-edit'), WebElement)
 	
