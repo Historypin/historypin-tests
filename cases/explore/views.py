@@ -101,3 +101,10 @@ class Pages_View(HPTestCase):
 		self.assertIsInstance(self.e('.projects-all'), WebElement)
 		self.assertEqual('Collections', self.e('.projects-all h1').text)
 	
+	@url('{0}/en/person/{1}/list/pins'.format(URL_BASE, ID_USER_VIEW))
+	def test_person_list_pins_view(self):
+		
+		self.assertIsInstance(self.e('.projects-all'), WebElement)
+		self.assertEqual('Pins', self.e('.projects-all h1').text)
+	
+	
