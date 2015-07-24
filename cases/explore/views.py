@@ -5,7 +5,7 @@ import os, sys
 
 class Pages_View(HPTestCase):
 	
-	# TODO put in order test later to be in seperate files
+	# TODO Put in order test later to be in seperate files
 	# TODO These later could be extended to fully check the content and/or functionality.
 	
 	@url('{0}/en/'.format(URL_BASE))
@@ -40,6 +40,19 @@ class Pages_View(HPTestCase):
 		
 		self.assertIsInstance(self.e('#banner'), WebElement)
 	
-	@url('{0}/en/collections/'.format(URL_BASE))
-	def test_collections_view(self):
-		pass
+	@url('{0}/en/new-project-qa/collection/edit'.format(URL_BASE))
+	def test_collection_edit(self):
+		
+		self.assertIsInstance(self.e('#explore'), WebElement)
+		self.assertEqual('EDIT THE COLLECTION', self.e('.about h1').text)
+		
+		# self.assertIsInstance(self.e('#main-header'), WebElement)
+		# self.assertIsInstance(self.e('#start_t'), WebElement)
+	
+	@url('{0}/en/test-tour-for-automated-test/collection/edit'.format(URL_BASE))
+	def test_tour_edit(self):
+		
+		self.assertIsInstance(self.e('#main-header'), WebElement)
+		self.assertIsInstance(self.e('#explore'), WebElement)
+		
+	
