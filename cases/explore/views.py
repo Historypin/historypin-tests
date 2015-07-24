@@ -41,7 +41,7 @@ class Pages_View(HPTestCase):
 		self.assertIsInstance(self.e('#banner'), WebElement)
 	
 	@url('{0}/en/new-project-qa/collection/edit'.format(URL_BASE))
-	def test_collection_edit(self):
+	def test_collection_edit_view(self):
 		
 		self.assertIsInstance(self.e('#explore'), WebElement)
 		self.assertEqual('EDIT THE COLLECTION', self.e('.about h1').text)
@@ -50,9 +50,25 @@ class Pages_View(HPTestCase):
 		# self.assertIsInstance(self.e('#start_t'), WebElement)
 	
 	@url('{0}/en/test-tour-for-automated-test/collection/edit'.format(URL_BASE))
-	def test_tour_edit(self):
+	def test_tour_edit_view(self):
+		
+		self.assertIsInstance(self.e('#main-header'), WebElement)
+		self.assertIsInstance(self.e('#explore'), WebElement)
+	
+	@logged_in
+	@url('{0}/en/collection/create'.format(URL_BASE))
+	def test_collection_create_view(self):
 		
 		self.assertIsInstance(self.e('#main-header'), WebElement)
 		self.assertIsInstance(self.e('#explore'), WebElement)
 		
+		self.assertEqual('EDIT THE COLLECTION', self.e('.about h1').text)  # TODO should be fixed because we're on create collection, not edit
+	
+	@logged_in
+	@url('{0}/en/collection/create-tour'.format(URL_BASE))
+	def test_tour_create_view(self):
+		
+		self.assertIsInstance(self.e('#main-header'), WebElement)
+		self.assertIsInstance(self.e('#explore'), WebElement)
+	
 	
