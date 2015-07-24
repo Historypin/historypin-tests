@@ -89,3 +89,15 @@ class Pages_View(HPTestCase):
 		self.assertIsInstance(self.e('#main-header'), WebElement)
 		self.assertIsInstance(self.e('#person-edit'), WebElement)
 	
+	@url('{0}/en/person/{1}/list/tours'.format(URL_BASE, ID_USER_VIEW))
+	def test_person_list_tours_view(self):
+		
+		self.assertIsInstance(self.e('.projects-all'), WebElement)
+		self.assertEqual('Tours', self.e('.projects-all h1').text)
+		
+	@url('{0}/en/person/{1}/list/collections'.format(URL_BASE, ID_USER_VIEW))
+	def test_person_list_collections_view(self):
+		
+		self.assertIsInstance(self.e('.projects-all'), WebElement)
+		self.assertEqual('Collections', self.e('.projects-all h1').text)
+	
