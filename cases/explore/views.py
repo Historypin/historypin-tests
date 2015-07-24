@@ -71,4 +71,12 @@ class Pages_View(HPTestCase):
 		self.assertIsInstance(self.e('#main-header'), WebElement)
 		self.assertIsInstance(self.e('#explore'), WebElement)
 	
+	@url('{0}/en/people/'.format(URL_BASE))
+	def test_people_view(self):
+		
+		self.assertTitle('Historypin | People')
+		
+		self.assertIsInstance(self.e('#main-header'), WebElement)
+		self.assertIsInstance(self.e('.users-listing'), WebElement)
+	
 	
