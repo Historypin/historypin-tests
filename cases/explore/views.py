@@ -32,6 +32,14 @@ class Pages_View(HPTestCase):
 		self.assertEqual('Collections', all_collections_cnt.e('h1').text)
 		
 		self.assertIsInstance(self.e('#search'), WebElement)
+	
+	@url('{0}/en/oreo/'.format(URL_BASE))
+	def test_explore_view(self):
 		
+		self.assertTitle('Historypin | Project\'s for Quality Assurance')
+		
+		self.assertIsInstance(self.e('#banner'), WebElement)
+	
+	@url('{0}/en/collections/'.format(URL_BASE))
+	def test_collections_view(self):
 		pass
-
