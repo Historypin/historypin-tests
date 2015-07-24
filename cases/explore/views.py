@@ -79,4 +79,11 @@ class Pages_View(HPTestCase):
 		self.assertIsInstance(self.e('#main-header'), WebElement)
 		self.assertIsInstance(self.e('.users-listing'), WebElement)
 	
+	@url('{0}/en/person/{1}'.format(URL_BASE, ID_USER))
+	def test_person_view(self):
+		
+		self.assertIsInstance(self.e('.profile-header'), WebElement)
+		
+		self.assertEqual('Gabriela Ananieva', self.e('h2').text)
+	
 	
