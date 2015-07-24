@@ -126,4 +126,18 @@ class Pages_View(HPTestCase):
 		
 		self.assertIsInstance(self.e('.place-map-wrapper'), WebElement)
 		self.assertEqual('Sofia (stolitsa), Bulgaria', self.e('.container h1').text)
+	
+	@url('{0}/en/place/bulgaria/sofia-stolitsa/list/collections'.format(URL_BASE))
+	def test_place_list_collections_view(self):
+		
+		self.assertIsInstance(self.e('.projects-all'), WebElement)
+		self.assertEqual('Collections', self.e('.projects-all h1').text)
+	
+	@url('{0}/en/place/bulgaria/sofia-stolitsa/list/tours'.format(URL_BASE))
+	def test_place_list_tours_view(self):
+		pass
+		
+	@url('{0}/en/place/bulgaria/sofia-stolitsa'.format(URL_BASE))
+	def test_place_list_pins_view(self):
+		pass
 		
