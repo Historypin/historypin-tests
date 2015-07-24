@@ -21,4 +21,17 @@ class Pages_View(HPTestCase):
 		
 		self.assertIsInstance(self.e('.partners'), WebElement)
 		
-		# assert all sections
+		# TODO assert all sections in the future when the test is extended and it is the seperate test suite
+	
+	@url('{0}/en/collections/'.format(URL_BASE))
+	def test_collections_view(self):
+		
+		self.assertTitle('Historypin | Collections')
+		
+		all_collections_cnt = self.e('.container.projects-all')
+		self.assertEqual('Collections', all_collections_cnt.e('h1').text)
+		
+		self.assertIsInstance(self.e('#search'), WebElement)
+		
+		pass
+
