@@ -135,9 +135,13 @@ class Pages_View(HPTestCase):
 	
 	@url('{0}/en/place/bulgaria/sofia-stolitsa/list/tours'.format(URL_BASE))
 	def test_place_list_tours_view(self):
-		pass
 		
-	@url('{0}/en/place/bulgaria/sofia-stolitsa'.format(URL_BASE))
+		self.assertIsInstance(self.e('.projects-all'), WebElement)
+		self.assertEqual('Tours', self.e('.projects-all h1').text)
+	
+	@url('{0}/en/place/bulgaria/sofia-stolitsa/list/pins'.format(URL_BASE))
 	def test_place_list_pins_view(self):
-		pass
 		
+		self.assertIsInstance(self.e('.projects-all'), WebElement)
+		self.assertEqual('Pins', self.e('.projects-all h1').text)
+	
