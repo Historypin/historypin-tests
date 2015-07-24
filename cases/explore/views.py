@@ -115,4 +115,10 @@ class Pages_View(HPTestCase):
 		self.assertIsInstance(self.e('#main-header'), WebElement)
 		self.assertIsInstance(self.e('.listing'), WebElement)
 	
-	
+	@url('{0}/en/place/bulgaria/'.format(URL_BASE))
+	def test_place_level0_view(self):
+		
+		self.assertIsInstance(self.e('.place-map-wrapper'), WebElement)
+		self.assertEqual('Bulgaria', self.e('.container h1').text)
+		
+		
