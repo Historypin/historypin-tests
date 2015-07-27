@@ -157,3 +157,7 @@ class Pages_View(HPTestCase):
 		self.assertIsInstance(self.e('.projects-all'), WebElement)
 		self.assertEqual('Pins', self.e('.projects-all h1').text)
 	
+	@url('{0}/en/person/asd/'.format(URL_BASE))
+	def test_page_not_found_view(self):
+		
+		self.assertEqual('404', self.e('.ng-scope>h1').text)
