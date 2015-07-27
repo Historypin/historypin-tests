@@ -121,6 +121,18 @@ class Pages_View(HPTestCase):
 		self.assertIsInstance(self.e('.place-map-wrapper'), WebElement)
 		self.assertEqual('Bulgaria', self.e('.container h1').text)
 	
+	@url('{0}/en/place/bulgaria/list/subplaces'.format(URL_BASE))
+	def test_place_list_regions_view(self):
+		
+		self.assertIsInstance(self.e('#main-header'), WebElement)
+		self.assertEqual('Regions', self.e('.projects-all h1').text)
+	
+	@url('{0}/en/place/bulgaria/list/people'.format(URL_BASE))
+	def test_place_list_users_view(self):
+		
+		self.assertIsInstance(self.e('#main-header'), WebElement)
+		self.assertEqual('Pinners who are collaborating on collections and have made comments', self.e('.users-listing .ng-scope h3+p').text)
+	
 	@url('{0}/en/place/bulgaria/sofia-stolitsa'.format(URL_BASE))
 	def test_place_level1_view(self):
 		
