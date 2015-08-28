@@ -8,6 +8,7 @@ class Discourse(HPTestCase):
 	def test_discourse_page(self):
 		self.go('https://community.historypin.org/')
 		
+		sleep(4)
 		self.assertTitle('Historypin Community')
 		
 		self.assertIsInstance(self.e('#ember1184'), WebElement)  # asserting the header
