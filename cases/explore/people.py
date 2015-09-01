@@ -18,6 +18,7 @@ class People(HPTestCase):
 	
 	@url('/en/people')
 	def test_search_username(self):
+		
 		self.e('.select2-input.select2-default').send_keys('Gabriela')
 		sleep(2)
 		self.e('.select2-results li:nth-of-type(2)').click()
