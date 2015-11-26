@@ -107,6 +107,7 @@ class TestCase(unittest.TestCase):
 		# cls.pageload_wait	= cls.browser.pageload_wait
 		cls.hover			= cls.browser.hover
 		cls.double_click	= cls.browser.double_click
+		
 	
 	@classmethod
 	def browser_close(cls):
