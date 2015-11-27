@@ -52,7 +52,7 @@ class Browser(webdriver.Chrome):
 	def go(self, url):
 		self.get(('' if url.startswith('http') else URL_BASE) + url)
 		self.pageload_wait()
-		sleep(2)
+		# sleep(1)
 	
 	def es(self, selector):
 		return self.find_elements_by_css_selector(selector)
@@ -97,7 +97,7 @@ class TestCase(unittest.TestCase):
 	@classmethod
 	def browser_start(cls, browser):
 		cls.browser = browser
-		cls.browser.maximize_window()
+		# cls.browser.maximize_window()
 		
 		cls.go				= cls.browser.go
 		cls.refresh			= cls.browser.refresh
@@ -137,7 +137,12 @@ def run(*tests):
 		suite.addTests(unittest.TestLoader().loadTestsFromModule(cases))
 	
 	# TestCase.browser_start(Browser())
-	TestCase.browser_start(Browser(PATH_CRHOME_DRIVER))
+
+	from selenium.webdriver.chrome.options import Options
+	opts = Options()
+	opts.add_argument("--start-fullscreen")
+
+	TestCase.browser_start(Browser(PATH_CRHOME_DRIVER, chrome_options = opts))
 	# HPTestCase.login()
 	
 	unittest.TextTestRunner(verbosity = 1).run(suite)
@@ -145,39 +150,56 @@ def run(*tests):
 
 
 class HPTestCase(TestCase):
+	# @classmethod
+	# def login(cls):
+	# 	cls.go('/user/')
+		
+	# 	login = cls.e('#site-content #login-google')
+	# 	login.click()
+	# 	sleep(3)
+		
+	# 	cls.e('#Email').send_keys('gabriela.ananieva@historypin.org')
+	# 	cls.e('#next').click()
+	# 	sleep(.5)
+		
+	# 	cls.e('#Passwd').send_keys('tristania1010')
+	# 	cls.e('#signIn').click()
+	# 	sleep(3)
+		
+	# 	try:
+	# 		cls.e('#submit_approve_access').click()
+	# 		sleep(3)
+	# 	except:
+	# 		pass
+		
+	# 	LOGIN_COOKIES.append(cls.browser.get_cookie('hpsid'))
+		
+	# 	cls.login_cookie_del()
+		
+	# 	cls.browser.execute_script('window.stop();')
+	# 	sleep(1)
+
 	@classmethod
-	def login(cls):
-		cls.go('/user/')
+	def new_login(cls):
+		cls.go('/')
 		
-		login = cls.e('#site-content #login-google')
-		login.click()
-		sleep(3)
+		cls.e('.btn-sign-in').click()
+		cls.e('#sign-mail').click()
 		
-		cls.e('#Email').send_keys('gabriela.ananieva@historypin.org')
-		cls.e('#next').click()
-		sleep(.5)
+		cls.e('#email').send_keys('kris.test00@mail.bg')
+		cls.e('#password').send_keys('HistoryPin00')
+		cls.e('.login-submit').click()
 		
-		cls.e('#Passwd').send_keys('tristania1010')
-		cls.e('#signIn').click()
-		sleep(3)
-		
-		try:
-			cls.e('#submit_approve_access').click()
-			sleep(3)
-		except:
-			pass
+		sleep(15)
 		
 		LOGIN_COOKIES.append(cls.browser.get_cookie('hpsid'))
 		
 		cls.login_cookie_del()
-		
-		cls.browser.execute_script('window.stop();')
-		sleep(1)
 	
 	@classmethod
 	def login_cookie_set(cls):
 		if not LOGIN_COOKIES:
-			HPTestCase.login()
+			HPTestCase.new_login()
 		
 		for i in LOGIN_COOKIES:
 			if i: cls.browser.add_cookie(i)

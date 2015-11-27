@@ -1,23 +1,19 @@
 
-PATH_CRHOME_DRIVER	= '/usr/lib64/chromium-browser/chromedriver'
+PATH_CRHOME_DRIVER	= 'chromedriver'
 GO_TIMEOUT = 1
 
-VERSION = ''
-# VERSION = 'explore-independance'
-# VERSION = 'v617-beta-18'
-VERSION = 'v628-beta-1'
-# VERSION = 'v618-refac-format'
+VERSION = 'v75-beta-1'
+
 # LINK_BASE = 'historypin.org'
 LINK_BASE = '{0}.historypin-hrd.appspot.com'.format(VERSION)
 
-URL_BASE = 'http://www.{0}'.format(LINK_BASE)
-URL_BLOB = 'http://www.{0}'.format(LINK_BASE)
+URL_BASE = 'http://{0}'.format(LINK_BASE)
+URL_BLOB = 'http://{0}'.format(LINK_BASE)
 PROTOCOL = URL_BASE.split('://')[0]
 
 
 IS_ON_SDK	= not (LINK_BASE.endswith('.appspot.com') or LINK_BASE.endswith('historypin.com'))
 IS_LIVE		= LINK_BASE.endswith('historypin.com') or LINK_BASE.endswith('historypin.org')
-
 
 ID_USER			= 35019
 ID_USER_VIEW	= 33283
