@@ -3,7 +3,7 @@
 from base import *
 import os, sys
 
-class Pages_View(HPTestCase):
+class Pages_Views(HPTestCase):
 	
 	# TODO Put in order test later to be in seperate files
 	# TODO These later could be extended to fully check the content and/or functionality.

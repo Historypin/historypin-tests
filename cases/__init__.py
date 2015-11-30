@@ -5,5 +5,5 @@ from explore.project_edit import Project_Edit
 from explore.people import People
 from explore.places import Places
 from explore.projects import Projects
-from explore.views import Pages_View
-from explore.explore_view import Pages_Views
+from explore.views import Pages_Views
+from explore.pages_view import Pages_View

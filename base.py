@@ -8,6 +8,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.remote.webelement import WebElement
+import logging
 
 
 from conf import *
@@ -111,7 +112,7 @@ class TestCase(unittest.TestCase):
 	
 	@classmethod
 	def browser_close(cls):
-		cls.browser.close()
+		cls.browser.quit()
 	
 	def assertTitle(self, title):
 		self.assertIn(title, self.browser.title)
@@ -220,3 +221,32 @@ def playground():
 	self.go('/')
 	
 	return self
+	
+def side_buttons(self):
+	s_buttons = [
+		'.site-toolbar .icon-info', 
+		'.site-toolbar .icon-share', 
+		'.site-toolbar .icon-discussion', 
+		'.site-toolbar .icon-add-collection'
+	]
+
+	for n in range(len(s_buttons)):
+		i = s_buttons[n]
+		logging.critical(i)
+		self.assertTrue(self.e(i).is_displayed())
+		# self.assertIsInstance(self.e(i), WebElement)
+		
+def side_buttons_profile(self):
+	sp_buttons = [
+		'.site-toolbar .icon-edit', 
+		'.site-toolbar .icon-share', 
+		'.site-toolbar .icon-discussion', 
+		'.site-toolbar .icon-add-pin', 
+		'.site-toolbar .icon-add-collection', 
+		'.site-toolbar .icon-add-tour'
+	]
+	
+	for n in range(len(sp_buttons)):
+		i = sp_buttons[n]
+		logging.critical(i)
+		self.assertTrue(self.e(i).is_displayed())

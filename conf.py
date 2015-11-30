@@ -15,7 +15,7 @@ PROTOCOL = URL_BASE.split('://')[0]
 IS_ON_SDK	= not (LINK_BASE.endswith('.appspot.com') or LINK_BASE.endswith('historypin.com'))
 IS_LIVE		= LINK_BASE.endswith('historypin.com') or LINK_BASE.endswith('historypin.org')
 
-ID_USER			= 35019
+ID_USER			= 65536
 ID_USER_VIEW	= 33283
-ID_USER_EXPLORE	= 62442
+ID_USER_EXPLORE	= 65536
 
