@@ -18,4 +18,5 @@ IS_LIVE		= LINK_BASE.endswith('historypin.com') or LINK_BASE.endswith('historypi
 ID_USER			= 65536
 ID_USER_VIEW	= 33283
 ID_USER_EXPLORE	= 65536
+ID_FREE_USER 	= 65540
 

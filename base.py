@@ -4,7 +4,7 @@ from time import sleep
 
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
-# from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.remote.webelement import WebElement
@@ -191,7 +191,7 @@ class HPTestCase(TestCase):
 		cls.e('#password').send_keys('HistoryPin00')
 		cls.e('.login-submit').click()
 		
-		sleep(15)
+		sleep(13)
 		
 		LOGIN_COOKIES.append(cls.browser.get_cookie('hpsid'))
 		
