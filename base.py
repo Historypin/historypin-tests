@@ -8,6 +8,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.common.alert import Alert
 import logging
 
 
@@ -91,7 +92,10 @@ class Browser(webdriver.Chrome):
 	def click_xy(self, elem, x, y):
 		ActionChains(self).move_to_element_with_offset(elem, x, y).click().perform()
 		sleep(.5)  # TODO is this necessary
-
+		
+	def accept_alert(self):
+		alert = self.switch_to_alert()
+		alert.accept()
 
 
 class TestCase(unittest.TestCase):
@@ -108,7 +112,7 @@ class TestCase(unittest.TestCase):
 		# cls.pageload_wait	= cls.browser.pageload_wait
 		cls.hover			= cls.browser.hover
 		cls.double_click	= cls.browser.double_click
-		
+		cls.accept_alert	= cls.browser.accept_alert
 	
 	@classmethod
 	def browser_close(cls):
@@ -186,12 +190,13 @@ class HPTestCase(TestCase):
 		
 		cls.e('.btn-sign-in').click()
 		cls.e('#sign-mail').click()
+		sleep(1)
 		
 		cls.e('#email').send_keys('kris.test00@mail.bg')
 		cls.e('#password').send_keys('HistoryPin00')
 		cls.e('.login-submit').click()
 		
-		sleep(13)
+		sleep(12)
 		
 		LOGIN_COOKIES.append(cls.browser.get_cookie('hpsid'))
 		
