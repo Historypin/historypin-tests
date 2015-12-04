@@ -8,3 +8,4 @@ from explore.views import Pages_Views
 from explore.pages_view import Pages_View
 from explore.add_projects import Add_Projects
 from explore.add_pin import Add_Pin
+from explore.add_tour import Add_Tour

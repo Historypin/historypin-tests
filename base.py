@@ -196,7 +196,8 @@ class HPTestCase(TestCase):
 		cls.e('#password').send_keys('HistoryPin00')
 		cls.e('.login-submit').click()
 		
-		sleep(12)
+		# sleep(12)
+		cls.e_wait('.main-header-user')
 		
 		LOGIN_COOKIES.append(cls.browser.get_cookie('hpsid'))
 		
