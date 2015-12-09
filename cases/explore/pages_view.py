@@ -60,7 +60,7 @@ class Pages_View(HPTestCase):
 	@url('/en/person/65536')
 	def test_profile_view(self):
 		# sleep(4)
-		self.e_wait('#pins .icon-pen')
+		self.e_wait('.pin-item')
 		self.assertTrue(self.e('.profile-image').is_displayed())
 		self.assertTrue(self.e('.profile-meta').is_displayed())
 		self.assertTrue(self.e('.activity-wrapper').is_displayed())
@@ -84,3 +84,4 @@ class Pages_View(HPTestCase):
 		self.assertTrue(self.e('#search button.blue-bg').is_displayed())			# reset search button
 		self.assertIsInstance(self.e('.img-wrapper'), WebElement)					# place image first place card
 		self.assertIsInstance(self.e('.pagination-list'), WebElement)
+		
