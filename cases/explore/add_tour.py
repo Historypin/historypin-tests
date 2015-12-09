@@ -16,7 +16,7 @@ class Add_Tour(HPTestCase):
 		
 		self.e('.project-title').send_keys('Premium Automated Tour')
 		self.e('#short-description').send_keys('Premium Automated Tour')
-		self.e('#mce_0').send_keys('Premium Automated Tour')						# long description
+		self.e('#mce_0').send_keys('Premium Automated Tour')							# long description
 		self.e('#location-search').send_keys('Sydney')
 		sleep(1)
 		

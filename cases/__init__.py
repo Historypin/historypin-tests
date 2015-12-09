@@ -10,3 +10,4 @@ from explore.add_projects import Add_Projects
 from explore.add_pin import Add_Pin
 from explore.add_tour import Add_Tour
 from explore.edit_project import Edit_Project
+from explore.edit_tour import Edit_Tour
