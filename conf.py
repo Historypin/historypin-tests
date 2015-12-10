@@ -2,7 +2,7 @@
 PATH_CRHOME_DRIVER	= 'chromedriver'
 GO_TIMEOUT = 1
 
-VERSION = 'v75-beta-1'
+VERSION = 'v75-beta-2'
 
 # LINK_BASE = 'historypin.org'
 LINK_BASE = '{0}.historypin-hrd.appspot.com'.format(VERSION)

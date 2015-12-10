@@ -19,11 +19,10 @@ class Add_Pin(HPTestCase):
 		self.assertTrue(self.e('.add-img-pin-area .button').is_displayed())					# add file button
 		self.e('.add-input-wrapper .add-input').send_keys('http://pre15.deviantart.net/5108/th/pre/i/2010/332/f/b/power_symbol_wallpapers_by_dodgydavec-d33slvo.png')	# add link to an image
 		self.e('.add-input-wrapper .add-button').click()									# add link image button
-		self.assertTrue(self.e('.uploaded-img .white-bg').is_displayed)						# replace image button
+		self.assertTrue(self.e('.uploaded-img .white-bg').is_displayed())					# replace image button
 		self.e('#title').send_keys('Selenium pin')
 		self.e('#description').send_keys('Selenium pin')
 		self.assertTrue(self.e('#license').is_displayed())
-		self.e('.select2-input').send_keys('Selenium pin,', '3.14!@#$%^&*()_+=-?/;[]:,')	# add tags
 		self.e('#date_taken').send_keys('2012-12-12')										# add date for pin
 		self.e('.field-wrapper.required:nth-of-type(4) label').click()						# exact location radio button
 		self.e('.location-search').send_keys('santorini')
@@ -35,7 +34,8 @@ class Add_Pin(HPTestCase):
 		sleep(1)
 		
 		self.assertTrue(self.e('.ui-slider-handle').is_displayed())							# fade bar
-		self.assertTrue(self.e('.add-pin-to .checkbox-tick').is_displayed())				# create new collection checkbox
+		self.e('.select2-input').send_keys('3.14!@#$%^&*()_+=-?/;[]:,', 'Selenium pin,')	# add tags
+		self.assertTrue(self.e('[name="new_project"]').is_displayed())						# create new collection
 		# self.assertTrue(self.e('#managed_filter').is_displayed())							# your collections and tours filter
 		self.e('.checkbox-list .ng-binding').click()										# first of own collections
 		self.e('#pinner h2:nth-of-type(4)').click()											# expand other info
@@ -48,7 +48,7 @@ class Add_Pin(HPTestCase):
 		self.assertTrue(self.e('.button-center-wrapp .white-bg').is_displayed())			# cancel button
 		self.e('.button-center-wrapp a:last-child').click()									# save button
 		# sleep(8)
-		self.e_wait('.title')
+		self.e_wait('.streetview-img-wrapper')
 		
 		self.assertTitle('Historypin | kris.test00 | Selenium pin')
 		
