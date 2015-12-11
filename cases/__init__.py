@@ -11,3 +11,5 @@ from explore.add_tour import Add_Tour
 from explore.edit_project import Edit_Project
 from explore.edit_tour import Edit_Tour
 from explore.edit_pin import Edit_Pin
+from explore.add_video_pin import Add_Video_Pin
+from explore.add_text_pin import Add_Text_Pin

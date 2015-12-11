@@ -6,17 +6,15 @@ class Add_Tour(HPTestCase):
 	@logged_in
 	@url('/en/person/{0}/'.format(ID_USER))
 	def test_add_premium_tour(self):
-		# sleep(4)
 		self.e_wait('.create-tour-card')
 		
 		self.assertEqual('kris.test00', self.e('.profile-meta h2').text)
 		self.e('.create-tour-card').click()
-		# sleep(4)
 		self.e_wait('.project-title')
 		
-		self.e('.project-title').send_keys('Premium Automated Tour')
-		self.e('#short-description').send_keys('Premium Automated Tour')
-		self.e('#mce_0').send_keys('Premium Automated Tour')							# long description
+		self.e('.project-title').send_keys('Automated Tour')
+		self.e('#short-description').send_keys('Automated Tour')
+		self.e('#mce_0').send_keys('Automated Tour')									# long description
 		self.e('#location-search').send_keys('Sydney')
 		sleep(1)
 		
@@ -37,20 +35,23 @@ class Add_Tour(HPTestCase):
 		self.assertTrue(self.e('#blog-feed').is_displayed())
 		self.assertTrue(self.e('.white-bg').is_displayed())								# cancel button
 		self.e('#button_save').click()
-		# sleep(6)
 		self.e_wait('.title')
 		
-		self.assertTitle('Historypin | Premium Automated Tour')
+		self.assertTitle('Historypin | Automated Tour')
 		
 	@logged_in
 	@url('/en/person/{0}/'.format(ID_USER))
 	def test_delete_tour(self):
-		# sleep(4)
 		self.e_wait('.tour-item .icon-trash')
 		
 		self.assertEqual('kris.test00', self.e('.profile-meta h2').text)
-		self.assertEqual('Premium Automated Tour', self.e('.tour-item h3').text)
+		self.assertEqual('Automated Tour', self.e('.tour-item h3').text)
 		self.e(".tour-item .icon-trash").click()										# delete project
 		sleep(2)
 		
 		self.accept_alert()																# submit popup window
+		
+		self.go('/en/person/{0}/'.format(ID_USER))
+		self.e_wait('.tour-item .icon-trash')
+		
+		self.assertEqual('Premium Automated Tour', self.e('.tour-item h3').text)

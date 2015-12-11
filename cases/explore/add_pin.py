@@ -20,12 +20,13 @@ class Add_Pin(HPTestCase):
 		self.e('.add-input-wrapper .add-input').send_keys('http://pre15.deviantart.net/5108/th/pre/i/2010/332/f/b/power_symbol_wallpapers_by_dodgydavec-d33slvo.png')	# add link to an image
 		self.e('.add-input-wrapper .add-button').click()									# add link image button
 		self.assertTrue(self.e('.uploaded-img .white-bg').is_displayed())					# replace image button
-		self.e('#title').send_keys('Selenium pin')
-		self.e('#description').send_keys('Selenium pin')
+		self.e('#title').send_keys('Selenium image pin')
+		self.e('#description').send_keys('Selenium image pin')
 		self.assertTrue(self.e('#license').is_displayed())
 		self.e('#date_taken').send_keys('2012-12-12')										# add date for pin
 		self.e('.field-wrapper.required:nth-of-type(4) label').click()						# exact location radio button
 		self.e('.location-search').send_keys('santorini')
+		sleep(1)
 		self.e('.location-search').send_keys(Keys.ENTER)
 		sleep(1)
 		
@@ -34,7 +35,7 @@ class Add_Pin(HPTestCase):
 		sleep(1)
 		
 		self.assertTrue(self.e('.ui-slider-handle').is_displayed())							# fade bar
-		self.e('.select2-input').send_keys('3.14!@#$%^&*()_+=-?/;[]:,', 'Selenium pin,')	# add tags
+		self.e('.select2-input').send_keys('3.14!@#$%^&*()_+=-?/;[]:,', 'Selenium image pin,')	# add tags
 		self.assertTrue(self.e('[name="new_project"]').is_displayed())						# create new collection
 		# self.assertTrue(self.e('#managed_filter').is_displayed())							# your collections and tours filter
 		self.e('.checkbox-list .ng-binding').click()										# first of own collections
@@ -50,7 +51,7 @@ class Add_Pin(HPTestCase):
 		# sleep(8)
 		self.e_wait('.streetview-img-wrapper')
 		
-		self.assertTitle('Historypin | kris.test00 | Selenium pin')
+		self.assertTitle('Historypin | kris.test00 | Selenium image pin')
 		
 	@logged_in
 	@url('/en/person/{0}/'.format(ID_USER))
@@ -59,8 +60,11 @@ class Add_Pin(HPTestCase):
 		self.e_wait('.pin-item .icon-trash')
 		
 		self.assertTitle("Historypin | kris.test00's Historypin profile")
-		self.assertEqual('Selenium pin', self.e('.pin-item h3').text)
+		self.assertEqual('Selenium image pin', self.e('.pin-item h3').text)
 		self.e('.pin-item .icon-trash').click()												# delete pin
 		sleep(2)
 		
 		self.accept_alert()																	# submit popup window
+		self.e_wait('.pin-item .icon-trash')
+		
+		self.assertEqual('Selenium pin', self.e('.pin-item h3').text)
