@@ -14,7 +14,7 @@ class Edit_Pin(HPTestCase):
 		self.e_wait('#title')
 		
 		self.e('#title').send_keys(' Changes')
-		self.e('#description').send_keys(' Changes ')
+		self.e('#description').send_keys('Changes ')
 		self.assertTrue(self.e('#license').is_displayed())
 		self.e('#date_taken').clear()
 		self.e('#date_taken').send_keys('1000-2015')										# change date

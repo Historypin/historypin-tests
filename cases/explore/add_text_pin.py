@@ -27,6 +27,8 @@ class Add_Text_Pin(HPTestCase):
 		self.e('.select2-input').send_keys('3.14!@#$%^&*()_+=-?/;[]:,', 'Selenium pin,')					# add tags
 		self.assertTrue(self.e('[name="new_project"]').is_displayed())										# create new collection
 		# self.assertTrue(self.e('#managed_filter').is_displayed())											# your collections and tours filter
+		sleep(1)
+		
 		self.e('.checkbox-list .ng-binding').click()														# first of own collections
 		self.e('#pinner h2:nth-of-type(4)').click()															# expand other info
 		sleep(1)
@@ -52,7 +54,7 @@ class Add_Text_Pin(HPTestCase):
 		sleep(2)
 		
 		self.accept_alert()																					# submit popup window
-		sleep(1)
+		sleep(2)
 		
 		self.go('/en/person/{0}/'.format(ID_USER))
 		self.e_wait('.pin-item h3')

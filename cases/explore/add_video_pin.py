@@ -23,8 +23,8 @@ class Add_Video_Pin(HPTestCase):
 		self.e('.field-wrapper.required:nth-of-type(4) label').click()										# exact location radio button
 		self.e('.location-search').send_keys('moscow')
 		sleep(1)
-		self.e('.location-search').send_keys(Keys.ENTER)
 		
+		self.e('.location-search').send_keys(Keys.ENTER)
 		self.assertTrue(self.e('.hp-editor-map-cnt').is_displayed())										# location map
 		self.e('.select2-input').send_keys('3.14!@#$%^&*()_+=-?/;[]:,', 'Selenium pin,')					# add tags
 		self.assertTrue(self.e('[name="new_project"]').is_displayed())										# create new collection
@@ -54,9 +54,9 @@ class Add_Video_Pin(HPTestCase):
 		sleep(2)
 		
 		self.accept_alert()																					# submit popup window
-		sleep(1)
+		sleep(2)
 		
 		self.go('/en/person/{0}/'.format(ID_USER))
-		self.e_wait('.pin-item .icon-trash')
+		self.e_wait('.pin-item h3')
 		
 		self.assertEqual('Selenium pin', self.e('.pin-item h3').text)

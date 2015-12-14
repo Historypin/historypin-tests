@@ -8,19 +8,18 @@ class Pages_View(HPTestCase):
 	
 	@url('/')
 	def test_homepage(self):
-		# sleep(1)
 		self.e_wait('.collections')
+		
 		self.assertTrue(self.e('#main-header-logo').is_displayed())
 		self.assertTrue(self.e('#main-header-nav').is_displayed())
 		self.assertTrue(self.e('.entrance-type').is_displayed())
-		
 		self.assertIsInstance(self.e('.home-search-input'), WebElement)
 		self.assertIsInstance(self.e('.collections'), WebElement)
 
 	@url('/en/explore')
 	def test_explore_view(self):
-		# sleep(10)
 		self.e_wait('.pagination-list')
+		
 		self.assertTrue(self.e('.main-header-cnt').is_displayed())
 		self.assertTrue(self.e('#search .select2-search-field').is_displayed())		# search by tag or keyword
 		self.assertTrue(self.e('#sort-select').is_displayed())						# order filter
@@ -34,8 +33,8 @@ class Pages_View(HPTestCase):
 
 	@url('/en/collections')
 	def test_all_collections(self):
-		# sleep(2)
 		self.e_wait('.pagination-list')
+		
 		self.assertTrue(self.e('.main-header-cnt').is_displayed())
 		self.assertTrue(self.e('.select2-search-field').is_displayed())				# search collections
 		self.assertTrue(self.e('#sort-select').is_displayed())
@@ -46,8 +45,8 @@ class Pages_View(HPTestCase):
 
 	@url('/en/people')
 	def test_meet_our_members(self):
-		# sleep(2)
 		self.e_wait('.pagination-list')
+		
 		self.assertTrue(self.e('.main-header-cnt').is_displayed())
 		self.assertTrue(self.e('.select2-search-field').is_displayed())				# search members
 		self.assertTrue(self.e('#sort-select').is_displayed())						# order filter
@@ -59,8 +58,9 @@ class Pages_View(HPTestCase):
 	@logged_in
 	@url('/en/person/65536')
 	def test_profile_view(self):
-		sleep(4)
+		sleep(5)
 		# self.e_wait('.pin-item')
+		
 		self.assertTrue(self.e('.profile-image').is_displayed())
 		self.assertTrue(self.e('.profile-meta').is_displayed())
 		self.assertTrue(self.e('.activity-wrapper').is_displayed())
@@ -77,8 +77,8 @@ class Pages_View(HPTestCase):
 
 	@url('/en/places')
 	def test_places(self):
-		# sleep(1)
 		self.e_wait('.pagination-list')
+		
 		self.assertTrue(self.e('.main-header-cnt').is_displayed())
 		self.assertTrue(self.e('.home-search-input').is_displayed())				# search place
 		self.assertTrue(self.e('#search button.blue-bg').is_displayed())			# reset search button

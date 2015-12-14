@@ -6,12 +6,10 @@ class Add_Projects(HPTestCase):
 	@logged_in
 	@url('/en/person/{0}/'.format(ID_USER))
 	def test_add_premium_collection(self):
-		# sleep(4)
 		self.e_wait('.create-collection-card')
 		
 		self.assertEqual('kris.test00', self.e('.profile-meta h2').text)
 		self.e('.create-collection-card').click()
-		# sleep(4)
 		self.e_wait('.ui-autocomplete-input')
 		
 		self.e('.ui-autocomplete-input').send_keys('KrisTestTwitter')						# add manager
@@ -22,16 +20,13 @@ class Add_Projects(HPTestCase):
 		self.e('#short-description').send_keys('Automated Collection')
 		self.e('#mce_0').send_keys('Automated Collection')									# long description
 		self.e('#get-in-touch').send_keys('@automation awesome')
-		self.e('#location-search').send_keys('Santorini')
+		self.e('#location-search').send_keys('greenland')
 		sleep(1)
 		
 		self.e('#location-search').send_keys(Keys.ENTER)
 		
 		self.assertIsInstance(self.e('#map'), WebElement)									# left side map
 		self.assertIsInstance(self.e('.hp-editor-map-cnt'), WebElement)						# location map
-		
-		# self.e('.landing-screen-type .button').click() # add landingscreen image
-		
 		self.e('.add-input').send_keys('http://vjs.zencdn.net/v/oceans.mp4')				# video landing screen
 		self.e('[for="explore-view-gallery"]').click()
 		self.e('[for="open-collection"] .switch').click()
@@ -48,7 +43,6 @@ class Add_Projects(HPTestCase):
 		self.assertTrue(self.e('#blog-feed').is_displayed())
 		self.assertTrue(self.e('.white-bg').is_displayed())									# cancel button
 		self.e('#button_save').click()
-		# sleep(6)
 		self.e_wait('.title')
 		
 		self.assertTitle('Historypin | Automated Collection')
@@ -57,7 +51,6 @@ class Add_Projects(HPTestCase):
 	@logged_in
 	@url('/en/person/{0}/'.format(ID_USER))
 	def test_delete_collection(self):
-		# sleep(4)
 		self.e_wait('.project-item .icon-trash')
 		
 		self.assertEqual('kris.test00', self.e('.profile-meta h2').text)

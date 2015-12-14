@@ -12,27 +12,32 @@ class Edit_Tour(HPTestCase):
 		self.assertEqual('Premium Automated Tour', self.e('.breadcrumbs-item a').text)
 		self.e('.project-title').send_keys('Changes')
 		self.e('#short-description').send_keys('Changes')
-		self.e('#mce_0').send_keys('Changes')											# long description
+		self.e('#mce_0').send_keys('Changes')												# long description
 		self.e('#location-search').clear()
 		self.e('#location-search').send_keys('Dubai')
 		sleep(1)
 		
 		self.e('#location-search').send_keys(Keys.ENTER)
-		
-		self.assertIsInstance(self.e('#map'), WebElement)								# left side map
-		self.assertIsInstance(self.e('.hp-editor-map-cnt'), WebElement)					# location map
-		self.e('.add-input').clear()													# delete video landing screen
-		self.e('[for="explore-view-gallery"]').click()
-		self.e('.select2-search-choice-close').click()									# delete tag
-		self.e('[for="show-navigation-tags"] .switch').click()							# close
-		self.e('#sort-select').click()													# default gallery sorting
+		self.assertIsInstance(self.e('#map'), WebElement)									# left side map
+		self.assertIsInstance(self.e('.hp-editor-map-cnt'), WebElement)						# location map
+		self.e('.add-input').clear()														# delete video landing screen
+		self.e('[type="file"]').send_keys('/Users/kris/Downloads/landingscreen.jpg')		# upload image
 		sleep(1)
 		
-		self.e('#sort-select :nth-of-type(1)').click()									# most  popular gallery sorting
-		self.assertTrue(self.e('.map-overlay-col .button').is_displayed())				# send a request button
+		self.assertTrue(self.e('.icon-trash').is_displayed()) 								# delete landing screen button
+		self.assertTrue(self.e('.landing-screen-type .input-file-wrapp').is_displayed()) 	# change landing screen image button
+		self.e('.add-input').clear()														# delete video landing screen
+		self.e('[for="explore-view-gallery"]').click()
+		self.e('.select2-search-choice-close').click()										# delete tag
+		self.e('[for="show-navigation-tags"] .switch').click()								# close
+		self.e('#sort-select').click()														# default gallery sorting
+		sleep(1)
+		
+		self.e('#sort-select :nth-of-type(1)').click()										# most  popular gallery sorting
+		self.assertTrue(self.e('.map-overlay-col .button').is_displayed())					# send a request button
 		self.assertTrue(self.e('.map-overlay-preview').is_displayed())
 		self.assertTrue(self.e('#blog-feed').is_displayed())
-		self.assertTrue(self.e('.white-bg').is_displayed())								# cancel button
+		self.assertTrue(self.e('.white-bg').is_displayed())									# cancel button
 		self.e('#button_save').click()
 		self.e_wait('.title')
 		
@@ -50,27 +55,27 @@ class Edit_Tour(HPTestCase):
 		self.e('#short-description').clear()
 		self.e('#short-description').send_keys('Premium Automated Tour')
 		self.e('#mce_0').clear()
-		self.e('#mce_0').send_keys('Premium Automated Tour')							# long description
+		self.e('#mce_0').send_keys('Premium Automated Tour')								# long description
+		self.e('.landing-screen-type .icon-trash').click()									# delete image landing screen
 		self.e('#location-search').clear()
 		self.e('#location-search').send_keys('Sydney')
 		sleep(1)
 		
 		self.e('#location-search').send_keys(Keys.ENTER)
-		
-		self.assertIsInstance(self.e('#map'), WebElement)								# left side map
-		self.assertIsInstance(self.e('.hp-editor-map-cnt'), WebElement)					# location map
-		self.e('.add-input').send_keys('http://vjs.zencdn.net/v/oceans.mp4')			# video landing screen
+		self.assertIsInstance(self.e('#map'), WebElement)									# left side map
+		self.assertIsInstance(self.e('.hp-editor-map-cnt'), WebElement)						# location map
+		self.e('.add-input').send_keys('http://vjs.zencdn.net/v/oceans.mp4')				# add video landing screen
 		self.e('[for="explore-view-map"]').click()
-		self.e('[for="show-navigation-tags"] .switch').click()							# open
-		self.e('#s2id_autogen1').send_keys('3.14!@#$%^&*()_+?><|}{:;~,')				# add tags
-		self.e('#sort-select').click()													# default gallery sorting
+		self.e('[for="show-navigation-tags"] .switch').click()								# open
+		self.e('#s2id_autogen1').send_keys('3.14!@#$%^&*()_+?><|}{:;~,')					# add tags
+		self.e('#sort-select').click()														# default gallery sorting
 		sleep(1)
 		
-		self.e('#sort-select :nth-of-type(4)').click()									# oldest first gallery sorting
-		self.assertTrue(self.e('.map-overlay-col .button').is_displayed())				# send a request button
+		self.e('#sort-select :nth-of-type(4)').click()										# oldest first gallery sorting
+		self.assertTrue(self.e('.map-overlay-col .button').is_displayed())					# send a request button
 		self.assertTrue(self.e('.map-overlay-preview').is_displayed())
 		self.assertTrue(self.e('#blog-feed').is_displayed())
-		self.assertTrue(self.e('.white-bg').is_displayed())								# cancel button
+		self.assertTrue(self.e('.white-bg').is_displayed())									# cancel button
 		self.e('#button_save').click()
 		self.e_wait('.title')
 		
