@@ -57,6 +57,6 @@ class Add_Text_Pin(HPTestCase):
 		sleep(2)
 		
 		self.go('/en/person/{0}/'.format(ID_USER))
-		self.e_wait('.pin-item h3')
+		sleep(2)
 		
 		self.assertEqual('Selenium pin', self.e('.pin-item h3').text)

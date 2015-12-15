@@ -21,7 +21,7 @@ class Add_Projects(HPTestCase):
 		self.e('#mce_0').send_keys('Automated Collection')									# long description
 		self.e('#get-in-touch').send_keys('@automation awesome')
 		self.e('#location-search').send_keys('greenland')
-		sleep(1)
+		sleep(2)
 		
 		self.e('#location-search').send_keys(Keys.ENTER)
 		
