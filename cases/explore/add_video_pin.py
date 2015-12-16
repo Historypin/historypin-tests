@@ -48,6 +48,7 @@ class Add_Video_Pin(HPTestCase):
 	def test_delete_video_pin(self):
 		self.e_wait('.pin-item .icon-trash')
 		
+		self.assertEqual('now', self.e('.activity li:first-of-type .time').text)
 		self.assertTitle("Historypin | kris.test00's Historypin profile")
 		self.assertEqual('Selenium video pin', self.e('.pin-item h3').text)
 		self.e('.pin-item .icon-trash').click()																# delete pin

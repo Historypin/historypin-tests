@@ -7,8 +7,9 @@ class Edit_Pin(HPTestCase):
 	@url('/en/person/{0}/'.format(ID_USER))
 	def test_edit_pin(self):
 		
-		self.e_wait('.pin-item .icon-pen')
+		self.e_wait('.pin-item h3')
 		
+		self.assertEqual('Selenium pin', self.e('.pin-item h3').text)
 		self.assertTitle("Historypin | kris.test00's Historypin profile")
 		self.e('.pin-item .icon-pen').click()
 		self.e_wait('#title')
@@ -48,6 +49,7 @@ class Edit_Pin(HPTestCase):
 		
 		self.e_wait('.pin-item .icon-pen')
 		
+		self.assertEqual('Selenium pin Changes', self.e('.pin-item h3').text)
 		self.assertTitle("Historypin | kris.test00's Historypin profile")
 		self.e('.pin-item .icon-pen').click()
 		self.e_wait('#title')

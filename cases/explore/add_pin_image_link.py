@@ -55,10 +55,11 @@ class Add_Pin_Image_Link(HPTestCase):
 	def test_delete_pin_image_link(self):
 		self.e_wait('.pin-item .icon-trash')
 		
+		self.assertEqual('now', self.e('.activity li:first-of-type .time').text)
 		self.assertTitle("Historypin | kris.test00's Historypin profile")
 		self.assertEqual('Selenium image with link pin', self.e('.pin-item h3').text)
 		self.e('.pin-item .icon-trash').click()												# delete pin
-		sleep(2)
+		sleep(3)
 		
 		self.accept_alert()																	# submit popup window
 		self.e_wait('.pin-item h3')

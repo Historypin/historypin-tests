@@ -60,7 +60,7 @@ class Edit_Project(HPTestCase):
 		self.e_wait('.ui-autocomplete-input')
 		
 		self.e('.ui-autocomplete-input').send_keys('KrisTestTwitter')						# add manager
-		sleep(1)
+		sleep(2)
 		
 		self.e('.ui-autocomplete li:nth-of-type(1)').click()								# collection manager drop menu
 		self.e('.project-title').clear()

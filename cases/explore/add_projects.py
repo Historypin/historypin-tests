@@ -53,6 +53,7 @@ class Add_Projects(HPTestCase):
 	def test_delete_collection(self):
 		self.e_wait('.project-item .icon-trash')
 		
+		self.assertEqual('now', self.e('.activity li:first-of-type .time').text)
 		self.assertEqual('kris.test00', self.e('.profile-meta h2').text)
 		self.assertEqual('Automated Collection', self.e('.project-item h3').text)
 		self.e(".project-item .icon-trash").click()											# delete project

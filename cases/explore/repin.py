@@ -13,30 +13,30 @@ class Repin(HPTestCase):
 		self.e_wait('.photo')
 		
 		self.e('.site-toolbar .icon-repin').click()
-		sleep(1)
+		sleep(2)
 		
 		self.e('.listing-checkbox-styling').click()											# first of own projects
 		self.e('.site-toolbar .icon-repin').click()
-		sleep(1)
+		sleep(2)
 		
 	@logged_in
 	@url('/en/person/{0}/'.format(ID_USER))
 	def test_unpin(self):
-		self.e_wait('.activity-col .activity')
+		self.e_wait('.activity li:first-of-type .time')
 		
 		self.assertEqual('now', self.e('.activity li:first-of-type .time').text)
 		self.e('.type-of-activity a:nth-of-type(2)').click() 								# open last active pin
 		self.e_wait('.photo')
 		
 		self.e('.site-toolbar .icon-repin').click()
-		sleep(1)
+		sleep(2)
 		
 		self.e('.listing-checkbox-styling').click()											# first of own projects unpin
 		self.e('.site-toolbar .icon-repin').click()
-		sleep(1)
+		sleep(2)
 		
 		self.go('/en/person/{0}/'.format(ID_USER))
-		self.e_wait('.activity-col .activity')
+		self.e_wait('.activity li:first-of-type .time')
 		
 		activity_check = (self.e('.activity li:first-of-type .time').text) 					# last activity time
 		self.assertFalse('now' == activity_check)

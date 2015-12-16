@@ -44,6 +44,7 @@ class Add_Tour(HPTestCase):
 	def test_delete_tour(self):
 		self.e_wait('.tour-item .icon-trash')
 		
+		self.assertEqual('now', self.e('.activity li:first-of-type .time').text)
 		self.assertEqual('kris.test00', self.e('.profile-meta h2').text)
 		self.assertEqual('Automated Tour', self.e('.tour-item h3').text)
 		self.e(".tour-item .icon-trash").click()										# delete project

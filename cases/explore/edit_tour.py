@@ -10,7 +10,7 @@ class Edit_Tour(HPTestCase):
 		self.e_wait('.project-title')
 		
 		self.assertEqual('Premium Automated Tour', self.e('.breadcrumbs-item a').text)
-		self.e('.project-title').send_keys('Changes')
+		self.e('.project-title').send_keys(' Changes')
 		self.e('#short-description').send_keys('Changes')
 		self.e('#mce_0').send_keys('Changes')												# long description
 		self.e('#location-search').clear()
@@ -41,7 +41,7 @@ class Edit_Tour(HPTestCase):
 		self.e('#button_save').click()
 		self.e_wait('.title')
 		
-		self.assertTitle('Historypin | Premium Automated TourChanges')
+		self.assertTitle('Historypin | Premium Automated Tour Changes')
 		
 	@logged_in
 	@url('/en/premium-automated-tour/collection/edit')
@@ -49,7 +49,7 @@ class Edit_Tour(HPTestCase):
 
 		self.e_wait('.project-title')
 		
-		self.assertEqual('Premium Automated TourChanges', self.e('.breadcrumbs-item a').text)
+		self.assertEqual('Premium Automated Tour Changes', self.e('.breadcrumbs-item a').text)
 		self.e('.project-title').clear()
 		self.e('.project-title').send_keys('Premium Automated Tour')
 		self.e('#short-description').clear()
