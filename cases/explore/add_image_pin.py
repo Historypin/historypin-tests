@@ -3,6 +3,7 @@ import os, sys
 
 class Add_Image_Pin(HPTestCase):
 	
+	@unittest.skipIf(IS_LIVE, 'Do not run on live')
 	@logged_in
 	@url('/en/person/{0}/'.format(ID_USER))
 	def test_add_image_pin(self):
@@ -12,8 +13,8 @@ class Add_Image_Pin(HPTestCase):
 		self.e('#pins .icon-add-pin').click()
 		self.e_wait('.hp-editor-map-cnt')
 		
-		self.assertIsInstance(self.e('[name="pin-media"]'), WebElement)							# pin video
-		self.assertIsInstance(self.e('[name="pin-text"]'), WebElement)							# pin text
+		self.exists('[name="pin-media"]')														# pin video
+		self.exists('[name="pin-text"]')														# pin text
 		self.assertTrue(self.e('.add-img-pin-area .button').is_displayed())						# add file button
 		self.e('[type="file"]').send_keys('/Users/kris/Downloads/images.png')					# upload image
 		sleep(2)
@@ -24,6 +25,7 @@ class Add_Image_Pin(HPTestCase):
 		self.assertTrue(self.e('#license').is_displayed())
 		self.e('#date_taken').send_keys('1000-01-01')											# add date for pin
 		self.e('.field-wrapper.required:nth-of-type(4) label').click()							# exact location radio button
+		
 		self.e('.location-search').send_keys('sofia')
 		sleep(1)
 		self.e('.location-search').send_keys(Keys.ENTER)
@@ -51,9 +53,12 @@ class Add_Image_Pin(HPTestCase):
 		
 		self.assertTitle('Historypin | kris.test00 | Selenium image pin')
 		
+		self.delete_image_pin()
+	
+	
 	@logged_in
 	@url('/en/person/{0}/'.format(ID_USER))
-	def test_delete_image_pin(self):
+	def delete_image_pin(self):
 		self.e_wait('.pin-item .icon-trash')
 		
 		self.assertEqual('now', self.e('.activity li:first-of-type .time').text)
@@ -66,3 +71,5 @@ class Add_Image_Pin(HPTestCase):
 		self.e_wait('.pin-item .icon-trash')
 		
 		self.assertEqual('Selenium pin', self.e('.pin-item h3').text)
+
+

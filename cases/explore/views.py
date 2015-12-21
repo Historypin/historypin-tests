@@ -4,13 +4,11 @@ from base import *
 import os, sys
 
 class Pages_Views(HPTestCase):
-	
 	# TODO Put in order test later to be in seperate files
 	# TODO These later could be extended to fully check the content and/or functionality.
 	
 	@url('{0}/en/'.format(URL_BASE))
 	def test_homepage_view(self):
-		
 		self.assertTitle('Historypin | Home')
 		
 		self.assertIsInstance(self.e('#main-header'), WebElement)
@@ -109,7 +107,6 @@ class Pages_Views(HPTestCase):
 	
 	@url('{0}/en/places/'.format(URL_BASE))
 	def test_places_view(self):
-		
 		self.assertTitle('Historypin | Places')
 		
 		self.assertIsInstance(self.e('#main-header'), WebElement)
@@ -159,5 +156,4 @@ class Pages_Views(HPTestCase):
 	
 	@url('{0}/en/person/asd/'.format(URL_BASE))
 	def test_page_not_found_view(self):
-		
 		self.assertEqual('404', self.e('.ng-scope>h1').text)

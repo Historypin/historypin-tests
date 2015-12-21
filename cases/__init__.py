@@ -16,3 +16,4 @@ from explore.add_text_pin import Add_Text_Pin
 from explore.add_tour import Add_Tour
 from explore.repin import Repin
 from explore.favourite_pin import Favourite_Pin
+from explore.discourse import Discourse

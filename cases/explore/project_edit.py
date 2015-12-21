@@ -4,7 +4,6 @@ from base import *
 import os, sys
 
 class Project_Edit(HPTestCase):
-	
 	PROJECT_URL = '/en/hlf/oreo/new-project-qa'
 	
 	@logged_in

@@ -3,6 +3,7 @@ import os, sys
 
 class Add_Tour(HPTestCase):
 	
+	@unittest.skipIf(IS_LIVE, 'Do not run on live')
 	@logged_in
 	@url('/en/person/{0}/'.format(ID_USER))
 	def test_add_premium_tour(self):
@@ -20,8 +21,8 @@ class Add_Tour(HPTestCase):
 		
 		self.e('#location-search').send_keys(Keys.ENTER)
 		
-		self.assertIsInstance(self.e('#map'), WebElement)								# left side map
-		self.assertIsInstance(self.e('.hp-editor-map-cnt'), WebElement)					# location map
+		self.exists('#map')																# left side map
+		self.exists('.hp-editor-map-cnt')												# location map
 		self.e('.add-input').send_keys('http://vjs.zencdn.net/v/oceans.mp4')			# video landing screen
 		self.e('[for="explore-view-gallery"]').click()
 		self.e('[for="show-navigation-tags"] .switch').click()
@@ -39,9 +40,11 @@ class Add_Tour(HPTestCase):
 		
 		self.assertTitle('Historypin | Automated Tour')
 		
+		self.delete_tour()
+		
 	@logged_in
 	@url('/en/person/{0}/'.format(ID_USER))
-	def test_delete_tour(self):
+	def delete_tour(self):
 		self.e_wait('.tour-item .icon-trash')
 		
 		self.assertEqual('now', self.e('.activity li:first-of-type .time').text)
@@ -56,3 +59,6 @@ class Add_Tour(HPTestCase):
 		self.e_wait('.tour-item .icon-trash')
 		
 		self.assertEqual('Premium Automated Tour', self.e('.tour-item h3').text)
+		
+		
+		

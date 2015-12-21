@@ -20,8 +20,8 @@ class Edit_Project(HPTestCase):
 		
 		self.e('#location-search').send_keys(Keys.ENTER)
 		
-		self.assertIsInstance(self.e('#map'), WebElement)									# left side map
-		self.assertIsInstance(self.e('.hp-editor-map-cnt'), WebElement)						# location map
+		self.exists('#map')																	# left side map
+		self.exists('.hp-editor-map-cnt')													# location map
 		self.e('.add-input').clear()														# delete video landing screen
 		self.e('[type="file"]').send_keys('/Users/kris/Downloads/landingscreen.jpg')		# upload image
 		sleep(1)
@@ -47,9 +47,11 @@ class Edit_Project(HPTestCase):
 		
 		self.assertTitle('Historypin | Premium Automated Collection')
 		
+		self.edit_premium_collection_clear()
+		
 	@logged_in
 	@url('/en/premium-automated-collection')
-	def test_edit_premium_collection_clear(self):
+	def edit_premium_collection_clear(self):
 		self.e_wait('.site-toolbar .icon-edit')
 		
 		self.e('.icon-arrow-down').click()
@@ -77,7 +79,6 @@ class Edit_Project(HPTestCase):
 		sleep(1)
 		
 		self.e('#location-search').send_keys(Keys.ENTER)
-		self.assertIsInstance(self.e('#map'), WebElement)									# left side map
 		self.assertIsInstance(self.e('.hp-editor-map-cnt'), WebElement)						# location map
 		self.e('.add-input').send_keys('http://vjs.zencdn.net/v/oceans.mp4')				# add video landing screen
 		self.e('[for="explore-view-hybrid"]').click()
@@ -91,12 +92,10 @@ class Edit_Project(HPTestCase):
 		sleep(1)
 		
 		self.e('#sort-select :nth-of-type(1)').click()										# most popular gallery sorting
-		self.assertTrue(self.e('.map-overlay-col .button').is_displayed())					# send a request button
-		self.assertTrue(self.e('.map-overlay-preview').is_displayed())
-		self.assertTrue(self.e('#blog-feed').is_displayed())
-		self.assertTrue(self.e('.white-bg').is_displayed())									# cancel button
 		self.e('#button_save').click()
 		self.e_wait('.title')
 		
 		self.assertTitle('Historypin | Premium Automated Collection')
+		
+		
 		

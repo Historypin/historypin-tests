@@ -3,6 +3,7 @@ import os, sys
 
 class Add_Projects(HPTestCase):
 	
+	@unittest.skipIf(IS_LIVE, 'Do not run on live')
 	@logged_in
 	@url('/en/person/{0}/'.format(ID_USER))
 	def test_add_premium_collection(self):
@@ -25,8 +26,8 @@ class Add_Projects(HPTestCase):
 		
 		self.e('#location-search').send_keys(Keys.ENTER)
 		
-		self.assertIsInstance(self.e('#map'), WebElement)									# left side map
-		self.assertIsInstance(self.e('.hp-editor-map-cnt'), WebElement)						# location map
+		self.exists('#map')																	# left side map
+		self.exists('.hp-editor-map-cnt')													# location map
 		self.e('.add-input').send_keys('http://vjs.zencdn.net/v/oceans.mp4')				# video landing screen
 		self.e('[for="explore-view-gallery"]').click()
 		self.e('[for="open-collection"] .switch').click()
@@ -47,10 +48,11 @@ class Add_Projects(HPTestCase):
 		
 		self.assertTitle('Historypin | Automated Collection')
 		
+		self.delete_collection()
 		
 	@logged_in
 	@url('/en/person/{0}/'.format(ID_USER))
-	def test_delete_collection(self):
+	def delete_collection(self):
 		self.e_wait('.project-item .icon-trash')
 		
 		self.assertEqual('now', self.e('.activity li:first-of-type .time').text)
@@ -65,3 +67,5 @@ class Add_Projects(HPTestCase):
 		self.e_wait('.project-item .icon-trash')
 		
 		self.assertEqual('Premium Automated Collection', self.e('.project-item h3').text)
+
+

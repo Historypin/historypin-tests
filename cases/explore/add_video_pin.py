@@ -3,6 +3,7 @@ import os, sys
 
 class Add_Video_Pin(HPTestCase):
 	
+	@unittest.skipIf(IS_LIVE, 'Do not run on live')
 	@logged_in
 	@url('/en/person/{0}/'.format(ID_USER))
 	def test_add_video_pin(self):
@@ -43,9 +44,11 @@ class Add_Video_Pin(HPTestCase):
 		
 		self.assertTitle('Historypin | kris.test00 | Selenium video pin')
 		
+		self.delete_video_pin()
+		
 	@logged_in
 	@url('/en/person/{0}/'.format(ID_USER))
-	def test_delete_video_pin(self):
+	def delete_video_pin(self):
 		self.e_wait('.pin-item .icon-trash')
 		
 		self.assertEqual('now', self.e('.activity li:first-of-type .time').text)
@@ -61,3 +64,5 @@ class Add_Video_Pin(HPTestCase):
 		sleep(2)
 		
 		self.assertEqual('Selenium pin', self.e('.pin-item h3').text)
+
+

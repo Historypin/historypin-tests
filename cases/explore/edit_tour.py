@@ -18,8 +18,8 @@ class Edit_Tour(HPTestCase):
 		sleep(1)
 		
 		self.e('#location-search').send_keys(Keys.ENTER)
-		self.assertIsInstance(self.e('#map'), WebElement)									# left side map
-		self.assertIsInstance(self.e('.hp-editor-map-cnt'), WebElement)						# location map
+		self.exists('#map')																	# left side map
+		self.exists('.hp-editor-map-cnt')													# location map
 		self.e('.add-input').clear()														# delete video landing screen
 		self.e('[type="file"]').send_keys('/Users/kris/Downloads/landingscreen.jpg')		# upload image
 		sleep(1)
@@ -43,9 +43,11 @@ class Edit_Tour(HPTestCase):
 		
 		self.assertTitle('Historypin | Premium Automated Tour Changes')
 		
+		self.edit_tour_clear()
+		
 	@logged_in
 	@url('/en/premium-automated-tour/collection/edit')
-	def test_edit_tour_clear(self):
+	def edit_tour_clear(self):
 
 		self.e_wait('.project-title')
 		
@@ -62,8 +64,7 @@ class Edit_Tour(HPTestCase):
 		sleep(1)
 		
 		self.e('#location-search').send_keys(Keys.ENTER)
-		self.assertIsInstance(self.e('#map'), WebElement)									# left side map
-		self.assertIsInstance(self.e('.hp-editor-map-cnt'), WebElement)						# location map
+		self.exists('.hp-editor-map-cnt')													# location map
 		self.e('.add-input').send_keys('http://vjs.zencdn.net/v/oceans.mp4')				# add video landing screen
 		self.e('[for="explore-view-map"]').click()
 		self.e('[for="show-navigation-tags"] .switch').click()								# open
@@ -72,11 +73,9 @@ class Edit_Tour(HPTestCase):
 		sleep(1)
 		
 		self.e('#sort-select :nth-of-type(4)').click()										# oldest first gallery sorting
-		self.assertTrue(self.e('.map-overlay-col .button').is_displayed())					# send a request button
-		self.assertTrue(self.e('.map-overlay-preview').is_displayed())
-		self.assertTrue(self.e('#blog-feed').is_displayed())
-		self.assertTrue(self.e('.white-bg').is_displayed())									# cancel button
 		self.e('#button_save').click()
 		self.e_wait('.title')
 		
 		self.assertTitle('Historypin | Premium Automated Tour')
+
+

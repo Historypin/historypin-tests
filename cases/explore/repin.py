@@ -3,6 +3,7 @@ import os, sys
 
 class Repin(HPTestCase):
 	
+	@unittest.skipIf(IS_LIVE, 'Do not run on live')
 	@logged_in
 	@url('/en/place/united-states/california/list/pins')
 	def test_repin(self):
@@ -19,9 +20,11 @@ class Repin(HPTestCase):
 		self.e('.site-toolbar .icon-repin').click()
 		sleep(2)
 		
+		self.unpin()
+		
 	@logged_in
 	@url('/en/person/{0}/'.format(ID_USER))
-	def test_unpin(self):
+	def unpin(self):
 		self.e_wait('.activity li:first-of-type .time')
 		
 		self.assertEqual('now', self.e('.activity li:first-of-type .time').text)

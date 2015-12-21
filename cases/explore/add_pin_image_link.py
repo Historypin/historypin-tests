@@ -3,6 +3,7 @@ import os, sys
 
 class Add_Pin_Image_Link(HPTestCase):
 	
+	@unittest.skipIf(IS_LIVE, 'Do not run on live')
 	@logged_in
 	@url('/en/person/{0}/'.format(ID_USER))
 	def test_add_pin_image_link(self):
@@ -12,8 +13,8 @@ class Add_Pin_Image_Link(HPTestCase):
 		self.e('#pins .icon-add-pin').click()
 		self.e_wait('.hp-editor-map-cnt')
 		
-		self.assertIsInstance(self.e('[name="pin-media"]'), WebElement)						# pin video
-		self.assertIsInstance(self.e('[name="pin-text"]'), WebElement)						# pin text
+		self.exists('[name="pin-media"]')													# pin video
+		self.exists('[name="pin-text"]')													# pin text
 		self.assertTrue(self.e('.add-img-pin-area .button').is_displayed())					# add file button
 		self.e('.add-input-wrapper .add-input').send_keys('http://pre15.deviantart.net/5108/th/pre/i/2010/332/f/b/power_symbol_wallpapers_by_dodgydavec-d33slvo.png')	# add link to an image
 		self.e('.add-input-wrapper .add-button').click()									# add link image button
@@ -50,9 +51,11 @@ class Add_Pin_Image_Link(HPTestCase):
 		
 		self.assertTitle('Historypin | kris.test00 | Selenium image with link pin')
 		
+		self.delete_pin_image_link()
+		
 	@logged_in
 	@url('/en/person/{0}/'.format(ID_USER))
-	def test_delete_pin_image_link(self):
+	def delete_pin_image_link(self):
 		self.e_wait('.pin-item .icon-trash')
 		
 		self.assertEqual('now', self.e('.activity li:first-of-type .time').text)
@@ -65,4 +68,6 @@ class Add_Pin_Image_Link(HPTestCase):
 		self.e_wait('.pin-item h3')
 		
 		self.assertEqual('Selenium pin', self.e('.pin-item h3').text)
+		
+		
 		

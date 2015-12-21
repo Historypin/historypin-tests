@@ -21,11 +21,11 @@ def web_element_exists(self, selector):
 	except NoSuchElementException:
 		return False
 
-WebElement.e	= WebElement.find_element_by_css_selector
-WebElement.es	= WebElement.find_elements_by_css_selector
-WebElement.css	= WebElement.value_of_css_property
-WebElement.exists = web_element_exists
-WebElement.parent_node = lambda self: self.find_element_by_xpath('./parent::node()')
+WebElement.e 			= WebElement.find_element_by_css_selector
+WebElement.es 			= WebElement.find_elements_by_css_selector
+WebElement.css 			= WebElement.value_of_css_property
+WebElement.exists 		= web_element_exists
+WebElement.parent_node 	= lambda self: self.find_element_by_xpath('./parent::node()')
 
 
 
@@ -109,6 +109,7 @@ class TestCase(unittest.TestCase):
 		cls.es				= cls.browser.es
 		cls.e				= cls.browser.e
 		cls.e_wait			= cls.browser.e_wait
+		cls.exists			= cls.browser.exists
 		# cls.pageload_wait	= cls.browser.pageload_wait
 		cls.hover			= cls.browser.hover
 		cls.double_click	= cls.browser.double_click
@@ -256,3 +257,5 @@ def side_buttons_profile(self):
 		i = sp_buttons[n]
 		logging.critical(i)
 		self.assertTrue(self.e(i).is_displayed())
+
+

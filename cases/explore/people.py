@@ -4,7 +4,6 @@ from base import *
 import os, sys
 
 class People(HPTestCase):
-	
 	@url('/en/people')
 	def test_index(self):
 		
@@ -18,7 +17,6 @@ class People(HPTestCase):
 	
 	@url('/en/people')
 	def test_search_username(self):
-		
 		self.e('.select2-input.select2-default').send_keys('Gabriela')
 		sleep(2)
 		self.e('.select2-results li:nth-of-type(2)').click()
@@ -38,7 +36,6 @@ class People(HPTestCase):
 			i = users[n]
 			self.assertEqual('{0}/en/person/{1}'.format(URL_BASE, i[0]), user_listing[n].get_attribute('href'))
 			self.assertEqual(i[1], user_name[n].text)
-		
 	
 	
 	# @url('')

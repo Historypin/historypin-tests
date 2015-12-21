@@ -13,8 +13,8 @@ class Pages_View(HPTestCase):
 		self.assertTrue(self.e('#main-header-logo').is_displayed())
 		self.assertTrue(self.e('#main-header-nav').is_displayed())
 		self.assertTrue(self.e('.entrance-type').is_displayed())
-		self.assertIsInstance(self.e('.home-search-input'), WebElement)
-		self.assertIsInstance(self.e('.collections'), WebElement)
+		self.exists('.home-search-input')
+		self.exists('.collections')
 
 	@url('/en/explore')
 	def test_explore_view(self):
@@ -25,9 +25,9 @@ class Pages_View(HPTestCase):
 		self.assertTrue(self.e('#sort-select').is_displayed())						# order filter
 		self.assertTrue(self.e('.gallery-listing').is_displayed())
 		self.assertTrue(self.e('#map').is_displayed())
-		self.assertIsInstance(self.e('#timeline'), WebElement)						# map timeline
+		self.exists('#timeline')													# map timeline
 		self.assertTrue(self.e('.layout-triger').is_displayed())					# expand map and gallery button
-		self.assertIsInstance(self.e('.pagination-list'), WebElement)
+		self.exists('.pagination-list')
 		
 		side_buttons(self)
 
@@ -41,7 +41,7 @@ class Pages_View(HPTestCase):
 		self.assertTrue(self.e('#search button:first-of-type').is_displayed())		# order filter
 		self.assertTrue(self.e('#search button.blue-bg').is_displayed())			# reset search button
 		self.assertTrue(self.e('.project-item:first-of-type').is_displayed())		# first card from listing
-		self.assertIsInstance(self.e('.pagination-list'), WebElement)
+		self.exists('.pagination-list')
 
 	@url('/en/people')
 	def test_meet_our_members(self):
@@ -52,8 +52,8 @@ class Pages_View(HPTestCase):
 		self.assertTrue(self.e('#sort-select').is_displayed())						# order filter
 		self.assertTrue(self.e('#search button:first-of-type').is_displayed())		# search button
 		self.assertTrue(self.e('#search button.blue-bg').is_displayed())			# reset search button
-		self.assertIsInstance(self.e('.users-listing'), WebElement)
-		self.assertIsInstance(self.e('.pagination-list'), WebElement)
+		self.exists('.users-listing')
+		self.exists('.pagination-list')
 
 	@logged_in
 	@url('/en/person/65536')
@@ -67,11 +67,11 @@ class Pages_View(HPTestCase):
 		self.assertTrue(self.e('.activity-wrapper .button.blue-bg').is_displayed())	# expand activity field button 
 		self.assertTrue(self.e('#projects .icon-pen').is_displayed())				# edit button on first card project
 		self.assertTrue(self.e('#projects .icon-trash').is_displayed())				# delete button on first card project
-		self.assertIsInstance(self.e('#pins .icon-pen'), WebElement)				# edit button on first pin card
-		self.assertIsInstance(self.e('#pins .icon-trash'), WebElement)				# delete button on first pin card
-		self.assertIsInstance(self.e('#tours .icon-pen'), WebElement)				# edit button on first tour card
-		self.assertIsInstance(self.e('#tours .icon-trash'), WebElement)				# delete button on first tour card
-		self.assertIsInstance(self.e('#favourites'), WebElement)
+		self.exists('#pins .icon-pen')												# edit button on first pin card
+		self.exists('#pins .icon-trash')											# delete button on first pin card
+		self.exists('#tours .icon-pen')												# edit button on first tour card
+		self.exists('#tours .icon-trash')											# delete button on first tour card
+		self.exists('#favourites')
 		
 		side_buttons_profile(self)
 
@@ -82,6 +82,8 @@ class Pages_View(HPTestCase):
 		self.assertTrue(self.e('.main-header-cnt').is_displayed())
 		self.assertTrue(self.e('.home-search-input').is_displayed())				# search place
 		self.assertTrue(self.e('#search button.blue-bg').is_displayed())			# reset search button
-		self.assertIsInstance(self.e('.img-wrapper'), WebElement)					# place image first place card
-		self.assertIsInstance(self.e('.pagination-list'), WebElement)
+		self.exists('.img-wrapper')													# place image first place card
+		self.exists('.pagination-list')
+		
+		
 		

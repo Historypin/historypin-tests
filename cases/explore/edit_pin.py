@@ -43,9 +43,11 @@ class Edit_Pin(HPTestCase):
 		
 		self.assertTitle('Historypin | kris.test00 | Selenium pin Changes')
 		
+		self.edit_pin_clear()
+		
 	@logged_in
 	@url('/en/person/{0}/'.format(ID_USER))
-	def test_edit_pin_clear(self):
+	def edit_pin_clear(self):
 		
 		self.e_wait('.pin-item .icon-pen')
 		
@@ -84,4 +86,6 @@ class Edit_Pin(HPTestCase):
 		self.e_wait('.streetview-img-wrapper')
 		
 		self.assertTitle('Historypin | kris.test00 | Selenium pin')
+		
+		
 		

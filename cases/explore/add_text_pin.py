@@ -3,6 +3,7 @@ import os, sys
 
 class Add_Text_Pin(HPTestCase):
 	
+	@unittest.skipIf(IS_LIVE, 'Do not run on live')
 	@logged_in
 	@url('/en/person/{0}/'.format(ID_USER))
 	def test_add_text_pin(self):
@@ -43,9 +44,11 @@ class Add_Text_Pin(HPTestCase):
 		
 		self.assertTitle('Historypin | kris.test00 | Selenium text pin')
 		
+		self.delete_text_pin()
+		
 	@logged_in
 	@url('/en/person/{0}/'.format(ID_USER))
-	def test_delete_text_pin(self):
+	def delete_text_pin(self):
 		self.e_wait('.pin-item .icon-trash')
 		
 		self.assertEqual('now', self.e('.activity li:first-of-type .time').text)
@@ -61,3 +64,5 @@ class Add_Text_Pin(HPTestCase):
 		sleep(3)
 		
 		self.assertEqual('Selenium pin', self.e('.pin-item h3').text)
+
+

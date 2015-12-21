@@ -22,9 +22,11 @@ class Favourite_Pin(HPTestCase):
 		new_fav_counter = int(self.e('#fav-counter.ng-binding').text)
 		self.assertTrue(new_fav_counter == (fav_counter + 1))
 		
+		self.unfavourite()
+		
 	@logged_in
 	@url('/en/person/{0}/'.format(ID_USER))
-	def test_unfavourite(self):
+	def unfavourite(self):
 		
 		self.e_wait('.pin-item img')
 		

@@ -8,9 +8,10 @@ class Discourse(HPTestCase):
 	def test_discourse_page(self):
 		self.go('https://community.historypin.org/')
 		
-		sleep(4)
+		self.e_wait('.title')
 		self.assertTitle('Historypin Community')
 		
-		self.assertIsInstance(self.e('#ember1184'), WebElement)  # asserting the header
-		self.assertIsInstance(self.e('.list-controls'), WebElement)
-	
+		self.exists('.ember-view .d-header')
+		self.exists('.list-controls')
+		self.assertEqual('https://community.historypin.org/c/issues', self.e('.category h3 a').get_attribute('href'))
+		
