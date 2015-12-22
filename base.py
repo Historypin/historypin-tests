@@ -21,12 +21,16 @@ def web_element_exists(self, selector):
 	except NoSuchElementException:
 		return False
 
+
 WebElement.e 			= WebElement.find_element_by_css_selector
 WebElement.es 			= WebElement.find_elements_by_css_selector
 WebElement.css 			= WebElement.value_of_css_property
 WebElement.exists 		= web_element_exists
 WebElement.parent_node 	= lambda self: self.find_element_by_xpath('./parent::node()')
 
+
+def displayed(self, selector):
+	self.assertTrue(self.e(selector).is_displayed())
 
 
 def url(url):
@@ -96,6 +100,7 @@ class Browser(webdriver.Chrome):
 	def accept_alert(self):
 		alert = self.switch_to_alert()
 		alert.accept()
+		
 
 
 class TestCase(unittest.TestCase):
@@ -124,6 +129,7 @@ class TestCase(unittest.TestCase):
 
 
 LOGIN_COOKIES = []
+
 
 def run(*tests):
 	import cases
@@ -185,6 +191,7 @@ class HPTestCase(TestCase):
 	# 	cls.browser.execute_script('window.stop();')
 	# 	sleep(1)
 
+
 	@classmethod
 	def new_login(cls):
 		cls.go('/')
@@ -221,6 +228,7 @@ class HPTestCase(TestCase):
 	# 	self.go(URL_BASE + '/user/logout/')
 	# 	self.pageload_wait()
 
+
 # from base import playground; self = playground()
 def playground():
 	self = HPTestCase
@@ -228,7 +236,8 @@ def playground():
 	self.go('/')
 	
 	return self
-	
+
+
 def side_buttons(self):
 	s_buttons = [
 		'.site-toolbar .icon-info', 
@@ -257,5 +266,6 @@ def side_buttons_profile(self):
 		i = sp_buttons[n]
 		logging.critical(i)
 		self.assertTrue(self.e(i).is_displayed())
+
 
 
