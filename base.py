@@ -248,7 +248,7 @@ def side_buttons(self):
 
 	for n in range(len(s_buttons)):
 		i = s_buttons[n]
-		logging.critical(i)
+		# logging.critical(i)
 		self.assertTrue(self.e(i).is_displayed())
 		# self.assertIsInstance(self.e(i), WebElement)
 		
@@ -264,7 +264,7 @@ def side_buttons_profile(self):
 	
 	for n in range(len(sp_buttons)):
 		i = sp_buttons[n]
-		logging.critical(i)
+		# logging.critical(i)
 		self.assertTrue(self.e(i).is_displayed())
 
 
