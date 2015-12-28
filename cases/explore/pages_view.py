@@ -137,6 +137,39 @@ class Pages_View(HPTestCase):
 		
 		side_buttons_profile(self)
 		
+	@logged_in
+	@url('/en/person/65536')
+	def test_profil_edit(self):
+		self.e_wait('.icon-edit')
+		
+		self.e('.icon-edit').click()
+		self.e_wait('#save-mah')
+		
+		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/collections/', self.e('#main-header-nav li:nth-of-type(3) a').get_attribute('href'))
+		displayed(self, '.profile-image')
+		displayed(self, '.icon-trash')
+		displayed(self, '#name')
+		displayed(self, '#description')
+		displayed(self, '#place')
+		displayed(self, '#birthyear')
+		displayed(self, '#website')
+		displayed(self, '#facebook')
+		displayed(self, '#twitter')
+		displayed(self, '#google-plus')
+		displayed(self, '[for="facebook_switch"]')
+		displayed(self, '[for="twitter_switch"]')
+		displayed(self, '[for="google_switch"]')
+		displayed(self, '[for="notification_switch"]')
+		displayed(self, '[for="newsletter_switch"]')
+		displayed(self, '[for="featured_user"]')
+		displayed(self, '.edit-option-panel h5')
+		displayed(self, '.footer-col a')
+		displayed(self, '#intercom-launcher')
+		self.exists('[class="file-input"]')
+		self.exists('[label="1900"]')
+		self.exists('[label="1999"]')
+		
+		
 	@url('/en/person/65536/list/collections')
 	def test_collection_list(self):
 		self.e_wait('.card')
@@ -225,6 +258,7 @@ class Pages_View(HPTestCase):
 		displayed(self, '#search button.blue-bg')									# reset search button
 		displayed(self, '.card')													# first card from listing
 		displayed(self, '#intercom-launcher')
+		#after fix search bug
 		# self.e('.select2-input').send_keys('at the loibl obelisks')
 		# sleep(1)
 		
