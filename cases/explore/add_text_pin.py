@@ -17,7 +17,6 @@ class Add_Text_Pin(HPTestCase):
 		self.e('.cf .field-wrapper textarea').send_keys("Historypin is home to a growing community of local history lovers building up a global picture of how the world used to be using photos, old movies and sounds from the past.")
 		self.e('#title').send_keys('Selenium text pin')
 		self.e('#description').send_keys('Selenium text pin')
-		displayed(self, '#license')
 		self.e('#date_taken').send_keys('2012-12-12')														# add date for pin
 		self.e('.field-wrapper.required:nth-of-type(4) label').click()										# exact location radio button
 		self.e('.location-search').send_keys('beijing')
@@ -26,19 +25,12 @@ class Add_Text_Pin(HPTestCase):
 		
 		displayed(self, '.hp-editor-map-cnt')																# location map
 		self.e('.select2-input').send_keys('3.14!@#$%^&*()_+=-?/;[]:,', 'Selenium pin,')					# add tags
-		displayed(self, '[name="new_project"]')																# create new collection
-		# displayed(self, '#managed_filter')																# your collections and tours filter
 		sleep(1)
 		
 		self.e('.checkbox-list .ng-binding').click()														# first of own collections
 		self.e('#pinner h2:nth-of-type(4)').click()															# expand other info
 		sleep(1)
 		
-		displayed(self, '#right_statement')
-		displayed(self, '#creator')
-		displayed(self, '#link_source')
-		displayed(self, '#indentifier')
-		displayed(self, '.button-center-wrapp .white-bg')													# cancel button
 		self.e('.button-center-wrapp a:last-child').click()													# save button
 		self.e_wait('.streetview-img-wrapper')
 		

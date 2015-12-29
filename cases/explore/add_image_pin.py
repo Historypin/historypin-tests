@@ -13,8 +13,6 @@ class Add_Image_Pin(HPTestCase):
 		self.e('#pins .icon-add-pin').click()
 		self.e_wait('.hp-editor-map-cnt')
 		
-		self.exists('[name="pin-media"]')														# pin video
-		self.exists('[name="pin-text"]')														# pin text
 		displayed(self, '.add-img-pin-area .button')											# add file button
 		self.e('[type="file"]').send_keys('/Users/kris/Downloads/images.png')					# upload image
 		sleep(2)
