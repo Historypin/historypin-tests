@@ -26,8 +26,8 @@ class Edit_Project(HPTestCase):
 		self.e('[type="file"]').send_keys('/Users/kris/Downloads/landingscreen.jpg')		# upload image
 		sleep(1)
 		
-		self.assertTrue(self.e('.icon-trash').is_displayed()) 								# delete landing screen button
-		self.assertTrue(self.e('.landing-screen-type .input-file-wrapp').is_displayed()) 	# change landing screen image button
+		displayed(self, '.icon-trash') 														# delete landing screen button
+		displayed(self, '.landing-screen-type .input-file-wrapp') 							# change landing screen image button
 		self.e('[for="explore-view-map"]').click()
 		self.e('[name="add_pin_text"]').clear()
 		self.e('[for="open-collection-pins"] .switch').click()								# close
@@ -38,10 +38,10 @@ class Edit_Project(HPTestCase):
 		sleep(1)
 		
 		self.e('#sort-select :nth-of-type(3)').click()										# newest first gallery sorting
-		self.assertTrue(self.e('.map-overlay-col .button').is_displayed())					# send a request button
-		self.assertTrue(self.e('.map-overlay-preview').is_displayed())
-		self.assertTrue(self.e('#blog-feed').is_displayed())
-		self.assertTrue(self.e('.white-bg').is_displayed())									# cancel button
+		displayed(self, '.map-overlay-col .button')											# send a request button
+		displayed(self, '.map-overlay-preview')
+		displayed(self, '#blog-feed')
+		displayed(self, '.white-bg')														# cancel button
 		self.e('#button_save').click()
 		self.e_wait('.title')
 		
@@ -79,7 +79,7 @@ class Edit_Project(HPTestCase):
 		sleep(1)
 		
 		self.e('#location-search').send_keys(Keys.ENTER)
-		self.assertIsInstance(self.e('.hp-editor-map-cnt'), WebElement)						# location map
+		self.exists('.hp-editor-map-cnt')													# location map
 		self.e('.add-input').send_keys('http://vjs.zencdn.net/v/oceans.mp4')				# add video landing screen
 		self.e('[for="explore-view-hybrid"]').click()
 		self.e('[for="open-collection-pins"] .switch').click()								# open

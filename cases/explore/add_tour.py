@@ -31,10 +31,10 @@ class Add_Tour(HPTestCase):
 		sleep(1)
 		
 		self.e('#sort-select :nth-of-type(2)').click()									# recently added gallery sorting
-		self.assertTrue(self.e('.map-overlay-col .button').is_displayed())				# send a request button
-		self.assertTrue(self.e('.map-overlay-preview').is_displayed())
-		self.assertTrue(self.e('#blog-feed').is_displayed())
-		self.assertTrue(self.e('.white-bg').is_displayed())								# cancel button
+		displayed(self, '.map-overlay-col .button')										# send a request button
+		displayed(self, '.map-overlay-preview')
+		displayed(self, '#blog-feed')
+		displayed(self, '.white-bg')													# cancel button
 		self.e('#button_save').click()
 		self.e_wait('.title')
 		

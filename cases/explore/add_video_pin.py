@@ -16,29 +16,29 @@ class Add_Video_Pin(HPTestCase):
 		self.e('.pin-type span:nth-of-type(2)').click()														# pin video button
 		self.e('.video-or-sound-pin .add-input').send_keys('https://www.youtube.com/watch?v=FdT3eKdto4w')
 		self.e('.video-or-sound-pin .add-button').click()
-		self.assertTrue(self.e('.uploaded-video-or-sound-pin .white-bg').is_displayed())					# replace video button
+		displayed(self, '.uploaded-video-or-sound-pin .white-bg')											# replace video button
 		self.e('#title').send_keys('Selenium video pin')
 		self.e('#description').send_keys('Selenium video pin')
-		self.assertTrue(self.e('#license').is_displayed())
+		displayed(self, '#license')
 		self.e('#date_taken').send_keys('2012-12-12')														# add date for pin
 		self.e('.field-wrapper.required:nth-of-type(4) label').click()										# exact location radio button
 		self.e('.location-search').send_keys('moscow')
 		sleep(1)
 		
 		self.e('.location-search').send_keys(Keys.ENTER)
-		self.assertTrue(self.e('.hp-editor-map-cnt').is_displayed())										# location map
+		displayed(self, '.hp-editor-map-cnt')																# location map
 		self.e('.select2-input').send_keys('3.14!@#$%^&*()_+=-?/;[]:,', 'Selenium pin,')					# add tags
-		self.assertTrue(self.e('[name="new_project"]').is_displayed())										# create new collection
-		# self.assertTrue(self.e('#managed_filter').is_displayed())											# your collections and tours filter
+		displayed(self, '[name="new_project"]')																# create new collection
+		# displayed(self, '#managed_filter')																# your collections and tours filter
 		self.e('.checkbox-list .ng-binding').click()														# first of own collections
 		self.e('#pinner h2:nth-of-type(4)').click()															# expand other info
 		sleep(1)
 		
-		self.assertTrue(self.e('#right_statement').is_displayed())
-		self.assertTrue(self.e('#creator').is_displayed())
-		self.assertTrue(self.e('#link_source').is_displayed())
-		self.assertTrue(self.e('#indentifier').is_displayed())
-		self.assertTrue(self.e('.button-center-wrapp .white-bg').is_displayed())							# cancel button
+		displayed(self, '#right_statement')
+		displayed(self, '#creator')
+		displayed(self, '#link_source')
+		displayed(self, '#indentifier')
+		displayed(self, '.button-center-wrapp .white-bg')													# cancel button
 		self.e('.button-center-wrapp a:last-child').click()													# save button
 		self.e_wait('.streetview-img-wrapper')
 		
