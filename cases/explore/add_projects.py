@@ -12,9 +12,10 @@ class Add_Projects(HPTestCase):
 		self.assertEqual('kris.test00', self.e('.profile-meta h2').text)
 		self.e('.create-collection-card').click()
 		self.e_wait('.ui-autocomplete-input')
+		sleep(1)
 		
 		self.e('.ui-autocomplete-input').send_keys('KrisTestTwitter')						# add manager
-		sleep(1)
+		sleep(2)
 		
 		self.e('.ui-autocomplete li:nth-of-type(1)').click()								# collection manager drop menu
 		self.e('.project-title').send_keys('Automated Collection')
@@ -22,12 +23,12 @@ class Add_Projects(HPTestCase):
 		self.e('#mce_0').send_keys('Automated Collection')									# long description
 		self.e('#get-in-touch').send_keys('@automation awesome')
 		self.e('#location-search').send_keys('greenland')
-		sleep(2)
+		sleep(1)
 		
 		self.e('#location-search').send_keys(Keys.ENTER)
 		
-		self.exists('#map')																	# left side map
-		self.exists('.hp-editor-map-cnt')													# location map
+		instance(self, '#map')																# left side map
+		instance(self, '.hp-editor-map-cnt')												# location map
 		self.e('.add-input').send_keys('http://vjs.zencdn.net/v/oceans.mp4')				# video landing screen
 		self.e('[for="explore-view-gallery"]').click()
 		self.e('[for="open-collection"] .switch').click()
@@ -54,6 +55,7 @@ class Add_Projects(HPTestCase):
 	@url('/en/person/{0}/'.format(ID_USER))
 	def delete_collection(self):
 		self.e_wait('.project-item .icon-trash')
+		sleep(1)
 		
 		self.assertEqual('now', self.e('.activity li:first-of-type .time').text)
 		self.assertEqual('kris.test00', self.e('.profile-meta h2').text)

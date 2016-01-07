@@ -32,6 +32,8 @@ WebElement.parent_node 	= lambda self: self.find_element_by_xpath('./parent::nod
 def displayed(self, selector):
 	self.assertTrue(self.e(selector).is_displayed())
 
+def instance(self, selector):
+	self.assertIsInstance(self.e(selector), WebElement)
 
 def url(url):
 	def wrapper(fn):

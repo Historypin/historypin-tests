@@ -21,8 +21,8 @@ class Add_Tour(HPTestCase):
 		
 		self.e('#location-search').send_keys(Keys.ENTER)
 		
-		self.exists('#map')																# left side map
-		self.exists('.hp-editor-map-cnt')												# location map
+		instance(self, '#map')															# left side map
+		instance(self, '.hp-editor-map-cnt')											# location map
 		self.e('.add-input').send_keys('http://vjs.zencdn.net/v/oceans.mp4')			# video landing screen
 		self.e('[for="explore-view-gallery"]').click()
 		self.e('[for="show-navigation-tags"] .switch').click()

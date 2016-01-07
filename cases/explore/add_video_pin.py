@@ -13,6 +13,7 @@ class Add_Video_Pin(HPTestCase):
 		self.e('#pins .icon-add-pin').click()
 		self.e_wait('.hp-editor-map-cnt')
 		
+		self.e('.pin-type span:nth-of-type(2)').click()														# video pin button
 		self.e('.video-or-sound-pin .add-input').send_keys('https://www.youtube.com/watch?v=FdT3eKdto4w')
 		self.e('.video-or-sound-pin .add-button').click()
 		displayed(self, '.uploaded-video-or-sound-pin .white-bg')											# replace video button
@@ -41,6 +42,7 @@ class Add_Video_Pin(HPTestCase):
 	@url('/en/person/{0}/'.format(ID_USER))
 	def delete_video_pin(self):
 		self.e_wait('.pin-item .icon-trash')
+		sleep(1)
 		
 		self.assertEqual('now', self.e('.activity li:first-of-type .time').text)
 		self.assertTitle("Historypin | kris.test00's Historypin profile")

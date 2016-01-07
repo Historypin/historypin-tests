@@ -11,7 +11,7 @@ class Discourse(HPTestCase):
 		self.e_wait('.title')
 		self.assertTitle('Historypin Community')
 		
-		self.exists('.ember-view .d-header')
-		self.exists('.list-controls')
-		self.assertEqual('https://community.historypin.org/c/issues', self.e('.category h3 a').get_attribute('href'))
+		instance(self, '.ember-view .d-header')
+		instance(self, '.list-controls')
+		self.assertEqual('https://community.historypin.org/c/uncategorized', self.e('.category h3 a').get_attribute('href'))
 		self.go('http://v75-beta-2.historypin-hrd.appspot.com')		# add to repair invalid cookie domain

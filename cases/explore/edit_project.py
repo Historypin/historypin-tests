@@ -20,8 +20,8 @@ class Edit_Project(HPTestCase):
 		
 		self.e('#location-search').send_keys(Keys.ENTER)
 		
-		self.exists('#map')																	# left side map
-		self.exists('.hp-editor-map-cnt')													# location map
+		instance(self, '#map')																# left side map
+		instance(self, '.hp-editor-map-cnt')												# location map
 		self.e('.add-input').clear()														# delete video landing screen
 		self.e('[type="file"]').send_keys('/Users/kris/Downloads/landingscreen.jpg')		# upload image
 		sleep(1)
@@ -79,7 +79,7 @@ class Edit_Project(HPTestCase):
 		sleep(1)
 		
 		self.e('#location-search').send_keys(Keys.ENTER)
-		self.exists('.hp-editor-map-cnt')													# location map
+		instance(self, '.hp-editor-map-cnt')												# location map
 		self.e('.add-input').send_keys('http://vjs.zencdn.net/v/oceans.mp4')				# add video landing screen
 		self.e('[for="explore-view-hybrid"]').click()
 		self.e('[for="open-collection-pins"] .switch').click()								# open

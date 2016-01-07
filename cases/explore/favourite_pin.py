@@ -8,6 +8,7 @@ class Favourite_Pin(HPTestCase):
 	def test_favourite(self):
 		
 		self.e_wait('.pin-item img')
+		sleep(1)
 		
 		self.assertTitle("Historypin | kris.test00's Historypin profile")
 		self.assertEqual('Selenium pin', self.e('.pin-item h3').text)

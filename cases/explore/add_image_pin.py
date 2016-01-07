@@ -58,6 +58,7 @@ class Add_Image_Pin(HPTestCase):
 	@url('/en/person/{0}/'.format(ID_USER))
 	def delete_image_pin(self):
 		self.e_wait('.pin-item .icon-trash')
+		sleep(1)
 		
 		self.assertEqual('now', self.e('.activity li:first-of-type .time').text)
 		self.assertTitle("Historypin | kris.test00's Historypin profile")
