@@ -13,7 +13,12 @@ class Pages_View(HPTestCase):
 		displayed(self, '.collections :nth-child(9)')								# check displayed collection == 9
 		displayed(self, '#main-header-logo')
 		self.assertEqual('Explore Historypin', self.e('#main-header-nav li').text)
-		displayed(self, '.entrance-type')
+		if self.exists('.entrance-type'):
+			displayed(self, '.entrance-type')
+			# logging.critical('if')
+		else:
+			displayed(self, '.main-header-user a')
+			# logging.critical('else')
 		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/people', self.e('.explore-collections a').get_attribute('href'))
 		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/collections', self.e('.button-center-wrapp a').get_attribute('href'))
 		displayed(self, '.footer-col a')
@@ -41,10 +46,11 @@ class Pages_View(HPTestCase):
 		side_buttons(self)
 		
 		self.e('.select2-input').send_keys('pin')									# search by tag or keyword
-		sleep(1)
+		sleep(2)
 		
 		self.e('.select2-result:nth-of-type(2)').click()
 		self.e_wait('.pin-item')
+		sleep(1)
 
 	@url('/en/collections')
 	def test_all_collections(self):
@@ -60,11 +66,11 @@ class Pages_View(HPTestCase):
 		displayed(self, '.pagination-list')
 		displayed(self, '#intercom-launcher')
 		self.e('.select2-input').send_keys('premium automated collection')
-		sleep(2)
+		sleep(3)
 		
 		self.e('.select2-result:nth-of-type(1)').click()
 		# self.e('.select2-input').send_keys(Keys.ENTER)
-		sleep(3)
+		sleep(4)
 		
 		self.assertEqual('Premium Automated Collection', self.e('.card-title').text)
 
@@ -77,7 +83,7 @@ class Pages_View(HPTestCase):
 		displayed(self, '#sort-select')												# order filter
 		displayed(self, '#search button:first-of-type')								# search button
 		displayed(self, '#search button.blue-bg')									# reset search button
-		displayed(self, '.card')
+		displayed(self, '.card img')
 		displayed(self, '.pagination-list')
 		displayed(self, '.footer-col a')
 		displayed(self, '#intercom-launcher')
@@ -106,7 +112,7 @@ class Pages_View(HPTestCase):
 		sleep(1)
 		
 		self.e('.home-search-input').send_keys(Keys.ENTER)
-		sleep(1)
+		sleep(2)
 		
 		self.assertEqual('Bulgaria', self.e('.desc-wrapper h3').text)
 		
@@ -209,8 +215,9 @@ class Pages_View(HPTestCase):
 		self.e('.select2-input').send_keys('premium automated collection')
 		sleep(2)
 		
+		self.e('.select2-result:nth-of-type(1)').click()
 		self.e('.select2-input').send_keys(Keys.ENTER)
-		sleep(4)
+		sleep(3)
 		
 		self.assertEqual('Premium Automated Collection', self.e('.card-title').text)
 		
@@ -226,7 +233,7 @@ class Pages_View(HPTestCase):
 		displayed(self, '.card')													# first card from listing
 		displayed(self, '#intercom-launcher')
 		self.e('.select2-input').send_keys('selenium pin')
-		sleep(1)
+		sleep(2)
 		
 		self.e('.select2-input').send_keys(Keys.ENTER)
 		sleep(2)
@@ -271,11 +278,12 @@ class Pages_View(HPTestCase):
 		# sleep(3)
 		
 		# self.assertEqual('At the loibl obelisks', self.e('.card-title').text)
-		
+	
+	@logged_in
 	@url('/en/person/65536/explore/search/pin:favourite')
 	def test_favourited_explore(self):
 		self.e_wait('.card')
-		sleep(1)
+		sleep(3)
 		
 		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/collections/', self.e('#main-header-nav li:nth-of-type(3) a').get_attribute('href'))
 		self.assertEqual('kris.test00', self.e('.simple-banner h2').text)
@@ -286,14 +294,11 @@ class Pages_View(HPTestCase):
 		displayed(self, '.layout-triger')											# expand map and gallery button
 		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/person/65536/', self.e('.site-toolbar a').get_attribute('href'))
 		self.e('.select2-input').send_keys('at the loibl obelisks')
-		sleep(1)
+		sleep(2)
 		
+		self.e('.select2-result:nth-of-type(1)').click()
 		self.e('.select2-input').send_keys(Keys.ENTER)
-		self.e('.select2-input').send_keys('at the loibl obelisks')
 		sleep(1)
-		
-		self.e('.select2-input').send_keys(Keys.ENTER)								# temporary solution
-		sleep(3)
 		
 		self.assertEqual('At the Loibl obelisks', self.e('.card-title').text)
 		

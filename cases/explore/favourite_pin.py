@@ -30,6 +30,7 @@ class Favourite_Pin(HPTestCase):
 	def unfavourite(self):
 		
 		self.e_wait('.pin-item img')
+		sleep(1)
 		
 		self.assertEqual('now', self.e('.activity li:first-of-type .time').text)
 		self.assertEqual('Selenium pin', self.e('#favourites .pin-item h3').text)

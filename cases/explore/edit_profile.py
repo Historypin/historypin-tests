@@ -16,7 +16,7 @@ class Edit_Profile(HPTestCase):
 		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/collections/', self.e('#main-header-nav li:nth-of-type(3) a').get_attribute('href'))
 		if not self.exists('[src="/resources/avatars/225x225/avatar_1.png"]'):
 			self.e('.icon-trash').click()
-			logging.critical('test')
+			# logging.critical('test')
 			sleep(1)
 			self.accept_alert()
 		

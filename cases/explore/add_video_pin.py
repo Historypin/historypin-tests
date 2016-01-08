@@ -14,6 +14,8 @@ class Add_Video_Pin(HPTestCase):
 		self.e_wait('.hp-editor-map-cnt')
 		
 		self.e('.pin-type span:nth-of-type(2)').click()														# video pin button
+		sleep(1)
+		
 		self.e('.video-or-sound-pin .add-input').send_keys('https://www.youtube.com/watch?v=FdT3eKdto4w')
 		self.e('.video-or-sound-pin .add-button').click()
 		displayed(self, '.uploaded-video-or-sound-pin .white-bg')											# replace video button
@@ -54,7 +56,7 @@ class Add_Video_Pin(HPTestCase):
 		sleep(2)
 		
 		self.go('/en/person/{0}/'.format(ID_USER))
-		sleep(2)
+		sleep(3)
 		
 		self.assertEqual('Selenium pin', self.e('.pin-item h3').text)
 

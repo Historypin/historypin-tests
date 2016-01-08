@@ -67,6 +67,7 @@ class Add_Projects(HPTestCase):
 		
 		self.go('/en/person/{0}/'.format(ID_USER))
 		self.e_wait('.project-item .icon-trash')
+		sleep(1)
 		
 		self.assertEqual('Premium Automated Collection', self.e('.project-item h3').text)
 
