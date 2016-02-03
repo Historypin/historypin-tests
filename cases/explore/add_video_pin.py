@@ -56,7 +56,7 @@ class Add_Video_Pin(HPTestCase):
 		sleep(2)
 		
 		self.go('/en/person/{0}/'.format(ID_USER))
-		sleep(3)
+		self.e_wait('.pin-item h3')
 		
 		self.assertEqual('Selenium pin', self.e('.pin-item h3').text)
 

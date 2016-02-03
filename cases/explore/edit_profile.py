@@ -13,7 +13,7 @@ class Edit_Profile(HPTestCase):
 		self.e_wait('#save-mah')
 		
 		self.assertEqual('kris.test00', self.e('.main-header-user a').text)
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/collections/', self.e('#main-header-nav li:nth-of-type(3) a').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/people'.format(VERSION), self.e('#main-header-nav li:nth-of-type(3) a').get_attribute('href'))
 		if not self.exists('[src="/resources/avatars/225x225/avatar_1.png"]'):
 			self.e('.icon-trash').click()
 			# logging.critical('test')

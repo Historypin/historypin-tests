@@ -7,8 +7,8 @@ class Pages_View(HPTestCase):
 	
 	@url('/')
 	def test_homepage(self):
-		self.e_wait('.collections')
-		sleep(1)
+		# self.e_wait('.collections')
+		# sleep(1)
 		
 		displayed(self, '.collections :nth-child(9)')								# check displayed collection == 9
 		displayed(self, '#main-header-logo')
@@ -19,8 +19,8 @@ class Pages_View(HPTestCase):
 		else:
 			displayed(self, '.main-header-user a')
 			# logging.critical('else')
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/people', self.e('.explore-collections a').get_attribute('href'))
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/collections', self.e('.button-center-wrapp a').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/people'.format(VERSION), 			self.e('.explore-collections a').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/collections'.format(VERSION), 		self.e('.button-center-wrapp a').get_attribute('href'))
 		displayed(self, '.footer-col a')
 		displayed(self, '#intercom-launcher')
 		self.e('.home-search-input').send_keys('los angeles')
@@ -28,14 +28,14 @@ class Pages_View(HPTestCase):
 		
 		self.e('.home-search-input').send_keys(Keys.ENTER)
 		self.e_wait('.title')
-		self.assertTrue('http://www.v75-beta-2.historypin-hrd.appspot.com/en/explore/geo/34.052234,-118.243685,10/bounds/33.532954,-118.538256,34.568353,-117.949114', url)
+		self.assertTrue('http://{0}.historypin-hrd.appspot.com/en/explore/geo/34.052234,-118.243685,10/bounds/33.532954,-118.538256,34.568353,-117.949114'.format(VERSION), url)
 
 	@url('/en/explore')
 	def test_explore_view(self):
 		self.e_wait('.gallery-listing a:nth-of-type(20) img')
-		sleep(2)
+		# sleep(2)
 		
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/collections/', self.e('#main-header-nav li:nth-of-type(3) a').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/collections'.format(VERSION), 		self.e('#main-header-nav li:nth-of-type(2) a').get_attribute('href'))
 		displayed(self, '#sort-select')												# order filter
 		displayed(self, '.img-wrapper img')											# first project card
 		displayed(self, '#map')
@@ -50,15 +50,14 @@ class Pages_View(HPTestCase):
 		
 		self.e('.select2-result:nth-of-type(2)').click()
 		self.e_wait('.pin-item')
-		sleep(1)
 
 	@url('/en/collections')
 	def test_all_collections(self):
 		self.e_wait('.pagination-list')
-		sleep(1)
+		# sleep(1)
 		
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/people', self.e('#main-header-nav li:nth-of-type(4) a').get_attribute('href'))
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/people', self.e('.page-desc a').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/people'.format(VERSION), 			self.e('#main-header-nav li:nth-of-type(3) a').get_attribute('href'))
+		# self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/people'.format(VERSION), 			self.e('.page-desc a').get_attribute('href'))
 		displayed(self, '#sort-select')												# order filter
 		displayed(self, '#search button:first-of-type')
 		displayed(self, '#search button.blue-bg')									# reset search button
@@ -76,10 +75,10 @@ class Pages_View(HPTestCase):
 
 	@url('/en/people')
 	def test_meet_our_members(self):
-		self.e_wait('.pagination-list')
-		sleep(1)
+		# self.e_wait('.pagination-list')
+		# sleep(1)
 		
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/collections/', self.e('#main-header-nav li:nth-of-type(3) a').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/collections'.format(VERSION), 		self.e('#main-header-nav li:nth-of-type(2) a').get_attribute('href'))
 		displayed(self, '#sort-select')												# order filter
 		displayed(self, '#search button:first-of-type')								# search button
 		displayed(self, '#search button.blue-bg')									# reset search button
@@ -97,12 +96,12 @@ class Pages_View(HPTestCase):
 
 	@url('/en/places')
 	def test_places(self):
-		self.e_wait('.pagination-list')
+		# self.e_wait('.pagination-list')
 		
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/collections/', self.e('#main-header-nav li:nth-of-type(3) a').get_attribute('href'))
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/people', self.e('.page-desc a').get_attribute('href'))
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/place/australia', self.e('.page-desc a:nth-of-type(2)').get_attribute('href'))
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/place/zimbabwe', self.e('.page-desc a:nth-of-type(3)').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/collections'.format(VERSION), self.e('#main-header-nav li:nth-of-type(2) a').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/people'.format(VERSION), self.e('.page-desc a').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/place/australia'.format(VERSION), self.e('.page-desc a:nth-of-type(2)').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/place/zimbabwe'.format(VERSION), self.e('.page-desc a:nth-of-type(3)').get_attribute('href'))
 		self.assertTrue(self.e('#search button.blue-bg').is_displayed())			# reset search button
 		displayed(self, '.img-wrapper')												# place image first place card
 		displayed(self, '.pagination-list')
@@ -122,19 +121,19 @@ class Pages_View(HPTestCase):
 		sleep(5)
 		# self.e_wait('.pin-item')
 		
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/collections/', self.e('#main-header-nav li:nth-of-type(3) a').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/collections'.format(VERSION), self.e('#main-header-nav li:nth-of-type(2) a').get_attribute('href'))
 		displayed(self, '.profile-image')
 		self.assertEqual('kris.test00', self.e('.profile-meta h2').text)
 		displayed(self, '.activity-wrapper li')
 		self.e('.activity-wrapper .button.blue-bg').click()							# expand activity field button 
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/person/65536/list/collections', self.e('#projects:nth-of-type(2) .button').get_attribute('href'))
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/person/65536/explore/', self.e('#projects:nth-of-type(2) .button:nth-of-type(2)').get_attribute('href'))
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/person/65536/list/pins', self.e('#pins .button:nth-of-type(1)').get_attribute('href'))
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/person/65536/explore/', self.e('#pins .button:nth-of-type(2)').get_attribute('href'))
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/person/65536/list/tours', self.e('#tours .button:nth-of-type(1)').get_attribute('href'))
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/person/65536/explore/', self.e('#tours .button:nth-of-type(2)').get_attribute('href'))
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/person/65536/list/pins_favourited', self.e('#favourites .button:nth-of-type(1)').get_attribute('href'))
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/person/65536/explore/search/pin:favourite', self.e('#favourites .button:nth-of-type(2)').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/person/65536/list/collections'.format(VERSION), self.e('#projects:nth-of-type(2) .button').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/person/65536/explore/'.format(VERSION), self.e('#projects:nth-of-type(2) .button:nth-of-type(2)').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/person/65536/list/pins'.format(VERSION), self.e('#pins .button:nth-of-type(1)').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/person/65536/explore/'.format(VERSION), self.e('#pins .button:nth-of-type(2)').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/person/65536/list/tours'.format(VERSION), self.e('#tours .button:nth-of-type(1)').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/person/65536/explore/'.format(VERSION), self.e('#tours .button:nth-of-type(2)').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/person/65536/list/pins_favourited'.format(VERSION), self.e('#favourites .button:nth-of-type(1)').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/person/65536/explore/search/pin:favourite'.format(VERSION), self.e('#favourites .button:nth-of-type(2)').get_attribute('href'))
 		displayed(self, '#projects .icon-pen')										# edit button on first card project
 		displayed(self, '#projects .icon-trash')									# delete button on first card project
 		displayed(self, '#pins .icon-pen')											# edit button on first pin card
@@ -155,7 +154,7 @@ class Pages_View(HPTestCase):
 	# 	self.e('.icon-edit').click()
 	# 	self.e_wait('#save-mah')
 		
-	# 	self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/collections/', self.e('#main-header-nav li:nth-of-type(3) a').get_attribute('href'))
+	# 	self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/collections/', self.e('#main-header-nav li:nth-of-type(3) a').get_attribute('href'))
 	# 	displayed(self, '.profile-image')
 	# 	displayed(self, '.icon-trash')
 	# 	displayed(self, '#name')
@@ -184,8 +183,8 @@ class Pages_View(HPTestCase):
 	def test_collection_list(self):
 		self.e_wait('.card')
 		
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/collections/', self.e('#main-header-nav li:nth-of-type(3) a').get_attribute('href'))
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/person/65536', self.e('.page-desc a').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/collections'.format(VERSION), self.e('#main-header-nav li:nth-of-type(2) a').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/person/65536'.format(VERSION), self.e('.page-desc a').get_attribute('href'))
 		displayed(self, '#sort-select')												# order filter
 		displayed(self, '#search button:first-of-type')
 		displayed(self, '#search button.blue-bg')									# reset search button
@@ -202,16 +201,16 @@ class Pages_View(HPTestCase):
 	@url('/en/person/65536/explore')
 	def test_collections_explore(self):
 		self.e_wait('.card')
-		sleep(1)
+		# sleep(1)
 		
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/collections/', self.e('#main-header-nav li:nth-of-type(3) a').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/collections'.format(VERSION), self.e('#main-header-nav li:nth-of-type(2) a').get_attribute('href'))
 		self.assertEqual('kris.test00', self.e('.simple-banner h2').text)
 		displayed(self, '#sort-select')												# order filter
 		displayed(self, '.img-wrapper img')											# first project card
 		displayed(self, '#map')
 		displayed(self, '#timeline')												# map timeline
 		displayed(self, '.layout-triger')											# expand map and gallery button
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/person/65536/', self.e('.site-toolbar a').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/person/65536/'.format(VERSION), self.e('.site-toolbar a').get_attribute('href'))
 		self.e('.select2-input').send_keys('premium automated collection')
 		sleep(2)
 		
@@ -225,8 +224,8 @@ class Pages_View(HPTestCase):
 	def test_pins_list(self):
 		self.e_wait('.card')
 		
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/collections/', self.e('#main-header-nav li:nth-of-type(3) a').get_attribute('href'))
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/person/65536', self.e('.page-desc a').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/collections'.format(VERSION), self.e('#main-header-nav li:nth-of-type(2) a').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/person/65536'.format(VERSION), self.e('.page-desc a').get_attribute('href'))
 		displayed(self, '#sort-select')												# order filter
 		displayed(self, '#search button:first-of-type')
 		displayed(self, '#search button.blue-bg')									# reset search button
@@ -244,8 +243,8 @@ class Pages_View(HPTestCase):
 	def test_tours_list(self):
 		self.e_wait('.card')
 		
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/collections/', self.e('#main-header-nav li:nth-of-type(3) a').get_attribute('href'))
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/person/65536', self.e('.page-desc a').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/collections'.format(VERSION), self.e('#main-header-nav li:nth-of-type(2) a').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/person/65536'.format(VERSION), self.e('.page-desc a').get_attribute('href'))
 		displayed(self, '#sort-select')												# order filter
 		displayed(self, '#search button:first-of-type')
 		displayed(self, '#search button.blue-bg')									# reset search button
@@ -263,8 +262,8 @@ class Pages_View(HPTestCase):
 	def test_favourited_list(self):
 		self.e_wait('.card')
 		
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/collections/', self.e('#main-header-nav li:nth-of-type(3) a').get_attribute('href'))
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/person/65536', self.e('.page-desc a').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/collections'.format(VERSION), self.e('#main-header-nav li:nth-of-type(2) a').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/person/65536'.format(VERSION), self.e('.page-desc a').get_attribute('href'))
 		displayed(self, '#sort-select')												# order filter
 		displayed(self, '#search button:first-of-type')
 		displayed(self, '#search button.blue-bg')									# reset search button
@@ -285,14 +284,14 @@ class Pages_View(HPTestCase):
 		self.e_wait('.card')
 		sleep(3)
 		
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/collections/', self.e('#main-header-nav li:nth-of-type(3) a').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/collections'.format(VERSION), self.e('#main-header-nav li:nth-of-type(2) a').get_attribute('href'))
 		self.assertEqual('kris.test00', self.e('.simple-banner h2').text)
 		displayed(self, '#sort-select')												# order filter
 		displayed(self, '.img-wrapper img')											# first project card
 		displayed(self, '#map')
 		displayed(self, '#timeline')												# map timeline
 		displayed(self, '.layout-triger')											# expand map and gallery button
-		self.assertEqual('http://v75-beta-2.historypin-hrd.appspot.com/en/person/65536/', self.e('.site-toolbar a').get_attribute('href'))
+		self.assertEqual('http://{0}.historypin-hrd.appspot.com/en/person/65536/'.format(VERSION), self.e('.site-toolbar a').get_attribute('href'))
 		self.e('.select2-input').send_keys('at the loibl obelisks')
 		sleep(2)
 		

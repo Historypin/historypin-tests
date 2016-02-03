@@ -78,14 +78,13 @@ class Browser(webdriver.Chrome):
 			raise NoSuchElementException('The element could not be found')
 	
 	def pageload_wait(self, timeout = 30):
-		sleep(1)
-		# TODO Fix this to work with something else than dummy sleep
-		# self.e_wait('body')
-		# try:
-		# 	w = WebDriverWait(self, timeout)
-		# 	return w.until(lambda driver: driver.execute_script("return document.readyState;") == "complete")
-		# except:
-		# 	raise Exception('Page could not load')
+		# sleep(1)
+		self.e_wait('body')
+		try:
+			w = WebDriverWait(self, timeout)
+			return w.until(lambda driver: driver.execute_script("return document.readyState;") == "complete")
+		except:
+			raise Exception('Page could not load')
 	
 	def hover(self, elem):
 		ActionChains(self).move_to_element(elem).perform()
@@ -117,7 +116,7 @@ class TestCase(unittest.TestCase):
 		cls.e				= cls.browser.e
 		cls.e_wait			= cls.browser.e_wait
 		cls.exists			= cls.browser.exists
-		# cls.pageload_wait	= cls.browser.pageload_wait
+		cls.pageload_wait	= cls.browser.pageload_wait
 		cls.hover			= cls.browser.hover
 		cls.double_click	= cls.browser.double_click
 		cls.accept_alert	= cls.browser.accept_alert
