@@ -10,8 +10,9 @@ from explore.add_text_pin import Add_Text_Pin
 from explore.add_tour import Add_Tour
 from explore.repin import Repin
 from explore.favourite_pin import Favourite_Pin
-from explore.edit_profile import Edit_Profile
+# from explore.edit_profile import Edit_Profile
 from explore.discourse import Discourse
+from explore.not_logged import Not_Logged
 # from explore.homepage_tpl import Homepage_Tpl
 
 # from explore.project_view import Project_View
